@@ -1,0 +1,22 @@
+<header class="main-header" *jhiHasAnyAuthority="['ROLE_USER', 'ROLE_ADMIN']">
+    <router-outlet name="navbar"></router-outlet>
+</header>
+
+<aside>
+    <router-outlet name="sidebar"></router-outlet>
+</aside>
+
+<br/><br/>
+<div class="container-fluid">
+    <div class="card jh-card" *jhiHasAnyAuthority="['ROLE_USER', 'ROLE_ADMIN']">
+        <router-outlet></router-outlet>
+        <router-outlet name="popup"></router-outlet>
+    </div>
+
+    <router-outlet></router-outlet>
+    <router-outlet name="popup"></router-outlet>
+
+    <div class="jhi-card-espaco">.</div>
+    <!--<jhi-footer></jhi-footer>-->
+</div>
+

@@ -1,0 +1,30 @@
+{
+    "obra": {
+        "title": {
+            "home": "Obras",
+            "detail": "Obra",
+            "dialog": "Obra"
+        },
+        "home": {
+            "obras": "Obras",
+            "obra": "Obra",
+            "table": {
+                "nome": "Nome",
+                "tipoObra": "Tipo Obra",
+                "status": "Status",
+                "ativado": "Ativado",
+                "desativado": "Desativado"
+            }
+        },
+        "dialog": {
+            "create": "Criando obra",
+            "obra": "Obra",
+            "nome": "Nome",
+            "descricao": "Descrição",
+            "tipoObra": "Tipo de Obra",
+            "status": "Status",
+            "autores": "Autores"
+        },
+        "delete": "Tem certeza de que deseja excluir esse obra?"
+    }
+}

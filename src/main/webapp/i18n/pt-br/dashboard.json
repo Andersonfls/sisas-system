@@ -1,0 +1,13 @@
+{
+    "dashboard": {
+        "title": {
+            "home": "Dashboard"
+        },
+        "home": {
+            "obras": "Obras",
+            "reservas": "Reservas",
+            "emprestimos": "Emprétimos",
+            "users": "Usuários"
+        }
+    }
+}

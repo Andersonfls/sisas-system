@@ -1,0 +1,17 @@
+version: '2'
+services:
+
+  oraclexe:
+    container_name: oraclexe
+    image: sath89/oracle-xe-11g
+    hostname: oraclexe
+    restart: always
+    ports:
+      - "8099:8080"
+      - 1521:1521
+#    volumes:
+#      - ./data/:/u01/app/oracle
+    environment:
+      - processes=1000
+      - sessions=1105
+      - transactions=1215

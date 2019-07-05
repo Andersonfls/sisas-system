@@ -1,0 +1,26 @@
+{
+    "midia": {
+        "title": {
+            "home": "Mídias",
+            "detail": "Mídia",
+            "dialog": "Mídia"
+        },
+        "home": {
+            "midias": "Mídias",
+            "midia": "Mídia",
+            "table": {
+                "nome": "Nome",
+                "status": "Status",
+                "desativado": "Desativado",
+                "ativado": "ativado"
+            }
+        },
+        "dialog": {
+            "create": "Criando mídia",
+            "midia": "Mídia",
+            "nome": "Nome",
+            "status": "Status"
+        },
+        "midia": "Tem certeza de que deseja excluir essa mídia?"
+    }
+}

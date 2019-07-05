@@ -1,0 +1,25 @@
+{
+    "autor": {
+        "title": {
+            "home": "Autores",
+            "detail": "Autor(a)",
+            "dialog": "Autor(a)"
+        },
+        "home": {
+            "actors": "Autores",
+            "actor": "Autor",
+            "filter": "Filtro",
+            "table": {
+                "name": "Nome",
+                "status": "Status"
+            }
+        },
+        "dialog": {
+            "create": "Criando autor",
+            "actor": "Autor:",
+            "name": "Nome",
+            "status": "Status"
+        },
+        "delete": "Tem certeza de que deseja excluir esse autor?"
+    }
+}

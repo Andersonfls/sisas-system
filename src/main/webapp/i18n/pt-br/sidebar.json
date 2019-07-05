@@ -1,0 +1,44 @@
+{
+    "sidebar": {
+        "item1": "Dashboard",
+        "item2": {
+            "title": "Configurações",
+            "subItem1": "Controle de Acesso",
+            "subItem2": "Perfil",
+            "subItem3": "Tipo Situação",
+            "subItem4": "Província",
+            "subItem5": "Município",
+            "subItem6": "Comuna",
+            "subItem7": "Fornecedores"
+        },
+        "item3": {
+            "title": "Inventario de Inquérito",
+            "subItem1": "Sistema de Águas",
+            "subItem2": "Log Sistema de Águas",
+            "subItem3": "Indicador de Produção",
+            "subItem4": "Log Indicador de produção"
+        },
+        "item4": {
+            "title": "Programas-Projectos",
+            "subItem1": "Programas e Projectos",
+            "subItem2": "Log Programas e Projectos"
+        },
+        "item5": {
+            "title": "Publicações",
+            "subItem1": "Início Banner",
+            "subItem2": "Início Destaques",
+            "subItem3": "Início Últimas Notícias",
+            "subItem4": "Início Publicacao PDF",
+            "subItem5": "Sobre DNA Banner",
+            "subItem6": "Sobre DNA"
+        },
+        "item6": {
+            "title": "Relatórios",
+            "subItem1": "Sistema de Águas",
+            "subItem2": "Indicador de Produção",
+            "subItem3": "Programas e Projectos",
+            "subItem4": "Publicacoes",
+            "subItem5": "Log Relatórios"
+        }
+    }
+}

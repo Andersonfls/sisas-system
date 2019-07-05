@@ -1,0 +1,45 @@
+=begin
+
+Connect database with following setting:
+hostname: localhost
+port: 1521
+nome do serviço: xe
+username/password: PTOLOMEU/PTOLOMEU
+ou
+username/password: system/oracle
+
+
+Connect to Oracle Application Express web management console with following settings:
+http://localhost:8099/apex
+workspace: INTERNAL
+user: ADMIN
+password: oracle
+
+Caso deseja recriar a base oracle (vai remover todas as tabelas e criar o banco de dados do zero):
+    vagrant provision --provision-with oraclexe_clean
+
+Caso deseja reexecutar o provisionamento de forma manual:
+    sudo puppet apply /vagrant/puppet/manifests/default.pp --debug
+
+=end
+
+Vagrant.configure(2) do |config|
+  config.vm.box = "ubuntu/trusty64"
+  config.vm.box_version = "20171129.0.0"
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.cpus = 1
+    vb.memory = 1024
+  end
+
+  # oracle xe
+  config.vm.network "forwarded_port", guest: 8099, host: 8099
+  config.vm.network "forwarded_port", guest: 1521, host: 1521
+
+  config.vbguest.auto_update = false
+  config.vm.boot_timeout = 600
+  config.vm.host_name = "oraclexe"
+  config.vm.provision "shell", type: "shell", path: "./scripts/cloud-init.sh"
+  config.vm.provision "oraclexe_clean", type: "shell", run: "never", path: "./scripts/oraclexe_clean.sh"
+  config.vm.provision "checa_conexao", type: "shell", run: "always", path: "./scripts/checa_conexao.sh"
+end

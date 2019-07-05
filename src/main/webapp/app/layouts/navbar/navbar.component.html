@@ -1,0 +1,30 @@
+<header class="app-header">
+    <a class="app-header__logo">
+        <img  class="img-responsive" style="height: 55px;" src="../../../content/images/logo_minea.png">
+    </a>
+    <!-- Sidebar toggle button-->
+    <a class="app-sidebar__toggle" href="javascript:void(0);" data-target="#sidebar" data-toggle="collapse" aria-label="Hide Sidebar"></a>
+    <!-- Navbar Right Menu-->
+    <ul class="app-nav">
+        <!-- User Menu-->
+        <div ngbDropdown>
+            <a class="app-nav__item" id="dropdownBasic1" ngbDropdownToggle aria-label="Open Profile Menu" style="color: white;">
+                <i class="fa fa-user fa-lg"></i>
+            </a>
+
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="margin-left: -5.85em; background-color: #ffce0f;">
+                <a class="dropdown-item" routerLink="settings" routerLinkActive="active">
+                    <i class="fa fa-cog fa-lg"></i> Settings
+                </a>
+
+                <a class="dropdown-item" routerLink="password" routerLinkActive="active">
+                    <i class="fa fa-user fa-lg"></i> Password
+                </a>
+
+                <a class="dropdown-item" (click)="logout()">
+                    <i class="fa fa-sign-out fa-lg"></i> Logout
+                </a>
+            </div>
+        </div>
+    </ul>
+</header>

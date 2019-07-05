@@ -1,0 +1,39 @@
+{
+    "emprestimo": {
+        "title": {
+            "home": "Empréstimos",
+            "detail": "Empréstimo",
+            "dialog": "Empréstimo"
+        },
+        "home": {
+            "emprestimos": "Empréstimos",
+            "emprestimo": "Empréstimo",
+            "table": {
+                "usuario": "Usuário",
+                "exemplar": "Exemplar",
+                "prev": "Prev",
+                "devolucao": "Devolução",
+                "emprestimo": "Empréstimo",
+                "multa": "Multa",
+                "status": "Status",
+                "pago": "Pago",
+                "devendo": "Devendo",
+                "desativado": "Desativado",
+                "ativado": "Ativado"
+            }
+        },
+        "dialog": {
+            "create": "Criando empréstimo",
+            "emprestimo": "Empréstimo",
+            "exemplar": "Exemplar",
+            "user": "Usuário",
+            "multa": "Multa",
+            "dataEmprestimo": "Data Empréstimo",
+            "devolucaoPrev": "Devolução Prev",
+            "devolucao": "Devolução",
+            "status": "Status",
+            "pagamento": "Pagamento"
+        },
+        "delete": "Tem certeza de que deseja excluir esse empréstimo?"
+    }
+}

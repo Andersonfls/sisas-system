@@ -1,0 +1,38 @@
+{
+    "espaco": {
+        "title": {
+            "home": "Espaços",
+            "detail": "Espaço",
+            "dialog": "Espaço"
+        },
+        "home": {
+            "espacos": "Espaços",
+            "espaco": "Espaco",
+            "table": {
+                "nome": "Nome",
+                "status": "Status",
+                "tipoEspaco": "Tipo Espaço",
+                "nomePai": "Nome Pai",
+                "ativado": "Ativado",
+                "desativado": "Desativado"
+            }
+        },
+        "dialog": {
+            "create": "Criando espaço",
+            "espaco": "Espaço",
+            "nome": "Nome",
+            "descricao": "Descrição",
+            "etiquetas": "Etiquetas",
+            "qrCode": "Gerar QR Code",
+            "barCode": "Gerar Bar Code",
+            "rf": "Gerar RF",
+            "nf": "Gerar NF",
+            "rfAssociado": "RF",
+            "nfAssociado": "NFC",
+            "tipoEspaco": "Tipo Espaço",
+            "pai": "Pai",
+            "status": "Status"
+        },
+        "delete": "Tem certeza de que deseja excluir esse espaço?"
+    }
+}

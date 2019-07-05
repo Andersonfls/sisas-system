@@ -1,0 +1,80 @@
+image: openjdk:8u171-jdk-stretch
+
+services:
+  - docker:dind
+  - name: sath89/oracle-xe-11g
+    alias: oraclexe
+
+cache:
+    #key: "$CI_BUILD_REF_NAME"
+    key: "$CI_JOB_NAME"
+    paths:
+        - node_modules
+        - .m2/repository
+        - node
+
+stages:
+    - build
+    - test
+    - package
+
+before_script:
+    # This will supress any download for dependencies and plugins or upload messages which would clutter the console log.
+    # `showDateTime` will show the passed time in milliseconds. You need to specify `--batch-mode` to make this work.
+    - export MAVEN_OPTS="-Dmaven.repo.local=.m2/repository -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=WARN -Dorg.slf4j.simpleLogger.showDateTime=true -Djava.awt.headless=true"
+    # As of Maven 3.3.0 instead of this you may define these options in `.mvn/maven.config` so the same config is used
+    # when running from the command line.
+    # `installAtEnd` and `deployAtEnd` are only effective with recent version of the corresponding plugins.
+    - export MAVEN_CLI_OPTS="--batch-mode --errors --fail-at-end --show-version -DinstallAtEnd=true -DdeployAtEnd=true"
+    - export MY_USER_HOME=`pwd`
+    - export MAVEN_USER_HOME_LIB=`pwd`/lib
+    - chmod +x mvnw
+    - ls ./node/yarn/dist/bin/yarn || ./mvnw $MAVEN_CLI_OPTS com.github.eirslett:frontend-maven-plugin:install-node-and-yarn -DnodeVersion=v8.9.4 -DyarnVersion=v1.3.2
+    - chmod +x ./node/node
+    - chmod +x ./node/yarn/dist/bin/yarn
+    - export PATH=$PATH:`pwd`/node
+    - node --version
+    - ./mvnw $MAVEN_CLI_OPTS com.github.eirslett:frontend-maven-plugin:yarn
+    - ./mvnw $MAVEN_CLI_OPTS validate
+
+maven-build:
+    stage: build
+    script:
+        # Build
+        - ./mvnw $MAVEN_CLI_OPTS compile
+        # LiquibaseTest
+        - export ORACLE_XE_HOST=oraclexe
+        - cd ./src/main/vagrant/oraclexe/scripts
+        - chmod +x mvnw
+        - ./mvnw $MAVEN_CLI_OPTS validate
+        - ./mvnw $MAVEN_CLI_OPTS compile exec:java -Dexec.mainClass="oracle.CreateDefaultDbObjects"
+        - cd $MY_USER_HOME
+        - ./mvnw $MAVEN_CLI_OPTS test-compile exec:java -Dexec.mainClass="org.junit.runner.JUnitCore" -Dexec.classpathScope="test" -Dexec.args="com.minea.ptolomeu.config.LiquibaseTest"
+        # Package
+        - ./mvnw $MAVEN_CLI_OPTS verify -Pprod -DskipTests
+    artifacts:
+        paths:
+            - target/*.war
+#maven-test:
+#    stage: test
+#    script:
+#        - ./mvnw $MAVEN_CLI_OPTS test
+#    artifacts:
+#        paths:
+#            - target/surefire-reports/*
+#
+#maven-front-test:
+#    stage: test
+#    script:
+#        - ./mvnw $MAVEN_CLI_OPTS com.github.eirslett:frontend-maven-plugin:yarn -Dfrontend.yarn.arguments=test
+#    artifacts:
+#        paths:
+#            - target/test-results/karma/*
+#
+#maven-package:
+#    stage: package
+#    script:
+#        - ./mvnw $MAVEN_CLI_OPTS verify -Pprod -DskipTests
+#    artifacts:
+#        paths:
+#            - target/*.war

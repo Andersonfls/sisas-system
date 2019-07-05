@@ -1,0 +1,180 @@
+#sidebar {
+    overflow: hidden;
+    z-index: 3;
+    width: 255px;
+    margin-right: 18px;
+}
+
+#sidebar .list-group {
+    min-width: 245px;
+    background-color: #678891;
+    min-height: 270vh;
+}
+
+#sidebar i {
+    margin-right: 0px;
+    min-width: 25px;
+}
+
+#sidebar .list-group-item {
+    font-weight: 600;
+    border-radius: 0;
+    background-color: #678891;
+    color: #efece6;
+    border-left: 0;
+    border-right: 0;
+    border-color: #262e35;
+    white-space: nowrap;
+    min-width: 80%;
+}
+
+/* highlight active menu */
+#sidebar .list-group-item:not(.collapsed) {
+    background-color: #3b535f;
+}
+
+/* closed state */
+#sidebar .list-group .list-group-item[aria-expanded="false"]::after {
+    content: " \f0d7";
+    font-family: FontAwesome;
+    display: inline;
+    text-align: right;
+    padding-left: 5px;
+}
+
+/* open state */
+#sidebar .list-group .list-group-item[aria-expanded="true"] {
+    background-color: #527d92;
+}
+
+#sidebar .list-group .list-group-item[aria-expanded="true"]::after {
+    content: " \f0da";
+    font-family: FontAwesome;
+    display: inline;
+    text-align: right;
+    padding-left: 5px;
+}
+
+/* level 1*/
+#sidebar .list-group .collapse .list-group-item,
+#sidebar .list-group .collapsing .list-group-item  {
+    padding-left: 20px;
+}
+
+/* level 2*/
+#sidebar .list-group .collapse > .collapse .list-group-item,
+#sidebar .list-group .collapse > .collapsing .list-group-item {
+    padding-left: 30px;
+}
+
+/* level 3*/
+#sidebar .list-group .collapse > .collapse > .collapse .list-group-item {
+    padding-left: 40px;
+}
+
+@media (max-width:768px) {
+    #sidebar {
+        min-width: 48px;
+        max-width: 40px;
+        overflow-y: auto;
+        overflow-x: visible;
+        transition: all 0.25s ease;
+        transform: translateX(-45px);
+        position: fixed;
+    }
+
+    #sidebar.show {
+        transform: translateX(0);
+    }
+
+    #sidebar::-webkit-scrollbar{ width: 0px; }
+
+    #sidebar, #sidebar .list-group {
+        min-width: 48px;
+        overflow: visible;
+    }
+    /* overlay sub levels on small screens */
+    #sidebar .list-group .collapse.show, #sidebar .list-group .collapsing {
+        position: relative;
+        z-index: 1;
+        width: 290px;
+        top: 0;
+    }
+    #sidebar .list-group > .list-group-item {
+        text-align: center;
+        padding: .75rem .5rem;
+    }
+    /* hide caret icons of top level when collapsed */
+    #sidebar .list-group > .list-group-item[aria-expanded="true"]::after,
+    #sidebar .list-group > .list-group-item[aria-expanded="false"]::after {
+        display:none;
+    }
+    #menu1sub1{/*scroll do menu1sub1*/
+        height: 100px;
+        width: 200px;
+        overflow-y: scroll;
+    }
+    #menu1sub2{/*scroll do menu1sub2*/
+        height: 100px;
+        width: 200px;
+        overflow-y: scroll;
+    }
+}
+
+.collapse.show {
+    visibility: visible;
+}
+
+.collapsing {
+    visibility: visible;
+    height: 0;
+    -webkit-transition-property: height, visibility;
+    transition-property: height, visibility;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+
+.collapsing.width {
+    -webkit-transition-property: width, visibility;
+    transition-property: width, visibility;
+    width: 0;
+    height: 100%;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+
+.collapse.background{
+    background-color: #3b2613 ;
+}
+
+.sidebar-collapse{
+    overflow-scrolling: auto;
+}
+
+.sidebar-collapse::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+.sidebar-collapse::-webkit-scrollbar-track-piece  {
+    background-color: #3b3b3b;
+    -webkit-border-radius: 6px;
+}
+
+.sidebar-collapse::-webkit-scrollbar {
+    width: 15px;
+}
+
+.sidebar-collapse::-webkit-scrollbar-track {
+    background-color: lightgray;
+}
+
+.sidebar-collapse::-webkit-scrollbar-thumb {
+    background-color: lightblue;
+}
+
+.sidebar-collapse::-webkit-scrollbar-thumb:window-inactive{
+    overflow-y: scroll;
+    overflow-scrolling: auto;
+    background: lightgray;
+}

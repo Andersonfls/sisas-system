@@ -1,0 +1,318 @@
+<form name="editForm" role="form" novalidate #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myUserLabel" jhiTranslate="userManagement.home.createOrEditLabel">
+            Create or edit a User</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            (click)="clear()">
+            x
+        </button>
+    </div>
+
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="userManagement.firstName">Nome</label>
+                    <input type="text" class="form-control" name="nome" #nomeInput="ngModel"
+                           [(ngModel)]="user.nome" maxlength="50">
+
+                    <div *ngIf="nomeInput.dirty && nomeInput.invalid">
+                        <small class="form-text text-danger"
+                               *ngIf="nomeInput.errors.maxlength" jhiTranslate="entity.validation.maxlength"
+                               translateValues="{max: 255}">
+                            This field cannot be longer than 255 characters.
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="userManagement.login">Login</label>
+                    <input type="text" class="form-control" name="login" #loginInput="ngModel"
+                           [(ngModel)]="user.login" required minlength="1" maxlength="50" pattern="^[_'.@A-Za-z0-9-]*$">
+
+                    <div *ngIf="loginInput.dirty && loginInput.invalid">
+                        <small class="form-text text-danger"
+                               *ngIf="loginInput.errors.required" jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+
+                        <small class="form-text text-danger"
+                               *ngIf="loginInput.errors.maxlength" jhiTranslate="entity.validation.maxlength"
+                               translateValues="{max: 50}">
+                            This field cannot be longer than 50 characters.
+                        </small>
+
+                        <small class="form-text text-danger"
+                               *ngIf="loginInput.errors.pattern" jhiTranslate="entity.validation.patternLogin">
+                            This field can only contain letters, digits and e-mail addresses.
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="userManagement.email">Email</label>
+                    <input type="email" class="form-control" name="email" #emailInput="ngModel"
+                           [(ngModel)]="user.email" minlength="5" required maxlength="100" email>
+
+                    <div *ngIf="emailInput.dirty && emailInput.invalid">
+                        <small class="form-text text-danger"
+                               *ngIf="emailInput.errors.required" jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+
+                        <small class="form-text text-danger"
+                               *ngIf="emailInput.errors.maxlength" jhiTranslate="entity.validation.maxlength"
+                               translateValues="{max: 100}">
+                            This field cannot be longer than 100 characters.
+                        </small>
+
+                        <small class="form-text text-danger"
+                               *ngIf="emailInput.errors.minlength" jhiTranslate="entity.validation.minlength"
+                               translateValues="{min: 5}">
+                            This field is required to be at least 5 characters.
+                        </small>
+
+                        <small class="form-text text-danger"
+                               *ngIf="emailInput.errors.email" jhiTranslate="global.messages.validate.email.invalid">
+                            Your email is invalid.
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-control-label" for="celular">Celular</label>
+                    <input type="text" class="form-control" name="celular" id="celular"
+                           #celularInput="ngModel"
+                           [(ngModel)]="user.celular"
+                           maxlength="11"
+                    >
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-control-label" for="telefone">Telefone</label>
+                    <input type="text" class="form-control" name="telefone" id="telefone"
+                           #telefoneInput="ngModel" [(ngModel)]="user.telefone"
+                           maxlength="11"
+                    >
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-control-label" for="enderecoCidade">CIDADE</label>
+                    <input type="text" class="form-control"
+                           name="enderecoCidade" id="enderecoCidade"
+                           [(ngModel)]="user.enderecoCidade"
+                           maxlength="75"
+                    >
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="form-control-label" for="enderecoCep">CEP</label>
+                    <input type="text"
+                           class="form-control" name="enderecoCep" id="enderecoCep"
+                           [(ngModel)]="user.enderecoCep" maxlength="9"
+                    >
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="form-control-label" for="enderecoUf">UF</label>
+                    <input type="text" class="form-control" name="enderecoUf" id="enderecoUf"
+                           [(ngModel)]="user.enderecoUf" maxlength="2"
+                    >
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-9">
+                <div class="form-group">
+                    <label class="form-control-label" for="enderecoLogadouro">LOGADOURO</label>
+                    <input type="text"
+                           class="form-control"
+                           name="enderecoLogadouro" id="enderecoLogadouro"
+                           [(ngModel)]="user.enderecoLogadouro"
+                           maxlength="150"
+                    >
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="form-control-label" for="enderecoLote">LOTE</label>
+                    <input type="text"
+                           class="form-control" name="enderecoLote" id="enderecoLote"
+                           [(ngModel)]="user.enderecoLote"
+                           maxlength="10"
+                    >
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-control-label" for="enderecoBairro">BAIRRO</label>
+                    <input type="text" class="form-control"
+                           name="enderecoBairro" id="enderecoBairro"
+                           [(ngModel)]="user.enderecoBairro"
+                           maxlength="75"
+                    >
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-control-label" for="enderecoComplemento">COMPLEMENTO</label>
+                    <input type="text" class="form-control"
+                           name="enderecoComplemento" id="enderecoComplemento"
+                           [(ngModel)]="user.enderecoComplemento"
+                    >
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="text-align: center">
+            <div class="col-sm-2">
+                <label class="form-control-label" for="etiquetas">Etiquetas</label>
+                <button class="btn btn-success btn-sm"
+                        name="etiquetas"  id="etiquetas" data-toggle="collapse"
+                        title="Etiquetas" href="#collapseExample" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">
+                    <span class="fa fa-tags"></span>
+                </button>
+            </div>
+        </div>
+
+        <br/>
+        <div class="collapse" id="collapseExample">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-control-label">BR</label>
+                        <input type="text" class="form-control" name="brAssociado" [(ngModel)]="user.brAssociado">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-control-label">RF</label>
+                        <input type="text" class="form-control" name="rfAssociado" [(ngModel)]="user.rfAssociado">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-control-label">QR</label>
+                        <input type="text" class="form-control" name="qrAssociado" [(ngModel)]="user.qrAssociado">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-control-label">NF</label>
+                        <input type="text" class="form-control" name="nfAssociado" [(ngModel)]="user.nfAssociado">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <ul class="list-group">
+            <li class="list-group-item">
+                Status
+                <div class="check-box-scged">
+                    <input id="someSwitchOptionSuccess" type="checkbox" name="status" [(ngModel)]="user.activated"/>
+                    <label for="someSwitchOptionSuccess" class="label-success"></label>
+                </div>
+            </li>
+        </ul>
+
+        <br/>
+        <div class="form-group">
+            <label jhiTranslate="userManagement.profiles">Profiles</label>
+            <select class="form-control" multiple name="authority" [(ngModel)]="user.authorities">
+                <option *ngFor="let authority of authorities" [value]="authority">{{authority}}</option>
+            </select>
+        </div>
+
+        <!--
+        <div class="row">
+            <ul class="form-group col-md-3">
+                <li class="list-group-item">
+                    Perfil ADM
+                    <div class="check-box-scged">
+                        <input id="admPerfil" type="checkbox" name="admPerfil" [(ngModel)]="user.perfilAdm"/>
+                        <label for="admPerfil" class="label-success"></label>
+                    </div>
+                </li>
+            </ul>
+
+            <ul class="form-group col-md-3">
+                <li class="list-group-item">
+                    MOD CONFIG
+                    <div class="check-box-scged">
+                        <input id="modConfig" type="checkbox" name="modConfig" [(ngModel)]="user.modConfig"/>
+                        <label for="modConfig" class="label-success"></label>
+                    </div>
+                </li>
+            </ul>
+
+            <ul class="form-group col-md-3">
+                <li class="list-group-item">
+                    MOD BALCÃO
+                    <div class="check-box-scged">
+                        <input id="modBalcao" type="checkbox" name="modBalcao" [(ngModel)]="user.modBalcao"/>
+                        <label for="modBalcao" class="label-success"></label>
+                    </div>
+                </li>
+            </ul>
+
+            <ul class="form-group col-md-3">
+                <li class="list-group-item">
+                    MOD TOTEN
+                    <div class="check-box-scged">
+                        <input id="modToten" type="checkbox" name="modToten" [(ngModel)]="user.modToten"/>
+                        <label for="modToten" class="label-success"></label>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        -->
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span
+            jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <form (ngSubmit)="save()">
+            <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                <span class="fa fa-floppy-o"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+            </button>
+        </form>
+    </div>
+</form>
