@@ -1,8 +1,6 @@
 package com.minea.sisas.service;
 
 import com.minea.sisas.config.FileStorageProperties;
-import com.minea.sisas.domain.Obra;
-import com.minea.sisas.repository.ObraRepository;
 import com.minea.sisas.service.dto.UploadFileResponseDTO;
 import com.minea.sisas.web.rest.errors.MyFileNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +29,6 @@ import java.util.List;
 public class StorageService {
 
     private final Path fileStorageLocation;
-
-    @Autowired
-    ObraRepository obraRepository;
 
     public StorageService(FileStorageProperties fileStorageProperties) {
         this.fileStorageLocation = Paths.get(fileStorageProperties.getUploadDir()).toAbsolutePath().normalize();
@@ -75,24 +70,6 @@ public class StorageService {
             throw new MyFileNotFoundException("File not found " + fileName, ex);
         }
     }
-
-    public List<UploadFileResponseDTO> getListFilesOfProcesso(Long id) {
-        List<UploadFileResponseDTO> arquivos = new ArrayList<>();
-
-        Obra obra = obraRepository.findOne(id);
-
-        Resource resource = loadFileAsResource(obra.getNomeArquivo());
-
-        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-            .path("/api/downloadFile/")
-            .path(StringUtils.cleanPath(obra.getNomeArquivo()))
-            .toUriString();
-        if(resource != null)
-            arquivos.add(new UploadFileResponseDTO(obra.getNomeArquivo(),fileDownloadUri,  resource.getDescription() ,0,obra.getId()));
-
-        return arquivos;
-    }
-
 
     public void deleteFile(String fileName) {
         try {

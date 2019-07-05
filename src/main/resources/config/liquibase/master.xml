@@ -6,26 +6,8 @@
 
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/011020181306_added_entity_Autor.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/011020181039_added_entity_Midia.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/011020181427_added_entity_TipoObra.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/081020181641_added_entity_Obra.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/051020181118_added_entity_TipoEspaco.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/111020181505_added_entity_Espaco.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/241020181404_added_entity_AutorObra.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/141220181350_added_entity_Emprestimo.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/141220181205_added_entity_Exemplar.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/181220181522_added_entity_Reserva.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/120320191720_added_entity_Editora.xml" relativeToChangelogFile="false"/>
 
 
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
-    <include file="config/liquibase/changelog/011020181429_added_entity_constraints_TipoObra.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/081020181642_added_entity_constraints_Obra.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/111020181516_added_entity_constraints_Espaco.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/241020181409_added_entity_constraints_AutorObra.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/141220181354_added_entity_constraints_Emprestimo.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/141220181343_added_entity_constraints_Exemplar.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/181220181527_added_entity_constraints_Reserva.xml" relativeToChangelogFile="false"/>
 
 </databaseChangeLog>

@@ -140,16 +140,6 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @BatchSize(size = 20)
     private Set<Authority> authorities = new HashSet<>();
 
-    @OneToMany(mappedBy = "user")
-    @JsonIgnore
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Emprestimo> emprestimos = new HashSet<>();
-
-    @OneToMany(mappedBy = "user")
-    @JsonIgnore
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Reserva> reservas = new HashSet<>();
-
     /*---------------------ID-----------------*/
     public Long getId() {
         return id;
@@ -421,52 +411,6 @@ public class User extends AbstractAuditingEntity implements Serializable {
         this.telefone = telefone;
     }
     /*------------------------------------------------------------------*/
-
-    /*--------------------Enviar chave Estrangeira para Emprestimo---------------------------*/
-    public Set<Emprestimo> getEmprestimos() {
-        return emprestimos;
-    }
-    public User emprestimos(Set<Emprestimo> emprestimos) {
-        this.emprestimos = emprestimos;
-        return this;
-    }
-    public User addEmprestimo(Emprestimo emprestimo) {
-        this.emprestimos.add(emprestimo);
-        emprestimo.setUser(this);
-        return this;
-    }
-    public User removeEmprestimo(Emprestimo emprestimo) {
-        this.emprestimos.remove(emprestimo);
-        emprestimo.setUser(null);
-        return this;
-    }
-    public void setEmprestimos(Set<Emprestimo> emprestimos) {
-        this.emprestimos = emprestimos;
-    }
-    /*---------------------------------------------------------------------------------------*/
-
-    /*----------------Enviar chave Estrangeira para Reserva-------------------*/
-    public Set<Reserva> getReservas() {
-        return reservas;
-    }
-    public User reservas(Set<Reserva> reservas) {
-        this.reservas = reservas;
-        return this;
-    }
-    public User addReserva(Reserva reserva) {
-        this.reservas.add(reserva);
-        reserva.setUser(this);
-        return this;
-    }
-    public User removeReserva(Reserva reserva) {
-        this.reservas.remove(reserva);
-        reserva.setUser(null);
-        return this;
-    }
-    public void setReservas(Set<Reserva> reservas) {
-        this.reservas = reservas;
-    }
-    /*------------------------------------------------------------------------*/
 
     @Override
     public boolean equals(Object o) {

@@ -42,30 +42,6 @@ public class CacheConfiguration {
             cm.createCache(UserRepository.USERS_BY_LOGIN_CACHE, jcacheConfiguration);
             cm.createCache(UserRepository.USERS_BY_EMAIL_CACHE, jcacheConfiguration);
             cm.createCache(User.class.getName(), jcacheConfiguration);
-            cm.createCache(Midia.class.getName(), jcacheConfiguration);
-            cm.createCache(Midia.class.getName() + ".tipoObras", jcacheConfiguration);
-            cm.createCache(TipoObra.class.getName(), jcacheConfiguration);
-            cm.createCache(TipoObra.class.getName() + ".obras", jcacheConfiguration);
-            cm.createCache(Editora.class.getName(), jcacheConfiguration);
-            cm.createCache(Editora.class.getName() + ".obras", jcacheConfiguration);
-            cm.createCache(Obra.class.getName(), jcacheConfiguration);
-            cm.createCache(Obra.class.getName() + ".autorObras", jcacheConfiguration);
-            cm.createCache(Autor.class.getName(), jcacheConfiguration);
-            cm.createCache(Autor.class.getName() + ".autorObras", jcacheConfiguration);
-            cm.createCache(AutorObra.class.getName(), jcacheConfiguration);
-            cm.createCache(TipoEspaco.class.getName(), jcacheConfiguration);
-            cm.createCache(TipoEspaco.class.getName() + ".espacos", jcacheConfiguration);
-            cm.createCache(Espaco.class.getName(), jcacheConfiguration);
-            cm.createCache(Emprestimo.class.getName(), jcacheConfiguration);
-            cm.createCache(User.class.getName() + ".emprestimos", jcacheConfiguration);
-            cm.createCache(Exemplar.class.getName(), jcacheConfiguration);
-            cm.createCache(Exemplar.class.getName() + ".emprestimos", jcacheConfiguration);
-            cm.createCache(Obra.class.getName() + ".exemplares", jcacheConfiguration);
-            cm.createCache(Espaco.class.getName() + ".exemplares", jcacheConfiguration);
-            cm.createCache(Reserva.class.getName(), jcacheConfiguration);
-            cm.createCache(User.class.getName() + ".reservas", jcacheConfiguration);
-            cm.createCache(Obra.class.getName() + ".reservas", jcacheConfiguration);
-
             // jhipster-needle-ehcache-add-entry
         };
     }

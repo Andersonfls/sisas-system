@@ -154,6 +154,7 @@ public class UserResource {
     *   Trazer lista ordenada atraves do nome
     */
     @GetMapping("/users/nomeOrdenado")
+    @Secured(AuthoritiesConstants.ADMIN)
     public ResponseEntity<List<UserDTO>> getByName(Pageable pageable) {
         Page<UserDTO> page = userRepository.buscarTotal(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/users");
@@ -164,6 +165,7 @@ public class UserResource {
     *  Filtro de usuários atráves do atributo nome
     */
     @GetMapping("/users/nomeFiltro")
+    @Secured(AuthoritiesConstants.ADMIN)
     public ResponseEntity<List<UserDTO>> getByNome(@RequestParam(value = "nome") String nome, Pageable pageable) {
         Page<UserDTO> page = userRepository.buscarPorNome(nome, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/users");
@@ -175,6 +177,7 @@ public class UserResource {
     */
     @GetMapping("/users/dashboard")
     @Timed
+    @Secured(AuthoritiesConstants.ADMIN)
     public ResponseEntity<Integer> getAll() {
         final Integer page = userRepository.buscarUser();;
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(page));
