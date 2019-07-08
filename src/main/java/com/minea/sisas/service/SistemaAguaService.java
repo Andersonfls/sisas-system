@@ -52,7 +52,7 @@ public class SistemaAguaService {
         log.debug("Request to save SistemaAgua : {}", sistemaAguaDTO);
         SistemaAgua sistemaAgua = sistemaAguaMapper.toEntity(sistemaAguaDTO);
         if(Objects.isNull(sistemaAgua.getIdUsuario()))
-            sistemaAgua.setIdUsuario(userRepository.findByIdEquals(SecurityUtils.getCurrentUserId()));
+            sistemaAgua.setIdUsuario(SecurityUtils.getCurrentUserId());
         sistemaAgua.setDtUltimaAlteracao(LocalDate.now());
         sistemaAgua = sistemaAguaRepository.save(sistemaAgua);
         return sistemaAguaMapper.toDto(sistemaAgua);

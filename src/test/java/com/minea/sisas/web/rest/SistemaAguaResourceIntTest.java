@@ -258,7 +258,6 @@ public class SistemaAguaResourceIntTest {
      */
     public static SistemaAgua createEntity(EntityManager em) {
         SistemaAgua sistemaAgua = new SistemaAgua()
-            .idUsuario(DEFAULT_ID_USUARIO)
             .nmInqueridor(DEFAULT_NM_INQUERIDOR)
             .dtLancamento(DEFAULT_DT_LANCAMENTO)
             .dtUltimaAlteracao(DEFAULT_DT_ULTIMA_ALTERACAO)
@@ -3638,7 +3637,6 @@ public class SistemaAguaResourceIntTest {
         // Disconnect from session so that the updates on updatedSistemaAgua are not directly saved in db
         em.detach(updatedSistemaAgua);
         updatedSistemaAgua
-            .idUsuario(UPDATED_ID_USUARIO)
             .nmInqueridor(UPDATED_NM_INQUERIDOR)
             .dtLancamento(UPDATED_DT_LANCAMENTO)
             .dtUltimaAlteracao(UPDATED_DT_ULTIMA_ALTERACAO)

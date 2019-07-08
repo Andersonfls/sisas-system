@@ -23,8 +23,8 @@ public class SistemaAgua implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "id_usuario", nullable = false)
-    private User idUsuario;
+    @JoinColumn(name = "sistema_agua_ibfk_1")
+    private Long idUsuario;
 
     @NotNull
     @Size(max = 150)
@@ -230,16 +230,16 @@ public class SistemaAgua implements Serializable {
         this.id = id;
     }
 
-    public User getIdUsuario() {
+    public Long getIdUsuario() {
         return idUsuario;
     }
 
-    public SistemaAgua idUsuario(User idUsuario) {
+    public SistemaAgua idUsuario(Long idUsuario) {
         this.idUsuario = idUsuario;
         return this;
     }
 
-    public void setIdUsuario(User idUsuario) {
+    public void setIdUsuario(Long idUsuario) {
         this.idUsuario = idUsuario;
     }
 

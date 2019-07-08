@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2019-07-07T15:41:47+0100",
+    date = "2019-07-08T20:24:25+0100",
     comments = "version: 1.2.0.Final, compiler: javac, environment: Java 1.8.0_191 (Oracle Corporation)"
 )
 @Component
@@ -53,8 +53,8 @@ public class SistemaAguaMapperImpl implements SistemaAguaMapper {
 
         sistemaAguaDTO.setComuna( sistemaAgua.getComuna() );
         sistemaAguaDTO.setSituacao( sistemaAgua.getSituacao() );
-        sistemaAguaDTO.setId( sistemaAgua.getId() );
         sistemaAguaDTO.setIdUsuario( sistemaAgua.getIdUsuario() );
+        sistemaAguaDTO.setId( sistemaAgua.getId() );
         sistemaAguaDTO.setNmInqueridor( sistemaAgua.getNmInqueridor() );
         sistemaAguaDTO.setDtLancamento( sistemaAgua.getDtLancamento() );
         sistemaAguaDTO.setDtUltimaAlteracao( sistemaAgua.getDtUltimaAlteracao() );
@@ -118,8 +118,8 @@ public class SistemaAguaMapperImpl implements SistemaAguaMapper {
         SistemaAgua sistemaAgua = new SistemaAgua();
 
         sistemaAgua.setSituacao( sistemaAguaDTO.getSituacao() );
-        sistemaAgua.setId( sistemaAguaDTO.getId() );
         sistemaAgua.setIdUsuario( sistemaAguaDTO.getIdUsuario() );
+        sistemaAgua.setId( sistemaAguaDTO.getId() );
         sistemaAgua.setNmInqueridor( sistemaAguaDTO.getNmInqueridor() );
         sistemaAgua.setDtLancamento( sistemaAguaDTO.getDtLancamento() );
         sistemaAgua.setDtUltimaAlteracao( sistemaAguaDTO.getDtUltimaAlteracao() );
