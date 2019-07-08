@@ -2,14 +2,23 @@ package com.minea.sisas.service;
 
 import com.minea.sisas.domain.SistemaAgua;
 import com.minea.sisas.repository.SistemaAguaRepository;
+import com.minea.sisas.repository.UserRepository;
+import com.minea.sisas.security.SecurityUtils;
 import com.minea.sisas.service.dto.SistemaAguaDTO;
 import com.minea.sisas.service.mapper.SistemaAguaMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDate;
+import java.util.Objects;
 
 
 /**
@@ -25,6 +34,9 @@ public class SistemaAguaService {
 
     private final SistemaAguaMapper sistemaAguaMapper;
 
+    @Autowired
+    private UserRepository userRepository;
+
     public SistemaAguaService(SistemaAguaRepository sistemaAguaRepository, SistemaAguaMapper sistemaAguaMapper) {
         this.sistemaAguaRepository = sistemaAguaRepository;
         this.sistemaAguaMapper = sistemaAguaMapper;
@@ -39,6 +51,9 @@ public class SistemaAguaService {
     public SistemaAguaDTO save(SistemaAguaDTO sistemaAguaDTO) {
         log.debug("Request to save SistemaAgua : {}", sistemaAguaDTO);
         SistemaAgua sistemaAgua = sistemaAguaMapper.toEntity(sistemaAguaDTO);
+        if(Objects.isNull(sistemaAgua.getIdUsuario()))
+            sistemaAgua.setIdUsuario(userRepository.findByIdEquals(SecurityUtils.getCurrentUserId()));
+        sistemaAgua.setDtUltimaAlteracao(LocalDate.now());
         sistemaAgua = sistemaAguaRepository.save(sistemaAgua);
         return sistemaAguaMapper.toDto(sistemaAgua);
     }

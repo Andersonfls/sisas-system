@@ -17,7 +17,6 @@ public class SistemaAguaDTO implements Serializable {
 
     private Long id;
 
-    @NotNull
     private Long idUsuario;
 
     @NotNull

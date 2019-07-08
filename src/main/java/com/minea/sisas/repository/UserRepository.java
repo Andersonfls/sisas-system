@@ -58,4 +58,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query("select u from User u where u.activated = '1' order by u.nome")
     Page buscarTotal(Pageable pageable);
 
+    User findByIdEquals(Long id);
+
 }
