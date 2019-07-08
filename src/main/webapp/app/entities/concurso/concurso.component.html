@@ -1,0 +1,94 @@
+<div>
+    <h2>
+        <span jhiTranslate="sisasApp.concurso.home.title">Concursos</span>
+        <button class="btn btn-primary float-right jh-create-entity create-concurso" [routerLink]="['/', { outlets: { popup: ['concurso-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="sisasApp.concurso.home.createLabel">
+            Create new Concurso
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="concursos">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idConcurso"><span jhiTranslate="sisasApp.concurso.idConcurso">Id Concurso</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="tipoConcurso"><span jhiTranslate="sisasApp.concurso.tipoConcurso">Tipo Concurso</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dtLancamento"><span jhiTranslate="sisasApp.concurso.dtLancamento">Dt Lancamento</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dtUltimaAlteracao"><span jhiTranslate="sisasApp.concurso.dtUltimaAlteracao">Dt Ultima Alteracao</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dtEntregaProposta"><span jhiTranslate="sisasApp.concurso.dtEntregaProposta">Dt Entrega Proposta</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dtAberturaProposta"><span jhiTranslate="sisasApp.concurso.dtAberturaProposta">Dt Abertura Proposta</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dtConclusaoAvaliacaoRelPrel"><span jhiTranslate="sisasApp.concurso.dtConclusaoAvaliacaoRelPrel">Dt Conclusao Avaliacao Rel Prel</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dtNegociacao"><span jhiTranslate="sisasApp.concurso.dtNegociacao">Dt Negociacao</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dtAprovRelAvalFinal"><span jhiTranslate="sisasApp.concurso.dtAprovRelAvalFinal">Dt Aprov Rel Aval Final</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idProgramasProjectosId"><span jhiTranslate="sisasApp.concurso.idProgramasProjectos">Id Programas Projectos</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idSistemaAguaId"><span jhiTranslate="sisasApp.concurso.idSistemaAgua">Id Sistema Agua</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let concurso of concursos ;trackBy: trackId">
+                <td><a [routerLink]="['../concurso', concurso.id ]">{{concurso.id}}</a></td>
+                <td>{{concurso.idConcurso}}</td>
+                <td>{{concurso.tipoConcurso}}</td>
+                <td>{{concurso.dtLancamento | date:'mediumDate'}}</td>
+                <td>{{concurso.dtUltimaAlteracao | date:'mediumDate'}}</td>
+                <td>{{concurso.dtEntregaProposta | date:'mediumDate'}}</td>
+                <td>{{concurso.dtAberturaProposta | date:'mediumDate'}}</td>
+                <td>{{concurso.dtConclusaoAvaliacaoRelPrel | date:'mediumDate'}}</td>
+                <td>{{concurso.dtNegociacao | date:'mediumDate'}}</td>
+                <td>{{concurso.dtAprovRelAvalFinal | date:'mediumDate'}}</td>
+                <td>
+                    <div *ngIf="concurso.idProgramasProjectosId">
+                        <a [routerLink]="['../programas-projectos', concurso.idProgramasProjectosId  ]" >{{concurso.idProgramasProjectosId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="concurso.idSistemaAguaId">
+                        <a [routerLink]="['../sistema-agua', concurso.idSistemaAguaId  ]" >{{concurso.idSistemaAguaId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../concurso', concurso.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'concurso/'+ concurso.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'concurso/'+ concurso.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="concursos && concursos.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

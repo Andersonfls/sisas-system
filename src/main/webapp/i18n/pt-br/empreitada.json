@@ -1,0 +1,43 @@
+
+{
+    "sisasApp": {
+        "empreitada" : {
+            "home": {
+                "title": "Empreitadas",
+                "createLabel": "Criar novo Empreitada",
+                "createOrEditLabel": "Criar ou editar Empreitada"
+            },
+            "created": "Um novo Empreitada foi criado com o identificador {{ param }}",
+            "updated": "Um Empreitada foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Empreitada foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Empreitada {{ id }}?"
+            },
+            "detail": {
+                "title": "Empreitada"
+            },
+            "idEmpreitada": "Id Empreitada",
+            "tipoEmpreitada": "Tipo Empreitada",
+            "dtLancamento": "Dt Lancamento",
+            "numCapacidadeCaptacao": "Num Capacidade Captacao",
+            "numCapacidadeCaptacaoEta": "Num Capacidade Captacao Eta",
+            "numExtensaoCondAdutMat": "Num Extensao Cond Adut Mat",
+            "numCaprmazenamento": "Num Caprmazenamento",
+            "numExtensaoRedeMat": "Num Extensao Rede Mat",
+            "numLigacoesDomiciliares": "Num Ligacoes Domiciliares",
+            "numLigacoesTorneiraQuintal": "Num Ligacoes Torneira Quintal",
+            "numChafarisNovos": "Num Chafaris Novos",
+            "numChafarisReabilitar": "Num Chafaris Reabilitar",
+            "numCapacidadeTratamentoEta": "Num Capacidade Tratamento Eta",
+            "numExtensaoRedeMaterial": "Num Extensao Rede Material",
+            "numExtensaoCondutasElelMat": "Num Extensao Condutas Elel Mat",
+            "numLigacoes": "Num Ligacoes",
+            "numCaixasVisitas": "Num Caixas Visitas",
+            "numEstacoesElevatorias": "Num Estacoes Elevatorias",
+            "numLatrinas": "Num Latrinas",
+            "idProgramasProjectos": "Id Programas Projectos",
+            "idSistemaAgua": "Id Sistema Agua",
+            "idContrato": "Id Contrato"
+        }
+    }
+}

@@ -1,0 +1,338 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myEmpreitadaLabel" jhiTranslate="sisasApp.empreitada.home.createOrEditLabel">Create or edit a Empreitada</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!empreitada.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="empreitada.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.empreitada.idEmpreitada" for="field_idEmpreitada">Id Empreitada</label>
+            <input type="number" class="form-control" name="idEmpreitada" id="field_idEmpreitada"
+                [(ngModel)]="empreitada.idEmpreitada" required/>
+            <div [hidden]="!(editForm.controls.idEmpreitada?.dirty && editForm.controls.idEmpreitada?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.idEmpreitada?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.idEmpreitada?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.empreitada.tipoEmpreitada" for="field_tipoEmpreitada">Tipo Empreitada</label>
+            <input type="text" class="form-control" name="tipoEmpreitada" id="field_tipoEmpreitada"
+                [(ngModel)]="empreitada.tipoEmpreitada" required maxlength="150"/>
+            <div [hidden]="!(editForm.controls.tipoEmpreitada?.dirty && editForm.controls.tipoEmpreitada?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.tipoEmpreitada?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.tipoEmpreitada?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 150 }">
+                   This field cannot be longer than 150 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.empreitada.dtLancamento" for="field_dtLancamento">Dt Lancamento</label>
+            <div class="input-group">
+                <input id="field_dtLancamento" type="text" class="form-control" name="dtLancamento" ngbDatepicker  #dtLancamentoDp="ngbDatepicker" [(ngModel)]="empreitada.dtLancamento"
+                required/>
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="dtLancamentoDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.dtLancamento?.dirty && editForm.controls.dtLancamento?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dtLancamento?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.empreitada.numCapacidadeCaptacao" for="field_numCapacidadeCaptacao">Num Capacidade Captacao</label>
+            <input type="number" class="form-control" name="numCapacidadeCaptacao" id="field_numCapacidadeCaptacao"
+                [(ngModel)]="empreitada.numCapacidadeCaptacao" required/>
+            <div [hidden]="!(editForm.controls.numCapacidadeCaptacao?.dirty && editForm.controls.numCapacidadeCaptacao?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.numCapacidadeCaptacao?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.numCapacidadeCaptacao?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.empreitada.numCapacidadeCaptacaoEta" for="field_numCapacidadeCaptacaoEta">Num Capacidade Captacao Eta</label>
+            <input type="number" class="form-control" name="numCapacidadeCaptacaoEta" id="field_numCapacidadeCaptacaoEta"
+                [(ngModel)]="empreitada.numCapacidadeCaptacaoEta" required/>
+            <div [hidden]="!(editForm.controls.numCapacidadeCaptacaoEta?.dirty && editForm.controls.numCapacidadeCaptacaoEta?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.numCapacidadeCaptacaoEta?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.numCapacidadeCaptacaoEta?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.empreitada.numExtensaoCondAdutMat" for="field_numExtensaoCondAdutMat">Num Extensao Cond Adut Mat</label>
+            <input type="number" class="form-control" name="numExtensaoCondAdutMat" id="field_numExtensaoCondAdutMat"
+                [(ngModel)]="empreitada.numExtensaoCondAdutMat" required/>
+            <div [hidden]="!(editForm.controls.numExtensaoCondAdutMat?.dirty && editForm.controls.numExtensaoCondAdutMat?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.numExtensaoCondAdutMat?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.numExtensaoCondAdutMat?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.empreitada.numCaprmazenamento" for="field_numCaprmazenamento">Num Caprmazenamento</label>
+            <input type="number" class="form-control" name="numCaprmazenamento" id="field_numCaprmazenamento"
+                [(ngModel)]="empreitada.numCaprmazenamento" required/>
+            <div [hidden]="!(editForm.controls.numCaprmazenamento?.dirty && editForm.controls.numCaprmazenamento?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.numCaprmazenamento?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.numCaprmazenamento?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.empreitada.numExtensaoRedeMat" for="field_numExtensaoRedeMat">Num Extensao Rede Mat</label>
+            <input type="number" class="form-control" name="numExtensaoRedeMat" id="field_numExtensaoRedeMat"
+                [(ngModel)]="empreitada.numExtensaoRedeMat" required/>
+            <div [hidden]="!(editForm.controls.numExtensaoRedeMat?.dirty && editForm.controls.numExtensaoRedeMat?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.numExtensaoRedeMat?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.numExtensaoRedeMat?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.empreitada.numLigacoesDomiciliares" for="field_numLigacoesDomiciliares">Num Ligacoes Domiciliares</label>
+            <input type="number" class="form-control" name="numLigacoesDomiciliares" id="field_numLigacoesDomiciliares"
+                [(ngModel)]="empreitada.numLigacoesDomiciliares" required/>
+            <div [hidden]="!(editForm.controls.numLigacoesDomiciliares?.dirty && editForm.controls.numLigacoesDomiciliares?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.numLigacoesDomiciliares?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.numLigacoesDomiciliares?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.empreitada.numLigacoesTorneiraQuintal" for="field_numLigacoesTorneiraQuintal">Num Ligacoes Torneira Quintal</label>
+            <input type="number" class="form-control" name="numLigacoesTorneiraQuintal" id="field_numLigacoesTorneiraQuintal"
+                [(ngModel)]="empreitada.numLigacoesTorneiraQuintal" required/>
+            <div [hidden]="!(editForm.controls.numLigacoesTorneiraQuintal?.dirty && editForm.controls.numLigacoesTorneiraQuintal?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.numLigacoesTorneiraQuintal?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.numLigacoesTorneiraQuintal?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.empreitada.numChafarisNovos" for="field_numChafarisNovos">Num Chafaris Novos</label>
+            <input type="number" class="form-control" name="numChafarisNovos" id="field_numChafarisNovos"
+                [(ngModel)]="empreitada.numChafarisNovos" required/>
+            <div [hidden]="!(editForm.controls.numChafarisNovos?.dirty && editForm.controls.numChafarisNovos?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.numChafarisNovos?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.numChafarisNovos?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.empreitada.numChafarisReabilitar" for="field_numChafarisReabilitar">Num Chafaris Reabilitar</label>
+            <input type="number" class="form-control" name="numChafarisReabilitar" id="field_numChafarisReabilitar"
+                [(ngModel)]="empreitada.numChafarisReabilitar" required/>
+            <div [hidden]="!(editForm.controls.numChafarisReabilitar?.dirty && editForm.controls.numChafarisReabilitar?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.numChafarisReabilitar?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.numChafarisReabilitar?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.empreitada.numCapacidadeTratamentoEta" for="field_numCapacidadeTratamentoEta">Num Capacidade Tratamento Eta</label>
+            <input type="number" class="form-control" name="numCapacidadeTratamentoEta" id="field_numCapacidadeTratamentoEta"
+                [(ngModel)]="empreitada.numCapacidadeTratamentoEta" required/>
+            <div [hidden]="!(editForm.controls.numCapacidadeTratamentoEta?.dirty && editForm.controls.numCapacidadeTratamentoEta?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.numCapacidadeTratamentoEta?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.numCapacidadeTratamentoEta?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.empreitada.numExtensaoRedeMaterial" for="field_numExtensaoRedeMaterial">Num Extensao Rede Material</label>
+            <input type="number" class="form-control" name="numExtensaoRedeMaterial" id="field_numExtensaoRedeMaterial"
+                [(ngModel)]="empreitada.numExtensaoRedeMaterial" required/>
+            <div [hidden]="!(editForm.controls.numExtensaoRedeMaterial?.dirty && editForm.controls.numExtensaoRedeMaterial?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.numExtensaoRedeMaterial?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.numExtensaoRedeMaterial?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.empreitada.numExtensaoCondutasElelMat" for="field_numExtensaoCondutasElelMat">Num Extensao Condutas Elel Mat</label>
+            <input type="number" class="form-control" name="numExtensaoCondutasElelMat" id="field_numExtensaoCondutasElelMat"
+                [(ngModel)]="empreitada.numExtensaoCondutasElelMat" required/>
+            <div [hidden]="!(editForm.controls.numExtensaoCondutasElelMat?.dirty && editForm.controls.numExtensaoCondutasElelMat?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.numExtensaoCondutasElelMat?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.numExtensaoCondutasElelMat?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.empreitada.numLigacoes" for="field_numLigacoes">Num Ligacoes</label>
+            <input type="number" class="form-control" name="numLigacoes" id="field_numLigacoes"
+                [(ngModel)]="empreitada.numLigacoes" required/>
+            <div [hidden]="!(editForm.controls.numLigacoes?.dirty && editForm.controls.numLigacoes?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.numLigacoes?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.numLigacoes?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.empreitada.numCaixasVisitas" for="field_numCaixasVisitas">Num Caixas Visitas</label>
+            <input type="number" class="form-control" name="numCaixasVisitas" id="field_numCaixasVisitas"
+                [(ngModel)]="empreitada.numCaixasVisitas" required/>
+            <div [hidden]="!(editForm.controls.numCaixasVisitas?.dirty && editForm.controls.numCaixasVisitas?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.numCaixasVisitas?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.numCaixasVisitas?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.empreitada.numEstacoesElevatorias" for="field_numEstacoesElevatorias">Num Estacoes Elevatorias</label>
+            <input type="number" class="form-control" name="numEstacoesElevatorias" id="field_numEstacoesElevatorias"
+                [(ngModel)]="empreitada.numEstacoesElevatorias" required/>
+            <div [hidden]="!(editForm.controls.numEstacoesElevatorias?.dirty && editForm.controls.numEstacoesElevatorias?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.numEstacoesElevatorias?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.numEstacoesElevatorias?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.empreitada.numLatrinas" for="field_numLatrinas">Num Latrinas</label>
+            <input type="number" class="form-control" name="numLatrinas" id="field_numLatrinas"
+                [(ngModel)]="empreitada.numLatrinas" required/>
+            <div [hidden]="!(editForm.controls.numLatrinas?.dirty && editForm.controls.numLatrinas?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.numLatrinas?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.numLatrinas?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.empreitada.idProgramasProjectos" for="field_idProgramasProjectos">Id Programas Projectos</label>
+            <select class="form-control" id="field_idProgramasProjectos" name="idProgramasProjectos" [(ngModel)]="empreitada.idProgramasProjectosId"  required>
+                <option *ngIf="!editForm.value.idProgramasProjectos" [ngValue]="null" selected></option>
+                <option [ngValue]="programasProjectosOption.id" *ngFor="let programasProjectosOption of programasprojectos; trackBy: trackProgramasProjectosById">{{programasProjectosOption.id}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.idProgramasProjectos?.dirty && editForm.controls.idProgramasProjectos?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.idProgramasProjectos?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.empreitada.idSistemaAgua" for="field_idSistemaAgua">Id Sistema Agua</label>
+            <select class="form-control" id="field_idSistemaAgua" name="idSistemaAgua" [(ngModel)]="empreitada.idSistemaAguaId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="sistemaAguaOption.id" *ngFor="let sistemaAguaOption of sistemaaguas; trackBy: trackSistemaAguaById">{{sistemaAguaOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.empreitada.idContrato" for="field_idContrato">Id Contrato</label>
+            <select class="form-control" id="field_idContrato" name="idContrato" [(ngModel)]="empreitada.idContratoId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="contratoOption.id" *ngFor="let contratoOption of contratoes; trackBy: trackContratoById">{{contratoOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

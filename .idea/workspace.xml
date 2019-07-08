@@ -1,0 +1,919 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ac6e637f-22f0-4425-89b3-eba437a02c68" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/sisas-core.jh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webpack/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitlab-ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.gitlab-ci.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.yo-rc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.yo-rc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/docker/app.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/docker/app.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/docker/oracle.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/docker/oracle.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/docker/sonar.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/docker/sonar.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/minea/sisas/SisasApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/minea/sisas/SisasApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/minea/sisas/aop/logging/LoggingAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/minea/sisas/aop/logging/LoggingAspect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/minea/sisas/config/ApplicationProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/minea/sisas/config/ApplicationProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/minea/sisas/config/AsyncConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/minea/sisas/config/AsyncConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/minea/sisas/web/rest/util/HeaderUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/minea/sisas/web/rest/util/HeaderUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config/application-prod.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/application-prod.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config/liquibase/master.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/liquibase/master.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/i18n/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/i18n/messages.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/i18n/messages_pt_br.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/i18n/messages_pt_br.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/vagrant/oraclexe/Vagrantfile" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/vagrant/oraclexe/Vagrantfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/vagrant/oraclexe/scripts/create-default-db-objects.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/vagrant/oraclexe/scripts/create-default-db-objects.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/vagrant/oraclexe/scripts/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/vagrant/oraclexe/scripts/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/vagrant/oraclexe/scripts/src/main/java/oracle/ChecaConexao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/vagrant/oraclexe/scripts/src/main/java/oracle/ChecaConexao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/vagrant/oraclexe/scripts/src/main/java/oracle/CreateDefaultDbObjects.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/vagrant/oraclexe/scripts/src/main/java/oracle/CreateDefaultDbObjects.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/account/account.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/account/account.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/admin/admin.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/admin/admin.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/app.main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/app.main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/blocks/interceptor/errorhandler.interceptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/blocks/interceptor/errorhandler.interceptor.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/authority/authority.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/authority/authority.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/dashboard/dashboard.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/dashboard/dashboard.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/dashboard/dashboard.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/dashboard/dashboard.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/entity.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/entity.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/home/home.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/home/home.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/layouts/main/main.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/layouts/main/main.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/layouts/sidebar/sidebar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/layouts/sidebar/sidebar.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/shared/alert/alert-error.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/shared/alert/alert-error.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/shared/language/language.helper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/shared/language/language.helper.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/shared/shared-common.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/shared/shared-common.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/shared/shared-libs.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/shared/shared-libs.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/shared/shared.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/shared/shared.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/i18n/pt-br/error.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/i18n/pt-br/error.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/i18n/pt-br/global.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/i18n/pt-br/global.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/manifest.webapp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/manifest.webapp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/javascript/spec/app/account/activate/activate.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/javascript/spec/app/account/activate/activate.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/javascript/spec/app/account/password-reset/finish/password-reset-finish.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/javascript/spec/app/account/password-reset/finish/password-reset-finish.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/javascript/spec/app/account/password-reset/init/password-reset-init.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/javascript/spec/app/account/password-reset/init/password-reset-init.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/javascript/spec/app/account/password/password.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/javascript/spec/app/account/password/password.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/javascript/spec/app/account/register/register.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/javascript/spec/app/account/register/register.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/javascript/spec/app/account/settings/settings.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/javascript/spec/app/account/settings/settings.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/javascript/spec/app/admin/audits/audits.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/javascript/spec/app/admin/audits/audits.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/javascript/spec/app/admin/health/health.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/javascript/spec/app/admin/health/health.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/javascript/spec/app/admin/user-management/user-management-delete-dialog.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/javascript/spec/app/admin/user-management/user-management-delete-dialog.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/javascript/spec/app/admin/user-management/user-management-detail.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/javascript/spec/app/admin/user-management/user-management-detail.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/javascript/spec/app/admin/user-management/user-management-dialog.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/javascript/spec/app/admin/user-management/user-management-dialog.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/javascript/spec/app/admin/user-management/user-management.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/javascript/spec/app/admin/user-management/user-management.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/javascript/spec/app/shared/login/login.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/javascript/spec/app/shared/login/login.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/javascript/spec/test.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/javascript/spec/test.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/config/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/config/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/logback.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack/webpack.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack/webpack.dev.js" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="2001817032">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="4" />
+          <entry key="project.open.time.15" value="2" />
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.open.time.9" value="1" />
+          <entry key="project.opened" value="4" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="class" value="1" />
+          <entry key="csv" value="2" />
+          <entry key="html" value="64" />
+          <entry key="iml" value="1" />
+          <entry key="java" value="516" />
+          <entry key="jh" value="2" />
+          <entry key="json" value="21" />
+          <entry key="png" value="2" />
+          <entry key="ts" value="69" />
+          <entry key="xml" value="215" />
+          <entry key="yml" value="5" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="CLASS" value="1" />
+          <entry key="HTML" value="64" />
+          <entry key="IDEA_MODULE" value="1" />
+          <entry key="Image" value="2" />
+          <entry key="JAVA" value="516" />
+          <entry key="JSON" value="20" />
+          <entry key="PLAIN_TEXT" value="4" />
+          <entry key="TypeScript" value="69" />
+          <entry key="XML" value="215" />
+          <entry key="YAML" value="5" />
+          <entry key="tsconfig" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.js.language.service.starts">
+        <counts>
+          <entry key="TypeScriptServerServiceImpl" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="html" value="1034" />
+          <entry key="java" value="2131" />
+          <entry key="json" value="124" />
+          <entry key="ts" value="301" />
+          <entry key="xml" value="75" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="HTML" value="1034" />
+          <entry key="JAVA" value="2131" />
+          <entry key="JSON" value="124" />
+          <entry key="TypeScript" value="301" />
+          <entry key="XML" value="75" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/app/entities/sistema-agua/sistema-agua-dialog.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="219">
+              <caret line="252" column="45" selection-start-line="252" selection-start-column="45" selection-end-line="252" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>ptolomeu</find>
+      <find>sisas.sisasApp</find>
+      <find>classes = sisasApp</find>
+      <find>oracle</find>
+      <find>logo-</find>
+      <find>logo-jhipster.png</find>
+      <find>bom</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>sisas</replace>
+      <replace>sisas.SisasApp</replace>
+      <replace>classes = SisasApp</replace>
+      <replace>logo.png</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/src/main/resources</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/webapp/app/entities/municipio/municipio.model.ts" />
+        <option value="$PROJECT_DIR$/src/main/java/com/minea/sisas/domain/Municipio.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/minea/sisas/service/dto/MunicipioDTO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/minea/sisas/service/mapper/MunicipioMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/minea/sisas/service/MunicipioQueryService.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/app/entities/municipio/municipio.component.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/app/entities/municipio/municipio-detail.component.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/i18n/pt-br/municipio.json" />
+        <option value="$PROJECT_DIR$/src/main/webapp/app/entities/municipio/municipio-dialog.component.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/i18n/pt-br/provincia.json" />
+        <option value="$PROJECT_DIR$/src/main/webapp/app/entities/provincia/provincia-delete-dialog.component.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/app/entities/provincia/provincia-detail.component.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/app/entities/provincia/provincia-dialog.component.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/minea/sisas/service/dto/ProvinciaDTO.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/app/entities/situacao/situacao-delete-dialog.component.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/app/entities/situacao/situacao-detail.component.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/app/entities/situacao/situacao-dialog.component.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/i18n/pt-br/situacao.json" />
+        <option value="$PROJECT_DIR$/src/main/webapp/app/entities/situacao/situacao.component.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/minea/sisas/service/dto/SituacaoDTO.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/app/entities/comuna/comuna.component.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/app/entities/sistema-agua-log/sistema-agua-log.module.ts" />
+        <option value="$PROJECT_DIR$/src/main/java/com/minea/sisas/domain/SistemaAguaLog.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/app/entities/sistema-agua-log/sistema-agua-log-dialog.component.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/app/entities/sistema-agua-log/sistema-agua-log.model.ts" />
+        <option value="$PROJECT_DIR$/src/main/java/com/minea/sisas/service/dto/SistemaAguaLogDTO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/minea/sisas/service/mapper/SistemaAguaLogMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/app/entities/sistema-agua-log/sistema-agua-log.component.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/app/entities/sistema-agua-log/sistema-agua-log-detail.component.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/i18n/pt-br/sistemaAguaLog.json" />
+        <option value="$PROJECT_DIR$/src/main/java/com/minea/sisas/domain/IndicadorProducao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/minea/sisas/service/dto/IndicadorProducaoDTO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/minea/sisas/service/mapper/IndicadorProducaoMapper.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/minea/sisas/web/rest/IndicadorProducaoResourceIntTest.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/app/entities/indicador-producao/indicador-producao.model.ts" />
+        <option value="$PROJECT_DIR$/src/main/webapp/i18n/pt-br/indicadorProducao.json" />
+        <option value="$PROJECT_DIR$/src/main/webapp/app/entities/indicador-producao/indicador-producao-dialog.component.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/app/entities/indicador-producao/indicador-producao.component.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/app/entities/indicador-producao/indicador-producao.component.ts" />
+        <option value="$PROJECT_DIR$/src/main/webapp/app/entities/indicador-producao-log/indicador-producao-log.module.ts" />
+        <option value="$PROJECT_DIR$/src/main/webapp/app/entities/entity.module.ts" />
+        <option value="$PROJECT_DIR$/src/main/webapp/app/layouts/sidebar/sidebar.component.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/app/entities/indicador-producao-log/indicador-producao-log-dialog.component.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/minea/sisas/domain/IndicadorProducaoLog.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/app/entities/indicador-producao-log/indicador-producao-log.model.ts" />
+        <option value="$PROJECT_DIR$/src/main/webapp/app/entities/indicador-producao-log/indicador-producao-log.component.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/i18n/pt-br/indicadorProducaoLog.json" />
+        <option value="$PROJECT_DIR$/src/main/java/com/minea/sisas/service/mapper/IndicadorProducaoLogMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/minea/sisas/service/dto/IndicadorProducaoLogDTO.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/app/entities/indicador-producao-log/indicador-producao-log-detail.component.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/app/entities/sistema-agua/sistema-agua-dialog.component.html" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/package.json" />
+    </packageJsonPaths>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1280" />
+    <option name="height" value="724" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="sisas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sisas" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sisas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sisas" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sisas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sisas" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sisas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sisas" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sisas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sisas" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="sisas" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sisas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sisas" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="sisas" type="462c0819:PsiDirectoryNode" />
+              <item name="domain" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sisas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sisas" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="sisas" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sisas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sisas" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="sisas" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sisas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sisas" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sisas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sisas" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sisas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sisas" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="entities" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sisas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sisas" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="entities" type="462c0819:PsiDirectoryNode" />
+              <item name="sistema-agua" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sisas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sisas" type="462c0819:PsiDirectoryNode" />
+              <item name="webpack" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelOrder2" value="2" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RequestMappingsPanelWidth2" value="75" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1562547749606" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/webpack" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.minea.sisas.web.rest" />
+      <recent name="com.minea.sisas.service" />
+      <recent name="com.minea.sisas.repository" />
+      <recent name="com.minea.sisas.domain" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="SisasApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="sisas" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.minea.sisas.SisasApp" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ac6e637f-22f0-4425-89b3-eba437a02c68" name="Default Changelist" comment="" />
+      <created>1562355666271</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1562355666271</updated>
+      <workItem from="1562355672156" duration="12596000" />
+      <workItem from="1562371231739" duration="3574000" />
+      <workItem from="1562409512912" duration="27759000" />
+      <workItem from="1562524549282" duration="14980000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="58909000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="23" width="1280" height="724" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" weight="0.18901454" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info id="Capture Tool" order="6" />
+      <window_info id="Web" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32911393" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.34018987" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39873418" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Spring" order="7" weight="0.32911393" />
+      <window_info anchor="bottom" id="TypeScript" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.431962" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.36867088" />
+      <window_info anchor="bottom" id="Java Enterprise" order="12" />
+      <window_info anchor="bottom" id="Database Changes" order="13" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="14" show_stripe_button="false" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Maven Projects" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="right" id="Bean Validation" order="9" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18901454" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info id="Capture Tool" order="6" />
+      <window_info id="Web" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32911393" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.34177214" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39873418" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Spring" order="7" weight="0.32911393" />
+      <window_info anchor="bottom" id="TypeScript" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.431962" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.36867088" />
+      <window_info anchor="bottom" id="Java Enterprise" order="12" />
+      <window_info anchor="bottom" id="Database Changes" order="13" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="14" show_stripe_button="false" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Maven Projects" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="right" id="Bean Validation" order="9" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/minea/sisas/web/rest/IndicadorProducaoResource.java</url>
+          <line>100</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/minea/sisas/service/IndicadorProducaoQueryService.java</url>
+          <line>69</line>
+          <properties />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minea/sisas/service/mapper/ProvinciaMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="16" column="50" lean-forward="true" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/entities/provincia/provincia.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="17" lean-forward="true" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/entities/provincia/provincia-detail.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="9" column="13" lean-forward="true" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/entities/situacao/situacao.model.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/entities/situacao/situacao-delete-dialog.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="12" column="76" lean-forward="true" selection-start-line="12" selection-start-column="76" selection-end-line="12" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/entities/situacao/situacao-detail.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2">
+          <caret line="2" column="97" selection-start-line="2" selection-start-column="97" selection-end-line="2" selection-end-column="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/i18n/pt-br/situacao.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/entities/situacao/situacao-dialog.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minea/sisas/domain/Situacao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="55">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minea/sisas/service/mapper/SituacaoMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minea/sisas/service/dto/SituacaoDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="59" column="47" selection-start-line="59" selection-start-column="47" selection-end-line="59" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/entities/sistema-agua-log/sistema-agua-log.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="50" column="38" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#65#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/entities/sistema-agua-log/sistema-agua-log.route.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="83">
+          <caret line="28" column="31" selection-start-line="28" selection-start-column="15" selection-end-line="28" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/entities/situacao/situacao.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="37">
+          <caret line="5" column="17" lean-forward="true" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/entities/sistema-agua-log/sistema-agua-log-delete-dialog.component.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minea/sisas/domain/Comuna.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="28" column="4" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minea/sisas/domain/SistemaAguaLog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="38" column="12" lean-forward="true" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/entities/sistema-agua-log/sistema-agua-log.model.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="5" lean-forward="true" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/entities/sistema-agua-log/sistema-agua-log-dialog.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="37">
+          <caret line="19" column="28" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#61#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minea/sisas/service/dto/SistemaAguaLogDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="77" column="46" selection-start-line="77" selection-start-column="46" selection-end-line="77" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minea/sisas/service/mapper/SistemaAguaLogMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="21" column="25" lean-forward="true" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/entities/sistema-agua-log/sistema-agua-log-dialog.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="80" column="165" selection-start-line="80" selection-start-column="165" selection-end-line="80" selection-end-column="165" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/i18n/pt-br/sistemaAguaLog.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/entities/sistema-agua-log/sistema-agua-log.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="39" column="26" lean-forward="true" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/entities/sistema-agua-log/sistema-agua-log-detail.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="6" lean-forward="true" selection-start-line="36" selection-start-column="6" selection-end-line="36" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minea/sisas/service/dto/IndicadorProducaoDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="955" lean-forward="true" selection-start-line="955" selection-end-line="955" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/minea/sisas/web/rest/IndicadorProducaoResourceIntTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-79">
+          <caret line="6943" column="25" selection-start-line="6943" selection-start-column="25" selection-end-line="6943" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minea/sisas/service/mapper/IndicadorProducaoMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="21" column="54" selection-start-line="21" selection-start-column="54" selection-end-line="21" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/i18n/pt-br/indicadorProducao.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="103" column="32" lean-forward="true" selection-start-line="103" selection-start-column="32" selection-end-line="103" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/entities/indicador-producao/indicador-producao.model.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="90" column="38" selection-start-line="90" selection-start-column="38" selection-end-line="90" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/entities/indicador-producao/indicador-producao-dialog.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="1241" column="47" selection-start-line="1241" selection-start-column="47" selection-end-line="1241" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minea/sisas/web/rest/IndicadorProducaoResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="99" column="38" selection-start-line="99" selection-start-column="38" selection-end-line="99" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/entities/fornecedor/fornecedor.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-376" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/entities/comuna/comuna.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-235">
+          <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/entities/indicador-producao/indicador-producao.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="198" column="21" lean-forward="true" selection-start-line="198" selection-start-column="21" selection-end-line="198" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/entities/indicador-producao/indicador-producao.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="358">
+          <caret line="116" column="26" lean-forward="true" selection-start-line="116" selection-start-column="26" selection-end-line="116" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#61#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/entities/entity.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="27" column="39" selection-start-line="27" selection-start-column="39" selection-end-line="27" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#65#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/entities/indicador-producao-log/indicador-producao-log.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="50" column="44" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#65#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/layouts/sidebar/sidebar.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="33" column="88" lean-forward="true" selection-start-line="33" selection-start-column="88" selection-end-line="33" selection-end-column="88" />
+          <folding>
+            <element signature="n#style#0;n#i#0;n#a#2;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/entities/indicador-producao-log/indicador-producao-log.route.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="28" column="37" selection-start-line="28" selection-start-column="15" selection-end-line="28" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minea/sisas/domain/IndicadorProducao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="361" column="4" selection-start-line="361" selection-start-column="4" selection-end-line="361" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minea/sisas/domain/IndicadorProducaoLog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="35" column="23" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/entities/indicador-producao-log/indicador-producao-log-dialog.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/entities/indicador-producao-log/indicador-producao-log.model.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/entities/indicador-producao-log/indicador-producao-log.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="17" column="36" lean-forward="true" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/entities/indicador-producao-log/indicador-producao-log.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="30" column="165" selection-start-line="30" selection-start-column="165" selection-end-line="30" selection-end-column="165" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/i18n/pt-br/indicadorProducaoLog.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="60" lean-forward="true" selection-start-line="18" selection-start-column="60" selection-end-line="18" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minea/sisas/service/mapper/IndicadorProducaoLogMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="11" column="75" lean-forward="true" selection-start-line="11" selection-start-column="75" selection-end-line="11" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minea/sisas/service/dto/IndicadorProducaoLogDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="77" column="58" selection-start-line="77" selection-start-column="58" selection-end-line="77" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/entities/indicador-producao-log/indicador-producao-log-detail.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="151">
+          <caret line="25" column="102" selection-start-line="25" selection-start-column="102" selection-end-line="25" selection-end-column="102" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/entities/sistema-agua/sistema-agua-dialog.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="252" column="45" selection-start-line="252" selection-start-column="45" selection-end-line="252" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

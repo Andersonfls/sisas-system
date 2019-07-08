@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="autoIncrement" value="true"/>
+
+    <!--
+        Added the entity ProgramasProjectos.
+    -->
+    <changeSet id="20190705195832-1" author="jhipster">
+        <createTable tableName="programas_projectos">
+            <column name="id_programas_projectos" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="dt_lancamento" type="date">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="dt_ultima_alteracao" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="id_usuario" type="bigint">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="nm_designacao_projeto" type="varchar(250)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="nm_descricao_projeto" type="varchar(250)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="id_saa_associado" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="tipo_financiamento" type="varchar(150)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="especialidade" type="varchar(100)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="id_comuna_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+</databaseChangeLog>

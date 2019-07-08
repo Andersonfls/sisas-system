@@ -1,0 +1,32 @@
+
+{
+    "sisasApp": {
+        "situacao" : {
+            "home": {
+                "title": "Situações",
+                "createLabel": "Criar novo Situação",
+                "createOrEditLabel": "Criar ou editar Situação"
+            },
+            "created": "Um novo Situacao foi criado com o identificador {{ param }}",
+            "updated": "Um Situacao foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Situacao foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Situação {{ id }}?"
+            },
+            "detail": {
+                "title": "Situacao"
+            },
+            "idSituacao": "Id Situação",
+            "nmSituacao": "Nome Situação",
+            "contactos": "Contactos",
+            "execucao": "Execução",
+            "indicadorProducao": "Indicador Produção",
+            "inicio": "Inicio",
+            "noticias": "Noticias",
+            "projectos": "Projectos",
+            "publicacao": "Publicação",
+            "sistemaAgua": "Sistema Agua",
+            "sobreDna": "Sobre Dna"
+        }
+    }
+}

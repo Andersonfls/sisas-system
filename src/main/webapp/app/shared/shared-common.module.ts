@@ -4,7 +4,7 @@ import { registerLocaleData } from '@angular/common';
 import locale from '@angular/common/locales/pt';
 
 import {
-    PtolomeuSharedLibsModule,
+    SisasSharedLibsModule,
     JhiLanguageHelper,
     FindLanguageFromKeyPipe,
     JhiAlertComponent,
@@ -13,7 +13,7 @@ import {
 
 @NgModule({
     imports: [
-        PtolomeuSharedLibsModule
+        SisasSharedLibsModule
     ],
     declarations: [
         FindLanguageFromKeyPipe,
@@ -29,13 +29,13 @@ import {
         },
     ],
     exports: [
-        PtolomeuSharedLibsModule,
+        SisasSharedLibsModule,
         FindLanguageFromKeyPipe,
         JhiAlertComponent,
         JhiAlertErrorComponent
     ]
 })
-export class PtolomeuSharedCommonModule {
+export class SisasSharedCommonModule {
     constructor() {
         registerLocaleData(locale);
     }

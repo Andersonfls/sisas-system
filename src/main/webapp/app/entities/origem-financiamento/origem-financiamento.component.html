@@ -1,0 +1,68 @@
+<div>
+    <h2>
+        <span jhiTranslate="sisasApp.origemFinanciamento.home.title">Origem Financiamentos</span>
+        <button class="btn btn-primary float-right jh-create-entity create-origem-financiamento" [routerLink]="['/', { outlets: { popup: ['origem-financiamento-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="sisasApp.origemFinanciamento.home.createLabel">
+            Create new Origem Financiamento
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="origemFinanciamentos">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idOrigemFinanciamento"><span jhiTranslate="sisasApp.origemFinanciamento.idOrigemFinanciamento">Id Origem Financiamento</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="descricaoOrigemFinanciamento"><span jhiTranslate="sisasApp.origemFinanciamento.descricaoOrigemFinanciamento">Descricao Origem Financiamento</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let origemFinanciamento of origemFinanciamentos ;trackBy: trackId">
+                <td><a [routerLink]="['../origem-financiamento', origemFinanciamento.id ]">{{origemFinanciamento.id}}</a></td>
+                <td>{{origemFinanciamento.idOrigemFinanciamento}}</td>
+                <td>{{origemFinanciamento.descricaoOrigemFinanciamento}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../origem-financiamento', origemFinanciamento.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'origem-financiamento/'+ origemFinanciamento.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'origem-financiamento/'+ origemFinanciamento.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="origemFinanciamentos && origemFinanciamentos.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

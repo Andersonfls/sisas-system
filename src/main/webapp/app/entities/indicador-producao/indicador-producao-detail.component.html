@@ -1,0 +1,372 @@
+
+<div *ngIf="indicadorProducao">
+    <h2><span jhiTranslate="sisasApp.indicadorProducao.detail.title">Indicador Producao</span> {{indicadorProducao.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.idIndicadorProducao">Id Indicador Producao</span></dt>
+        <dd>
+            <span>{{indicadorProducao.idIndicadorProducao}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.idUsuario">Id Usuario</span></dt>
+        <dd>
+            <span>{{indicadorProducao.idUsuario}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.dtLancamento">Dt Lancamento</span></dt>
+        <dd>
+            <span>{{indicadorProducao.dtLancamento | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.dtUltimaAlteracao">Dt Ultima Alteracao</span></dt>
+        <dd>
+            <span>{{indicadorProducao.dtUltimaAlteracao | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdPopulacaoCobertaInfraestrutura">Qtd Populacao Coberta Infraestrutura</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdPopulacaoCobertaInfraestrutura}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdFontanariosChafarisesOperacionais">Qtd Fontanarios Chafarises Operacionais</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdFontanariosChafarisesOperacionais}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdMediaHorasDistribuicaoDiaria">Qtd Media Horas Distribuicao Diaria</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdMediaHorasDistribuicaoDiaria}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdMediaHorasParagem">Qtd Media Horas Paragem</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdMediaHorasParagem}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdMediaHorasInterrupcaoFaltaEnergia">Qtd Media Horas Interrupcao Falta Energia</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdMediaHorasInterrupcaoFaltaEnergia}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdVolumeAguaCaptada">Qtd Volume Agua Captada</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdVolumeAguaCaptada}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdVolumeAguaTratada">Qtd Volume Agua Tratada</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdVolumeAguaTratada}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdVolumeAguaDistribuida">Qtd Volume Agua Distribuida</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdVolumeAguaDistribuida}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdConsumoEnergia">Qtd Consumo Energia</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdConsumoEnergia}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdConsumoCombustivel">Qtd Consumo Combustivel</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdConsumoCombustivel}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdConsumoHipocloritroCalcio">Qtd Consumo Hipocloritro Calcio</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdConsumoHipocloritroCalcio}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdConsumoSulfatoAluminio">Qtd Consumo Sulfato Aluminio</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdConsumoSulfatoAluminio}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdConsumoHidroxidoCalcio">Qtd Consumo Hidroxido Calcio</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdConsumoHidroxidoCalcio}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdReparoCaptacaoEtas">Qtd Reparo Captacao Etas</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdReparoCaptacaoEtas}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdReparoAdutoras">Qtd Reparo Adutoras</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdReparoAdutoras}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdReparoRedeDistribuicao">Qtd Reparo Rede Distribuicao</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdReparoRedeDistribuicao}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdReparoRamais">Qtd Reparo Ramais</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdReparoRamais}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdManutencaoCurativa">Qtd Manutencao Curativa</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdManutencaoCurativa}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdManutencaoPreventiva">Qtd Manutencao Preventiva</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdManutencaoPreventiva}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdManutencaoVerificadoSolicitado">Qtd Manutencao Verificado Solicitado</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdManutencaoVerificadoSolicitado}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdReservatorioLavado">Qtd Reservatorio Lavado</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdReservatorioLavado}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdFuncionarios">Qtd Funcionarios</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdFuncionarios}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdFuncionariosEfectivos">Qtd Funcionarios Efectivos</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdFuncionariosEfectivos}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdFuncionariosContratados">Qtd Funcionarios Contratados</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdFuncionariosContratados}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdFuncionariosOutrasEntidades">Qtd Funcionarios Outras Entidades</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdFuncionariosOutrasEntidades}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdNovasLigacoesNovosContratos">Qtd Novas Ligacoes Novos Contratos</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdNovasLigacoesNovosContratos}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdNovasLigacoesDomesticasNovosContratos">Qtd Novas Ligacoes Domesticas Novos Contratos</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdNovasLigacoesDomesticasNovosContratos}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdLigacoesIlegaisRegularizadas">Qtd Ligacoes Ilegais Regularizadas</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdLigacoesIlegaisRegularizadas}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdLigacoesFechadas">Qtd Ligacoes Fechadas</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdLigacoesFechadas}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdCortes">Qtd Cortes</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdCortes}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdReligacoes">Qtd Religacoes</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdReligacoes}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdLigacoesActivas">Qtd Ligacoes Activas</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdLigacoesActivas}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdLigacoesDomesticasActivas">Qtd Ligacoes Domesticas Activas</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdLigacoesDomesticasActivas}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdLigacoesFacturadasBaseLeiturasReais">Qtd Ligacoes Facturadas Base Leituras Reais</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdLigacoesFacturadasBaseLeiturasReais}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdLigacoesFacturadasBaseEstimativasAvenca">Qtd Ligacoes Facturadas Base Estimativas Avenca</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdLigacoesFacturadasBaseEstimativasAvenca}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdVolumeAguaFacturada">Qtd Volume Agua Facturada</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdVolumeAguaFacturada}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdVolumeTotalFacturadaLigacoesDomesticas">Qtd Volume Total Facturada Ligacoes Domesticas</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdVolumeTotalFacturadaLigacoesDomesticas}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdVolumeFacturadoBaseLeituraReais">Qtd Volume Facturado Base Leitura Reais</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdVolumeFacturadoBaseLeituraReais}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.vlrTotalFacturado">Vlr Total Facturado</span></dt>
+        <dd>
+            <span>{{indicadorProducao.vlrTotalFacturado}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.vlrFacturasCanceladasNotasCreditos">Vlr Facturas Canceladas Notas Creditos</span></dt>
+        <dd>
+            <span>{{indicadorProducao.vlrFacturasCanceladasNotasCreditos}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.vlrRealFacturado">Vlr Real Facturado</span></dt>
+        <dd>
+            <span>{{indicadorProducao.vlrRealFacturado}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.vlrTotalCobrado">Vlr Total Cobrado</span></dt>
+        <dd>
+            <span>{{indicadorProducao.vlrTotalCobrado}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdReclamacoes">Qtd Reclamacoes</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdReclamacoes}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdReclamacoesRespondidasMenorIgualCincoDias">Qtd Reclamacoes Respondidas Menor Igual Cinco Dias</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdReclamacoesRespondidasMenorIgualCincoDias}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdReclamacoesRespondidasMaisCincoMenosVinteDias">Qtd Reclamacoes Respondidas Mais Cinco Menos Vinte Dias</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdReclamacoesRespondidasMaisCincoMenosVinteDias}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdReclamacoesRespondidasMaiorIgualVinteDias">Qtd Reclamacoes Respondidas Maior Igual Vinte Dias</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdReclamacoesRespondidasMaiorIgualVinteDias}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.vlrCustoPessoal">Vlr Custo Pessoal</span></dt>
+        <dd>
+            <span>{{indicadorProducao.vlrCustoPessoal}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.vlrCustoFse">Vlr Custo Fse</span></dt>
+        <dd>
+            <span>{{indicadorProducao.vlrCustoFse}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.vlrCustoEnergia">Vlr Custo Energia</span></dt>
+        <dd>
+            <span>{{indicadorProducao.vlrCustoEnergia}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.vlrCustoManutencao">Vlr Custo Manutencao</span></dt>
+        <dd>
+            <span>{{indicadorProducao.vlrCustoManutencao}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.vlrCustoReagentes">Vlr Custo Reagentes</span></dt>
+        <dd>
+            <span>{{indicadorProducao.vlrCustoReagentes}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.vlrCustoDestinoFinalLamas">Vlr Custo Destino Final Lamas</span></dt>
+        <dd>
+            <span>{{indicadorProducao.vlrCustoDestinoFinalLamas}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.vlrCustoOperacionaisOpex">Vlr Custo Operacionais Opex</span></dt>
+        <dd>
+            <span>{{indicadorProducao.vlrCustoOperacionaisOpex}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.vlrCustoAmortizaAnualInvestOpCapex">Vlr Custo Amortiza Anual Invest Op Capex</span></dt>
+        <dd>
+            <span>{{indicadorProducao.vlrCustoAmortizaAnualInvestOpCapex}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.vlrCustoTotaisCapexOpex">Vlr Custo Totais Capex Opex</span></dt>
+        <dd>
+            <span>{{indicadorProducao.vlrCustoTotaisCapexOpex}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdCaptacoes">Qtd Captacoes</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdCaptacoes}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdEtas">Qtd Etas</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdEtas}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdReservatorios">Qtd Reservatorios</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdReservatorios}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdEstacoesElevatorias">Qtd Estacoes Elevatorias</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdEstacoesElevatorias}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdComprimentoAdutoras">Qtd Comprimento Adutoras</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdComprimentoAdutoras}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdComprimentoRedes">Qtd Comprimento Redes</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdComprimentoRedes}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdComprimentoRamais">Qtd Comprimento Ramais</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdComprimentoRamais}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdAcoesFormacaoMoPlaneadas">Qtd Acoes Formacao Mo Planeadas</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdAcoesFormacaoMoPlaneadas}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdAcoesFormacaoMmsPlaneadas">Qtd Acoes Formacao Mms Planeadas</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdAcoesFormacaoMmsPlaneadas}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdAcoesFormacaoCmpPlaneadas">Qtd Acoes Formacao Cmp Planeadas</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdAcoesFormacaoCmpPlaneadas}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdAcoesFormacaoSoftwareFornecidosPlanejadas">Qtd Acoes Formacao Software Fornecidos Planejadas</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdAcoesFormacaoSoftwareFornecidosPlanejadas}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdAcoesFormacaoMoRealizadas">Qtd Acoes Formacao Mo Realizadas</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdAcoesFormacaoMoRealizadas}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdAcoesFormacaoMmsRealizadas">Qtd Acoes Formacao Mms Realizadas</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdAcoesFormacaoMmsRealizadas}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdAcoesFormacaoCmpRealizadas">Qtd Acoes Formacao Cmp Realizadas</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdAcoesFormacaoCmpRealizadas}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdAcoesFormacaoSoftwareFornecidosRealizadas">Qtd Acoes Formacao Software Fornecidos Realizadas</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdAcoesFormacaoSoftwareFornecidosRealizadas}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdAcoesFormacaoRealizadas">Qtd Acoes Formacao Realizadas</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdAcoesFormacaoRealizadas}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdManuaisMoPrevistos">Qtd Manuais Mo Previstos</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdManuaisMoPrevistos}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdManuaisMmsPrevistos">Qtd Manuais Mms Previstos</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdManuaisMmsPrevistos}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdManuaisCmpPrevistos">Qtd Manuais Cmp Previstos</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdManuaisCmpPrevistos}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdManuaisPrevistos">Qtd Manuais Previstos</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdManuaisPrevistos}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdAcoesManuaisMoRealizadas">Qtd Acoes Manuais Mo Realizadas</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdAcoesManuaisMoRealizadas}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdManuaisMmsRealizadas">Qtd Manuais Mms Realizadas</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdManuaisMmsRealizadas}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdManuaisCmpRealizadas">Qtd Manuais Cmp Realizadas</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdManuaisCmpRealizadas}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.qtdManuaisRealizados">Qtd Manuais Realizados</span></dt>
+        <dd>
+            <span>{{indicadorProducao.qtdManuaisRealizados}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.idSituacao">Id Situacao</span></dt>
+        <dd>
+            <div *ngIf="indicadorProducao.idSituacaoId">
+                <a [routerLink]="['/situacao', indicadorProducao.idSituacaoId]">{{indicadorProducao.idSituacaoId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.idSistemaAgua">Id Sistema Agua</span></dt>
+        <dd>
+            <div *ngIf="indicadorProducao.idSistemaAguaId">
+                <a [routerLink]="['/sistema-agua', indicadorProducao.idSistemaAguaId]">{{indicadorProducao.idSistemaAguaId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducao.idComuna">Id Comuna</span></dt>
+        <dd>
+            <div *ngIf="indicadorProducao.idComunaId">
+                <a [routerLink]="['/comuna', indicadorProducao.idComunaId]">{{indicadorProducao.idComunaId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'indicador-producao/'+ indicadorProducao.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

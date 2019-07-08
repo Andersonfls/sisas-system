@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="sisas:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="sisas-1.0.0.war">
+      <element id="artifact" artifact-name="sisas:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,22 @@
+Index: src/main/resources/config/liquibase/changelog/20190705195835_added_entity_Provincia.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/resources/config/liquibase/changelog/20190705195835_added_entity_Provincia.xml	(date 1562365787000)
++++ src/main/resources/config/liquibase/changelog/20190705195835_added_entity_Provincia.xml	(date 1562365787000)
+@@ -7,12 +7,8 @@
+                         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+ 
+     <property name="now" value="now()" dbms="h2"/>
+-
+-    <property name="now" value="sysdate" dbms="oracle"/>
+-
+-    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+-    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+-
++    <property name="now" value="now()" dbms="mysql"/>
++    <property name="autoIncrement" value="true"/>
+     <!--
+         Added the entity Provincia.
+     -->

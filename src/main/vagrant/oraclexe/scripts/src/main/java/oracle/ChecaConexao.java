@@ -24,7 +24,7 @@ public class ChecaConexao {
         while (tentativa <= MAX_TENTATIVA && sem_conexao) {
             System.out.println("Tentando conectar ao Oracle... " + tentativa + " de " + MAX_TENTATIVA);
             try {
-                connection = DriverManager.getConnection(jdbc_url,"PTOLOMEU","PTOLOMEU");
+                connection = DriverManager.getConnection(jdbc_url,"sisas","sisas");
                 System.out.println("Conexao estabelecida com sucesso!");
                 sem_conexao = false;
                 connection.close();

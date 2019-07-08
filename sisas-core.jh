@@ -1,0 +1,556 @@
+entity Adjudicacao {
+	idAdjudicacao Long required,
+	tipoConcurso String required maxlength(150),
+	dtLancamento LocalDate required,
+	dtComunicaoAdjudicacao LocalDate,
+	dtPrestacaoGarantBoaExec LocalDate,
+	dtSubmissaoMinutContrato LocalDate
+}
+
+entity Comuna {
+	idComuna Long required,
+	nmComuna String required maxlength(40)
+}
+
+entity Concepcao {
+	idConcepcao Long required,
+	tipoConcurso String required maxlength(150),
+	dtLancamento LocalDate required,
+	dtUltimaAlteracao LocalDate,
+	dtElaboracaoCon LocalDate,
+	dtAprovacaoCon LocalDate
+}
+
+entity Concurso {
+	idConcurso Long required,
+	tipoConcurso String required maxlength(150),
+	dtLancamento LocalDate required,
+	dtUltimaAlteracao LocalDate,
+	dtEntregaProposta LocalDate,
+	dtAberturaProposta LocalDate,
+	dtConclusaoAvaliacaoRelPrel LocalDate,
+	dtNegociacao LocalDate,
+	dtAprovRelAvalFinal LocalDate
+}
+
+entity ConfiguracoesLog {
+	idConfiguracoesLog Long required,
+	acao String required maxlength(50),
+	idUsuario Long required,
+	log String required maxlength(3500),
+	dtLog LocalDate required
+}
+
+entity Contactos {
+	idContactos Long required,
+	nmContactos String required maxlength(150),
+	textoContactos String required maxlength(2500),
+	resumoTextoContactos String required maxlength(100),
+	dtLancamento LocalDate required,
+	dtUltimaAlteracao LocalDate
+}
+
+entity Contrato {
+	idContrato Long required,
+	tipoEmpreitada String required maxlength(150),
+	dtLancamento LocalDate required,
+	nmEmpresaAdjudicitaria String maxlength(200),
+	valorContrato BigDecimal required,
+	dtAssinatura LocalDate,
+	dtFinalizacaoProcessoHomologAprov LocalDate,
+	tipoMoeda String required maxlength(150),
+	valorAdiantamento BigDecimal required,
+	dtAdiantamento LocalDate,
+	dtInicio LocalDate,
+	prazoExecucao BigDecimal,
+	dtRecepcaoProvisoria LocalDate,
+	dtRecepcaoDefinitiva LocalDate,
+	dtRecepcaoComicionamento LocalDate,
+	nmResposavelAntProjeto String maxlength(200),
+	nmResposavelProjeto String maxlength(200)
+}
+
+entity Empreitada {
+	idEmpreitada Long required,
+	tipoEmpreitada String required maxlength(150),
+	dtLancamento LocalDate required,
+	numCapacidadeCaptacao BigDecimal required,
+	numCapacidadeCaptacaoEta BigDecimal required,
+	numExtensaoCondAdutMat BigDecimal required,
+	numCaprmazenamento BigDecimal required,
+	numExtensaoRedeMat BigDecimal required,
+	numLigacoesDomiciliares BigDecimal required,
+	numLigacoesTorneiraQuintal BigDecimal required,
+	numChafarisNovos BigDecimal required,
+	numChafarisReabilitar BigDecimal required,
+	numCapacidadeTratamentoEta BigDecimal required,
+	numExtensaoRedeMaterial BigDecimal required,
+	numExtensaoCondutasElelMat BigDecimal required,
+	numLigacoes BigDecimal required,
+	numCaixasVisitas BigDecimal required,
+	numEstacoesElevatorias BigDecimal required,
+	numLatrinas BigDecimal required
+}
+
+entity EntidadeGestora {
+	idEntidadeGestora Long required,
+	nmEntidadeGestora String required maxlength(100),
+	tpFormaJuridica Long required,
+	dtConstituicao LocalDate,
+	endereco String required maxlength(100),
+	email String maxlength(80),
+	contactos String maxlength(250),
+	tpModeloGestao Long required,
+	numRecursosHumanos Long required,
+	numPopulacaoAreaAtendimento BigDecimal
+}
+
+entity Execucao {
+	idExecucao Long required,
+	tipoEmpreitada String required maxlength(150),
+	dtLancamento LocalDate required,
+	dtPeridoReferencia LocalDate required,
+	dtFimReferencia LocalDate required,
+	valorFacturadoPeriodo BigDecimal required,
+	dtFactura LocalDate required,
+	numFactura String required maxlength(50),
+	txCambio BigDecimal,
+	constrangimento String maxlength(200),
+	valorPagoPeriodo BigDecimal required
+}
+
+entity Fases {
+	idFase Long required,
+	descricaoFase String required maxlength(200)
+}
+
+entity Fornecedor {
+	idFornecedor Long required,
+	nmFornecedor String required maxlength(100),
+	numContribuinte String required maxlength(100),
+	endereco String required maxlength(250),
+	email String maxlength(80),
+	especialidade String maxlength(100)
+}
+
+entity IndicadorProducao {
+	idIndicadorProducao Long required,
+	idUsuario Long required,
+	dtLancamento LocalDate required,
+	dtUltimaAlteracao LocalDate,
+	qtdPopulacaoCobertaInfraestrutura BigDecimal required,
+	qtdFontanariosChafarisesOperacionais BigDecimal required,
+	qtdMediaHorasDistribuicaoDiaria BigDecimal required,
+	qtdMediaHorasParagem BigDecimal required,
+	qtdMediaHorasInterrupcaoFaltaEnergia BigDecimal required,
+	qtdVolumeAguaCaptada BigDecimal required,
+	qtdVolumeAguaTratada BigDecimal required,
+	qtdVolumeAguaDistribuida BigDecimal required,
+	qtdConsumoEnergia BigDecimal required,
+	qtdConsumoCombustivel BigDecimal required,
+	qtdConsumoHipocloritroCalcio BigDecimal required,
+	qtdConsumoSulfatoAluminio BigDecimal required,
+	qtdConsumoHidroxidoCalcio BigDecimal required,
+	qtdReparoCaptacaoEtas Long required,
+	qtdReparoAdutoras Long required,
+	qtdReparoRedeDistribuicao Long required,
+	qtdReparoRamais Long required,
+	qtdManutencaoCurativa Long required,
+	qtdManutencaoPreventiva Long required,
+	qtdManutencaoVerificadoSolicitado Long required,
+	qtdReservatorioLavado Long required,
+	qtdFuncionarios Long required,
+	qtdFuncionariosEfectivos Long required,
+	qtdFuncionariosContratados Long required,
+	qtdFuncionariosOutrasEntidades Long required,
+	qtdNovasLigacoesNovosContratos Long required,
+	qtdNovasLigacoesDomesticasNovosContratos Long required,
+	qtdLigacoesIlegaisRegularizadas Long required,
+	qtdLigacoesFechadas Long required,
+	qtdCortes Long required,
+	qtdReligacoes Long required,
+	qtdLigacoesActivas Long required,
+	qtdLigacoesDomesticasActivas Long required,
+	qtdLigacoesFacturadasBaseLeiturasReais Long required,
+	qtdLigacoesFacturadasBaseEstimativasAvenca Long required,
+	qtdVolumeAguaFacturada BigDecimal required,
+	qtdVolumeTotalFacturadaLigacoesDomesticas BigDecimal required,
+	qtdVolumeFacturadoBaseLeituraReais BigDecimal required,
+	vlrTotalFacturado BigDecimal required,
+	vlrFacturasCanceladasNotasCreditos BigDecimal required,
+	vlrRealFacturado BigDecimal required,
+	vlrTotalCobrado BigDecimal required,
+	qtdReclamacoes Long required,
+	qtdReclamacoesRespondidasMenorIgualCincoDias Long,
+	qtdReclamacoesRespondidasMaisCincoMenosVinteDias Long,
+	qtdReclamacoesRespondidasMaiorIgualVinteDias Long,
+	vlrCustoPessoal BigDecimal required,
+	vlrCustoFse BigDecimal required,
+	vlrCustoEnergia BigDecimal required,
+	vlrCustoManutencao BigDecimal required,
+	vlrCustoReagentes BigDecimal required,
+	vlrCustoDestinoFinalLamas BigDecimal required,
+	vlrCustoOperacionaisOpex BigDecimal required,
+	vlrCustoAmortizaAnualInvestOpCapex BigDecimal required,
+	vlrCustoTotaisCapexOpex BigDecimal required,
+	qtdCaptacoes Long required,
+	qtdEtas Long required,
+	qtdReservatorios Long required,
+	qtdEstacoesElevatorias Long required,
+	qtdComprimentoAdutoras BigDecimal required,
+	qtdComprimentoRedes BigDecimal required,
+	qtdComprimentoRamais BigDecimal required,
+	qtdAcoesFormacaoMoPlaneadas Long required,
+	qtdAcoesFormacaoMmsPlaneadas Long required,
+	qtdAcoesFormacaoCmpPlaneadas Long required,
+	qtdAcoesFormacaoSoftwareFornecidosPlanejadas Long required,
+	qtdAcoesFormacaoMoRealizadas Long required,
+	qtdAcoesFormacaoMmsRealizadas Long required,
+	qtdAcoesFormacaoCmpRealizadas Long required,
+	qtdAcoesFormacaoSoftwareFornecidosRealizadas Long required,
+	qtdAcoesFormacaoRealizadas Long required,
+	qtdManuaisMoPrevistos Long required,
+	qtdManuaisMmsPrevistos Long required,
+	qtdManuaisCmpPrevistos Long required,
+	qtdManuaisPrevistos Long required,
+	qtdAcoesManuaisMoRealizadas Long required,
+	qtdManuaisMmsRealizadas Long required,
+	qtdManuaisCmpRealizadas Long required,
+	qtdManuaisRealizados Long required
+}
+
+entity IndicadorProducaoLog {
+	idIndicadorProducaoLog Long required,
+	acao String required maxlength(50),
+	idUsuario Long required,
+	log String required maxlength(3500),
+	dtLog LocalDate required
+}
+
+entity Inicio {
+	idInicio Long required,
+	destaques Long required,
+	ultimasNoticias Long required,
+	publicacoes Long required,
+	url String required maxlength(500),
+	alt String required maxlength(150)
+}
+
+entity Municipio {
+	idMunicipio Long required,
+	nmMunicipio String required maxlength(30)
+}
+
+entity MunicipiosAtendidos {
+	idMunicipioAtendido Long required
+}
+
+entity Noticias {
+	idNoticias Long required,
+	tituloNoticias String required maxlength(150),
+	textoNoticias String required maxlength(2500),
+	resumoTextoNoticias String required maxlength(100)
+}
+
+entity OrigemFinanciamento {
+	idOrigemFinanciamento Long required,
+	descricaoOrigemFinanciamento String required maxlength(200)
+}
+
+entity ProgramasProjectos {
+	idProgramasProjectos Long required,
+	dtLancamento LocalDate required,
+	dtUltimaAlteracao LocalDate,
+	idUsuario Long required,
+	nmDesignacaoProjeto String required maxlength(250),
+	nmDescricaoProjeto String required maxlength(250),
+	idSaaAssociado Long,
+	tipoFinanciamento String required maxlength(150),
+	especialidade String maxlength(100)
+}
+
+entity ProgramasProjectosLog {
+	idProgramasProjectosLog Long required,
+	acao String required maxlength(50),
+	idUsuario Long required,
+	log String required maxlength(3500),
+	dtLog LocalDate required
+}
+
+entity Projectos {
+	idProjectos Long required,
+	nmProjectos String required maxlength(150),
+	textoProjectos String required maxlength(2500),
+	resumoTextoProjectos String required maxlength(100)
+}
+
+entity Provincia {
+	idProvincia Long required,
+	nmProvincia String required maxlength(30)
+}
+
+entity Publicacao {
+	idPublicacao Long required,
+	tituloPublicacao String required maxlength(150),
+	textoPublicacao String required maxlength(2500),
+	resumoTextoPublicacao String required maxlength(100)
+}
+
+entity PublicacaoLog {
+	idPublicacaoLog Long required,
+	acao String required maxlength(50),
+	idUsuario Long required,
+	log String required maxlength(3500),
+	dtLog LocalDate required
+}
+
+entity RelatoriosLog {
+	idRelatoriosLog Long required,
+	acao String required maxlength(50),
+	idUsuario Long required,
+	log String required maxlength(3500),
+	dtLog LocalDate required
+}
+
+entity SistemaAgua {
+	idSistemaAgua Long required,
+	idUsuario Long required,
+	nmInqueridor String required maxlength(150),
+	dtLancamento LocalDate required,
+	dtUltimaAlteracao LocalDate,
+	nmLocalidade String maxlength(150),
+	qtdPopulacaoActual Long,
+	qtdCasasLocalidade Long,
+	nmTpComunaAldeia String maxlength(20),
+	nmTpArea String maxlength(11),
+	possuiSistemaAgua Long,
+	nmSistemaAgua String required maxlength(150),
+	nmFonteAgua String required maxlength(150),
+	latitude BigDecimal,
+	longitude BigDecimal,
+	altitude BigDecimal,
+	nmTpFonte String maxlength(20),
+	nmFonteAguaUtilizada String required maxlength(20),
+	nmTipoBomba String required maxlength(11),
+	qtdCasasAguaLigada Long,
+	qtdChafarisesFuncionando Long,
+	qtdContadoresLigados Long,
+	qtdBebedouros Long,
+	qtdHabitantesAcessoServicoAgua Long,
+	anoConstrucaoSistema Long,
+	nmTpAvariaSistema String maxlength(50),
+	causaAvariaSistema String maxlength(100),
+	statusResolucao String maxlength(100),
+	tempoServicoDisponivel String maxlength(100),
+	qtdDiametroCondutaAdutoraAguaBruta BigDecimal,
+	qtdComprimentoCondutaAdutoraAguaBruta BigDecimal,
+	qtdDiametroCondutaAdutoraAguaTratada BigDecimal,
+	qtdComprimentoCondutaAdutoraAguaTratada BigDecimal,
+	descMaterialUtilizadoCondutas String maxlength(150),
+	qtdReservatoriosApoiados Long,
+	qtdCapacidadeReservatoriosApoiados Long,
+	qtdReservatoriosElevados Long,
+	qtdCapacidadeReservatoriosElevados Long,
+	alturaReservatoriosElevados BigDecimal,
+	nmTpTratamentoAgua String required maxlength(50),
+	nmTpTratamentoPadraoUtilizado String required maxlength(50),
+	nmTpTratamentoBasicoUtilizado String required maxlength(50),
+	existeAvariaSistemaTratamento String required maxlength(50),
+	existeMotivoAusenciaTratamento String required maxlength(50),
+	nmEquipamentosComAvaria String required maxlength(50),
+	caudalDoSistema Long,
+	qtdConsumoPercaptaLitrosHomemDia BigDecimal,
+	qtdDotacaoPercapta BigDecimal,
+	qtdDiariaHorasServicoSistema BigDecimal,
+	esquema String required maxlength(50),
+	nmModeloBombaManualUtilizada String required maxlength(50),
+	nmTpBombaEnergia String maxlength(50)
+}
+
+entity SistemaAguaLog {
+	idSistemaAguaLog Long required,
+	acao String required maxlength(50),
+	idUsuario Long required,
+	log String required maxlength(3500),
+	dtLog LocalDate required
+}
+
+entity Situacao {
+	idSituacao Long required,
+	nmSituacao String required maxlength(50)
+}
+
+entity SobreDna {
+	idSobreDna Long required,
+	tituloSobreDna String required maxlength(150),
+	textoSobreDna String required maxlength(2500),
+	resumoTextoSobreDna String required maxlength(100)
+}
+
+
+
+// Relations
+relationship ManyToOne {
+	Adjudicacao{idProgramasProjectos required} to ProgramasProjectos{adjudicacao}
+}
+
+relationship ManyToOne {
+	Adjudicacao{idSistemaAgua} to SistemaAgua{adjudicacao}
+}
+
+relationship ManyToOne {
+	Comuna{idMunicipio required} to Municipio{comuna}
+}
+
+relationship ManyToOne {
+	Concepcao{idProgramasProjectos required} to ProgramasProjectos{concepcao}
+}
+
+relationship ManyToOne {
+	Concepcao{idSistemaAgua} to SistemaAgua{concepcao}
+}
+
+relationship ManyToOne {
+	Concurso{idProgramasProjectos required} to ProgramasProjectos{concurso}
+}
+
+relationship ManyToOne {
+	Concurso{idSistemaAgua} to SistemaAgua{concurso}
+}
+
+relationship ManyToOne {
+	Contactos{idSituacao required} to Situacao{contactos}
+}
+
+relationship ManyToOne {
+	Contrato{idProgramasProjectos required} to ProgramasProjectos{contrato}
+}
+
+relationship ManyToOne {
+	Contrato{idSistemaAgua required} to SistemaAgua{contrato}
+}
+
+relationship ManyToOne {
+	Empreitada{idProgramasProjectos required} to ProgramasProjectos{empreitada}
+}
+
+relationship ManyToOne {
+	Empreitada{idSistemaAgua} to SistemaAgua{empreitada}
+}
+
+relationship ManyToOne {
+	Empreitada{idContrato} to Contrato{empreitada}
+}
+
+relationship ManyToOne {
+	EntidadeGestora{idMunicipioAtendido required} to MunicipiosAtendidos{entidadeGestora}
+}
+
+relationship ManyToOne {
+	Execucao{idSituacao required} to Situacao{execucao}
+}
+
+relationship ManyToOne {
+	Execucao{idProgramasProjectos required} to ProgramasProjectos{execucao}
+}
+
+relationship ManyToOne {
+	Execucao{idSistemaAgua} to SistemaAgua{execucao}
+}
+
+relationship ManyToOne {
+	Execucao{idContrato} to Contrato{execucao}
+}
+
+relationship ManyToOne {
+	IndicadorProducao{idSituacao required} to Situacao{indicadorProducao}
+}
+
+relationship ManyToOne {
+	IndicadorProducao{idSistemaAgua required} to SistemaAgua{indicadorProducao}
+}
+
+relationship ManyToOne {
+	IndicadorProducao{idComuna required} to Comuna{indicadorProducao}
+}
+
+relationship ManyToOne {
+	IndicadorProducaoLog{idIndicadorProducao required} to IndicadorProducao{indicadorProducaoLog}
+}
+
+relationship ManyToOne {
+	Inicio{idSituacao required} to Situacao{inicio}
+}
+
+relationship ManyToOne {
+	Inicio{idSobreDna required} to SobreDna{inicio}
+}
+
+relationship ManyToOne {
+	Inicio{idNoticias required} to Noticias{inicio}
+}
+
+relationship ManyToOne {
+	Inicio{idProjectos required} to Projectos{inicio}
+}
+
+relationship ManyToOne {
+	Inicio{idPublicacao required} to Publicacao{inicio}
+}
+
+relationship ManyToOne {
+	Inicio{idContactos required} to Contactos{inicio}
+}
+
+relationship ManyToOne {
+	Municipio{idProvincia required} to Provincia{municipio}
+}
+
+relationship ManyToOne {
+	MunicipiosAtendidos{idMunicipio required} to Municipio{municipiosAtendidos}
+}
+
+relationship ManyToOne {
+	Noticias{idSituacao required} to Situacao{noticias}
+}
+
+relationship ManyToOne {
+	ProgramasProjectos{idComuna required} to Comuna{programasProjectos}
+}
+
+relationship ManyToOne {
+	ProgramasProjectosLog{idProgramasProjectos required} to ProgramasProjectos{programasProjectosLog}
+}
+
+relationship ManyToOne {
+	Projectos{idSituacao required} to Situacao{projectos}
+}
+
+relationship ManyToOne {
+	Publicacao{idSituacao required} to Situacao{publicacao}
+}
+
+relationship ManyToOne {
+	SistemaAgua{idSituacao required} to Situacao{sistemaAgua}
+}
+
+relationship ManyToOne {
+	SistemaAgua{idComuna required} to Comuna{sistemaAgua}
+}
+
+relationship ManyToOne {
+	SistemaAguaLog{idSistemaAgua required} to SistemaAgua{sistemaAguaLog}
+}
+
+relationship ManyToOne {
+	SobreDna{idSituacao required} to Situacao{sobreDna}
+}
+
+
+
+// Options
+service * with serviceClass
+paginate * with pagination
+dto * with mapstruct
+filter *
+

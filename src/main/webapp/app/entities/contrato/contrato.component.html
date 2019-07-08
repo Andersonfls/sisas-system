@@ -1,0 +1,110 @@
+<div>
+    <h2>
+        <span jhiTranslate="sisasApp.contrato.home.title">Contratoes</span>
+        <button class="btn btn-primary float-right jh-create-entity create-contrato" [routerLink]="['/', { outlets: { popup: ['contrato-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="sisasApp.contrato.home.createLabel">
+            Create new Contrato
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="contratoes">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idContrato"><span jhiTranslate="sisasApp.contrato.idContrato">Id Contrato</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="tipoEmpreitada"><span jhiTranslate="sisasApp.contrato.tipoEmpreitada">Tipo Empreitada</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dtLancamento"><span jhiTranslate="sisasApp.contrato.dtLancamento">Dt Lancamento</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="nmEmpresaAdjudicitaria"><span jhiTranslate="sisasApp.contrato.nmEmpresaAdjudicitaria">Nm Empresa Adjudicitaria</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="valorContrato"><span jhiTranslate="sisasApp.contrato.valorContrato">Valor Contrato</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dtAssinatura"><span jhiTranslate="sisasApp.contrato.dtAssinatura">Dt Assinatura</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dtFinalizacaoProcessoHomologAprov"><span jhiTranslate="sisasApp.contrato.dtFinalizacaoProcessoHomologAprov">Dt Finalizacao Processo Homolog Aprov</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="tipoMoeda"><span jhiTranslate="sisasApp.contrato.tipoMoeda">Tipo Moeda</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="valorAdiantamento"><span jhiTranslate="sisasApp.contrato.valorAdiantamento">Valor Adiantamento</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dtAdiantamento"><span jhiTranslate="sisasApp.contrato.dtAdiantamento">Dt Adiantamento</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dtInicio"><span jhiTranslate="sisasApp.contrato.dtInicio">Dt Inicio</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="prazoExecucao"><span jhiTranslate="sisasApp.contrato.prazoExecucao">Prazo Execucao</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dtRecepcaoProvisoria"><span jhiTranslate="sisasApp.contrato.dtRecepcaoProvisoria">Dt Recepcao Provisoria</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dtRecepcaoDefinitiva"><span jhiTranslate="sisasApp.contrato.dtRecepcaoDefinitiva">Dt Recepcao Definitiva</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dtRecepcaoComicionamento"><span jhiTranslate="sisasApp.contrato.dtRecepcaoComicionamento">Dt Recepcao Comicionamento</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="nmResposavelAntProjeto"><span jhiTranslate="sisasApp.contrato.nmResposavelAntProjeto">Nm Resposavel Ant Projeto</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="nmResposavelProjeto"><span jhiTranslate="sisasApp.contrato.nmResposavelProjeto">Nm Resposavel Projeto</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idProgramasProjectosId"><span jhiTranslate="sisasApp.contrato.idProgramasProjectos">Id Programas Projectos</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idSistemaAguaId"><span jhiTranslate="sisasApp.contrato.idSistemaAgua">Id Sistema Agua</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let contrato of contratoes ;trackBy: trackId">
+                <td><a [routerLink]="['../contrato', contrato.id ]">{{contrato.id}}</a></td>
+                <td>{{contrato.idContrato}}</td>
+                <td>{{contrato.tipoEmpreitada}}</td>
+                <td>{{contrato.dtLancamento | date:'mediumDate'}}</td>
+                <td>{{contrato.nmEmpresaAdjudicitaria}}</td>
+                <td>{{contrato.valorContrato}}</td>
+                <td>{{contrato.dtAssinatura | date:'mediumDate'}}</td>
+                <td>{{contrato.dtFinalizacaoProcessoHomologAprov | date:'mediumDate'}}</td>
+                <td>{{contrato.tipoMoeda}}</td>
+                <td>{{contrato.valorAdiantamento}}</td>
+                <td>{{contrato.dtAdiantamento | date:'mediumDate'}}</td>
+                <td>{{contrato.dtInicio | date:'mediumDate'}}</td>
+                <td>{{contrato.prazoExecucao}}</td>
+                <td>{{contrato.dtRecepcaoProvisoria | date:'mediumDate'}}</td>
+                <td>{{contrato.dtRecepcaoDefinitiva | date:'mediumDate'}}</td>
+                <td>{{contrato.dtRecepcaoComicionamento | date:'mediumDate'}}</td>
+                <td>{{contrato.nmResposavelAntProjeto}}</td>
+                <td>{{contrato.nmResposavelProjeto}}</td>
+                <td>
+                    <div *ngIf="contrato.idProgramasProjectosId">
+                        <a [routerLink]="['../programas-projectos', contrato.idProgramasProjectosId  ]" >{{contrato.idProgramasProjectosId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="contrato.idSistemaAguaId">
+                        <a [routerLink]="['../sistema-agua', contrato.idSistemaAguaId  ]" >{{contrato.idSistemaAguaId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../contrato', contrato.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'contrato/'+ contrato.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'contrato/'+ contrato.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="contratoes && contratoes.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

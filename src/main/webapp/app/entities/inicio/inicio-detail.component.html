@@ -1,0 +1,82 @@
+
+<div *ngIf="inicio">
+    <h2><span jhiTranslate="sisasApp.inicio.detail.title">Inicio</span> {{inicio.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="sisasApp.inicio.idInicio">Id Inicio</span></dt>
+        <dd>
+            <span>{{inicio.idInicio}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.inicio.destaques">Destaques</span></dt>
+        <dd>
+            <span>{{inicio.destaques}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.inicio.ultimasNoticias">Ultimas Noticias</span></dt>
+        <dd>
+            <span>{{inicio.ultimasNoticias}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.inicio.publicacoes">Publicacoes</span></dt>
+        <dd>
+            <span>{{inicio.publicacoes}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.inicio.url">Url</span></dt>
+        <dd>
+            <span>{{inicio.url}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.inicio.alt">Alt</span></dt>
+        <dd>
+            <span>{{inicio.alt}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.inicio.idSituacao">Id Situacao</span></dt>
+        <dd>
+            <div *ngIf="inicio.idSituacaoId">
+                <a [routerLink]="['/situacao', inicio.idSituacaoId]">{{inicio.idSituacaoId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.inicio.idSobreDna">Id Sobre Dna</span></dt>
+        <dd>
+            <div *ngIf="inicio.idSobreDnaId">
+                <a [routerLink]="['/sobre-dna', inicio.idSobreDnaId]">{{inicio.idSobreDnaId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.inicio.idNoticias">Id Noticias</span></dt>
+        <dd>
+            <div *ngIf="inicio.idNoticiasId">
+                <a [routerLink]="['/noticias', inicio.idNoticiasId]">{{inicio.idNoticiasId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.inicio.idProjectos">Id Projectos</span></dt>
+        <dd>
+            <div *ngIf="inicio.idProjectosId">
+                <a [routerLink]="['/projectos', inicio.idProjectosId]">{{inicio.idProjectosId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.inicio.idPublicacao">Id Publicacao</span></dt>
+        <dd>
+            <div *ngIf="inicio.idPublicacaoId">
+                <a [routerLink]="['/publicacao', inicio.idPublicacaoId]">{{inicio.idPublicacaoId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.inicio.idContactos">Id Contactos</span></dt>
+        <dd>
+            <div *ngIf="inicio.idContactosId">
+                <a [routerLink]="['/contactos', inicio.idContactosId]">{{inicio.idContactosId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'inicio/'+ inicio.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -49,7 +49,7 @@ maven-build:
         - ./mvnw $MAVEN_CLI_OPTS validate
         - ./mvnw $MAVEN_CLI_OPTS compile exec:java -Dexec.mainClass="oracle.CreateDefaultDbObjects"
         - cd $MY_USER_HOME
-        - ./mvnw $MAVEN_CLI_OPTS test-compile exec:java -Dexec.mainClass="org.junit.runner.JUnitCore" -Dexec.classpathScope="test" -Dexec.args="com.minea.ptolomeu.config.LiquibaseTest"
+        - ./mvnw $MAVEN_CLI_OPTS test-compile exec:java -Dexec.mainClass="org.junit.runner.JUnitCore" -Dexec.classpathScope="test" -Dexec.args="com.minea.sisas.config.LiquibaseTest"
         # Package
         - ./mvnw $MAVEN_CLI_OPTS verify -Pprod -DskipTests
     artifacts:

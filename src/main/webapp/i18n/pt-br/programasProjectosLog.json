@@ -1,0 +1,27 @@
+
+{
+    "sisasApp": {
+        "programasProjectosLog" : {
+            "home": {
+                "title": "Programas Projectos Logs",
+                "createLabel": "Criar novo Programas Projectos Log",
+                "createOrEditLabel": "Criar ou editar Programas Projectos Log"
+            },
+            "created": "Um novo Programas Projectos Log foi criado com o identificador {{ param }}",
+            "updated": "Um Programas Projectos Log foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Programas Projectos Log foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Programas Projectos Log {{ id }}?"
+            },
+            "detail": {
+                "title": "Programas Projectos Log"
+            },
+            "idProgramasProjectosLog": "Id Programas Projectos Log",
+            "acao": "Acao",
+            "idUsuario": "Id Usuario",
+            "log": "Log",
+            "dtLog": "Dt Log",
+            "idProgramasProjectos": "Id Programas Projectos"
+        }
+    }
+}

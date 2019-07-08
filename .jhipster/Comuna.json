@@ -1,0 +1,54 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "idMunicipio",
+            "otherEntityName": "municipio",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "indicadorProducao",
+            "otherEntityName": "indicadorProducao",
+            "otherEntityRelationshipName": "idComuna"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "programasProjectos",
+            "otherEntityName": "programasProjectos",
+            "otherEntityRelationshipName": "idComuna"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "sistemaAgua",
+            "otherEntityName": "sistemaAgua",
+            "otherEntityRelationshipName": "idComuna"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "idComuna",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nmComuna",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 40
+        }
+    ],
+    "changelogDate": "20190705195814",
+    "entityTableName": "comuna",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true
+}

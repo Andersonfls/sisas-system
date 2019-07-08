@@ -1,0 +1,88 @@
+<div>
+    <h2>
+        <span jhiTranslate="sisasApp.programasProjectos.home.title">Programas Projectos</span>
+        <button class="btn btn-primary float-right jh-create-entity create-programas-projectos" [routerLink]="['/', { outlets: { popup: ['programas-projectos-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="sisasApp.programasProjectos.home.createLabel">
+            Create new Programas Projectos
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="programasProjectos">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idProgramasProjectos"><span jhiTranslate="sisasApp.programasProjectos.idProgramasProjectos">Id Programas Projectos</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dtLancamento"><span jhiTranslate="sisasApp.programasProjectos.dtLancamento">Dt Lancamento</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dtUltimaAlteracao"><span jhiTranslate="sisasApp.programasProjectos.dtUltimaAlteracao">Dt Ultima Alteracao</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idUsuario"><span jhiTranslate="sisasApp.programasProjectos.idUsuario">Id Usuario</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="nmDesignacaoProjeto"><span jhiTranslate="sisasApp.programasProjectos.nmDesignacaoProjeto">Nm Designacao Projeto</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="nmDescricaoProjeto"><span jhiTranslate="sisasApp.programasProjectos.nmDescricaoProjeto">Nm Descricao Projeto</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idSaaAssociado"><span jhiTranslate="sisasApp.programasProjectos.idSaaAssociado">Id Saa Associado</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="tipoFinanciamento"><span jhiTranslate="sisasApp.programasProjectos.tipoFinanciamento">Tipo Financiamento</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="especialidade"><span jhiTranslate="sisasApp.programasProjectos.especialidade">Especialidade</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idComunaId"><span jhiTranslate="sisasApp.programasProjectos.idComuna">Id Comuna</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let programasProjectos of programasProjectos ;trackBy: trackId">
+                <td><a [routerLink]="['../programas-projectos', programasProjectos.id ]">{{programasProjectos.id}}</a></td>
+                <td>{{programasProjectos.idProgramasProjectos}}</td>
+                <td>{{programasProjectos.dtLancamento | date:'mediumDate'}}</td>
+                <td>{{programasProjectos.dtUltimaAlteracao | date:'mediumDate'}}</td>
+                <td>{{programasProjectos.idUsuario}}</td>
+                <td>{{programasProjectos.nmDesignacaoProjeto}}</td>
+                <td>{{programasProjectos.nmDescricaoProjeto}}</td>
+                <td>{{programasProjectos.idSaaAssociado}}</td>
+                <td>{{programasProjectos.tipoFinanciamento}}</td>
+                <td>{{programasProjectos.especialidade}}</td>
+                <td>
+                    <div *ngIf="programasProjectos.comuna">
+                        <a [routerLink]="['../comuna', programasProjectos.comuna  ]" >{{programasProjectos.comuna}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../programas-projectos', programasProjectos.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'programas-projectos/'+ programasProjectos.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'programas-projectos/'+ programasProjectos.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="programasProjectos && programasProjectos.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

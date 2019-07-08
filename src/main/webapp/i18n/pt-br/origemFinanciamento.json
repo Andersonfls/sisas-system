@@ -1,0 +1,23 @@
+
+{
+    "sisasApp": {
+        "origemFinanciamento" : {
+            "home": {
+                "title": "Origem Financiamentos",
+                "createLabel": "Criar novo Origem Financiamento",
+                "createOrEditLabel": "Criar ou editar Origem Financiamento"
+            },
+            "created": "Um novo Origem Financiamento foi criado com o identificador {{ param }}",
+            "updated": "Um Origem Financiamento foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Origem Financiamento foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Origem Financiamento {{ id }}?"
+            },
+            "detail": {
+                "title": "Origem Financiamento"
+            },
+            "idOrigemFinanciamento": "Id Origem Financiamento",
+            "descricaoOrigemFinanciamento": "Descricao Origem Financiamento"
+        }
+    }
+}

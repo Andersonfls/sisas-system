@@ -1,0 +1,83 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "contactos",
+            "otherEntityName": "contactos",
+            "otherEntityRelationshipName": "idSituacao"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "execucao",
+            "otherEntityName": "execucao",
+            "otherEntityRelationshipName": "idSituacao"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "indicadorProducao",
+            "otherEntityName": "indicadorProducao",
+            "otherEntityRelationshipName": "idSituacao"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "inicio",
+            "otherEntityName": "inicio",
+            "otherEntityRelationshipName": "idSituacao"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "noticias",
+            "otherEntityName": "noticias",
+            "otherEntityRelationshipName": "idSituacao"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "projectos",
+            "otherEntityName": "projectos",
+            "otherEntityRelationshipName": "idSituacao"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "publicacao",
+            "otherEntityName": "publicacao",
+            "otherEntityRelationshipName": "idSituacao"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "sistemaAgua",
+            "otherEntityName": "sistemaAgua",
+            "otherEntityRelationshipName": "idSituacao"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "sobreDna",
+            "otherEntityName": "sobreDna",
+            "otherEntityRelationshipName": "idSituacao"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "idSituacao",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nmSituacao",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 50
+        }
+    ],
+    "changelogDate": "20190705195841",
+    "entityTableName": "situacao",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true
+}

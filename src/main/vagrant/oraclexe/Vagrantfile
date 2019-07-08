@@ -4,7 +4,7 @@ Connect database with following setting:
 hostname: localhost
 port: 1521
 nome do serviço: xe
-username/password: PTOLOMEU/PTOLOMEU
+username/password: sisas/sisas
 ou
 username/password: system/oracle
 

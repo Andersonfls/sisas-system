@@ -1,0 +1,141 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "idProgramasProjectos",
+            "otherEntityName": "programasProjectos",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "idSistemaAgua",
+            "otherEntityName": "sistemaAgua",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "empreitada",
+            "otherEntityName": "empreitada",
+            "otherEntityRelationshipName": "idContrato"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "execucao",
+            "otherEntityName": "execucao",
+            "otherEntityRelationshipName": "idContrato"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "idContrato",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "tipoEmpreitada",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 150
+        },
+        {
+            "fieldName": "dtLancamento",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nmEmpresaAdjudicitaria",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 200
+        },
+        {
+            "fieldName": "valorContrato",
+            "fieldType": "BigDecimal",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dtAssinatura",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dtFinalizacaoProcessoHomologAprov",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "tipoMoeda",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 150
+        },
+        {
+            "fieldName": "valorAdiantamento",
+            "fieldType": "BigDecimal",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dtAdiantamento",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dtInicio",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "prazoExecucao",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "dtRecepcaoProvisoria",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dtRecepcaoDefinitiva",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dtRecepcaoComicionamento",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "nmResposavelAntProjeto",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 200
+        },
+        {
+            "fieldName": "nmResposavelProjeto",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 200
+        }
+    ],
+    "changelogDate": "20190705195819",
+    "entityTableName": "contrato",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true
+}

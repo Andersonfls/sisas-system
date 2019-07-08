@@ -1,0 +1,27 @@
+
+{
+    "sisasApp": {
+        "projectos" : {
+            "home": {
+                "title": "Projectos",
+                "createLabel": "Criar novo Projectos",
+                "createOrEditLabel": "Criar ou editar Projectos"
+            },
+            "created": "Um novo Projectos foi criado com o identificador {{ param }}",
+            "updated": "Um Projectos foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Projectos foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Projectos {{ id }}?"
+            },
+            "detail": {
+                "title": "Projectos"
+            },
+            "idProjectos": "Id Projectos",
+            "nmProjectos": "Nm Projectos",
+            "textoProjectos": "Texto Projectos",
+            "resumoTextoProjectos": "Resumo Texto Projectos",
+            "idSituacao": "Id Situacao",
+            "inicio": "Inicio"
+        }
+    }
+}

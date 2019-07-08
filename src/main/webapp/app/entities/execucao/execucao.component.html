@@ -1,0 +1,110 @@
+<div>
+    <h2>
+        <span jhiTranslate="sisasApp.execucao.home.title">Execucaos</span>
+        <button class="btn btn-primary float-right jh-create-entity create-execucao" [routerLink]="['/', { outlets: { popup: ['execucao-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="sisasApp.execucao.home.createLabel">
+            Create new Execucao
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="execucaos">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idExecucao"><span jhiTranslate="sisasApp.execucao.idExecucao">Id Execucao</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="tipoEmpreitada"><span jhiTranslate="sisasApp.execucao.tipoEmpreitada">Tipo Empreitada</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dtLancamento"><span jhiTranslate="sisasApp.execucao.dtLancamento">Dt Lancamento</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dtPeridoReferencia"><span jhiTranslate="sisasApp.execucao.dtPeridoReferencia">Dt Perido Referencia</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dtFimReferencia"><span jhiTranslate="sisasApp.execucao.dtFimReferencia">Dt Fim Referencia</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="valorFacturadoPeriodo"><span jhiTranslate="sisasApp.execucao.valorFacturadoPeriodo">Valor Facturado Periodo</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dtFactura"><span jhiTranslate="sisasApp.execucao.dtFactura">Dt Factura</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="numFactura"><span jhiTranslate="sisasApp.execucao.numFactura">Num Factura</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="txCambio"><span jhiTranslate="sisasApp.execucao.txCambio">Tx Cambio</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="constrangimento"><span jhiTranslate="sisasApp.execucao.constrangimento">Constrangimento</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="valorPagoPeriodo"><span jhiTranslate="sisasApp.execucao.valorPagoPeriodo">Valor Pago Periodo</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idSituacaoId"><span jhiTranslate="sisasApp.execucao.idSituacao">Id Situacao</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idProgramasProjectosId"><span jhiTranslate="sisasApp.execucao.idProgramasProjectos">Id Programas Projectos</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idSistemaAguaId"><span jhiTranslate="sisasApp.execucao.idSistemaAgua">Id Sistema Agua</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idContratoId"><span jhiTranslate="sisasApp.execucao.idContrato">Id Contrato</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let execucao of execucaos ;trackBy: trackId">
+                <td><a [routerLink]="['../execucao', execucao.id ]">{{execucao.id}}</a></td>
+                <td>{{execucao.idExecucao}}</td>
+                <td>{{execucao.tipoEmpreitada}}</td>
+                <td>{{execucao.dtLancamento | date:'mediumDate'}}</td>
+                <td>{{execucao.dtPeridoReferencia | date:'mediumDate'}}</td>
+                <td>{{execucao.dtFimReferencia | date:'mediumDate'}}</td>
+                <td>{{execucao.valorFacturadoPeriodo}}</td>
+                <td>{{execucao.dtFactura | date:'mediumDate'}}</td>
+                <td>{{execucao.numFactura}}</td>
+                <td>{{execucao.txCambio}}</td>
+                <td>{{execucao.constrangimento}}</td>
+                <td>{{execucao.valorPagoPeriodo}}</td>
+                <td>
+                    <div *ngIf="execucao.idSituacaoId">
+                        <a [routerLink]="['../situacao', execucao.idSituacaoId  ]" >{{execucao.idSituacaoId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="execucao.idProgramasProjectosId">
+                        <a [routerLink]="['../programas-projectos', execucao.idProgramasProjectosId  ]" >{{execucao.idProgramasProjectosId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="execucao.idSistemaAguaId">
+                        <a [routerLink]="['../sistema-agua', execucao.idSistemaAguaId  ]" >{{execucao.idSistemaAguaId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="execucao.idContratoId">
+                        <a [routerLink]="['../contrato', execucao.idContratoId  ]" >{{execucao.idContratoId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../execucao', execucao.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'execucao/'+ execucao.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'execucao/'+ execucao.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="execucaos && execucaos.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

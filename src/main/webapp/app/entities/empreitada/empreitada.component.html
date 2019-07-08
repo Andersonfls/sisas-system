@@ -1,0 +1,120 @@
+<div>
+    <h2>
+        <span jhiTranslate="sisasApp.empreitada.home.title">Empreitadas</span>
+        <button class="btn btn-primary float-right jh-create-entity create-empreitada" [routerLink]="['/', { outlets: { popup: ['empreitada-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="sisasApp.empreitada.home.createLabel">
+            Create new Empreitada
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="empreitadas">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idEmpreitada"><span jhiTranslate="sisasApp.empreitada.idEmpreitada">Id Empreitada</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="tipoEmpreitada"><span jhiTranslate="sisasApp.empreitada.tipoEmpreitada">Tipo Empreitada</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dtLancamento"><span jhiTranslate="sisasApp.empreitada.dtLancamento">Dt Lancamento</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="numCapacidadeCaptacao"><span jhiTranslate="sisasApp.empreitada.numCapacidadeCaptacao">Num Capacidade Captacao</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="numCapacidadeCaptacaoEta"><span jhiTranslate="sisasApp.empreitada.numCapacidadeCaptacaoEta">Num Capacidade Captacao Eta</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="numExtensaoCondAdutMat"><span jhiTranslate="sisasApp.empreitada.numExtensaoCondAdutMat">Num Extensao Cond Adut Mat</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="numCaprmazenamento"><span jhiTranslate="sisasApp.empreitada.numCaprmazenamento">Num Caprmazenamento</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="numExtensaoRedeMat"><span jhiTranslate="sisasApp.empreitada.numExtensaoRedeMat">Num Extensao Rede Mat</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="numLigacoesDomiciliares"><span jhiTranslate="sisasApp.empreitada.numLigacoesDomiciliares">Num Ligacoes Domiciliares</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="numLigacoesTorneiraQuintal"><span jhiTranslate="sisasApp.empreitada.numLigacoesTorneiraQuintal">Num Ligacoes Torneira Quintal</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="numChafarisNovos"><span jhiTranslate="sisasApp.empreitada.numChafarisNovos">Num Chafaris Novos</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="numChafarisReabilitar"><span jhiTranslate="sisasApp.empreitada.numChafarisReabilitar">Num Chafaris Reabilitar</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="numCapacidadeTratamentoEta"><span jhiTranslate="sisasApp.empreitada.numCapacidadeTratamentoEta">Num Capacidade Tratamento Eta</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="numExtensaoRedeMaterial"><span jhiTranslate="sisasApp.empreitada.numExtensaoRedeMaterial">Num Extensao Rede Material</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="numExtensaoCondutasElelMat"><span jhiTranslate="sisasApp.empreitada.numExtensaoCondutasElelMat">Num Extensao Condutas Elel Mat</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="numLigacoes"><span jhiTranslate="sisasApp.empreitada.numLigacoes">Num Ligacoes</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="numCaixasVisitas"><span jhiTranslate="sisasApp.empreitada.numCaixasVisitas">Num Caixas Visitas</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="numEstacoesElevatorias"><span jhiTranslate="sisasApp.empreitada.numEstacoesElevatorias">Num Estacoes Elevatorias</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="numLatrinas"><span jhiTranslate="sisasApp.empreitada.numLatrinas">Num Latrinas</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idProgramasProjectosId"><span jhiTranslate="sisasApp.empreitada.idProgramasProjectos">Id Programas Projectos</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idSistemaAguaId"><span jhiTranslate="sisasApp.empreitada.idSistemaAgua">Id Sistema Agua</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idContratoId"><span jhiTranslate="sisasApp.empreitada.idContrato">Id Contrato</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let empreitada of empreitadas ;trackBy: trackId">
+                <td><a [routerLink]="['../empreitada', empreitada.id ]">{{empreitada.id}}</a></td>
+                <td>{{empreitada.idEmpreitada}}</td>
+                <td>{{empreitada.tipoEmpreitada}}</td>
+                <td>{{empreitada.dtLancamento | date:'mediumDate'}}</td>
+                <td>{{empreitada.numCapacidadeCaptacao}}</td>
+                <td>{{empreitada.numCapacidadeCaptacaoEta}}</td>
+                <td>{{empreitada.numExtensaoCondAdutMat}}</td>
+                <td>{{empreitada.numCaprmazenamento}}</td>
+                <td>{{empreitada.numExtensaoRedeMat}}</td>
+                <td>{{empreitada.numLigacoesDomiciliares}}</td>
+                <td>{{empreitada.numLigacoesTorneiraQuintal}}</td>
+                <td>{{empreitada.numChafarisNovos}}</td>
+                <td>{{empreitada.numChafarisReabilitar}}</td>
+                <td>{{empreitada.numCapacidadeTratamentoEta}}</td>
+                <td>{{empreitada.numExtensaoRedeMaterial}}</td>
+                <td>{{empreitada.numExtensaoCondutasElelMat}}</td>
+                <td>{{empreitada.numLigacoes}}</td>
+                <td>{{empreitada.numCaixasVisitas}}</td>
+                <td>{{empreitada.numEstacoesElevatorias}}</td>
+                <td>{{empreitada.numLatrinas}}</td>
+                <td>
+                    <div *ngIf="empreitada.idProgramasProjectosId">
+                        <a [routerLink]="['../programas-projectos', empreitada.idProgramasProjectosId  ]" >{{empreitada.idProgramasProjectosId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="empreitada.idSistemaAguaId">
+                        <a [routerLink]="['../sistema-agua', empreitada.idSistemaAguaId  ]" >{{empreitada.idSistemaAguaId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="empreitada.idContratoId">
+                        <a [routerLink]="['../contrato', empreitada.idContratoId  ]" >{{empreitada.idContratoId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../empreitada', empreitada.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'empreitada/'+ empreitada.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'empreitada/'+ empreitada.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="empreitadas && empreitadas.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

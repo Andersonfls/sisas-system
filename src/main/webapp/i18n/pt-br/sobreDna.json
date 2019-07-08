@@ -1,0 +1,27 @@
+
+{
+    "sisasApp": {
+        "sobreDna" : {
+            "home": {
+                "title": "Sobre Dnas",
+                "createLabel": "Criar novo Sobre Dna",
+                "createOrEditLabel": "Criar ou editar Sobre Dna"
+            },
+            "created": "Um novo Sobre Dna foi criado com o identificador {{ param }}",
+            "updated": "Um Sobre Dna foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Sobre Dna foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Sobre Dna {{ id }}?"
+            },
+            "detail": {
+                "title": "Sobre Dna"
+            },
+            "idSobreDna": "Id Sobre Dna",
+            "tituloSobreDna": "Titulo Sobre Dna",
+            "textoSobreDna": "Texto Sobre Dna",
+            "resumoTextoSobreDna": "Resumo Texto Sobre Dna",
+            "idSituacao": "Id Situacao",
+            "inicio": "Inicio"
+        }
+    }
+}

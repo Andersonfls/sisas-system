@@ -1,0 +1,556 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="mySistemaAguaLabel" jhiTranslate="sisasApp.sistemaAgua.home.createOrEditLabel">Create or edit a Sistema Agua</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!sistemaAgua.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="sistemaAgua.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.idUsuario" for="field_idUsuario">Id Usuario</label>
+            <input type="number" class="form-control" name="idUsuario" id="field_idUsuario"
+                [(ngModel)]="sistemaAgua.idUsuario" required/>
+            <div [hidden]="!(editForm.controls.idUsuario?.dirty && editForm.controls.idUsuario?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.idUsuario?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.idUsuario?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmInqueridor" for="field_nmInqueridor">Nm Inqueridor</label>
+            <input type="text" class="form-control" name="nmInqueridor" id="field_nmInqueridor"
+                [(ngModel)]="sistemaAgua.nmInqueridor" required maxlength="150"/>
+            <div [hidden]="!(editForm.controls.nmInqueridor?.dirty && editForm.controls.nmInqueridor?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nmInqueridor?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nmInqueridor?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 150 }">
+                   This field cannot be longer than 150 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.dtLancamento" for="field_dtLancamento">Dt Lancamento</label>
+            <div class="input-group">
+                <input id="field_dtLancamento" type="text" class="form-control" name="dtLancamento" ngbDatepicker  #dtLancamentoDp="ngbDatepicker" [(ngModel)]="sistemaAgua.dtLancamento"
+                required/>
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="dtLancamentoDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.dtLancamento?.dirty && editForm.controls.dtLancamento?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dtLancamento?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.dtUltimaAlteracao" for="field_dtUltimaAlteracao">Dt Ultima Alteracao</label>
+            <div class="input-group">
+                <input id="field_dtUltimaAlteracao" type="text" class="form-control" name="dtUltimaAlteracao" ngbDatepicker  #dtUltimaAlteracaoDp="ngbDatepicker" [(ngModel)]="sistemaAgua.dtUltimaAlteracao"
+                />
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="dtUltimaAlteracaoDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmLocalidade" for="field_nmLocalidade">Nm Localidade</label>
+            <input type="text" class="form-control" name="nmLocalidade" id="field_nmLocalidade"
+                [(ngModel)]="sistemaAgua.nmLocalidade" maxlength="150"/>
+            <div [hidden]="!(editForm.controls.nmLocalidade?.dirty && editForm.controls.nmLocalidade?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nmLocalidade?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 150 }">
+                   This field cannot be longer than 150 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.qtdPopulacaoActual" for="field_qtdPopulacaoActual">Qtd Populacao Actual</label>
+            <input type="number" class="form-control" name="qtdPopulacaoActual" id="field_qtdPopulacaoActual"
+                [(ngModel)]="sistemaAgua.qtdPopulacaoActual" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.qtdCasasLocalidade" for="field_qtdCasasLocalidade">Qtd Casas Localidade</label>
+            <input type="number" class="form-control" name="qtdCasasLocalidade" id="field_qtdCasasLocalidade"
+                [(ngModel)]="sistemaAgua.qtdCasasLocalidade" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmTpComunaAldeia" for="field_nmTpComunaAldeia">Nm Tp Comuna Aldeia</label>
+            <input type="text" class="form-control" name="nmTpComunaAldeia" id="field_nmTpComunaAldeia"
+                [(ngModel)]="sistemaAgua.nmTpComunaAldeia" maxlength="20"/>
+            <div [hidden]="!(editForm.controls.nmTpComunaAldeia?.dirty && editForm.controls.nmTpComunaAldeia?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nmTpComunaAldeia?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                   This field cannot be longer than 20 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmTpArea" for="field_nmTpArea">Nm Tp Area</label>
+            <input type="text" class="form-control" name="nmTpArea" id="field_nmTpArea"
+                [(ngModel)]="sistemaAgua.nmTpArea" maxlength="11"/>
+            <div [hidden]="!(editForm.controls.nmTpArea?.dirty && editForm.controls.nmTpArea?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nmTpArea?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 11 }">
+                   This field cannot be longer than 11 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.possuiSistemaAgua" for="possuiSistemaAgua">Possui Sistema Agua</label>
+            <select class="form-control" id="possuiSistemaAgua" name="possuiSistemaAgua" [(ngModel)]="sistemaAgua.possuiSistemaAgua" required>
+                <option [ngValue]="null" selected></option>
+                <option [ngValue]="1">Sim</option>
+                <option [ngValue]="0">Não</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmSistemaAgua" for="field_nmSistemaAgua">Nm Sistema Agua</label>
+            <input type="text" class="form-control" name="nmSistemaAgua" id="field_nmSistemaAgua"
+                [(ngModel)]="sistemaAgua.nmSistemaAgua" required maxlength="150"/>
+            <div [hidden]="!(editForm.controls.nmSistemaAgua?.dirty && editForm.controls.nmSistemaAgua?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nmSistemaAgua?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nmSistemaAgua?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 150 }">
+                   This field cannot be longer than 150 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmFonteAgua" for="field_nmFonteAgua">Nm Fonte Agua</label>
+            <input type="text" class="form-control" name="nmFonteAgua" id="field_nmFonteAgua"
+                [(ngModel)]="sistemaAgua.nmFonteAgua" required maxlength="150"/>
+            <div [hidden]="!(editForm.controls.nmFonteAgua?.dirty && editForm.controls.nmFonteAgua?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nmFonteAgua?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nmFonteAgua?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 150 }">
+                   This field cannot be longer than 150 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.latitude" for="field_latitude">Latitude</label>
+            <input type="number" class="form-control" name="latitude" id="field_latitude"
+                [(ngModel)]="sistemaAgua.latitude" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.longitude" for="field_longitude">Longitude</label>
+            <input type="number" class="form-control" name="longitude" id="field_longitude"
+                [(ngModel)]="sistemaAgua.longitude" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.altitude" for="field_altitude">Altitude</label>
+            <input type="number" class="form-control" name="altitude" id="field_altitude"
+                [(ngModel)]="sistemaAgua.altitude" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmTpFonte" for="field_nmTpFonte">Nm Tp Fonte</label>
+            <input type="text" class="form-control" name="nmTpFonte" id="field_nmTpFonte"
+                [(ngModel)]="sistemaAgua.nmTpFonte" maxlength="20"/>
+            <div [hidden]="!(editForm.controls.nmTpFonte?.dirty && editForm.controls.nmTpFonte?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nmTpFonte?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                   This field cannot be longer than 20 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmFonteAguaUtilizada" for="field_nmFonteAguaUtilizada">Nm Fonte Agua Utilizada</label>
+            <input type="text" class="form-control" name="nmFonteAguaUtilizada" id="field_nmFonteAguaUtilizada"
+                [(ngModel)]="sistemaAgua.nmFonteAguaUtilizada" required maxlength="20"/>
+            <div [hidden]="!(editForm.controls.nmFonteAguaUtilizada?.dirty && editForm.controls.nmFonteAguaUtilizada?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nmFonteAguaUtilizada?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nmFonteAguaUtilizada?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                   This field cannot be longer than 20 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmTipoBomba" for="field_nmTipoBomba">Nm Tipo Bomba</label>
+            <select class="form-control" id="field_nmTipoBomba" name="nmTipoBomba" [(ngModel)]="sistemaAgua.nmTipoBomba" required>
+                <option [ngValue]="null" selected></option>
+                <option label="Elétrica">Elétrica</option>
+                <option label="Diesel/Motobomba">Diesel/Motobomba</option>
+                <option label="Solar">Solar</option>
+                <option label="Eólica">Eólica</option>
+                <option label="Outros">Outros</option>
+            </select>
+
+            <div [hidden]="!(editForm.controls.nmTipoBomba?.dirty && editForm.controls.nmTipoBomba?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nmTipoBomba?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nmTipoBomba?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 11 }">
+                   This field cannot be longer than 11 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.qtdCasasAguaLigada" for="field_qtdCasasAguaLigada">Qtd Casas Agua Ligada</label>
+            <input type="number" class="form-control" name="qtdCasasAguaLigada" id="field_qtdCasasAguaLigada"
+                [(ngModel)]="sistemaAgua.qtdCasasAguaLigada" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.qtdChafarisesFuncionando" for="field_qtdChafarisesFuncionando">Qtd Chafarises Funcionando</label>
+            <input type="number" class="form-control" name="qtdChafarisesFuncionando" id="field_qtdChafarisesFuncionando"
+                [(ngModel)]="sistemaAgua.qtdChafarisesFuncionando" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.qtdContadoresLigados" for="field_qtdContadoresLigados">Qtd Contadores Ligados</label>
+            <input type="number" class="form-control" name="qtdContadoresLigados" id="field_qtdContadoresLigados"
+                [(ngModel)]="sistemaAgua.qtdContadoresLigados" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.qtdBebedouros" for="field_qtdBebedouros">Qtd Bebedouros</label>
+            <input type="number" class="form-control" name="qtdBebedouros" id="field_qtdBebedouros"
+                [(ngModel)]="sistemaAgua.qtdBebedouros" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.qtdHabitantesAcessoServicoAgua" for="field_qtdHabitantesAcessoServicoAgua">Qtd Habitantes Acesso Servico Agua</label>
+            <input type="number" class="form-control" name="qtdHabitantesAcessoServicoAgua" id="field_qtdHabitantesAcessoServicoAgua"
+                [(ngModel)]="sistemaAgua.qtdHabitantesAcessoServicoAgua" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.anoConstrucaoSistema" for="field_anoConstrucaoSistema">Ano Construcao Sistema</label>
+            <input type="number" class="form-control" name="anoConstrucaoSistema" id="field_anoConstrucaoSistema"
+                [(ngModel)]="sistemaAgua.anoConstrucaoSistema" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmTpAvariaSistema" for="field_nmTpAvariaSistema">Nm Tp Avaria Sistema</label>
+            <select class="form-control" id="field_nmTpAvariaSistema" name="nmTpAvariaSistema" [(ngModel)]="sistemaAgua.nmTpAvariaSistema" required>
+                <option [ngValue]="null" selected></option>
+                <option label="Falta de Instalações">Falta de Instalações</option>
+                <option label="Falta de Equipamento">Falta de Equipamento</option>
+                <option label="Falta de Reagentes Quimicos">Falta de Reagentes Quimicos</option>
+                <option label="Falta de Conhecimento">Falta de Conhecimento</option>
+                <option label="Outros">Outros</option>
+            </select>
+            <div [hidden]="!(editForm.controls.nmTpAvariaSistema?.dirty && editForm.controls.nmTpAvariaSistema?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nmTpAvariaSistema?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 50 }">
+                   This field cannot be longer than 50 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.causaAvariaSistema" for="field_causaAvariaSistema">Causa Avaria Sistema</label>
+            <input type="text" class="form-control" name="causaAvariaSistema" id="field_causaAvariaSistema"
+                [(ngModel)]="sistemaAgua.causaAvariaSistema" maxlength="100"/>
+            <div [hidden]="!(editForm.controls.causaAvariaSistema?.dirty && editForm.controls.causaAvariaSistema?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.causaAvariaSistema?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
+                   This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.statusResolucao" for="field_statusResolucao">Status Resolucao</label>
+            <input type="text" class="form-control" name="statusResolucao" id="field_statusResolucao"
+                [(ngModel)]="sistemaAgua.statusResolucao" maxlength="100"/>
+            <div [hidden]="!(editForm.controls.statusResolucao?.dirty && editForm.controls.statusResolucao?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.statusResolucao?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
+                   This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.tempoServicoDisponivel" for="field_tempoServicoDisponivel">Tempo Servico Disponivel</label>
+            <input type="text" class="form-control" name="tempoServicoDisponivel" id="field_tempoServicoDisponivel"
+                [(ngModel)]="sistemaAgua.tempoServicoDisponivel" maxlength="100"/>
+            <div [hidden]="!(editForm.controls.tempoServicoDisponivel?.dirty && editForm.controls.tempoServicoDisponivel?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.tempoServicoDisponivel?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
+                   This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.qtdDiametroCondutaAdutoraAguaBruta" for="field_qtdDiametroCondutaAdutoraAguaBruta">Qtd Diametro Conduta Adutora Agua Bruta</label>
+            <input type="number" class="form-control" name="qtdDiametroCondutaAdutoraAguaBruta" id="field_qtdDiametroCondutaAdutoraAguaBruta"
+                [(ngModel)]="sistemaAgua.qtdDiametroCondutaAdutoraAguaBruta" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.qtdComprimentoCondutaAdutoraAguaBruta" for="field_qtdComprimentoCondutaAdutoraAguaBruta">Qtd Comprimento Conduta Adutora Agua Bruta</label>
+            <input type="number" class="form-control" name="qtdComprimentoCondutaAdutoraAguaBruta" id="field_qtdComprimentoCondutaAdutoraAguaBruta"
+                [(ngModel)]="sistemaAgua.qtdComprimentoCondutaAdutoraAguaBruta" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.qtdDiametroCondutaAdutoraAguaTratada" for="field_qtdDiametroCondutaAdutoraAguaTratada">Qtd Diametro Conduta Adutora Agua Tratada</label>
+            <input type="number" class="form-control" name="qtdDiametroCondutaAdutoraAguaTratada" id="field_qtdDiametroCondutaAdutoraAguaTratada"
+                [(ngModel)]="sistemaAgua.qtdDiametroCondutaAdutoraAguaTratada" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.qtdComprimentoCondutaAdutoraAguaTratada" for="field_qtdComprimentoCondutaAdutoraAguaTratada">Qtd Comprimento Conduta Adutora Agua Tratada</label>
+            <input type="number" class="form-control" name="qtdComprimentoCondutaAdutoraAguaTratada" id="field_qtdComprimentoCondutaAdutoraAguaTratada"
+                [(ngModel)]="sistemaAgua.qtdComprimentoCondutaAdutoraAguaTratada" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.descMaterialUtilizadoCondutas" for="field_descMaterialUtilizadoCondutas">Desc Material Utilizado Condutas</label>
+            <input type="text" class="form-control" name="descMaterialUtilizadoCondutas" id="field_descMaterialUtilizadoCondutas"
+                [(ngModel)]="sistemaAgua.descMaterialUtilizadoCondutas" maxlength="150"/>
+            <div [hidden]="!(editForm.controls.descMaterialUtilizadoCondutas?.dirty && editForm.controls.descMaterialUtilizadoCondutas?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.descMaterialUtilizadoCondutas?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 150 }">
+                   This field cannot be longer than 150 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.qtdReservatoriosApoiados" for="field_qtdReservatoriosApoiados">Qtd Reservatorios Apoiados</label>
+            <input type="number" class="form-control" name="qtdReservatoriosApoiados" id="field_qtdReservatoriosApoiados"
+                [(ngModel)]="sistemaAgua.qtdReservatoriosApoiados" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.qtdCapacidadeReservatoriosApoiados" for="field_qtdCapacidadeReservatoriosApoiados">Qtd Capacidade Reservatorios Apoiados</label>
+            <input type="number" class="form-control" name="qtdCapacidadeReservatoriosApoiados" id="field_qtdCapacidadeReservatoriosApoiados"
+                [(ngModel)]="sistemaAgua.qtdCapacidadeReservatoriosApoiados" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.qtdReservatoriosElevados" for="field_qtdReservatoriosElevados">Qtd Reservatorios Elevados</label>
+            <input type="number" class="form-control" name="qtdReservatoriosElevados" id="field_qtdReservatoriosElevados"
+                [(ngModel)]="sistemaAgua.qtdReservatoriosElevados" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.qtdCapacidadeReservatoriosElevados" for="field_qtdCapacidadeReservatoriosElevados">Qtd Capacidade Reservatorios Elevados</label>
+            <input type="number" class="form-control" name="qtdCapacidadeReservatoriosElevados" id="field_qtdCapacidadeReservatoriosElevados"
+                [(ngModel)]="sistemaAgua.qtdCapacidadeReservatoriosElevados" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.alturaReservatoriosElevados" for="field_alturaReservatoriosElevados">Altura Reservatorios Elevados</label>
+            <input type="number" class="form-control" name="alturaReservatoriosElevados" id="field_alturaReservatoriosElevados"
+                [(ngModel)]="sistemaAgua.alturaReservatoriosElevados" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmTpTratamentoAgua" for="field_nmTpTratamentoAgua">Nm Tp Tratamento Agua</label>
+            <input type="text" class="form-control" name="nmTpTratamentoAgua" id="field_nmTpTratamentoAgua"
+                [(ngModel)]="sistemaAgua.nmTpTratamentoAgua" required maxlength="50"/>
+            <div [hidden]="!(editForm.controls.nmTpTratamentoAgua?.dirty && editForm.controls.nmTpTratamentoAgua?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nmTpTratamentoAgua?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nmTpTratamentoAgua?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 50 }">
+                   This field cannot be longer than 50 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmTpTratamentoPadraoUtilizado" for="field_nmTpTratamentoPadraoUtilizado">Nm Tp Tratamento Padrao Utilizado</label>
+            <input type="text" class="form-control" name="nmTpTratamentoPadraoUtilizado" id="field_nmTpTratamentoPadraoUtilizado"
+                [(ngModel)]="sistemaAgua.nmTpTratamentoPadraoUtilizado" required maxlength="50"/>
+            <div [hidden]="!(editForm.controls.nmTpTratamentoPadraoUtilizado?.dirty && editForm.controls.nmTpTratamentoPadraoUtilizado?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nmTpTratamentoPadraoUtilizado?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nmTpTratamentoPadraoUtilizado?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 50 }">
+                   This field cannot be longer than 50 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmTpTratamentoBasicoUtilizado" for="field_nmTpTratamentoBasicoUtilizado">Nm Tp Tratamento Basico Utilizado</label>
+            <input type="text" class="form-control" name="nmTpTratamentoBasicoUtilizado" id="field_nmTpTratamentoBasicoUtilizado"
+                [(ngModel)]="sistemaAgua.nmTpTratamentoBasicoUtilizado" required maxlength="50"/>
+            <div [hidden]="!(editForm.controls.nmTpTratamentoBasicoUtilizado?.dirty && editForm.controls.nmTpTratamentoBasicoUtilizado?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nmTpTratamentoBasicoUtilizado?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nmTpTratamentoBasicoUtilizado?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 50 }">
+                   This field cannot be longer than 50 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.existeAvariaSistemaTratamento" for="field_existeAvariaSistemaTratamento">Existe Avaria Sistema Tratamento</label>
+            <input type="text" class="form-control" name="existeAvariaSistemaTratamento" id="field_existeAvariaSistemaTratamento"
+                [(ngModel)]="sistemaAgua.existeAvariaSistemaTratamento" required maxlength="50"/>
+            <div [hidden]="!(editForm.controls.existeAvariaSistemaTratamento?.dirty && editForm.controls.existeAvariaSistemaTratamento?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.existeAvariaSistemaTratamento?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.existeAvariaSistemaTratamento?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 50 }">
+                   This field cannot be longer than 50 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.existeMotivoAusenciaTratamento" for="field_existeMotivoAusenciaTratamento">Existe Motivo Ausencia Tratamento</label>
+            <input type="text" class="form-control" name="existeMotivoAusenciaTratamento" id="field_existeMotivoAusenciaTratamento"
+                [(ngModel)]="sistemaAgua.existeMotivoAusenciaTratamento" required maxlength="50"/>
+            <div [hidden]="!(editForm.controls.existeMotivoAusenciaTratamento?.dirty && editForm.controls.existeMotivoAusenciaTratamento?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.existeMotivoAusenciaTratamento?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.existeMotivoAusenciaTratamento?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 50 }">
+                   This field cannot be longer than 50 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmEquipamentosComAvaria" for="field_nmEquipamentosComAvaria">Nm Equipamentos Com Avaria</label>
+            <input type="text" class="form-control" name="nmEquipamentosComAvaria" id="field_nmEquipamentosComAvaria"
+                [(ngModel)]="sistemaAgua.nmEquipamentosComAvaria" required maxlength="50"/>
+            <div [hidden]="!(editForm.controls.nmEquipamentosComAvaria?.dirty && editForm.controls.nmEquipamentosComAvaria?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nmEquipamentosComAvaria?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nmEquipamentosComAvaria?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 50 }">
+                   This field cannot be longer than 50 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.caudalDoSistema" for="field_caudalDoSistema">Caudal Do Sistema</label>
+            <input type="number" class="form-control" name="caudalDoSistema" id="field_caudalDoSistema"
+                [(ngModel)]="sistemaAgua.caudalDoSistema" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.qtdConsumoPercaptaLitrosHomemDia" for="field_qtdConsumoPercaptaLitrosHomemDia">Qtd Consumo Percapta Litros Homem Dia</label>
+            <input type="number" class="form-control" name="qtdConsumoPercaptaLitrosHomemDia" id="field_qtdConsumoPercaptaLitrosHomemDia"
+                [(ngModel)]="sistemaAgua.qtdConsumoPercaptaLitrosHomemDia" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.qtdDotacaoPercapta" for="field_qtdDotacaoPercapta">Qtd Dotacao Percapta</label>
+            <input type="number" class="form-control" name="qtdDotacaoPercapta" id="field_qtdDotacaoPercapta"
+                [(ngModel)]="sistemaAgua.qtdDotacaoPercapta" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.qtdDiariaHorasServicoSistema" for="field_qtdDiariaHorasServicoSistema">Qtd Diaria Horas Servico Sistema</label>
+            <input type="number" class="form-control" name="qtdDiariaHorasServicoSistema" id="field_qtdDiariaHorasServicoSistema"
+                [(ngModel)]="sistemaAgua.qtdDiariaHorasServicoSistema" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.esquema" for="field_esquema">Esquema</label>
+            <select class="form-control" id="field_esquema" name="esquema" [(ngModel)]="sistemaAgua.esquema" required>
+                <option [ngValue]="null" selected></option>
+                <option label="Poço/Cacimba Melhorada">Poço/Cacimba Melhorada</option>
+                <option label="Furo">Furo</option>
+                <option label="Nascente">Nascente</option>
+            </select>
+            <div [hidden]="!(editForm.controls.esquema?.dirty && editForm.controls.esquema?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.esquema?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.esquema?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 50 }">
+                   This field cannot be longer than 50 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmModeloBombaManualUtilizada" for="field_nmModeloBombaManualUtilizada">Nm Modelo Bomba Manual Utilizada</label>
+            <select class="form-control" id="field_nmModeloBombaManualUtilizada" name="nmModeloBombaManualUtilizada" [(ngModel)]="sistemaAgua.nmModeloBombaManualUtilizada" required>
+                <option [ngValue]="null" selected></option>
+                <option label="Afridev">Afridev</option>
+                <option label="Volanta">Volanta</option>
+                <option label="India">India</option>
+                <option label="Mark II">Mark II</option>
+                <option label="Outro">Outro</option>
+            </select>
+
+            <div [hidden]="!(editForm.controls.nmModeloBombaManualUtilizada?.dirty && editForm.controls.nmModeloBombaManualUtilizada?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nmModeloBombaManualUtilizada?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nmModeloBombaManualUtilizada?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 50 }">
+                   This field cannot be longer than 50 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmTpBombaEnergia" for="field_nmTpBombaEnergia">Nm Tp Bomba Energia</label>
+            <input type="text" class="form-control" name="nmTpBombaEnergia" id="field_nmTpBombaEnergia"
+                [(ngModel)]="sistemaAgua.nmTpBombaEnergia" maxlength="50"/>
+            <select class="form-control" id="field_nmTpBombaEnergia" name="nmTpBombaEnergia" [(ngModel)]="sistemaAgua.nmTpBombaEnergia" required>
+                <option [ngValue]="null" selected></option>
+                <option label="Bomba de Energia">Bomba de Energia</option>
+                <option label="Bomba Manual">Bomba Manual</option>
+                <option label="Sistema de Gravidade">Sistema de Gravidade</option>
+                <option label="Outro Tipo de Bomba">Outro Tipo de Bomba</option>
+            </select>
+            <div [hidden]="!(editForm.controls.nmTpBombaEnergia?.dirty && editForm.controls.nmTpBombaEnergia?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nmTpBombaEnergia?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 50 }">
+                   This field cannot be longer than 50 characters.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.idSituacao" for="field_idSituacao">Id Situacao</label>
+            <select class="form-control" id="field_idSituacao" name="situacao" [(ngModel)]="sistemaAgua.situacao" required>
+                <option *ngIf="!editForm.value.situacao" [ngValue]="null" selected></option>
+                <option [ngValue]="situacaoOption" *ngFor="let situacaoOption of situacaos; trackBy: trackSituacaoById">{{situacaoOption.nmSituacao}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.idSituacao?.dirty && editForm.controls.idSituacao?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.idSituacao?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.idComuna" for="field_idComuna">Id Comuna</label>
+            <select class="form-control" id="field_idComuna" name="comuna" [(ngModel)]="sistemaAgua.comuna" required>
+                <option *ngIf="!editForm.value.comuna" [ngValue]="null" selected></option>
+                <option [ngValue]="comunaOption" *ngFor="let comunaOption of comunas; trackBy: trackComunaById">{{comunaOption.nmComuna}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.comuna?.dirty && editForm.controls.comuna?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.comuna?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

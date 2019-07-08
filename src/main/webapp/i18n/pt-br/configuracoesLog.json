@@ -1,0 +1,26 @@
+
+{
+    "sisasApp": {
+        "configuracoesLog" : {
+            "home": {
+                "title": "Configuracoes Logs",
+                "createLabel": "Criar novo Configuracoes Log",
+                "createOrEditLabel": "Criar ou editar Configuracoes Log"
+            },
+            "created": "Um novo Configuracoes Log foi criado com o identificador {{ param }}",
+            "updated": "Um Configuracoes Log foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Configuracoes Log foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Configuracoes Log {{ id }}?"
+            },
+            "detail": {
+                "title": "Configuracoes Log"
+            },
+            "idConfiguracoesLog": "Id Configuracoes Log",
+            "acao": "Acao",
+            "idUsuario": "Id Usuario",
+            "log": "Log",
+            "dtLog": "Dt Log"
+        }
+    }
+}

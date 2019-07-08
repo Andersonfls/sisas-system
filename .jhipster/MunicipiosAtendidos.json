@@ -1,0 +1,33 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "idMunicipio",
+            "otherEntityName": "municipio",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "entidadeGestora",
+            "otherEntityName": "entidadeGestora",
+            "otherEntityRelationshipName": "idMunicipioAtendido"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "idMunicipioAtendido",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20190705195829",
+    "entityTableName": "municipios_atendidos",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true
+}

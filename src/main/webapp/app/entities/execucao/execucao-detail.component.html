@@ -1,0 +1,90 @@
+
+<div *ngIf="execucao">
+    <h2><span jhiTranslate="sisasApp.execucao.detail.title">Execucao</span> {{execucao.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="sisasApp.execucao.idExecucao">Id Execucao</span></dt>
+        <dd>
+            <span>{{execucao.idExecucao}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.execucao.tipoEmpreitada">Tipo Empreitada</span></dt>
+        <dd>
+            <span>{{execucao.tipoEmpreitada}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.execucao.dtLancamento">Dt Lancamento</span></dt>
+        <dd>
+            <span>{{execucao.dtLancamento | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.execucao.dtPeridoReferencia">Dt Perido Referencia</span></dt>
+        <dd>
+            <span>{{execucao.dtPeridoReferencia | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.execucao.dtFimReferencia">Dt Fim Referencia</span></dt>
+        <dd>
+            <span>{{execucao.dtFimReferencia | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.execucao.valorFacturadoPeriodo">Valor Facturado Periodo</span></dt>
+        <dd>
+            <span>{{execucao.valorFacturadoPeriodo}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.execucao.dtFactura">Dt Factura</span></dt>
+        <dd>
+            <span>{{execucao.dtFactura | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.execucao.numFactura">Num Factura</span></dt>
+        <dd>
+            <span>{{execucao.numFactura}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.execucao.txCambio">Tx Cambio</span></dt>
+        <dd>
+            <span>{{execucao.txCambio}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.execucao.constrangimento">Constrangimento</span></dt>
+        <dd>
+            <span>{{execucao.constrangimento}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.execucao.valorPagoPeriodo">Valor Pago Periodo</span></dt>
+        <dd>
+            <span>{{execucao.valorPagoPeriodo}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.execucao.idSituacao">Id Situacao</span></dt>
+        <dd>
+            <div *ngIf="execucao.idSituacaoId">
+                <a [routerLink]="['/situacao', execucao.idSituacaoId]">{{execucao.idSituacaoId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.execucao.idProgramasProjectos">Id Programas Projectos</span></dt>
+        <dd>
+            <div *ngIf="execucao.idProgramasProjectosId">
+                <a [routerLink]="['/programas-projectos', execucao.idProgramasProjectosId]">{{execucao.idProgramasProjectosId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.execucao.idSistemaAgua">Id Sistema Agua</span></dt>
+        <dd>
+            <div *ngIf="execucao.idSistemaAguaId">
+                <a [routerLink]="['/sistema-agua', execucao.idSistemaAguaId]">{{execucao.idSistemaAguaId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.execucao.idContrato">Id Contrato</span></dt>
+        <dd>
+            <div *ngIf="execucao.idContratoId">
+                <a [routerLink]="['/contrato', execucao.idContratoId]">{{execucao.idContratoId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'execucao/'+ execucao.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

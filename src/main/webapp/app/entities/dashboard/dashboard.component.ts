@@ -29,11 +29,32 @@ export class DashboardComponent implements OnInit {
     emprestimosAdmin: number;
     reservasAdmin: number;
 
+    public pieColors: any[] = [
+        {
+            backgroundColor: ['#613b18', '#b87524', '#fb9e37']
+        }];
+    public lineChartType = 'line';
+    public lineChartLabels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
     public barChartOptionsEmprestimo: any = {
         scaleShowVerticalLines: false,
         responsive: true
     };
-
+    public donutColors: any[] = [
+        {
+            backgroundColor: ['#613b18', '#b87524', '#fb9e37']
+        }];
+    public pieChartLabels: string[] = ['Download Sales', 'In-Store Sales', 'Mail Sales'];
+    public pieChartData: number[] = [300, 500, 100];
+    public pieChartType = 'pie';
+    public doughnutChartLabels: string[] = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
+    public doughnutChartData: number[] = [350, 450, 100];
+    public doughnutChartType = 'doughnut';
+    public barChartLabelsReserva: string[] = ['JAN', 'FEV', 'MAR', 'ABR' ];
+    public barChartTypeReserva = 'bar';
+    public barChartLegendReserva = true;
+    public barChartDataReseva: any[] = [
+        {data: [28, 48, 40, 55], label: 'Reservas'}
+    ];
     public barChartLabelsEmprestimo: string[] = ['JAN', 'FEV', 'MAR', 'ABR' ];
     public barChartTypeEmprestimo = 'bar';
     public barChartLegendEmprestimo = true;
@@ -43,7 +64,7 @@ export class DashboardComponent implements OnInit {
 
     public barColorsEmprestimo: any[] = [
         {
-            backgroundColor:['#967138', '#967138', '#967138', '#967138']
+            backgroundColor: ['#967138', '#967138', '#967138', '#967138']
         }];
 
     public barChartOptionsReserva: any = {
@@ -53,19 +74,18 @@ export class DashboardComponent implements OnInit {
 
     public barColorsReserva: any[] = [
         {
-            backgroundColor:['#978138', '#978138', '#978138', '#978138']
+            backgroundColor: ['#978138', '#978138', '#978138', '#978138']
         }];
 
     public barColorsLine: any[] = [
         {
-            backgroundColor:['#1C502F', '#007bff']
+            backgroundColor: ['#1C502F', '#007bff']
         }];
 
     public lineChartData: Array<any> = [
         [65, 59, 80, 81, 56, 55, 40],
         [28, 48, 40, 19, 86, 27, 90]
     ];
-    
     constructor(
         private jhiAlertService: JhiAlertService,
         private userService: UserService,
@@ -134,7 +154,7 @@ export class DashboardComponent implements OnInit {
             theme: 'light2',
             animationEnabled: true,
             exportEnabled: true,
-            title:{
+            title: {
                 text: 'Empréstimos'
             },
             data: [{
@@ -176,10 +196,10 @@ export class DashboardComponent implements OnInit {
 
     /*-----------------------------------------BarChart-Emprestimo-------------------------------------*/
 
-    public chartClickedEmprestimo(e: any):void {
+    public chartClickedEmprestimo(e: any): void {
         console.log(e);
     }
-    public chartHoveredEmprestimo(e: any):void {
+    public chartHoveredEmprestimo(e: any): void {
         console.log(e);
     }
     public randomizeEmprestimo(): void {
@@ -207,16 +227,10 @@ export class DashboardComponent implements OnInit {
 
     /*-----------------------------------------BarChart-Reserva-------------------------------------*/
 
-    public barChartLabelsReserva: string[] = ['JAN', 'FEV', 'MAR', 'ABR' ];
-    public barChartTypeReserva = 'bar';
-    public barChartLegendReserva = true;
-    public barChartDataReseva: any[] = [
-        {data: [28, 48, 40, 55], label: 'Reservas'}
-    ];
-    public chartClickedReserva(e: any):void {
+    public chartClickedReserva(e: any): void {
         console.log(e);
     }
-    public chartHoveredReserva(e: any):void {
+    public chartHoveredReserva(e: any): void {
         console.log(e);
     }
     public randomizeReserva(): void {
@@ -243,45 +257,22 @@ export class DashboardComponent implements OnInit {
     /*----------------------------------------------------------------------------------------*/
 
     /*------------------------------------------Donut--------------------------------------------*/
-    public doughnutChartLabels: string[] = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
-    public doughnutChartData: number[] = [350, 450, 100];
-    public doughnutChartType = 'doughnut';
-    public chartClickedDonut(e: any):void {
+    public chartClickedDonut(e: any): void {
         console.log(e);
     }
-    public chartHoveredDonut(e: any):void {
+    public chartHoveredDonut(e: any): void {
         console.log(e);
     }
-    public donutColors: any[] = [
-        {
-            backgroundColor:['#613b18', '#b87524', '#fb9e37']
-        }];
-    /*--------------------------------------------------------------------------------------------*/
-
-    /*------------------------------------PieChart------------------------------------*/
-    public pieChartLabels: string[] = ['Download Sales', 'In-Store Sales', 'Mail Sales'];
-    public pieChartData: number[] = [300, 500, 100];
-    public pieChartType = 'pie';
-    public chartClickedPieChart(e: any):void {
+    public chartClickedPieChart(e: any): void {
         console.log(e);
     }
-    public chartHoveredPieChart(e: any):void {
+    public chartHoveredPieChart(e: any): void {
         console.log(e);
     }
-    public pieColors: any[] = [
-        {
-            backgroundColor:['#613b18', '#b87524', '#fb9e37',]
-        }];
-    /*--------------------------------------------------------------------------------*/
-
-    /*-------------------------------------------lineChart----------------------------------------------*/
-
-    public lineChartType:string = 'line';
-    public lineChartLabels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-    public chartClickedLineChart(e: any):void {
+    public chartClickedLineChart(e: any): void {
         console.log(e);
     }
-    public chartHoveredLineChart(e: any):void {
+    public chartHoveredLineChart(e: any): void {
         console.log(e);
     }
     /*--------------------------------------------------------------------------------------------------*/

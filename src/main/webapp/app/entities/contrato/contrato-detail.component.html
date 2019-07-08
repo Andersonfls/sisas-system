@@ -1,0 +1,102 @@
+
+<div *ngIf="contrato">
+    <h2><span jhiTranslate="sisasApp.contrato.detail.title">Contrato</span> {{contrato.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="sisasApp.contrato.idContrato">Id Contrato</span></dt>
+        <dd>
+            <span>{{contrato.idContrato}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.contrato.tipoEmpreitada">Tipo Empreitada</span></dt>
+        <dd>
+            <span>{{contrato.tipoEmpreitada}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.contrato.dtLancamento">Dt Lancamento</span></dt>
+        <dd>
+            <span>{{contrato.dtLancamento | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.contrato.nmEmpresaAdjudicitaria">Nm Empresa Adjudicitaria</span></dt>
+        <dd>
+            <span>{{contrato.nmEmpresaAdjudicitaria}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.contrato.valorContrato">Valor Contrato</span></dt>
+        <dd>
+            <span>{{contrato.valorContrato}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.contrato.dtAssinatura">Dt Assinatura</span></dt>
+        <dd>
+            <span>{{contrato.dtAssinatura | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.contrato.dtFinalizacaoProcessoHomologAprov">Dt Finalizacao Processo Homolog Aprov</span></dt>
+        <dd>
+            <span>{{contrato.dtFinalizacaoProcessoHomologAprov | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.contrato.tipoMoeda">Tipo Moeda</span></dt>
+        <dd>
+            <span>{{contrato.tipoMoeda}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.contrato.valorAdiantamento">Valor Adiantamento</span></dt>
+        <dd>
+            <span>{{contrato.valorAdiantamento}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.contrato.dtAdiantamento">Dt Adiantamento</span></dt>
+        <dd>
+            <span>{{contrato.dtAdiantamento | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.contrato.dtInicio">Dt Inicio</span></dt>
+        <dd>
+            <span>{{contrato.dtInicio | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.contrato.prazoExecucao">Prazo Execucao</span></dt>
+        <dd>
+            <span>{{contrato.prazoExecucao}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.contrato.dtRecepcaoProvisoria">Dt Recepcao Provisoria</span></dt>
+        <dd>
+            <span>{{contrato.dtRecepcaoProvisoria | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.contrato.dtRecepcaoDefinitiva">Dt Recepcao Definitiva</span></dt>
+        <dd>
+            <span>{{contrato.dtRecepcaoDefinitiva | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.contrato.dtRecepcaoComicionamento">Dt Recepcao Comicionamento</span></dt>
+        <dd>
+            <span>{{contrato.dtRecepcaoComicionamento | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.contrato.nmResposavelAntProjeto">Nm Resposavel Ant Projeto</span></dt>
+        <dd>
+            <span>{{contrato.nmResposavelAntProjeto}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.contrato.nmResposavelProjeto">Nm Resposavel Projeto</span></dt>
+        <dd>
+            <span>{{contrato.nmResposavelProjeto}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.contrato.idProgramasProjectos">Id Programas Projectos</span></dt>
+        <dd>
+            <div *ngIf="contrato.idProgramasProjectosId">
+                <a [routerLink]="['/programas-projectos', contrato.idProgramasProjectosId]">{{contrato.idProgramasProjectosId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.contrato.idSistemaAgua">Id Sistema Agua</span></dt>
+        <dd>
+            <div *ngIf="contrato.idSistemaAguaId">
+                <a [routerLink]="['/sistema-agua', contrato.idSistemaAguaId]">{{contrato.idSistemaAguaId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'contrato/'+ contrato.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

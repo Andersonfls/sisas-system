@@ -1,0 +1,126 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "idComuna",
+            "otherEntityName": "comuna",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "adjudicacao",
+            "otherEntityName": "adjudicacao",
+            "otherEntityRelationshipName": "idProgramasProjectos"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "concepcao",
+            "otherEntityName": "concepcao",
+            "otherEntityRelationshipName": "idProgramasProjectos"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "concurso",
+            "otherEntityName": "concurso",
+            "otherEntityRelationshipName": "idProgramasProjectos"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "contrato",
+            "otherEntityName": "contrato",
+            "otherEntityRelationshipName": "idProgramasProjectos"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "empreitada",
+            "otherEntityName": "empreitada",
+            "otherEntityRelationshipName": "idProgramasProjectos"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "execucao",
+            "otherEntityName": "execucao",
+            "otherEntityRelationshipName": "idProgramasProjectos"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "programasProjectosLog",
+            "otherEntityName": "programasProjectosLog",
+            "otherEntityRelationshipName": "idProgramasProjectos"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "idProgramasProjectos",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dtLancamento",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dtUltimaAlteracao",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "idUsuario",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nmDesignacaoProjeto",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 250
+        },
+        {
+            "fieldName": "nmDescricaoProjeto",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 250
+        },
+        {
+            "fieldName": "idSaaAssociado",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "tipoFinanciamento",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 150
+        },
+        {
+            "fieldName": "especialidade",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 100
+        }
+    ],
+    "changelogDate": "20190705195832",
+    "entityTableName": "programas_projectos",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true
+}

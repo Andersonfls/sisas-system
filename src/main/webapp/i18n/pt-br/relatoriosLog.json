@@ -1,0 +1,26 @@
+
+{
+    "sisasApp": {
+        "relatoriosLog" : {
+            "home": {
+                "title": "Relatorios Logs",
+                "createLabel": "Criar novo Relatorios Log",
+                "createOrEditLabel": "Criar ou editar Relatorios Log"
+            },
+            "created": "Um novo Relatorios Log foi criado com o identificador {{ param }}",
+            "updated": "Um Relatorios Log foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Relatorios Log foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Relatorios Log {{ id }}?"
+            },
+            "detail": {
+                "title": "Relatorios Log"
+            },
+            "idRelatoriosLog": "Id Relatorios Log",
+            "acao": "Acao",
+            "idUsuario": "Id Usuario",
+            "log": "Log",
+            "dtLog": "Dt Log"
+        }
+    }
+}

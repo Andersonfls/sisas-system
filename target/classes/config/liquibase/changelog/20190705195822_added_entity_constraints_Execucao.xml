@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Execucao.
+    -->
+    <changeSet id="20190705195822-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="id_situacao_id"
+                                 baseTableName="execucao"
+                                 constraintName="fk_execucao_id_situacao_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="situacao"/>
+
+        <addForeignKeyConstraint baseColumnNames="id_programas_projectos_id"
+                                 baseTableName="execucao"
+                                 constraintName="execucao_id_programas_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="programas_projectos"/>
+
+        <addForeignKeyConstraint baseColumnNames="id_sistema_agua_id"
+                                 baseTableName="execucao"
+                                 constraintName="fk_execucao_id_sistema_agua_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="sistema_agua"/>
+
+        <addForeignKeyConstraint baseColumnNames="id_contrato_id"
+                                 baseTableName="execucao"
+                                 constraintName="fk_execucao_id_contrato_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="contrato"/>
+
+    </changeSet>
+</databaseChangeLog>

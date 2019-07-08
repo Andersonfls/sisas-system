@@ -1,0 +1,42 @@
+
+<div *ngIf="fornecedor">
+    <h2><span jhiTranslate="sisasApp.fornecedor.detail.title">Fornecedor</span> {{fornecedor.nmFornecedor}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="sisasApp.fornecedor.nmFornecedor">Nm Fornecedor</span></dt>
+        <dd>
+            <span>{{fornecedor.nmFornecedor}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.fornecedor.numContribuinte">Num Contribuinte</span></dt>
+        <dd>
+            <span>{{fornecedor.numContribuinte}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.fornecedor.endereco">Endereco</span></dt>
+        <dd>
+            <span>{{fornecedor.endereco}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.fornecedor.email">Email</span></dt>
+        <dd>
+            <span>{{fornecedor.email}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.fornecedor.especialidade">Especialidade</span></dt>
+        <dd>
+            <span>{{fornecedor.especialidade}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'fornecedor/'+ fornecedor.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,165 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myEntidadeGestoraLabel" jhiTranslate="sisasApp.entidadeGestora.home.createOrEditLabel">Create or edit a Entidade Gestora</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!entidadeGestora.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="entidadeGestora.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.entidadeGestora.idEntidadeGestora" for="field_idEntidadeGestora">Id Entidade Gestora</label>
+            <input type="number" class="form-control" name="idEntidadeGestora" id="field_idEntidadeGestora"
+                [(ngModel)]="entidadeGestora.idEntidadeGestora" required/>
+            <div [hidden]="!(editForm.controls.idEntidadeGestora?.dirty && editForm.controls.idEntidadeGestora?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.idEntidadeGestora?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.idEntidadeGestora?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.entidadeGestora.nmEntidadeGestora" for="field_nmEntidadeGestora">Nm Entidade Gestora</label>
+            <input type="text" class="form-control" name="nmEntidadeGestora" id="field_nmEntidadeGestora"
+                [(ngModel)]="entidadeGestora.nmEntidadeGestora" required maxlength="100"/>
+            <div [hidden]="!(editForm.controls.nmEntidadeGestora?.dirty && editForm.controls.nmEntidadeGestora?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nmEntidadeGestora?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nmEntidadeGestora?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
+                   This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.entidadeGestora.tpFormaJuridica" for="field_tpFormaJuridica">Tp Forma Juridica</label>
+            <input type="number" class="form-control" name="tpFormaJuridica" id="field_tpFormaJuridica"
+                [(ngModel)]="entidadeGestora.tpFormaJuridica" required/>
+            <div [hidden]="!(editForm.controls.tpFormaJuridica?.dirty && editForm.controls.tpFormaJuridica?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.tpFormaJuridica?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.tpFormaJuridica?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.entidadeGestora.dtConstituicao" for="field_dtConstituicao">Dt Constituicao</label>
+            <div class="input-group">
+                <input id="field_dtConstituicao" type="text" class="form-control" name="dtConstituicao" ngbDatepicker  #dtConstituicaoDp="ngbDatepicker" [(ngModel)]="entidadeGestora.dtConstituicao"
+                />
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="dtConstituicaoDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.entidadeGestora.endereco" for="field_endereco">Endereco</label>
+            <input type="text" class="form-control" name="endereco" id="field_endereco"
+                [(ngModel)]="entidadeGestora.endereco" required maxlength="100"/>
+            <div [hidden]="!(editForm.controls.endereco?.dirty && editForm.controls.endereco?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.endereco?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.endereco?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
+                   This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.entidadeGestora.email" for="field_email">Email</label>
+            <input type="text" class="form-control" name="email" id="field_email"
+                [(ngModel)]="entidadeGestora.email" maxlength="80"/>
+            <div [hidden]="!(editForm.controls.email?.dirty && editForm.controls.email?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.email?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 80 }">
+                   This field cannot be longer than 80 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.entidadeGestora.contactos" for="field_contactos">Contactos</label>
+            <input type="text" class="form-control" name="contactos" id="field_contactos"
+                [(ngModel)]="entidadeGestora.contactos" maxlength="250"/>
+            <div [hidden]="!(editForm.controls.contactos?.dirty && editForm.controls.contactos?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.contactos?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 250 }">
+                   This field cannot be longer than 250 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.entidadeGestora.tpModeloGestao" for="field_tpModeloGestao">Tp Modelo Gestao</label>
+            <input type="number" class="form-control" name="tpModeloGestao" id="field_tpModeloGestao"
+                [(ngModel)]="entidadeGestora.tpModeloGestao" required/>
+            <div [hidden]="!(editForm.controls.tpModeloGestao?.dirty && editForm.controls.tpModeloGestao?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.tpModeloGestao?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.tpModeloGestao?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.entidadeGestora.numRecursosHumanos" for="field_numRecursosHumanos">Num Recursos Humanos</label>
+            <input type="number" class="form-control" name="numRecursosHumanos" id="field_numRecursosHumanos"
+                [(ngModel)]="entidadeGestora.numRecursosHumanos" required/>
+            <div [hidden]="!(editForm.controls.numRecursosHumanos?.dirty && editForm.controls.numRecursosHumanos?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.numRecursosHumanos?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.numRecursosHumanos?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.entidadeGestora.numPopulacaoAreaAtendimento" for="field_numPopulacaoAreaAtendimento">Num Populacao Area Atendimento</label>
+            <input type="number" class="form-control" name="numPopulacaoAreaAtendimento" id="field_numPopulacaoAreaAtendimento"
+                [(ngModel)]="entidadeGestora.numPopulacaoAreaAtendimento" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.entidadeGestora.idMunicipioAtendido" for="field_idMunicipioAtendido">Id Municipio Atendido</label>
+            <select class="form-control" id="field_idMunicipioAtendido" name="idMunicipioAtendido" [(ngModel)]="entidadeGestora.idMunicipioAtendidoId"  required>
+                <option *ngIf="!editForm.value.idMunicipioAtendido" [ngValue]="null" selected></option>
+                <option [ngValue]="municipiosAtendidosOption.id" *ngFor="let municipiosAtendidosOption of municipiosatendidos; trackBy: trackMunicipiosAtendidosById">{{municipiosAtendidosOption.id}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.idMunicipioAtendido?.dirty && editForm.controls.idMunicipioAtendido?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.idMunicipioAtendido?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

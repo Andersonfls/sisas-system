@@ -1,0 +1,29 @@
+
+{
+    "sisasApp": {
+        "concepcao" : {
+            "home": {
+                "title": "Concepcaos",
+                "createLabel": "Criar novo Concepcao",
+                "createOrEditLabel": "Criar ou editar Concepcao"
+            },
+            "created": "Um novo Concepcao foi criado com o identificador {{ param }}",
+            "updated": "Um Concepcao foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Concepcao foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Concepcao {{ id }}?"
+            },
+            "detail": {
+                "title": "Concepcao"
+            },
+            "idConcepcao": "Id Concepcao",
+            "tipoConcurso": "Tipo Concurso",
+            "dtLancamento": "Dt Lancamento",
+            "dtUltimaAlteracao": "Dt Ultima Alteracao",
+            "dtElaboracaoCon": "Dt Elaboracao Con",
+            "dtAprovacaoCon": "Dt Aprovacao Con",
+            "idProgramasProjectos": "Id Programas Projectos",
+            "idSistemaAgua": "Id Sistema Agua"
+        }
+    }
+}

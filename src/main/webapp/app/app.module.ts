@@ -9,12 +9,12 @@ import { AuthInterceptor } from './blocks/interceptor/auth.interceptor';
 import { AuthExpiredInterceptor } from './blocks/interceptor/auth-expired.interceptor';
 import { ErrorHandlerInterceptor } from './blocks/interceptor/errorhandler.interceptor';
 import { NotificationInterceptor } from './blocks/interceptor/notification.interceptor';
-import { PtolomeuSharedModule, UserRouteAccessService } from './shared';
-import { PtolomeuAppRoutingModule} from './app-routing.module';
-import { PtolomeuHomeModule } from './home/home.module';
-import { PtolomeuAdminModule } from './admin/admin.module';
-import { PtolomeuAccountModule } from './account/account.module';
-import { PtolomeuEntityModule } from './entities/entity.module';
+import { SisasSharedModule, UserRouteAccessService } from './shared';
+import { SisasAppRoutingModule} from './app-routing.module';
+import { SisasHomeModule } from './home/home.module';
+import { SisasAdminModule } from './admin/admin.module';
+import { SisasAccountModule } from './account/account.module';
+import { SisasEntityModule } from './entities/entity.module';
 import { PaginationConfig } from './blocks/config/uib-pagination.config';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import {
@@ -31,13 +31,13 @@ import {
 @NgModule({
     imports: [
         BrowserModule,
-        PtolomeuAppRoutingModule,
+        SisasAppRoutingModule,
         Ng2Webstorage.forRoot({ prefix: 'jhi', separator: '-'}),
-        PtolomeuSharedModule,
-        PtolomeuHomeModule,
-        PtolomeuAdminModule,
-        PtolomeuAccountModule,
-        PtolomeuEntityModule
+        SisasSharedModule,
+        SisasHomeModule,
+        SisasAdminModule,
+        SisasAccountModule,
+        SisasEntityModule
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [
@@ -89,4 +89,4 @@ import {
     ],
     bootstrap: [ JhiMainComponent ]
 })
-export class PtolomeuAppModule {}
+export class SisasAppModule {}

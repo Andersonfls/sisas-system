@@ -1,0 +1,48 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "idProvincia",
+            "otherEntityName": "provincia",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "comuna",
+            "otherEntityName": "comuna",
+            "otherEntityRelationshipName": "idMunicipio"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "municipiosAtendidos",
+            "otherEntityName": "municipiosAtendidos",
+            "otherEntityRelationshipName": "idMunicipio"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "idMunicipio",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nmMunicipio",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 30
+        }
+    ],
+    "changelogDate": "20190705195828",
+    "entityTableName": "municipio",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true
+}

@@ -1,0 +1,27 @@
+
+{
+    "sisasApp": {
+        "noticias" : {
+            "home": {
+                "title": "Noticias",
+                "createLabel": "Criar novo Noticias",
+                "createOrEditLabel": "Criar ou editar Noticias"
+            },
+            "created": "Um novo Noticias foi criado com o identificador {{ param }}",
+            "updated": "Um Noticias foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Noticias foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Noticias {{ id }}?"
+            },
+            "detail": {
+                "title": "Noticias"
+            },
+            "idNoticias": "Id Noticias",
+            "tituloNoticias": "Titulo Noticias",
+            "textoNoticias": "Texto Noticias",
+            "resumoTextoNoticias": "Resumo Texto Noticias",
+            "idSituacao": "Id Situacao",
+            "inicio": "Inicio"
+        }
+    }
+}

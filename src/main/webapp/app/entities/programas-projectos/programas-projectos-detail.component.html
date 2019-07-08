@@ -1,0 +1,64 @@
+
+<div *ngIf="programasProjectos">
+    <h2><span jhiTranslate="sisasApp.programasProjectos.detail.title">Programas Projectos</span> {{programasProjectos.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="sisasApp.programasProjectos.idProgramasProjectos">Id Programas Projectos</span></dt>
+        <dd>
+            <span>{{programasProjectos.idProgramasProjectos}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.programasProjectos.dtLancamento">Dt Lancamento</span></dt>
+        <dd>
+            <span>{{programasProjectos.dtLancamento | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.programasProjectos.dtUltimaAlteracao">Dt Ultima Alteracao</span></dt>
+        <dd>
+            <span>{{programasProjectos.dtUltimaAlteracao | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.programasProjectos.idUsuario">Id Usuario</span></dt>
+        <dd>
+            <span>{{programasProjectos.idUsuario}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.programasProjectos.nmDesignacaoProjeto">Nm Designacao Projeto</span></dt>
+        <dd>
+            <span>{{programasProjectos.nmDesignacaoProjeto}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.programasProjectos.nmDescricaoProjeto">Nm Descricao Projeto</span></dt>
+        <dd>
+            <span>{{programasProjectos.nmDescricaoProjeto}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.programasProjectos.idSaaAssociado">Id Saa Associado</span></dt>
+        <dd>
+            <span>{{programasProjectos.idSaaAssociado}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.programasProjectos.tipoFinanciamento">Tipo Financiamento</span></dt>
+        <dd>
+            <span>{{programasProjectos.tipoFinanciamento}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.programasProjectos.especialidade">Especialidade</span></dt>
+        <dd>
+            <span>{{programasProjectos.especialidade}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.programasProjectos.idComuna">Id Comuna</span></dt>
+        <dd>
+            <div *ngIf="programasProjectos.idComunaId">
+                <a [routerLink]="['/comuna', programasProjectos.idComunaId]">{{programasProjectos.idComunaId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'programas-projectos/'+ programasProjectos.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

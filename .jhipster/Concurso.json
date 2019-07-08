@@ -1,0 +1,73 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "idProgramasProjectos",
+            "otherEntityName": "programasProjectos",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "idSistemaAgua",
+            "otherEntityName": "sistemaAgua",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "idConcurso",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "tipoConcurso",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 150
+        },
+        {
+            "fieldName": "dtLancamento",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dtUltimaAlteracao",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dtEntregaProposta",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dtAberturaProposta",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dtConclusaoAvaliacaoRelPrel",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dtNegociacao",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dtAprovRelAvalFinal",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20190705195816",
+    "entityTableName": "concurso",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true
+}

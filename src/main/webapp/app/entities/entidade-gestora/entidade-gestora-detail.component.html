@@ -1,0 +1,68 @@
+
+<div *ngIf="entidadeGestora">
+    <h2><span jhiTranslate="sisasApp.entidadeGestora.detail.title">Entidade Gestora</span> {{entidadeGestora.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="sisasApp.entidadeGestora.idEntidadeGestora">Id Entidade Gestora</span></dt>
+        <dd>
+            <span>{{entidadeGestora.idEntidadeGestora}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.entidadeGestora.nmEntidadeGestora">Nm Entidade Gestora</span></dt>
+        <dd>
+            <span>{{entidadeGestora.nmEntidadeGestora}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.entidadeGestora.tpFormaJuridica">Tp Forma Juridica</span></dt>
+        <dd>
+            <span>{{entidadeGestora.tpFormaJuridica}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.entidadeGestora.dtConstituicao">Dt Constituicao</span></dt>
+        <dd>
+            <span>{{entidadeGestora.dtConstituicao | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.entidadeGestora.endereco">Endereco</span></dt>
+        <dd>
+            <span>{{entidadeGestora.endereco}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.entidadeGestora.email">Email</span></dt>
+        <dd>
+            <span>{{entidadeGestora.email}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.entidadeGestora.contactos">Contactos</span></dt>
+        <dd>
+            <span>{{entidadeGestora.contactos}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.entidadeGestora.tpModeloGestao">Tp Modelo Gestao</span></dt>
+        <dd>
+            <span>{{entidadeGestora.tpModeloGestao}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.entidadeGestora.numRecursosHumanos">Num Recursos Humanos</span></dt>
+        <dd>
+            <span>{{entidadeGestora.numRecursosHumanos}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.entidadeGestora.numPopulacaoAreaAtendimento">Num Populacao Area Atendimento</span></dt>
+        <dd>
+            <span>{{entidadeGestora.numPopulacaoAreaAtendimento}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.entidadeGestora.idMunicipioAtendido">Id Municipio Atendido</span></dt>
+        <dd>
+            <div *ngIf="entidadeGestora.idMunicipioAtendidoId">
+                <a [routerLink]="['/municipios-atendidos', entidadeGestora.idMunicipioAtendidoId]">{{entidadeGestora.idMunicipioAtendidoId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'entidade-gestora/'+ entidadeGestora.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

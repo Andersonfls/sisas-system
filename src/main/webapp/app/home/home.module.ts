@@ -1,13 +1,13 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { PtolomeuSharedModule } from '../shared';
+import { SisasSharedModule } from '../shared';
 import { HOME_ROUTE, HomeComponent } from './';
 import { LogsService } from '../admin/logs/logs.service';
 import { StateStorageService} from '../shared/auth/state-storage.service';
 
 @NgModule({
     imports: [
-        PtolomeuSharedModule,
+        SisasSharedModule,
         RouterModule.forChild([ HOME_ROUTE ])
     ],
     declarations: [
@@ -21,4 +21,4 @@ import { StateStorageService} from '../shared/auth/state-storage.service';
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class PtolomeuHomeModule {}
+export class SisasHomeModule {}

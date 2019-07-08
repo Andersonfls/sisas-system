@@ -1,0 +1,90 @@
+<div>
+    <h2>
+        <span jhiTranslate="sisasApp.entidadeGestora.home.title">Entidade Gestoras</span>
+        <button class="btn btn-primary float-right jh-create-entity create-entidade-gestora" [routerLink]="['/', { outlets: { popup: ['entidade-gestora-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="sisasApp.entidadeGestora.home.createLabel">
+            Create new Entidade Gestora
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="entidadeGestoras">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idEntidadeGestora"><span jhiTranslate="sisasApp.entidadeGestora.idEntidadeGestora">Id Entidade Gestora</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="nmEntidadeGestora"><span jhiTranslate="sisasApp.entidadeGestora.nmEntidadeGestora">Nm Entidade Gestora</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="tpFormaJuridica"><span jhiTranslate="sisasApp.entidadeGestora.tpFormaJuridica">Tp Forma Juridica</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dtConstituicao"><span jhiTranslate="sisasApp.entidadeGestora.dtConstituicao">Dt Constituicao</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="endereco"><span jhiTranslate="sisasApp.entidadeGestora.endereco">Endereco</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="email"><span jhiTranslate="sisasApp.entidadeGestora.email">Email</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="contactos"><span jhiTranslate="sisasApp.entidadeGestora.contactos">Contactos</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="tpModeloGestao"><span jhiTranslate="sisasApp.entidadeGestora.tpModeloGestao">Tp Modelo Gestao</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="numRecursosHumanos"><span jhiTranslate="sisasApp.entidadeGestora.numRecursosHumanos">Num Recursos Humanos</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="numPopulacaoAreaAtendimento"><span jhiTranslate="sisasApp.entidadeGestora.numPopulacaoAreaAtendimento">Num Populacao Area Atendimento</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idMunicipioAtendidoId"><span jhiTranslate="sisasApp.entidadeGestora.idMunicipioAtendido">Id Municipio Atendido</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let entidadeGestora of entidadeGestoras ;trackBy: trackId">
+                <td><a [routerLink]="['../entidade-gestora', entidadeGestora.id ]">{{entidadeGestora.id}}</a></td>
+                <td>{{entidadeGestora.idEntidadeGestora}}</td>
+                <td>{{entidadeGestora.nmEntidadeGestora}}</td>
+                <td>{{entidadeGestora.tpFormaJuridica}}</td>
+                <td>{{entidadeGestora.dtConstituicao | date:'mediumDate'}}</td>
+                <td>{{entidadeGestora.endereco}}</td>
+                <td>{{entidadeGestora.email}}</td>
+                <td>{{entidadeGestora.contactos}}</td>
+                <td>{{entidadeGestora.tpModeloGestao}}</td>
+                <td>{{entidadeGestora.numRecursosHumanos}}</td>
+                <td>{{entidadeGestora.numPopulacaoAreaAtendimento}}</td>
+                <td>
+                    <div *ngIf="entidadeGestora.idMunicipioAtendidoId">
+                        <a [routerLink]="['../municipios-atendidos', entidadeGestora.idMunicipioAtendidoId  ]" >{{entidadeGestora.idMunicipioAtendidoId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../entidade-gestora', entidadeGestora.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'entidade-gestora/'+ entidadeGestora.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'entidade-gestora/'+ entidadeGestora.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="entidadeGestoras && entidadeGestoras.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { PtolomeuSharedModule } from '../../shared/shared.module';
+import { SisasSharedModule } from '../../shared/shared.module';
 import {
     AuthorityService,
     AuthorityPopupService,
@@ -22,7 +22,7 @@ const ENTITY_STATES = [
 
 @NgModule({
     imports: [
-        PtolomeuSharedModule,
+        SisasSharedModule,
         RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [
@@ -47,4 +47,4 @@ const ENTITY_STATES = [
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class PtolomeuAuthorityModule {}
+export class SisasAuthorityModule {}

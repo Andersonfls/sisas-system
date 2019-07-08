@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Adjudicacao.
+    -->
+    <changeSet id="20190705195813-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="adjudicacao_id_programas_id"
+                                 baseTableName="adjudicacao"
+                                 constraintName="adjudicacao_id_programas_id"
+                                 referencedColumnNames="id_programas_projectos"
+                                 referencedTableName="programas_projectos"/>
+
+        <addForeignKeyConstraint baseColumnNames="id_sistema_agua_id"
+                                 baseTableName="adjudicacao"
+                                 constraintName="adjudicacao_id_sistema_ag_id"
+                                 referencedColumnNames="id_programas_projectos"
+                                 referencedTableName="sistema_agua"/>
+
+    </changeSet>
+</databaseChangeLog>

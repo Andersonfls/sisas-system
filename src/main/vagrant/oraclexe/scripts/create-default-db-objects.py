@@ -27,9 +27,9 @@ if semconexao:
   sys.exit(1)
 
 curs = con.cursor()
-curs.execute("CREATE USER PTOLOMEU IDENTIFIED BY PTOLOMEU")
-curs.execute("grant connect to PTOLOMEU")
-curs.execute("grant all privileges to PTOLOMEU")
+curs.execute("CREATE USER sisas IDENTIFIED BY sisas")
+curs.execute("grant connect to sisas")
+curs.execute("grant all privileges to sisas")
 curs.close()
 con.close()
 

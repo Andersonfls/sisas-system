@@ -1,6 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { PtolomeuSharedModule } from '../../shared';
+import { SisasSharedModule } from '../../shared';
 import { DashboardResolvePagingParams, dashboardRoute } from './dashboard.route';
 import { DashboardComponent } from './dashboard.component';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
@@ -11,7 +11,7 @@ const ENTITY_STATES = [
 
 @NgModule({
     imports: [
-        PtolomeuSharedModule,
+        SisasSharedModule,
         ChartsModule,
         RouterModule.forChild(ENTITY_STATES)
     ],
@@ -26,4 +26,4 @@ const ENTITY_STATES = [
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class PtolomeuDashboardModule {}
+export class SisasDashboardModule {}

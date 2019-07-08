@@ -1,0 +1,24 @@
+
+{
+    "sisasApp": {
+        "municipiosAtendidos" : {
+            "home": {
+                "title": "Municipios Atendidos",
+                "createLabel": "Criar novo Municipios Atendidos",
+                "createOrEditLabel": "Criar ou editar Municipios Atendidos"
+            },
+            "created": "Um novo Municipios Atendidos foi criado com o identificador {{ param }}",
+            "updated": "Um Municipios Atendidos foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Municipios Atendidos foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Municipios Atendidos {{ id }}?"
+            },
+            "detail": {
+                "title": "Municipios Atendidos"
+            },
+            "idMunicipioAtendido": "Id Municipio Atendido",
+            "idMunicipio": "Id Municipio",
+            "entidadeGestora": "Entidade Gestora"
+        }
+    }
+}

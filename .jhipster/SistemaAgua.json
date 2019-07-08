@@ -1,0 +1,397 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "idSituacao",
+            "otherEntityName": "situacao",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "idComuna",
+            "otherEntityName": "comuna",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "adjudicacao",
+            "otherEntityName": "adjudicacao",
+            "otherEntityRelationshipName": "idSistemaAgua"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "concepcao",
+            "otherEntityName": "concepcao",
+            "otherEntityRelationshipName": "idSistemaAgua"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "concurso",
+            "otherEntityName": "concurso",
+            "otherEntityRelationshipName": "idSistemaAgua"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "contrato",
+            "otherEntityName": "contrato",
+            "otherEntityRelationshipName": "idSistemaAgua"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "empreitada",
+            "otherEntityName": "empreitada",
+            "otherEntityRelationshipName": "idSistemaAgua"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "execucao",
+            "otherEntityName": "execucao",
+            "otherEntityRelationshipName": "idSistemaAgua"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "indicadorProducao",
+            "otherEntityName": "indicadorProducao",
+            "otherEntityRelationshipName": "idSistemaAgua"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "sistemaAguaLog",
+            "otherEntityName": "sistemaAguaLog",
+            "otherEntityRelationshipName": "idSistemaAgua"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "idSistemaAgua",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "idUsuario",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nmInqueridor",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 150
+        },
+        {
+            "fieldName": "dtLancamento",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dtUltimaAlteracao",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "nmLocalidade",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 150
+        },
+        {
+            "fieldName": "qtdPopulacaoActual",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "qtdCasasLocalidade",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "nmTpComunaAldeia",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 20
+        },
+        {
+            "fieldName": "nmTpArea",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 11
+        },
+        {
+            "fieldName": "possuiSistemaAgua",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "nmSistemaAgua",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 150
+        },
+        {
+            "fieldName": "nmFonteAgua",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 150
+        },
+        {
+            "fieldName": "latitude",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "longitude",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "altitude",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "nmTpFonte",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 20
+        },
+        {
+            "fieldName": "nmFonteAguaUtilizada",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 20
+        },
+        {
+            "fieldName": "nmTipoBomba",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 11
+        },
+        {
+            "fieldName": "qtdCasasAguaLigada",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "qtdChafarisesFuncionando",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "qtdContadoresLigados",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "qtdBebedouros",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "qtdHabitantesAcessoServicoAgua",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "anoConstrucaoSistema",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "nmTpAvariaSistema",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 50
+        },
+        {
+            "fieldName": "causaAvariaSistema",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 100
+        },
+        {
+            "fieldName": "statusResolucao",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 100
+        },
+        {
+            "fieldName": "tempoServicoDisponivel",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 100
+        },
+        {
+            "fieldName": "qtdDiametroCondutaAdutoraAguaBruta",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "qtdComprimentoCondutaAdutoraAguaBruta",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "qtdDiametroCondutaAdutoraAguaTratada",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "qtdComprimentoCondutaAdutoraAguaTratada",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "descMaterialUtilizadoCondutas",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 150
+        },
+        {
+            "fieldName": "qtdReservatoriosApoiados",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "qtdCapacidadeReservatoriosApoiados",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "qtdReservatoriosElevados",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "qtdCapacidadeReservatoriosElevados",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "alturaReservatoriosElevados",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "nmTpTratamentoAgua",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 50
+        },
+        {
+            "fieldName": "nmTpTratamentoPadraoUtilizado",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 50
+        },
+        {
+            "fieldName": "nmTpTratamentoBasicoUtilizado",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 50
+        },
+        {
+            "fieldName": "existeAvariaSistemaTratamento",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 50
+        },
+        {
+            "fieldName": "existeMotivoAusenciaTratamento",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 50
+        },
+        {
+            "fieldName": "nmEquipamentosComAvaria",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 50
+        },
+        {
+            "fieldName": "caudalDoSistema",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "qtdConsumoPercaptaLitrosHomemDia",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "qtdDotacaoPercapta",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "qtdDiariaHorasServicoSistema",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "esquema",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 50
+        },
+        {
+            "fieldName": "nmModeloBombaManualUtilizada",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 50
+        },
+        {
+            "fieldName": "nmTpBombaEnergia",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 50
+        }
+    ],
+    "changelogDate": "20190705195839",
+    "entityTableName": "sistema_agua",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true
+}

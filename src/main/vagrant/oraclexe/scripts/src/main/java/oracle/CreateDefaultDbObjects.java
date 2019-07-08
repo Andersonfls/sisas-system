@@ -27,9 +27,9 @@ public class CreateDefaultDbObjects {
             try {
                 connection = DriverManager.getConnection(jdbc_url,"system","oracle");
                 Statement statement = connection.createStatement();
-                statement.execute("CREATE USER PTOLOMEU IDENTIFIED BY PTOLOMEU");
-                statement.execute("grant connect to PTOLOMEU");
-                statement.execute("grant all privileges to PTOLOMEU");
+                statement.execute("CREATE USER sisas IDENTIFIED BY sisas");
+                statement.execute("grant connect to sisas");
+                statement.execute("grant all privileges to sisas");
                 System.out.println("Objetos de BD foram criados com sucesso!");
                 statement.close();
                 connection.close();

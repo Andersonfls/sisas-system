@@ -1,0 +1,42 @@
+
+<div *ngIf="configuracoesLog">
+    <h2><span jhiTranslate="sisasApp.configuracoesLog.detail.title">Configuracoes Log</span> {{configuracoesLog.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="sisasApp.configuracoesLog.idConfiguracoesLog">Id Configuracoes Log</span></dt>
+        <dd>
+            <span>{{configuracoesLog.idConfiguracoesLog}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.configuracoesLog.acao">Acao</span></dt>
+        <dd>
+            <span>{{configuracoesLog.acao}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.configuracoesLog.idUsuario">Id Usuario</span></dt>
+        <dd>
+            <span>{{configuracoesLog.idUsuario}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.configuracoesLog.log">Log</span></dt>
+        <dd>
+            <span>{{configuracoesLog.log}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.configuracoesLog.dtLog">Dt Log</span></dt>
+        <dd>
+            <span>{{configuracoesLog.dtLog | date:'mediumDate'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'configuracoes-log/'+ configuracoesLog.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

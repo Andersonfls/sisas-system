@@ -1,0 +1,52 @@
+
+<div *ngIf="contactos">
+    <h2><span jhiTranslate="sisasApp.contactos.detail.title">Contactos</span> {{contactos.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="sisasApp.contactos.idContactos">Id Contactos</span></dt>
+        <dd>
+            <span>{{contactos.idContactos}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.contactos.nmContactos">Nm Contactos</span></dt>
+        <dd>
+            <span>{{contactos.nmContactos}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.contactos.textoContactos">Texto Contactos</span></dt>
+        <dd>
+            <span>{{contactos.textoContactos}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.contactos.resumoTextoContactos">Resumo Texto Contactos</span></dt>
+        <dd>
+            <span>{{contactos.resumoTextoContactos}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.contactos.dtLancamento">Dt Lancamento</span></dt>
+        <dd>
+            <span>{{contactos.dtLancamento | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.contactos.dtUltimaAlteracao">Dt Ultima Alteracao</span></dt>
+        <dd>
+            <span>{{contactos.dtUltimaAlteracao | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.contactos.idSituacao">Id Situacao</span></dt>
+        <dd>
+            <div *ngIf="contactos.idSituacaoId">
+                <a [routerLink]="['/situacao', contactos.idSituacaoId]">{{contactos.idSituacaoId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'contactos/'+ contactos.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

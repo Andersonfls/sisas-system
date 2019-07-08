@@ -1,0 +1,11 @@
+webpackHotUpdate(2,{
+
+/***/ "./src/main/webapp/app/entities/sistema-agua-log/sistema-agua-log.model.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nvar SistemaAguaLog = /** @class */ (function () {\r\n    function SistemaAguaLog(id, acao, idUsuario, log, dtLog, idSistemaAguaId) {\r\n        this.id = id;\r\n        this.acao = acao;\r\n        this.idUsuario = idUsuario;\r\n        this.log = log;\r\n        this.dtLog = dtLog;\r\n        this.idSistemaAguaId = idSistemaAguaId;\r\n    }\r\n    return SistemaAguaLog;\r\n}());\r\nexports.SistemaAguaLog = SistemaAguaLog;\r\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvbWFpbi93ZWJhcHAvYXBwL2VudGl0aWVzL3Npc3RlbWEtYWd1YS1sb2cvc2lzdGVtYS1hZ3VhLWxvZy5tb2RlbC50cz9hMWExIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBRUE7SUFDSSx3QkFDVyxFQUFXLEVBQ1gsSUFBYSxFQUNiLFNBQWtCLEVBQ2xCLEdBQVksRUFDWixLQUFXLEVBQ1gsZUFBd0I7UUFMeEIsT0FBRSxHQUFGLEVBQUUsQ0FBUztRQUNYLFNBQUksR0FBSixJQUFJLENBQVM7UUFDYixjQUFTLEdBQVQsU0FBUyxDQUFTO1FBQ2xCLFFBQUcsR0FBSCxHQUFHLENBQVM7UUFDWixVQUFLLEdBQUwsS0FBSyxDQUFNO1FBQ1gsb0JBQWUsR0FBZixlQUFlLENBQVM7SUFFbkMsQ0FBQztJQUNMLHFCQUFDO0FBQUQsQ0FBQztBQVZZLHdDQUFjIiwiZmlsZSI6Ii4vc3JjL21haW4vd2ViYXBwL2FwcC9lbnRpdGllcy9zaXN0ZW1hLWFndWEtbG9nL3Npc3RlbWEtYWd1YS1sb2cubW9kZWwudHMuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBCYXNlRW50aXR5IH0gZnJvbSAnLi8uLi8uLi9zaGFyZWQnO1xuXG5leHBvcnQgY2xhc3MgU2lzdGVtYUFndWFMb2cgaW1wbGVtZW50cyBCYXNlRW50aXR5IHtcbiAgICBjb25zdHJ1Y3RvcihcbiAgICAgICAgcHVibGljIGlkPzogbnVtYmVyLFxuICAgICAgICBwdWJsaWMgYWNhbz86IHN0cmluZyxcbiAgICAgICAgcHVibGljIGlkVXN1YXJpbz86IG51bWJlcixcbiAgICAgICAgcHVibGljIGxvZz86IHN0cmluZyxcbiAgICAgICAgcHVibGljIGR0TG9nPzogYW55LFxuICAgICAgICBwdWJsaWMgaWRTaXN0ZW1hQWd1YUlkPzogbnVtYmVyLFxuICAgICkge1xuICAgIH1cbn1cblxuXG5cbi8vIFdFQlBBQ0sgRk9PVEVSIC8vXG4vLyAuL25vZGVfbW9kdWxlcy90c2xpbnQtbG9hZGVyIS4vc3JjL21haW4vd2ViYXBwL2FwcC9lbnRpdGllcy9zaXN0ZW1hLWFndWEtbG9nL3Npc3RlbWEtYWd1YS1sb2cubW9kZWwudHMiXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./src/main/webapp/app/entities/sistema-agua-log/sistema-agua-log.model.ts\n");
+
+/***/ })
+
+})

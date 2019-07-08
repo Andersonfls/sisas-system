@@ -1,0 +1,88 @@
+<div>
+    <h2>
+        <span jhiTranslate="sisasApp.concepcao.home.title">Concepcaos</span>
+        <button class="btn btn-primary float-right jh-create-entity create-concepcao" [routerLink]="['/', { outlets: { popup: ['concepcao-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="sisasApp.concepcao.home.createLabel">
+            Create new Concepcao
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="concepcaos">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idConcepcao"><span jhiTranslate="sisasApp.concepcao.idConcepcao">Id Concepcao</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="tipoConcurso"><span jhiTranslate="sisasApp.concepcao.tipoConcurso">Tipo Concurso</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dtLancamento"><span jhiTranslate="sisasApp.concepcao.dtLancamento">Dt Lancamento</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dtUltimaAlteracao"><span jhiTranslate="sisasApp.concepcao.dtUltimaAlteracao">Dt Ultima Alteracao</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dtElaboracaoCon"><span jhiTranslate="sisasApp.concepcao.dtElaboracaoCon">Dt Elaboracao Con</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dtAprovacaoCon"><span jhiTranslate="sisasApp.concepcao.dtAprovacaoCon">Dt Aprovacao Con</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idProgramasProjectosId"><span jhiTranslate="sisasApp.concepcao.idProgramasProjectos">Id Programas Projectos</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idSistemaAguaId"><span jhiTranslate="sisasApp.concepcao.idSistemaAgua">Id Sistema Agua</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let concepcao of concepcaos ;trackBy: trackId">
+                <td><a [routerLink]="['../concepcao', concepcao.id ]">{{concepcao.id}}</a></td>
+                <td>{{concepcao.idConcepcao}}</td>
+                <td>{{concepcao.tipoConcurso}}</td>
+                <td>{{concepcao.dtLancamento | date:'mediumDate'}}</td>
+                <td>{{concepcao.dtUltimaAlteracao | date:'mediumDate'}}</td>
+                <td>{{concepcao.dtElaboracaoCon | date:'mediumDate'}}</td>
+                <td>{{concepcao.dtAprovacaoCon | date:'mediumDate'}}</td>
+                <td>
+                    <div *ngIf="concepcao.idProgramasProjectosId">
+                        <a [routerLink]="['../programas-projectos', concepcao.idProgramasProjectosId  ]" >{{concepcao.idProgramasProjectosId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="concepcao.idSistemaAguaId">
+                        <a [routerLink]="['../sistema-agua', concepcao.idSistemaAguaId  ]" >{{concepcao.idSistemaAguaId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../concepcao', concepcao.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'concepcao/'+ concepcao.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'concepcao/'+ concepcao.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="concepcaos && concepcaos.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

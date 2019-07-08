@@ -1,0 +1,74 @@
+<div>
+    <h2>
+        <span jhiTranslate="sisasApp.publicacaoLog.home.title">Publicacao Logs</span>
+        <button class="btn btn-primary float-right jh-create-entity create-publicacao-log" [routerLink]="['/', { outlets: { popup: ['publicacao-log-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="sisasApp.publicacaoLog.home.createLabel">
+            Create new Publicacao Log
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="publicacaoLogs">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idPublicacaoLog"><span jhiTranslate="sisasApp.publicacaoLog.idPublicacaoLog">Id Publicacao Log</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="acao"><span jhiTranslate="sisasApp.publicacaoLog.acao">Acao</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idUsuario"><span jhiTranslate="sisasApp.publicacaoLog.idUsuario">Id Usuario</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="log"><span jhiTranslate="sisasApp.publicacaoLog.log">Log</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dtLog"><span jhiTranslate="sisasApp.publicacaoLog.dtLog">Dt Log</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let publicacaoLog of publicacaoLogs ;trackBy: trackId">
+                <td><a [routerLink]="['../publicacao-log', publicacaoLog.id ]">{{publicacaoLog.id}}</a></td>
+                <td>{{publicacaoLog.idPublicacaoLog}}</td>
+                <td>{{publicacaoLog.acao}}</td>
+                <td>{{publicacaoLog.idUsuario}}</td>
+                <td>{{publicacaoLog.log}}</td>
+                <td>{{publicacaoLog.dtLog | date:'mediumDate'}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../publicacao-log', publicacaoLog.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'publicacao-log/'+ publicacaoLog.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'publicacao-log/'+ publicacaoLog.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="publicacaoLogs && publicacaoLogs.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

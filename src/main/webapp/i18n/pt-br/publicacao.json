@@ -1,0 +1,27 @@
+
+{
+    "sisasApp": {
+        "publicacao" : {
+            "home": {
+                "title": "Publicacaos",
+                "createLabel": "Criar novo Publicacao",
+                "createOrEditLabel": "Criar ou editar Publicacao"
+            },
+            "created": "Um novo Publicacao foi criado com o identificador {{ param }}",
+            "updated": "Um Publicacao foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Publicacao foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Publicacao {{ id }}?"
+            },
+            "detail": {
+                "title": "Publicacao"
+            },
+            "idPublicacao": "Id Publicacao",
+            "tituloPublicacao": "Titulo Publicacao",
+            "textoPublicacao": "Texto Publicacao",
+            "resumoTextoPublicacao": "Resumo Texto Publicacao",
+            "idSituacao": "Id Situacao",
+            "inicio": "Inicio"
+        }
+    }
+}

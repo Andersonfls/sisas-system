@@ -1,0 +1,44 @@
+
+<div *ngIf="projectos">
+    <h2><span jhiTranslate="sisasApp.projectos.detail.title">Projectos</span> {{projectos.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="sisasApp.projectos.idProjectos">Id Projectos</span></dt>
+        <dd>
+            <span>{{projectos.idProjectos}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.projectos.nmProjectos">Nm Projectos</span></dt>
+        <dd>
+            <span>{{projectos.nmProjectos}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.projectos.textoProjectos">Texto Projectos</span></dt>
+        <dd>
+            <span>{{projectos.textoProjectos}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.projectos.resumoTextoProjectos">Resumo Texto Projectos</span></dt>
+        <dd>
+            <span>{{projectos.resumoTextoProjectos}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.projectos.idSituacao">Id Situacao</span></dt>
+        <dd>
+            <div *ngIf="projectos.idSituacaoId">
+                <a [routerLink]="['/situacao', projectos.idSituacaoId]">{{projectos.idSituacaoId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'projectos/'+ projectos.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

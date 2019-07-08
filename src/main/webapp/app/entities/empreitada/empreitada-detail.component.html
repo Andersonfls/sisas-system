@@ -1,0 +1,116 @@
+
+<div *ngIf="empreitada">
+    <h2><span jhiTranslate="sisasApp.empreitada.detail.title">Empreitada</span> {{empreitada.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="sisasApp.empreitada.idEmpreitada">Id Empreitada</span></dt>
+        <dd>
+            <span>{{empreitada.idEmpreitada}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.empreitada.tipoEmpreitada">Tipo Empreitada</span></dt>
+        <dd>
+            <span>{{empreitada.tipoEmpreitada}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.empreitada.dtLancamento">Dt Lancamento</span></dt>
+        <dd>
+            <span>{{empreitada.dtLancamento | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.empreitada.numCapacidadeCaptacao">Num Capacidade Captacao</span></dt>
+        <dd>
+            <span>{{empreitada.numCapacidadeCaptacao}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.empreitada.numCapacidadeCaptacaoEta">Num Capacidade Captacao Eta</span></dt>
+        <dd>
+            <span>{{empreitada.numCapacidadeCaptacaoEta}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.empreitada.numExtensaoCondAdutMat">Num Extensao Cond Adut Mat</span></dt>
+        <dd>
+            <span>{{empreitada.numExtensaoCondAdutMat}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.empreitada.numCaprmazenamento">Num Caprmazenamento</span></dt>
+        <dd>
+            <span>{{empreitada.numCaprmazenamento}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.empreitada.numExtensaoRedeMat">Num Extensao Rede Mat</span></dt>
+        <dd>
+            <span>{{empreitada.numExtensaoRedeMat}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.empreitada.numLigacoesDomiciliares">Num Ligacoes Domiciliares</span></dt>
+        <dd>
+            <span>{{empreitada.numLigacoesDomiciliares}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.empreitada.numLigacoesTorneiraQuintal">Num Ligacoes Torneira Quintal</span></dt>
+        <dd>
+            <span>{{empreitada.numLigacoesTorneiraQuintal}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.empreitada.numChafarisNovos">Num Chafaris Novos</span></dt>
+        <dd>
+            <span>{{empreitada.numChafarisNovos}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.empreitada.numChafarisReabilitar">Num Chafaris Reabilitar</span></dt>
+        <dd>
+            <span>{{empreitada.numChafarisReabilitar}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.empreitada.numCapacidadeTratamentoEta">Num Capacidade Tratamento Eta</span></dt>
+        <dd>
+            <span>{{empreitada.numCapacidadeTratamentoEta}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.empreitada.numExtensaoRedeMaterial">Num Extensao Rede Material</span></dt>
+        <dd>
+            <span>{{empreitada.numExtensaoRedeMaterial}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.empreitada.numExtensaoCondutasElelMat">Num Extensao Condutas Elel Mat</span></dt>
+        <dd>
+            <span>{{empreitada.numExtensaoCondutasElelMat}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.empreitada.numLigacoes">Num Ligacoes</span></dt>
+        <dd>
+            <span>{{empreitada.numLigacoes}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.empreitada.numCaixasVisitas">Num Caixas Visitas</span></dt>
+        <dd>
+            <span>{{empreitada.numCaixasVisitas}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.empreitada.numEstacoesElevatorias">Num Estacoes Elevatorias</span></dt>
+        <dd>
+            <span>{{empreitada.numEstacoesElevatorias}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.empreitada.numLatrinas">Num Latrinas</span></dt>
+        <dd>
+            <span>{{empreitada.numLatrinas}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.empreitada.idProgramasProjectos">Id Programas Projectos</span></dt>
+        <dd>
+            <div *ngIf="empreitada.idProgramasProjectosId">
+                <a [routerLink]="['/programas-projectos', empreitada.idProgramasProjectosId]">{{empreitada.idProgramasProjectosId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.empreitada.idSistemaAgua">Id Sistema Agua</span></dt>
+        <dd>
+            <div *ngIf="empreitada.idSistemaAguaId">
+                <a [routerLink]="['/sistema-agua', empreitada.idSistemaAguaId]">{{empreitada.idSistemaAguaId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.empreitada.idContrato">Id Contrato</span></dt>
+        <dd>
+            <div *ngIf="empreitada.idContratoId">
+                <a [routerLink]="['/contrato', empreitada.idContratoId]">{{empreitada.idContratoId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'empreitada/'+ empreitada.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

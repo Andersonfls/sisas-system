@@ -1,9 +1,9 @@
 version: '2'
 services:
-    ptolomeu-oracle:
+    sisas-oracle:
         image: sath89/oracle-12c:latest
         # volumes:
-        #     - ~/volumes/jhipster/Ptolomeu/oracle/data:/u01/app/oracle
+        #     - ~/volumes/jhipster/sisas/oracle/data:/u01/app/oracle
         environment:
             - DBCA_TOTAL_MEMORY=1024
             - WEB_CONSOLE=true

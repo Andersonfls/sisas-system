@@ -1,0 +1,112 @@
+<div>
+    <h2>
+        <span jhiTranslate="sisasApp.inicio.home.title">Inicios</span>
+        <button class="btn btn-primary float-right jh-create-entity create-inicio" [routerLink]="['/', { outlets: { popup: ['inicio-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="sisasApp.inicio.home.createLabel">
+            Create new Inicio
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="inicios">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idInicio"><span jhiTranslate="sisasApp.inicio.idInicio">Id Inicio</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="destaques"><span jhiTranslate="sisasApp.inicio.destaques">Destaques</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="ultimasNoticias"><span jhiTranslate="sisasApp.inicio.ultimasNoticias">Ultimas Noticias</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="publicacoes"><span jhiTranslate="sisasApp.inicio.publicacoes">Publicacoes</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="url"><span jhiTranslate="sisasApp.inicio.url">Url</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="alt"><span jhiTranslate="sisasApp.inicio.alt">Alt</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idSituacaoId"><span jhiTranslate="sisasApp.inicio.idSituacao">Id Situacao</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idSobreDnaId"><span jhiTranslate="sisasApp.inicio.idSobreDna">Id Sobre Dna</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idNoticiasId"><span jhiTranslate="sisasApp.inicio.idNoticias">Id Noticias</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idProjectosId"><span jhiTranslate="sisasApp.inicio.idProjectos">Id Projectos</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idPublicacaoId"><span jhiTranslate="sisasApp.inicio.idPublicacao">Id Publicacao</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idContactosId"><span jhiTranslate="sisasApp.inicio.idContactos">Id Contactos</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let inicio of inicios ;trackBy: trackId">
+                <td><a [routerLink]="['../inicio', inicio.id ]">{{inicio.id}}</a></td>
+                <td>{{inicio.idInicio}}</td>
+                <td>{{inicio.destaques}}</td>
+                <td>{{inicio.ultimasNoticias}}</td>
+                <td>{{inicio.publicacoes}}</td>
+                <td>{{inicio.url}}</td>
+                <td>{{inicio.alt}}</td>
+                <td>
+                    <div *ngIf="inicio.idSituacaoId">
+                        <a [routerLink]="['../situacao', inicio.idSituacaoId  ]" >{{inicio.idSituacaoId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="inicio.idSobreDnaId">
+                        <a [routerLink]="['../sobre-dna', inicio.idSobreDnaId  ]" >{{inicio.idSobreDnaId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="inicio.idNoticiasId">
+                        <a [routerLink]="['../noticias', inicio.idNoticiasId  ]" >{{inicio.idNoticiasId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="inicio.idProjectosId">
+                        <a [routerLink]="['../projectos', inicio.idProjectosId  ]" >{{inicio.idProjectosId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="inicio.idPublicacaoId">
+                        <a [routerLink]="['../publicacao', inicio.idPublicacaoId  ]" >{{inicio.idPublicacaoId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="inicio.idContactosId">
+                        <a [routerLink]="['../contactos', inicio.idContactosId  ]" >{{inicio.idContactosId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../inicio', inicio.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'inicio/'+ inicio.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'inicio/'+ inicio.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="inicios && inicios.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+
+{
+    "sisasApp": {
+        "publicacaoLog" : {
+            "home": {
+                "title": "Publicacao Logs",
+                "createLabel": "Criar novo Publicacao Log",
+                "createOrEditLabel": "Criar ou editar Publicacao Log"
+            },
+            "created": "Um novo Publicacao Log foi criado com o identificador {{ param }}",
+            "updated": "Um Publicacao Log foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Publicacao Log foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Publicacao Log {{ id }}?"
+            },
+            "detail": {
+                "title": "Publicacao Log"
+            },
+            "idPublicacaoLog": "Id Publicacao Log",
+            "acao": "Acao",
+            "idUsuario": "Id Usuario",
+            "log": "Log",
+            "dtLog": "Dt Log"
+        }
+    }
+}

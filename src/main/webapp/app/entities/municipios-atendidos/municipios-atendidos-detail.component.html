@@ -1,0 +1,32 @@
+
+<div *ngIf="municipiosAtendidos">
+    <h2><span jhiTranslate="sisasApp.municipiosAtendidos.detail.title">Municipios Atendidos</span> {{municipiosAtendidos.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="sisasApp.municipiosAtendidos.idMunicipioAtendido">Id Municipio Atendido</span></dt>
+        <dd>
+            <span>{{municipiosAtendidos.idMunicipioAtendido}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.municipiosAtendidos.idMunicipio">Id Municipio</span></dt>
+        <dd>
+            <div *ngIf="municipiosAtendidos.idMunicipioId">
+                <a [routerLink]="['/municipio', municipiosAtendidos.idMunicipioId]">{{municipiosAtendidos.idMunicipioId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'municipios-atendidos/'+ municipiosAtendidos.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,155 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myProgramasProjectosLabel" jhiTranslate="sisasApp.programasProjectos.home.createOrEditLabel">Create or edit a Programas Projectos</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!programasProjectos.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="programasProjectos.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.idProgramasProjectos" for="field_idProgramasProjectos">Id Programas Projectos</label>
+            <input type="number" class="form-control" name="idProgramasProjectos" id="field_idProgramasProjectos"
+                [(ngModel)]="programasProjectos.idProgramasProjectos" required/>
+            <div [hidden]="!(editForm.controls.idProgramasProjectos?.dirty && editForm.controls.idProgramasProjectos?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.idProgramasProjectos?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.idProgramasProjectos?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.dtLancamento" for="field_dtLancamento">Dt Lancamento</label>
+            <div class="input-group">
+                <input id="field_dtLancamento" type="text" class="form-control" name="dtLancamento" ngbDatepicker  #dtLancamentoDp="ngbDatepicker" [(ngModel)]="programasProjectos.dtLancamento"
+                required/>
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="dtLancamentoDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.dtLancamento?.dirty && editForm.controls.dtLancamento?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dtLancamento?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.dtUltimaAlteracao" for="field_dtUltimaAlteracao">Dt Ultima Alteracao</label>
+            <div class="input-group">
+                <input id="field_dtUltimaAlteracao" type="text" class="form-control" name="dtUltimaAlteracao" ngbDatepicker  #dtUltimaAlteracaoDp="ngbDatepicker" [(ngModel)]="programasProjectos.dtUltimaAlteracao"
+                />
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="dtUltimaAlteracaoDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.idUsuario" for="field_idUsuario">Id Usuario</label>
+            <input type="number" class="form-control" name="idUsuario" id="field_idUsuario"
+                [(ngModel)]="programasProjectos.idUsuario" required/>
+            <div [hidden]="!(editForm.controls.idUsuario?.dirty && editForm.controls.idUsuario?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.idUsuario?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.idUsuario?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.nmDesignacaoProjeto" for="field_nmDesignacaoProjeto">Nm Designacao Projeto</label>
+            <input type="text" class="form-control" name="nmDesignacaoProjeto" id="field_nmDesignacaoProjeto"
+                [(ngModel)]="programasProjectos.nmDesignacaoProjeto" required maxlength="250"/>
+            <div [hidden]="!(editForm.controls.nmDesignacaoProjeto?.dirty && editForm.controls.nmDesignacaoProjeto?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nmDesignacaoProjeto?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nmDesignacaoProjeto?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 250 }">
+                   This field cannot be longer than 250 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.nmDescricaoProjeto" for="field_nmDescricaoProjeto">Nm Descricao Projeto</label>
+            <input type="text" class="form-control" name="nmDescricaoProjeto" id="field_nmDescricaoProjeto"
+                [(ngModel)]="programasProjectos.nmDescricaoProjeto" required maxlength="250"/>
+            <div [hidden]="!(editForm.controls.nmDescricaoProjeto?.dirty && editForm.controls.nmDescricaoProjeto?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nmDescricaoProjeto?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nmDescricaoProjeto?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 250 }">
+                   This field cannot be longer than 250 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.idSaaAssociado" for="field_idSaaAssociado">Id Saa Associado</label>
+            <input type="number" class="form-control" name="idSaaAssociado" id="field_idSaaAssociado"
+                [(ngModel)]="programasProjectos.idSaaAssociado" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.tipoFinanciamento" for="field_tipoFinanciamento">Tipo Financiamento</label>
+            <input type="text" class="form-control" name="tipoFinanciamento" id="field_tipoFinanciamento"
+                [(ngModel)]="programasProjectos.tipoFinanciamento" required maxlength="150"/>
+            <div [hidden]="!(editForm.controls.tipoFinanciamento?.dirty && editForm.controls.tipoFinanciamento?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.tipoFinanciamento?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.tipoFinanciamento?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 150 }">
+                   This field cannot be longer than 150 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.especialidade" for="field_especialidade">Especialidade</label>
+            <input type="text" class="form-control" name="especialidade" id="field_especialidade"
+                [(ngModel)]="programasProjectos.especialidade" maxlength="100"/>
+            <div [hidden]="!(editForm.controls.especialidade?.dirty && editForm.controls.especialidade?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.especialidade?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
+                   This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.idComuna" for="field_idComuna">Id Comuna</label>
+            <select class="form-control" id="field_idComuna" name="idComuna" [(ngModel)]="programasProjectos.idComunaId"  required>
+                <option *ngIf="!editForm.value.idComuna" [ngValue]="null" selected></option>
+                <option [ngValue]="comunaOption.id" *ngFor="let comunaOption of comunas; trackBy: trackComunaById">{{comunaOption.id}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.idComuna?.dirty && editForm.controls.idComuna?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.idComuna?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

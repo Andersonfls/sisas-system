@@ -1,0 +1,32 @@
+
+<div *ngIf="provincia">
+    <h2><span jhiTranslate="sisasApp.provincia.detail.title">Provincia</span> {{provincia.nmProvincia}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Codigo Provincia</span></dt>
+        <dd>
+            <span>{{provincia.id}}</span>
+        </dd>
+    </dl>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="sisasApp.provincia.nmProvincia">Nm Provincia</span></dt>
+        <dd>
+            <span>{{provincia.nmProvincia}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'provincia/'+ provincia.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

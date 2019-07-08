@@ -1,0 +1,36 @@
+
+{
+    "sisasApp": {
+        "execucao" : {
+            "home": {
+                "title": "Execucaos",
+                "createLabel": "Criar novo Execucao",
+                "createOrEditLabel": "Criar ou editar Execucao"
+            },
+            "created": "Um novo Execucao foi criado com o identificador {{ param }}",
+            "updated": "Um Execucao foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Execucao foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Execucao {{ id }}?"
+            },
+            "detail": {
+                "title": "Execucao"
+            },
+            "idExecucao": "Id Execucao",
+            "tipoEmpreitada": "Tipo Empreitada",
+            "dtLancamento": "Dt Lancamento",
+            "dtPeridoReferencia": "Dt Perido Referencia",
+            "dtFimReferencia": "Dt Fim Referencia",
+            "valorFacturadoPeriodo": "Valor Facturado Periodo",
+            "dtFactura": "Dt Factura",
+            "numFactura": "Num Factura",
+            "txCambio": "Tx Cambio",
+            "constrangimento": "Constrangimento",
+            "valorPagoPeriodo": "Valor Pago Periodo",
+            "idSituacao": "Id Situacao",
+            "idProgramasProjectos": "Id Programas Projectos",
+            "idSistemaAgua": "Id Sistema Agua",
+            "idContrato": "Id Contrato"
+        }
+    }
+}

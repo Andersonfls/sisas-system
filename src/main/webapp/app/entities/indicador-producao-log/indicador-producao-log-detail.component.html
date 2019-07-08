@@ -1,0 +1,37 @@
+
+<div *ngIf="indicadorProducaoLog">
+    <h2><span jhiTranslate="sisasApp.indicadorProducaoLog.detail.title">Indicador Producao Log</span> {{indicadorProducaoLog.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="sisasApp.indicadorProducaoLog.acao">Acao</span></dt>
+        <dd>
+            <span>{{indicadorProducaoLog.acao}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducaoLog.idUsuario">Id Usuario</span></dt>
+        <dd>
+            <span>{{indicadorProducaoLog.idUsuario}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducaoLog.log">Log</span></dt>
+        <dd>
+            <span>{{indicadorProducaoLog.log}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducaoLog.dtLog">Dt Log</span></dt>
+        <dd>
+            <span>{{indicadorProducaoLog.dtLog | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.indicadorProducaoLog.idIndicadorProducao">Id Indicador Producao</span></dt>
+        <dd>
+            <div *ngIf="indicadorProducaoLog.idIndicadorProducaoId">
+                <a [routerLink]="['/indicador-producao', indicadorProducaoLog.idIndicadorProducaoId.id]">{{indicadorProducaoLog.idIndicadorProducaoId.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+</div>

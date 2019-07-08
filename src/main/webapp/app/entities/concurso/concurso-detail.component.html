@@ -1,0 +1,70 @@
+
+<div *ngIf="concurso">
+    <h2><span jhiTranslate="sisasApp.concurso.detail.title">Concurso</span> {{concurso.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="sisasApp.concurso.idConcurso">Id Concurso</span></dt>
+        <dd>
+            <span>{{concurso.idConcurso}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.concurso.tipoConcurso">Tipo Concurso</span></dt>
+        <dd>
+            <span>{{concurso.tipoConcurso}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.concurso.dtLancamento">Dt Lancamento</span></dt>
+        <dd>
+            <span>{{concurso.dtLancamento | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.concurso.dtUltimaAlteracao">Dt Ultima Alteracao</span></dt>
+        <dd>
+            <span>{{concurso.dtUltimaAlteracao | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.concurso.dtEntregaProposta">Dt Entrega Proposta</span></dt>
+        <dd>
+            <span>{{concurso.dtEntregaProposta | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.concurso.dtAberturaProposta">Dt Abertura Proposta</span></dt>
+        <dd>
+            <span>{{concurso.dtAberturaProposta | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.concurso.dtConclusaoAvaliacaoRelPrel">Dt Conclusao Avaliacao Rel Prel</span></dt>
+        <dd>
+            <span>{{concurso.dtConclusaoAvaliacaoRelPrel | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.concurso.dtNegociacao">Dt Negociacao</span></dt>
+        <dd>
+            <span>{{concurso.dtNegociacao | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.concurso.dtAprovRelAvalFinal">Dt Aprov Rel Aval Final</span></dt>
+        <dd>
+            <span>{{concurso.dtAprovRelAvalFinal | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.concurso.idProgramasProjectos">Id Programas Projectos</span></dt>
+        <dd>
+            <div *ngIf="concurso.idProgramasProjectosId">
+                <a [routerLink]="['/programas-projectos', concurso.idProgramasProjectosId]">{{concurso.idProgramasProjectosId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.concurso.idSistemaAgua">Id Sistema Agua</span></dt>
+        <dd>
+            <div *ngIf="concurso.idSistemaAguaId">
+                <a [routerLink]="['/sistema-agua', concurso.idSistemaAguaId]">{{concurso.idSistemaAguaId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'concurso/'+ concurso.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

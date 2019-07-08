@@ -1,0 +1,33 @@
+
+{
+    "sisasApp": {
+        "inicio" : {
+            "home": {
+                "title": "Inicios",
+                "createLabel": "Criar novo Inicio",
+                "createOrEditLabel": "Criar ou editar Inicio"
+            },
+            "created": "Um novo Inicio foi criado com o identificador {{ param }}",
+            "updated": "Um Inicio foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Inicio foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Inicio {{ id }}?"
+            },
+            "detail": {
+                "title": "Inicio"
+            },
+            "idInicio": "Id Inicio",
+            "destaques": "Destaques",
+            "ultimasNoticias": "Ultimas Noticias",
+            "publicacoes": "Publicacoes",
+            "url": "Url",
+            "alt": "Alt",
+            "idSituacao": "Id Situacao",
+            "idSobreDna": "Id Sobre Dna",
+            "idNoticias": "Id Noticias",
+            "idProjectos": "Id Projectos",
+            "idPublicacao": "Id Publicacao",
+            "idContactos": "Id Contactos"
+        }
+    }
+}

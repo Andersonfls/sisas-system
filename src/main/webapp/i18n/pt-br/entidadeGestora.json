@@ -1,0 +1,32 @@
+
+{
+    "sisasApp": {
+        "entidadeGestora" : {
+            "home": {
+                "title": "Entidade Gestoras",
+                "createLabel": "Criar novo Entidade Gestora",
+                "createOrEditLabel": "Criar ou editar Entidade Gestora"
+            },
+            "created": "Um novo Entidade Gestora foi criado com o identificador {{ param }}",
+            "updated": "Um Entidade Gestora foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Entidade Gestora foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Entidade Gestora {{ id }}?"
+            },
+            "detail": {
+                "title": "Entidade Gestora"
+            },
+            "idEntidadeGestora": "Id Entidade Gestora",
+            "nmEntidadeGestora": "Nm Entidade Gestora",
+            "tpFormaJuridica": "Tp Forma Juridica",
+            "dtConstituicao": "Dt Constituicao",
+            "endereco": "Endereco",
+            "email": "Email",
+            "contactos": "Contactos",
+            "tpModeloGestao": "Tp Modelo Gestao",
+            "numRecursosHumanos": "Num Recursos Humanos",
+            "numPopulacaoAreaAtendimento": "Num Populacao Area Atendimento",
+            "idMunicipioAtendido": "Id Municipio Atendido"
+        }
+    }
+}

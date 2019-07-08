@@ -1,0 +1,58 @@
+
+<div *ngIf="adjudicacao">
+    <h2><span jhiTranslate="sisasApp.adjudicacao.detail.title">Adjudicacao</span> {{adjudicacao.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="sisasApp.adjudicacao.idAdjudicacao">Id Adjudicacao</span></dt>
+        <dd>
+            <span>{{adjudicacao.idAdjudicacao}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.adjudicacao.tipoConcurso">Tipo Concurso</span></dt>
+        <dd>
+            <span>{{adjudicacao.tipoConcurso}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.adjudicacao.dtLancamento">Dt Lancamento</span></dt>
+        <dd>
+            <span>{{adjudicacao.dtLancamento | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.adjudicacao.dtComunicaoAdjudicacao">Dt Comunicao Adjudicacao</span></dt>
+        <dd>
+            <span>{{adjudicacao.dtComunicaoAdjudicacao | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.adjudicacao.dtPrestacaoGarantBoaExec">Dt Prestacao Garant Boa Exec</span></dt>
+        <dd>
+            <span>{{adjudicacao.dtPrestacaoGarantBoaExec | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.adjudicacao.dtSubmissaoMinutContrato">Dt Submissao Minut Contrato</span></dt>
+        <dd>
+            <span>{{adjudicacao.dtSubmissaoMinutContrato | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.adjudicacao.idProgramasProjectos">Id Programas Projectos</span></dt>
+        <dd>
+            <div *ngIf="adjudicacao.idProgramasProjectosId">
+                <a [routerLink]="['/programas-projectos', adjudicacao.idProgramasProjectosId]">{{adjudicacao.idProgramasProjectosId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.adjudicacao.idSistemaAgua">Id Sistema Agua</span></dt>
+        <dd>
+            <div *ngIf="adjudicacao.idSistemaAguaId">
+                <a [routerLink]="['/sistema-agua', adjudicacao.idSistemaAguaId]">{{adjudicacao.idSistemaAguaId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'adjudicacao/'+ adjudicacao.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

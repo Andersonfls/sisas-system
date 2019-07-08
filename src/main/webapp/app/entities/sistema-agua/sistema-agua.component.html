@@ -1,0 +1,173 @@
+<div>
+    <h2>
+        <span jhiTranslate="sisasApp.sistemaAgua.home.title">Sistema Aguas</span>
+        <button class="btn btn-primary float-right jh-create-entity redondo" [routerLink]="['/', { outlets: { popup: ['sistema-agua-new'] } }]">
+            <span class="fa fa-plus"></span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="sistemaAguas">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="nmSistemaAgua"><span jhiTranslate="sisasApp.sistemaAgua.nmSistemaAgua">Nm Sistema Agua</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="nmFonteAgua"><span jhiTranslate="sisasApp.sistemaAgua.nmFonteAgua">Nm Fonte Agua</span> <span class="fa fa-sort"></span></th>
+            <!--<th jhiSortBy="idUsuario"><span jhiTranslate="sisasApp.sistemaAgua.idUsuario">Id Usuario</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="nmInqueridor"><span jhiTranslate="sisasApp.sistemaAgua.nmInqueridor">Nm Inqueridor</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="dtLancamento"><span jhiTranslate="sisasApp.sistemaAgua.dtLancamento">Dt Lancamento</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="dtUltimaAlteracao"><span jhiTranslate="sisasApp.sistemaAgua.dtUltimaAlteracao">Dt Ultima Alteracao</span> <span class="fa fa-sort"></span></th>-->
+            <th jhiSortBy="nmLocalidade"><span jhiTranslate="sisasApp.sistemaAgua.nmLocalidade">Nm Localidade</span> <span class="fa fa-sort"></span></th>
+            <!--<th jhiSortBy="qtdPopulacaoActual"><span jhiTranslate="sisasApp.sistemaAgua.qtdPopulacaoActual">Qtd Populacao Actual</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="qtdCasasLocalidade"><span jhiTranslate="sisasApp.sistemaAgua.qtdCasasLocalidade">Qtd Casas Localidade</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="nmTpComunaAldeia"><span jhiTranslate="sisasApp.sistemaAgua.nmTpComunaAldeia">Nm Tp Comuna Aldeia</span> <span class="fa fa-sort"></span></th>-->
+            <th jhiSortBy="nmTpArea"><span jhiTranslate="sisasApp.sistemaAgua.nmTpArea">Nm Tp Area</span> <span class="fa fa-sort"></span></th>
+            <!--<th jhiSortBy="possuiSistemaAgua"><span jhiTranslate="sisasApp.sistemaAgua.possuiSistemaAgua">Possui Sistema Agua</span> <span class="fa fa-sort"></span></th>-->
+            <th jhiSortBy="latitude"><span jhiTranslate="sisasApp.sistemaAgua.latitude">Latitude</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="longitude"><span jhiTranslate="sisasApp.sistemaAgua.longitude">Longitude</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="altitude"><span jhiTranslate="sisasApp.sistemaAgua.altitude">Altitude</span> <span class="fa fa-sort"></span></th>
+            <!--<th jhiSortBy="nmTpFonte"><span jhiTranslate="sisasApp.sistemaAgua.nmTpFonte">Nm Tp Fonte</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="nmFonteAguaUtilizada"><span jhiTranslate="sisasApp.sistemaAgua.nmFonteAguaUtilizada">Nm Fonte Agua Utilizada</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="nmTipoBomba"><span jhiTranslate="sisasApp.sistemaAgua.nmTipoBomba">Nm Tipo Bomba</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="qtdCasasAguaLigada"><span jhiTranslate="sisasApp.sistemaAgua.qtdCasasAguaLigada">Qtd Casas Agua Ligada</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="qtdChafarisesFuncionando"><span jhiTranslate="sisasApp.sistemaAgua.qtdChafarisesFuncionando">Qtd Chafarises Funcionando</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="qtdContadoresLigados"><span jhiTranslate="sisasApp.sistemaAgua.qtdContadoresLigados">Qtd Contadores Ligados</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="qtdBebedouros"><span jhiTranslate="sisasApp.sistemaAgua.qtdBebedouros">Qtd Bebedouros</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="qtdHabitantesAcessoServicoAgua"><span jhiTranslate="sisasApp.sistemaAgua.qtdHabitantesAcessoServicoAgua">Qtd Habitantes Acesso Servico Agua</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="anoConstrucaoSistema"><span jhiTranslate="sisasApp.sistemaAgua.anoConstrucaoSistema">Ano Construcao Sistema</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="nmTpAvariaSistema"><span jhiTranslate="sisasApp.sistemaAgua.nmTpAvariaSistema">Nm Tp Avaria Sistema</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="causaAvariaSistema"><span jhiTranslate="sisasApp.sistemaAgua.causaAvariaSistema">Causa Avaria Sistema</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="statusResolucao"><span jhiTranslate="sisasApp.sistemaAgua.statusResolucao">Status Resolucao</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="tempoServicoDisponivel"><span jhiTranslate="sisasApp.sistemaAgua.tempoServicoDisponivel">Tempo Servico Disponivel</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="qtdDiametroCondutaAdutoraAguaBruta"><span jhiTranslate="sisasApp.sistemaAgua.qtdDiametroCondutaAdutoraAguaBruta">Qtd Diametro Conduta Adutora Agua Bruta</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="qtdComprimentoCondutaAdutoraAguaBruta"><span jhiTranslate="sisasApp.sistemaAgua.qtdComprimentoCondutaAdutoraAguaBruta">Qtd Comprimento Conduta Adutora Agua Bruta</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="qtdDiametroCondutaAdutoraAguaTratada"><span jhiTranslate="sisasApp.sistemaAgua.qtdDiametroCondutaAdutoraAguaTratada">Qtd Diametro Conduta Adutora Agua Tratada</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="qtdComprimentoCondutaAdutoraAguaTratada"><span jhiTranslate="sisasApp.sistemaAgua.qtdComprimentoCondutaAdutoraAguaTratada">Qtd Comprimento Conduta Adutora Agua Tratada</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="descMaterialUtilizadoCondutas"><span jhiTranslate="sisasApp.sistemaAgua.descMaterialUtilizadoCondutas">Desc Material Utilizado Condutas</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="qtdReservatoriosApoiados"><span jhiTranslate="sisasApp.sistemaAgua.qtdReservatoriosApoiados">Qtd Reservatorios Apoiados</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="qtdCapacidadeReservatoriosApoiados"><span jhiTranslate="sisasApp.sistemaAgua.qtdCapacidadeReservatoriosApoiados">Qtd Capacidade Reservatorios Apoiados</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="qtdReservatoriosElevados"><span jhiTranslate="sisasApp.sistemaAgua.qtdReservatoriosElevados">Qtd Reservatorios Elevados</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="qtdCapacidadeReservatoriosElevados"><span jhiTranslate="sisasApp.sistemaAgua.qtdCapacidadeReservatoriosElevados">Qtd Capacidade Reservatorios Elevados</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="alturaReservatoriosElevados"><span jhiTranslate="sisasApp.sistemaAgua.alturaReservatoriosElevados">Altura Reservatorios Elevados</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="nmTpTratamentoAgua"><span jhiTranslate="sisasApp.sistemaAgua.nmTpTratamentoAgua">Nm Tp Tratamento Agua</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="nmTpTratamentoPadraoUtilizado"><span jhiTranslate="sisasApp.sistemaAgua.nmTpTratamentoPadraoUtilizado">Nm Tp Tratamento Padrao Utilizado</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="nmTpTratamentoBasicoUtilizado"><span jhiTranslate="sisasApp.sistemaAgua.nmTpTratamentoBasicoUtilizado">Nm Tp Tratamento Basico Utilizado</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="existeAvariaSistemaTratamento"><span jhiTranslate="sisasApp.sistemaAgua.existeAvariaSistemaTratamento">Existe Avaria Sistema Tratamento</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="existeMotivoAusenciaTratamento"><span jhiTranslate="sisasApp.sistemaAgua.existeMotivoAusenciaTratamento">Existe Motivo Ausencia Tratamento</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="nmEquipamentosComAvaria"><span jhiTranslate="sisasApp.sistemaAgua.nmEquipamentosComAvaria">Nm Equipamentos Com Avaria</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="caudalDoSistema"><span jhiTranslate="sisasApp.sistemaAgua.caudalDoSistema">Caudal Do Sistema</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="qtdConsumoPercaptaLitrosHomemDia"><span jhiTranslate="sisasApp.sistemaAgua.qtdConsumoPercaptaLitrosHomemDia">Qtd Consumo Percapta Litros Homem Dia</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="qtdDotacaoPercapta"><span jhiTranslate="sisasApp.sistemaAgua.qtdDotacaoPercapta">Qtd Dotacao Percapta</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="qtdDiariaHorasServicoSistema"><span jhiTranslate="sisasApp.sistemaAgua.qtdDiariaHorasServicoSistema">Qtd Diaria Horas Servico Sistema</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="esquema"><span jhiTranslate="sisasApp.sistemaAgua.esquema">Esquema</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="nmModeloBombaManualUtilizada"><span jhiTranslate="sisasApp.sistemaAgua.nmModeloBombaManualUtilizada">Nm Modelo Bomba Manual Utilizada</span> <span class="fa fa-sort"></span></th>-->
+            <!--<th jhiSortBy="nmTpBombaEnergia"><span jhiTranslate="sisasApp.sistemaAgua.nmTpBombaEnergia">Nm Tp Bomba Energia</span> <span class="fa fa-sort"></span></th>-->
+            <th jhiSortBy="idSituacaoId"><span jhiTranslate="sisasApp.sistemaAgua.idSituacao">Id Situacao</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idComunaId"><span jhiTranslate="sisasApp.sistemaAgua.idComuna">Id Comuna</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let sistemaAgua of sistemaAguas ;trackBy: trackId">
+                <td>{{sistemaAgua.nmSistemaAgua}}</td>
+                <td>{{sistemaAgua.nmFonteAgua}}</td>
+                <!--<td>{{sistemaAgua.idUsuario}}</td>-->
+                <!--<td>{{sistemaAgua.nmInqueridor}}</td>-->
+                <!--<td>{{sistemaAgua.dtLancamento | date:'mediumDate'}}</td>-->
+                <!--<td>{{sistemaAgua.dtUltimaAlteracao | date:'mediumDate'}}</td>-->
+                <td>{{sistemaAgua.nmLocalidade}}</td>
+                <!--<td>{{sistemaAgua.qtdPopulacaoActual}}</td>-->
+                <!--<td>{{sistemaAgua.qtdCasasLocalidade}}</td>-->
+                <!--<td>{{sistemaAgua.nmTpComunaAldeia}}</td>-->
+                <td>{{sistemaAgua.nmTpArea}}</td>
+                <!--<td>{{sistemaAgua.possuiSistemaAgua}}</td>-->
+                <td>{{sistemaAgua.latitude}}</td>
+                <td>{{sistemaAgua.longitude}}</td>
+                <td>{{sistemaAgua.altitude}}</td>
+                <!--<td>{{sistemaAgua.nmTpFonte}}</td>-->
+                <!--<td>{{sistemaAgua.nmFonteAguaUtilizada}}</td>-->
+                <!--<td>{{sistemaAgua.nmTipoBomba}}</td>-->
+                <!--<td>{{sistemaAgua.qtdCasasAguaLigada}}</td>-->
+                <!--<td>{{sistemaAgua.qtdChafarisesFuncionando}}</td>-->
+                <!--<td>{{sistemaAgua.qtdContadoresLigados}}</td>-->
+                <!--<td>{{sistemaAgua.qtdBebedouros}}</td>-->
+                <!--<td>{{sistemaAgua.qtdHabitantesAcessoServicoAgua}}</td>-->
+                <!--<td>{{sistemaAgua.anoConstrucaoSistema}}</td>-->
+                <!--<td>{{sistemaAgua.nmTpAvariaSistema}}</td>-->
+                <!--<td>{{sistemaAgua.causaAvariaSistema}}</td>-->
+                <!--<td>{{sistemaAgua.statusResolucao}}</td>-->
+                <!--<td>{{sistemaAgua.tempoServicoDisponivel}}</td>-->
+                <!--<td>{{sistemaAgua.qtdDiametroCondutaAdutoraAguaBruta}}</td>-->
+                <!--<td>{{sistemaAgua.qtdComprimentoCondutaAdutoraAguaBruta}}</td>-->
+                <!--<td>{{sistemaAgua.qtdDiametroCondutaAdutoraAguaTratada}}</td>-->
+                <!--<td>{{sistemaAgua.qtdComprimentoCondutaAdutoraAguaTratada}}</td>-->
+                <!--<td>{{sistemaAgua.descMaterialUtilizadoCondutas}}</td>-->
+                <!--<td>{{sistemaAgua.qtdReservatoriosApoiados}}</td>-->
+                <!--<td>{{sistemaAgua.qtdCapacidadeReservatoriosApoiados}}</td>-->
+                <!--<td>{{sistemaAgua.qtdReservatoriosElevados}}</td>-->
+                <!--<td>{{sistemaAgua.qtdCapacidadeReservatoriosElevados}}</td>-->
+                <!--<td>{{sistemaAgua.alturaReservatoriosElevados}}</td>-->
+                <!--<td>{{sistemaAgua.nmTpTratamentoAgua}}</td>-->
+                <!--<td>{{sistemaAgua.nmTpTratamentoPadraoUtilizado}}</td>-->
+                <!--<td>{{sistemaAgua.nmTpTratamentoBasicoUtilizado}}</td>-->
+                <!--<td>{{sistemaAgua.existeAvariaSistemaTratamento}}</td>-->
+                <!--<td>{{sistemaAgua.existeMotivoAusenciaTratamento}}</td>-->
+                <!--<td>{{sistemaAgua.nmEquipamentosComAvaria}}</td>-->
+                <!--<td>{{sistemaAgua.caudalDoSistema}}</td>-->
+                <!--<td>{{sistemaAgua.qtdConsumoPercaptaLitrosHomemDia}}</td>-->
+                <!--<td>{{sistemaAgua.qtdDotacaoPercapta}}</td>-->
+                <!--<td>{{sistemaAgua.qtdDiariaHorasServicoSistema}}</td>-->
+                <!--<td>{{sistemaAgua.esquema}}</td>-->
+                <!--<td>{{sistemaAgua.nmModeloBombaManualUtilizada}}</td>-->
+                <!--<td>{{sistemaAgua.nmTpBombaEnergia}}</td>-->
+                <td>
+                    <div *ngIf="sistemaAgua.situacao">
+                        <a [routerLink]="['../situacao', sistemaAgua.situacao  ]" >{{sistemaAgua.situacao.nmSituacao}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="sistemaAgua.comuna">
+                        <a [routerLink]="['../comuna', sistemaAgua.comuna  ]" >{{sistemaAgua.comuna.nmComuna}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../sistema-agua', sistemaAgua.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <!--<span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>-->
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'sistema-agua/'+ sistemaAgua.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <!--<span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>-->
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'sistema-agua/'+ sistemaAgua.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <!--<span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>-->
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="sistemaAguas && sistemaAguas.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

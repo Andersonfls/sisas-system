@@ -1,15 +1,35 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { PtolomeuAuthorityModule } from './authority/authority.module';
-import { PtolomeuDashboardModule } from './dashboard/dashboard.module';
+import { SisasAuthorityModule } from './authority/authority.module';
+import { SisasDashboardModule } from './dashboard/dashboard.module';
+import {SisasIndicadorProducaoModule} from './indicador-producao/indicador-producao.module';
+import {SisasProgramasProjectosModule} from './programas-projectos/programas-projectos.module';
+import {SisasSistemaAguaModule} from './sistema-agua/sistema-agua.module';
+import {SisasSituacaoModule} from './situacao/situacao.module';
+import {SisasComunaModule} from './comuna/comuna.module';
+import {SisasMunicipioModule} from './municipio/municipio.module';
+import {SisasFornecedorModule} from './fornecedor/fornecedor.module';
+import {SisasProvinciaModule} from './provincia/provincia.module';
+import {SisasSistemaAguaLogModule} from './sistema-agua-log/sistema-agua-log.module';
+import {SisasIndicadorProducaoLogModule} from './indicador-producao-log/indicador-producao-log.module';
 
 @NgModule({
     imports: [
-        PtolomeuDashboardModule,
-        PtolomeuAuthorityModule
+        SisasDashboardModule,
+        SisasAuthorityModule,
+        SisasIndicadorProducaoModule,
+        SisasProgramasProjectosModule,
+        SisasSistemaAguaModule,
+        SisasSituacaoModule,
+        SisasComunaModule,
+        SisasMunicipioModule,
+        SisasFornecedorModule,
+        SisasProvinciaModule,
+        SisasSistemaAguaLogModule,
+        SisasIndicadorProducaoLogModule
     ],
     declarations: [],
     entryComponents: [],
     providers: [],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class PtolomeuEntityModule {}
+export class SisasEntityModule {}

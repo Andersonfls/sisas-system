@@ -1,0 +1,42 @@
+
+<div *ngIf="relatoriosLog">
+    <h2><span jhiTranslate="sisasApp.relatoriosLog.detail.title">Relatorios Log</span> {{relatoriosLog.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="sisasApp.relatoriosLog.idRelatoriosLog">Id Relatorios Log</span></dt>
+        <dd>
+            <span>{{relatoriosLog.idRelatoriosLog}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.relatoriosLog.acao">Acao</span></dt>
+        <dd>
+            <span>{{relatoriosLog.acao}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.relatoriosLog.idUsuario">Id Usuario</span></dt>
+        <dd>
+            <span>{{relatoriosLog.idUsuario}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.relatoriosLog.log">Log</span></dt>
+        <dd>
+            <span>{{relatoriosLog.log}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.relatoriosLog.dtLog">Dt Log</span></dt>
+        <dd>
+            <span>{{relatoriosLog.dtLog | date:'mediumDate'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'relatorios-log/'+ relatoriosLog.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

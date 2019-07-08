@@ -1,0 +1,151 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myConcursoLabel" jhiTranslate="sisasApp.concurso.home.createOrEditLabel">Create or edit a Concurso</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!concurso.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="concurso.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.concurso.idConcurso" for="field_idConcurso">Id Concurso</label>
+            <input type="number" class="form-control" name="idConcurso" id="field_idConcurso"
+                [(ngModel)]="concurso.idConcurso" required/>
+            <div [hidden]="!(editForm.controls.idConcurso?.dirty && editForm.controls.idConcurso?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.idConcurso?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.idConcurso?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.concurso.tipoConcurso" for="field_tipoConcurso">Tipo Concurso</label>
+            <input type="text" class="form-control" name="tipoConcurso" id="field_tipoConcurso"
+                [(ngModel)]="concurso.tipoConcurso" required maxlength="150"/>
+            <div [hidden]="!(editForm.controls.tipoConcurso?.dirty && editForm.controls.tipoConcurso?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.tipoConcurso?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.tipoConcurso?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 150 }">
+                   This field cannot be longer than 150 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.concurso.dtLancamento" for="field_dtLancamento">Dt Lancamento</label>
+            <div class="input-group">
+                <input id="field_dtLancamento" type="text" class="form-control" name="dtLancamento" ngbDatepicker  #dtLancamentoDp="ngbDatepicker" [(ngModel)]="concurso.dtLancamento"
+                required/>
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="dtLancamentoDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.dtLancamento?.dirty && editForm.controls.dtLancamento?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dtLancamento?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.concurso.dtUltimaAlteracao" for="field_dtUltimaAlteracao">Dt Ultima Alteracao</label>
+            <div class="input-group">
+                <input id="field_dtUltimaAlteracao" type="text" class="form-control" name="dtUltimaAlteracao" ngbDatepicker  #dtUltimaAlteracaoDp="ngbDatepicker" [(ngModel)]="concurso.dtUltimaAlteracao"
+                />
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="dtUltimaAlteracaoDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.concurso.dtEntregaProposta" for="field_dtEntregaProposta">Dt Entrega Proposta</label>
+            <div class="input-group">
+                <input id="field_dtEntregaProposta" type="text" class="form-control" name="dtEntregaProposta" ngbDatepicker  #dtEntregaPropostaDp="ngbDatepicker" [(ngModel)]="concurso.dtEntregaProposta"
+                />
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="dtEntregaPropostaDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.concurso.dtAberturaProposta" for="field_dtAberturaProposta">Dt Abertura Proposta</label>
+            <div class="input-group">
+                <input id="field_dtAberturaProposta" type="text" class="form-control" name="dtAberturaProposta" ngbDatepicker  #dtAberturaPropostaDp="ngbDatepicker" [(ngModel)]="concurso.dtAberturaProposta"
+                />
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="dtAberturaPropostaDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.concurso.dtConclusaoAvaliacaoRelPrel" for="field_dtConclusaoAvaliacaoRelPrel">Dt Conclusao Avaliacao Rel Prel</label>
+            <div class="input-group">
+                <input id="field_dtConclusaoAvaliacaoRelPrel" type="text" class="form-control" name="dtConclusaoAvaliacaoRelPrel" ngbDatepicker  #dtConclusaoAvaliacaoRelPrelDp="ngbDatepicker" [(ngModel)]="concurso.dtConclusaoAvaliacaoRelPrel"
+                />
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="dtConclusaoAvaliacaoRelPrelDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.concurso.dtNegociacao" for="field_dtNegociacao">Dt Negociacao</label>
+            <div class="input-group">
+                <input id="field_dtNegociacao" type="text" class="form-control" name="dtNegociacao" ngbDatepicker  #dtNegociacaoDp="ngbDatepicker" [(ngModel)]="concurso.dtNegociacao"
+                />
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="dtNegociacaoDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.concurso.dtAprovRelAvalFinal" for="field_dtAprovRelAvalFinal">Dt Aprov Rel Aval Final</label>
+            <div class="input-group">
+                <input id="field_dtAprovRelAvalFinal" type="text" class="form-control" name="dtAprovRelAvalFinal" ngbDatepicker  #dtAprovRelAvalFinalDp="ngbDatepicker" [(ngModel)]="concurso.dtAprovRelAvalFinal"
+                />
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="dtAprovRelAvalFinalDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.concurso.idProgramasProjectos" for="field_idProgramasProjectos">Id Programas Projectos</label>
+            <select class="form-control" id="field_idProgramasProjectos" name="idProgramasProjectos" [(ngModel)]="concurso.idProgramasProjectosId"  required>
+                <option *ngIf="!editForm.value.idProgramasProjectos" [ngValue]="null" selected></option>
+                <option [ngValue]="programasProjectosOption.id" *ngFor="let programasProjectosOption of programasprojectos; trackBy: trackProgramasProjectosById">{{programasProjectosOption.id}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.idProgramasProjectos?.dirty && editForm.controls.idProgramasProjectos?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.idProgramasProjectos?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.concurso.idSistemaAgua" for="field_idSistemaAgua">Id Sistema Agua</label>
+            <select class="form-control" id="field_idSistemaAgua" name="idSistemaAgua" [(ngModel)]="concurso.idSistemaAguaId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="sistemaAguaOption.id" *ngFor="let sistemaAguaOption of sistemaaguas; trackBy: trackSistemaAguaById">{{sistemaAguaOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

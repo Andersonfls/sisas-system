@@ -1,0 +1,29 @@
+
+{
+    "sisasApp": {
+        "adjudicacao" : {
+            "home": {
+                "title": "Adjudicacaos",
+                "createLabel": "Criar novo Adjudicacao",
+                "createOrEditLabel": "Criar ou editar Adjudicacao"
+            },
+            "created": "Um novo Adjudicacao foi criado com o identificador {{ param }}",
+            "updated": "Um Adjudicacao foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Adjudicacao foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Adjudicacao {{ id }}?"
+            },
+            "detail": {
+                "title": "Adjudicacao"
+            },
+            "idAdjudicacao": "Id Adjudicacao",
+            "tipoConcurso": "Tipo Concurso",
+            "dtLancamento": "Dt Lancamento",
+            "dtComunicaoAdjudicacao": "Dt Comunicao Adjudicacao",
+            "dtPrestacaoGarantBoaExec": "Dt Prestacao Garant Boa Exec",
+            "dtSubmissaoMinutContrato": "Dt Submissao Minut Contrato",
+            "idProgramasProjectos": "Id Programas Projectos",
+            "idSistemaAgua": "Id Sistema Agua"
+        }
+    }
+}

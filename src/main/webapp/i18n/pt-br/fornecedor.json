@@ -1,0 +1,27 @@
+
+{
+    "sisasApp": {
+        "fornecedor" : {
+            "home": {
+                "title": "Fornecedores",
+                "createLabel": "Criar novo Fornecedor",
+                "createOrEditLabel": "Criar ou editar Fornecedor"
+            },
+            "created": "Um novo Fornecedor foi criado com o identificador {{ param }}",
+            "updated": "Um Fornecedor foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Fornecedor foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Fornecedor {{ id }}?"
+            },
+            "detail": {
+                "title": "Fornecedor"
+            },
+            "idFornecedor": "Id Fornecedor",
+            "nmFornecedor": "Nome Fornecedor",
+            "numContribuinte": "Nr Contribuinte",
+            "endereco": "Endereco",
+            "email": "Email",
+            "especialidade": "Especialidade"
+        }
+    }
+}

@@ -1,0 +1,44 @@
+
+<div *ngIf="noticias">
+    <h2><span jhiTranslate="sisasApp.noticias.detail.title">Noticias</span> {{noticias.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="sisasApp.noticias.idNoticias">Id Noticias</span></dt>
+        <dd>
+            <span>{{noticias.idNoticias}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.noticias.tituloNoticias">Titulo Noticias</span></dt>
+        <dd>
+            <span>{{noticias.tituloNoticias}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.noticias.textoNoticias">Texto Noticias</span></dt>
+        <dd>
+            <span>{{noticias.textoNoticias}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.noticias.resumoTextoNoticias">Resumo Texto Noticias</span></dt>
+        <dd>
+            <span>{{noticias.resumoTextoNoticias}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.noticias.idSituacao">Id Situacao</span></dt>
+        <dd>
+            <div *ngIf="noticias.idSituacaoId">
+                <a [routerLink]="['/situacao', noticias.idSituacaoId]">{{noticias.idSituacaoId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'noticias/'+ noticias.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

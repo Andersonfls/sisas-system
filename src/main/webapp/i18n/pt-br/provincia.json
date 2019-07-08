@@ -1,0 +1,24 @@
+
+{
+    "sisasApp": {
+        "provincia" : {
+            "home": {
+                "title": "Provincias",
+                "createLabel": "Criar novo Provincia",
+                "createOrEditLabel": "Criar ou editar Provincia"
+            },
+            "created": "Um novo Provincia foi criado com o identificador {{ param }}",
+            "updated": "Um Provincia foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Provincia foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Provincia {{ id }}?"
+            },
+            "detail": {
+                "title": "Provincia"
+            },
+            "idProvincia": "Id Provincia",
+            "nmProvincia": "Nome Provincia",
+            "municipio": "Municipio"
+        }
+    }
+}

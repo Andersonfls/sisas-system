@@ -1,13 +1,13 @@
 {
   "generator-jhipster": {
     "promptValues": {
-      "packageName": "com.minea.ptolomeu",
+      "packageName": "com.minea.sisas",
       "nativeLanguage": "pt-br"
     },
     "jhipsterVersion": "4.14.3",
-    "baseName": "Ptolomeu",
-    "packageName": "com.minea.ptolomeu",
-    "packageFolder": "com/minea/ptolomeu",
+    "baseName": "sisas",
+    "packageName": "com.minea.sisas",
+    "packageFolder": "com/minea/sisas",
     "serverPort": "8080",
     "authenticationType": "jwt",
     "cacheProvider": "ehcache",

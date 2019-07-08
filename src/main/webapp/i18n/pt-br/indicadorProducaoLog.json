@@ -1,0 +1,27 @@
+
+{
+    "sisasApp": {
+        "indicadorProducaoLog" : {
+            "home": {
+                "title": "Log Indicador Produção",
+                "createLabel": "Criar novo Indicador Producao Log",
+                "createOrEditLabel": "Criar ou editar Indicador Producao Log"
+            },
+            "created": "Um novo Indicador Producao Log foi criado com o identificador {{ param }}",
+            "updated": "Um Indicador Producao Log foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Indicador Producao Log foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Indicador Producao Log {{ id }}?"
+            },
+            "detail": {
+                "title": "Indicador Producao Log"
+            },
+            "idIndicadorProducaoLog": "Id Indicador Producao Log",
+            "acao": "Acao",
+            "idUsuario": "Usuario",
+            "log": "Log",
+            "dtLog": "Data Log",
+            "idIndicadorProducao": "Indicador Produção"
+        }
+    }
+}

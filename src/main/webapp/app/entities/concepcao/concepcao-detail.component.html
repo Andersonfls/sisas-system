@@ -1,0 +1,58 @@
+
+<div *ngIf="concepcao">
+    <h2><span jhiTranslate="sisasApp.concepcao.detail.title">Concepcao</span> {{concepcao.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="sisasApp.concepcao.idConcepcao">Id Concepcao</span></dt>
+        <dd>
+            <span>{{concepcao.idConcepcao}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.concepcao.tipoConcurso">Tipo Concurso</span></dt>
+        <dd>
+            <span>{{concepcao.tipoConcurso}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.concepcao.dtLancamento">Dt Lancamento</span></dt>
+        <dd>
+            <span>{{concepcao.dtLancamento | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.concepcao.dtUltimaAlteracao">Dt Ultima Alteracao</span></dt>
+        <dd>
+            <span>{{concepcao.dtUltimaAlteracao | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.concepcao.dtElaboracaoCon">Dt Elaboracao Con</span></dt>
+        <dd>
+            <span>{{concepcao.dtElaboracaoCon | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.concepcao.dtAprovacaoCon">Dt Aprovacao Con</span></dt>
+        <dd>
+            <span>{{concepcao.dtAprovacaoCon | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.concepcao.idProgramasProjectos">Id Programas Projectos</span></dt>
+        <dd>
+            <div *ngIf="concepcao.idProgramasProjectosId">
+                <a [routerLink]="['/programas-projectos', concepcao.idProgramasProjectosId]">{{concepcao.idProgramasProjectosId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.concepcao.idSistemaAgua">Id Sistema Agua</span></dt>
+        <dd>
+            <div *ngIf="concepcao.idSistemaAguaId">
+                <a [routerLink]="['/sistema-agua', concepcao.idSistemaAguaId]">{{concepcao.idSistemaAguaId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'concepcao/'+ concepcao.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

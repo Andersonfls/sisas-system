@@ -1,0 +1,29 @@
+
+{
+    "sisasApp": {
+        "contactos" : {
+            "home": {
+                "title": "Contactos",
+                "createLabel": "Criar novo Contactos",
+                "createOrEditLabel": "Criar ou editar Contactos"
+            },
+            "created": "Um novo Contactos foi criado com o identificador {{ param }}",
+            "updated": "Um Contactos foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Contactos foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Contactos {{ id }}?"
+            },
+            "detail": {
+                "title": "Contactos"
+            },
+            "idContactos": "Id Contactos",
+            "nmContactos": "Nm Contactos",
+            "textoContactos": "Texto Contactos",
+            "resumoTextoContactos": "Resumo Texto Contactos",
+            "dtLancamento": "Dt Lancamento",
+            "dtUltimaAlteracao": "Dt Ultima Alteracao",
+            "idSituacao": "Id Situacao",
+            "inicio": "Inicio"
+        }
+    }
+}

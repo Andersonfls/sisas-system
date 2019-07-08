@@ -1,0 +1,23 @@
+
+{
+    "sisasApp": {
+        "fases" : {
+            "home": {
+                "title": "Fases",
+                "createLabel": "Criar novo Fases",
+                "createOrEditLabel": "Criar ou editar Fases"
+            },
+            "created": "Um novo Fases foi criado com o identificador {{ param }}",
+            "updated": "Um Fases foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Fases foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Fases {{ id }}?"
+            },
+            "detail": {
+                "title": "Fases"
+            },
+            "idFase": "Id Fase",
+            "descricaoFase": "Descricao Fase"
+        }
+    }
+}

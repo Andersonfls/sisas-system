@@ -1,0 +1,27 @@
+
+{
+    "sisasApp": {
+        "sistemaAguaLog" : {
+            "home": {
+                "title": "Log Sistemas de Águas",
+                "createLabel": "Criar novo Sistema Agua Log",
+                "createOrEditLabel": "Criar ou editar Sistema Agua Log"
+            },
+            "created": "Um novo Sistema Agua Log foi criado com o identificador {{ param }}",
+            "updated": "Um Sistema Agua Log foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Sistema Agua Log foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Sistema Agua Log {{ id }}?"
+            },
+            "detail": {
+                "title": "Sistema Agua Log"
+            },
+            "idSistemaAguaLog": "Id Sistema Agua Log",
+            "acao": "Ação",
+            "idUsuario": "Usuario",
+            "log": "Log",
+            "dtLog": "Data Log",
+            "idSistemaAgua": "Sistema Agua"
+        }
+    }
+}

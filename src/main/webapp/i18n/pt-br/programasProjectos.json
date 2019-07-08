@@ -1,0 +1,38 @@
+
+{
+    "sisasApp": {
+        "programasProjectos" : {
+            "home": {
+                "title": "Programas Projectos",
+                "createLabel": "Criar novo Programas Projectos",
+                "createOrEditLabel": "Criar ou editar Programas Projectos"
+            },
+            "created": "Um novo Programas Projectos foi criado com o identificador {{ param }}",
+            "updated": "Um Programas Projectos foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Programas Projectos foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Programas Projectos {{ id }}?"
+            },
+            "detail": {
+                "title": "Programas Projectos"
+            },
+            "idProgramasProjectos": "Id Programas Projectos",
+            "dtLancamento": "Dt Lancamento",
+            "dtUltimaAlteracao": "Dt Ultima Alteracao",
+            "idUsuario": "Id Usuario",
+            "nmDesignacaoProjeto": "Nm Designacao Projeto",
+            "nmDescricaoProjeto": "Nm Descricao Projeto",
+            "idSaaAssociado": "Id Saa Associado",
+            "tipoFinanciamento": "Tipo Financiamento",
+            "especialidade": "Especialidade",
+            "idComuna": "Id Comuna",
+            "adjudicacao": "Adjudicacao",
+            "concepcao": "Concepcao",
+            "concurso": "Concurso",
+            "contrato": "Contrato",
+            "empreitada": "Empreitada",
+            "execucao": "Execucao",
+            "programasProjectosLog": "Programas Projectos Log"
+        }
+    }
+}
