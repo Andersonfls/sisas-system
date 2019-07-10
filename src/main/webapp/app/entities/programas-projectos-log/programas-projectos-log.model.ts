@@ -1,14 +1,14 @@
-import { BaseEntity } from './../../shared';
+import {BaseEntity, User} from './../../shared';
+import {ProgramasProjectos} from '../programas-projectos';
 
 export class ProgramasProjectosLog implements BaseEntity {
     constructor(
         public id?: number,
-        public idProgramasProjectosLog?: number,
         public acao?: string,
-        public idUsuario?: number,
+        public usuario?: User,
         public log?: string,
         public dtLog?: any,
-        public idProgramasProjectosId?: number,
+        public programasProjectos?: ProgramasProjectos,
     ) {
     }
 }

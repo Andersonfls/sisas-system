@@ -4,17 +4,13 @@
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="sisasApp.programasProjectosLog.idProgramasProjectosLog">Id Programas Projectos Log</span></dt>
-        <dd>
-            <span>{{programasProjectosLog.idProgramasProjectosLog}}</span>
-        </dd>
         <dt><span jhiTranslate="sisasApp.programasProjectosLog.acao">Acao</span></dt>
         <dd>
             <span>{{programasProjectosLog.acao}}</span>
         </dd>
         <dt><span jhiTranslate="sisasApp.programasProjectosLog.idUsuario">Id Usuario</span></dt>
         <dd>
-            <span>{{programasProjectosLog.idUsuario}}</span>
+            <span>{{programasProjectosLog.usuario.nome}}</span>
         </dd>
         <dt><span jhiTranslate="sisasApp.programasProjectosLog.log">Log</span></dt>
         <dd>
@@ -26,8 +22,8 @@
         </dd>
         <dt><span jhiTranslate="sisasApp.programasProjectosLog.idProgramasProjectos">Id Programas Projectos</span></dt>
         <dd>
-            <div *ngIf="programasProjectosLog.idProgramasProjectosId">
-                <a [routerLink]="['/programas-projectos', programasProjectosLog.idProgramasProjectosId]">{{programasProjectosLog.idProgramasProjectosId}}</a>
+            <div *ngIf="programasProjectosLog.programasProjectos">
+                <a [routerLink]="['/programas-projectos', programasProjectosLog.programasProjectos.id]">{{programasProjectosLog.programasProjectos.nmDesignacaoProjeto}}</a>
             </div>
         </dd>
     </dl>

@@ -1,6 +1,9 @@
 package com.minea.sisas.service.dto;
 
 
+import com.minea.sisas.domain.Comuna;
+import com.minea.sisas.domain.User;
+
 import java.time.LocalDate;
 import javax.validation.constraints.*;
 import java.io.Serializable;
@@ -14,15 +17,11 @@ public class ProgramasProjectosDTO implements Serializable {
     private Long id;
 
     @NotNull
-    private Long idProgramasProjectos;
-
-    @NotNull
     private LocalDate dtLancamento;
 
     private LocalDate dtUltimaAlteracao;
 
-    @NotNull
-    private Long idUsuario;
+    private User usuario;
 
     @NotNull
     @Size(max = 250)
@@ -41,7 +40,7 @@ public class ProgramasProjectosDTO implements Serializable {
     @Size(max = 100)
     private String especialidade;
 
-    private Long idComunaId;
+    private Comuna comuna;
 
     public Long getId() {
         return id;
@@ -49,14 +48,6 @@ public class ProgramasProjectosDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getIdProgramasProjectos() {
-        return idProgramasProjectos;
-    }
-
-    public void setIdProgramasProjectos(Long idProgramasProjectos) {
-        this.idProgramasProjectos = idProgramasProjectos;
     }
 
     public LocalDate getDtLancamento() {
@@ -73,14 +64,6 @@ public class ProgramasProjectosDTO implements Serializable {
 
     public void setDtUltimaAlteracao(LocalDate dtUltimaAlteracao) {
         this.dtUltimaAlteracao = dtUltimaAlteracao;
-    }
-
-    public Long getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
     }
 
     public String getNmDesignacaoProjeto() {
@@ -123,12 +106,20 @@ public class ProgramasProjectosDTO implements Serializable {
         this.especialidade = especialidade;
     }
 
-    public Long getIdComunaId() {
-        return idComunaId;
+    public User getUsuario() {
+        return usuario;
     }
 
-    public void setIdComunaId(Long comunaId) {
-        this.idComunaId = comunaId;
+    public void setUsuario(User usuario) {
+        this.usuario = usuario;
+    }
+
+    public Comuna getComuna() {
+        return comuna;
+    }
+
+    public void setComuna(Comuna comuna) {
+        this.comuna = comuna;
     }
 
     @Override
@@ -156,10 +147,9 @@ public class ProgramasProjectosDTO implements Serializable {
     public String toString() {
         return "ProgramasProjectosDTO{" +
             "id=" + getId() +
-            ", idProgramasProjectos=" + getIdProgramasProjectos() +
             ", dtLancamento='" + getDtLancamento() + "'" +
             ", dtUltimaAlteracao='" + getDtUltimaAlteracao() + "'" +
-            ", idUsuario=" + getIdUsuario() +
+            ", usuario=" + getUsuario() +
             ", nmDesignacaoProjeto='" + getNmDesignacaoProjeto() + "'" +
             ", nmDescricaoProjeto='" + getNmDescricaoProjeto() + "'" +
             ", idSaaAssociado=" + getIdSaaAssociado() +

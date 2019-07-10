@@ -1,6 +1,7 @@
 package com.minea.sisas.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.minea.sisas.domain.ProgramasProjectosLog;
 import com.minea.sisas.service.ProgramasProjectosLogService;
 import com.minea.sisas.web.rest.errors.BadRequestAlertException;
 import com.minea.sisas.web.rest.util.HeaderUtil;
@@ -96,9 +97,9 @@ public class ProgramasProjectosLogResource {
      */
     @GetMapping("/programas-projectos-logs")
     @Timed
-    public ResponseEntity<List<ProgramasProjectosLogDTO>> getAllProgramasProjectosLogs(ProgramasProjectosLogCriteria criteria, Pageable pageable) {
+    public ResponseEntity<List<ProgramasProjectosLog>> getAllProgramasProjectosLogs(ProgramasProjectosLogCriteria criteria, Pageable pageable) {
         log.debug("REST request to get ProgramasProjectosLogs by criteria: {}", criteria);
-        Page<ProgramasProjectosLogDTO> page = programasProjectosLogQueryService.findByCriteria(criteria, pageable);
+        Page<ProgramasProjectosLog> page = programasProjectosLogQueryService.findByCriteria(criteria, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/programas-projectos-logs");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
@@ -111,10 +112,10 @@ public class ProgramasProjectosLogResource {
      */
     @GetMapping("/programas-projectos-logs/{id}")
     @Timed
-    public ResponseEntity<ProgramasProjectosLogDTO> getProgramasProjectosLog(@PathVariable Long id) {
+    public ResponseEntity<ProgramasProjectosLog> getProgramasProjectosLog(@PathVariable Long id) {
         log.debug("REST request to get ProgramasProjectosLog : {}", id);
-        ProgramasProjectosLogDTO programasProjectosLogDTO = programasProjectosLogService.findOne(id);
-        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(programasProjectosLogDTO));
+        ProgramasProjectosLog programasProjectosLog = programasProjectosLogService.findOne(id);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(programasProjectosLog));
     }
 
     /**

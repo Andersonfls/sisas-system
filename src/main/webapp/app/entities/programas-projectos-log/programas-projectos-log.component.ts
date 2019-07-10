@@ -114,6 +114,7 @@ currentAccount: any;
         this.queryCount = this.totalItems;
         // this.page = pagingParams.page;
         this.programasProjectosLogs = data;
+        console.log(data);
     }
     private onError(error) {
         this.jhiAlertService.error(error.message, null, null);

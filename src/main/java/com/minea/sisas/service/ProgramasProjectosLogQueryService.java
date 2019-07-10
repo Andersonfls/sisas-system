@@ -61,11 +61,11 @@ public class ProgramasProjectosLogQueryService extends QueryService<ProgramasPro
      * @return the matching entities.
      */
     @Transactional(readOnly = true)
-    public Page<ProgramasProjectosLogDTO> findByCriteria(ProgramasProjectosLogCriteria criteria, Pageable page) {
+    public Page<ProgramasProjectosLog> findByCriteria(ProgramasProjectosLogCriteria criteria, Pageable page) {
         log.debug("find by criteria : {}, page: {}", criteria, page);
         final Specifications<ProgramasProjectosLog> specification = createSpecification(criteria);
         final Page<ProgramasProjectosLog> result = programasProjectosLogRepository.findAll(specification, page);
-        return result.map(programasProjectosLogMapper::toDto);
+        return result;
     }
 
     /**
@@ -80,17 +80,11 @@ public class ProgramasProjectosLogQueryService extends QueryService<ProgramasPro
             if (criteria.getAcao() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getAcao(), ProgramasProjectosLog_.acao));
             }
-            if (criteria.getIdUsuario() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getIdUsuario(), ProgramasProjectosLog_.idUsuario));
-            }
             if (criteria.getLog() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getLog(), ProgramasProjectosLog_.log));
             }
             if (criteria.getDtLog() != null) {
                 specification = specification.and(buildRangeSpecification(criteria.getDtLog(), ProgramasProjectosLog_.dtLog));
-            }
-            if (criteria.getIdProgramasProjectosId() != null) {
-                specification = specification.and(buildReferringEntitySpecification(criteria.getIdProgramasProjectosId(), ProgramasProjectosLog_.idProgramasProjectos, ProgramasProjectos_.id));
             }
         }
         return specification;

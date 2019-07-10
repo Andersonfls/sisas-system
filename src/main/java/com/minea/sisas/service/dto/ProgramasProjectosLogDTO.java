@@ -1,6 +1,9 @@
 package com.minea.sisas.service.dto;
 
 
+import com.minea.sisas.domain.ProgramasProjectos;
+import com.minea.sisas.domain.User;
+
 import java.time.LocalDate;
 import javax.validation.constraints.*;
 import java.io.Serializable;
@@ -14,14 +17,11 @@ public class ProgramasProjectosLogDTO implements Serializable {
     private Long id;
 
     @NotNull
-    private Long idProgramasProjectosLog;
-
-    @NotNull
     @Size(max = 50)
     private String acao;
 
     @NotNull
-    private Long idUsuario;
+    private User usuario;
 
     @NotNull
     @Size(max = 3500)
@@ -30,7 +30,7 @@ public class ProgramasProjectosLogDTO implements Serializable {
     @NotNull
     private LocalDate dtLog;
 
-    private Long idProgramasProjectosId;
+    private ProgramasProjectos programasProjectos;
 
     public Long getId() {
         return id;
@@ -40,28 +40,12 @@ public class ProgramasProjectosLogDTO implements Serializable {
         this.id = id;
     }
 
-    public Long getIdProgramasProjectosLog() {
-        return idProgramasProjectosLog;
-    }
-
-    public void setIdProgramasProjectosLog(Long idProgramasProjectosLog) {
-        this.idProgramasProjectosLog = idProgramasProjectosLog;
-    }
-
     public String getAcao() {
         return acao;
     }
 
     public void setAcao(String acao) {
         this.acao = acao;
-    }
-
-    public Long getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
     }
 
     public String getLog() {
@@ -80,12 +64,20 @@ public class ProgramasProjectosLogDTO implements Serializable {
         this.dtLog = dtLog;
     }
 
-    public Long getIdProgramasProjectosId() {
-        return idProgramasProjectosId;
+    public User getUsuario() {
+        return usuario;
     }
 
-    public void setIdProgramasProjectosId(Long programasProjectosId) {
-        this.idProgramasProjectosId = programasProjectosId;
+    public void setUsuario(User usuario) {
+        this.usuario = usuario;
+    }
+
+    public ProgramasProjectos getProgramasProjectos() {
+        return programasProjectos;
+    }
+
+    public void setProgramasProjectos(ProgramasProjectos programasProjectos) {
+        this.programasProjectos = programasProjectos;
     }
 
     @Override
@@ -113,9 +105,8 @@ public class ProgramasProjectosLogDTO implements Serializable {
     public String toString() {
         return "ProgramasProjectosLogDTO{" +
             "id=" + getId() +
-            ", idProgramasProjectosLog=" + getIdProgramasProjectosLog() +
             ", acao='" + getAcao() + "'" +
-            ", idUsuario=" + getIdUsuario() +
+            ", usuario=" + getUsuario() +
             ", log='" + getLog() + "'" +
             ", dtLog='" + getDtLog() + "'" +
             "}";

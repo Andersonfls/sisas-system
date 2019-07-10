@@ -61,11 +61,11 @@ public class ProgramasProjectosQueryService extends QueryService<ProgramasProjec
      * @return the matching entities.
      */
     @Transactional(readOnly = true)
-    public Page<ProgramasProjectosDTO> findByCriteria(ProgramasProjectosCriteria criteria, Pageable page) {
+    public Page<ProgramasProjectos> findByCriteria(ProgramasProjectosCriteria criteria, Pageable page) {
         log.debug("find by criteria : {}, page: {}", criteria, page);
         final Specifications<ProgramasProjectos> specification = createSpecification(criteria);
         final Page<ProgramasProjectos> result = programasProjectosRepository.findAll(specification, page);
-        return result.map(programasProjectosMapper::toDto);
+        return result;
     }
 
     /**
@@ -77,17 +77,11 @@ public class ProgramasProjectosQueryService extends QueryService<ProgramasProjec
             if (criteria.getId() != null) {
                 specification = specification.and(buildSpecification(criteria.getId(), ProgramasProjectos_.id));
             }
-            if (criteria.getIdProgramasProjectos() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getIdProgramasProjectos(), ProgramasProjectos_.idProgramasProjectos));
-            }
             if (criteria.getDtLancamento() != null) {
                 specification = specification.and(buildRangeSpecification(criteria.getDtLancamento(), ProgramasProjectos_.dtLancamento));
             }
             if (criteria.getDtUltimaAlteracao() != null) {
                 specification = specification.and(buildRangeSpecification(criteria.getDtUltimaAlteracao(), ProgramasProjectos_.dtUltimaAlteracao));
-            }
-            if (criteria.getIdUsuario() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getIdUsuario(), ProgramasProjectos_.idUsuario));
             }
             if (criteria.getNmDesignacaoProjeto() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getNmDesignacaoProjeto(), ProgramasProjectos_.nmDesignacaoProjeto));
@@ -103,30 +97,6 @@ public class ProgramasProjectosQueryService extends QueryService<ProgramasProjec
             }
             if (criteria.getEspecialidade() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getEspecialidade(), ProgramasProjectos_.especialidade));
-            }
-            if (criteria.getIdComunaId() != null) {
-                specification = specification.and(buildReferringEntitySpecification(criteria.getIdComunaId(), ProgramasProjectos_.idComuna, Comuna_.id));
-            }
-            if (criteria.getAdjudicacaoId() != null) {
-                specification = specification.and(buildReferringEntitySpecification(criteria.getAdjudicacaoId(), ProgramasProjectos_.adjudicacaos, Adjudicacao_.id));
-            }
-            if (criteria.getConcepcaoId() != null) {
-                specification = specification.and(buildReferringEntitySpecification(criteria.getConcepcaoId(), ProgramasProjectos_.concepcaos, Concepcao_.id));
-            }
-            if (criteria.getConcursoId() != null) {
-                specification = specification.and(buildReferringEntitySpecification(criteria.getConcursoId(), ProgramasProjectos_.concursos, Concurso_.id));
-            }
-            if (criteria.getContratoId() != null) {
-                specification = specification.and(buildReferringEntitySpecification(criteria.getContratoId(), ProgramasProjectos_.contratoes, Contrato_.id));
-            }
-            if (criteria.getEmpreitadaId() != null) {
-                specification = specification.and(buildReferringEntitySpecification(criteria.getEmpreitadaId(), ProgramasProjectos_.empreitadas, Empreitada_.id));
-            }
-            if (criteria.getExecucaoId() != null) {
-                specification = specification.and(buildReferringEntitySpecification(criteria.getExecucaoId(), ProgramasProjectos_.execucaos, Execucao_.id));
-            }
-            if (criteria.getProgramasProjectosLogId() != null) {
-                specification = specification.and(buildReferringEntitySpecification(criteria.getProgramasProjectosLogId(), ProgramasProjectos_.programasProjectosLogs, ProgramasProjectosLog_.id));
             }
         }
         return specification;

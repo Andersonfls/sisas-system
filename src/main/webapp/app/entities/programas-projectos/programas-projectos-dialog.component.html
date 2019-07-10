@@ -13,21 +13,6 @@
                    [(ngModel)]="programasProjectos.id" readonly />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.idProgramasProjectos" for="field_idProgramasProjectos">Id Programas Projectos</label>
-            <input type="number" class="form-control" name="idProgramasProjectos" id="field_idProgramasProjectos"
-                [(ngModel)]="programasProjectos.idProgramasProjectos" required/>
-            <div [hidden]="!(editForm.controls.idProgramasProjectos?.dirty && editForm.controls.idProgramasProjectos?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.idProgramasProjectos?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
-                <small class="form-text text-danger"
-                    [hidden]="!editForm.controls.idProgramasProjectos?.errors?.number" jhiTranslate="entity.validation.number">
-                    This field should be a number.
-                </small>
-            </div>
-        </div>
-        <div class="form-group">
             <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.dtLancamento" for="field_dtLancamento">Dt Lancamento</label>
             <div class="input-group">
                 <input id="field_dtLancamento" type="text" class="form-control" name="dtLancamento" ngbDatepicker  #dtLancamentoDp="ngbDatepicker" [(ngModel)]="programasProjectos.dtLancamento"
@@ -40,31 +25,6 @@
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.dtLancamento?.errors?.required" jhiTranslate="entity.validation.required">
                    This field is required.
-                </small>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.dtUltimaAlteracao" for="field_dtUltimaAlteracao">Dt Ultima Alteracao</label>
-            <div class="input-group">
-                <input id="field_dtUltimaAlteracao" type="text" class="form-control" name="dtUltimaAlteracao" ngbDatepicker  #dtUltimaAlteracaoDp="ngbDatepicker" [(ngModel)]="programasProjectos.dtUltimaAlteracao"
-                />
-                <span class="input-group-append">
-                    <button type="button" class="btn btn-secondary" (click)="dtUltimaAlteracaoDp.toggle()"><i class="fa fa-calendar"></i></button>
-                </span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.idUsuario" for="field_idUsuario">Id Usuario</label>
-            <input type="number" class="form-control" name="idUsuario" id="field_idUsuario"
-                [(ngModel)]="programasProjectos.idUsuario" required/>
-            <div [hidden]="!(editForm.controls.idUsuario?.dirty && editForm.controls.idUsuario?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.idUsuario?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
-                <small class="form-text text-danger"
-                    [hidden]="!editForm.controls.idUsuario?.errors?.number" jhiTranslate="entity.validation.number">
-                    This field should be a number.
                 </small>
             </div>
         </div>
@@ -132,14 +92,14 @@
 
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.idComuna" for="field_idComuna">Id Comuna</label>
-            <select class="form-control" id="field_idComuna" name="idComuna" [(ngModel)]="programasProjectos.idComunaId"  required>
-                <option *ngIf="!editForm.value.idComuna" [ngValue]="null" selected></option>
-                <option [ngValue]="comunaOption.id" *ngFor="let comunaOption of comunas; trackBy: trackComunaById">{{comunaOption.id}}</option>
+            <select class="form-control" id="field_idComuna" name="idComuna" [(ngModel)]="programasProjectos.comuna"  required>
+                <option *ngIf="!editForm.value.comuna" [ngValue]="null" selected></option>
+                <option [ngValue]="comunaOption" *ngFor="let comunaOption of comunas; trackBy: trackComunaById">{{comunaOption.nmComuna}}</option>
             </select>
         </div>
-        <div [hidden]="!(editForm.controls.idComuna?.dirty && editForm.controls.idComuna?.invalid)">
+        <div [hidden]="!(editForm.controls.comuna?.dirty && editForm.controls.comuna?.invalid)">
             <small class="form-text text-danger"
-                [hidden]="!editForm.controls.idComuna?.errors?.required" jhiTranslate="entity.validation.required">
+                [hidden]="!editForm.controls.comuna?.errors?.required" jhiTranslate="entity.validation.required">
                 This field is required.
             </small>
         </div>

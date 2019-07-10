@@ -1,6 +1,7 @@
 package com.minea.sisas.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.minea.sisas.domain.ProgramasProjectos;
 import com.minea.sisas.service.ProgramasProjectosService;
 import com.minea.sisas.web.rest.errors.BadRequestAlertException;
 import com.minea.sisas.web.rest.util.HeaderUtil;
@@ -48,18 +49,18 @@ public class ProgramasProjectosResource {
     /**
      * POST  /programas-projectos : Create a new programasProjectos.
      *
-     * @param programasProjectosDTO the programasProjectosDTO to create
+     * @param programasProjectos the programasProjectosDTO to create
      * @return the ResponseEntity with status 201 (Created) and with body the new programasProjectosDTO, or with status 400 (Bad Request) if the programasProjectos has already an ID
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PostMapping("/programas-projectos")
     @Timed
-    public ResponseEntity<ProgramasProjectosDTO> createProgramasProjectos(@Valid @RequestBody ProgramasProjectosDTO programasProjectosDTO) throws URISyntaxException {
-        log.debug("REST request to save ProgramasProjectos : {}", programasProjectosDTO);
-        if (programasProjectosDTO.getId() != null) {
+    public ResponseEntity<ProgramasProjectos> createProgramasProjectos(@Valid @RequestBody ProgramasProjectos programasProjectos) throws URISyntaxException {
+        log.debug("REST request to save ProgramasProjectos : {}", programasProjectos);
+        if (programasProjectos.getId() != null) {
             throw new BadRequestAlertException("A new programasProjectos cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        ProgramasProjectosDTO result = programasProjectosService.save(programasProjectosDTO);
+        ProgramasProjectos result = programasProjectosService.save(programasProjectos);
         return ResponseEntity.created(new URI("/api/programas-projectos/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -68,7 +69,7 @@ public class ProgramasProjectosResource {
     /**
      * PUT  /programas-projectos : Updates an existing programasProjectos.
      *
-     * @param programasProjectosDTO the programasProjectosDTO to update
+     * @param programasProjectos the programasProjectosDTO to update
      * @return the ResponseEntity with status 200 (OK) and with body the updated programasProjectosDTO,
      * or with status 400 (Bad Request) if the programasProjectosDTO is not valid,
      * or with status 500 (Internal Server Error) if the programasProjectosDTO couldn't be updated
@@ -76,14 +77,14 @@ public class ProgramasProjectosResource {
      */
     @PutMapping("/programas-projectos")
     @Timed
-    public ResponseEntity<ProgramasProjectosDTO> updateProgramasProjectos(@Valid @RequestBody ProgramasProjectosDTO programasProjectosDTO) throws URISyntaxException {
-        log.debug("REST request to update ProgramasProjectos : {}", programasProjectosDTO);
-        if (programasProjectosDTO.getId() == null) {
-            return createProgramasProjectos(programasProjectosDTO);
+    public ResponseEntity<ProgramasProjectos> updateProgramasProjectos(@Valid @RequestBody ProgramasProjectos programasProjectos) throws URISyntaxException {
+        log.debug("REST request to update ProgramasProjectos : {}", programasProjectos);
+        if (programasProjectos.getId() == null) {
+            return createProgramasProjectos(programasProjectos);
         }
-        ProgramasProjectosDTO result = programasProjectosService.save(programasProjectosDTO);
+        ProgramasProjectos result = programasProjectosService.save(programasProjectos);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, programasProjectosDTO.getId().toString()))
+            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, programasProjectos.getId().toString()))
             .body(result);
     }
 
@@ -96,9 +97,9 @@ public class ProgramasProjectosResource {
      */
     @GetMapping("/programas-projectos")
     @Timed
-    public ResponseEntity<List<ProgramasProjectosDTO>> getAllProgramasProjectos(ProgramasProjectosCriteria criteria, Pageable pageable) {
+    public ResponseEntity<List<ProgramasProjectos>> getAllProgramasProjectos(ProgramasProjectosCriteria criteria, Pageable pageable) {
         log.debug("REST request to get ProgramasProjectos by criteria: {}", criteria);
-        Page<ProgramasProjectosDTO> page = programasProjectosQueryService.findByCriteria(criteria, pageable);
+        Page<ProgramasProjectos> page = programasProjectosQueryService.findByCriteria(criteria, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/programas-projectos");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
@@ -111,10 +112,10 @@ public class ProgramasProjectosResource {
      */
     @GetMapping("/programas-projectos/{id}")
     @Timed
-    public ResponseEntity<ProgramasProjectosDTO> getProgramasProjectos(@PathVariable Long id) {
+    public ResponseEntity<ProgramasProjectos> getProgramasProjectos(@PathVariable Long id) {
         log.debug("REST request to get ProgramasProjectos : {}", id);
-        ProgramasProjectosDTO programasProjectosDTO = programasProjectosService.findOne(id);
-        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(programasProjectosDTO));
+        ProgramasProjectos programasProjectos = programasProjectosService.findOne(id);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(programasProjectos));
     }
 
     /**

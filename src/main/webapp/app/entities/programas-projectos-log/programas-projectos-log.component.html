@@ -1,12 +1,6 @@
 <div>
     <h2>
         <span jhiTranslate="sisasApp.programasProjectosLog.home.title">Programas Projectos Logs</span>
-        <button class="btn btn-primary float-right jh-create-entity create-programas-projectos-log" [routerLink]="['/', { outlets: { popup: ['programas-projectos-log-new'] } }]">
-            <span class="fa fa-plus"></span>
-            <span  jhiTranslate="sisasApp.programasProjectosLog.home.createLabel">
-            Create new Programas Projectos Log
-            </span>
-        </button>
     </h2>
     <jhi-alert></jhi-alert>
     <div class="row">
@@ -17,7 +11,6 @@
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="idProgramasProjectosLog"><span jhiTranslate="sisasApp.programasProjectosLog.idProgramasProjectosLog">Id Programas Projectos Log</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="acao"><span jhiTranslate="sisasApp.programasProjectosLog.acao">Acao</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="idUsuario"><span jhiTranslate="sisasApp.programasProjectosLog.idUsuario">Id Usuario</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="log"><span jhiTranslate="sisasApp.programasProjectosLog.log">Log</span> <span class="fa fa-sort"></span></th>
@@ -29,14 +22,13 @@
             <tbody>
             <tr *ngFor="let programasProjectosLog of programasProjectosLogs ;trackBy: trackId">
                 <td><a [routerLink]="['../programas-projectos-log', programasProjectosLog.id ]">{{programasProjectosLog.id}}</a></td>
-                <td>{{programasProjectosLog.idProgramasProjectosLog}}</td>
                 <td>{{programasProjectosLog.acao}}</td>
-                <td>{{programasProjectosLog.idUsuario}}</td>
+                <td>{{programasProjectosLog.usuario.nome}}</td>
                 <td>{{programasProjectosLog.log}}</td>
                 <td>{{programasProjectosLog.dtLog | date:'mediumDate'}}</td>
                 <td>
-                    <div *ngIf="programasProjectosLog.idProgramasProjectosId">
-                        <a [routerLink]="['../programas-projectos', programasProjectosLog.idProgramasProjectosId  ]" >{{programasProjectosLog.idProgramasProjectosId}}</a>
+                    <div *ngIf="programasProjectosLog.programasProjectos">
+                        <a [routerLink]="['../programas-projectos', programasProjectosLog.programasProjectos.id  ]" >{{programasProjectosLog.programasProjectos.nmDesignacaoProjeto}}</a>
                     </div>
                 </td>
                 <td class="text-right">
@@ -46,22 +38,6 @@
                                 class="btn btn-info btn-sm">
                             <span class="fa fa-eye"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-                        </button>
-                        <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'programas-projectos-log/'+ programasProjectosLog.id + '/edit'} }]"
-                                replaceUrl="true"
-                                queryParamsHandling="merge"
-                                class="btn btn-primary btn-sm">
-                            <span class="fa fa-pencil"></span>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
-                        </button>
-                        <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'programas-projectos-log/'+ programasProjectosLog.id + '/delete'} }]"
-                                replaceUrl="true"
-                                queryParamsHandling="merge"
-                                class="btn btn-danger btn-sm">
-                            <span class="fa fa-remove"></span>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
                         </button>
                     </div>
                 </td>

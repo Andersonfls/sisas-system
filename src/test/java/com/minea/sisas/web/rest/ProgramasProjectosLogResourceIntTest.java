@@ -109,14 +109,12 @@ public class ProgramasProjectosLogResourceIntTest {
     public static ProgramasProjectosLog createEntity(EntityManager em) {
         ProgramasProjectosLog programasProjectosLog = new ProgramasProjectosLog()
             .acao(DEFAULT_ACAO)
-            .idUsuario(DEFAULT_ID_USUARIO)
             .log(DEFAULT_LOG)
             .dtLog(DEFAULT_DT_LOG);
         // Add required entity
         ProgramasProjectos idProgramasProjectos = ProgramasProjectosResourceIntTest.createEntity(em);
         em.persist(idProgramasProjectos);
         em.flush();
-        programasProjectosLog.setIdProgramasProjectos(idProgramasProjectos);
         return programasProjectosLog;
     }
 
@@ -142,7 +140,6 @@ public class ProgramasProjectosLogResourceIntTest {
         assertThat(programasProjectosLogList).hasSize(databaseSizeBeforeCreate + 1);
         ProgramasProjectosLog testProgramasProjectosLog = programasProjectosLogList.get(programasProjectosLogList.size() - 1);
         assertThat(testProgramasProjectosLog.getAcao()).isEqualTo(DEFAULT_ACAO);
-        assertThat(testProgramasProjectosLog.getIdUsuario()).isEqualTo(DEFAULT_ID_USUARIO);
         assertThat(testProgramasProjectosLog.getLog()).isEqualTo(DEFAULT_LOG);
         assertThat(testProgramasProjectosLog.getDtLog()).isEqualTo(DEFAULT_DT_LOG);
     }
@@ -209,7 +206,7 @@ public class ProgramasProjectosLogResourceIntTest {
     public void checkIdUsuarioIsRequired() throws Exception {
         int databaseSizeBeforeTest = programasProjectosLogRepository.findAll().size();
         // set the field null
-        programasProjectosLog.setIdUsuario(null);
+        programasProjectosLog.usuario(null);
 
         // Create the ProgramasProjectosLog, which fails.
         ProgramasProjectosLogDTO programasProjectosLogDTO = programasProjectosLogMapper.toDto(programasProjectosLog);
@@ -580,7 +577,6 @@ public class ProgramasProjectosLogResourceIntTest {
         ProgramasProjectos idProgramasProjectos = ProgramasProjectosResourceIntTest.createEntity(em);
         em.persist(idProgramasProjectos);
         em.flush();
-        programasProjectosLog.setIdProgramasProjectos(idProgramasProjectos);
         programasProjectosLogRepository.saveAndFlush(programasProjectosLog);
         Long idProgramasProjectosId = idProgramasProjectos.getId();
 
@@ -639,7 +635,6 @@ public class ProgramasProjectosLogResourceIntTest {
         em.detach(updatedProgramasProjectosLog);
         updatedProgramasProjectosLog
             .acao(UPDATED_ACAO)
-            .idUsuario(UPDATED_ID_USUARIO)
             .log(UPDATED_LOG)
             .dtLog(UPDATED_DT_LOG);
         ProgramasProjectosLogDTO programasProjectosLogDTO = programasProjectosLogMapper.toDto(updatedProgramasProjectosLog);
@@ -654,7 +649,6 @@ public class ProgramasProjectosLogResourceIntTest {
         assertThat(programasProjectosLogList).hasSize(databaseSizeBeforeUpdate);
         ProgramasProjectosLog testProgramasProjectosLog = programasProjectosLogList.get(programasProjectosLogList.size() - 1);
         assertThat(testProgramasProjectosLog.getAcao()).isEqualTo(UPDATED_ACAO);
-        assertThat(testProgramasProjectosLog.getIdUsuario()).isEqualTo(UPDATED_ID_USUARIO);
         assertThat(testProgramasProjectosLog.getLog()).isEqualTo(UPDATED_LOG);
         assertThat(testProgramasProjectosLog.getDtLog()).isEqualTo(UPDATED_DT_LOG);
     }

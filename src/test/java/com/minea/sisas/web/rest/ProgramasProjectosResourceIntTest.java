@@ -127,10 +127,8 @@ public class ProgramasProjectosResourceIntTest {
      */
     public static ProgramasProjectos createEntity(EntityManager em) {
         ProgramasProjectos programasProjectos = new ProgramasProjectos()
-            .idProgramasProjectos(DEFAULT_ID_PROGRAMAS_PROJECTOS)
             .dtLancamento(DEFAULT_DT_LANCAMENTO)
             .dtUltimaAlteracao(DEFAULT_DT_ULTIMA_ALTERACAO)
-            .idUsuario(DEFAULT_ID_USUARIO)
             .nmDesignacaoProjeto(DEFAULT_NM_DESIGNACAO_PROJETO)
             .nmDescricaoProjeto(DEFAULT_NM_DESCRICAO_PROJETO)
             .idSaaAssociado(DEFAULT_ID_SAA_ASSOCIADO)
@@ -140,7 +138,6 @@ public class ProgramasProjectosResourceIntTest {
         Comuna idComuna = ComunaResourceIntTest.createEntity(em);
         em.persist(idComuna);
         em.flush();
-        programasProjectos.setIdComuna(idComuna);
         return programasProjectos;
     }
 
@@ -165,10 +162,8 @@ public class ProgramasProjectosResourceIntTest {
         List<ProgramasProjectos> programasProjectosList = programasProjectosRepository.findAll();
         assertThat(programasProjectosList).hasSize(databaseSizeBeforeCreate + 1);
         ProgramasProjectos testProgramasProjectos = programasProjectosList.get(programasProjectosList.size() - 1);
-        assertThat(testProgramasProjectos.getIdProgramasProjectos()).isEqualTo(DEFAULT_ID_PROGRAMAS_PROJECTOS);
         assertThat(testProgramasProjectos.getDtLancamento()).isEqualTo(DEFAULT_DT_LANCAMENTO);
         assertThat(testProgramasProjectos.getDtUltimaAlteracao()).isEqualTo(DEFAULT_DT_ULTIMA_ALTERACAO);
-        assertThat(testProgramasProjectos.getIdUsuario()).isEqualTo(DEFAULT_ID_USUARIO);
         assertThat(testProgramasProjectos.getNmDesignacaoProjeto()).isEqualTo(DEFAULT_NM_DESIGNACAO_PROJETO);
         assertThat(testProgramasProjectos.getNmDescricaoProjeto()).isEqualTo(DEFAULT_NM_DESCRICAO_PROJETO);
         assertThat(testProgramasProjectos.getIdSaaAssociado()).isEqualTo(DEFAULT_ID_SAA_ASSOCIADO);
@@ -201,8 +196,6 @@ public class ProgramasProjectosResourceIntTest {
     public void checkIdProgramasProjectosIsRequired() throws Exception {
         int databaseSizeBeforeTest = programasProjectosRepository.findAll().size();
         // set the field null
-        programasProjectos.setIdProgramasProjectos(null);
-
         // Create the ProgramasProjectos, which fails.
         ProgramasProjectosDTO programasProjectosDTO = programasProjectosMapper.toDto(programasProjectos);
 
@@ -239,7 +232,7 @@ public class ProgramasProjectosResourceIntTest {
     public void checkIdUsuarioIsRequired() throws Exception {
         int databaseSizeBeforeTest = programasProjectosRepository.findAll().size();
         // set the field null
-        programasProjectos.setIdUsuario(null);
+        programasProjectos.setUsuario(null);
 
         // Create the ProgramasProjectos, which fails.
         ProgramasProjectosDTO programasProjectosDTO = programasProjectosMapper.toDto(programasProjectos);
@@ -847,7 +840,7 @@ public class ProgramasProjectosResourceIntTest {
         Comuna idComuna = ComunaResourceIntTest.createEntity(em);
         em.persist(idComuna);
         em.flush();
-        programasProjectos.setIdComuna(idComuna);
+        //programasProjectos.setIdComuna(idComuna);
         programasProjectosRepository.saveAndFlush(programasProjectos);
         Long idComunaId = idComuna.getId();
 
@@ -866,7 +859,7 @@ public class ProgramasProjectosResourceIntTest {
         Adjudicacao adjudicacao = AdjudicacaoResourceIntTest.createEntity(em);
         em.persist(adjudicacao);
         em.flush();
-        programasProjectos.addAdjudicacao(adjudicacao);
+        //programasProjectos.addAdjudicacao(adjudicacao);
         programasProjectosRepository.saveAndFlush(programasProjectos);
         Long adjudicacaoId = adjudicacao.getId();
 
@@ -885,7 +878,7 @@ public class ProgramasProjectosResourceIntTest {
         Concepcao concepcao = ConcepcaoResourceIntTest.createEntity(em);
         em.persist(concepcao);
         em.flush();
-        programasProjectos.addConcepcao(concepcao);
+        //programasProjectos.addConcepcao(concepcao);
         programasProjectosRepository.saveAndFlush(programasProjectos);
         Long concepcaoId = concepcao.getId();
 
@@ -904,7 +897,7 @@ public class ProgramasProjectosResourceIntTest {
         Concurso concurso = ConcursoResourceIntTest.createEntity(em);
         em.persist(concurso);
         em.flush();
-        programasProjectos.addConcurso(concurso);
+        //programasProjectos.addConcurso(concurso);
         programasProjectosRepository.saveAndFlush(programasProjectos);
         Long concursoId = concurso.getId();
 
@@ -923,7 +916,7 @@ public class ProgramasProjectosResourceIntTest {
         Contrato contrato = ContratoResourceIntTest.createEntity(em);
         em.persist(contrato);
         em.flush();
-        programasProjectos.addContrato(contrato);
+       // programasProjectos.addContrato(contrato);
         programasProjectosRepository.saveAndFlush(programasProjectos);
         Long contratoId = contrato.getId();
 
@@ -942,7 +935,7 @@ public class ProgramasProjectosResourceIntTest {
         Empreitada empreitada = EmpreitadaResourceIntTest.createEntity(em);
         em.persist(empreitada);
         em.flush();
-        programasProjectos.addEmpreitada(empreitada);
+        //programasProjectos.addEmpreitada(empreitada);
         programasProjectosRepository.saveAndFlush(programasProjectos);
         Long empreitadaId = empreitada.getId();
 
@@ -961,7 +954,7 @@ public class ProgramasProjectosResourceIntTest {
         Execucao execucao = ExecucaoResourceIntTest.createEntity(em);
         em.persist(execucao);
         em.flush();
-        programasProjectos.addExecucao(execucao);
+        //programasProjectos.addExecucao(execucao);
         programasProjectosRepository.saveAndFlush(programasProjectos);
         Long execucaoId = execucao.getId();
 
@@ -980,7 +973,7 @@ public class ProgramasProjectosResourceIntTest {
         ProgramasProjectosLog programasProjectosLog = ProgramasProjectosLogResourceIntTest.createEntity(em);
         em.persist(programasProjectosLog);
         em.flush();
-        programasProjectos.addProgramasProjectosLog(programasProjectosLog);
+        //programasProjectos.addProgramasProjectosLog(programasProjectosLog);
         programasProjectosRepository.saveAndFlush(programasProjectos);
         Long programasProjectosLogId = programasProjectosLog.getId();
 
@@ -1042,10 +1035,8 @@ public class ProgramasProjectosResourceIntTest {
         // Disconnect from session so that the updates on updatedProgramasProjectos are not directly saved in db
         em.detach(updatedProgramasProjectos);
         updatedProgramasProjectos
-            .idProgramasProjectos(UPDATED_ID_PROGRAMAS_PROJECTOS)
             .dtLancamento(UPDATED_DT_LANCAMENTO)
             .dtUltimaAlteracao(UPDATED_DT_ULTIMA_ALTERACAO)
-            .idUsuario(UPDATED_ID_USUARIO)
             .nmDesignacaoProjeto(UPDATED_NM_DESIGNACAO_PROJETO)
             .nmDescricaoProjeto(UPDATED_NM_DESCRICAO_PROJETO)
             .idSaaAssociado(UPDATED_ID_SAA_ASSOCIADO)
@@ -1062,10 +1053,8 @@ public class ProgramasProjectosResourceIntTest {
         List<ProgramasProjectos> programasProjectosList = programasProjectosRepository.findAll();
         assertThat(programasProjectosList).hasSize(databaseSizeBeforeUpdate);
         ProgramasProjectos testProgramasProjectos = programasProjectosList.get(programasProjectosList.size() - 1);
-        assertThat(testProgramasProjectos.getIdProgramasProjectos()).isEqualTo(UPDATED_ID_PROGRAMAS_PROJECTOS);
         assertThat(testProgramasProjectos.getDtLancamento()).isEqualTo(UPDATED_DT_LANCAMENTO);
         assertThat(testProgramasProjectos.getDtUltimaAlteracao()).isEqualTo(UPDATED_DT_ULTIMA_ALTERACAO);
-        assertThat(testProgramasProjectos.getIdUsuario()).isEqualTo(UPDATED_ID_USUARIO);
         assertThat(testProgramasProjectos.getNmDesignacaoProjeto()).isEqualTo(UPDATED_NM_DESIGNACAO_PROJETO);
         assertThat(testProgramasProjectos.getNmDescricaoProjeto()).isEqualTo(UPDATED_NM_DESCRICAO_PROJETO);
         assertThat(testProgramasProjectos.getIdSaaAssociado()).isEqualTo(UPDATED_ID_SAA_ASSOCIADO);

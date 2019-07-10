@@ -27,13 +27,13 @@ public class ProgramasProjectosLog implements Serializable {
     @Column(name = "acao", length = 50, nullable = false)
     private String acao;
 
-    @NotNull
-    @Column(name = "id_usuario", nullable = false)
-    private Long idUsuario;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "id_usuario")
+    private User usuario;
 
     @NotNull
     @Size(max = 3500)
-    @Column(name = "jhi_log", length = 3500, nullable = false)
+    @Column(name = "log", length = 3500, nullable = false)
     private String log;
 
     @NotNull
@@ -41,8 +41,8 @@ public class ProgramasProjectosLog implements Serializable {
     private LocalDate dtLog;
 
     @ManyToOne(optional = false)
-    @NotNull
-    private ProgramasProjectos idProgramasProjectos;
+    @JoinColumn(name = "id_programas_projectos")
+    private ProgramasProjectos programasProjectos;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -66,17 +66,17 @@ public class ProgramasProjectosLog implements Serializable {
         this.acao = acao;
     }
 
-    public Long getIdUsuario() {
-        return idUsuario;
+    public User getUsuario() {
+        return usuario;
     }
 
-    public ProgramasProjectosLog idUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
+    public ProgramasProjectosLog usuario(User usuario) {
+        this.usuario = usuario;
         return this;
     }
 
-    public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setUsuario(User idUsuario) {
+        this.usuario = idUsuario;
     }
 
     public String getLog() {
@@ -105,17 +105,17 @@ public class ProgramasProjectosLog implements Serializable {
         this.dtLog = dtLog;
     }
 
-    public ProgramasProjectos getIdProgramasProjectos() {
-        return idProgramasProjectos;
+    public ProgramasProjectos getProgramasProjectos() {
+        return programasProjectos;
     }
 
-    public ProgramasProjectosLog idProgramasProjectos(ProgramasProjectos programasProjectos) {
-        this.idProgramasProjectos = programasProjectos;
+    public ProgramasProjectosLog programasProjectos(ProgramasProjectos programasProjectos) {
+        this.programasProjectos = programasProjectos;
         return this;
     }
 
-    public void setIdProgramasProjectos(ProgramasProjectos programasProjectos) {
-        this.idProgramasProjectos = programasProjectos;
+    public void setProgramasProjectos(ProgramasProjectos programasProjectos) {
+        this.programasProjectos = programasProjectos;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -144,7 +144,7 @@ public class ProgramasProjectosLog implements Serializable {
         return "ProgramasProjectosLog{" +
             "id=" + getId() +
             ", acao='" + getAcao() + "'" +
-            ", idUsuario=" + getIdUsuario() +
+            ", idUsuario=" + getUsuario() +
             ", log='" + getLog() + "'" +
             ", dtLog='" + getDtLog() + "'" +
             "}";

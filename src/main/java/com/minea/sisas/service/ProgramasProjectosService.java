@@ -2,14 +2,20 @@ package com.minea.sisas.service;
 
 import com.minea.sisas.domain.ProgramasProjectos;
 import com.minea.sisas.repository.ProgramasProjectosRepository;
+import com.minea.sisas.repository.UserRepository;
+import com.minea.sisas.security.SecurityUtils;
 import com.minea.sisas.service.dto.ProgramasProjectosDTO;
 import com.minea.sisas.service.mapper.ProgramasProjectosMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDate;
+import java.util.Objects;
 
 
 /**
@@ -25,6 +31,9 @@ public class ProgramasProjectosService {
 
     private final ProgramasProjectosMapper programasProjectosMapper;
 
+    @Autowired
+    private UserRepository userRepository;
+
     public ProgramasProjectosService(ProgramasProjectosRepository programasProjectosRepository, ProgramasProjectosMapper programasProjectosMapper) {
         this.programasProjectosRepository = programasProjectosRepository;
         this.programasProjectosMapper = programasProjectosMapper;
@@ -33,14 +42,18 @@ public class ProgramasProjectosService {
     /**
      * Save a programasProjectos.
      *
-     * @param programasProjectosDTO the entity to save
+     * @param programasProjectos the entity to save
      * @return the persisted entity
      */
-    public ProgramasProjectosDTO save(ProgramasProjectosDTO programasProjectosDTO) {
-        log.debug("Request to save ProgramasProjectos : {}", programasProjectosDTO);
-        ProgramasProjectos programasProjectos = programasProjectosMapper.toEntity(programasProjectosDTO);
+    public ProgramasProjectos save(ProgramasProjectos programasProjectos) {
+        log.debug("Request to save ProgramasProjectos : {}", programasProjectos);
+
+        if (Objects.isNull(programasProjectos.getUsuario()) || Objects.isNull(programasProjectos.getUsuario().getId())) {
+            programasProjectos.setUsuario(userRepository.findByIdEquals(SecurityUtils.getCurrentUserId()));
+        }
+        programasProjectos.setDtUltimaAlteracao(LocalDate.now());
         programasProjectos = programasProjectosRepository.save(programasProjectos);
-        return programasProjectosMapper.toDto(programasProjectos);
+        return programasProjectos;
     }
 
     /**
@@ -63,10 +76,10 @@ public class ProgramasProjectosService {
      * @return the entity
      */
     @Transactional(readOnly = true)
-    public ProgramasProjectosDTO findOne(Long id) {
+    public ProgramasProjectos findOne(Long id) {
         log.debug("Request to get ProgramasProjectos : {}", id);
         ProgramasProjectos programasProjectos = programasProjectosRepository.findOne(id);
-        return programasProjectosMapper.toDto(programasProjectos);
+        return programasProjectos;
     }
 
     /**

@@ -3,7 +3,7 @@
     "sisasApp": {
         "programasProjectosLog" : {
             "home": {
-                "title": "Programas Projectos Logs",
+                "title": "Log Programas e Projectos",
                 "createLabel": "Criar novo Programas Projectos Log",
                 "createOrEditLabel": "Criar ou editar Programas Projectos Log"
             },
@@ -16,12 +16,11 @@
             "detail": {
                 "title": "Programas Projectos Log"
             },
-            "idProgramasProjectosLog": "Id Programas Projectos Log",
             "acao": "Acao",
-            "idUsuario": "Id Usuario",
+            "idUsuario": "Usuario",
             "log": "Log",
-            "dtLog": "Dt Log",
-            "idProgramasProjectos": "Id Programas Projectos"
+            "dtLog": "Data Log",
+            "idProgramasProjectos": "Programas Projectos"
         }
     }
 }

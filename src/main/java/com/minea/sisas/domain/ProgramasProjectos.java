@@ -1,14 +1,10 @@
 package com.minea.sisas.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
-import javax.validation.constraints.*;
-
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -22,11 +18,8 @@ public class ProgramasProjectos implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @NotNull
     @Column(name = "id_programas_projectos", nullable = false)
-    private Long idProgramasProjectos;
+    private Long id;
 
     @NotNull
     @Column(name = "dt_lancamento", nullable = false)
@@ -35,9 +28,9 @@ public class ProgramasProjectos implements Serializable {
     @Column(name = "dt_ultima_alteracao")
     private LocalDate dtUltimaAlteracao;
 
-    @NotNull
-    @Column(name = "id_usuario", nullable = false)
-    private Long idUsuario;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "id_usuario")
+    private User usuario;
 
     @NotNull
     @Size(max = 250)
@@ -62,36 +55,8 @@ public class ProgramasProjectos implements Serializable {
     private String especialidade;
 
     @ManyToOne(optional = false)
-    @NotNull
-    private Comuna idComuna;
-
-    @OneToMany(mappedBy = "idProgramasProjectos")
-    @JsonIgnore
-    private Set<Adjudicacao> adjudicacaos = new HashSet<>();
-
-    @OneToMany(mappedBy = "idProgramasProjectos")
-    @JsonIgnore
-    private Set<Concepcao> concepcaos = new HashSet<>();
-
-    @OneToMany(mappedBy = "idProgramasProjectos")
-    @JsonIgnore
-    private Set<Concurso> concursos = new HashSet<>();
-
-    @OneToMany(mappedBy = "idProgramasProjectos")
-    @JsonIgnore
-    private Set<Contrato> contratoes = new HashSet<>();
-
-    @OneToMany(mappedBy = "idProgramasProjectos")
-    @JsonIgnore
-    private Set<Empreitada> empreitadas = new HashSet<>();
-
-    @OneToMany(mappedBy = "idProgramasProjectos")
-    @JsonIgnore
-    private Set<Execucao> execucaos = new HashSet<>();
-
-    @OneToMany(mappedBy = "idProgramasProjectos")
-    @JsonIgnore
-    private Set<ProgramasProjectosLog> programasProjectosLogs = new HashSet<>();
+    @JoinColumn(name = "id_comuna")
+    private Comuna comuna;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -100,19 +65,6 @@ public class ProgramasProjectos implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getIdProgramasProjectos() {
-        return idProgramasProjectos;
-    }
-
-    public ProgramasProjectos idProgramasProjectos(Long idProgramasProjectos) {
-        this.idProgramasProjectos = idProgramasProjectos;
-        return this;
-    }
-
-    public void setIdProgramasProjectos(Long idProgramasProjectos) {
-        this.idProgramasProjectos = idProgramasProjectos;
     }
 
     public LocalDate getDtLancamento() {
@@ -141,17 +93,17 @@ public class ProgramasProjectos implements Serializable {
         this.dtUltimaAlteracao = dtUltimaAlteracao;
     }
 
-    public Long getIdUsuario() {
-        return idUsuario;
+    public User getUsuario() {
+        return usuario;
     }
 
-    public ProgramasProjectos idUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
+    public ProgramasProjectos usuario(User usuario) {
+        this.usuario = usuario;
         return this;
     }
 
-    public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setUsuario(User usuario) {
+        this.usuario = usuario;
     }
 
     public String getNmDesignacaoProjeto() {
@@ -219,193 +171,19 @@ public class ProgramasProjectos implements Serializable {
         this.especialidade = especialidade;
     }
 
-    public Comuna getIdComuna() {
-        return idComuna;
+    public Comuna getComuna() {
+        return comuna;
     }
 
-    public ProgramasProjectos idComuna(Comuna comuna) {
-        this.idComuna = comuna;
+    public ProgramasProjectos comuna(Comuna comuna) {
+        this.comuna = comuna;
         return this;
     }
 
-    public void setIdComuna(Comuna comuna) {
-        this.idComuna = comuna;
+    public void setComuna(Comuna comuna) {
+        this.comuna = comuna;
     }
 
-    public Set<Adjudicacao> getAdjudicacaos() {
-        return adjudicacaos;
-    }
-
-    public ProgramasProjectos adjudicacaos(Set<Adjudicacao> adjudicacaos) {
-        this.adjudicacaos = adjudicacaos;
-        return this;
-    }
-
-    public ProgramasProjectos addAdjudicacao(Adjudicacao adjudicacao) {
-        this.adjudicacaos.add(adjudicacao);
-        adjudicacao.setIdProgramasProjectos(this);
-        return this;
-    }
-
-    public ProgramasProjectos removeAdjudicacao(Adjudicacao adjudicacao) {
-        this.adjudicacaos.remove(adjudicacao);
-        adjudicacao.setIdProgramasProjectos(null);
-        return this;
-    }
-
-    public void setAdjudicacaos(Set<Adjudicacao> adjudicacaos) {
-        this.adjudicacaos = adjudicacaos;
-    }
-
-    public Set<Concepcao> getConcepcaos() {
-        return concepcaos;
-    }
-
-    public ProgramasProjectos concepcaos(Set<Concepcao> concepcaos) {
-        this.concepcaos = concepcaos;
-        return this;
-    }
-
-    public ProgramasProjectos addConcepcao(Concepcao concepcao) {
-        this.concepcaos.add(concepcao);
-        concepcao.setIdProgramasProjectos(this);
-        return this;
-    }
-
-    public ProgramasProjectos removeConcepcao(Concepcao concepcao) {
-        this.concepcaos.remove(concepcao);
-        concepcao.setIdProgramasProjectos(null);
-        return this;
-    }
-
-    public void setConcepcaos(Set<Concepcao> concepcaos) {
-        this.concepcaos = concepcaos;
-    }
-
-    public Set<Concurso> getConcursos() {
-        return concursos;
-    }
-
-    public ProgramasProjectos concursos(Set<Concurso> concursos) {
-        this.concursos = concursos;
-        return this;
-    }
-
-    public ProgramasProjectos addConcurso(Concurso concurso) {
-        this.concursos.add(concurso);
-        concurso.setIdProgramasProjectos(this);
-        return this;
-    }
-
-    public ProgramasProjectos removeConcurso(Concurso concurso) {
-        this.concursos.remove(concurso);
-        concurso.setIdProgramasProjectos(null);
-        return this;
-    }
-
-    public void setConcursos(Set<Concurso> concursos) {
-        this.concursos = concursos;
-    }
-
-    public Set<Contrato> getContratoes() {
-        return contratoes;
-    }
-
-    public ProgramasProjectos contratoes(Set<Contrato> contratoes) {
-        this.contratoes = contratoes;
-        return this;
-    }
-
-    public ProgramasProjectos addContrato(Contrato contrato) {
-        this.contratoes.add(contrato);
-        contrato.setIdProgramasProjectos(this);
-        return this;
-    }
-
-    public ProgramasProjectos removeContrato(Contrato contrato) {
-        this.contratoes.remove(contrato);
-        contrato.setIdProgramasProjectos(null);
-        return this;
-    }
-
-    public void setContratoes(Set<Contrato> contratoes) {
-        this.contratoes = contratoes;
-    }
-
-    public Set<Empreitada> getEmpreitadas() {
-        return empreitadas;
-    }
-
-    public ProgramasProjectos empreitadas(Set<Empreitada> empreitadas) {
-        this.empreitadas = empreitadas;
-        return this;
-    }
-
-    public ProgramasProjectos addEmpreitada(Empreitada empreitada) {
-        this.empreitadas.add(empreitada);
-        empreitada.setIdProgramasProjectos(this);
-        return this;
-    }
-
-    public ProgramasProjectos removeEmpreitada(Empreitada empreitada) {
-        this.empreitadas.remove(empreitada);
-        empreitada.setIdProgramasProjectos(null);
-        return this;
-    }
-
-    public void setEmpreitadas(Set<Empreitada> empreitadas) {
-        this.empreitadas = empreitadas;
-    }
-
-    public Set<Execucao> getExecucaos() {
-        return execucaos;
-    }
-
-    public ProgramasProjectos execucaos(Set<Execucao> execucaos) {
-        this.execucaos = execucaos;
-        return this;
-    }
-
-    public ProgramasProjectos addExecucao(Execucao execucao) {
-        this.execucaos.add(execucao);
-        execucao.setIdProgramasProjectos(this);
-        return this;
-    }
-
-    public ProgramasProjectos removeExecucao(Execucao execucao) {
-        this.execucaos.remove(execucao);
-        execucao.setIdProgramasProjectos(null);
-        return this;
-    }
-
-    public void setExecucaos(Set<Execucao> execucaos) {
-        this.execucaos = execucaos;
-    }
-
-    public Set<ProgramasProjectosLog> getProgramasProjectosLogs() {
-        return programasProjectosLogs;
-    }
-
-    public ProgramasProjectos programasProjectosLogs(Set<ProgramasProjectosLog> programasProjectosLogs) {
-        this.programasProjectosLogs = programasProjectosLogs;
-        return this;
-    }
-
-    public ProgramasProjectos addProgramasProjectosLog(ProgramasProjectosLog programasProjectosLog) {
-        this.programasProjectosLogs.add(programasProjectosLog);
-        programasProjectosLog.setIdProgramasProjectos(this);
-        return this;
-    }
-
-    public ProgramasProjectos removeProgramasProjectosLog(ProgramasProjectosLog programasProjectosLog) {
-        this.programasProjectosLogs.remove(programasProjectosLog);
-        programasProjectosLog.setIdProgramasProjectos(null);
-        return this;
-    }
-
-    public void setProgramasProjectosLogs(Set<ProgramasProjectosLog> programasProjectosLogs) {
-        this.programasProjectosLogs = programasProjectosLogs;
-    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -432,10 +210,9 @@ public class ProgramasProjectos implements Serializable {
     public String toString() {
         return "ProgramasProjectos{" +
             "id=" + getId() +
-            ", idProgramasProjectos=" + getIdProgramasProjectos() +
             ", dtLancamento='" + getDtLancamento() + "'" +
             ", dtUltimaAlteracao='" + getDtUltimaAlteracao() + "'" +
-            ", idUsuario=" + getIdUsuario() +
+            ", usuario=" + getUsuario() +
             ", nmDesignacaoProjeto='" + getNmDesignacaoProjeto() + "'" +
             ", nmDescricaoProjeto='" + getNmDescricaoProjeto() + "'" +
             ", idSaaAssociado=" + getIdSaaAssociado() +

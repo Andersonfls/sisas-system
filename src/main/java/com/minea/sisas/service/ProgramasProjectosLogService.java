@@ -63,10 +63,10 @@ public class ProgramasProjectosLogService {
      * @return the entity
      */
     @Transactional(readOnly = true)
-    public ProgramasProjectosLogDTO findOne(Long id) {
+    public ProgramasProjectosLog findOne(Long id) {
         log.debug("Request to get ProgramasProjectosLog : {}", id);
         ProgramasProjectosLog programasProjectosLog = programasProjectosLogRepository.findOne(id);
-        return programasProjectosLogMapper.toDto(programasProjectosLog);
+        return programasProjectosLog;
     }
 
     /**
