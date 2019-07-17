@@ -3,1174 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="ac6e637f-22f0-4425-89b3-eba437a02c68" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/minea/sisas/domain/ProgramasProjectos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/minea/sisas/domain/ProgramasProjectos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/minea/sisas/domain/ProgramasProjectosLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/minea/sisas/domain/ProgramasProjectosLog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/minea/sisas/service/ProgramasProjectosLogQueryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/minea/sisas/service/ProgramasProjectosLogQueryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/minea/sisas/service/ProgramasProjectosLogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/minea/sisas/service/ProgramasProjectosLogService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/minea/sisas/service/ProgramasProjectosQueryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/minea/sisas/service/ProgramasProjectosQueryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/minea/sisas/service/ProgramasProjectosService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/minea/sisas/service/ProgramasProjectosService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/minea/sisas/service/dto/ProgramasProjectosDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/minea/sisas/service/dto/ProgramasProjectosDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/minea/sisas/service/dto/ProgramasProjectosLogDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/minea/sisas/service/dto/ProgramasProjectosLogDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/minea/sisas/web/rest/ProgramasProjectosLogResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/minea/sisas/web/rest/ProgramasProjectosLogResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/minea/sisas/web/rest/ProgramasProjectosResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/minea/sisas/web/rest/ProgramasProjectosResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/entity.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/entity.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/programas-projectos-log/programas-projectos-log-detail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/programas-projectos-log/programas-projectos-log-detail.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/programas-projectos-log/programas-projectos-log.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/programas-projectos-log/programas-projectos-log.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/programas-projectos-log/programas-projectos-log.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/programas-projectos-log/programas-projectos-log.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/programas-projectos-log/programas-projectos-log.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/programas-projectos-log/programas-projectos-log.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/programas-projectos-log/programas-projectos-log.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/programas-projectos-log/programas-projectos-log.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/programas-projectos/programas-projectos-detail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/programas-projectos/programas-projectos-detail.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/programas-projectos/programas-projectos-dialog.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/programas-projectos/programas-projectos-dialog.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/programas-projectos/programas-projectos.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/programas-projectos/programas-projectos.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/programas-projectos/programas-projectos.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/programas-projectos/programas-projectos.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/sistema-agua/sistema-agua-dialog.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/sistema-agua/sistema-agua-dialog.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/sistema-agua/sistema-agua-dialog.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/sistema-agua/sistema-agua-dialog.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/sistema-agua/sistema-agua.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/sistema-agua/sistema-agua.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/home/home.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/layouts/sidebar/sidebar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/layouts/sidebar/sidebar.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/i18n/pt-br/programasProjectos.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/i18n/pt-br/programasProjectos.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/i18n/pt-br/programasProjectosLog.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/i18n/pt-br/programasProjectosLog.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/minea/sisas/web/rest/ProgramasProjectosLogResourceIntTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/minea/sisas/web/rest/ProgramasProjectosLogResourceIntTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/minea/sisas/web/rest/ProgramasProjectosResourceIntTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/minea/sisas/web/rest/ProgramasProjectosResourceIntTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/.dockerignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/banner.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/ApplicationWebXml.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/SisasApp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/aop/logging/LoggingAspect.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/config/ApplicationProperties.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/config/AsyncConfiguration.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/config/CacheConfiguration.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/config/CloudDatabaseConfiguration.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/config/Constants.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/config/DatabaseConfiguration.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/config/DateTimeFormatConfiguration.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/config/DefaultProfileUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/config/FileStorageProperties.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/config/JacksonConfiguration.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/config/LocaleConfiguration.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/config/LoggingAspectConfiguration.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/config/LoggingConfiguration$LogbackLoggerContextListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/config/LoggingConfiguration.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/config/MailConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/config/MetricsConfiguration.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/config/SecurityConfiguration.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/config/ThymeleafConfiguration.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/config/WebConfigurer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/config/audit/AuditEventConverter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/AbstractAuditingEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/AbstractAuditingEntity_.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/Adjudicacao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/Adjudicacao_.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/Authority.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/Authority_.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/Comuna.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/Comuna_.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/Concepcao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/Concepcao_.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/Concurso.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/Concurso_.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/ConfiguracoesLog.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/ConfiguracoesLog_.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/Contactos.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/Contactos_.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/Contrato.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/Contrato_.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/Empreitada.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/Empreitada_.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/EntidadeGestora.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/EntidadeGestora_.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/Execucao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/Execucao_.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/Fases.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/Fases_.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/Fornecedor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/Fornecedor_.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/IndicadorProducao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/IndicadorProducaoLog.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/IndicadorProducaoLog_.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/IndicadorProducao_.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/Inicio.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/Inicio_.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/Municipio.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/Municipio_.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/MunicipiosAtendidos.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/MunicipiosAtendidos_.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/Noticias.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/Noticias_.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/OrigemFinanciamento.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/OrigemFinanciamento_.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/PersistentAuditEvent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/PersistentAuditEvent_.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/ProgramasProjectos.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/ProgramasProjectosLog.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/ProgramasProjectosLog_.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/ProgramasProjectos_.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/Projectos.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/Projectos_.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/Provincia.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/Provincia_.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/Publicacao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/PublicacaoLog.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/PublicacaoLog_.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/Publicacao_.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/RelatoriosLog.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/RelatoriosLog_.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/SistemaAgua.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/SistemaAguaLog.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/SistemaAguaLog_.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/SistemaAgua_.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/Situacao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/Situacao_.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/SobreDna.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/SobreDna_.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/User_.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/enumeration/Status.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/enumeration/StatusExemplar.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/enumeration/TipoAcao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/enumeration/TipoFase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/domain/enumeration/TipoOperacao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/repository/AdjudicacaoRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/repository/AuthorityRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/repository/ComunaRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/repository/ConcepcaoRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/repository/ConcursoRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/repository/ConfiguracoesLogRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/repository/ContactosRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/repository/ContratoRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/repository/CustomAuditEventRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/repository/EmpreitadaRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/repository/EntidadeGestoraRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/repository/ExecucaoRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/repository/FasesRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/repository/FornecedorRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/repository/IndicadorProducaoLogRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/repository/IndicadorProducaoRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/repository/InicioRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/repository/MunicipioRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/repository/MunicipiosAtendidosRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/repository/NoticiasRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/repository/OrigemFinanciamentoRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/repository/PersistenceAuditEventRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/repository/ProgramasProjectosLogRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/repository/ProgramasProjectosRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/repository/ProjectosRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/repository/ProvinciaRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/repository/PublicacaoLogRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/repository/PublicacaoRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/repository/RelatoriosLogRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/repository/SistemaAguaLogRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/repository/SistemaAguaRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/repository/SituacaoRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/repository/SobreDnaRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/repository/UserRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/security/AuthoritiesConstants.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/security/DomainUserDetailsService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/security/SecurityUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/security/SpringSecurityAuditorAware.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/security/UserNotActivatedException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/security/jwt/JWTConfigurer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/security/jwt/JWTFilter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/security/jwt/TokenProvider.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/AdjudicacaoQueryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/AdjudicacaoService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/AuditEventService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/AuthorityService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/ComunaQueryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/ComunaService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/ConcepcaoQueryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/ConcepcaoService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/ConcursoService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/ConfiguracoesLogQueryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/ConfiguracoesLogService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/ContactosQueryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/ContactosService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/ContratoQueryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/ContratoService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/EmpreitadaQueryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/EmpreitadaService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/EntidadeGestoraQueryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/EntidadeGestoraService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/ExecucaoQueryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/ExecucaoService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/FasesQueryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/FasesService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/FornecedorQueryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/FornecedorService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/IndicadorProducaoLogQueryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/IndicadorProducaoLogService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/IndicadorProducaoQueryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/IndicadorProducaoService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/InicioQueryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/InicioService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/MailService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/MunicipioQueryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/MunicipioService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/MunicipiosAtendidosQueryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/MunicipiosAtendidosService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/NoticiasQueryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/NoticiasService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/OrigemFinanciamentoQueryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/OrigemFinanciamentoService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/ProgramasProjectosLogQueryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/ProgramasProjectosLogService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/ProgramasProjectosQueryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/ProgramasProjectosService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/ProjectosQueryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/ProjectosService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/ProvinciaQueryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/ProvinciaService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/PublicacaoLogQueryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/PublicacaoLogService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/PublicacaoQueryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/PublicacaoService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/RelatoriosLogQueryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/RelatoriosLogService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/SistemaAguaLogQueryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/SistemaAguaLogService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/SistemaAguaQueryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/SistemaAguaService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/SituacaoQueryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/SituacaoService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/SobreDnaQueryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/SobreDnaService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/StorageService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/UserService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/AdjudicacaoCriteria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/AdjudicacaoDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/ComunaCriteria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/ComunaDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/ConcepcaoCriteria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/ConcepcaoDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/ConcursoCriteria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/ConcursoDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/ConfiguracoesLogCriteria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/ConfiguracoesLogDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/ContactosCriteria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/ContactosDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/ContratoCriteria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/ContratoDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/EmpreitadaCriteria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/EmpreitadaDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/EntidadeGestoraCriteria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/EntidadeGestoraDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/ExecucaoCriteria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/ExecucaoDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/FasesCriteria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/FasesDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/FornecedorCriteria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/FornecedorDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/IndicadorProducaoCriteria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/IndicadorProducaoDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/IndicadorProducaoLogCriteria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/IndicadorProducaoLogDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/InicioCriteria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/InicioDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/MunicipioCriteria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/MunicipioDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/MunicipiosAtendidosCriteria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/MunicipiosAtendidosDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/NoticiasCriteria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/NoticiasDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/OrigemFinanciamentoCriteria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/OrigemFinanciamentoDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/ProgramasProjectosCriteria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/ProgramasProjectosDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/ProgramasProjectosLogCriteria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/ProgramasProjectosLogDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/ProjectosCriteria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/ProjectosDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/ProvinciaCriteria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/ProvinciaDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/PublicacaoCriteria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/PublicacaoDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/PublicacaoLogCriteria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/PublicacaoLogDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/RelatoriosLogCriteria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/RelatoriosLogDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/SistemaAguaCriteria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/SistemaAguaDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/SistemaAguaLogCriteria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/SistemaAguaLogDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/SituacaoCriteria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/SituacaoDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/SobreDnaCriteria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/SobreDnaDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/UploadFileResponseDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/dto/UserDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/AdjudicacaoMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/AdjudicacaoMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/ComunaMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/ComunaMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/ConcepcaoMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/ConcepcaoMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/ConcursoMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/ConcursoMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/ConfiguracoesLogMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/ConfiguracoesLogMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/ContactosMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/ContactosMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/ContratoMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/ContratoMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/EmpreitadaMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/EmpreitadaMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/EntidadeGestoraMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/EntidadeGestoraMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/EntityMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/ExecucaoMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/ExecucaoMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/FasesMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/FasesMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/FornecedorMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/FornecedorMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/IndicadorProducaoLogMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/IndicadorProducaoLogMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/IndicadorProducaoMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/IndicadorProducaoMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/InicioMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/InicioMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/MunicipioMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/MunicipioMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/MunicipiosAtendidosMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/MunicipiosAtendidosMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/NoticiasMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/NoticiasMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/OrigemFinanciamentoMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/OrigemFinanciamentoMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/ProgramasProjectosLogMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/ProgramasProjectosLogMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/ProgramasProjectosMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/ProgramasProjectosMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/ProjectosMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/ProjectosMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/ProvinciaMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/ProvinciaMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/PublicacaoLogMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/PublicacaoLogMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/PublicacaoMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/PublicacaoMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/RelatoriosLogMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/RelatoriosLogMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/SistemaAguaLogMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/SistemaAguaLogMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/SistemaAguaMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/SistemaAguaMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/SituacaoMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/SituacaoMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/SobreDnaMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/SobreDnaMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/mapper/UserMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/service/util/RandomUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/AccountResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/AdjudicacaoResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/AuditResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/AuthorityResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/ComunaResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/ConcepcaoResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/ConcursoResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/ConfiguracoesLogResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/ContactosResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/ContratoResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/EmpreitadaResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/EntidadeGestoraResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/ExecucaoResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/FasesResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/FornecedorResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/IndicadorProducaoLogResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/IndicadorProducaoResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/InicioResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/LogsResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/MunicipioResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/MunicipiosAtendidosResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/NoticiasResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/OrigemFinanciamentoResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/ProfileInfoResource$ProfileInfoVM.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/ProfileInfoResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/ProgramasProjectosLogResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/ProgramasProjectosResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/ProjectosResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/ProvinciaResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/PublicacaoLogResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/PublicacaoResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/RelatoriosLogResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/SistemaAguaLogResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/SistemaAguaResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/SituacaoResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/SobreDnaResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/UserJWTController$JWTToken.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/UserJWTController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/UserResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/errors/BadRequestAlertException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/errors/CustomParameterizedException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/errors/EmailAlreadyUsedException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/errors/EmailNotFoundException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/errors/ErrorConstants.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/errors/ExceptionTranslator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/errors/FieldErrorVM.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/errors/InternalServerErrorException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/errors/InvalidPasswordException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/errors/LoginAlreadyUsedException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/errors/MyFileNotFoundException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/util/HeaderUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/util/PaginationUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/vm/KeyAndPasswordVM.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/vm/LoggerVM.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/vm/LoginVM.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/minea/sisas/web/rest/vm/ManagedUserVM.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/application-dev.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/application-prod.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/email/emailconfig.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/email/javamail.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/authorities.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/00000000000000_initial_schema.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195813_added_entity_Adjudicacao.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195813_added_entity_constraints_Adjudicacao.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195814_added_entity_Comuna.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195814_added_entity_constraints_Comuna.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195815_added_entity_Concepcao.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195815_added_entity_constraints_Concepcao.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195816_added_entity_Concurso.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195816_added_entity_constraints_Concurso.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195817_added_entity_ConfiguracoesLog.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195818_added_entity_Contactos.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195818_added_entity_constraints_Contactos.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195819_added_entity_Contrato.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195819_added_entity_constraints_Contrato.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195820_added_entity_Empreitada.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195820_added_entity_constraints_Empreitada.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195821_added_entity_EntidadeGestora.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195821_added_entity_constraints_EntidadeGestora.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195822_added_entity_Execucao.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195822_added_entity_constraints_Execucao.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195823_added_entity_Fases.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195824_added_entity_Fornecedor.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195825_added_entity_IndicadorProducao.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195825_added_entity_constraints_IndicadorProducao.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195826_added_entity_IndicadorProducaoLog.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195826_added_entity_constraints_IndicadorProducaoLog.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195827_added_entity_Inicio.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195827_added_entity_constraints_Inicio.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195828_added_entity_Municipio.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195828_added_entity_constraints_Municipio.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195829_added_entity_MunicipiosAtendidos.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195829_added_entity_constraints_MunicipiosAtendidos.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195830_added_entity_Noticias.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195830_added_entity_constraints_Noticias.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195831_added_entity_OrigemFinanciamento.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195832_added_entity_ProgramasProjectos.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195832_added_entity_constraints_ProgramasProjectos.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195833_added_entity_ProgramasProjectosLog.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195833_added_entity_constraints_ProgramasProjectosLog.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195834_added_entity_Projectos.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195834_added_entity_constraints_Projectos.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195835_added_entity_Provincia.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195836_added_entity_Publicacao.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195836_added_entity_constraints_Publicacao.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195837_added_entity_PublicacaoLog.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195838_added_entity_RelatoriosLog.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195839_added_entity_SistemaAgua.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195839_added_entity_constraints_SistemaAgua.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195840_added_entity_SistemaAguaLog.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195840_added_entity_constraints_SistemaAguaLog.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195841_added_entity_Situacao.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195842_added_entity_SobreDna.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/20190705195842_added_entity_constraints_SobreDna.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/master.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/users.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/users_authorities.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/i18n/messages.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/i18n/messages_pt_br.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/logback-spring.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mails/activationEmail.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mails/creationEmail.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mails/passwordResetEmail.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/error.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/domain/AbstractAuditingEntity_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/domain/Adjudicacao_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/domain/Authority_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/domain/Comuna_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/domain/Concepcao_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/domain/Concurso_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/domain/ConfiguracoesLog_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/domain/Contactos_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/domain/Contrato_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/domain/Empreitada_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/domain/EntidadeGestora_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/domain/Execucao_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/domain/Fases_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/domain/Fornecedor_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/domain/IndicadorProducaoLog_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/domain/IndicadorProducao_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/domain/Inicio_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/domain/Municipio_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/domain/MunicipiosAtendidos_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/domain/Noticias_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/domain/OrigemFinanciamento_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/domain/PersistentAuditEvent_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/domain/ProgramasProjectosLog_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/domain/ProgramasProjectos_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/domain/Projectos_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/domain/Provincia_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/domain/PublicacaoLog_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/domain/Publicacao_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/domain/RelatoriosLog_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/domain/SistemaAguaLog_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/domain/SistemaAgua_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/domain/Situacao_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/domain/SobreDna_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/domain/User_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/service/mapper/AdjudicacaoMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/service/mapper/ComunaMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/service/mapper/ConcepcaoMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/service/mapper/ConcursoMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/service/mapper/ConfiguracoesLogMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/service/mapper/ContactosMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/service/mapper/ContratoMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/service/mapper/EmpreitadaMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/service/mapper/EntidadeGestoraMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/service/mapper/ExecucaoMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/service/mapper/FasesMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/service/mapper/FornecedorMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/service/mapper/IndicadorProducaoLogMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/service/mapper/IndicadorProducaoMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/service/mapper/InicioMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/service/mapper/MunicipioMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/service/mapper/MunicipiosAtendidosMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/service/mapper/NoticiasMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/service/mapper/OrigemFinanciamentoMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/service/mapper/ProgramasProjectosLogMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/service/mapper/ProgramasProjectosMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/service/mapper/ProjectosMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/service/mapper/ProvinciaMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/service/mapper/PublicacaoLogMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/service/mapper/PublicacaoMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/service/mapper/RelatoriosLogMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/service/mapper/SistemaAguaLogMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/service/mapper/SistemaAguaMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/service/mapper/SituacaoMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/minea/sisas/service/mapper/SobreDnaMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/config/LiquibaseTest$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/config/LiquibaseTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/config/WebConfigurerTest$MockFilterRegistration.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/config/WebConfigurerTest$MockServletRegistration.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/config/WebConfigurerTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/config/WebConfigurerTestController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/repository/CustomAuditEventRepositoryIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/security/DomainUserDetailsServiceIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/security/SecurityUtilsUnitTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/security/jwt/JWTFilterTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/security/jwt/TokenProviderTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/service/MailServiceIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/service/UserServiceIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/AccountResourceIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/AdjudicacaoResourceIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/AuditResourceIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/ComunaResourceIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/ConcepcaoResourceIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/ConcursoResourceIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/ConfiguracoesLogResourceIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/ContactosResourceIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/ContratoResourceIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/EmpreitadaResourceIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/EntidadeGestoraResourceIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/ExecucaoResourceIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/FasesResourceIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/FornecedorResourceIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/IndicadorProducaoLogResourceIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/IndicadorProducaoResourceIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/InicioResourceIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/LogsResourceIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/MunicipioResourceIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/MunicipiosAtendidosResourceIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/NoticiasResourceIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/OrigemFinanciamentoResourceIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/ProfileInfoResourceIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/ProgramasProjectosLogResourceIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/ProgramasProjectosResourceIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/ProjectosResourceIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/ProvinciaResourceIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/PublicacaoLogResourceIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/PublicacaoResourceIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/RelatoriosLogResourceIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/SistemaAguaLogResourceIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/SistemaAguaResourceIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/SituacaoResourceIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/SobreDnaResourceIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/TestUtil$ZonedDateTimeMatcher.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/TestUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/UserJWTControllerIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/UserResourceIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/errors/ExceptionTranslatorIntTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/errors/ExceptionTranslatorTestController$TestDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/errors/ExceptionTranslatorTestController$TestResponseStatusException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/errors/ExceptionTranslatorTestController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/minea/sisas/web/rest/util/PaginationUtilUnitTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/config/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/i18n/messages_en.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/logback.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/mails/testEmail.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/00385cbf56caf27eae6e.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/0072d912c125daf7074d.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/01438b766f39cab6a822.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/02f4318954d35f2f1c05.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/0551051910e63450bd64.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/077a15e9e7b5418a3ca1.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/0a30625f6197be3184c5.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/0f63d649e6c2dc836a28.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1.0551051910e63450bd64.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1.15077379046b816a0146.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1.1a26f1f93baff8640937.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1.1f1b9112d5a6285813fd.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1.20a7edcb223b2d0edb43.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1.28440cd5ac0e55cd6cab.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1.3856b799d61ef74818cf.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1.3f8550011ac54e8c8c2e.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1.408b08b82b80ac8e0911.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1.4a97fd854734bd7fe0ee.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1.4e3d2ea2e4b760f9f483.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1.50abb6c80aaec4b1c97f.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1.520cdab4581f3fe6990f.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1.59ca661a89e55d3fb2d3.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1.72162141bd98f6416295.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1.737332fe024dc025f981.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1.7398c9ad9b5656ef5974.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1.7b5c9ba66538e11e1037.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1.9108044ae27e044ca0b3.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1.9d895b84416bf2e7172d.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1.a015bcaada0f5f86a0ca.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1.a4e6a98a6cbb1a9c19bd.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1.a7b4e3139bcbe64a5af8.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1.d82ff4fe69ff61481959.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1.de165f83a209f7404756.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1.e4f3a81a8b89ec328442.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1.e65ad7da685381c950a5.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1.e7480e9176e42e087a8d.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1.f2675af7182da4288f0e.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1144402863cd3f148661.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/116321c2a4e282ed3b08.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/12457b1c0d6b5c01f676.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/13e244f3fe54530ad8c7.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1483b096e99ac9a7eaa3.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/14f7b57ffe3d3a8c9032.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/15077379046b816a0146.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/154f3e028bbe8d59d532.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/15ca33fffc8ed3c1ee54.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/16250176a277b477d865.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/18173387dd55e59cdd97.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/19296ac8e72fba096015.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1a26f1f93baff8640937.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1b0659fc7833e2dedb7e.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1bd0b196e4cdce12784b.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1be85d1a3356d4a5e686.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1cf81f821e40c7cb5ec9.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1f0d59a569553133f11d.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1f1b9112d5a6285813fd.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/1ff82578a0ce8958893c.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.0072d912c125daf7074d.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.01438b766f39cab6a822.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.077a15e9e7b5418a3ca1.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.0a30625f6197be3184c5.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.1144402863cd3f148661.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.12457b1c0d6b5c01f676.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.154f3e028bbe8d59d532.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.15ca33fffc8ed3c1ee54.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.18173387dd55e59cdd97.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.19296ac8e72fba096015.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.1b0659fc7833e2dedb7e.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.1be85d1a3356d4a5e686.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.1f0d59a569553133f11d.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.1ff82578a0ce8958893c.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.21dffdc08fd717604d57.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.21eab1374f8acc59bb20.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.21f1fd6e04f9ee4a4525.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.2476c3749a499ecb03ba.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.279039544b649daa9cb5.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.29bfb645ce208f863796.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.2c89c60be998f3702ccb.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.2f9e7847da92b3a586ed.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.33b68a52fb49c5899c07.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.37422e85ab9d0b114049.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.3794682512b87b4dad12.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.3867e66b9a62e3cc9818.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.38ecf31b73b1a58df65e.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.39d842f1c1bbf266b051.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.39ebe9864fac37a53776.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.3c327edf5afa825e3203.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.3dddc7a5799a5476efa5.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.3f6d5a8b17c4b3841684.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.4282b40ac197970b89ba.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.42cb4c4f267fd9ddd9fc.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.4304b497661f73713b86.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.45f5079eb59034bb2d7a.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.463d69ea360f04064d82.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.4676dc91f4b895fe80d7.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.47d68f3999a193104a00.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.4c7ef118240810625547.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.4de469d776df78a7f727.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.4f28a8366b1dfea81a23.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.500c2a964346e8df0235.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.5494b406ac4fd4cae19e.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.56e30772536da78241c8.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.577f1610780a9ff83cec.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.5d731f2fe8e798ca6749.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.5d89a9fa3f1a086b4555.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.5f2ba1721a6c9e159fa5.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.60d160b266bab475e030.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.624a2d97035cc326af46.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.62be1e47ca5ef0176dfd.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.63da4ffc86ed92fbb216.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.64a8fbcfb24ce2906811.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.692d05da8a73c0a2d09f.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.6978410ea2b90f4c805e.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.69caf77c687162b2b172.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.6a2b5fde93ba20bfc2da.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.6ae6042877c3162b46e4.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.6b62de3ce0fcd904784b.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.6f68fd3ed2f0940d1006.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.71d63f45eb2175188d0a.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.721366b83df070176032.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.73341f59115811e7c050.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.74287b2ac425961cd5b6.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.75fa9ff7afe3db947e72.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.78d8fbb92c13f0f01171.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.78e62be966186193750f.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.7a6bc852f178dcb744cc.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.7ac20089a67177b1d152.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.7c5e4ce50a932c18f38b.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.7da5816bc0c7145b5172.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.7e1fc0fde2aada727b26.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.7e26d5c2781747b28a67.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.802fe456d2ea1eb46bc9.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.819186f75470854f8fa6.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.81bdec53b4b8d6f04e91.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.8234147f8c6de0c3fe33.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.83d364a1832da52431af.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.83eca4b5ffd8de9ecc89.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.847eb962ef5f6153bddb.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.850a13df311bd1f45068.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.85b598a6d0890f162257.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.85d400c0ad01f4b281c4.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.8973edd0f897e5f5a58b.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.8a71a888bf7d657a2cad.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.8b1f63b7fe40d9a4a440.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.8d4c4e8f736ec4be64a6.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.8d8466d70816f06d1644.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.91884f90e0c0cdb2bee8.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.9303ad67c504c0c59a03.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.93f36bd5d60e7b48a5d9.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.959844d8ed10d0ce5a5b.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.97b95fb99741f32cd210.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.9c3b2e7ae2b7da77e406.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.9caf188a0a7b80b11fa9.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.9d5532e438e3447f6559.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.9fc2581aab1883c72857.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.9ff03ede472d965411b4.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.a016f412fcfd23e9c6c8.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.a32a9aae0a2805b05fcc.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.a41d8dd43e85b1594f4f.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.a44a3c259ed487525558.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.a78009a30a090acad53c.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.ad9499266bfc5a006247.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.b175e80d26e0c0154dbd.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.b4857e5dc424b8274679.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.b5dfaf848de42cb226d9.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.b76d3b008222e3f3de52.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.b87a2d985b6c9f8c9976.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.bb7004ac87998fd389c9.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.bd1dea7fa3752a983771.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.bd677bf47db0fbf957e0.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.bdf85489cf70ca203201.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.c2ca69c3f21ae6362fe0.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.c35ccc85cae8cf375e81.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.c3984dc2bfb3ed2d4107.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.c61e38a94e2102518f29.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.c728536c2b238b04e025.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.c74fe2b5cf9a1276fb05.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.c829384eef815c933a39.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.ca6fda3b3220ac65f867.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.cb0f4c551b2fddf77851.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.cc1b3f31ddff389d37c1.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.cc64651eb0b9ba9b3ffe.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.cd8ddf5fde5ef92c6767.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.ce95e13ba28333f59b4b.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.cefa0149ed4454135440.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.d05626238551e79cc3bf.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.d1aace3c6975bcdc0fcf.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.d21695fca9671912fa68.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.d27e9a7142459ce62355.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.d469513651dd397b5f1e.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.d5cc8a49ab4310ec049b.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.d73bf9e8532a0f813724.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.d860e59b816bac3bd115.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.d88a11f69e05ce7f1112.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.e5a1f5284b15d849e284.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.e7c16675c4f6d44240e7.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.e7c896cc7f2f21dabc92.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.e9902b6aef705229e38e.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.ec7ecae7755b17873432.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.eff36dd580d0b908ab8d.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.f4ecc3ec5f3110813600.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.f5a007bcb109c56d8913.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.f630023b30ac0cc7ae3b.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.f851d77406e7001f297f.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.f8ddb0a97daf7397693a.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.fa0c09c2b63e4872b17e.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.fbbef41c4021524be759.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.fc58f9f65f5e546491e6.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.fcde7c7fe575fbd8be49.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2.ff68f6518f2259674372.hot-update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2092b6ba5b31eed35ece.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/20a098c980c1c3555ce5.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/20a7edcb223b2d0edb43.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/21dffdc08fd717604d57.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/21eab1374f8acc59bb20.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/21f1fd6e04f9ee4a4525.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2202637af61f6328ee6e.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/23a8a3a3f92231736f8d.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2476c3749a499ecb03ba.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2501b65d6d6ad561c72a.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/26a79dbd729cb2ca3345.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/279039544b649daa9cb5.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/280ad609656e0fffe11a.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/28440cd5ac0e55cd6cab.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/29b8227ce8fd0afc346f.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/29bfb645ce208f863796.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2b3ea47b337939f840b2.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2b6dd418bc2db150ad87.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2c4e4cc6d64037db1ae2.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2c89c60be998f3702ccb.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/2f9e7847da92b3a586ed.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/30d91bfee9e10592026a.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/33b080a804336e31bd9f.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/33b68a52fb49c5899c07.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/34f502ac1a9cb7065248.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/365efab693f44c75c04c.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/36b12cc50e98ffb9d72b.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/37422e85ab9d0b114049.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/3783230a3e02f0665353.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/3794682512b87b4dad12.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/3856b799d61ef74818cf.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/3867e66b9a62e3cc9818.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/38ecf31b73b1a58df65e.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/3926905ceafd87cd35d1.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/394734ca76571951e98b.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/39d842f1c1bbf266b051.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/39ebe9864fac37a53776.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/3b9ee9a7c36f3bac2937.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/3bea88099df8ca9f2c73.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/3c327edf5afa825e3203.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/3dddc7a5799a5476efa5.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/3f6d5a8b17c4b3841684.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/3f8550011ac54e8c8c2e.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/408b08b82b80ac8e0911.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/413722e9d513fbc784d7.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/4205eb781e9780c70960.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/4282b40ac197970b89ba.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/42cb4c4f267fd9ddd9fc.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/4304b497661f73713b86.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/43cba515b6ecfb3f0360.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/45f5079eb59034bb2d7a.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/463d69ea360f04064d82.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/4676dc91f4b895fe80d7.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/47d68f3999a193104a00.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/47fd711c53ff43977130.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/481c3f57a51e47a9963c.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/48681235a1b344060d74.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/4a97fd854734bd7fe0ee.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/4c7ef118240810625547.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/4d3785aef54989fc1127.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/4de469d776df78a7f727.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/4e3d2ea2e4b760f9f483.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/4f28a8366b1dfea81a23.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/4f86b238a44224134a77.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/500c2a964346e8df0235.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/50abb6c80aaec4b1c97f.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/516c82e6d465e7abe283.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/520cdab4581f3fe6990f.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/522b1115520aab93b291.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/538a821d72e0aa0dc301.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/5494b406ac4fd4cae19e.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/56cf7af3ae8ec464a061.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/56e30772536da78241c8.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/577f1610780a9ff83cec.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/59ca661a89e55d3fb2d3.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/5b2fcd1fc0a9302912ce.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/5c6faa4940cf77e623a8.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/5d731f2fe8e798ca6749.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/5d89a9fa3f1a086b4555.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/5f2ba1721a6c9e159fa5.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/5f6b99bb8417cabe029a.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/60d160b266bab475e030.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/624a2d97035cc326af46.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/62be1e47ca5ef0176dfd.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/63da4ffc86ed92fbb216.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/64a8fbcfb24ce2906811.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/65e09c764df740c96403.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/692d05da8a73c0a2d09f.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/6978410ea2b90f4c805e.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/698dd84e8efb2ddb9dce.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/69bf8b304583c8d52fe2.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/69caf77c687162b2b172.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/6a2b5fde93ba20bfc2da.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/6ae6042877c3162b46e4.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/6b62de3ce0fcd904784b.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/6bbc43ea7a389d3a33f0.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/6c34b9a1a3afbd579203.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/6e5676932b6b7418acd4.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/6f68fd3ed2f0940d1006.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/71032ad1b7d5ea480e6d.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/71d63f45eb2175188d0a.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/721366b83df070176032.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/72162141bd98f6416295.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/72bc014963d46e3e6ae1.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/73341f59115811e7c050.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/736cdf59b73050836150.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/737332fe024dc025f981.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/7398c9ad9b5656ef5974.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/74287b2ac425961cd5b6.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/759ab0652e94fafb1a3e.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/75fa9ff7afe3db947e72.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/76b164dfb6723158b05f.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/7732471e66be343e7561.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/77362fdeca19d7504a0f.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/78d8fbb92c13f0f01171.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/78e62be966186193750f.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/7a6bc852f178dcb744cc.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/7ac20089a67177b1d152.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/7b5c9ba66538e11e1037.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/7c5e4ce50a932c18f38b.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/7da5816bc0c7145b5172.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/7e1fc0fde2aada727b26.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/7e26d5c2781747b28a67.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/802fe456d2ea1eb46bc9.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/819186f75470854f8fa6.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/81bdec53b4b8d6f04e91.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/820daee91e2d5b85d60d.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/8234147f8c6de0c3fe33.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/83d364a1832da52431af.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/83eca4b5ffd8de9ecc89.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/847eb962ef5f6153bddb.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/850a13df311bd1f45068.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/85b598a6d0890f162257.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/85d400c0ad01f4b281c4.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/8973edd0f897e5f5a58b.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/89fd5b8ffb712761f87f.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/8a71a888bf7d657a2cad.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/8b1f63b7fe40d9a4a440.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/8d4c4e8f736ec4be64a6.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/8d8466d70816f06d1644.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/8e56bda599887464031a.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/8e810c5f601ff15c3dc8.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/8f01d02f328d18435c00.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/9108044ae27e044ca0b3.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/91884f90e0c0cdb2bee8.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/9242ce24f2afe37f7495.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/92b5a6cdea4a4bb3e993.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/9303ad67c504c0c59a03.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/93f36bd5d60e7b48a5d9.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/93f9111e971bcc2a6eb1.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/959844d8ed10d0ce5a5b.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/962ea1cd54abd834d159.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/97b95fb99741f32cd210.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/98f99baad4a095467bb1.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/99c38270bafd8346ba7d.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/9a383ebc321d67a2bc2f.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/9a3ad9c1d1fbb8793f0c.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/9a40a3bcab3494ff6bc3.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/9a5cf8255a852bc549c3.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/9c3b2e7ae2b7da77e406.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/9caf188a0a7b80b11fa9.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/9d5532e438e3447f6559.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/9d895b84416bf2e7172d.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/9d8fb4d0f288ef5c0c64.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/9def0e9b3de587a83a06.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/9fc2581aab1883c72857.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/9ff03ede472d965411b4.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/a015bcaada0f5f86a0ca.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/a016f412fcfd23e9c6c8.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/a07920a62007d343995c.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/a32a9aae0a2805b05fcc.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/a41d8dd43e85b1594f4f.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/a42974387f96e301298f.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/a44a3c259ed487525558.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/a481bf7679223f70f59e.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/a48dea186b96bc9db17f.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/a4e6a98a6cbb1a9c19bd.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/a5eaf6233d5d8770f46c.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/a61d53978ccb73e0d1c8.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/a6ca5d4b066c5c894087.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/a732fc99f23e9c69b297.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/a78009a30a090acad53c.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/a7b4e3139bcbe64a5af8.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/a80912b9b97ff8cd4c8b.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/a8898ee4cebc7a29570a.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/a89a1749e77e1977d148.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/a9a2a6a8865bd2deaae1.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/aa5da62fde11bd9a80dd.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/abd63db2fcec1b2f1381.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/aced084e1318f02f3d60.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/ad9499266bfc5a006247.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/aeeb9d6a518f99140402.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/afd02563fd37f38f3494.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/app/global.bundle.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/app/main.bundle.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/app/manifest.bundle.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/app/polyfills.bundle.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/app/vendor.bundle.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/b01bd9cd0ec352fab11e.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/b03afb8d2d779de92932.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/b175e80d26e0c0154dbd.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/b272ce671125d951297c.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/b2c6d61bc623d46e09e4.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/b433acea43d28809e7e4.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/b4857e5dc424b8274679.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/b550d9c8c089bdde6a96.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/b5dfaf848de42cb226d9.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/b76d3b008222e3f3de52.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/b854e1228a1245e0d4a4.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/b87a2d985b6c9f8c9976.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/bad691776cec4565cda7.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/bb7004ac87998fd389c9.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/bc2ecb8e963e6b173bdc.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/bd1dea7fa3752a983771.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/bd677bf47db0fbf957e0.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/bdf85489cf70ca203201.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/bfb9b212eb07aa6ebe03.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/c011ee12b6f463b362a3.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/c0cdd3985404ca726ce6.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/c2ca69c3f21ae6362fe0.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/c35ccc85cae8cf375e81.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/c3895ee126b8a4f8b87f.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/c3984dc2bfb3ed2d4107.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/c563e8037666e219c9d9.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/c61e38a94e2102518f29.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/c6a2f9b2281a498e0d18.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/c6fc06200d71ea2c7b48.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/c728536c2b238b04e025.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/c74fe2b5cf9a1276fb05.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/c829384eef815c933a39.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/ca6fda3b3220ac65f867.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/cb0f4c551b2fddf77851.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/cbcdfb1c787d147406ea.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/cc1b3f31ddff389d37c1.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/cc31ae31ac8edff65305.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/cc64651eb0b9ba9b3ffe.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/cd8ddf5fde5ef92c6767.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/ce95e13ba28333f59b4b.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/cefa0149ed4454135440.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/content/1cd3a1d782e85ba37677c1a2099bc002.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/content/5749e90b1e961f3ea62632a5adf89557.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/content/674f50d287a8c48dc19ba404d20fe713.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/content/68e6851a67e75f3e71d7469a00988aae.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/content/803e4f0065546ca0a690ce5dfd6eff93.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/content/912ec66d7572ff821749319396470bde.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/content/a30deb26b4eb1521433021e326cbcc2c.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/content/af7ae505a9eed503f8b8e6982036873e.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/content/b06871f281fee6b241d60582ae9369b9.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/content/ca854e6d0785ba4b9d715049c0bdbcb3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/content/fee66e712a8a08eef5805a46892932ad.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/d05626238551e79cc3bf.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/d0d164b51b9fccc2b467.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/d1aace3c6975bcdc0fcf.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/d21695fca9671912fa68.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/d270a10179dfb9adc2c0.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/d27e9a7142459ce62355.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/d469513651dd397b5f1e.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/d4ba62bc312fbdde262b.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/d5193347f684cb318888.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/d5cc8a49ab4310ec049b.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/d5e71d451d4ae2c4635e.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/d72f4ff57b9a1dd50da5.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/d73bf9e8532a0f813724.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/d82cf13fbf362d6e4aa8.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/d82ff4fe69ff61481959.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/d8391d18f3642cb983a6.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/d860e59b816bac3bd115.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/d88a11f69e05ce7f1112.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/da0110d49548d311c4a9.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/da47650487c7fedcceed.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/dc28cc0fddfd33a8529a.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/dc827c1a584f7bc8b372.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/dde82d4f13a1dd0751b6.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/de165f83a209f7404756.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/de867a9cf8116400f015.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/dfa1d2501482e70fc499.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/e011f13ef15024db2b2a.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/e309dc4f280aa5df2273.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/e3202dfdbba4dd1a88fa.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/e4115ee18c67521e1b7d.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/e4f3a81a8b89ec328442.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/e507eca67c698e3314ed.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/e5a1f5284b15d849e284.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/e65ad7da685381c950a5.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/e66965b3340c15bc263c.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/e7480e9176e42e087a8d.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/e7c16675c4f6d44240e7.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/e7c896cc7f2f21dabc92.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/e8b1561c8b6a121d8b86.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/e9902b6aef705229e38e.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/ea8488879fc0683fbcf8.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/eaf882378164d49d142c.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/ec136a8d0b871ee38c6d.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/ec6a8a1bdb8817043e03.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/ec7ecae7755b17873432.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/eff36dd580d0b908ab8d.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/f02b01b7476192c451c6.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/f08a3500ab97366a50ae.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/f2675af7182da4288f0e.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/f48fdcd877a757e12f62.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/f4ecc3ec5f3110813600.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/f5a007bcb109c56d8913.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/f5b25b4f1a52ce490454.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/f630023b30ac0cc7ae3b.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/f851d77406e7001f297f.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/f8653d3ae0d628809e13.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/f8ddb0a97daf7397693a.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/f9567b9b41efb969309c.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/f98884056da2fbdb1e2e.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/f9f5971b24cbb99be5a1.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/fa0c09c2b63e4872b17e.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/fbbef41c4021524be759.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/fc170f364912a5d6d4a8.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/fc58f9f65f5e546491e6.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/fc675f064da51a4bd8be.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/fcde7c7fe575fbd8be49.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/fd514679823db544681b.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/fe7b51e016b106d563dd.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/ff68f6518f2259674372.hot-update.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/i18n/pt-br.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/manifest.webapp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/robots.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/swagger-ui/dist/css/print.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/swagger-ui/dist/css/reset.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/swagger-ui/dist/css/screen.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/swagger-ui/dist/css/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/swagger-ui/dist/css/typography.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/swagger-ui/dist/images/throbber.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/swagger-ui/dist/lib/backbone-min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/swagger-ui/dist/lib/es5-shim.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/swagger-ui/dist/lib/handlebars-4.0.5.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/swagger-ui/dist/lib/highlight.9.1.0.pack.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/swagger-ui/dist/lib/highlight.9.1.0.pack_extended.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/swagger-ui/dist/lib/jquery-1.8.0.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/swagger-ui/dist/lib/jquery.ba-bbq.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/swagger-ui/dist/lib/jquery.slideto.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/swagger-ui/dist/lib/jquery.wiggle.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/swagger-ui/dist/lib/js-yaml.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/swagger-ui/dist/lib/jsoneditor.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/swagger-ui/dist/lib/lodash.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/swagger-ui/dist/lib/marked.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/swagger-ui/dist/lib/object-assign-pollyfill.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/swagger-ui/dist/lib/sanitize-html.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/swagger-ui/dist/lib/swagger-oauth.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/swagger-ui/dist/swagger-ui.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/www/swagger-ui/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@angular/compiler/bundles/.compiler.umd.js.map.icloud" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@angular/compiler/esm5/.compiler.js.map.icloud" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/pdfjs-dist/build/.pdf.worker.js.map.icloud" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/minea/sisas/service/IndicadorProducaoQueryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/minea/sisas/service/IndicadorProducaoQueryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/minea/sisas/service/mapper/ProgramasProjectosLogMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/minea/sisas/service/mapper/ProgramasProjectosLogMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/minea/sisas/service/mapper/ProgramasProjectosMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/minea/sisas/service/mapper/ProgramasProjectosMapper.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -1183,13 +21,14 @@
     <session id="2001817032">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
+          <entry key="project.closed" value="7" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.15" value="2" />
           <entry key="project.open.time.2" value="1" />
-          <entry key="project.open.time.5" value="1" />
+          <entry key="project.open.time.5" value="2" />
+          <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="6" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -1198,7 +37,7 @@
           <entry key="csv" value="2" />
           <entry key="html" value="75" />
           <entry key="iml" value="1" />
-          <entry key="java" value="569" />
+          <entry key="java" value="577" />
           <entry key="jh" value="2" />
           <entry key="json" value="24" />
           <entry key="png" value="2" />
@@ -1213,7 +52,7 @@
           <entry key="HTML" value="75" />
           <entry key="IDEA_MODULE" value="1" />
           <entry key="Image" value="2" />
-          <entry key="JAVA" value="569" />
+          <entry key="JAVA" value="577" />
           <entry key="JSON" value="23" />
           <entry key="PLAIN_TEXT" value="4" />
           <entry key="TypeScript" value="84" />
@@ -1230,7 +69,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="2830" />
-          <entry key="java" value="3009" />
+          <entry key="java" value="3028" />
           <entry key="json" value="590" />
           <entry key="ts" value="416" />
           <entry key="xml" value="75" />
@@ -1239,7 +78,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="2830" />
-          <entry key="JAVA" value="3009" />
+          <entry key="JAVA" value="3028" />
           <entry key="JSON" value="590" />
           <entry key="TypeScript" value="416" />
           <entry key="XML" value="75" />
@@ -1250,10 +89,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/app/entities/programas-projectos-log/programas-projectos-log-detail.component.html">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/minea/sisas/service/IndicadorProducaoQueryService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="25" column="166" selection-start-line="25" selection-start-column="166" selection-end-line="25" selection-end-column="166" />
+            <state relative-caret-position="234">
+              <caret line="337" column="9" lean-forward="true" selection-start-line="337" selection-start-column="9" selection-end-line="337" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -1288,9 +127,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/app/entities/indicador-producao/indicador-producao.component.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/app/entities/indicador-producao/indicador-producao.component.ts" />
-        <option value="$PROJECT_DIR$/src/main/webapp/app/entities/indicador-producao-log/indicador-producao-log.module.ts" />
         <option value="$PROJECT_DIR$/src/main/webapp/app/entities/indicador-producao-log/indicador-producao-log-dialog.component.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/minea/sisas/domain/IndicadorProducaoLog.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/app/entities/indicador-producao-log/indicador-producao-log.model.ts" />
@@ -1339,6 +175,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/minea/sisas/domain/ProgramasProjectosLog.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/minea/sisas/web/rest/ProgramasProjectosLogResourceIntTest.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/app/entities/programas-projectos-log/programas-projectos-log-detail.component.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/minea/sisas/service/mapper/ProgramasProjectosLogMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/minea/sisas/service/mapper/ProgramasProjectosMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/minea/sisas/service/IndicadorProducaoQueryService.java" />
       </list>
     </option>
   </component>
@@ -1356,8 +195,7 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="-6" />
+  <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1280" />
     <option name="height" value="724" />
@@ -1386,6 +224,45 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="sisas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sisas" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sisas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sisas" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="sisas" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sisas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sisas" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="sisas" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sisas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sisas" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sisas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sisas" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="content" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -1403,7 +280,7 @@
     <property name="RequestMappingsPanelWidth2" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1562784760783" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1563401216549" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -1461,16 +338,19 @@
       <workItem from="1562524549282" duration="14980000" />
       <workItem from="1562596052299" duration="948000" />
       <workItem from="1562597012597" duration="25210000" />
+      <workItem from="1563193892736" duration="614000" />
+      <workItem from="1563400797005" duration="420000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85067000" />
+    <option name="totallyTimeSpent" value="86101000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="23" width="1280" height="724" extended-state="1" />
+    <frame x="0" y="23" width="1280" height="724" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22374798" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23021002" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -1487,7 +367,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Spring" order="7" weight="0.32911393" />
       <window_info anchor="bottom" id="TypeScript" order="8" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.431962" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.3227848" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.36867088" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" />
@@ -1571,27 +451,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/minea/sisas/security/SecurityUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="56" column="25" lean-forward="true" selection-start-line="56" selection-start-column="25" selection-end-line="56" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/i18n/pt-br/sistemaAgua.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1140">
-          <caret line="76" column="39" lean-forward="true" selection-start-line="76" selection-start-column="39" selection-end-line="76" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/minea/sisas/web/rest/SistemaAguaResourceIntTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-957">
-          <caret line="3639" column="23" selection-start-line="3639" selection-start-column="23" selection-end-line="3639" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/minea/sisas/service/mapper/ComunaMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -1638,9 +497,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="186">
           <caret line="36" column="4" selection-start-line="36" selection-start-column="4" selection-end-line="36" selection-end-column="106" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1655,9 +511,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
           <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
-          <folding>
-            <element signature="e#0#61#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1682,21 +535,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/minea/sisas/service/dto/ProgramasProjectosLogDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="108" column="41" lean-forward="true" selection-start-line="108" selection-start-column="41" selection-end-line="108" selection-end-column="41" />
-          <folding>
-            <element signature="e#1184#1185#0" expanded="true" />
-            <element signature="e#1214#1215#0" expanded="true" />
-            <element signature="e#1258#1259#0" expanded="true" />
-            <element signature="e#1296#1297#0" expanded="true" />
-            <element signature="e#1340#1341#0" expanded="true" />
-            <element signature="e#1381#1382#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/minea/sisas/web/rest/ProgramasProjectosResourceIntTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1096">
@@ -1708,9 +546,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#61#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1718,9 +553,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-542">
           <caret line="28" column="34" lean-forward="true" selection-start-line="28" selection-start-column="15" selection-end-line="28" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1733,13 +565,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="26" column="27" lean-forward="true" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/minea/sisas/domain/ProgramasProjectos.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -1768,23 +593,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="13" column="38" lean-forward="true" selection-start-line="13" selection-start-column="38" selection-end-line="13" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/minea/sisas/service/dto/ProgramasProjectosDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="122" column="5" lean-forward="true" selection-start-line="122" selection-start-column="5" selection-end-line="122" selection-end-column="5" />
-          <folding>
-            <element signature="e#2398#2399#0" expanded="true" />
-            <element signature="e#2428#2429#0" expanded="true" />
-            <element signature="e#2472#2473#0" expanded="true" />
-            <element signature="e#2510#2511#0" expanded="true" />
-            <element signature="e#2543#2544#0" expanded="true" />
-            <element signature="e#2572#2573#0" expanded="true" />
-            <element signature="e#2616#2617#0" expanded="true" />
-            <element signature="e#2652#2653#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1853,20 +661,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/app/entities/programas-projectos-log/programas-projectos-log.route.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-659">
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-659" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/app/entities/entity.module.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
           <caret line="29" column="40" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#65#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1874,9 +675,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="50" column="45" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#65#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1898,10 +696,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1956,8 +750,43 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/minea/sisas/domain/ProgramasProjectosLog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="149" column="16" lean-forward="true" selection-start-line="149" selection-start-column="16" selection-end-line="149" selection-end-column="16" />
+        <state relative-caret-position="-101">
+          <caret line="20" column="55" lean-forward="true" selection-start-line="20" selection-start-column="55" selection-end-line="20" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minea/sisas/service/dto/ProgramasProjectosLogDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="20" column="24" lean-forward="true" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minea/sisas/service/mapper/ProgramasProjectosLogMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="16" column="58" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minea/sisas/domain/ProgramasProjectos.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-396">
+          <caret line="19" column="55" lean-forward="true" selection-start-line="19" selection-start-column="55" selection-end-line="19" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minea/sisas/service/dto/ProgramasProjectosDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-113">
+          <caret line="23" column="25" lean-forward="true" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minea/sisas/service/mapper/ProgramasProjectosMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="17" column="49" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="49" />
         </state>
       </provider>
     </entry>
@@ -1965,6 +794,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="25" column="166" selection-start-line="25" selection-start-column="166" selection-end-line="25" selection-end-column="166" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minea/sisas/service/IndicadorProducaoQueryService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="337" column="9" lean-forward="true" selection-start-line="337" selection-start-column="9" selection-end-line="337" selection-end-column="9" />
         </state>
       </provider>
     </entry>

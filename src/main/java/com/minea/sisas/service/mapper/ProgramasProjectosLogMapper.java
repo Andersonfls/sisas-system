@@ -12,10 +12,8 @@ import org.mapstruct.*;
 @Mapper(componentModel = "spring", uses = {ProgramasProjectosMapper.class})
 public interface ProgramasProjectosLogMapper extends EntityMapper<ProgramasProjectosLogDTO, ProgramasProjectosLog> {
 
-    @Mapping(source = "idProgramasProjectos.id", target = "idProgramasProjectosId")
     ProgramasProjectosLogDTO toDto(ProgramasProjectosLog programasProjectosLog);
 
-    @Mapping(source = "idProgramasProjectosId", target = "id")
     ProgramasProjectosLog toEntity(ProgramasProjectosLogDTO programasProjectosLogDTO);
 
     default ProgramasProjectosLog fromId(Long id) {

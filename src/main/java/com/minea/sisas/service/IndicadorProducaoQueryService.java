@@ -335,9 +335,6 @@ public class IndicadorProducaoQueryService extends QueryService<IndicadorProduca
             if (criteria.getIdComunaId() != null) {
                 specification = specification.and(buildReferringEntitySpecification(criteria.getIdComunaId(), IndicadorProducao_.idComuna, Comuna_.id));
             }
-            if (criteria.getIndicadorProducaoLogId() != null) {
-                specification = specification.and(buildReferringEntitySpecification(criteria.getIndicadorProducaoLogId(), IndicadorProducao_.indicadorProducaoLogs, IndicadorProducaoLog_.id));
-            }
         }
         return specification;
     }
