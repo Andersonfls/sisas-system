@@ -93,7 +93,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label class="form-control-label" for="celular">Celular</label>
+                    <label class="form-control-label" for="celular">Telemóvel</label>
                     <input type="text" class="form-control" name="celular" id="celular"
                            #celularInput="ngModel"
                            [(ngModel)]="user.celular"
@@ -114,9 +114,9 @@
         </div>
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="form-group">
-                    <label class="form-control-label" for="enderecoCidade">CIDADE</label>
+                    <label class="form-control-label" for="enderecoCidade">Provincia</label>
                     <input type="text" class="form-control"
                            name="enderecoCidade" id="enderecoCidade"
                            [(ngModel)]="user.enderecoCidade"
@@ -127,19 +127,19 @@
 
             <div class="col-md-4">
                 <div class="form-group">
-                    <label class="form-control-label" for="enderecoCep">CEP</label>
+                    <label class="form-control-label" for="enderecoCep">Municipio</label>
                     <input type="text"
                            class="form-control" name="enderecoCep" id="enderecoCep"
-                           [(ngModel)]="user.enderecoCep" maxlength="9"
+                           [(ngModel)]="user.enderecoCidade"
                     >
                 </div>
             </div>
 
-            <div class="col-md-2">
+            <div class="col-md-4">
                 <div class="form-group">
-                    <label class="form-control-label" for="enderecoUf">UF</label>
-                    <input type="text" class="form-control" name="enderecoUf" id="enderecoUf"
-                           [(ngModel)]="user.enderecoUf" maxlength="2"
+                    <label class="form-control-label" for="comuna">Comuna</label>
+                    <input type="text" class="form-control" name="enderecoUf" id="comuna"
+                           [(ngModel)]="user.enderecoCidade" maxlength="2"
                     >
                 </div>
             </div>
@@ -148,7 +148,7 @@
         <div class="row">
             <div class="col-md-9">
                 <div class="form-group">
-                    <label class="form-control-label" for="enderecoLogadouro">LOGADOURO</label>
+                    <label class="form-control-label" for="enderecoLogadouro">Logradouro</label>
                     <input type="text"
                            class="form-control"
                            name="enderecoLogadouro" id="enderecoLogadouro"
@@ -160,7 +160,7 @@
 
             <div class="col-md-3">
                 <div class="form-group">
-                    <label class="form-control-label" for="enderecoLote">LOTE</label>
+                    <label class="form-control-label" for="enderecoLote">Número</label>
                     <input type="text"
                            class="form-control" name="enderecoLote" id="enderecoLote"
                            [(ngModel)]="user.enderecoLote"
@@ -173,7 +173,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label class="form-control-label" for="enderecoBairro">BAIRRO</label>
+                    <label class="form-control-label" for="enderecoBairro">Bairro</label>
                     <input type="text" class="form-control"
                            name="enderecoBairro" id="enderecoBairro"
                            [(ngModel)]="user.enderecoBairro"
@@ -184,7 +184,7 @@
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label class="form-control-label" for="enderecoComplemento">COMPLEMENTO</label>
+                    <label class="form-control-label" for="enderecoComplemento">Complemento</label>
                     <input type="text" class="form-control"
                            name="enderecoComplemento" id="enderecoComplemento"
                            [(ngModel)]="user.enderecoComplemento"
@@ -193,17 +193,17 @@
             </div>
         </div>
 
-        <div class="row" style="text-align: center">
-            <div class="col-sm-2">
-                <label class="form-control-label" for="etiquetas">Etiquetas</label>
-                <button class="btn btn-success btn-sm"
-                        name="etiquetas"  id="etiquetas" data-toggle="collapse"
-                        title="Etiquetas" href="#collapseExample" role="button"
-                        aria-expanded="false" aria-controls="collapseExample">
-                    <span class="fa fa-tags"></span>
-                </button>
-            </div>
-        </div>
+        <!--<div class="row" style="text-align: center">-->
+            <!--<div class="col-sm-2">-->
+                <!--<label class="form-control-label" for="etiquetas">Etiquetas</label>-->
+                <!--<button class="btn btn-success btn-sm"-->
+                        <!--name="etiquetas"  id="etiquetas" data-toggle="collapse"-->
+                        <!--title="Etiquetas" href="#collapseExample" role="button"-->
+                        <!--aria-expanded="false" aria-controls="collapseExample">-->
+                    <!--<span class="fa fa-tags"></span>-->
+                <!--</button>-->
+            <!--</div>-->
+        <!--</div>-->
 
         <br/>
         <div class="collapse" id="collapseExample">

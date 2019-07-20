@@ -7,7 +7,7 @@
 
 #sidebar .list-group {
     min-width: 245px;
-    background-color: #678891;
+    background-color: #1C6588;
     min-height: 270vh;
 }
 
@@ -19,7 +19,7 @@
 #sidebar .list-group-item {
     font-weight: 600;
     border-radius: 0;
-    background-color: #678891;
+    background-color: #1C6588;
     color: #efece6;
     border-left: 0;
     border-right: 0;
@@ -30,7 +30,7 @@
 
 /* highlight active menu */
 #sidebar .list-group-item:not(.collapsed) {
-    background-color: #3b535f;
+    background-color: #2d596f;
 }
 
 /* closed state */

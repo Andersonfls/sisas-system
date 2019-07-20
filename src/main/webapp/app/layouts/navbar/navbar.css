@@ -8,7 +8,7 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    background-color: #628394;
+    background-color: #1C6588;
     z-index: 1030;
     padding-right: 15px;
 }
@@ -29,7 +29,7 @@
     -webkit-box-flex: 1;
     -ms-flex: 1 0 auto;
     flex: 1 0 auto;
-    color: #fff;
+    color: #1C6588;
     text-align: center;
     font-family: 'Niconne';
     padding: 0 15px;
@@ -45,7 +45,7 @@
         flex: 0 0 auto;
         display: block;
         width: 255px;
-        background-color: #628394;
+        background-color: #1c6587;
     }
 }
 
@@ -704,4 +704,26 @@
     border-top: 1px solid #ddd;
     padding: 20px 0 0 0;
     margin-top: 10px;
+}
+
+.frase-navbar {
+    margin-top: 1%;
+    margin-left: 8%;
+    color: #eeebe5 !important;
+    font-family: initial;
+    font-size: 1.1em;
+}
+
+.img-navbar-logo {
+    height: 55px;
+    width: 55px;
+    float: left;
+}
+
+.texto-navbar-logo {
+    color: #eeebe5 !important;
+    font-size: 0.4em;
+    font-style: initial;
+    height: 20%;
+    margin-left: 7%;
 }

@@ -15,8 +15,8 @@
             "title": "Usuário"
         },
         "login": "Login",
-        "firstName": "Primeiro nome",
-        "lastName": "Último nome",
+        "firstName": "Primeiro Nome",
+        "lastName": "Último Nome",
         "email": "Email",
         "activated": "Ativo",
         "deactivated": "Inativo",
