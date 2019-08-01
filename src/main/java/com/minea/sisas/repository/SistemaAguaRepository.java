@@ -18,6 +18,7 @@ import org.springframework.stereotype.Repository;
 public interface SistemaAguaRepository extends JpaRepository<SistemaAgua, Long>, JpaSpecificationExecutor<SistemaAgua> {
 
     @Query("select s from SistemaAgua s where LOWER(s.nmSistemaAgua) like LOWER(concat(:nome,'%')) " +
+        "or LOWER(s.nmFonteAgua) like LOWER(concat(:nome,'%'))" +
         "or LOWER(s.nmLocalidade) like LOWER(concat(:nome,'%'))" +
         "or LOWER(s.nmTpArea) like LOWER(concat(:nome,'%'))")
     Page buscarPorNome(@Param("nome") String nome, Pageable pageable);
