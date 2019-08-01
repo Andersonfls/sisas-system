@@ -1,13 +1,14 @@
 package com.minea.sisas.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.minea.sisas.repository.FornecedorRepository;
+import com.minea.sisas.service.FornecedorQueryService;
 import com.minea.sisas.service.FornecedorService;
+import com.minea.sisas.service.dto.FornecedorCriteria;
+import com.minea.sisas.service.dto.FornecedorDTO;
 import com.minea.sisas.web.rest.errors.BadRequestAlertException;
 import com.minea.sisas.web.rest.util.HeaderUtil;
 import com.minea.sisas.web.rest.util.PaginationUtil;
-import com.minea.sisas.service.dto.FornecedorDTO;
-import com.minea.sisas.service.dto.FornecedorCriteria;
-import com.minea.sisas.service.FornecedorQueryService;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +22,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -40,9 +40,12 @@ public class FornecedorResource {
 
     private final FornecedorQueryService fornecedorQueryService;
 
-    public FornecedorResource(FornecedorService fornecedorService, FornecedorQueryService fornecedorQueryService) {
+    private final FornecedorRepository fornecedorRepository;
+
+    public FornecedorResource(FornecedorService fornecedorService, FornecedorQueryService fornecedorQueryService, FornecedorRepository fornecedorRepository) {
         this.fornecedorService = fornecedorService;
         this.fornecedorQueryService = fornecedorQueryService;
+        this.fornecedorRepository=fornecedorRepository;
     }
 
     /**
@@ -99,6 +102,13 @@ public class FornecedorResource {
     public ResponseEntity<List<FornecedorDTO>> getAllFornecedors(FornecedorCriteria criteria, Pageable pageable) {
         log.debug("REST request to get Fornecedors by criteria: {}", criteria);
         Page<FornecedorDTO> page = fornecedorQueryService.findByCriteria(criteria, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/fornecedors");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    @GetMapping("/fornecedors/nomeFiltro")
+    public ResponseEntity<List<FornecedorDTO>> getByNome(@RequestParam(value = "nome") String nome, Pageable pageable) {
+        Page<FornecedorDTO> page = fornecedorRepository.buscarPorNome(nome, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/fornecedors");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

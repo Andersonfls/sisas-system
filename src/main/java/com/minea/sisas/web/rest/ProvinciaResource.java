@@ -1,6 +1,8 @@
 package com.minea.sisas.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.minea.sisas.repository.ProvinciaRepository;
+import com.minea.sisas.security.AuthoritiesConstants;
 import com.minea.sisas.service.ProvinciaService;
 import com.minea.sisas.web.rest.errors.BadRequestAlertException;
 import com.minea.sisas.web.rest.util.HeaderUtil;
@@ -16,6 +18,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -40,9 +43,12 @@ public class ProvinciaResource {
 
     private final ProvinciaQueryService provinciaQueryService;
 
-    public ProvinciaResource(ProvinciaService provinciaService, ProvinciaQueryService provinciaQueryService) {
+    private final ProvinciaRepository provinciaRepository;
+
+    public ProvinciaResource(ProvinciaService provinciaService, ProvinciaQueryService provinciaQueryService, ProvinciaRepository provinciaRepository) {
         this.provinciaService = provinciaService;
         this.provinciaQueryService = provinciaQueryService;
+        this.provinciaRepository=provinciaRepository;
     }
 
     /**
@@ -99,6 +105,14 @@ public class ProvinciaResource {
     public ResponseEntity<List<ProvinciaDTO>> getAllProvincias(ProvinciaCriteria criteria, Pageable pageable) {
         log.debug("REST request to get Provincias by criteria: {}", criteria);
         Page<ProvinciaDTO> page = provinciaQueryService.findByCriteria(criteria, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/provincias");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+
+    @GetMapping("/provincias/nomeFiltro")
+    public ResponseEntity<List<ProvinciaDTO>> getByNome(@RequestParam(value = "nome") String nome, Pageable pageable) {
+        Page<ProvinciaDTO> page = provinciaRepository.buscarPorNome(nome, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/provincias");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

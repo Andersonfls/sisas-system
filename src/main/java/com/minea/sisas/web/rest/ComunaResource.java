@@ -2,6 +2,8 @@ package com.minea.sisas.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.minea.sisas.domain.Comuna;
+import com.minea.sisas.repository.ComunaRepository;
+import com.minea.sisas.security.AuthoritiesConstants;
 import com.minea.sisas.service.ComunaService;
 import com.minea.sisas.web.rest.errors.BadRequestAlertException;
 import com.minea.sisas.web.rest.util.HeaderUtil;
@@ -17,6 +19,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -41,9 +44,12 @@ public class ComunaResource {
 
     private final ComunaQueryService comunaQueryService;
 
-    public ComunaResource(ComunaService comunaService, ComunaQueryService comunaQueryService) {
+    private final ComunaRepository comunaRepository;
+
+    public ComunaResource(ComunaService comunaService, ComunaQueryService comunaQueryService, ComunaRepository comunaRepository) {
         this.comunaService = comunaService;
         this.comunaQueryService = comunaQueryService;
+        this.comunaRepository= comunaRepository;
     }
 
     /**
@@ -103,6 +109,17 @@ public class ComunaResource {
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/comunas");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
+
+    /*
+     *  Filtro de usuários atráves do atributo nome
+     */
+    @GetMapping("/comunas/nomeFiltro")
+    public ResponseEntity<List<ComunaDTO>> getByNome(@RequestParam(value = "nome") String nome, Pageable pageable) {
+        Page<ComunaDTO> page = comunaRepository.buscarPorNome(nome, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/comunas");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
 
     /**
      * GET  /comunas/:id : get the "id" comuna.

@@ -92,7 +92,7 @@ public class FornecedorResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final FornecedorResource fornecedorResource = new FornecedorResource(fornecedorService, fornecedorQueryService);
+        final FornecedorResource fornecedorResource = new FornecedorResource(fornecedorService, fornecedorQueryService, fornecedorRepository);
         this.restFornecedorMockMvc = MockMvcBuilders.standaloneSetup(fornecedorResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)

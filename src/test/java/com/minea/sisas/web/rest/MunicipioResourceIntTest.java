@@ -83,7 +83,7 @@ public class MunicipioResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final MunicipioResource municipioResource = new MunicipioResource(municipioService, municipioQueryService);
+        final MunicipioResource municipioResource = new MunicipioResource(municipioService, municipioQueryService,municipioRepository);
         this.restMunicipioMockMvc = MockMvcBuilders.standaloneSetup(municipioResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)

@@ -1,45 +1,57 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import { SERVER_API_URL } from '../../app.constants';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpParams, HttpResponse} from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
+import {SERVER_API_URL} from '../../app.constants';
 
-import { Fornecedor } from './fornecedor.model';
-import { createRequestOption } from '../../shared';
+import {Fornecedor} from './fornecedor.model';
+import {createRequestOption} from '../../shared';
 
 export type EntityResponseType = HttpResponse<Fornecedor>;
 
 @Injectable()
 export class FornecedorService {
 
-    private resourceUrl =  SERVER_API_URL + 'api/fornecedors';
+    private resourceUrl = SERVER_API_URL + 'api/fornecedors';
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) {
+    }
 
     create(fornecedor: Fornecedor): Observable<EntityResponseType> {
         const copy = this.convert(fornecedor);
-        return this.http.post<Fornecedor>(this.resourceUrl, copy, { observe: 'response' })
+        return this.http.post<Fornecedor>(this.resourceUrl, copy, {observe: 'response'})
             .map((res: EntityResponseType) => this.convertResponse(res));
     }
 
     update(fornecedor: Fornecedor): Observable<EntityResponseType> {
         const copy = this.convert(fornecedor);
-        return this.http.put<Fornecedor>(this.resourceUrl, copy, { observe: 'response' })
+        return this.http.put<Fornecedor>(this.resourceUrl, copy, {observe: 'response'})
             .map((res: EntityResponseType) => this.convertResponse(res));
     }
 
     find(id: number): Observable<EntityResponseType> {
-        return this.http.get<Fornecedor>(`${this.resourceUrl}/${id}`, { observe: 'response'})
+        return this.http.get<Fornecedor>(`${this.resourceUrl}/${id}`, {observe: 'response'})
             .map((res: EntityResponseType) => this.convertResponse(res));
     }
 
     query(req?: any): Observable<HttpResponse<Fornecedor[]>> {
         const options = createRequestOption(req);
-        return this.http.get<Fornecedor[]>(this.resourceUrl, { params: options, observe: 'response' })
+        return this.http.get<Fornecedor[]>(this.resourceUrl, {params: options, observe: 'response'})
             .map((res: HttpResponse<Fornecedor[]>) => this.convertArrayResponse(res));
     }
 
+    queryUserNome(req: any): Observable<HttpResponse<Fornecedor[]>> {
+        const params: HttpParams = createRequestOption(req);
+
+        const requestURL = SERVER_API_URL + 'api/fornecedors/nomeFiltro';
+
+        return this.http.get<Fornecedor[]>(requestURL, {
+            params,
+            observe: 'response'
+        });
+    }
+
     delete(id: number): Observable<HttpResponse<any>> {
-        return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response'});
+        return this.http.delete<any>(`${this.resourceUrl}/${id}`, {observe: 'response'});
     }
 
     private convertResponse(res: EntityResponseType): EntityResponseType {

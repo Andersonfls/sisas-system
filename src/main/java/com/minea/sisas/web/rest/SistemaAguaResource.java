@@ -1,6 +1,8 @@
 package com.minea.sisas.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.minea.sisas.repository.SistemaAguaRepository;
+import com.minea.sisas.security.AuthoritiesConstants;
 import com.minea.sisas.service.SistemaAguaService;
 import com.minea.sisas.web.rest.errors.BadRequestAlertException;
 import com.minea.sisas.web.rest.util.HeaderUtil;
@@ -16,6 +18,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -40,9 +43,12 @@ public class SistemaAguaResource {
 
     private final SistemaAguaQueryService sistemaAguaQueryService;
 
-    public SistemaAguaResource(SistemaAguaService sistemaAguaService, SistemaAguaQueryService sistemaAguaQueryService) {
+    private final SistemaAguaRepository sistemaAguaRepository;
+
+    public SistemaAguaResource(SistemaAguaService sistemaAguaService, SistemaAguaQueryService sistemaAguaQueryService, SistemaAguaRepository sistemaAguaRepository) {
         this.sistemaAguaService = sistemaAguaService;
         this.sistemaAguaQueryService = sistemaAguaQueryService;
+        this.sistemaAguaRepository=sistemaAguaRepository;
     }
 
     /**
@@ -99,6 +105,13 @@ public class SistemaAguaResource {
     public ResponseEntity<List<SistemaAguaDTO>> getAllSistemaAguas(SistemaAguaCriteria criteria, Pageable pageable) {
         log.debug("REST request to get SistemaAguas by criteria: {}", criteria);
         Page<SistemaAguaDTO> page = sistemaAguaQueryService.findByCriteria(criteria, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/sistema-aguas");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    @GetMapping("/sistema-aguas/nomeFiltro")
+    public ResponseEntity<List<SistemaAguaDTO>> getByNome(@RequestParam(value = "nome") String nome, Pageable pageable) {
+        Page<SistemaAguaDTO> page = sistemaAguaRepository.buscarPorNome(nome, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/sistema-aguas");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

@@ -1,12 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
-import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {HttpResponse, HttpErrorResponse} from '@angular/common/http';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Subscription} from 'rxjs/Subscription';
+import {JhiEventManager, JhiParseLinks, JhiAlertService} from 'ng-jhipster';
 
-import { Fornecedor } from './fornecedor.model';
-import { FornecedorService } from './fornecedor.service';
-import { ITEMS_PER_PAGE, Principal } from '../../shared';
+import {Fornecedor} from './fornecedor.model';
+import {FornecedorService} from './fornecedor.service';
+import {ITEMS_PER_PAGE, Principal} from '../../shared';
 
 @Component({
     selector: 'jhi-fornecedor',
@@ -14,7 +14,8 @@ import { ITEMS_PER_PAGE, Principal } from '../../shared';
 })
 export class FornecedorComponent implements OnInit, OnDestroy {
 
-currentAccount: any;
+    currentAccount: any;
+    nome: string;
     fornecedors: Fornecedor[];
     error: any;
     success: any;
@@ -51,26 +52,47 @@ currentAccount: any;
         this.fornecedorService.query({
             page: this.page - 1,
             size: this.itemsPerPage,
-            sort: this.sort()}).subscribe(
-                (res: HttpResponse<Fornecedor[]>) => this.onSuccess(res.body, res.headers),
-                (res: HttpErrorResponse) => this.onError(res.message)
+            sort: this.sort()
+        }).subscribe(
+            (res: HttpResponse<Fornecedor[]>) => this.onSuccess(res.body, res.headers),
+            (res: HttpErrorResponse) => this.onError(res.message)
         );
     }
+
     loadPage(page: number) {
         if (page !== this.previousPage) {
             this.previousPage = page;
             this.transition();
         }
     }
+
     transition() {
-        this.router.navigate(['/fornecedor'], {queryParams:
-            {
-                page: this.page,
-                size: this.itemsPerPage,
-                sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
-            }
+        this.router.navigate(['/fornecedor'], {
+            queryParams:
+                {
+                    page: this.page,
+                    size: this.itemsPerPage,
+                    sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
+                }
         });
         this.loadAll();
+    }
+
+    onChangeNome() {
+        if (this.nome === undefined) {
+            this.loadAll();
+        } else {
+            this.fornecedorService.queryUserNome({
+                page: this.page - 1,
+                size: this.itemsPerPage,
+                nome: this.nome
+            }).subscribe((res) => {
+                this.fornecedors = res.body;
+                this.links = this.parseLinks.parse(res.headers.get('link'));
+                this.totalItems = +res.headers.get('X-Total-Count');
+                this.queryCount = this.totalItems;
+            });
+        }
     }
 
     clear() {
@@ -81,6 +103,7 @@ currentAccount: any;
         }]);
         this.loadAll();
     }
+
     ngOnInit() {
         this.loadAll();
         this.principal.identity().then((account) => {
@@ -96,6 +119,7 @@ currentAccount: any;
     trackId(index: number, item: Fornecedor) {
         return item.id;
     }
+
     registerChangeInFornecedors() {
         this.eventSubscriber = this.eventManager.subscribe('fornecedorListModification', (response) => this.loadAll());
     }
@@ -115,6 +139,7 @@ currentAccount: any;
         // this.page = pagingParams.page;
         this.fornecedors = data;
     }
+
     private onError(error) {
         this.jhiAlertService.error(error.message, null, null);
     }

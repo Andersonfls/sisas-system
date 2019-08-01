@@ -15,6 +15,8 @@ import { ITEMS_PER_PAGE, Principal } from '../../shared';
 export class ProvinciaComponent implements OnInit, OnDestroy {
 
 currentAccount: any;
+    nome: string;
+
     provincias: Provincia[];
     error: any;
     success: any;
@@ -71,6 +73,23 @@ currentAccount: any;
             }
         });
         this.loadAll();
+    }
+
+    onChangeNome() {
+        if (this.nome === undefined) {
+            this.loadAll();
+        } else {
+            this.provinciaService.queryUserNome({
+                page: this.page - 1,
+                size: this.itemsPerPage,
+                nome: this.nome
+            }).subscribe((res) => {
+                this.provincias = res.body;
+                this.links = this.parseLinks.parse(res.headers.get('link'));
+                this.totalItems = +res.headers.get('X-Total-Count');
+                this.queryCount = this.totalItems;
+            });
+        }
     }
 
     clear() {

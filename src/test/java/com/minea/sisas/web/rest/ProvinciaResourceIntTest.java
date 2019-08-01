@@ -81,7 +81,7 @@ public class ProvinciaResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final ProvinciaResource provinciaResource = new ProvinciaResource(provinciaService, provinciaQueryService);
+        final ProvinciaResource provinciaResource = new ProvinciaResource(provinciaService, provinciaQueryService,provinciaRepository);
         this.restProvinciaMockMvc = MockMvcBuilders.standaloneSetup(provinciaResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)

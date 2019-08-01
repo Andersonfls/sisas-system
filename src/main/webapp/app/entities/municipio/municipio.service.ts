@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import { SERVER_API_URL } from '../../app.constants';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpParams, HttpResponse} from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
+import {SERVER_API_URL} from '../../app.constants';
 
-import { Municipio } from './municipio.model';
-import { createRequestOption } from '../../shared';
+import {Municipio} from './municipio.model';
+import {createRequestOption} from '../../shared';
 
 export type EntityResponseType = HttpResponse<Municipio>;
 
@@ -36,6 +36,17 @@ export class MunicipioService {
         const options = createRequestOption(req);
         return this.http.get<Municipio[]>(this.resourceUrl, { params: options, observe: 'response' })
             .map((res: HttpResponse<Municipio[]>) => this.convertArrayResponse(res));
+    }
+
+    queryUserNome(req: any): Observable<HttpResponse<Municipio[]>> {
+        const params: HttpParams = createRequestOption(req);
+
+        const requestURL = SERVER_API_URL + 'api/municipios/nomeFiltro';
+
+        return this.http.get<Municipio[]>(requestURL, {
+            params,
+            observe: 'response'
+        });
     }
 
     delete(id: number): Observable<HttpResponse<any>> {

@@ -84,7 +84,7 @@ public class ComunaResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final ComunaResource comunaResource = new ComunaResource(comunaService, comunaQueryService);
+        final ComunaResource comunaResource = new ComunaResource(comunaService, comunaQueryService,comunaRepository);
         this.restComunaMockMvc = MockMvcBuilders.standaloneSetup(comunaResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)

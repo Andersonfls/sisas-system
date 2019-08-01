@@ -1,13 +1,14 @@
 package com.minea.sisas.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.minea.sisas.repository.MunicipioRepository;
+import com.minea.sisas.service.MunicipioQueryService;
 import com.minea.sisas.service.MunicipioService;
+import com.minea.sisas.service.dto.MunicipioCriteria;
+import com.minea.sisas.service.dto.MunicipioDTO;
 import com.minea.sisas.web.rest.errors.BadRequestAlertException;
 import com.minea.sisas.web.rest.util.HeaderUtil;
 import com.minea.sisas.web.rest.util.PaginationUtil;
-import com.minea.sisas.service.dto.MunicipioDTO;
-import com.minea.sisas.service.dto.MunicipioCriteria;
-import com.minea.sisas.service.MunicipioQueryService;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +22,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -40,9 +40,12 @@ public class MunicipioResource {
 
     private final MunicipioQueryService municipioQueryService;
 
-    public MunicipioResource(MunicipioService municipioService, MunicipioQueryService municipioQueryService) {
+    private final MunicipioRepository municipioRepository;
+
+    public MunicipioResource(MunicipioService municipioService, MunicipioQueryService municipioQueryService, MunicipioRepository municipioRepository) {
         this.municipioService = municipioService;
         this.municipioQueryService = municipioQueryService;
+        this.municipioRepository= municipioRepository;
     }
 
     /**
@@ -100,6 +103,13 @@ public class MunicipioResource {
         log.debug("REST request to get Municipios by criteria: {}", criteria);
         Page<MunicipioDTO> page = municipioQueryService.findByCriteria(criteria, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/municipios");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    @GetMapping("/municipios/nomeFiltro")
+    public ResponseEntity<List<MunicipioDTO>> getByNome(@RequestParam(value = "nome") String nome, Pageable pageable) {
+        Page<MunicipioDTO> page = municipioRepository.buscarPorNome(nome, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/sistema-aguas");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 

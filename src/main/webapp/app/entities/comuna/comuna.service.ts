@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import { SERVER_API_URL } from '../../app.constants';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpParams, HttpResponse} from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
+import {SERVER_API_URL} from '../../app.constants';
 
-import { Comuna } from './comuna.model';
-import { createRequestOption } from '../../shared';
+import {Comuna} from './comuna.model';
+import {createRequestOption} from '../../shared';
 
 export type EntityResponseType = HttpResponse<Comuna>;
 
@@ -36,6 +36,17 @@ export class ComunaService {
         const options = createRequestOption(req);
         return this.http.get<Comuna[]>(this.resourceUrl, { params: options, observe: 'response' })
             .map((res: HttpResponse<Comuna[]>) => this.convertArrayResponse(res));
+    }
+
+    queryUserNome(req: any): Observable<HttpResponse<Comuna[]>> {
+        const params: HttpParams = createRequestOption(req);
+
+        const requestURL = SERVER_API_URL + 'api/comunas/nomeFiltro';
+
+        return this.http.get<Comuna[]>(requestURL, {
+            params,
+            observe: 'response'
+        });
     }
 
     delete(id: number): Observable<HttpResponse<any>> {
