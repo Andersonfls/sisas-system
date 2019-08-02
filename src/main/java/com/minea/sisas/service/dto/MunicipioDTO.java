@@ -15,12 +15,10 @@ public class MunicipioDTO implements Serializable {
     private Long id;
 
     @NotNull
-    private Long idMunicipio;
-
-    @NotNull
     @Size(max = 30)
     private String nmMunicipio;
 
+    @NotNull
     private Provincia provincia;
 
     public Long getId() {
@@ -29,14 +27,6 @@ public class MunicipioDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getIdMunicipio() {
-        return idMunicipio;
-    }
-
-    public void setIdMunicipio(Long idMunicipio) {
-        this.idMunicipio = idMunicipio;
     }
 
     public String getNmMunicipio() {
@@ -80,7 +70,6 @@ public class MunicipioDTO implements Serializable {
     public String toString() {
         return "MunicipioDTO{" +
             "id=" + getId() +
-            ", idMunicipio=" + getIdMunicipio() +
             ", nmMunicipio='" + getNmMunicipio() + "'" +
             "}";
     }

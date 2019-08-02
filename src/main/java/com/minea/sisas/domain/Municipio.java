@@ -60,7 +60,7 @@ public class Municipio implements Serializable {
         return this;
     }
 
-    public void setIdProvincia(Provincia provincia) {
+    public void setProvincia(Provincia provincia) {
         this.provincia = provincia;
     }
 

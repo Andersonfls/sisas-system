@@ -66,13 +66,13 @@ public class Provincia implements Serializable {
 
     public Provincia addMunicipio(Municipio municipio) {
         this.municipios.add(municipio);
-        municipio.setIdProvincia(this);
+        municipio.setProvincia(this);
         return this;
     }
 
     public Provincia removeMunicipio(Municipio municipio) {
         this.municipios.remove(municipio);
-        municipio.setIdProvincia(null);
+        municipio.setProvincia(null);
         return this;
     }
 

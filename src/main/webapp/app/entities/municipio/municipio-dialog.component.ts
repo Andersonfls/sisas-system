@@ -1,15 +1,15 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {HttpResponse, HttpErrorResponse} from '@angular/common/http';
 
-import { Observable } from 'rxjs/Observable';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
+import {Observable} from 'rxjs/Observable';
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {JhiEventManager, JhiAlertService} from 'ng-jhipster';
 
-import { Municipio } from './municipio.model';
-import { MunicipioPopupService } from './municipio-popup.service';
-import { MunicipioService } from './municipio.service';
-import { Provincia, ProvinciaService } from '../provincia';
+import {Municipio} from './municipio.model';
+import {MunicipioPopupService} from './municipio-popup.service';
+import {MunicipioService} from './municipio.service';
+import {Provincia, ProvinciaService} from '../provincia';
 
 @Component({
     selector: 'jhi-municipio-dialog',
@@ -34,7 +34,9 @@ export class MunicipioDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.provinciaService.query()
-            .subscribe((res: HttpResponse<Provincia[]>) => { this.provincias = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+            .subscribe((res: HttpResponse<Provincia[]>) => {
+                this.provincias = res.body;
+            }, (res: HttpErrorResponse) => this.onError(res.message));
     }
 
     clear() {
@@ -43,6 +45,7 @@ export class MunicipioDialogComponent implements OnInit {
 
     save() {
         this.isSaving = true;
+        console.log("verificar valor da provincia: " + this.municipio.provincia.id);
         if (this.municipio.id !== undefined) {
             this.subscribeToSaveResponse(
                 this.municipioService.update(this.municipio));
@@ -58,7 +61,7 @@ export class MunicipioDialogComponent implements OnInit {
     }
 
     private onSaveSuccess(result: Municipio) {
-        this.eventManager.broadcast({ name: 'municipioListModification', content: 'OK'});
+        this.eventManager.broadcast({name: 'municipioListModification', content: 'OK'});
         this.isSaving = false;
         this.activeModal.dismiss(result);
     }
@@ -87,11 +90,12 @@ export class MunicipioPopupComponent implements OnInit, OnDestroy {
     constructor(
         private route: ActivatedRoute,
         private municipioPopupService: MunicipioPopupService
-    ) {}
+    ) {
+    }
 
     ngOnInit() {
         this.routeSub = this.route.params.subscribe((params) => {
-            if ( params['id'] ) {
+            if (params['id']) {
                 this.municipioPopupService
                     .open(MunicipioDialogComponent as Component, params['id']);
             } else {
