@@ -17,6 +17,6 @@ import org.springframework.data.jpa.repository.*;
 public interface ComunaRepository extends JpaRepository<Comuna, Long>, JpaSpecificationExecutor<Comuna> {
 
     @Query("select c from Comuna c where LOWER(c.nmComuna) like LOWER(concat(:nome,'%'))" +
-        "or LOWER(c.municipio) like LOWER(CONCAT(:nome,'%'))")
+        "or LOWER(c.municipio.nmMunicipio) like LOWER(CONCAT(:nome,'%'))")
     Page buscarPorNome(@Param("nome") String nome, Pageable pageable);
 }

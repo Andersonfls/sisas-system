@@ -1,10 +1,10 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {HttpResponse, HttpErrorResponse} from '@angular/common/http';
+import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
 
 import {Observable} from 'rxjs/Observable';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {JhiEventManager, JhiAlertService} from 'ng-jhipster';
+import {JhiAlertService, JhiEventManager} from 'ng-jhipster';
 
 import {Municipio} from './municipio.model';
 import {MunicipioPopupService} from './municipio-popup.service';
@@ -45,7 +45,6 @@ export class MunicipioDialogComponent implements OnInit {
 
     save() {
         this.isSaving = true;
-        console.log("verificar valor da provincia: " + this.municipio.provincia.id);
         if (this.municipio.id !== undefined) {
             this.subscribeToSaveResponse(
                 this.municipioService.update(this.municipio));

@@ -21,6 +21,10 @@
             "idProvincia": "Provincia",
             "comuna": "Comuna",
             "municipiosAtendidos": "Municipios Atendidos"
+        },  "municipioDTO": {
+            "idMunicipio": "Id Municipio",
+            "nmMunicipio": "Nome Municipio",
+            "provincia": "Provincia"
         }
     }
 }

@@ -18,6 +18,9 @@
             },
             "nmComuna": "Nome Comuna",
             "idMunicipio": "Municipio"
+        },"comunaDTO": {
+            "nmComuna": "Nome Comuna",
+            "idMunicipio": "Municipio"
         }
     }
 }

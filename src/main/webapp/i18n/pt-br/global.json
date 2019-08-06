@@ -23,6 +23,7 @@
                 "indicadorProducaoLog": "Indicador Producao Log",
                 "inicio": "Inicio",
                 "municipio": "Municipio",
+                "municipioDTO": "Municipio",
                 "municipiosAtendidos": "Municipios Atendidos",
                 "noticias": "Noticias",
                 "origemFinanciamento": "Origem Financiamento",
@@ -37,6 +38,7 @@
                 "sistemaAguaLog": "Sistema Agua Log",
                 "situacao": "Situacao",
                 "sobreDna": "Sobre Dna",
+
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
