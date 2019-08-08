@@ -54,11 +54,12 @@ public class SistemaAguaCriteria implements Serializable {
 
     private StringFilter nmFonteAgua;
 
-    private BigDecimalFilter latitude;
+    //Modificado
+    private StringFilter latitude;
 
-    private BigDecimalFilter longitude;
+    private StringFilter longitude;
 
-    private BigDecimalFilter altitude;
+    private StringFilter altitude;
 
     private StringFilter nmTpFonte;
 
@@ -267,27 +268,27 @@ public class SistemaAguaCriteria implements Serializable {
         this.nmFonteAgua = nmFonteAgua;
     }
 
-    public BigDecimalFilter getLatitude() {
+    public StringFilter getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(BigDecimalFilter latitude) {
+    public void setLatitude(StringFilter latitude) {
         this.latitude = latitude;
     }
 
-    public BigDecimalFilter getLongitude() {
+    public StringFilter getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(BigDecimalFilter longitude) {
+    public void setLongitude(StringFilter longitude) {
         this.longitude = longitude;
     }
 
-    public BigDecimalFilter getAltitude() {
+    public StringFilter getAltitude() {
         return altitude;
     }
 
-    public void setAltitude(BigDecimalFilter altitude) {
+    public void setAltitude(StringFilter altitude) {
         this.altitude = altitude;
     }
 

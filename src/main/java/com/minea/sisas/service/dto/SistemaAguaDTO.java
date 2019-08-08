@@ -51,11 +51,14 @@ public class SistemaAguaDTO implements Serializable {
     @Size(max = 150)
     private String nmFonteAgua;
 
-    private BigDecimal latitude;
+    @Size(max = 60)
+    private String latitude;
 
-    private BigDecimal longitude;
+    @Size(max = 60)
+    private String longitude;
 
-    private BigDecimal altitude;
+    @Size(max = 60)
+    private String altitude;
 
     @Size(max = 20)
     private String nmTpFonte;
@@ -264,27 +267,27 @@ public class SistemaAguaDTO implements Serializable {
         this.nmFonteAgua = nmFonteAgua;
     }
 
-    public BigDecimal getLatitude() {
+    public String getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(BigDecimal latitude) {
+    public void setLatitude(String latitude) {
         this.latitude = latitude;
     }
 
-    public BigDecimal getLongitude() {
+    public String getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(BigDecimal longitude) {
+    public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
 
-    public BigDecimal getAltitude() {
+    public String getAltitude() {
         return altitude;
     }
 
-    public void setAltitude(BigDecimal altitude) {
+    public void setAltitude(String altitude) {
         this.altitude = altitude;
     }
 

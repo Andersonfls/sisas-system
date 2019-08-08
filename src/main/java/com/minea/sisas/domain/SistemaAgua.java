@@ -69,14 +69,18 @@ public class SistemaAgua implements Serializable {
     @Column(name = "nm_fonte_agua", length = 150, nullable = false)
     private String nmFonteAgua;
 
-    @Column(name = "latitude", precision=10, scale=2)
-    private BigDecimal latitude;
 
-    @Column(name = "longitude", precision=10, scale=2)
-    private BigDecimal longitude;
+    @Size(max = 60)
+    @Column(name = "latitude", length = 60)
+    private String latitude;
 
-    @Column(name = "altitude", precision=10, scale=2)
-    private BigDecimal altitude;
+    @Size(max = 60)
+    @Column(name = "longitude", length = 60)
+    private String longitude;
+
+    @Size(max = 60)
+    @Column(name = "altitude", length = 60)
+    private String altitude;
 
     @Size(max = 20)
     @Column(name = "nm_tp_fonte", length = 20)
@@ -386,42 +390,42 @@ public class SistemaAgua implements Serializable {
         this.nmFonteAgua = nmFonteAgua;
     }
 
-    public BigDecimal getLatitude() {
+    public String getLatitude() {
         return latitude;
     }
 
-    public SistemaAgua latitude(BigDecimal latitude) {
+    public SistemaAgua latitude(String latitude) {
         this.latitude = latitude;
         return this;
     }
 
-    public void setLatitude(BigDecimal latitude) {
+    public void setLatitude(String latitude) {
         this.latitude = latitude;
     }
 
-    public BigDecimal getLongitude() {
+    public String getLongitude() {
         return longitude;
     }
 
-    public SistemaAgua longitude(BigDecimal longitude) {
+    public SistemaAgua longitude(String longitude) {
         this.longitude = longitude;
         return this;
     }
 
-    public void setLongitude(BigDecimal longitude) {
+    public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
 
-    public BigDecimal getAltitude() {
+    public String getAltitude() {
         return altitude;
     }
 
-    public SistemaAgua altitude(BigDecimal altitude) {
+    public SistemaAgua altitude(String altitude) {
         this.altitude = altitude;
         return this;
     }
 
-    public void setAltitude(BigDecimal altitude) {
+    public void setAltitude(String altitude) {
         this.altitude = altitude;
     }
 

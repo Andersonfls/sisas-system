@@ -94,14 +94,14 @@ public class SistemaAguaResourceIntTest {
     private static final String DEFAULT_NM_FONTE_AGUA = "AAAAAAAAAA";
     private static final String UPDATED_NM_FONTE_AGUA = "BBBBBBBBBB";
 
-    private static final BigDecimal DEFAULT_LATITUDE = new BigDecimal(1);
-    private static final BigDecimal UPDATED_LATITUDE = new BigDecimal(2);
+    private static final String DEFAULT_LATITUDE = "222222222";
+    private static final String UPDATED_LATITUDE = "333333333";
 
-    private static final BigDecimal DEFAULT_LONGITUDE = new BigDecimal(1);
-    private static final BigDecimal UPDATED_LONGITUDE = new BigDecimal(2);
+    private static final String DEFAULT_LONGITUDE = "222222222";
+    private static final String UPDATED_LONGITUDE = "333333333";
 
-    private static final BigDecimal DEFAULT_ALTITUDE = new BigDecimal(1);
-    private static final BigDecimal UPDATED_ALTITUDE = new BigDecimal(2);
+    private static final String DEFAULT_ALTITUDE = "222222222";
+    private static final String UPDATED_ALTITUDE = "333333333";
 
     private static final String DEFAULT_NM_TP_FONTE = "AAAAAAAAAA";
     private static final String UPDATED_NM_TP_FONTE = "BBBBBBBBBB";
@@ -242,7 +242,7 @@ public class SistemaAguaResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final SistemaAguaResource sistemaAguaResource = new SistemaAguaResource(sistemaAguaService, sistemaAguaQueryService,sistemaAguaRepository);
+        final SistemaAguaResource sistemaAguaResource = new SistemaAguaResource(sistemaAguaService, sistemaAguaQueryService, sistemaAguaRepository);
         this.restSistemaAguaMockMvc = MockMvcBuilders.standaloneSetup(sistemaAguaResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -252,7 +252,7 @@ public class SistemaAguaResourceIntTest {
 
     /**
      * Create an entity for this test.
-     *
+     * <p>
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
@@ -742,9 +742,9 @@ public class SistemaAguaResourceIntTest {
             .andExpect(jsonPath("$.[*].possuiSistemaAgua").value(hasItem(DEFAULT_POSSUI_SISTEMA_AGUA.intValue())))
             .andExpect(jsonPath("$.[*].nmSistemaAgua").value(hasItem(DEFAULT_NM_SISTEMA_AGUA.toString())))
             .andExpect(jsonPath("$.[*].nmFonteAgua").value(hasItem(DEFAULT_NM_FONTE_AGUA.toString())))
-            .andExpect(jsonPath("$.[*].latitude").value(hasItem(DEFAULT_LATITUDE.intValue())))
-            .andExpect(jsonPath("$.[*].longitude").value(hasItem(DEFAULT_LONGITUDE.intValue())))
-            .andExpect(jsonPath("$.[*].altitude").value(hasItem(DEFAULT_ALTITUDE.intValue())))
+            .andExpect(jsonPath("$.[*].latitude").value(hasItem(DEFAULT_LATITUDE.toString())))
+            .andExpect(jsonPath("$.[*].longitude").value(hasItem(DEFAULT_LONGITUDE.toString())))
+            .andExpect(jsonPath("$.[*].altitude").value(hasItem(DEFAULT_ALTITUDE.toString())))
             .andExpect(jsonPath("$.[*].nmTpFonte").value(hasItem(DEFAULT_NM_TP_FONTE.toString())))
             .andExpect(jsonPath("$.[*].nmFonteAguaUtilizada").value(hasItem(DEFAULT_NM_FONTE_AGUA_UTILIZADA.toString())))
             .andExpect(jsonPath("$.[*].nmTipoBomba").value(hasItem(DEFAULT_NM_TIPO_BOMBA.toString())))
@@ -807,9 +807,9 @@ public class SistemaAguaResourceIntTest {
             .andExpect(jsonPath("$.possuiSistemaAgua").value(DEFAULT_POSSUI_SISTEMA_AGUA.intValue()))
             .andExpect(jsonPath("$.nmSistemaAgua").value(DEFAULT_NM_SISTEMA_AGUA.toString()))
             .andExpect(jsonPath("$.nmFonteAgua").value(DEFAULT_NM_FONTE_AGUA.toString()))
-            .andExpect(jsonPath("$.latitude").value(DEFAULT_LATITUDE.intValue()))
-            .andExpect(jsonPath("$.longitude").value(DEFAULT_LONGITUDE.intValue()))
-            .andExpect(jsonPath("$.altitude").value(DEFAULT_ALTITUDE.intValue()))
+            .andExpect(jsonPath("$.latitude").value(DEFAULT_LATITUDE.toString()))
+            .andExpect(jsonPath("$.longitude").value(DEFAULT_LONGITUDE.toString()))
+            .andExpect(jsonPath("$.altitude").value(DEFAULT_ALTITUDE.toString()))
             .andExpect(jsonPath("$.nmTpFonte").value(DEFAULT_NM_TP_FONTE.toString()))
             .andExpect(jsonPath("$.nmFonteAguaUtilizada").value(DEFAULT_NM_FONTE_AGUA_UTILIZADA.toString()))
             .andExpect(jsonPath("$.nmTipoBomba").value(DEFAULT_NM_TIPO_BOMBA.toString()))
@@ -3564,9 +3564,9 @@ public class SistemaAguaResourceIntTest {
             .andExpect(jsonPath("$.[*].possuiSistemaAgua").value(hasItem(DEFAULT_POSSUI_SISTEMA_AGUA.intValue())))
             .andExpect(jsonPath("$.[*].nmSistemaAgua").value(hasItem(DEFAULT_NM_SISTEMA_AGUA.toString())))
             .andExpect(jsonPath("$.[*].nmFonteAgua").value(hasItem(DEFAULT_NM_FONTE_AGUA.toString())))
-            .andExpect(jsonPath("$.[*].latitude").value(hasItem(DEFAULT_LATITUDE.intValue())))
-            .andExpect(jsonPath("$.[*].longitude").value(hasItem(DEFAULT_LONGITUDE.intValue())))
-            .andExpect(jsonPath("$.[*].altitude").value(hasItem(DEFAULT_ALTITUDE.intValue())))
+            .andExpect(jsonPath("$.[*].latitude").value(hasItem(DEFAULT_LATITUDE.toString())))
+            .andExpect(jsonPath("$.[*].longitude").value(hasItem(DEFAULT_LONGITUDE.toString())))
+            .andExpect(jsonPath("$.[*].altitude").value(hasItem(DEFAULT_ALTITUDE.toString())))
             .andExpect(jsonPath("$.[*].nmTpFonte").value(hasItem(DEFAULT_NM_TP_FONTE.toString())))
             .andExpect(jsonPath("$.[*].nmFonteAguaUtilizada").value(hasItem(DEFAULT_NM_FONTE_AGUA_UTILIZADA.toString())))
             .andExpect(jsonPath("$.[*].nmTipoBomba").value(hasItem(DEFAULT_NM_TIPO_BOMBA.toString())))

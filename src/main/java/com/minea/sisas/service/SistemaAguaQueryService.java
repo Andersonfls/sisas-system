@@ -113,14 +113,15 @@ public class SistemaAguaQueryService extends QueryService<SistemaAgua> {
             if (criteria.getNmFonteAgua() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getNmFonteAgua(), SistemaAgua_.nmFonteAgua));
             }
+            //Modificado
             if (criteria.getLatitude() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getLatitude(), SistemaAgua_.latitude));
+                specification = specification.and(buildStringSpecification(criteria.getLatitude(), SistemaAgua_.latitude));
             }
             if (criteria.getLongitude() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getLongitude(), SistemaAgua_.longitude));
+                specification = specification.and(buildStringSpecification(criteria.getLongitude(), SistemaAgua_.longitude));
             }
             if (criteria.getAltitude() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getAltitude(), SistemaAgua_.altitude));
+                specification = specification.and(buildStringSpecification(criteria.getAltitude(), SistemaAgua_.altitude));
             }
             if (criteria.getNmTpFonte() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getNmTpFonte(), SistemaAgua_.nmTpFonte));
