@@ -79,6 +79,17 @@
                 </small>
             </div>
         </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.fornecedor.contato" for="field_contato">Contato</label>
+            <input type="text" class="form-control" name="contato" id="field_contato"
+                   [(ngModel)]="fornecedor.contato" maxlength="20"/>
+            <div [hidden]="!(editForm.controls.contato?.dirty && editForm.controls.contato?.invalid)">
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.contato?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                    This field cannot be longer than 20 characters.
+                </small>
+            </div>
+        </div>
 
     </div>
     <div class="modal-footer">

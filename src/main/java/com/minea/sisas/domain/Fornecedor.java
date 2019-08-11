@@ -44,6 +44,10 @@ public class Fornecedor implements Serializable {
     @Column(name = "especialidade", length = 100)
     private String especialidade;
 
+    @Size(max = 20)
+    @Column(name = "contato", length = 20)
+    private String contato;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -119,6 +123,19 @@ public class Fornecedor implements Serializable {
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
+    public String getContato() {
+        return contato;
+    }
+
+    public Fornecedor contato(String contato) {
+        this.contato = contato;
+        return this;
+    }
+
+    public void setContato(String contato) {
+        this.contato = contato;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -148,6 +165,7 @@ public class Fornecedor implements Serializable {
             ", endereco='" + getEndereco() + "'" +
             ", email='" + getEmail() + "'" +
             ", especialidade='" + getEspecialidade() + "'" +
+            ", contato='" + getContato() + "'" +
             "}";
     }
 }

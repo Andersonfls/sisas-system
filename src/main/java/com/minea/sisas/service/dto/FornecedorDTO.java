@@ -30,6 +30,9 @@ public class FornecedorDTO implements Serializable {
     @Size(max = 100)
     private String especialidade;
 
+    @Size(max = 20)
+    private String contato;
+
     public Long getId() {
         return id;
     }
@@ -78,6 +81,14 @@ public class FornecedorDTO implements Serializable {
         this.especialidade = especialidade;
     }
 
+    public String getContato() {
+        return contato;
+    }
+
+    public void setContato(String contato) {
+        this.contato = contato;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -88,7 +99,7 @@ public class FornecedorDTO implements Serializable {
         }
 
         FornecedorDTO fornecedorDTO = (FornecedorDTO) o;
-        if(fornecedorDTO.getId() == null || getId() == null) {
+        if (fornecedorDTO.getId() == null || getId() == null) {
             return false;
         }
         return Objects.equals(getId(), fornecedorDTO.getId());
@@ -108,6 +119,7 @@ public class FornecedorDTO implements Serializable {
             ", endereco='" + getEndereco() + "'" +
             ", email='" + getEmail() + "'" +
             ", especialidade='" + getEspecialidade() + "'" +
+            ", contato='" + getContato() + "'" +
             "}";
     }
 }

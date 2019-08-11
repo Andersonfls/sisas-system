@@ -90,6 +90,9 @@ public class FornecedorQueryService extends QueryService<Fornecedor> {
             if (criteria.getEspecialidade() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getEspecialidade(), Fornecedor_.especialidade));
             }
+            if (criteria.getContato() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getContato(), Fornecedor_.contato));
+            }
         }
         return specification;
     }

@@ -40,6 +40,8 @@ public class FornecedorCriteria implements Serializable {
 
     private StringFilter especialidade;
 
+    private StringFilter contato;
+
     public FornecedorCriteria() {
     }
 
@@ -99,6 +101,14 @@ public class FornecedorCriteria implements Serializable {
         this.especialidade = especialidade;
     }
 
+    public StringFilter getContato() {
+        return contato;
+    }
+
+    public void setContato(StringFilter contato) {
+        this.contato = contato;
+    }
+
     @Override
     public String toString() {
         return "FornecedorCriteria{" +
@@ -109,6 +119,8 @@ public class FornecedorCriteria implements Serializable {
                 (endereco != null ? "endereco=" + endereco + ", " : "") +
                 (email != null ? "email=" + email + ", " : "") +
                 (especialidade != null ? "especialidade=" + especialidade + ", " : "") +
+                (contato != null ? "contato=" + contato + ", " : "") +
+
             "}";
     }
 

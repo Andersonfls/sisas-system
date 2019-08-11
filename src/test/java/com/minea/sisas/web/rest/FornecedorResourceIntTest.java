@@ -61,6 +61,9 @@ public class FornecedorResourceIntTest {
     private static final String DEFAULT_ESPECIALIDADE = "AAAAAAAAAA";
     private static final String UPDATED_ESPECIALIDADE = "BBBBBBBBBB";
 
+    private static final String DEFAULT_CONTATO = "5588889999";
+    private static final String UPDATED_CONTATO = "5599998888";
+
     @Autowired
     private FornecedorRepository fornecedorRepository;
 
@@ -112,7 +115,8 @@ public class FornecedorResourceIntTest {
             .numContribuinte(DEFAULT_NUM_CONTRIBUINTE)
             .endereco(DEFAULT_ENDERECO)
             .email(DEFAULT_EMAIL)
-            .especialidade(DEFAULT_ESPECIALIDADE);
+            .especialidade(DEFAULT_ESPECIALIDADE)
+            .contato(DEFAULT_CONTATO);
         return fornecedor;
     }
 
@@ -142,6 +146,7 @@ public class FornecedorResourceIntTest {
         assertThat(testFornecedor.getEndereco()).isEqualTo(DEFAULT_ENDERECO);
         assertThat(testFornecedor.getEmail()).isEqualTo(DEFAULT_EMAIL);
         assertThat(testFornecedor.getEspecialidade()).isEqualTo(DEFAULT_ESPECIALIDADE);
+        assertThat(testFornecedor.getContato()).isEqualTo(DEFAULT_CONTATO);
     }
 
     @Test
@@ -255,7 +260,9 @@ public class FornecedorResourceIntTest {
             .andExpect(jsonPath("$.[*].numContribuinte").value(hasItem(DEFAULT_NUM_CONTRIBUINTE.toString())))
             .andExpect(jsonPath("$.[*].endereco").value(hasItem(DEFAULT_ENDERECO.toString())))
             .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL.toString())))
-            .andExpect(jsonPath("$.[*].especialidade").value(hasItem(DEFAULT_ESPECIALIDADE.toString())));
+            .andExpect(jsonPath("$.[*].especialidade").value(hasItem(DEFAULT_ESPECIALIDADE.toString())))
+            .andExpect(jsonPath("$.[*].contato").value(hasItem(DEFAULT_CONTATO.toString())));
+
     }
 
     @Test
@@ -274,7 +281,9 @@ public class FornecedorResourceIntTest {
             .andExpect(jsonPath("$.numContribuinte").value(DEFAULT_NUM_CONTRIBUINTE.toString()))
             .andExpect(jsonPath("$.endereco").value(DEFAULT_ENDERECO.toString()))
             .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL.toString()))
-            .andExpect(jsonPath("$.especialidade").value(DEFAULT_ESPECIALIDADE.toString()));
+            .andExpect(jsonPath("$.especialidade").value(DEFAULT_ESPECIALIDADE.toString()))
+            .andExpect(jsonPath("$.contato").value(DEFAULT_CONTATO.toString()));
+
     }
 
     @Test

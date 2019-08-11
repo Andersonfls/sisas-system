@@ -8,6 +8,7 @@ export class Fornecedor implements BaseEntity {
         public endereco?: string,
         public email?: string,
         public especialidade?: string,
+        public contato?: string,
     ) {
     }
 }
