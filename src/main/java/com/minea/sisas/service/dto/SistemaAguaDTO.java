@@ -43,11 +43,9 @@ public class SistemaAguaDTO implements Serializable {
 
     private Long possuiSistemaAgua;
 
-    @NotNull
     @Size(max = 150)
     private String nmSistemaAgua;
 
-    @NotNull
     @Size(max = 150)
     private String nmFonteAgua;
 
@@ -63,11 +61,10 @@ public class SistemaAguaDTO implements Serializable {
     @Size(max = 20)
     private String nmTpFonte;
 
-    @NotNull
+
     @Size(max = 20)
     private String nmFonteAguaUtilizada;
 
-    @NotNull
     @Size(max = 11)
     private String nmTipoBomba;
 
@@ -116,27 +113,21 @@ public class SistemaAguaDTO implements Serializable {
 
     private BigDecimal alturaReservatoriosElevados;
 
-    @NotNull
     @Size(max = 50)
     private String nmTpTratamentoAgua;
 
-    @NotNull
     @Size(max = 50)
     private String nmTpTratamentoPadraoUtilizado;
 
-    @NotNull
     @Size(max = 50)
     private String nmTpTratamentoBasicoUtilizado;
 
-    @NotNull
     @Size(max = 50)
     private String existeAvariaSistemaTratamento;
 
-    @NotNull
     @Size(max = 50)
     private String existeMotivoAusenciaTratamento;
 
-    @NotNull
     @Size(max = 50)
     private String nmEquipamentosComAvaria;
 
@@ -148,11 +139,9 @@ public class SistemaAguaDTO implements Serializable {
 
     private BigDecimal qtdDiariaHorasServicoSistema;
 
-    @NotNull
     @Size(max = 50)
     private String esquema;
 
-    @NotNull
     @Size(max = 50)
     private String nmModeloBombaManualUtilizada;
 

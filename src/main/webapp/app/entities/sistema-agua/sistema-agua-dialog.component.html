@@ -174,6 +174,7 @@
                     </select>
                 </div>
             </div>
+
             <div class="form-group col-sm-4">
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.possuiSistemaAgua"
@@ -184,531 +185,554 @@
                         <option [ngValue]="1">Sim</option>
                         <option [ngValue]="0">Não</option>
                     </select>
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmSistemaAgua"
-                   for="field_nmSistemaAgua">Nm Sistema Agua</label>
-            <input type="text" class="form-control" name="nmSistemaAgua" id="field_nmSistemaAgua"
-                   [(ngModel)]="sistemaAgua.nmSistemaAgua" required maxlength="150"/>
-            <div [hidden]="!(editForm.controls.nmSistemaAgua?.dirty && editForm.controls.nmSistemaAgua?.invalid)">
-                <small class="form-text text-danger"
-                       [hidden]="!editForm.controls.nmSistemaAgua?.errors?.required"
-                       jhiTranslate="entity.validation.required">
-                    This field is required.
-                </small>
-                <small class="form-text text-danger"
-                       [hidden]="!editForm.controls.nmSistemaAgua?.errors?.maxlength"
-                       jhiTranslate="entity.validation.maxlength" translateValues="{ max: 150 }">
-                    This field cannot be longer than 150 characters.
-                </small>
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-sm-5">
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmFonteAgua"
-                           for="field_nmFonteAgua">Nm Fonte Agua</label>
-                    <select class="form-control" id="field_nmFonteAgua" name="nmFonteAgua"
-                            [(ngModel)]="sistemaAgua.nmFonteAgua" required>
-                        <option label="Rio">Rio</option>
-                        <option label="Lagoa">Lagoa</option>
-                        <option label="Água da Chuva">Água da Chuva</option>
-                        <option label="Lago">Lago</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group col-sm-5">
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmTpFonte"
-                           for="field_nmTpFonte">Nm Tp Fonte</label>
-                    <select class="form-control" id="field_nmTpFonte" name="nmTpFonte"
-                            [(ngModel)]="sistemaAgua.nmTpFonte" required>
-                        <option label="Superficial">Superficial</option>
-                        <option label="Subterrânea">Subterrânea</option>
-                    </select>
-                </div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="form-group col-sm-4">
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.latitude" for="field_latitude">Latitude</label>
-                    <input type="text" class="form-control" name="latitude" id="field_latitude"
-                           [(ngModel)]="sistemaAgua.latitude"/>
-                </div>
-            </div>
-            <div class="form-group col-sm-4">
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.longitude"
-                           for="field_longitude">Longitude</label>
-                    <input type="text" class="form-control" name="longitude" id="field_longitude"
-                           [(ngModel)]="sistemaAgua.longitude"/>
-                </div>
-            </div>
-            <div class="form-group col-sm-4">
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.altitude" for="field_altitude">Altitude</label>
-                    <input type="text" class="form-control" name="altitude" id="field_altitude"
-                           [(ngModel)]="sistemaAgua.altitude"/>
                 </div>
             </div>
         </div>
-
-        <div class="row">
-            <div class="form-group col-sm-4">
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmFonteAguaUtilizada"
-                           for="field_nmFonteAguaUtilizada">Nm Fonte Agua Utilizada</label>
-                    <select class="form-control" id="field_nmFonteAguaUtilizada" name="nmFonteAguaUtilizada"
-                            [(ngModel)]="sistemaAgua.nmFonteAguaUtilizada" required>
-                        <option label="Rio">Rio</option>
-                        <option label="Lagoa">Lagoa</option>
-                        <option label="Água da Chuva">Água da Chuva</option>
-                        <option label="Lago">Lago</option>
-                    </select>
+        <div *ngIf="editForm.controls.possuiSistemaAgua.value===1">
+            <div class="form-group">
+                <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmSistemaAgua"
+                       for="field_nmSistemaAgua">Nm Sistema Agua</label>
+                <input type="text" class="form-control" name="nmSistemaAgua" id="field_nmSistemaAgua"
+                       [(ngModel)]="sistemaAgua.nmSistemaAgua" maxlength="150"/>
+                <div [hidden]="!(editForm.controls.nmSistemaAgua?.dirty && editForm.controls.nmSistemaAgua?.invalid)">
+                    <small class="form-text text-danger"
+                           [hidden]="!editForm.controls.nmSistemaAgua?.errors?.required"
+                           jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                    <small class="form-text text-danger"
+                           [hidden]="!editForm.controls.nmSistemaAgua?.errors?.maxlength"
+                           jhiTranslate="entity.validation.maxlength" translateValues="{ max: 150 }">
+                        This field cannot be longer than 150 characters.
+                    </small>
                 </div>
             </div>
-            <div class="form-group col-sm-4">
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmTipoBomba"
-                           for="field_nmTipoBomba">Nm Tipo Bomba</label>
-                    <select class="form-control" id="field_nmTipoBomba" name="nmTipoBomba"
-                            [(ngModel)]="sistemaAgua.nmTipoBomba" required>
-                        <option label="Elétrica">Elétrica</option>
-                        <option label="Diesel">Diesel</option>
-                        <option label="Gravidade">Gravidade</option>
-                    </select>
+            <div class="row">
+                <div class="form-group col-sm-5">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmFonteAgua"
+                               for="field_nmFonteAgua">Nm Fonte Agua</label>
+                        <select class="form-control" id="field_nmFonteAgua" name="nmFonteAgua"
+                                [(ngModel)]="sistemaAgua.nmFonteAgua">
+                            <option label="Rio">Rio</option>
+                            <option label="Lagoa">Lagoa</option>
+                            <option label="Água da Chuva">Água da Chuva</option>
+                            <option label="Lago">Lago</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group col-sm-4">
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.qtdCasasAguaLigada"
-                           for="field_qtdCasasAguaLigada">Qtd Casas Agua Ligada</label>
-                    <input type="number" class="form-control" name="qtdCasasAguaLigada" id="field_qtdCasasAguaLigada"
-                           [(ngModel)]="sistemaAgua.qtdCasasAguaLigada"/>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="form-group col-sm-4">
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.qtdChafarisesFuncionando"
-                           for="field_qtdChafarisesFuncionando">Qtd Chafarises Funcionando</label>
-                    <input type="number" class="form-control" name="qtdChafarisesFuncionando"
-                           id="field_qtdChafarisesFuncionando"
-                           [(ngModel)]="sistemaAgua.qtdChafarisesFuncionando"/>
-                </div>
-            </div>
-            <div class="form-group col-sm-4">
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.qtdContadoresLigados"
-                           for="field_qtdContadoresLigados">Qtd Contadores Ligados</label>
-                    <input type="number" class="form-control" name="qtdContadoresLigados"
-                           id="field_qtdContadoresLigados"
-                           [(ngModel)]="sistemaAgua.qtdContadoresLigados"/>
-                </div>
-            </div>
-            <div class="form-group col-sm-4">
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.qtdBebedouros"
-                           for="field_qtdBebedouros">Qtd Bebedouros</label>
-                    <input type="number" class="form-control" name="qtdBebedouros" id="field_qtdBebedouros"
-                           [(ngModel)]="sistemaAgua.qtdBebedouros"/>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="form-group col-sm-6">
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.qtdHabitantesAcessoServicoAgua"
-                           for="field_qtdHabitantesAcessoServicoAgua">Qtd Habitantes Acesso Servico Agua</label>
-                    <input type="number" class="form-control" name="qtdHabitantesAcessoServicoAgua"
-                           id="field_qtdHabitantesAcessoServicoAgua"
-                           [(ngModel)]="sistemaAgua.qtdHabitantesAcessoServicoAgua"/>
-                </div>
-            </div>
-            <div class="form-group col-sm-6">
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.anoConstrucaoSistema"
-                           for="field_anoConstrucaoSistema">Ano Construcao Sistema</label>
-                    <input type="number" class="form-control" name="anoConstrucaoSistema"
-                           id="field_anoConstrucaoSistema"
-                           [(ngModel)]="sistemaAgua.anoConstrucaoSistema"/>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="form-group col-sm-6">
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmTpAvariaSistema"
-                           for="field_nmTpAvariaSistema">Nm Tp Avaria Sistema</label>
-                    <select class="form-control" id="field_nmTpAvariaSistema" name="nmTpAvariaSistema"
-                            [(ngModel)]="sistemaAgua.nmTpAvariaSistema" required>
-                        <option [ngValue]="null" selected></option>
-                        <option label="Avaria Mecânica">Avaria Mecânica</option>
-                        <option label="Avaria nas Estruturas(Roturas,Entupimento)">Avaria nas
-                            Estruturas(Roturas,Entupimento)
-                        </option>
-                        <option label="Bomba deixou de Funcionar">Bomba deixou de Funcionar</option>
-                        <option label="Energia Local">Energia Local</option>
-                        <option label="Falta de Pagamento">Falta de Pagamento</option>
-                        <option label="Roturas na Conduta">Roturas na Conduta</option>
-                        <option label="Outras Causas">Outras Causas</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group col-sm-6">
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.causaAvariaSistema"
-                           for="field_causaAvariaSistema">Causa Avaria Sistema</label>
-                    <select class="form-control" id="field_causaAvariaSistema" name="causaAvariaSistema"
-                            [(ngModel)]="sistemaAgua.causaAvariaSistema" required>
-                        <option [ngValue]="null" selected></option>
-                        <option label="Avaria Desconhecida">Avaria Desconhecida</option>
-                        <option label="Avaria no Reservatório">Avaria no Reservatório</option>
-                        <option label="Bomba deixou de Funcionar">Bomba deixou de Funcionar</option>
-                        <option label="Roturas de Conduta">Roturas de Conduta</option>
-                        <option label="Outras Causas">Outras Causas</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="form-group col-sm-6">
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.statusResolucao"
-                           for="field_statusResolucao">Status Resolucao</label>
-                    <select class="form-control" id="field_statusResolucao" name="statusResolucao"
-                            [(ngModel)]="sistemaAgua.statusResolucao" required>
-                        <option label="Avaria Não foi Informada">Avaria Não foi Informada</option>
-                        <option label="Falta de Pessoal para Reparar">Falta de Pessoal para Reparar</option>
-                        <option label="Falta de Fundos para Reparação">Falta de Fundos para Reparação</option>
-                        <option label="Outros Especificar">Outros Especificar</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group col-sm-6">
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.tempoServicoDisponivel"
-                           for="field_tempoServicoDisponivel">Tempo Servico Disponivel</label>
-                    <select class="form-control" id="field_tempoServicoDisponivel" name="tempoServicoDisponivel"
-                            [(ngModel)]="sistemaAgua.tempoServicoDisponivel" required>
-                        <option label="Uma Semana">Uma Semana</option>
-                        <option label="Duas Semanas">Duas Semanas</option>
-                        <option label="Um mês">Um mês</option>
-                        <option label="Mais de um Mês">Mais de um Mês</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="form-group col-sm-6">
-                <div class="form-group">
-                    <label class="form-control-label"
-                           jhiTranslate="sisasApp.sistemaAgua.qtdDiametroCondutaAdutoraAguaBruta"
-                           for="field_qtdDiametroCondutaAdutoraAguaBruta">Qtd Diametro Conduta Adutora Agua
-                        Bruta</label>
-                    <input type="number" class="form-control" name="qtdDiametroCondutaAdutoraAguaBruta"
-                           id="field_qtdDiametroCondutaAdutoraAguaBruta"
-                           [(ngModel)]="sistemaAgua.qtdDiametroCondutaAdutoraAguaBruta"/>
-                </div>
-            </div>
-            <div class="form-group col-sm-6">
-                <div class="form-group">
-                    <label class="form-control-label"
-                           jhiTranslate="sisasApp.sistemaAgua.qtdComprimentoCondutaAdutoraAguaBruta"
-                           for="field_qtdComprimentoCondutaAdutoraAguaBruta">Qtd Comprimento Conduta Adutora Agua
-                        Bruta</label>
-                    <input type="number" class="form-control" name="qtdComprimentoCondutaAdutoraAguaBruta"
-                           id="field_qtdComprimentoCondutaAdutoraAguaBruta"
-                           [(ngModel)]="sistemaAgua.qtdComprimentoCondutaAdutoraAguaBruta"/>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="form-group col-sm-6">
-                <div class="form-group">
-                    <label class="form-control-label"
-                           jhiTranslate="sisasApp.sistemaAgua.qtdDiametroCondutaAdutoraAguaTratada"
-                           for="field_qtdDiametroCondutaAdutoraAguaTratada">Qtd Diametro Conduta Adutora Agua
-                        Tratada</label>
-                    <input type="number" class="form-control" name="qtdDiametroCondutaAdutoraAguaTratada"
-                           id="field_qtdDiametroCondutaAdutoraAguaTratada"
-                           [(ngModel)]="sistemaAgua.qtdDiametroCondutaAdutoraAguaTratada"/>
-                </div>
-            </div>
-            <div class="form-group col-sm-6">
-                <div class="form-group">
-                    <label class="form-control-label"
-                           jhiTranslate="sisasApp.sistemaAgua.qtdComprimentoCondutaAdutoraAguaTratada"
-                           for="field_qtdComprimentoCondutaAdutoraAguaTratada">Qtd Comprimento Conduta Adutora Agua
-                        Tratada</label>
-                    <input type="number" class="form-control" name="qtdComprimentoCondutaAdutoraAguaTratada"
-                           id="field_qtdComprimentoCondutaAdutoraAguaTratada"
-                           [(ngModel)]="sistemaAgua.qtdComprimentoCondutaAdutoraAguaTratada"/>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="form-group col-sm-4">
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.descMaterialUtilizadoCondutas"
-                           for="field_descMaterialUtilizadoCondutas">Desc Material Utilizado Condutas</label>
-                    <input type="text" class="form-control" name="descMaterialUtilizadoCondutas"
-                           id="field_descMaterialUtilizadoCondutas"
-                           [(ngModel)]="sistemaAgua.descMaterialUtilizadoCondutas" maxlength="150"/>
-                    <div
-                        [hidden]="!(editForm.controls.descMaterialUtilizadoCondutas?.dirty && editForm.controls.descMaterialUtilizadoCondutas?.invalid)">
-                        <small class="form-text text-danger"
-                               [hidden]="!editForm.controls.descMaterialUtilizadoCondutas?.errors?.maxlength"
-                               jhiTranslate="entity.validation.maxlength" translateValues="{ max: 150 }">
-                            This field cannot be longer than 150 characters.
-                        </small>
+                <div class="form-group col-sm-5">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmTpFonte"
+                               for="field_nmTpFonte">Nm Tp Fonte</label>
+                        <select class="form-control" id="field_nmTpFonte" name="nmTpFonte"
+                                [(ngModel)]="sistemaAgua.nmTpFonte">
+                            <option label="Superficial">Superficial</option>
+                            <option label="Subterrânea">Subterrânea</option>
+                        </select>
                     </div>
                 </div>
             </div>
-            <div class="form-group col-sm-4">
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.qtdReservatoriosApoiados"
-                           for="field_qtdReservatoriosApoiados">Qtd Reservatorios Apoiados</label>
-                    <input type="number" class="form-control" name="qtdReservatoriosApoiados"
-                           id="field_qtdReservatoriosApoiados"
-                           [(ngModel)]="sistemaAgua.qtdReservatoriosApoiados"/>
-                </div>
-            </div>
-            <div class="form-group col-sm-4">
-                <div class="form-group">
-                    <label class="form-control-label"
-                           jhiTranslate="sisasApp.sistemaAgua.qtdCapacidadeReservatoriosApoiados"
-                           for="field_qtdCapacidadeReservatoriosApoiados">Qtd Capacidade Reservatorios Apoiados</label>
-                    <input type="number" class="form-control" name="qtdCapacidadeReservatoriosApoiados"
-                           id="field_qtdCapacidadeReservatoriosApoiados"
-                           [(ngModel)]="sistemaAgua.qtdCapacidadeReservatoriosApoiados"/>
-                </div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="form-group col-sm-4">
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.qtdReservatoriosElevados"
-                           for="field_qtdReservatoriosElevados">Qtd Reservatorios Elevados</label>
-                    <input type="number" class="form-control" name="qtdReservatoriosElevados"
-                           id="field_qtdReservatoriosElevados"
-                           [(ngModel)]="sistemaAgua.qtdReservatoriosElevados"/>
+            <div class="row">
+                <div class="form-group col-sm-4">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.latitude"
+                               for="field_latitude">Latitude</label>
+                        <input type="text" class="form-control" name="latitude" id="field_latitude"
+                               [(ngModel)]="sistemaAgua.latitude"/>
+                    </div>
+                </div>
+                <div class="form-group col-sm-4">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.longitude"
+                               for="field_longitude">Longitude</label>
+                        <input type="text" class="form-control" name="longitude" id="field_longitude"
+                               [(ngModel)]="sistemaAgua.longitude"/>
+                    </div>
+                </div>
+                <div class="form-group col-sm-4">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.altitude"
+                               for="field_altitude">Altitude</label>
+                        <input type="text" class="form-control" name="altitude" id="field_altitude"
+                               [(ngModel)]="sistemaAgua.altitude"/>
+                    </div>
                 </div>
             </div>
-            <div class="form-group col-sm-4">
-                <div class="form-group">
-                    <label class="form-control-label"
-                           jhiTranslate="sisasApp.sistemaAgua.qtdCapacidadeReservatoriosElevados"
-                           for="field_qtdCapacidadeReservatoriosElevados">Qtd Capacidade Reservatorios Elevados</label>
-                    <input type="number" class="form-control" name="qtdCapacidadeReservatoriosElevados"
-                           id="field_qtdCapacidadeReservatoriosElevados"
-                           [(ngModel)]="sistemaAgua.qtdCapacidadeReservatoriosElevados"/>
-                </div>
-            </div>
-            <div class="form-group col-sm-4">
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.alturaReservatoriosElevados"
-                           for="field_alturaReservatoriosElevados">Altura Reservatorios Elevados</label>
-                    <input type="number" class="form-control" name="alturaReservatoriosElevados"
-                           id="field_alturaReservatoriosElevados"
-                           [(ngModel)]="sistemaAgua.alturaReservatoriosElevados"/>
-                </div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="form-group col-sm-6">
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmTpTratamentoAgua"
-                           for="field_nmTpTratamentoAgua">Nm Tp Tratamento Agua</label>
-                    <select class="form-control" id="field_nmTpTratamentoAgua" name="nmTpTratamentoAgua"
-                            [(ngModel)]="sistemaAgua.nmTpTratamentoAgua" required>
-                        <option label="Tratamento Padrão">Tratamento Padrão</option>
-                        <option label="Tratamento Básico-Cloro">Tratamento Básico-Cloro</option>
-                        <option label="Não Realiza">Não Realiza</option>
-                    </select>
+            <div class="row">
+                <div class="form-group col-sm-4">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmFonteAguaUtilizada"
+                               for="field_nmFonteAguaUtilizada">Nm Fonte Agua Utilizada</label>
+                        <select class="form-control" id="field_nmFonteAguaUtilizada" name="nmFonteAguaUtilizada"
+                                [(ngModel)]="sistemaAgua.nmFonteAguaUtilizada">
+                            <option label="Rio">Rio</option>
+                            <option label="Lagoa">Lagoa</option>
+                            <option label="Água da Chuva">Água da Chuva</option>
+                            <option label="Lago">Lago</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-sm-4">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmTipoBomba"
+                               for="field_nmTipoBomba">Nm Tipo Bomba</label>
+                        <select class="form-control" id="field_nmTipoBomba" name="nmTipoBomba"
+                                [(ngModel)]="sistemaAgua.nmTipoBomba">
+                            <option label="Elétrica">Elétrica</option>
+                            <option label="Diesel">Diesel</option>
+                            <option label="Gravidade">Gravidade</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-sm-4">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.qtdCasasAguaLigada"
+                               for="field_qtdCasasAguaLigada">Qtd Casas Agua Ligada</label>
+                        <input type="number" class="form-control" name="qtdCasasAguaLigada"
+                               id="field_qtdCasasAguaLigada"
+                               [(ngModel)]="sistemaAgua.qtdCasasAguaLigada"/>
+                    </div>
                 </div>
             </div>
-            <div class="form-group col-sm-6">
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmTpTratamentoPadraoUtilizado"
-                           for="field_nmTpTratamentoPadraoUtilizado">Nm Tp Tratamento Padrao Utilizado</label>
-                    <select class="form-control" id="field_nmTpTratamentoPadraoUtilizado"
-                            name="nmTpTratamentoPadraoUtilizado" [(ngModel)]="sistemaAgua.nmTpTratamentoPadraoUtilizado"
-                            required>
-                        <option label="Pré-Tratamento">Pré-Tratamento</option>
-                        <option label="Coagulação, floculação, decantação,filtração">Coagulação, floculação,
-                            decantação,filtração
-                        </option>
-                        <option label="Desinfestação">Desinfestação</option>
-                        <option label="Outros">Outros</option>
-                    </select>
 
+            <div class="row">
+                <div class="form-group col-sm-4">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.qtdChafarisesFuncionando"
+                               for="field_qtdChafarisesFuncionando">Qtd Chafarises Funcionando</label>
+                        <input type="number" class="form-control" name="qtdChafarisesFuncionando"
+                               id="field_qtdChafarisesFuncionando"
+                               [(ngModel)]="sistemaAgua.qtdChafarisesFuncionando"/>
+                    </div>
+                </div>
+                <div class="form-group col-sm-4">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.qtdContadoresLigados"
+                               for="field_qtdContadoresLigados">Qtd Contadores Ligados</label>
+                        <input type="number" class="form-control" name="qtdContadoresLigados"
+                               id="field_qtdContadoresLigados"
+                               [(ngModel)]="sistemaAgua.qtdContadoresLigados"/>
+                    </div>
+                </div>
+                <div class="form-group col-sm-4">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.qtdBebedouros"
+                               for="field_qtdBebedouros">Qtd Bebedouros</label>
+                        <input type="number" class="form-control" name="qtdBebedouros" id="field_qtdBebedouros"
+                               [(ngModel)]="sistemaAgua.qtdBebedouros"/>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="form-group col-sm-6">
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmTpTratamentoBasicoUtilizado"
-                           for="field_nmTpTratamentoBasicoUtilizado">Nm Tp Tratamento Basico Utilizado</label>
-                    <select class="form-control" id="field_nmTpTratamentoBasicoUtilizado"
-                            name="nmTpTratamentoBasicoUtilizado" [(ngModel)]="sistemaAgua.nmTpTratamentoBasicoUtilizado"
-                            required>
-                        <option label="Cloro Gasoso">Cloro Gasoso</option>
-                        <option label="Cloro Líquido">Cloro Líquido</option>
-                        <option label="Cloro em Pó">Cloro em Pó</option>
-                        <option label="Outros">Outros</option>
-                    </select>
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <div class="form-group">
+                        <label class="form-control-label"
+                               jhiTranslate="sisasApp.sistemaAgua.qtdHabitantesAcessoServicoAgua"
+                               for="field_qtdHabitantesAcessoServicoAgua">Qtd Habitantes Acesso Servico Agua</label>
+                        <input type="number" class="form-control" name="qtdHabitantesAcessoServicoAgua"
+                               id="field_qtdHabitantesAcessoServicoAgua"
+                               [(ngModel)]="sistemaAgua.qtdHabitantesAcessoServicoAgua"/>
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.anoConstrucaoSistema"
+                               for="field_anoConstrucaoSistema">Ano Construcao Sistema</label>
+                        <input type="number" class="form-control" name="anoConstrucaoSistema"
+                               id="field_anoConstrucaoSistema"
+                               [(ngModel)]="sistemaAgua.anoConstrucaoSistema"/>
+                    </div>
                 </div>
             </div>
-            <div class="form-group col-sm-6">
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.existeAvariaSistemaTratamento"
-                           for="field_existeAvariaSistemaTratamento">Existe Avaria Sistema Tratamento</label>
-                    <select class="form-control" id="field_existeAvariaSistemaTratamento"
-                            name="existeAvariaSistemaTratamento" [(ngModel)]="sistemaAgua.existeAvariaSistemaTratamento"
-                            required>
-                        <option label="Não, Existem outros motivos">Não, Existem outros motivos</option>
-                        <option label="Sim, Sistema Avariado">Sim, Sistema Avariado</option>
-                    </select>
-                </div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="form-group col-sm-6">
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.existeMotivoAusenciaTratamento"
-                           for="field_existeMotivoAusenciaTratamento">Existe Motivo Ausencia Tratamento</label>
-                    <select class="form-control" id="field_existeMotivoAusenciaTratamento"
-                            name="existeMotivoAusenciaTratamento"
-                            [(ngModel)]="sistemaAgua.existeMotivoAusenciaTratamento" required>
-                        <option label="Falta de Instalações">Falta de Instalações</option>
-                        <option label="Falta de Equipamento">Falta de Equipamento</option>
-                        <option label="Falta de Conhecimento">Falta de Conhecimento</option>
-                        <option label="Outros">Outros</option>
-                    </select>
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmTpAvariaSistema"
+                               for="field_nmTpAvariaSistema">Nm Tp Avaria Sistema</label>
+                        <select class="form-control" id="field_nmTpAvariaSistema" name="nmTpAvariaSistema"
+                                [(ngModel)]="sistemaAgua.nmTpAvariaSistema">
+                            <option [ngValue]="null" selected></option>
+                            <option label="Avaria Mecânica">Avaria Mecânica</option>
+                            <option label="Avaria nas Estruturas(Roturas,Entupimento)">Avaria nas
+                                Estruturas(Roturas,Entupimento)
+                            </option>
+                            <option label="Bomba deixou de Funcionar">Bomba deixou de Funcionar</option>
+                            <option label="Energia Local">Energia Local</option>
+                            <option label="Falta de Pagamento">Falta de Pagamento</option>
+                            <option label="Roturas na Conduta">Roturas na Conduta</option>
+                            <option label="Outras Causas">Outras Causas</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.causaAvariaSistema"
+                               for="field_causaAvariaSistema">Causa Avaria Sistema</label>
+                        <select class="form-control" id="field_causaAvariaSistema" name="causaAvariaSistema"
+                                [(ngModel)]="sistemaAgua.causaAvariaSistema">
+                            <option [ngValue]="null" selected></option>
+                            <option label="Avaria Desconhecida">Avaria Desconhecida</option>
+                            <option label="Avaria no Reservatório">Avaria no Reservatório</option>
+                            <option label="Bomba deixou de Funcionar">Bomba deixou de Funcionar</option>
+                            <option label="Roturas de Conduta">Roturas de Conduta</option>
+                            <option label="Outras Causas">Outras Causas</option>
+                        </select>
+                    </div>
                 </div>
             </div>
-            <div class="form-group col-sm-6">
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmEquipamentosComAvaria"
-                           for="field_nmEquipamentosComAvaria">Nm Equipamentos Com Avaria</label>
-                    <select class="form-control" id="field_nmEquipamentosComAvaria" name="nmEquipamentosComAvaria"
-                            [(ngModel)]="sistemaAgua.nmEquipamentosComAvaria" required>
-                        <option label="Equipamento de dosagem">Equipamento de dosagem</option>
-                        <option label="Electroagitadores">Electroagitadores</option>
-                        <option label="Compressores">Compressores</option>
-                        <option label="Outros">Outros</option>
-                    </select>
-                </div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="form-group col-sm-4">
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.caudalDoSistema"
-                           for="field_caudalDoSistema">Caudal Do Sistema</label>
-                    <input type="number" class="form-control" name="caudalDoSistema" id="field_caudalDoSistema"
-                           [(ngModel)]="sistemaAgua.caudalDoSistema"/>
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.statusResolucao"
+                               for="field_statusResolucao">Status Resolucao</label>
+                        <select class="form-control" id="field_statusResolucao" name="statusResolucao"
+                                [(ngModel)]="sistemaAgua.statusResolucao">
+                            <option label="Avaria Não foi Informada">Avaria Não foi Informada</option>
+                            <option label="Falta de Pessoal para Reparar">Falta de Pessoal para Reparar</option>
+                            <option label="Falta de Fundos para Reparação">Falta de Fundos para Reparação</option>
+                            <option label="Outros Especificar">Outros Especificar</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.tempoServicoDisponivel"
+                               for="field_tempoServicoDisponivel">Tempo Servico Disponivel</label>
+                        <select class="form-control" id="field_tempoServicoDisponivel" name="tempoServicoDisponivel"
+                                [(ngModel)]="sistemaAgua.tempoServicoDisponivel">
+                            <option label="Uma Semana">Uma Semana</option>
+                            <option label="Duas Semanas">Duas Semanas</option>
+                            <option label="Um mês">Um mês</option>
+                            <option label="Mais de um Mês">Mais de um Mês</option>
+                        </select>
+                    </div>
                 </div>
             </div>
-            <div class="form-group col-sm-4">
-                <div class="form-group">
-                    <label class="form-control-label"
-                           jhiTranslate="sisasApp.sistemaAgua.qtdConsumoPercaptaLitrosHomemDia"
-                           for="field_qtdConsumoPercaptaLitrosHomemDia">Qtd Consumo Percapta Litros Homem Dia</label>
-                    <input type="number" class="form-control" name="qtdConsumoPercaptaLitrosHomemDia"
-                           id="field_qtdConsumoPercaptaLitrosHomemDia"
-                           [(ngModel)]="sistemaAgua.qtdConsumoPercaptaLitrosHomemDia"/>
-                </div>
-            </div>
-            <div class="form-group col-sm-4">
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.qtdDotacaoPercapta"
-                           for="field_qtdDotacaoPercapta">Qtd Dotacao Percapta</label>
-                    <input type="number" class="form-control" name="qtdDotacaoPercapta" id="field_qtdDotacaoPercapta"
-                           [(ngModel)]="sistemaAgua.qtdDotacaoPercapta"/>
-                </div>
-            </div>
-            /
-        </div>
 
-        <div class="row">
-            <div class="form-group col-sm-6">
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.qtdDiariaHorasServicoSistema"
-                           for="field_qtdDiariaHorasServicoSistema">Qtd Diaria Horas Servico Sistema</label>
-                    <input type="number" class="form-control" name="qtdDiariaHorasServicoSistema"
-                           id="field_qtdDiariaHorasServicoSistema"
-                           [(ngModel)]="sistemaAgua.qtdDiariaHorasServicoSistema"/>
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <div class="form-group">
+                        <label class="form-control-label"
+                               jhiTranslate="sisasApp.sistemaAgua.qtdDiametroCondutaAdutoraAguaBruta"
+                               for="field_qtdDiametroCondutaAdutoraAguaBruta">Qtd Diametro Conduta Adutora Agua
+                            Bruta</label>
+                        <input type="number" class="form-control" name="qtdDiametroCondutaAdutoraAguaBruta"
+                               id="field_qtdDiametroCondutaAdutoraAguaBruta"
+                               [(ngModel)]="sistemaAgua.qtdDiametroCondutaAdutoraAguaBruta"/>
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <div class="form-group">
+                        <label class="form-control-label"
+                               jhiTranslate="sisasApp.sistemaAgua.qtdComprimentoCondutaAdutoraAguaBruta"
+                               for="field_qtdComprimentoCondutaAdutoraAguaBruta">Qtd Comprimento Conduta Adutora Agua
+                            Bruta</label>
+                        <input type="number" class="form-control" name="qtdComprimentoCondutaAdutoraAguaBruta"
+                               id="field_qtdComprimentoCondutaAdutoraAguaBruta"
+                               [(ngModel)]="sistemaAgua.qtdComprimentoCondutaAdutoraAguaBruta"/>
+                    </div>
                 </div>
             </div>
-            <div class="form-group col-sm-6">
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.esquema" for="field_esquema">Esquema</label>
-                    <select class="form-control" id="field_esquema" name="esquema" [(ngModel)]="sistemaAgua.esquema"
-                            required>
-                        <option label="Poço/Cacimba Melhorada">Poço/Cacimba Melhorada</option>
-                        <option label="Furo">Furo</option>
-                        <option label="Nascente">Nascente</option>
-                    </select>
-                </div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="form-group col-sm-6">
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmModeloBombaManualUtilizada"
-                           for="field_nmModeloBombaManualUtilizada">Nm Modelo Bomba Manual Utilizada</label>
-                    <select class="form-control" id="field_nmModeloBombaManualUtilizada"
-                            name="nmModeloBombaManualUtilizada" [(ngModel)]="sistemaAgua.nmModeloBombaManualUtilizada"
-                            required>
-                        <option label="Afridev">Afridev</option>
-                        <option label="Volanta">Volanta</option>
-                        <option label="India">India</option>
-                        <option label="Mark II">Mark II</option>
-                        <option label="Outro">Outro</option>
-                    </select>
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <div class="form-group">
+                        <label class="form-control-label"
+                               jhiTranslate="sisasApp.sistemaAgua.qtdDiametroCondutaAdutoraAguaTratada"
+                               for="field_qtdDiametroCondutaAdutoraAguaTratada">Qtd Diametro Conduta Adutora Agua
+                            Tratada</label>
+                        <input type="number" class="form-control" name="qtdDiametroCondutaAdutoraAguaTratada"
+                               id="field_qtdDiametroCondutaAdutoraAguaTratada"
+                               [(ngModel)]="sistemaAgua.qtdDiametroCondutaAdutoraAguaTratada"/>
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <div class="form-group">
+                        <label class="form-control-label"
+                               jhiTranslate="sisasApp.sistemaAgua.qtdComprimentoCondutaAdutoraAguaTratada"
+                               for="field_qtdComprimentoCondutaAdutoraAguaTratada">Qtd Comprimento Conduta Adutora Agua
+                            Tratada</label>
+                        <input type="number" class="form-control" name="qtdComprimentoCondutaAdutoraAguaTratada"
+                               id="field_qtdComprimentoCondutaAdutoraAguaTratada"
+                               [(ngModel)]="sistemaAgua.qtdComprimentoCondutaAdutoraAguaTratada"/>
+                    </div>
                 </div>
             </div>
-            <div class="form-group col-sm-6">
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmTpBombaEnergia"
-                           for="field_nmTpBombaEnergia">Nm Tp Bomba Energia</label>
-                    <select class="form-control" id="field_nmTpBombaEnergia" name="nmTpBombaEnergia"
-                            [(ngModel)]="sistemaAgua.nmTpBombaEnergia" required>
-                        <option label="Elétrica">Elétrica</option>
-                        <option label="Diesel/Motobomba">Diesel/Motobomba</option>
-                        <option label="Solar">Solar</option>
-                        <option label="Eólica">Eólica</option>
-                        <option label="Outros">Outros</option>
-                    </select>
+
+            <div class="row">
+                <div class="form-group col-sm-4">
+                    <div class="form-group">
+                        <label class="form-control-label"
+                               jhiTranslate="sisasApp.sistemaAgua.descMaterialUtilizadoCondutas"
+                               for="field_descMaterialUtilizadoCondutas">Desc Material Utilizado Condutas</label>
+                        <input type="text" class="form-control" name="descMaterialUtilizadoCondutas"
+                               id="field_descMaterialUtilizadoCondutas"
+                               [(ngModel)]="sistemaAgua.descMaterialUtilizadoCondutas" maxlength="150"/>
+                        <div
+                            [hidden]="!(editForm.controls.descMaterialUtilizadoCondutas?.dirty && editForm.controls.descMaterialUtilizadoCondutas?.invalid)">
+                            <small class="form-text text-danger"
+                                   [hidden]="!editForm.controls.descMaterialUtilizadoCondutas?.errors?.maxlength"
+                                   jhiTranslate="entity.validation.maxlength" translateValues="{ max: 150 }">
+                                This field cannot be longer than 150 characters.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-sm-4">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.qtdReservatoriosApoiados"
+                               for="field_qtdReservatoriosApoiados">Qtd Reservatorios Apoiados</label>
+                        <input type="number" class="form-control" name="qtdReservatoriosApoiados"
+                               id="field_qtdReservatoriosApoiados"
+                               [(ngModel)]="sistemaAgua.qtdReservatoriosApoiados"/>
+                    </div>
+                </div>
+                <div class="form-group col-sm-4">
+                    <div class="form-group">
+                        <label class="form-control-label"
+                               jhiTranslate="sisasApp.sistemaAgua.qtdCapacidadeReservatoriosApoiados"
+                               for="field_qtdCapacidadeReservatoriosApoiados">Qtd Capacidade Reservatorios
+                            Apoiados</label>
+                        <input type="number" class="form-control" name="qtdCapacidadeReservatoriosApoiados"
+                               id="field_qtdCapacidadeReservatoriosApoiados"
+                               [(ngModel)]="sistemaAgua.qtdCapacidadeReservatoriosApoiados"/>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div [hidden]="!(editForm.controls.comuna?.dirty && editForm.controls.comuna?.invalid)">
-            <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.comuna?.errors?.required" jhiTranslate="entity.validation.required">
-                This field is required.
-            </small>
+
+            <div class="row">
+                <div class="form-group col-sm-4">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.qtdReservatoriosElevados"
+                               for="field_qtdReservatoriosElevados">Qtd Reservatorios Elevados</label>
+                        <input type="number" class="form-control" name="qtdReservatoriosElevados"
+                               id="field_qtdReservatoriosElevados"
+                               [(ngModel)]="sistemaAgua.qtdReservatoriosElevados"/>
+                    </div>
+                </div>
+                <div class="form-group col-sm-4">
+                    <div class="form-group">
+                        <label class="form-control-label"
+                               jhiTranslate="sisasApp.sistemaAgua.qtdCapacidadeReservatoriosElevados"
+                               for="field_qtdCapacidadeReservatoriosElevados">Qtd Capacidade Reservatorios
+                            Elevados</label>
+                        <input type="number" class="form-control" name="qtdCapacidadeReservatoriosElevados"
+                               id="field_qtdCapacidadeReservatoriosElevados"
+                               [(ngModel)]="sistemaAgua.qtdCapacidadeReservatoriosElevados"/>
+                    </div>
+                </div>
+                <div class="form-group col-sm-4">
+                    <div class="form-group">
+                        <label class="form-control-label"
+                               jhiTranslate="sisasApp.sistemaAgua.alturaReservatoriosElevados"
+                               for="field_alturaReservatoriosElevados">Altura Reservatorios Elevados</label>
+                        <input type="number" class="form-control" name="alturaReservatoriosElevados"
+                               id="field_alturaReservatoriosElevados"
+                               [(ngModel)]="sistemaAgua.alturaReservatoriosElevados"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmTpTratamentoAgua"
+                               for="field_nmTpTratamentoAgua">Nm Tp Tratamento Agua</label>
+                        <select class="form-control" id="field_nmTpTratamentoAgua" name="nmTpTratamentoAgua"
+                                [(ngModel)]="sistemaAgua.nmTpTratamentoAgua">
+                            <option label="Tratamento Padrão">Tratamento Padrão</option>
+                            <option label="Tratamento Básico-Cloro">Tratamento Básico-Cloro</option>
+                            <option label="Não Realiza">Não Realiza</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <div class="form-group">
+                        <label class="form-control-label"
+                               jhiTranslate="sisasApp.sistemaAgua.nmTpTratamentoPadraoUtilizado"
+                               for="field_nmTpTratamentoPadraoUtilizado">Nm Tp Tratamento Padrao Utilizado</label>
+                        <select class="form-control" id="field_nmTpTratamentoPadraoUtilizado"
+                                name="nmTpTratamentoPadraoUtilizado"
+                                [(ngModel)]="sistemaAgua.nmTpTratamentoPadraoUtilizado"
+                        >
+                            <option label="Pré-Tratamento">Pré-Tratamento</option>
+                            <option label="Coagulação, floculação, decantação,filtração">Coagulação, floculação,
+                                decantação,filtração
+                            </option>
+                            <option label="Desinfestação">Desinfestação</option>
+                            <option label="Outros">Outros</option>
+                        </select>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <div class="form-group">
+                        <label class="form-control-label"
+                               jhiTranslate="sisasApp.sistemaAgua.nmTpTratamentoBasicoUtilizado"
+                               for="field_nmTpTratamentoBasicoUtilizado">Nm Tp Tratamento Basico Utilizado</label>
+                        <select class="form-control" id="field_nmTpTratamentoBasicoUtilizado"
+                                name="nmTpTratamentoBasicoUtilizado"
+                                [(ngModel)]="sistemaAgua.nmTpTratamentoBasicoUtilizado"
+                        >
+                            <option label="Cloro Gasoso">Cloro Gasoso</option>
+                            <option label="Cloro Líquido">Cloro Líquido</option>
+                            <option label="Cloro em Pó">Cloro em Pó</option>
+                            <option label="Outros">Outros</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <div class="form-group">
+                        <label class="form-control-label"
+                               jhiTranslate="sisasApp.sistemaAgua.existeAvariaSistemaTratamento"
+                               for="field_existeAvariaSistemaTratamento">Existe Avaria Sistema Tratamento</label>
+                        <select class="form-control" id="field_existeAvariaSistemaTratamento"
+                                name="existeAvariaSistemaTratamento"
+                                [(ngModel)]="sistemaAgua.existeAvariaSistemaTratamento"
+                        >
+                            <option label="Não, Existem outros motivos">Não, Existem outros motivos</option>
+                            <option label="Sim, Sistema Avariado">Sim, Sistema Avariado</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <div class="form-group">
+                        <label class="form-control-label"
+                               jhiTranslate="sisasApp.sistemaAgua.existeMotivoAusenciaTratamento"
+                               for="field_existeMotivoAusenciaTratamento">Existe Motivo Ausencia Tratamento</label>
+                        <select class="form-control" id="field_existeMotivoAusenciaTratamento"
+                                name="existeMotivoAusenciaTratamento"
+                                [(ngModel)]="sistemaAgua.existeMotivoAusenciaTratamento">
+                            <option label="Falta de Instalações">Falta de Instalações</option>
+                            <option label="Falta de Equipamento">Falta de Equipamento</option>
+                            <option label="Falta de Conhecimento">Falta de Conhecimento</option>
+                            <option label="Outros">Outros</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmEquipamentosComAvaria"
+                               for="field_nmEquipamentosComAvaria">Nm Equipamentos Com Avaria</label>
+                        <select class="form-control" id="field_nmEquipamentosComAvaria" name="nmEquipamentosComAvaria"
+                                [(ngModel)]="sistemaAgua.nmEquipamentosComAvaria">
+                            <option label="Equipamento de dosagem">Equipamento de dosagem</option>
+                            <option label="Electroagitadores">Electroagitadores</option>
+                            <option label="Compressores">Compressores</option>
+                            <option label="Outros">Outros</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-sm-4">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.caudalDoSistema"
+                               for="field_caudalDoSistema">Caudal Do Sistema</label>
+                        <input type="number" class="form-control" name="caudalDoSistema" id="field_caudalDoSistema"
+                               [(ngModel)]="sistemaAgua.caudalDoSistema"/>
+                    </div>
+                </div>
+                <div class="form-group col-sm-4">
+                    <div class="form-group">
+                        <label class="form-control-label"
+                               jhiTranslate="sisasApp.sistemaAgua.qtdConsumoPercaptaLitrosHomemDia"
+                               for="field_qtdConsumoPercaptaLitrosHomemDia">Qtd Consumo Percapta Litros Homem
+                            Dia</label>
+                        <input type="number" class="form-control" name="qtdConsumoPercaptaLitrosHomemDia"
+                               id="field_qtdConsumoPercaptaLitrosHomemDia"
+                               [(ngModel)]="sistemaAgua.qtdConsumoPercaptaLitrosHomemDia"/>
+                    </div>
+                </div>
+                <div class="form-group col-sm-4">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.qtdDotacaoPercapta"
+                               for="field_qtdDotacaoPercapta">Qtd Dotacao Percapta</label>
+                        <input type="number" class="form-control" name="qtdDotacaoPercapta"
+                               id="field_qtdDotacaoPercapta"
+                               [(ngModel)]="sistemaAgua.qtdDotacaoPercapta"/>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <div class="form-group">
+                        <label class="form-control-label"
+                               jhiTranslate="sisasApp.sistemaAgua.qtdDiariaHorasServicoSistema"
+                               for="field_qtdDiariaHorasServicoSistema">Qtd Diaria Horas Servico Sistema</label>
+                        <input type="number" class="form-control" name="qtdDiariaHorasServicoSistema"
+                               id="field_qtdDiariaHorasServicoSistema"
+                               [(ngModel)]="sistemaAgua.qtdDiariaHorasServicoSistema"/>
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.esquema"
+                               for="field_esquema">Esquema</label>
+                        <select class="form-control" id="field_esquema" name="esquema"
+                                [(ngModel)]="sistemaAgua.esquema">
+                            <option label="Poço/Cacimba Melhorada">Poço/Cacimba Melhorada</option>
+                            <option label="Furo">Furo</option>
+                            <option label="Nascente">Nascente</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <div class="form-group">
+                        <label class="form-control-label"
+                               jhiTranslate="sisasApp.sistemaAgua.nmModeloBombaManualUtilizada"
+                               for="field_nmModeloBombaManualUtilizada">Nm Modelo Bomba Manual Utilizada</label>
+                        <select class="form-control" id="field_nmModeloBombaManualUtilizada"
+                                name="nmModeloBombaManualUtilizada"
+                                [(ngModel)]="sistemaAgua.nmModeloBombaManualUtilizada">
+                            <option label="Afridev">Afridev</option>
+                            <option label="Volanta">Volanta</option>
+                            <option label="India">India</option>
+                            <option label="Mark II">Mark II</option>
+                            <option label="Outro">Outro</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmTpBombaEnergia"
+                               for="field_nmTpBombaEnergia">Nm Tp Bomba Energia</label>
+                        <select class="form-control" id="field_nmTpBombaEnergia" name="nmTpBombaEnergia"
+                                [(ngModel)]="sistemaAgua.nmTpBombaEnergia">
+                            <option label="Elétrica">Elétrica</option>
+                            <option label="Diesel/Motobomba">Diesel/Motobomba</option>
+                            <option label="Solar">Solar</option>
+                            <option label="Eólica">Eólica</option>
+                            <option label="Outros">Outros</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div [hidden]="!(editForm.controls.comuna?.dirty && editForm.controls.comuna?.invalid)">
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.comuna?.errors?.required" jhiTranslate="entity.validation.required">
+                    This field is required.
+                </small>
+            </div>
         </div>
     </div>
     <div class="modal-footer">

@@ -20,7 +20,6 @@ export class SistemaAguaDialogComponent implements OnInit {
 
     sistemaAgua: SistemaAgua;
     isSaving: boolean;
-
     situacaos: Situacao[];
 
     comunas: Comuna[];
