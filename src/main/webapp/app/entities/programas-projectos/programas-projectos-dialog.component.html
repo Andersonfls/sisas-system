@@ -16,7 +16,7 @@
             <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.dtLancamento" for="field_dtLancamento">Dt Lancamento</label>
             <div class="input-group">
                 <input id="field_dtLancamento" type="text" class="form-control" name="dtLancamento" ngbDatepicker  #dtLancamentoDp="ngbDatepicker" [(ngModel)]="programasProjectos.dtLancamento"
-                required/>
+                required placeholder="Selecione a data do lançamento"/>
                 <span class="input-group-append">
                     <button type="button" class="btn btn-secondary" (click)="dtLancamentoDp.toggle()"><i class="fa fa-calendar"></i></button>
                 </span>
@@ -31,7 +31,7 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.nmDesignacaoProjeto" for="field_nmDesignacaoProjeto">Nm Designacao Projeto</label>
             <input type="text" class="form-control" name="nmDesignacaoProjeto" id="field_nmDesignacaoProjeto"
-                [(ngModel)]="programasProjectos.nmDesignacaoProjeto" required maxlength="250"/>
+                [(ngModel)]="programasProjectos.nmDesignacaoProjeto" required maxlength="250" placeholder="Nome do projeto"/>
             <div [hidden]="!(editForm.controls.nmDesignacaoProjeto?.dirty && editForm.controls.nmDesignacaoProjeto?.invalid)">
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.nmDesignacaoProjeto?.errors?.required" jhiTranslate="entity.validation.required">
@@ -46,7 +46,7 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.nmDescricaoProjeto" for="field_nmDescricaoProjeto">Nm Descricao Projeto</label>
             <input type="text" class="form-control" name="nmDescricaoProjeto" id="field_nmDescricaoProjeto"
-                [(ngModel)]="programasProjectos.nmDescricaoProjeto" required maxlength="250"/>
+                [(ngModel)]="programasProjectos.nmDescricaoProjeto" required maxlength="250" placeholder="Descrição do projeto"/>
             <div [hidden]="!(editForm.controls.nmDescricaoProjeto?.dirty && editForm.controls.nmDescricaoProjeto?.invalid)">
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.nmDescricaoProjeto?.errors?.required" jhiTranslate="entity.validation.required">
@@ -61,12 +61,12 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.idSaaAssociado" for="field_idSaaAssociado">Id Saa Associado</label>
             <input type="number" class="form-control" name="idSaaAssociado" id="field_idSaaAssociado"
-                [(ngModel)]="programasProjectos.idSaaAssociado" />
+                [(ngModel)]="programasProjectos.idSaaAssociado" placeholder="Número do saa associado"/>
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.tipoFinanciamento" for="field_tipoFinanciamento">Tipo Financiamento</label>
             <input type="text" class="form-control" name="tipoFinanciamento" id="field_tipoFinanciamento"
-                [(ngModel)]="programasProjectos.tipoFinanciamento" required maxlength="150"/>
+                [(ngModel)]="programasProjectos.tipoFinanciamento" required maxlength="150" placeholder="Tipo do financiamento"/>
             <div [hidden]="!(editForm.controls.tipoFinanciamento?.dirty && editForm.controls.tipoFinanciamento?.invalid)">
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.tipoFinanciamento?.errors?.required" jhiTranslate="entity.validation.required">
@@ -81,7 +81,7 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.especialidade" for="field_especialidade">Especialidade</label>
             <input type="text" class="form-control" name="especialidade" id="field_especialidade"
-                [(ngModel)]="programasProjectos.especialidade" maxlength="100"/>
+                [(ngModel)]="programasProjectos.especialidade" maxlength="100" placeholder="Nome da especialidade"/>
             <div [hidden]="!(editForm.controls.especialidade?.dirty && editForm.controls.especialidade?.invalid)">
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.especialidade?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">

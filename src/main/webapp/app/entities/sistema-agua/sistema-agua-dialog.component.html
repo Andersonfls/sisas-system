@@ -33,7 +33,7 @@
             <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmInqueridor" for="field_nmInqueridor">Nm
                 Inqueridor</label>
             <input type="text" class="form-control" name="nmInqueridor" id="field_nmInqueridor"
-                   [(ngModel)]="sistemaAgua.nmInqueridor" required maxlength="150"/>
+                   [(ngModel)]="sistemaAgua.nmInqueridor" required maxlength="150" placeholder="Nome completo do inqueridor"/>
             <div [hidden]="!(editForm.controls.nmInqueridor?.dirty && editForm.controls.nmInqueridor?.invalid)">
                 <small class="form-text text-danger"
                        [hidden]="!editForm.controls.nmInqueridor?.errors?.required"
@@ -89,7 +89,7 @@
                     <div class="input-group">
                         <input id="field_dtLancamento" type="text" class="form-control" name="dtLancamento"
                                ngbDatepicker #dtLancamentoDp="ngbDatepicker" [(ngModel)]="sistemaAgua.dtLancamento"
-                               required/>
+                               required placeholder="Selecione a data"/>
                         <span class="input-group-append">
                         <button type="button" class="btn btn-secondary" (click)="dtLancamentoDp.toggle()"><i
                             class="fa fa-calendar"></i></button>
@@ -122,7 +122,7 @@
                     <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmLocalidade"
                            for="field_nmLocalidade">Nm Localidade</label>
                     <input type="text" class="form-control" name="nmLocalidade" id="field_nmLocalidade"
-                           [(ngModel)]="sistemaAgua.nmLocalidade" maxlength="150"/>
+                           [(ngModel)]="sistemaAgua.nmLocalidade" maxlength="150" placeholder="Nome do local"/>
                     <div [hidden]="!(editForm.controls.nmLocalidade?.dirty && editForm.controls.nmLocalidade?.invalid)">
                         <small class="form-text text-danger"
                                [hidden]="!editForm.controls.nmLocalidade?.errors?.maxlength"
@@ -137,7 +137,7 @@
                     <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.qtdPopulacaoActual"
                            for="field_qtdPopulacaoActual">Qtd Populacao Actual</label>
                     <input type="number" class="form-control" name="qtdPopulacaoActual" id="field_qtdPopulacaoActual"
-                           [(ngModel)]="sistemaAgua.qtdPopulacaoActual"/>
+                           [(ngModel)]="sistemaAgua.qtdPopulacaoActual" placeholder="Quantidade de pessoas"/>
                 </div>
             </div>
             <div class="form-group col-sm-4">
@@ -145,7 +145,7 @@
                     <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.qtdCasasLocalidade"
                            for="field_qtdCasasLocalidade">Qtd Casas Localidade</label>
                     <input type="number" class="form-control" name="qtdCasasLocalidade" id="field_qtdCasasLocalidade"
-                           [(ngModel)]="sistemaAgua.qtdCasasLocalidade"/>
+                           [(ngModel)]="sistemaAgua.qtdCasasLocalidade" placeholder="Quantidade de casas do local"/>
                 </div>
             </div>
         </div>
@@ -194,7 +194,7 @@
                 <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmSistemaAgua"
                        for="field_nmSistemaAgua">Nm Sistema Agua</label>
                 <input type="text" class="form-control" name="nmSistemaAgua" id="field_nmSistemaAgua"
-                       [(ngModel)]="sistemaAgua.nmSistemaAgua" maxlength="150"/>
+                       [(ngModel)]="sistemaAgua.nmSistemaAgua" maxlength="150" placeholder="Nome do sistema de água"/>
                 <div [hidden]="!(editForm.controls.nmSistemaAgua?.dirty && editForm.controls.nmSistemaAgua?.invalid)">
                     <small class="form-text text-danger"
                            [hidden]="!editForm.controls.nmSistemaAgua?.errors?.required"
@@ -241,7 +241,7 @@
                         <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.latitude"
                                for="field_latitude">Latitude</label>
                         <input type="text" class="form-control" name="latitude" id="field_latitude"
-                               [(ngModel)]="sistemaAgua.latitude"/>
+                               [(ngModel)]="sistemaAgua.latitude" placeholder="Latitude"/>
                     </div>
                 </div>
                 <div class="form-group col-sm-4">
@@ -249,7 +249,7 @@
                         <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.longitude"
                                for="field_longitude">Longitude</label>
                         <input type="text" class="form-control" name="longitude" id="field_longitude"
-                               [(ngModel)]="sistemaAgua.longitude"/>
+                               [(ngModel)]="sistemaAgua.longitude" placeholder="Longitude"/>
                     </div>
                 </div>
                 <div class="form-group col-sm-4">
@@ -257,7 +257,7 @@
                         <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.altitude"
                                for="field_altitude">Altitude</label>
                         <input type="text" class="form-control" name="altitude" id="field_altitude"
-                               [(ngModel)]="sistemaAgua.altitude"/>
+                               [(ngModel)]="sistemaAgua.altitude" placeholder="Altitude"/>
                     </div>
                 </div>
             </div>
@@ -306,7 +306,7 @@
                                for="field_qtdChafarisesFuncionando">Qtd Chafarises Funcionando</label>
                         <input type="number" class="form-control" name="qtdChafarisesFuncionando"
                                id="field_qtdChafarisesFuncionando"
-                               [(ngModel)]="sistemaAgua.qtdChafarisesFuncionando"/>
+                               [(ngModel)]="sistemaAgua.qtdChafarisesFuncionando" placeholder="Quantidade de chafarises"/>
                     </div>
                 </div>
                 <div class="form-group col-sm-4">
@@ -315,7 +315,7 @@
                                for="field_qtdContadoresLigados">Qtd Contadores Ligados</label>
                         <input type="number" class="form-control" name="qtdContadoresLigados"
                                id="field_qtdContadoresLigados"
-                               [(ngModel)]="sistemaAgua.qtdContadoresLigados"/>
+                               [(ngModel)]="sistemaAgua.qtdContadoresLigados" placeholder="Quantidade de contadores ligados"/>
                     </div>
                 </div>
                 <div class="form-group col-sm-4">
@@ -323,7 +323,7 @@
                         <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.qtdBebedouros"
                                for="field_qtdBebedouros">Qtd Bebedouros</label>
                         <input type="number" class="form-control" name="qtdBebedouros" id="field_qtdBebedouros"
-                               [(ngModel)]="sistemaAgua.qtdBebedouros"/>
+                               [(ngModel)]="sistemaAgua.qtdBebedouros" placeholder="Quantidade de bebedouros"/>
                     </div>
                 </div>
             </div>
@@ -336,7 +336,7 @@
                                for="field_qtdHabitantesAcessoServicoAgua">Qtd Habitantes Acesso Servico Agua</label>
                         <input type="number" class="form-control" name="qtdHabitantesAcessoServicoAgua"
                                id="field_qtdHabitantesAcessoServicoAgua"
-                               [(ngModel)]="sistemaAgua.qtdHabitantesAcessoServicoAgua"/>
+                               [(ngModel)]="sistemaAgua.qtdHabitantesAcessoServicoAgua" placeholder="Quantidade de Habitantes"/>
                     </div>
                 </div>
                 <div class="form-group col-sm-6">
@@ -345,7 +345,7 @@
                                for="field_anoConstrucaoSistema">Ano Construcao Sistema</label>
                         <input type="number" class="form-control" name="anoConstrucaoSistema"
                                id="field_anoConstrucaoSistema"
-                               [(ngModel)]="sistemaAgua.anoConstrucaoSistema"/>
+                               [(ngModel)]="sistemaAgua.anoConstrucaoSistema" placeholder="Ano da construção"/>
                     </div>
                 </div>
             </div>
@@ -425,7 +425,7 @@
                             Bruta</label>
                         <input type="number" class="form-control" name="qtdDiametroCondutaAdutoraAguaBruta"
                                id="field_qtdDiametroCondutaAdutoraAguaBruta"
-                               [(ngModel)]="sistemaAgua.qtdDiametroCondutaAdutoraAguaBruta"/>
+                               [(ngModel)]="sistemaAgua.qtdDiametroCondutaAdutoraAguaBruta" placeholder="Numero do diâmetro"/>
                     </div>
                 </div>
                 <div class="form-group col-sm-6">
@@ -436,7 +436,7 @@
                             Bruta</label>
                         <input type="number" class="form-control" name="qtdComprimentoCondutaAdutoraAguaBruta"
                                id="field_qtdComprimentoCondutaAdutoraAguaBruta"
-                               [(ngModel)]="sistemaAgua.qtdComprimentoCondutaAdutoraAguaBruta"/>
+                               [(ngModel)]="sistemaAgua.qtdComprimentoCondutaAdutoraAguaBruta" placeholder="Comprimento da conduta adutora"/>
                     </div>
                 </div>
             </div>
@@ -450,7 +450,7 @@
                             Tratada</label>
                         <input type="number" class="form-control" name="qtdDiametroCondutaAdutoraAguaTratada"
                                id="field_qtdDiametroCondutaAdutoraAguaTratada"
-                               [(ngModel)]="sistemaAgua.qtdDiametroCondutaAdutoraAguaTratada"/>
+                               [(ngModel)]="sistemaAgua.qtdDiametroCondutaAdutoraAguaTratada" placeholder="Numero do diâmetro"/>
                     </div>
                 </div>
                 <div class="form-group col-sm-6">
@@ -461,7 +461,7 @@
                             Tratada</label>
                         <input type="number" class="form-control" name="qtdComprimentoCondutaAdutoraAguaTratada"
                                id="field_qtdComprimentoCondutaAdutoraAguaTratada"
-                               [(ngModel)]="sistemaAgua.qtdComprimentoCondutaAdutoraAguaTratada"/>
+                               [(ngModel)]="sistemaAgua.qtdComprimentoCondutaAdutoraAguaTratada" placeholder="Comprimento da conduta adutora"/>
                     </div>
                 </div>
             </div>
@@ -474,7 +474,7 @@
                                for="field_descMaterialUtilizadoCondutas">Desc Material Utilizado Condutas</label>
                         <input type="text" class="form-control" name="descMaterialUtilizadoCondutas"
                                id="field_descMaterialUtilizadoCondutas"
-                               [(ngModel)]="sistemaAgua.descMaterialUtilizadoCondutas" maxlength="150"/>
+                               [(ngModel)]="sistemaAgua.descMaterialUtilizadoCondutas" maxlength="150" placeholder="Material usado"/>
                         <div
                             [hidden]="!(editForm.controls.descMaterialUtilizadoCondutas?.dirty && editForm.controls.descMaterialUtilizadoCondutas?.invalid)">
                             <small class="form-text text-danger"
@@ -491,7 +491,7 @@
                                for="field_qtdReservatoriosApoiados">Qtd Reservatorios Apoiados</label>
                         <input type="number" class="form-control" name="qtdReservatoriosApoiados"
                                id="field_qtdReservatoriosApoiados"
-                               [(ngModel)]="sistemaAgua.qtdReservatoriosApoiados"/>
+                               [(ngModel)]="sistemaAgua.qtdReservatoriosApoiados" placeholder="Quantidade de Reservatorios"/>
                     </div>
                 </div>
                 <div class="form-group col-sm-4">
@@ -502,7 +502,7 @@
                             Apoiados</label>
                         <input type="number" class="form-control" name="qtdCapacidadeReservatoriosApoiados"
                                id="field_qtdCapacidadeReservatoriosApoiados"
-                               [(ngModel)]="sistemaAgua.qtdCapacidadeReservatoriosApoiados"/>
+                               [(ngModel)]="sistemaAgua.qtdCapacidadeReservatoriosApoiados" placeholder="Numero da capacidade"/>
                     </div>
                 </div>
             </div>
@@ -514,7 +514,7 @@
                                for="field_qtdReservatoriosElevados">Qtd Reservatorios Elevados</label>
                         <input type="number" class="form-control" name="qtdReservatoriosElevados"
                                id="field_qtdReservatoriosElevados"
-                               [(ngModel)]="sistemaAgua.qtdReservatoriosElevados"/>
+                               [(ngModel)]="sistemaAgua.qtdReservatoriosElevados" placeholder="Quantidade de reservatorios"/>
                     </div>
                 </div>
                 <div class="form-group col-sm-4">
@@ -525,7 +525,7 @@
                             Elevados</label>
                         <input type="number" class="form-control" name="qtdCapacidadeReservatoriosElevados"
                                id="field_qtdCapacidadeReservatoriosElevados"
-                               [(ngModel)]="sistemaAgua.qtdCapacidadeReservatoriosElevados"/>
+                               [(ngModel)]="sistemaAgua.qtdCapacidadeReservatoriosElevados" placeholder="Capacidade dos reservatorios "/>
                     </div>
                 </div>
                 <div class="form-group col-sm-4">
@@ -535,7 +535,7 @@
                                for="field_alturaReservatoriosElevados">Altura Reservatorios Elevados</label>
                         <input type="number" class="form-control" name="alturaReservatoriosElevados"
                                id="field_alturaReservatoriosElevados"
-                               [(ngModel)]="sistemaAgua.alturaReservatoriosElevados"/>
+                               [(ngModel)]="sistemaAgua.alturaReservatoriosElevados" placeholder="Altura"/>
                     </div>
                 </div>
             </div>
@@ -644,7 +644,7 @@
                         <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.caudalDoSistema"
                                for="field_caudalDoSistema">Caudal Do Sistema</label>
                         <input type="number" class="form-control" name="caudalDoSistema" id="field_caudalDoSistema"
-                               [(ngModel)]="sistemaAgua.caudalDoSistema"/>
+                               [(ngModel)]="sistemaAgua.caudalDoSistema" placeholder="Numero Caudal"/>
                     </div>
                 </div>
                 <div class="form-group col-sm-4">
@@ -655,7 +655,7 @@
                             Dia</label>
                         <input type="number" class="form-control" name="qtdConsumoPercaptaLitrosHomemDia"
                                id="field_qtdConsumoPercaptaLitrosHomemDia"
-                               [(ngModel)]="sistemaAgua.qtdConsumoPercaptaLitrosHomemDia"/>
+                               [(ngModel)]="sistemaAgua.qtdConsumoPercaptaLitrosHomemDia" placeholder="Quantidade do consumo"/>
                     </div>
                 </div>
                 <div class="form-group col-sm-4">
@@ -664,7 +664,7 @@
                                for="field_qtdDotacaoPercapta">Qtd Dotacao Percapta</label>
                         <input type="number" class="form-control" name="qtdDotacaoPercapta"
                                id="field_qtdDotacaoPercapta"
-                               [(ngModel)]="sistemaAgua.qtdDotacaoPercapta"/>
+                               [(ngModel)]="sistemaAgua.qtdDotacaoPercapta" placeholder="Quantidade per capita"/>
                     </div>
                 </div>
 
@@ -678,7 +678,7 @@
                                for="field_qtdDiariaHorasServicoSistema">Qtd Diaria Horas Servico Sistema</label>
                         <input type="number" class="form-control" name="qtdDiariaHorasServicoSistema"
                                id="field_qtdDiariaHorasServicoSistema"
-                               [(ngModel)]="sistemaAgua.qtdDiariaHorasServicoSistema"/>
+                               [(ngModel)]="sistemaAgua.qtdDiariaHorasServicoSistema" placeholder="Quantidade de horas"/>
                     </div>
                 </div>
                 <div class="form-group col-sm-6">

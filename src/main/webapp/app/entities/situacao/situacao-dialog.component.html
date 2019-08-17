@@ -15,7 +15,7 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="sisasApp.situacao.nmSituacao" for="field_nmSituacao">Nm Situacao</label>
             <input type="text" class="form-control" name="nmSituacao" id="field_nmSituacao"
-                [(ngModel)]="situacao.nmSituacao" required maxlength="50"/>
+                [(ngModel)]="situacao.nmSituacao" required maxlength="50" placeholder="Nome da situação"/>
             <div [hidden]="!(editForm.controls.nmSituacao?.dirty && editForm.controls.nmSituacao?.invalid)">
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.nmSituacao?.errors?.required" jhiTranslate="entity.validation.required">
