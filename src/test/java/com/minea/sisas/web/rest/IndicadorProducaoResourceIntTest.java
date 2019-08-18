@@ -330,7 +330,7 @@ public class IndicadorProducaoResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final IndicadorProducaoResource indicadorProducaoResource = new IndicadorProducaoResource(indicadorProducaoService, indicadorProducaoQueryService);
+        final IndicadorProducaoResource indicadorProducaoResource = new IndicadorProducaoResource(indicadorProducaoService, indicadorProducaoQueryService, indicadorProducaoRepository);
         this.restIndicadorProducaoMockMvc = MockMvcBuilders.standaloneSetup(indicadorProducaoResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -340,7 +340,7 @@ public class IndicadorProducaoResourceIntTest {
 
     /**
      * Create an entity for this test.
-     *
+     * <p>
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */

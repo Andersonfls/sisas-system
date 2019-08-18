@@ -1,6 +1,10 @@
 package com.minea.sisas.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.minea.sisas.domain.ProgramasProjectosLog;
+import com.minea.sisas.domain.SistemaAguaLog;
+import com.minea.sisas.repository.SistemaAguaLogRepository;
+import com.minea.sisas.repository.SistemaAguaRepository;
 import com.minea.sisas.service.SistemaAguaLogService;
 import com.minea.sisas.web.rest.errors.BadRequestAlertException;
 import com.minea.sisas.web.rest.util.HeaderUtil;
@@ -40,9 +44,12 @@ public class SistemaAguaLogResource {
 
     private final SistemaAguaLogQueryService sistemaAguaLogQueryService;
 
-    public SistemaAguaLogResource(SistemaAguaLogService sistemaAguaLogService, SistemaAguaLogQueryService sistemaAguaLogQueryService) {
+    private final SistemaAguaLogRepository sistemaAguaLogRepository;
+
+    public SistemaAguaLogResource(SistemaAguaLogService sistemaAguaLogService, SistemaAguaLogQueryService sistemaAguaLogQueryService, SistemaAguaLogRepository sistemaAguaLogRepository) {
         this.sistemaAguaLogService = sistemaAguaLogService;
         this.sistemaAguaLogQueryService = sistemaAguaLogQueryService;
+        this.sistemaAguaLogRepository=sistemaAguaLogRepository;
     }
 
     /**
@@ -102,6 +109,14 @@ public class SistemaAguaLogResource {
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/sistema-agua-logs");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
+
+    @GetMapping("/sistema-agua-logs/nomeFiltro")
+    public ResponseEntity<List<SistemaAguaLogDTO>> getByNome(@RequestParam(value = "nome") String nome, Pageable pageable) {
+        Page<SistemaAguaLogDTO> page = sistemaAguaLogRepository.buscarPorNome(nome, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/sistema-agua-log");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
 
     /**
      * GET  /sistema-agua-logs/:id : get the "id" sistemaAguaLog.

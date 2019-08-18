@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import { SERVER_API_URL } from '../../app.constants';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpParams, HttpResponse} from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
+import {SERVER_API_URL} from '../../app.constants';
 
-import { JhiDateUtils } from 'ng-jhipster';
+import {JhiDateUtils} from 'ng-jhipster';
 
-import { ProgramasProjectosLog } from './programas-projectos-log.model';
-import { createRequestOption } from '../../shared';
+import {ProgramasProjectosLog} from './programas-projectos-log.model';
+import {createRequestOption} from '../../shared';
 
 export type EntityResponseType = HttpResponse<ProgramasProjectosLog>;
 
@@ -43,6 +43,18 @@ export class ProgramasProjectosLogService {
     delete(id: number): Observable<HttpResponse<any>> {
         return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response'});
     }
+
+    queryUserNome(req: any): Observable<HttpResponse<ProgramasProjectosLog[]>> {
+        const params: HttpParams = createRequestOption(req);
+
+        const requestURL = SERVER_API_URL + 'api/programas-projectos-logs/nomeFiltro';
+
+        return this.http.get<ProgramasProjectosLog[]>(requestURL, {
+            params,
+            observe: 'response'
+        });
+    }
+
 
     private convertResponse(res: EntityResponseType): EntityResponseType {
         const body: ProgramasProjectosLog = this.convertItemFromServer(res.body);

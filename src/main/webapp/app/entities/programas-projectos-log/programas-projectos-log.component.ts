@@ -15,6 +15,7 @@ import { ITEMS_PER_PAGE, Principal } from '../../shared';
 export class ProgramasProjectosLogComponent implements OnInit, OnDestroy {
 
 currentAccount: any;
+    nome:string;
     programasProjectosLogs: ProgramasProjectosLog[];
     error: any;
     success: any;
@@ -71,6 +72,23 @@ currentAccount: any;
             }
         });
         this.loadAll();
+    }
+
+    onChangeNome() {
+        if (this.nome === undefined) {
+            this.loadAll();
+        } else {
+            this.programasProjectosLogService.queryUserNome({
+                page: this.page - 1,
+                size: this.itemsPerPage,
+                nome: this.nome
+            }).subscribe((res) => {
+                this.programasProjectosLogs = res.body;
+                this.links = this.parseLinks.parse(res.headers.get('link'));
+                this.totalItems = +res.headers.get('X-Total-Count');
+                this.queryCount = this.totalItems;
+            });
+        }
     }
 
     clear() {

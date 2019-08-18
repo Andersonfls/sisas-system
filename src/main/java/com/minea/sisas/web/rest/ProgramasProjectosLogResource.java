@@ -2,6 +2,8 @@ package com.minea.sisas.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.minea.sisas.domain.ProgramasProjectosLog;
+import com.minea.sisas.repository.ProgramasProjectosLogRepository;
+import com.minea.sisas.repository.ProgramasProjectosRepository;
 import com.minea.sisas.service.ProgramasProjectosLogService;
 import com.minea.sisas.web.rest.errors.BadRequestAlertException;
 import com.minea.sisas.web.rest.util.HeaderUtil;
@@ -41,9 +43,12 @@ public class ProgramasProjectosLogResource {
 
     private final ProgramasProjectosLogQueryService programasProjectosLogQueryService;
 
-    public ProgramasProjectosLogResource(ProgramasProjectosLogService programasProjectosLogService, ProgramasProjectosLogQueryService programasProjectosLogQueryService) {
+    private final ProgramasProjectosLogRepository programasProjectosLogRepository;
+
+    public ProgramasProjectosLogResource(ProgramasProjectosLogService programasProjectosLogService, ProgramasProjectosLogQueryService programasProjectosLogQueryService, ProgramasProjectosLogRepository programasProjectosLogRepository) {
         this.programasProjectosLogService = programasProjectosLogService;
         this.programasProjectosLogQueryService = programasProjectosLogQueryService;
+        this.programasProjectosLogRepository=programasProjectosLogRepository;
     }
 
     /**
@@ -100,6 +105,13 @@ public class ProgramasProjectosLogResource {
     public ResponseEntity<List<ProgramasProjectosLog>> getAllProgramasProjectosLogs(ProgramasProjectosLogCriteria criteria, Pageable pageable) {
         log.debug("REST request to get ProgramasProjectosLogs by criteria: {}", criteria);
         Page<ProgramasProjectosLog> page = programasProjectosLogQueryService.findByCriteria(criteria, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/programas-projectos-logs");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    @GetMapping("/programas-projectos-logs/nomeFiltro")
+    public ResponseEntity<List<ProgramasProjectosLog>> getByNome(@RequestParam(value = "nome") String nome, Pageable pageable) {
+        Page<ProgramasProjectosLog> page = programasProjectosLogRepository.buscarPorNome(nome, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/programas-projectos-logs");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

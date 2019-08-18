@@ -1,12 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
-import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Subscription} from 'rxjs/Subscription';
+import {JhiAlertService, JhiEventManager, JhiParseLinks} from 'ng-jhipster';
 
-import { IndicadorProducaoLog } from './indicador-producao-log.model';
-import { IndicadorProducaoLogService } from './indicador-producao-log.service';
-import { ITEMS_PER_PAGE, Principal } from '../../shared';
+import {IndicadorProducaoLog} from './indicador-producao-log.model';
+import {IndicadorProducaoLogService} from './indicador-producao-log.service';
+import {ITEMS_PER_PAGE, Principal} from '../../shared';
 
 @Component({
     selector: 'jhi-indicador-producao-log',
@@ -15,6 +15,7 @@ import { ITEMS_PER_PAGE, Principal } from '../../shared';
 export class IndicadorProducaoLogComponent implements OnInit, OnDestroy {
 
 currentAccount: any;
+nome:string;
     indicadorProducaoLogs: IndicadorProducaoLog[];
     error: any;
     success: any;
@@ -71,6 +72,23 @@ currentAccount: any;
             }
         });
         this.loadAll();
+    }
+
+    onChangeNome() {
+        if (this.nome === undefined) {
+            this.loadAll();
+        } else {
+            this.indicadorProducaoLogService.queryUserNome({
+                page: this.page - 1,
+                size: this.itemsPerPage,
+                nome: this.nome
+            }).subscribe((res) => {
+                this.indicadorProducaoLogs = res.body;
+                this.links = this.parseLinks.parse(res.headers.get('link'));
+                this.totalItems = +res.headers.get('X-Total-Count');
+                this.queryCount = this.totalItems;
+            });
+        }
     }
 
     clear() {
