@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import { SERVER_API_URL } from '../../app.constants';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpParams, HttpResponse} from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
+import {SERVER_API_URL} from '../../app.constants';
 
-import { JhiDateUtils } from 'ng-jhipster';
+import {JhiDateUtils} from 'ng-jhipster';
 
-import { IndicadorProducao } from './indicador-producao.model';
-import { createRequestOption } from '../../shared';
+import {IndicadorProducao} from './indicador-producao.model';
+import {createRequestOption} from '../../shared';
 
 export type EntityResponseType = HttpResponse<IndicadorProducao>;
 
@@ -42,6 +42,17 @@ export class IndicadorProducaoService {
 
     delete(id: number): Observable<HttpResponse<any>> {
         return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response'});
+    }
+
+    queryUserNome(req: any): Observable<HttpResponse<IndicadorProducao[]>> {
+        const params: HttpParams = createRequestOption(req);
+
+        const requestURL = SERVER_API_URL + 'api/indicador-producaos/nomeFiltro';
+
+        return this.http.get<IndicadorProducao[]>(requestURL, {
+            params,
+            observe: 'response'
+        });
     }
 
     private convertResponse(res: EntityResponseType): EntityResponseType {

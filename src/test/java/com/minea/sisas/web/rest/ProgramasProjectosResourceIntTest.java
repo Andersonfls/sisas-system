@@ -111,7 +111,7 @@ public class ProgramasProjectosResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final ProgramasProjectosResource programasProjectosResource = new ProgramasProjectosResource(programasProjectosService, programasProjectosQueryService);
+        final ProgramasProjectosResource programasProjectosResource = new ProgramasProjectosResource(programasProjectosService, programasProjectosQueryService, programasProjectosRepository);
         this.restProgramasProjectosMockMvc = MockMvcBuilders.standaloneSetup(programasProjectosResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)

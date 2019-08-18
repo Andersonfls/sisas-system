@@ -92,7 +92,7 @@ public class IndicadorProducaoLogResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final IndicadorProducaoLogResource indicadorProducaoLogResource = new IndicadorProducaoLogResource(indicadorProducaoLogService, indicadorProducaoLogQueryService);
+        final IndicadorProducaoLogResource indicadorProducaoLogResource = new IndicadorProducaoLogResource(indicadorProducaoLogService, indicadorProducaoLogQueryService, indicadorProducaoLogRepository);
         this.restIndicadorProducaoLogMockMvc = MockMvcBuilders.standaloneSetup(indicadorProducaoLogResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)

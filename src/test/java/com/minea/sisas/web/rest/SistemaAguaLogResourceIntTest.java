@@ -92,7 +92,7 @@ public class SistemaAguaLogResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final SistemaAguaLogResource sistemaAguaLogResource = new SistemaAguaLogResource(sistemaAguaLogService, sistemaAguaLogQueryService);
+        final SistemaAguaLogResource sistemaAguaLogResource = new SistemaAguaLogResource(sistemaAguaLogService, sistemaAguaLogQueryService, sistemaAguaLogRepository);
         this.restSistemaAguaLogMockMvc = MockMvcBuilders.standaloneSetup(sistemaAguaLogResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)

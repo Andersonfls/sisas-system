@@ -1,6 +1,7 @@
 package com.minea.sisas.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.minea.sisas.repository.IndicadorProducaoLogRepository;
 import com.minea.sisas.service.IndicadorProducaoLogService;
 import com.minea.sisas.web.rest.errors.BadRequestAlertException;
 import com.minea.sisas.web.rest.util.HeaderUtil;
@@ -40,9 +41,12 @@ public class IndicadorProducaoLogResource {
 
     private final IndicadorProducaoLogQueryService indicadorProducaoLogQueryService;
 
-    public IndicadorProducaoLogResource(IndicadorProducaoLogService indicadorProducaoLogService, IndicadorProducaoLogQueryService indicadorProducaoLogQueryService) {
+    private final IndicadorProducaoLogRepository indicadorProducaoLogRepository;
+
+    public IndicadorProducaoLogResource(IndicadorProducaoLogService indicadorProducaoLogService, IndicadorProducaoLogQueryService indicadorProducaoLogQueryService, IndicadorProducaoLogRepository indicadorProducaoLogRepository) {
         this.indicadorProducaoLogService = indicadorProducaoLogService;
         this.indicadorProducaoLogQueryService = indicadorProducaoLogQueryService;
+        this.indicadorProducaoLogRepository=indicadorProducaoLogRepository;
     }
 
     /**
@@ -100,6 +104,16 @@ public class IndicadorProducaoLogResource {
         log.debug("REST request to get IndicadorProducaoLogs by criteria: {}", criteria);
         Page<IndicadorProducaoLogDTO> page = indicadorProducaoLogQueryService.findByCriteria(criteria, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/indicador-producao-logs");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    /*
+     *  Filtro de usuários atráves do atributo nome
+     */
+    @GetMapping("/indicador-producao-logs/nomeFiltro")
+    public ResponseEntity<List<IndicadorProducaoLogDTO>> getByNome(@RequestParam(value = "nome") String nome, Pageable pageable) {
+        Page<IndicadorProducaoLogDTO> page = indicadorProducaoLogRepository.buscarPorNome(nome, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/indicador-producao-log");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 

@@ -2,6 +2,8 @@ package com.minea.sisas.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.minea.sisas.domain.IndicadorProducao;
+import com.minea.sisas.domain.ProgramasProjectos;
+import com.minea.sisas.repository.IndicadorProducaoRepository;
 import com.minea.sisas.service.IndicadorProducaoService;
 import com.minea.sisas.web.rest.errors.BadRequestAlertException;
 import com.minea.sisas.web.rest.util.HeaderUtil;
@@ -41,9 +43,12 @@ public class IndicadorProducaoResource {
 
     private final IndicadorProducaoQueryService indicadorProducaoQueryService;
 
-    public IndicadorProducaoResource(IndicadorProducaoService indicadorProducaoService, IndicadorProducaoQueryService indicadorProducaoQueryService) {
+    private final IndicadorProducaoRepository indicadorProducaoRepository;
+
+    public IndicadorProducaoResource(IndicadorProducaoService indicadorProducaoService, IndicadorProducaoQueryService indicadorProducaoQueryService, IndicadorProducaoRepository indicadorProducaoRepository) {
         this.indicadorProducaoService = indicadorProducaoService;
         this.indicadorProducaoQueryService = indicadorProducaoQueryService;
+        this.indicadorProducaoRepository=indicadorProducaoRepository;
     }
 
     /**
@@ -104,6 +109,15 @@ public class IndicadorProducaoResource {
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
+    /*
+     *  Filtro de usuários atráves do atributo nome
+     */
+    @GetMapping("/indicador-producaos/nomeFiltro")
+    public ResponseEntity<List<IndicadorProducaoDTO>> getByNome(@RequestParam(value = "nome") String nome, Pageable pageable) {
+        Page<IndicadorProducaoDTO> page = indicadorProducaoRepository.buscarPorNome(nome, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/indicador-producao");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
     /**
      * GET  /indicador-producaos/:id : get the "id" indicadorProducao.
      *

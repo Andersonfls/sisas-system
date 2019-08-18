@@ -15,7 +15,7 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="sisasApp.provincia.nmProvincia" for="field_nmProvincia">Nm Provincia</label>
             <input type="text" class="form-control" name="nmProvincia" id="field_nmProvincia"
-                [(ngModel)]="provincia.nmProvincia" required maxlength="30"/>
+                [(ngModel)]="provincia.nmProvincia" required maxlength="30" placeholder="Nome da provincia"/>
             <div [hidden]="!(editForm.controls.nmProvincia?.dirty && editForm.controls.nmProvincia?.invalid)">
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.nmProvincia?.errors?.required" jhiTranslate="entity.validation.required">

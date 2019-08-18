@@ -1,6 +1,7 @@
 package com.minea.sisas.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.minea.sisas.repository.SituacaoRepository;
 import com.minea.sisas.service.SituacaoService;
 import com.minea.sisas.web.rest.errors.BadRequestAlertException;
 import com.minea.sisas.web.rest.util.HeaderUtil;
@@ -40,9 +41,12 @@ public class SituacaoResource {
 
     private final SituacaoQueryService situacaoQueryService;
 
-    public SituacaoResource(SituacaoService situacaoService, SituacaoQueryService situacaoQueryService) {
+    private final SituacaoRepository situacaoRepository;
+
+    public SituacaoResource(SituacaoService situacaoService, SituacaoQueryService situacaoQueryService, SituacaoRepository situacaoRepository) {
         this.situacaoService = situacaoService;
         this.situacaoQueryService = situacaoQueryService;
+        this.situacaoRepository = situacaoRepository;
     }
 
     /**
@@ -99,6 +103,13 @@ public class SituacaoResource {
     public ResponseEntity<List<SituacaoDTO>> getAllSituacaos(SituacaoCriteria criteria, Pageable pageable) {
         log.debug("REST request to get Situacaos by criteria: {}", criteria);
         Page<SituacaoDTO> page = situacaoQueryService.findByCriteria(criteria, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/situacaos");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    @GetMapping("/situacaos/nomeFiltro")
+    public ResponseEntity<List<SituacaoDTO>> getByNome(@RequestParam(value = "nome") String nome, Pageable pageable) {
+        Page<SituacaoDTO> page = situacaoRepository.buscarPorNome(nome, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/situacaos");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

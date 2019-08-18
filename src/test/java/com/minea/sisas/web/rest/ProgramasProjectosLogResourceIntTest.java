@@ -92,7 +92,7 @@ public class ProgramasProjectosLogResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final ProgramasProjectosLogResource programasProjectosLogResource = new ProgramasProjectosLogResource(programasProjectosLogService, programasProjectosLogQueryService);
+        final ProgramasProjectosLogResource programasProjectosLogResource = new ProgramasProjectosLogResource(programasProjectosLogService, programasProjectosLogQueryService, programasProjectosLogRepository);
         this.restProgramasProjectosLogMockMvc = MockMvcBuilders.standaloneSetup(programasProjectosLogResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)

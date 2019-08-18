@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import { SERVER_API_URL } from '../../app.constants';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpParams, HttpResponse} from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
+import {SERVER_API_URL} from '../../app.constants';
 
-import { JhiDateUtils } from 'ng-jhipster';
+import {JhiDateUtils} from 'ng-jhipster';
 
-import { IndicadorProducaoLog } from './indicador-producao-log.model';
-import { createRequestOption } from '../../shared';
+import {IndicadorProducaoLog} from './indicador-producao-log.model';
+import {createRequestOption} from '../../shared';
 
 export type EntityResponseType = HttpResponse<IndicadorProducaoLog>;
 
@@ -39,6 +39,18 @@ export class IndicadorProducaoLogService {
         return this.http.get<IndicadorProducaoLog[]>(this.resourceUrl, { params: options, observe: 'response' })
             .map((res: HttpResponse<IndicadorProducaoLog[]>) => this.convertArrayResponse(res));
     }
+
+    queryUserNome(req: any): Observable<HttpResponse<IndicadorProducaoLog[]>> {
+        const params: HttpParams = createRequestOption(req);
+
+        const requestURL = SERVER_API_URL + 'api/indicador-producao-logs/nomeFiltro';
+
+        return this.http.get<IndicadorProducaoLog[]>(requestURL, {
+            params,
+            observe: 'response'
+        });
+    }
+
 
     delete(id: number): Observable<HttpResponse<any>> {
         return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response'});

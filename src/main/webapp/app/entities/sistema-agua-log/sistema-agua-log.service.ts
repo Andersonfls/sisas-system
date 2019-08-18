@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import {HttpClient, HttpParams, HttpResponse} from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { SERVER_API_URL } from '../../app.constants';
 
@@ -7,6 +7,7 @@ import { JhiDateUtils } from 'ng-jhipster';
 
 import { SistemaAguaLog } from './sistema-agua-log.model';
 import { createRequestOption } from '../../shared';
+import {IndicadorProducao} from "../indicador-producao";
 
 export type EntityResponseType = HttpResponse<SistemaAguaLog>;
 
@@ -42,6 +43,17 @@ export class SistemaAguaLogService {
 
     delete(id: number): Observable<HttpResponse<any>> {
         return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response'});
+    }
+
+    queryUserNome(req: any): Observable<HttpResponse<SistemaAguaLog[]>> {
+        const params: HttpParams = createRequestOption(req);
+
+        const requestURL = SERVER_API_URL + 'api/sistema-agua-logs/nomeFiltro';
+
+        return this.http.get<SistemaAguaLog[]>(requestURL, {
+            params,
+            observe: 'response'
+        });
     }
 
     private convertResponse(res: EntityResponseType): EntityResponseType {

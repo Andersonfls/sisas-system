@@ -89,7 +89,7 @@ public class SituacaoResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final SituacaoResource situacaoResource = new SituacaoResource(situacaoService, situacaoQueryService);
+        final SituacaoResource situacaoResource = new SituacaoResource(situacaoService, situacaoQueryService,situacaoRepository);
         this.restSituacaoMockMvc = MockMvcBuilders.standaloneSetup(situacaoResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)

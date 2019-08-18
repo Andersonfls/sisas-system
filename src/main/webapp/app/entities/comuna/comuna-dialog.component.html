@@ -13,7 +13,7 @@
             <label class="form-control-label" jhiTranslate="sisasApp.comuna.nmComuna" for="field_nmComuna">Nome
                 Comuna</label>
             <input type="text" class="form-control" name="nmComuna" id="field_nmComuna"
-                   [(ngModel)]="comuna.nmComuna" required maxlength="40"/>
+                   [(ngModel)]="comuna.nmComuna" required maxlength="40" placeholder="Nome da comuna"/>
             <div [hidden]="!(editForm.controls.nmComuna?.dirty && editForm.controls.nmComuna?.invalid)">
                 <small class="form-text text-danger"
                        [hidden]="!editForm.controls.nmComuna?.errors?.required"

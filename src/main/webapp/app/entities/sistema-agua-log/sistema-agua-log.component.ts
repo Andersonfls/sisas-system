@@ -1,12 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
-import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Subscription} from 'rxjs/Subscription';
+import {JhiAlertService, JhiEventManager, JhiParseLinks} from 'ng-jhipster';
 
-import { SistemaAguaLog } from './sistema-agua-log.model';
-import { SistemaAguaLogService } from './sistema-agua-log.service';
-import { ITEMS_PER_PAGE, Principal } from '../../shared';
+import {SistemaAguaLog} from './sistema-agua-log.model';
+import {SistemaAguaLogService} from './sistema-agua-log.service';
+import {ITEMS_PER_PAGE, Principal} from '../../shared';
 
 @Component({
     selector: 'jhi-sistema-agua-log',
@@ -14,7 +14,8 @@ import { ITEMS_PER_PAGE, Principal } from '../../shared';
 })
 export class SistemaAguaLogComponent implements OnInit, OnDestroy {
 
-currentAccount: any;
+    currentAccount: any;
+    nome: string;
     sistemaAguaLogs: SistemaAguaLog[];
     error: any;
     success: any;
@@ -51,27 +52,49 @@ currentAccount: any;
         this.sistemaAguaLogService.query({
             page: this.page - 1,
             size: this.itemsPerPage,
-            sort: this.sort()}).subscribe(
-                (res: HttpResponse<SistemaAguaLog[]>) => this.onSuccess(res.body, res.headers),
-                (res: HttpErrorResponse) => this.onError(res.message)
+            sort: this.sort()
+        }).subscribe(
+            (res: HttpResponse<SistemaAguaLog[]>) => this.onSuccess(res.body, res.headers),
+            (res: HttpErrorResponse) => this.onError(res.message)
         );
     }
+
     loadPage(page: number) {
         if (page !== this.previousPage) {
             this.previousPage = page;
             this.transition();
         }
     }
+
     transition() {
-        this.router.navigate(['/sistema-agua-log'], {queryParams:
-            {
-                page: this.page,
-                size: this.itemsPerPage,
-                sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
-            }
+        this.router.navigate(['/sistema-agua-log'], {
+            queryParams:
+                {
+                    page: this.page,
+                    size: this.itemsPerPage,
+                    sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
+                }
         });
         this.loadAll();
     }
+
+    onChangeNome() {
+        if (this.nome === undefined) {
+            this.loadAll();
+        } else {
+            this.sistemaAguaLogService.queryUserNome({
+                page: this.page - 1,
+                size: this.itemsPerPage,
+                nome: this.nome
+            }).subscribe((res) => {
+                this.sistemaAguaLogs = res.body;
+                this.links = this.parseLinks.parse(res.headers.get('link'));
+                this.totalItems = +res.headers.get('X-Total-Count');
+                this.queryCount = this.totalItems;
+            });
+        }
+    }
+
 
     clear() {
         this.page = 0;
@@ -81,6 +104,7 @@ currentAccount: any;
         }]);
         this.loadAll();
     }
+
     ngOnInit() {
         this.loadAll();
         this.principal.identity().then((account) => {
@@ -96,6 +120,7 @@ currentAccount: any;
     trackId(index: number, item: SistemaAguaLog) {
         return item.id;
     }
+
     registerChangeInSistemaAguaLogs() {
         this.eventSubscriber = this.eventManager.subscribe('sistemaAguaLogListModification', (response) => this.loadAll());
     }
@@ -115,6 +140,7 @@ currentAccount: any;
         // this.page = pagingParams.page;
         this.sistemaAguaLogs = data;
     }
+
     private onError(error) {
         this.jhiAlertService.error(error.message, null, null);
     }
