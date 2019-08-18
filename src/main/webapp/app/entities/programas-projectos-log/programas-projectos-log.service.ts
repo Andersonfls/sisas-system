@@ -55,7 +55,6 @@ export class ProgramasProjectosLogService {
         });
     }
 
-
     private convertResponse(res: EntityResponseType): EntityResponseType {
         const body: ProgramasProjectosLog = this.convertItemFromServer(res.body);
         return res.clone({body});

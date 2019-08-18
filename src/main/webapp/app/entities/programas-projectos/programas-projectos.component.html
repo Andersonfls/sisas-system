@@ -19,7 +19,7 @@
                 <th jhiSortBy="nmDescricaoProjeto"><span jhiTranslate="sisasApp.programasProjectos.nmDescricaoProjeto">Nm Descricao Projeto</span> <span class="fa fa-sort"></span></th>
                 <th jhiSortBy="idUsuario"><span jhiTranslate="sisasApp.programasProjectos.idUsuario">Id Usuario</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="idSaaAssociado"><span jhiTranslate="sisasApp.programasProjectos.idSaaAssociado">Id Saa Associado</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="tipoFinanciamento"><span jhiTranslate="sisasApp.programasProjectos.tipoFinanciamento">Tipo Financiamento</span> <span class="fa fa-sort"></span></th>
+            <!--<th jhiSortBy="tipoFinanciamento"><span jhiTranslate="sisasApp.programasProjectos.tipoFinanciamento">Tipo Financiamento</span> <span class="fa fa-sort"></span></th>-->
             <th jhiSortBy="especialidade"><span jhiTranslate="sisasApp.programasProjectos.especialidade">Especialidade</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="idComunaId"><span jhiTranslate="sisasApp.programasProjectos.idComuna">Id Comuna</span> <span class="fa fa-sort"></span></th>
             <th></th>
@@ -31,7 +31,7 @@
                 <td>{{programasProjectos.nmDescricaoProjeto}}</td>
                 <td>{{programasProjectos.usuario?.nome}}</td>
                 <td>{{programasProjectos.idSaaAssociado}}</td>
-                <td>{{programasProjectos.tipoFinanciamento}}</td>
+                <!--<td>{{programasProjectos.tipoFinanciamento}}</td>-->
                 <td>{{programasProjectos.especialidade}}</td>
                 <td>
                     <div *ngIf="programasProjectos.comuna">

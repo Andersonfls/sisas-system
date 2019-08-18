@@ -20,7 +20,7 @@
             "idUsuario": "Usuario",
             "log": "Log",
             "dtLog": "Data Log",
-            "idProgramasProjectos": "Programas Projectos"
+            "idProgramasProjectos": "Nome"
         }
     }
 }

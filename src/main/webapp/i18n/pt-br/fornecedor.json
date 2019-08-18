@@ -17,8 +17,8 @@
                 "title": "Fornecedor"
             },
             "idFornecedor": "Id Fornecedor",
-            "nmFornecedor": "Nome Fornecedor",
-            "numContribuinte": "Nr Contribuinte",
+            "nmFornecedor": "Fornecedor",
+            "numContribuinte": "Contribuinte",
             "endereco": "Endereco",
             "email": "Email",
             "especialidade": "Especialidade",

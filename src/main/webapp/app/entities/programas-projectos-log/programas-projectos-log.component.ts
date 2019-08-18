@@ -14,8 +14,8 @@ import { ITEMS_PER_PAGE, Principal } from '../../shared';
 })
 export class ProgramasProjectosLogComponent implements OnInit, OnDestroy {
 
-currentAccount: any;
-    nome:string;
+    currentAccount: any;
+    nome: string;
     programasProjectosLogs: ProgramasProjectosLog[];
     error: any;
     success: any;

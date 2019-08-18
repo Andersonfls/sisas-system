@@ -16,7 +16,7 @@
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="nmSistemaAgua"><span>Sistema</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="nmFonteAgua"><span>Fonte</span> <span class="fa fa-sort"></span></th>
+            <!--<th jhiSortBy="nmFonteAgua"><span>Fonte</span> <span class="fa fa-sort"></span></th>-->
             <!--<th jhiSortBy="idUsuario"><span jhiTranslate="sisasApp.sistemaAgua.idUsuario">Id Usuario</span> <span class="fa fa-sort"></span></th>-->
             <!--<th jhiSortBy="nmInqueridor"><span jhiTranslate="sisasApp.sistemaAgua.nmInqueridor">Nm Inqueridor</span> <span class="fa fa-sort"></span></th>-->
             <!--<th jhiSortBy="dtLancamento"><span jhiTranslate="sisasApp.sistemaAgua.dtLancamento">Dt Lancamento</span> <span class="fa fa-sort"></span></th>-->
@@ -25,7 +25,7 @@
             <!--<th jhiSortBy="qtdPopulacaoActual"><span jhiTranslate="sisasApp.sistemaAgua.qtdPopulacaoActual">Qtd Populacao Actual</span> <span class="fa fa-sort"></span></th>-->
             <!--<th jhiSortBy="qtdCasasLocalidade"><span jhiTranslate="sisasApp.sistemaAgua.qtdCasasLocalidade">Qtd Casas Localidade</span> <span class="fa fa-sort"></span></th>-->
             <!--<th jhiSortBy="nmTpComunaAldeia"><span jhiTranslate="sisasApp.sistemaAgua.nmTpComunaAldeia">Nm Tp Comuna Aldeia</span> <span class="fa fa-sort"></span></th>-->
-            <th jhiSortBy="nmTpArea"><span jhiTranslate="sisasApp.sistemaAgua.nmTpArea">Nm Tp Area</span> <span class="fa fa-sort"></span></th>
+            <!--<th jhiSortBy="nmTpArea"><span jhiTranslate="sisasApp.sistemaAgua.nmTpArea">Nm Tp Area</span> <span class="fa fa-sort"></span></th>-->
             <!--<th jhiSortBy="possuiSistemaAgua"><span jhiTranslate="sisasApp.sistemaAgua.possuiSistemaAgua">Possui Sistema Agua</span> <span class="fa fa-sort"></span></th>-->
             <th jhiSortBy="latitude"><span jhiTranslate="sisasApp.sistemaAgua.latitude">Latitude</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="longitude"><span jhiTranslate="sisasApp.sistemaAgua.longitude">Longitude</span> <span class="fa fa-sort"></span></th>
@@ -74,7 +74,7 @@
             <tbody>
             <tr *ngFor="let sistemaAgua of sistemaAguas ;trackBy: trackId">
                 <td>{{sistemaAgua.nmSistemaAgua}}</td>
-                <td>{{sistemaAgua.nmFonteAgua}}</td>
+                <!--<td>{{sistemaAgua.nmFonteAgua}}</td>-->
                 <!--<td>{{sistemaAgua.idUsuario}}</td>-->
                 <!--<td>{{sistemaAgua.nmInqueridor}}</td>-->
                 <!--<td>{{sistemaAgua.dtLancamento | date:'mediumDate'}}</td>-->
@@ -83,7 +83,7 @@
                 <!--<td>{{sistemaAgua.qtdPopulacaoActual}}</td>-->
                 <!--<td>{{sistemaAgua.qtdCasasLocalidade}}</td>-->
                 <!--<td>{{sistemaAgua.nmTpComunaAldeia}}</td>-->
-                <td>{{sistemaAgua.nmTpArea}}</td>
+                <!--<td>{{sistemaAgua.nmTpArea}}</td>-->
                 <!--<td>{{sistemaAgua.possuiSistemaAgua}}</td>-->
                 <td>{{sistemaAgua.latitude}}</td>
                 <td>{{sistemaAgua.longitude}}</td>

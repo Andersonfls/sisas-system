@@ -95,7 +95,6 @@ export class SistemaAguaLogComponent implements OnInit, OnDestroy {
         }
     }
 
-
     clear() {
         this.page = 0;
         this.router.navigate(['/sistema-agua-log', {

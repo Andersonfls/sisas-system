@@ -25,6 +25,7 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -65,6 +66,7 @@ public class SistemaAguaResource {
         if (sistemaAguaDTO.getId() != null) {
             throw new BadRequestAlertException("A new sistemaAgua cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        sistemaAguaDTO.setDtLancamento(LocalDate.now()); //SETANDO DATA DE LANCAMENTO DEFAUT
         SistemaAguaDTO result = sistemaAguaService.save(sistemaAguaDTO);
         return ResponseEntity.created(new URI("/api/sistema-aguas/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))

@@ -4,21 +4,19 @@
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.idUsuario">Usuario</span></dt>
-        <dd>
-            <span>{{sistemaAgua.idUsuario}}</span>
-        </dd>
+        <!--<dt><span jhiTranslate="sisasApp.sistemaAgua.idUsuario">Usuario</span></dt>-->
+        <!--<dd>-->
+            <!--<span>{{sistemaAgua.idUsuario}}</span>-->
+        <!--</dd>-->
         <dt><span jhiTranslate="sisasApp.sistemaAgua.nmInqueridor">Nm Inqueridor</span></dt>
         <dd>
             <span>{{sistemaAgua.nmInqueridor}}</span>
         </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.dtLancamento">Dt Lancamento</span></dt>
+        <dt><span jhiTranslate="sisasApp.sistemaAgua.idComuna">Id Comuna</span></dt>
         <dd>
-            <span>{{sistemaAgua.dtLancamento | date:'mediumDate'}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.dtUltimaAlteracao">Dt Ultima Alteracao</span></dt>
-        <dd>
-            <span>{{sistemaAgua.dtUltimaAlteracao | date:'mediumDate'}}</span>
+            <div *ngIf="sistemaAgua.comuna">
+                <a [routerLink]="['/comuna', sistemaAgua.comuna]">{{sistemaAgua.comuna.nmComuna}}</a>
+            </div>
         </dd>
         <dt><span jhiTranslate="sisasApp.sistemaAgua.nmLocalidade">Nm Localidade</span></dt>
         <dd>
@@ -40,13 +38,13 @@
         <dd>
             <span>{{sistemaAgua.nmTpArea}}</span>
         </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.possuiSistemaAgua">Possui Sistema Agua</span></dt>
-        <dd>
-            <span>{{sistemaAgua.possuiSistemaAgua}}</span>
-        </dd>
         <dt><span jhiTranslate="sisasApp.sistemaAgua.nmSistemaAgua">Nm Sistema Agua</span></dt>
         <dd>
             <span>{{sistemaAgua.nmSistemaAgua}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.sistemaAgua.possuiSistemaAgua">Possui Sistema Agua</span></dt>
+        <dd>
+            <span>{{sistemaAgua.possuiSistemaAgua}}</span>
         </dd>
         <dt><span jhiTranslate="sisasApp.sistemaAgua.nmFonteAgua">Nm Fonte Agua</span></dt>
         <dd>
@@ -100,6 +98,10 @@
         <dd>
             <span>{{sistemaAgua.anoConstrucaoSistema}}</span>
         </dd>
+        <dt><span jhiTranslate="sisasApp.sistemaAgua.tempoServicoDisponivel">Tempo Servico Disponivel</span></dt>
+        <dd>
+            <span>{{sistemaAgua.tempoServicoDisponivel}}</span>
+        </dd>
         <dt><span jhiTranslate="sisasApp.sistemaAgua.nmTpAvariaSistema">Nm Tp Avaria Sistema</span></dt>
         <dd>
             <span>{{sistemaAgua.nmTpAvariaSistema}}</span>
@@ -111,10 +113,6 @@
         <dt><span jhiTranslate="sisasApp.sistemaAgua.statusResolucao">Status Resolucao</span></dt>
         <dd>
             <span>{{sistemaAgua.statusResolucao}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.tempoServicoDisponivel">Tempo Servico Disponivel</span></dt>
-        <dd>
-            <span>{{sistemaAgua.tempoServicoDisponivel}}</span>
         </dd>
         <dt><span jhiTranslate="sisasApp.sistemaAgua.qtdDiametroCondutaAdutoraAguaBruta">Qtd Diametro Conduta Adutora Agua Bruta</span></dt>
         <dd>
@@ -200,26 +198,31 @@
         <dd>
             <span>{{sistemaAgua.esquema}}</span>
         </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.nmModeloBombaManualUtilizada">Nm Modelo Bomba Manual Utilizada</span></dt>
-        <dd>
-            <span>{{sistemaAgua.nmModeloBombaManualUtilizada}}</span>
-        </dd>
         <dt><span jhiTranslate="sisasApp.sistemaAgua.nmTpBombaEnergia">Nm Tp Bomba Energia</span></dt>
         <dd>
             <span>{{sistemaAgua.nmTpBombaEnergia}}</span>
         </dd>
+        <dt><span jhiTranslate="sisasApp.sistemaAgua.nmModeloBombaManualUtilizada">Nm Modelo Bomba Manual Utilizada</span></dt>
+        <dd>
+            <span>{{sistemaAgua.nmModeloBombaManualUtilizada}}</span>
+        </dd>
+
+        <dt><span jhiTranslate="sisasApp.sistemaAgua.dtLancamento">Dt Lancamento</span></dt>
+        <dd>
+        <span>{{sistemaAgua.dtLancamento | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.sistemaAgua.dtUltimaAlteracao">Dt Ultima Alteracao</span></dt>
+        <dd>
+        <span>{{sistemaAgua.dtUltimaAlteracao | date:'mediumDate'}}</span>
+        </dd>
+
         <dt><span jhiTranslate="sisasApp.sistemaAgua.idSituacao">Id Situacao</span></dt>
         <dd>
             <div *ngIf="sistemaAgua.situacao">
                 <a [routerLink]="['/situacao', sistemaAgua.situacao]">{{sistemaAgua.situacao.nmSituacao}}</a>
             </div>
         </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.idComuna">Id Comuna</span></dt>
-        <dd>
-            <div *ngIf="sistemaAgua.comuna">
-                <a [routerLink]="['/comuna', sistemaAgua.comuna]">{{sistemaAgua.comuna.nmComuna}}</a>
-            </div>
-        </dd>
+
     </dl>
 
     <button type="submit"

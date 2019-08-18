@@ -7,7 +7,6 @@ import { JhiDateUtils } from 'ng-jhipster';
 
 import { SistemaAguaLog } from './sistema-agua-log.model';
 import { createRequestOption } from '../../shared';
-import {IndicadorProducao} from "../indicador-producao";
 
 export type EntityResponseType = HttpResponse<SistemaAguaLog>;
 
