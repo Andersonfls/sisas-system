@@ -14,7 +14,7 @@ import {ITEMS_PER_PAGE, Principal} from '../../shared';
 })
 export class MunicipioComponent implements OnInit, OnDestroy {
 
-currentAccount: any;
+    currentAccount: any;
     nome: string;
     municipios: Municipio[];
     error: any;
@@ -52,24 +52,28 @@ currentAccount: any;
         this.municipioService.query({
             page: this.page - 1,
             size: this.itemsPerPage,
-            sort: this.sort()}).subscribe(
-                (res: HttpResponse<Municipio[]>) => this.onSuccess(res.body, res.headers),
-                (res: HttpErrorResponse) => this.onError(res.message)
+            sort: this.sort()
+        }).subscribe(
+            (res: HttpResponse<Municipio[]>) => this.onSuccess(res.body, res.headers),
+            (res: HttpErrorResponse) => this.onError(res.message)
         );
     }
+
     loadPage(page: number) {
         if (page !== this.previousPage) {
             this.previousPage = page;
             this.transition();
         }
     }
+
     transition() {
-        this.router.navigate(['/municipio'], {queryParams:
-            {
-                page: this.page,
-                size: this.itemsPerPage,
-                sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
-            }
+        this.router.navigate(['/municipio'], {
+            queryParams:
+                {
+                    page: this.page,
+                    size: this.itemsPerPage,
+                    sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
+                }
         });
         this.loadAll();
     }
@@ -99,6 +103,7 @@ currentAccount: any;
         }]);
         this.loadAll();
     }
+
     ngOnInit() {
         this.loadAll();
         this.principal.identity().then((account) => {
@@ -114,6 +119,7 @@ currentAccount: any;
     trackId(index: number, item: Municipio) {
         return item.id;
     }
+
     registerChangeInMunicipios() {
         this.eventSubscriber = this.eventManager.subscribe('municipioListModification', (response) => this.loadAll());
     }
@@ -133,6 +139,7 @@ currentAccount: any;
         // this.page = pagingParams.page;
         this.municipios = data;
     }
+
     private onError(error) {
         this.jhiAlertService.error(error.message, null, null);
     }

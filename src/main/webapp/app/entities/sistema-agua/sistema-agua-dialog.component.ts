@@ -43,6 +43,9 @@ export class SistemaAguaDialogComponent implements OnInit {
             .subscribe((res: HttpResponse<Situacao[]>) => { this.situacaos = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
         this.comunaService.query()
             .subscribe((res: HttpResponse<Comuna[]>) => { this.comunas = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+
+        const now = new Date();
+        this.sistemaAgua.dtLancamento = {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()};
     }
 
     clear() {

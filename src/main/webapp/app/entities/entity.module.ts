@@ -1,6 +1,6 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { SisasAuthorityModule } from './authority/authority.module';
-import { SisasDashboardModule } from './dashboard/dashboard.module';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+import {SisasAuthorityModule} from './authority/authority.module';
+import {SisasDashboardModule} from './dashboard/dashboard.module';
 import {SisasIndicadorProducaoModule} from './indicador-producao/indicador-producao.module';
 import {SisasProgramasProjectosModule} from './programas-projectos/programas-projectos.module';
 import {SisasSistemaAguaModule} from './sistema-agua/sistema-agua.module';
@@ -12,6 +12,7 @@ import {SisasProvinciaModule} from './provincia/provincia.module';
 import {SisasSistemaAguaLogModule} from './sistema-agua-log/sistema-agua-log.module';
 import {SisasIndicadorProducaoLogModule} from './indicador-producao-log/indicador-producao-log.module';
 import {SisasProgramasProjectosLogModule} from './programas-projectos-log/programas-projectos-log.module';
+import {SisasMapModule} from './map/map.module';
 
 @NgModule({
     imports: [
@@ -27,11 +28,13 @@ import {SisasProgramasProjectosLogModule} from './programas-projectos-log/progra
         SisasProvinciaModule,
         SisasSistemaAguaLogModule,
         SisasIndicadorProducaoLogModule,
-        SisasProgramasProjectosLogModule
+        SisasProgramasProjectosLogModule,
+        SisasMapModule
     ],
     declarations: [],
     entryComponents: [],
     providers: [],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class SisasEntityModule {}
+export class SisasEntityModule {
+}

@@ -89,18 +89,11 @@
                     <div class="input-group">
                         <input id="field_dtLancamento" type="text" class="form-control" name="dtLancamento"
                                ngbDatepicker #dtLancamentoDp="ngbDatepicker" [(ngModel)]="sistemaAgua.dtLancamento"
-                               required placeholder="Selecione a data"/>
+                               placeholder="Selecione a data"/>
                         <span class="input-group-append">
                         <button type="button" class="btn btn-secondary" (click)="dtLancamentoDp.toggle()"><i
                             class="fa fa-calendar"></i></button>
                     </span>
-                    </div>
-                    <div [hidden]="!(editForm.controls.dtLancamento?.dirty && editForm.controls.dtLancamento?.invalid)">
-                        <small class="form-text text-danger"
-                               [hidden]="!editForm.controls.dtLancamento?.errors?.required"
-                               jhiTranslate="entity.validation.required">
-                            This field is required.
-                        </small>
                     </div>
                 </div>
             </div>
