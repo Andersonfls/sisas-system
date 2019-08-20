@@ -260,11 +260,11 @@ public class IndicadorProducaoDTO implements Serializable {
     @NotNull
     private Long qtdManuaisRealizados;
 
-    private Situacao idSituacaoId;
+    private Situacao situacao;
 
-    private SistemaAgua idSistemaAguaId;
+    private SistemaAgua sistemaAgua;
 
-    private Comuna idComunaId;
+    private Comuna comuna;
 
     public Long getId() {
         return id;
@@ -930,28 +930,28 @@ public class IndicadorProducaoDTO implements Serializable {
         this.qtdManuaisRealizados = qtdManuaisRealizados;
     }
 
-    public Situacao getIdSituacaoId() {
-        return idSituacaoId;
+    public Situacao getSituacao() {
+        return situacao;
     }
 
-    public void setIdSituacaoId(Situacao situacaoId) {
-        this.idSituacaoId = situacaoId;
+    public void setSituacao(Situacao situacaoId) {
+        this.situacao = situacaoId;
     }
 
-    public SistemaAgua getIdSistemaAguaId() {
-        return idSistemaAguaId;
+    public SistemaAgua getSistemaAgua() {
+        return sistemaAgua;
     }
 
-    public void setIdSistemaAguaId(SistemaAgua sistemaAguaId) {
-        this.idSistemaAguaId = sistemaAguaId;
+    public void setSistemaAgua(SistemaAgua sistemaAguaId) {
+        this.sistemaAgua = sistemaAguaId;
     }
 
-    public Comuna getIdComunaId() {
-        return idComunaId;
+    public Comuna getComuna() {
+        return comuna;
     }
 
-    public void setIdComunaId(Comuna comunaId) {
-        this.idComunaId = comunaId;
+    public void setComuna(Comuna comunaId) {
+        this.comuna = comunaId;
     }
 
     @Override

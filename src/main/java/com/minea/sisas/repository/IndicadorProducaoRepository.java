@@ -16,8 +16,8 @@ import org.springframework.data.jpa.repository.*;
 @Repository
 public interface IndicadorProducaoRepository extends JpaRepository<IndicadorProducao, Long>, JpaSpecificationExecutor<IndicadorProducao> {
     @Query("select i from IndicadorProducao i where LOWER(i.idUsuario) like LOWER(concat(:nome,'%'))" +
-        "or LOWER(i.idComuna) like LOWER(CONCAT(:nome,'%'))" +
-        "or LOWER(i.idSituacao) like LOWER(CONCAT(:nome,'%'))"+
-        "or LOWER(i.idSistemaAgua) like LOWER(CONCAT(:nome,'%'))")
+        "or LOWER(i.comuna) like LOWER(CONCAT(:nome,'%'))" +
+        "or LOWER(i.situacao) like LOWER(CONCAT(:nome,'%'))"+
+        "or LOWER(i.sistemaAgua) like LOWER(CONCAT(:nome,'%'))")
     Page buscarPorNome(@Param("nome") String nome, Pageable pageable);
 }

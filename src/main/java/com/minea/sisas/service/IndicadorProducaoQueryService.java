@@ -327,13 +327,13 @@ public class IndicadorProducaoQueryService extends QueryService<IndicadorProduca
                 specification = specification.and(buildRangeSpecification(criteria.getQtdManuaisRealizados(), IndicadorProducao_.qtdManuaisRealizados));
             }
             if (criteria.getIdSituacaoId() != null) {
-                specification = specification.and(buildReferringEntitySpecification(criteria.getIdSituacaoId(), IndicadorProducao_.idSituacao, Situacao_.id));
+                specification = specification.and(buildReferringEntitySpecification(criteria.getIdSituacaoId(), IndicadorProducao_.situacao, Situacao_.id));
             }
             if (criteria.getIdSistemaAguaId() != null) {
-                specification = specification.and(buildReferringEntitySpecification(criteria.getIdSistemaAguaId(), IndicadorProducao_.idSistemaAgua, SistemaAgua_.id));
+                specification = specification.and(buildReferringEntitySpecification(criteria.getIdSistemaAguaId(), IndicadorProducao_.sistemaAgua, SistemaAgua_.id));
             }
             if (criteria.getIdComunaId() != null) {
-                specification = specification.and(buildReferringEntitySpecification(criteria.getIdComunaId(), IndicadorProducao_.idComuna, Comuna_.id));
+                specification = specification.and(buildReferringEntitySpecification(criteria.getIdComunaId(), IndicadorProducao_.comuna, Comuna_.id));
             }
         }
         return specification;

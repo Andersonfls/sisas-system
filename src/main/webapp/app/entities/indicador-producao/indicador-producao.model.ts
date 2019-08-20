@@ -88,9 +88,9 @@ export class IndicadorProducao implements BaseEntity {
         public qtdManuaisMmsRealizadas?: number,
         public qtdManuaisCmpRealizadas?: number,
         public qtdManuaisRealizados?: number,
-        public idSituacaoId?: Situacao,
-        public idSistemaAguaId?: SistemaAgua,
-        public idComunaId?: Comuna,
+        public situacao?: Situacao,
+        public sistemaAgua?: SistemaAgua,
+        public comuna?: Comuna,
     ) {
     }
 }

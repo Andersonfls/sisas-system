@@ -352,15 +352,15 @@ public class IndicadorProducao implements Serializable {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "id_situacao")
-    private Situacao idSituacao;
+    private Situacao situacao;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "id_sistema_agua")
-    private SistemaAgua idSistemaAgua;
+    private SistemaAgua sistemaAgua;
 
     @ManyToOne
     @JoinColumn(name = "id_comuna")
-    private Comuna idComuna;
+    private Comuna comuna;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -1437,43 +1437,43 @@ public class IndicadorProducao implements Serializable {
         this.qtdManuaisRealizados = qtdManuaisRealizados;
     }
 
-    public Situacao getIdSituacao() {
-        return idSituacao;
+    public Situacao getSituacao() {
+        return situacao;
     }
 
     public IndicadorProducao idSituacao(Situacao situacao) {
-        this.idSituacao = situacao;
+        this.situacao = situacao;
         return this;
     }
 
-    public void setIdSituacao(Situacao situacao) {
-        this.idSituacao = situacao;
+    public void setSituacao(Situacao situacao) {
+        this.situacao = situacao;
     }
 
-    public SistemaAgua getIdSistemaAgua() {
-        return idSistemaAgua;
+    public SistemaAgua getSistemaAgua() {
+        return sistemaAgua;
     }
 
     public IndicadorProducao idSistemaAgua(SistemaAgua sistemaAgua) {
-        this.idSistemaAgua = sistemaAgua;
+        this.sistemaAgua = sistemaAgua;
         return this;
     }
 
-    public void setIdSistemaAgua(SistemaAgua sistemaAgua) {
-        this.idSistemaAgua = sistemaAgua;
+    public void setSistemaAgua(SistemaAgua sistemaAgua) {
+        this.sistemaAgua = sistemaAgua;
     }
 
-    public Comuna getIdComuna() {
-        return idComuna;
+    public Comuna getComuna() {
+        return comuna;
     }
 
     public IndicadorProducao idComuna(Comuna comuna) {
-        this.idComuna = comuna;
+        this.comuna = comuna;
         return this;
     }
 
-    public void setIdComuna(Comuna comuna) {
-        this.idComuna = comuna;
+    public void setComuna(Comuna comuna) {
+        this.comuna = comuna;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove

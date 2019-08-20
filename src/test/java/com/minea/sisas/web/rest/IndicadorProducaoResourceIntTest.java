@@ -432,17 +432,17 @@ public class IndicadorProducaoResourceIntTest {
         Situacao idSituacao = SituacaoResourceIntTest.createEntity(em);
         em.persist(idSituacao);
         em.flush();
-        indicadorProducao.setIdSituacao(idSituacao);
+        indicadorProducao.setSituacao(idSituacao);
         // Add required entity
         SistemaAgua idSistemaAgua = SistemaAguaResourceIntTest.createEntity(em);
         em.persist(idSistemaAgua);
         em.flush();
-        indicadorProducao.setIdSistemaAgua(idSistemaAgua);
+        indicadorProducao.setSistemaAgua(idSistemaAgua);
         // Add required entity
         Comuna idComuna = ComunaResourceIntTest.createEntity(em);
         em.persist(idComuna);
         em.flush();
-        indicadorProducao.setIdComuna(idComuna);
+        indicadorProducao.setComuna(idComuna);
         return indicadorProducao;
     }
 
@@ -6884,7 +6884,7 @@ public class IndicadorProducaoResourceIntTest {
         Situacao idSituacao = SituacaoResourceIntTest.createEntity(em);
         em.persist(idSituacao);
         em.flush();
-        indicadorProducao.setIdSituacao(idSituacao);
+        indicadorProducao.setSituacao(idSituacao);
         indicadorProducaoRepository.saveAndFlush(indicadorProducao);
         Long idSituacaoId = idSituacao.getId();
 
@@ -6903,7 +6903,7 @@ public class IndicadorProducaoResourceIntTest {
         SistemaAgua idSistemaAgua = SistemaAguaResourceIntTest.createEntity(em);
         em.persist(idSistemaAgua);
         em.flush();
-        indicadorProducao.setIdSistemaAgua(idSistemaAgua);
+        indicadorProducao.setSistemaAgua(idSistemaAgua);
         indicadorProducaoRepository.saveAndFlush(indicadorProducao);
         Long idSistemaAguaId = idSistemaAgua.getId();
 
@@ -6922,7 +6922,7 @@ public class IndicadorProducaoResourceIntTest {
         Comuna idComuna = ComunaResourceIntTest.createEntity(em);
         em.persist(idComuna);
         em.flush();
-        indicadorProducao.setIdComuna(idComuna);
+        indicadorProducao.setComuna(idComuna);
         indicadorProducaoRepository.saveAndFlush(indicadorProducao);
         Long idComunaId = idComuna.getId();
 

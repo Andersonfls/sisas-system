@@ -12,14 +12,14 @@ import org.mapstruct.*;
 @Mapper(componentModel = "spring", uses = {SituacaoMapper.class, SistemaAguaMapper.class, ComunaMapper.class})
 public interface IndicadorProducaoMapper extends EntityMapper<IndicadorProducaoDTO, IndicadorProducao> {
 
-    @Mapping(source = "idSituacao", target = "idSituacaoId")
-    @Mapping(source = "idSistemaAgua", target = "idSistemaAguaId")
-    @Mapping(source = "idComuna", target = "idComunaId")
+    @Mapping(source = "situacao", target = "situacao")
+    @Mapping(source = "sistemaAgua", target = "sistemaAgua")
+    @Mapping(source = "comuna", target = "comuna")
     IndicadorProducaoDTO toDto(IndicadorProducao indicadorProducao);
 
-    @Mapping(source = "idSituacaoId", target = "idSituacao")
-    @Mapping(source = "idSistemaAguaId", target = "idSistemaAgua")
-    @Mapping(source = "idComunaId", target = "idComuna")
+    @Mapping(source = "situacao", target = "situacao")
+    @Mapping(source = "sistemaAgua", target = "sistemaAgua")
+    @Mapping(source = "comuna", target = "comuna")
     IndicadorProducao toEntity(IndicadorProducaoDTO indicadorProducaoDTO);
 
     default IndicadorProducao fromId(Long id) {

@@ -190,18 +190,18 @@
                 <!--<td>{{indicadorProducao.qtdManuaisCmpRealizadas}}</td>-->
                 <!--<td>{{indicadorProducao.qtdManuaisRealizados}}</td>-->
                 <td>
-                    <div *ngIf="indicadorProducao.idSituacaoId">
-                        <a [routerLink]="['../situacao', indicadorProducao.idSituacaoId.id  ]" >{{indicadorProducao.idSituacaoId.nmSituacao}}</a>
+                    <div *ngIf="indicadorProducao.situacao">
+                        <a [routerLink]="['../situacao', indicadorProducao.situacao]" >{{indicadorProducao.situacao.nmSituacao}}</a>
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="indicadorProducao.idSistemaAguaId">
-                        <a [routerLink]="['../sistema-agua', indicadorProducao.idSistemaAguaId.id  ]" >{{indicadorProducao.idSistemaAguaId.nmSistemaAgua}}</a>
+                    <div *ngIf="indicadorProducao.sistemaAgua">
+                        <a [routerLink]="['../sistema-agua', indicadorProducao.sistemaAgua]" >{{indicadorProducao.sistemaAgua.nmSistemaAgua}}</a>
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="indicadorProducao.idComunaId">
-                        <a [routerLink]="['../comuna', indicadorProducao.idComunaId.id  ]" >{{indicadorProducao.idComunaId.nmComuna}}</a>
+                    <div *ngIf="indicadorProducao.comuna">
+                        <a [routerLink]="['../comuna', indicadorProducao.comuna  ]" >{{indicadorProducao.comuna.nmComuna}}</a>
                     </div>
                 </td>
                 <td class="text-right">
