@@ -14,9 +14,13 @@ public interface SistemaAguaMapper extends EntityMapper<SistemaAguaDTO, SistemaA
 
     @Mapping(source = "situacao", target = "situacao")
     @Mapping(source = "comuna", target = "comuna")
+    @Mapping(source = "provincia", target = "provincia")
+    @Mapping(source = "municipio", target = "municipio")
     @Mapping(source = "idUsuario", target = "idUsuario")
     SistemaAguaDTO toDto(SistemaAgua sistemaAgua);
 
+    @Mapping(source = "provincia", target = "provincia")
+    @Mapping(source = "municipio", target = "municipio")
     @Mapping(source = "situacao", target = "situacao")
     @Mapping(source = "idUsuario", target = "idUsuario")
     SistemaAgua toEntity(SistemaAguaDTO sistemaAguaDTO);

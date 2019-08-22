@@ -50,7 +50,7 @@
         </div>
 
         <div class="row">
-            <div class="form-group col-sm-4">
+            <div class="form-group col-sm-6">
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.idSituacao"
                            for="field_idSituacao">Id Situacao</label>
@@ -69,7 +69,7 @@
                     This field is required.
                 </small>
             </div>
-            <div class="form-group col-sm-4">
+            <div class="form-group col-sm-6">
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.idComuna" for="field_idComuna">Id
                         Comuna</label>
@@ -83,28 +83,76 @@
                 </div>
                 <div [hidden]="!(editForm.controls.comuna?.dirty && editForm.controls.comuna?.invalid)">
                     <small class="form-text text-danger"
-                           [hidden]="!editForm.controls.comuna?.errors?.required" jhiTranslate="entity.validation.required">
+                           [hidden]="!editForm.controls.comuna?.errors?.required"
+                           jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-6">
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.idMunicipio"
+                           for="field_idMunicipio">id
+                        Municipio</label>
+                    <select class="form-control" id="field_idMunicipio" name="municipio"
+                            [(ngModel)]="sistemaAgua.municipio"
+                            required>
+                        <option *ngIf="!editForm.value.municipio" [ngValue]="null" selected></option>
+                        <option
+                            [ngValue]="municipioOption.id === sistemaAgua.municipio?.id ? sistemaAgua.municipio : municipioOption"
+                            *ngFor="let municipioOption of municipios">{{municipioOption.nmMunicipio}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.municipio?.dirty && editForm.controls.municipio?.invalid)">
+                    <small class="form-text text-danger"
+                           [hidden]="!editForm.controls.municipio?.errors?.required"
+                           jhiTranslate="entity.validation.required">
                         This field is required.
                     </small>
                 </div>
             </div>
 
-            <!--    <div class="form-group col-sm-4">
-                    <div class="form-group">
-                        <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.dtLancamento"
-                               for="field_dtLancamento">Dt Lancamento</label>
-                        <div class="input-group">
-                            <input id="field_dtLancamento" type="text" class="form-control" name="dtLancamento"
-                                   ngbDatepicker #dtLancamentoDp="ngbDatepicker" [(ngModel)]="sistemaAgua.dtLancamento"
-                                   placeholder="Selecione a data"/>
-                            <span class="input-group-append">
-                            <button type="button" class="btn btn-secondary" (click)="dtLancamentoDp.toggle()"><i
-                                class="fa fa-calendar"></i></button>
-                        </span>
-                        </div>
-                    </div>
-                </div> -->
+            <div class="form-group col-sm-6">
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.idProvincia"
+                           for="field_idProvincia">id
+                        Provincia</label>
+                    <select class="form-control" id="field_idProvincia" name="provincia"
+                            [(ngModel)]="sistemaAgua.provincia"
+                            required>
+                        <option *ngIf="!editForm.value.provincia" [ngValue]="null" selected></option>
+                        <option
+                            [ngValue]="provinciaOption.id === sistemaAgua.provincia?.id ? sistemaAgua.provincia : provinciaOption"
+                            *ngFor="let provinciaOption of provincias">{{provinciaOption.nmProvincia}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.municipio?.dirty && editForm.controls.municipio?.invalid)">
+                    <small class="form-text text-danger"
+                           [hidden]="!editForm.controls.municipio?.errors?.required"
+                           jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
         </div>
+        <!--    <div class="form-group col-sm-4">
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.dtLancamento"
+                           for="field_dtLancamento">Dt Lancamento</label>
+                    <div class="input-group">
+                        <input id="field_dtLancamento" type="text" class="form-control" name="dtLancamento"
+                               ngbDatepicker #dtLancamentoDp="ngbDatepicker" [(ngModel)]="sistemaAgua.dtLancamento"
+                               placeholder="Selecione a data"/>
+                        <span class="input-group-append">
+                        <button type="button" class="btn btn-secondary" (click)="dtLancamentoDp.toggle()"><i
+                            class="fa fa-calendar"></i></button>
+                    </span>
+                    </div>
+                </div>
+            </div> -->
+        <!--</div>-->
 
         <!--<div class="form-group">-->
         <!--<label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.dtUltimaAlteracao" for="field_dtUltimaAlteracao">Dt Ultima Alteracao</label>-->
@@ -189,7 +237,7 @@
                 </div>
             </div>
         </div>
-        <div *ngIf="editForm.controls.possuiSistemaAgua.value===0">
+        <div *ngIf="editForm.controls.possuiSistemaAgua.value===0 && !editForm.form.invalid">
             <div class="card border-success text-center">
                 <div class="card-body text-success">
                     <h5 class="card-title">QUESTIONÁRIO CONCLUÍDO</h5>
@@ -246,8 +294,10 @@
                     </div>
                 </div>
             </div>
+
             <small style="text-align: left; color: #a9a9a9; font-size: 13px">Tipo da Fonte</small>
-            <hr style="margin-top: 4px;">
+            <hr style="margin-top: 4px">
+
             <div class="row">
                 <div class="form-group col-sm-5">
                     <div class="form-group">
@@ -309,6 +359,8 @@
                                    for="field_nmTipoBomba">Nm Tipo Bomba</label>
                             <select class="form-control" id="field_nmTipoBombaSubterranea" name="nmTipoBomba"
                                     [(ngModel)]="sistemaAgua.nmTipoBomba">
+
+                                <option [ngValue]="null" selected></option>
                                 <option label="Energia">Energia</option>
                                 <option label="Manual">Manual</option>
                                 <option label="Gravidade">Gravidade</option>
@@ -319,17 +371,17 @@
                 <div class="form-group col-sm-4">
                     <div *ngIf="editForm.controls.nmTpFonte.value!=null">
 
-                    <div class="form-group">
-                        <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmFonteAguaUtilizada"
-                               for="field_nmFonteAguaUtilizada">Nm Fonte Agua Utilizada</label>
-                        <select class="form-control" id="field_nmFonteAguaUtilizada" name="nmFonteAguaUtilizada"
-                                [(ngModel)]="sistemaAgua.nmFonteAguaUtilizada">
-                            <option label="Rio">Rio</option>
-                            <option label="Lagoa">Lagoa</option>
-                            <option label="Água da Chuva">Água da Chuva</option>
-                            <option label="Lago">Lago</option>
-                        </select>
-                    </div>
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmFonteAguaUtilizada"
+                                   for="field_nmFonteAguaUtilizada">Nm Fonte Agua Utilizada</label>
+                            <select class="form-control" id="field_nmFonteAguaUtilizada" name="nmFonteAguaUtilizada"
+                                    [(ngModel)]="sistemaAgua.nmFonteAguaUtilizada">
+                                <option label="Rio">Rio</option>
+                                <option label="Lagoa">Lagoa</option>
+                                <option label="Água da Chuva">Água da Chuva</option>
+                                <option label="Lago">Lago</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -342,6 +394,7 @@
                                    for="field_nmTpBombaEnergia">Nm Tp Bomba Energia</label>
                             <select class="form-control" id="field_nmTpBombaEnergia" name="nmTpBombaEnergia"
                                     [(ngModel)]="sistemaAgua.nmTpBombaEnergia">
+                                <option [ngValue]="null" selected></option>
                                 <option label="Elétrica">Elétrica</option>
                                 <option label="Diesel/Motobomba">Diesel/Motobomba</option>
                                 <option label="Solar">Solar</option>
@@ -359,6 +412,7 @@
                             <select class="form-control" id="field_nmModeloBombaManualUtilizada"
                                     name="nmModeloBombaManualUtilizada"
                                     [(ngModel)]="sistemaAgua.nmModeloBombaManualUtilizada">
+                                <option [ngValue]="null" selected></option>
                                 <option label="Afridev">Afridev</option>
                                 <option label="Volanta">Volanta</option>
                                 <option label="India">India</option>
@@ -457,7 +511,7 @@
                     </div>
                 </div>
             </div>
-            <small style="text-align: left; color: #a9a9a9; font-size: 13px">Avarias no sistema</small>
+            <small style="text-align: left; color: #a9a9a9; font-size: 13px">Avaria no sistema</small>
             <hr style="margin-top: 4px;">
             <div class="row">
                 <div class="form-group col-sm-6">
@@ -806,36 +860,36 @@
             </div>
 
             <!--<div class="row">-->
-                <!--<div class="form-group col-sm-6">-->
-                    <!--<div class="form-group">-->
-                    <!--<label class="form-control-label"-->
-                    <!--jhiTranslate="sisasApp.sistemaAgua.nmModeloBombaManualUtilizada"-->
-                    <!--for="field_nmModeloBombaManualUtilizada">Nm Modelo Bomba Manual Utilizada</label>-->
-                    <!--<select class="form-control" id="field_nmModeloBombaManualUtilizada"-->
-                    <!--name="nmModeloBombaManualUtilizada"-->
-                    <!--[(ngModel)]="sistemaAgua.nmModeloBombaManualUtilizada">-->
-                    <!--<option label="Afridev">Afridev</option>-->
-                    <!--<option label="Volanta">Volanta</option>-->
-                    <!--<option label="India">India</option>-->
-                    <!--<option label="Mark II">Mark II</option>-->
-                    <!--<option label="Outro">Outro</option>-->
-                    <!--</select>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="form-group col-sm-6">-->
-                    <!--<div class="form-group">-->
-                    <!--<label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmTpBombaEnergia"-->
-                    <!--for="field_nmTpBombaEnergia">Nm Tp Bomba Energia</label>-->
-                    <!--<select class="form-control" id="field_nmTpBombaEnergia" name="nmTpBombaEnergia"-->
-                    <!--[(ngModel)]="sistemaAgua.nmTpBombaEnergia">-->
-                    <!--<option label="Elétrica">Elétrica</option>-->
-                    <!--<option label="Diesel/Motobomba">Diesel/Motobomba</option>-->
-                    <!--<option label="Solar">Solar</option>-->
-                    <!--<option label="Eólica">Eólica</option>-->
-                    <!--<option label="Outros">Outros</option>-->
-                    <!--</select>-->
-                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                <!--</div>-->
+            <!--<div class="form-group col-sm-6">-->
+            <!--<div class="form-group">-->
+            <!--<label class="form-control-label"-->
+            <!--jhiTranslate="sisasApp.sistemaAgua.nmModeloBombaManualUtilizada"-->
+            <!--for="field_nmModeloBombaManualUtilizada">Nm Modelo Bomba Manual Utilizada</label>-->
+            <!--<select class="form-control" id="field_nmModeloBombaManualUtilizada"-->
+            <!--name="nmModeloBombaManualUtilizada"-->
+            <!--[(ngModel)]="sistemaAgua.nmModeloBombaManualUtilizada">-->
+            <!--<option label="Afridev">Afridev</option>-->
+            <!--<option label="Volanta">Volanta</option>-->
+            <!--<option label="India">India</option>-->
+            <!--<option label="Mark II">Mark II</option>-->
+            <!--<option label="Outro">Outro</option>-->
+            <!--</select>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="form-group col-sm-6">-->
+            <!--<div class="form-group">-->
+            <!--<label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmTpBombaEnergia"-->
+            <!--for="field_nmTpBombaEnergia">Nm Tp Bomba Energia</label>-->
+            <!--<select class="form-control" id="field_nmTpBombaEnergia" name="nmTpBombaEnergia"-->
+            <!--[(ngModel)]="sistemaAgua.nmTpBombaEnergia">-->
+            <!--<option label="Elétrica">Elétrica</option>-->
+            <!--<option label="Diesel/Motobomba">Diesel/Motobomba</option>-->
+            <!--<option label="Solar">Solar</option>-->
+            <!--<option label="Eólica">Eólica</option>-->
+            <!--<option label="Outros">Outros</option>-->
+            <!--</select>-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--</div>-->
             <!--</div>-->
 
         </div>

@@ -1,229 +1,294 @@
-
 <div *ngIf="sistemaAgua">
     <h2><span jhiTranslate="sisasApp.sistemaAgua.detail.title">Sistema Agua</span> {{sistemaAgua.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
-    <dl class="row-md jh-entity-details">
-        <!--<dt><span jhiTranslate="sisasApp.sistemaAgua.idUsuario">Usuario</span></dt>-->
-        <!--<dd>-->
-            <!--<span>{{sistemaAgua.idUsuario}}</span>-->
-        <!--</dd>-->
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.nmInqueridor">Nm Inqueridor</span></dt>
-        <dd>
-            <span>{{sistemaAgua.nmInqueridor}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.idComuna">Id Comuna</span></dt>
-        <dd>
-            <div *ngIf="sistemaAgua.comuna">
-                <a [routerLink]="['/comuna', sistemaAgua.comuna]">{{sistemaAgua.comuna.nmComuna}}</a>
+    <!--<dl class="row-md jh-entity-details">-->
+    <!--&lt;!&ndash;<dt><span jhiTranslate="sisasApp.sistemaAgua.idUsuario">Usuario</span></dt>&ndash;&gt;-->
+    <!--&lt;!&ndash;<dd>&ndash;&gt;-->
+    <!--&lt;!&ndash;<span>{{sistemaAgua.idUsuario}}</span>&ndash;&gt;-->
+    <!--&lt;!&ndash;</dd>&ndash;&gt;-->
+
+
+    <!--</dl>-->
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <dt><span jhiTranslate="sisasApp.sistemaAgua.idSituacao">Id Situacao</span></dt>
+                <dd>
+                    <div *ngIf="sistemaAgua.situacao">
+                        <a [routerLink]="['/situacao', sistemaAgua.situacao]">{{sistemaAgua.situacao.nmSituacao}}</a>
+                    </div>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.sistemaAgua.nmInqueridor">Nm Inqueridor</span></dt>
+                <dd>
+                    <span>{{sistemaAgua.nmInqueridor}}</span>
+                </dd>
+                <dt><span jhiTranslate="sisasApp.sistemaAgua.idComuna">Id Comuna</span></dt>
+                <dd>
+                    <div *ngIf="sistemaAgua.comuna">
+                        <a [routerLink]="['/comuna', sistemaAgua.comuna]">{{sistemaAgua.comuna.nmComuna}}</a>
+                    </div>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.sistemaAgua.idMunicipio">Id Municipio</span></dt>
+                <dd>
+                    <div *ngIf="sistemaAgua.municipio">
+                        <a [routerLink]="['/municipio', sistemaAgua.municipio]">{{sistemaAgua.municipio.nmMunicipio}}</a>
+                    </div>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.sistemaAgua.idProvincia">Id Provincia</span></dt>
+                <dd>
+                    <div *ngIf="sistemaAgua.provincia">
+                        <a [routerLink]="['/provincia', sistemaAgua.provincia]">{{sistemaAgua.provincia.nmProvincia}}</a>
+                    </div>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.sistemaAgua.nmLocalidade">Nm Localidade</span></dt>
+                <dd>
+                    <span>{{sistemaAgua.nmLocalidade}}</span>
+                </dd>
+                <dt><span jhiTranslate="sisasApp.sistemaAgua.qtdPopulacaoActual">Qtd Populacao Actual</span></dt>
+                <dd>
+                    <span>{{sistemaAgua.qtdPopulacaoActual}}</span>
+                </dd>
+                <dt><span jhiTranslate="sisasApp.sistemaAgua.qtdCasasLocalidade">Qtd Casas Localidade</span></dt>
+                <dd>
+                    <span>{{sistemaAgua.qtdCasasLocalidade}}</span>
+                </dd>
+                <dt><span jhiTranslate="sisasApp.sistemaAgua.nmTpComunaAldeia">Nm Tp Comuna Aldeia</span></dt>
+                <dd>
+                    <span>{{sistemaAgua.nmTpComunaAldeia}}</span>
+                </dd>
+                <dt><span jhiTranslate="sisasApp.sistemaAgua.nmTpArea">Nm Tp Area</span></dt>
+                <dd>
+                    <span>{{sistemaAgua.nmTpArea}}</span>
+                </dd>
+                <dt><span jhiTranslate="sisasApp.sistemaAgua.nmSistemaAgua">Nm Sistema Agua</span></dt>
+                <dd>
+                    <span>{{sistemaAgua.nmSistemaAgua}}</span>
+                </dd>
+                <dt><span jhiTranslate="sisasApp.sistemaAgua.possuiSistemaAgua">Possui Sistema Agua</span></dt>
+                <dd>
+                    <span *ngIf="sistemaAgua.possuiSistemaAgua===1">SIM</span>
+                    <span *ngIf="sistemaAgua.possuiSistemaAgua===0">NÃO</span>
+                </dd>
+                <div *ngIf="sistemaAgua.possuiSistemaAgua===1">
+                    <dt><span jhiTranslate="sisasApp.sistemaAgua.nmFonteAgua">Nm Fonte Agua</span></dt>
+                    <dd>
+                        <span>{{sistemaAgua.nmFonteAgua}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="sisasApp.sistemaAgua.latitude">Latitude</span></dt>
+                    <dd>
+                        <span>{{sistemaAgua.latitude}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="sisasApp.sistemaAgua.longitude">Longitude</span></dt>
+                    <dd>
+                        <span>{{sistemaAgua.longitude}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="sisasApp.sistemaAgua.altitude">Altitude</span></dt>
+                    <dd>
+                        <span>{{sistemaAgua.altitude}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="sisasApp.sistemaAgua.nmTpFonte">Nm Tp Fonte</span></dt>
+                    <dd>
+                        <span>{{sistemaAgua.nmTpFonte}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="sisasApp.sistemaAgua.nmFonteAguaUtilizada">Nm Fonte Agua Utilizada</span>
+                    </dt>
+                    <dd>
+                        <span>{{sistemaAgua.nmFonteAguaUtilizada}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="sisasApp.sistemaAgua.nmTipoBomba">Nm Tipo Bomba</span></dt>
+                    <dd>
+                        <span>{{sistemaAgua.nmTipoBomba}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="sisasApp.sistemaAgua.qtdCasasAguaLigada">Qtd Casas Agua Ligada</span></dt>
+                    <dd>
+                        <span>{{sistemaAgua.qtdCasasAguaLigada}}</span>
+                    </dd>
+                    <dt><span
+                        jhiTranslate="sisasApp.sistemaAgua.qtdChafarisesFuncionando">Qtd Chafarises Funcionando</span>
+                    </dt>
+                    <dd>
+                        <span>{{sistemaAgua.qtdChafarisesFuncionando}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="sisasApp.sistemaAgua.qtdContadoresLigados">Qtd Contadores Ligados</span>
+                    </dt>
+                    <dd>
+                        <span>{{sistemaAgua.qtdContadoresLigados}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="sisasApp.sistemaAgua.qtdBebedouros">Qtd Bebedouros</span></dt>
+                    <dd>
+                        <span>{{sistemaAgua.qtdBebedouros}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="sisasApp.sistemaAgua.qtdHabitantesAcessoServicoAgua">Qtd Habitantes Acesso Servico Agua</span>
+                    </dt>
+                    <dd>
+                        <span>{{sistemaAgua.qtdHabitantesAcessoServicoAgua}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="sisasApp.sistemaAgua.anoConstrucaoSistema">Ano Construcao Sistema</span>
+                    </dt>
+                    <dd>
+                        <span>{{sistemaAgua.anoConstrucaoSistema}}</span>
+                    </dd>
+                </div>
             </div>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.nmLocalidade">Nm Localidade</span></dt>
-        <dd>
-            <span>{{sistemaAgua.nmLocalidade}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.qtdPopulacaoActual">Qtd Populacao Actual</span></dt>
-        <dd>
-            <span>{{sistemaAgua.qtdPopulacaoActual}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.qtdCasasLocalidade">Qtd Casas Localidade</span></dt>
-        <dd>
-            <span>{{sistemaAgua.qtdCasasLocalidade}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.nmTpComunaAldeia">Nm Tp Comuna Aldeia</span></dt>
-        <dd>
-            <span>{{sistemaAgua.nmTpComunaAldeia}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.nmTpArea">Nm Tp Area</span></dt>
-        <dd>
-            <span>{{sistemaAgua.nmTpArea}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.nmSistemaAgua">Nm Sistema Agua</span></dt>
-        <dd>
-            <span>{{sistemaAgua.nmSistemaAgua}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.possuiSistemaAgua">Possui Sistema Agua</span></dt>
-        <dd>
-            <span>{{sistemaAgua.possuiSistemaAgua}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.nmFonteAgua">Nm Fonte Agua</span></dt>
-        <dd>
-            <span>{{sistemaAgua.nmFonteAgua}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.latitude">Latitude</span></dt>
-        <dd>
-            <span>{{sistemaAgua.latitude}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.longitude">Longitude</span></dt>
-        <dd>
-            <span>{{sistemaAgua.longitude}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.altitude">Altitude</span></dt>
-        <dd>
-            <span>{{sistemaAgua.altitude}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.nmTpFonte">Nm Tp Fonte</span></dt>
-        <dd>
-            <span>{{sistemaAgua.nmTpFonte}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.nmFonteAguaUtilizada">Nm Fonte Agua Utilizada</span></dt>
-        <dd>
-            <span>{{sistemaAgua.nmFonteAguaUtilizada}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.nmTipoBomba">Nm Tipo Bomba</span></dt>
-        <dd>
-            <span>{{sistemaAgua.nmTipoBomba}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.qtdCasasAguaLigada">Qtd Casas Agua Ligada</span></dt>
-        <dd>
-            <span>{{sistemaAgua.qtdCasasAguaLigada}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.qtdChafarisesFuncionando">Qtd Chafarises Funcionando</span></dt>
-        <dd>
-            <span>{{sistemaAgua.qtdChafarisesFuncionando}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.qtdContadoresLigados">Qtd Contadores Ligados</span></dt>
-        <dd>
-            <span>{{sistemaAgua.qtdContadoresLigados}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.qtdBebedouros">Qtd Bebedouros</span></dt>
-        <dd>
-            <span>{{sistemaAgua.qtdBebedouros}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.qtdHabitantesAcessoServicoAgua">Qtd Habitantes Acesso Servico Agua</span></dt>
-        <dd>
-            <span>{{sistemaAgua.qtdHabitantesAcessoServicoAgua}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.anoConstrucaoSistema">Ano Construcao Sistema</span></dt>
-        <dd>
-            <span>{{sistemaAgua.anoConstrucaoSistema}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.tempoServicoDisponivel">Tempo Servico Disponivel</span></dt>
-        <dd>
-            <span>{{sistemaAgua.tempoServicoDisponivel}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.nmTpAvariaSistema">Nm Tp Avaria Sistema</span></dt>
-        <dd>
-            <span>{{sistemaAgua.nmTpAvariaSistema}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.causaAvariaSistema">Causa Avaria Sistema</span></dt>
-        <dd>
-            <span>{{sistemaAgua.causaAvariaSistema}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.statusResolucao">Status Resolucao</span></dt>
-        <dd>
-            <span>{{sistemaAgua.statusResolucao}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.qtdDiametroCondutaAdutoraAguaBruta">Qtd Diametro Conduta Adutora Agua Bruta</span></dt>
-        <dd>
-            <span>{{sistemaAgua.qtdDiametroCondutaAdutoraAguaBruta}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.qtdComprimentoCondutaAdutoraAguaBruta">Qtd Comprimento Conduta Adutora Agua Bruta</span></dt>
-        <dd>
-            <span>{{sistemaAgua.qtdComprimentoCondutaAdutoraAguaBruta}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.qtdDiametroCondutaAdutoraAguaTratada">Qtd Diametro Conduta Adutora Agua Tratada</span></dt>
-        <dd>
-            <span>{{sistemaAgua.qtdDiametroCondutaAdutoraAguaTratada}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.qtdComprimentoCondutaAdutoraAguaTratada">Qtd Comprimento Conduta Adutora Agua Tratada</span></dt>
-        <dd>
-            <span>{{sistemaAgua.qtdComprimentoCondutaAdutoraAguaTratada}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.descMaterialUtilizadoCondutas">Desc Material Utilizado Condutas</span></dt>
-        <dd>
-            <span>{{sistemaAgua.descMaterialUtilizadoCondutas}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.qtdReservatoriosApoiados">Qtd Reservatorios Apoiados</span></dt>
-        <dd>
-            <span>{{sistemaAgua.qtdReservatoriosApoiados}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.qtdCapacidadeReservatoriosApoiados">Qtd Capacidade Reservatorios Apoiados</span></dt>
-        <dd>
-            <span>{{sistemaAgua.qtdCapacidadeReservatoriosApoiados}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.qtdReservatoriosElevados">Qtd Reservatorios Elevados</span></dt>
-        <dd>
-            <span>{{sistemaAgua.qtdReservatoriosElevados}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.qtdCapacidadeReservatoriosElevados">Qtd Capacidade Reservatorios Elevados</span></dt>
-        <dd>
-            <span>{{sistemaAgua.qtdCapacidadeReservatoriosElevados}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.alturaReservatoriosElevados">Altura Reservatorios Elevados</span></dt>
-        <dd>
-            <span>{{sistemaAgua.alturaReservatoriosElevados}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.nmTpTratamentoAgua">Nm Tp Tratamento Agua</span></dt>
-        <dd>
-            <span>{{sistemaAgua.nmTpTratamentoAgua}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.nmTpTratamentoPadraoUtilizado">Nm Tp Tratamento Padrao Utilizado</span></dt>
-        <dd>
-            <span>{{sistemaAgua.nmTpTratamentoPadraoUtilizado}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.nmTpTratamentoBasicoUtilizado">Nm Tp Tratamento Basico Utilizado</span></dt>
-        <dd>
-            <span>{{sistemaAgua.nmTpTratamentoBasicoUtilizado}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.existeAvariaSistemaTratamento">Existe Avaria Sistema Tratamento</span></dt>
-        <dd>
-            <span>{{sistemaAgua.existeAvariaSistemaTratamento}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.existeMotivoAusenciaTratamento">Existe Motivo Ausencia Tratamento</span></dt>
-        <dd>
-            <span>{{sistemaAgua.existeMotivoAusenciaTratamento}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.nmEquipamentosComAvaria">Nm Equipamentos Com Avaria</span></dt>
-        <dd>
-            <span>{{sistemaAgua.nmEquipamentosComAvaria}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.caudalDoSistema">Caudal Do Sistema</span></dt>
-        <dd>
-            <span>{{sistemaAgua.caudalDoSistema}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.qtdConsumoPercaptaLitrosHomemDia">Qtd Consumo Percapta Litros Homem Dia</span></dt>
-        <dd>
-            <span>{{sistemaAgua.qtdConsumoPercaptaLitrosHomemDia}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.qtdDotacaoPercapta">Qtd Dotacao Percapta</span></dt>
-        <dd>
-            <span>{{sistemaAgua.qtdDotacaoPercapta}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.qtdDiariaHorasServicoSistema">Qtd Diaria Horas Servico Sistema</span></dt>
-        <dd>
-            <span>{{sistemaAgua.qtdDiariaHorasServicoSistema}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.esquema">Esquema</span></dt>
-        <dd>
-            <span>{{sistemaAgua.esquema}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.nmTpBombaEnergia">Nm Tp Bomba Energia</span></dt>
-        <dd>
-            <span>{{sistemaAgua.nmTpBombaEnergia}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.nmModeloBombaManualUtilizada">Nm Modelo Bomba Manual Utilizada</span></dt>
-        <dd>
-            <span>{{sistemaAgua.nmModeloBombaManualUtilizada}}</span>
-        </dd>
+            <div class="col">
+                <div *ngIf="sistemaAgua.possuiSistemaAgua===1">
 
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.dtLancamento">Dt Lancamento</span></dt>
-        <dd>
-        <span>{{sistemaAgua.dtLancamento | date:'mediumDate'}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.dtUltimaAlteracao">Dt Ultima Alteracao</span></dt>
-        <dd>
-        <span>{{sistemaAgua.dtUltimaAlteracao | date:'mediumDate'}}</span>
-        </dd>
+                    <dt><span jhiTranslate="sisasApp.sistemaAgua.tempoServicoDisponivel">Tempo Servico Disponivel</span>
+                    </dt>
+                    <dd>
+                        <span>{{sistemaAgua.tempoServicoDisponivel}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="sisasApp.sistemaAgua.nmTpAvariaSistema">Nm Tp Avaria Sistema</span></dt>
+                    <dd>
+                        <span>{{sistemaAgua.nmTpAvariaSistema}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="sisasApp.sistemaAgua.causaAvariaSistema">Causa Avaria Sistema</span></dt>
+                    <dd>
+                        <span>{{sistemaAgua.causaAvariaSistema}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="sisasApp.sistemaAgua.statusResolucao">Status Resolucao</span></dt>
+                    <dd>
+                        <span>{{sistemaAgua.statusResolucao}}</span>
+                    </dd>
 
-        <dt><span jhiTranslate="sisasApp.sistemaAgua.idSituacao">Id Situacao</span></dt>
-        <dd>
-            <div *ngIf="sistemaAgua.situacao">
-                <a [routerLink]="['/situacao', sistemaAgua.situacao]">{{sistemaAgua.situacao.nmSituacao}}</a>
+                    <dt><span jhiTranslate="sisasApp.sistemaAgua.qtdDiametroCondutaAdutoraAguaBruta">Qtd Diametro Conduta Adutora Agua Bruta</span>
+                    </dt>
+                    <dd>
+                        <span>{{sistemaAgua.qtdDiametroCondutaAdutoraAguaBruta}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="sisasApp.sistemaAgua.qtdComprimentoCondutaAdutoraAguaBruta">Qtd Comprimento Conduta Adutora Agua Bruta</span>
+                    </dt>
+                    <dd>
+                        <span>{{sistemaAgua.qtdComprimentoCondutaAdutoraAguaBruta}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="sisasApp.sistemaAgua.qtdDiametroCondutaAdutoraAguaTratada">Qtd Diametro Conduta Adutora Agua Tratada</span>
+                    </dt>
+                    <dd>
+                        <span>{{sistemaAgua.qtdDiametroCondutaAdutoraAguaTratada}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="sisasApp.sistemaAgua.qtdComprimentoCondutaAdutoraAguaTratada">Qtd Comprimento Conduta Adutora Agua Tratada</span>
+                    </dt>
+                    <dd>
+                        <span>{{sistemaAgua.qtdComprimentoCondutaAdutoraAguaTratada}}</span>
+                    </dd>
+                    <dt><span
+                        jhiTranslate="sisasApp.sistemaAgua.descMaterialUtilizadoCondutas">Desc Material Utilizado Condutas</span>
+                    </dt>
+                    <dd>
+                        <span>{{sistemaAgua.descMaterialUtilizadoCondutas}}</span>
+                    </dd>
+                    <dt><span
+                        jhiTranslate="sisasApp.sistemaAgua.qtdReservatoriosApoiados">Qtd Reservatorios Apoiados</span>
+                    </dt>
+                    <dd>
+                        <span>{{sistemaAgua.qtdReservatoriosApoiados}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="sisasApp.sistemaAgua.qtdCapacidadeReservatoriosApoiados">Qtd Capacidade Reservatorios Apoiados</span>
+                    </dt>
+                    <dd>
+                        <span>{{sistemaAgua.qtdCapacidadeReservatoriosApoiados}}</span>
+                    </dd>
+                    <dt><span
+                        jhiTranslate="sisasApp.sistemaAgua.qtdReservatoriosElevados">Qtd Reservatorios Elevados</span>
+                    </dt>
+                    <dd>
+                        <span>{{sistemaAgua.qtdReservatoriosElevados}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="sisasApp.sistemaAgua.qtdCapacidadeReservatoriosElevados">Qtd Capacidade Reservatorios Elevados</span>
+                    </dt>
+                    <dd>
+                        <span>{{sistemaAgua.qtdCapacidadeReservatoriosElevados}}</span>
+                    </dd>
+                    <dt><span
+                        jhiTranslate="sisasApp.sistemaAgua.alturaReservatoriosElevados">Altura Reservatorios Elevados</span>
+                    </dt>
+                    <dd>
+                        <span>{{sistemaAgua.alturaReservatoriosElevados}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="sisasApp.sistemaAgua.nmTpTratamentoAgua">Nm Tp Tratamento Agua</span></dt>
+                    <dd>
+                        <span>{{sistemaAgua.nmTpTratamentoAgua}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="sisasApp.sistemaAgua.nmTpTratamentoPadraoUtilizado">Nm Tp Tratamento Padrao Utilizado</span>
+                    </dt>
+                    <dd>
+                        <span>{{sistemaAgua.nmTpTratamentoPadraoUtilizado}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="sisasApp.sistemaAgua.nmTpTratamentoBasicoUtilizado">Nm Tp Tratamento Basico Utilizado</span>
+                    </dt>
+                    <dd>
+                        <span>{{sistemaAgua.nmTpTratamentoBasicoUtilizado}}</span>
+                    </dd>
+                    <dt><span
+                        jhiTranslate="sisasApp.sistemaAgua.existeAvariaSistemaTratamento">Existe Avaria Sistema Tratamento</span>
+                    </dt>
+                    <dd>
+                        <span>{{sistemaAgua.existeAvariaSistemaTratamento}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="sisasApp.sistemaAgua.existeMotivoAusenciaTratamento">Existe Motivo Ausencia Tratamento</span>
+                    </dt>
+                    <dd>
+                        <span>{{sistemaAgua.existeMotivoAusenciaTratamento}}</span>
+                    </dd>
+                    <dt><span
+                        jhiTranslate="sisasApp.sistemaAgua.nmEquipamentosComAvaria">Nm Equipamentos Com Avaria</span>
+                    </dt>
+                    <dd>
+                        <span>{{sistemaAgua.nmEquipamentosComAvaria}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="sisasApp.sistemaAgua.caudalDoSistema">Caudal Do Sistema</span></dt>
+                    <dd>
+                        <span>{{sistemaAgua.caudalDoSistema}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="sisasApp.sistemaAgua.qtdConsumoPercaptaLitrosHomemDia">Qtd Consumo Percapta Litros Homem Dia</span>
+                    </dt>
+                    <dd>
+                        <span>{{sistemaAgua.qtdConsumoPercaptaLitrosHomemDia}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="sisasApp.sistemaAgua.qtdDotacaoPercapta">Qtd Dotacao Percapta</span></dt>
+                    <dd>
+                        <span>{{sistemaAgua.qtdDotacaoPercapta}}</span>
+                    </dd>
+                    <dt><span
+                        jhiTranslate="sisasApp.sistemaAgua.qtdDiariaHorasServicoSistema">Qtd Diaria Horas Servico Sistema</span>
+                    </dt>
+                    <dd>
+                        <span>{{sistemaAgua.qtdDiariaHorasServicoSistema}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="sisasApp.sistemaAgua.esquema">Esquema</span></dt>
+                    <dd>
+                        <span>{{sistemaAgua.esquema}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="sisasApp.sistemaAgua.nmTpBombaEnergia">Nm Tp Bomba Energia</span></dt>
+                    <dd>
+                        <span>{{sistemaAgua.nmTpBombaEnergia}}</span>
+                    </dd>
+                    <dt><span
+                        jhiTranslate="sisasApp.sistemaAgua.nmModeloBombaManualUtilizada">Nm Modelo Bomba Manual Utilizada</span>
+                    </dt>
+                    <dd>
+                        <span>{{sistemaAgua.nmModeloBombaManualUtilizada}}</span>
+                    </dd>
+
+                    <dt><span jhiTranslate="sisasApp.sistemaAgua.dtLancamento">Dt Lancamento</span></dt>
+                    <dd>
+                        <span>{{sistemaAgua.dtLancamento | date:'mediumDate'}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="sisasApp.sistemaAgua.dtUltimaAlteracao">Dt Ultima Alteracao</span></dt>
+                    <dd>
+                        <span>{{sistemaAgua.dtUltimaAlteracao | date:'mediumDate'}}</span>
+                    </dd>
+                </div>
             </div>
-        </dd>
+        </div>
+    </div>
 
-    </dl>
 
     <button type="submit"
             (click)="previousState()"

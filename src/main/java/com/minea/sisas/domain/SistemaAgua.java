@@ -213,6 +213,14 @@ public class SistemaAgua implements Serializable {
     @JoinColumn(name = "id_comuna")
     private Comuna comuna;
 
+    @ManyToOne
+    @JoinColumn(name = "id_provincia")
+    private Provincia provincia;
+
+    @ManyToOne
+    @JoinColumn(name = "id_municipio")
+    private Municipio municipio;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -909,6 +917,34 @@ public class SistemaAgua implements Serializable {
 
     public void setComuna(Comuna comuna) {
         this.comuna = comuna;
+    }
+
+    //Adicionado campos PROVINCIA E MUNICIPIO
+
+    public Provincia getProvincia() {
+        return provincia;
+    }
+
+    public SistemaAgua idProvincia(Provincia provincia) {
+        this.provincia = provincia;
+        return this;
+    }
+
+    public void setProvincia(Provincia provincia) {
+        this.provincia = provincia;
+    }
+
+    public Municipio getMunicipio() {
+        return municipio;
+    }
+
+    public SistemaAgua idMunicipio(Municipio municipio) {
+        this.municipio = municipio;
+        return this;
+    }
+
+    public void setMunicipio(Municipio municipio) {
+        this.municipio = municipio;
     }
 
     @Override

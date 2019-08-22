@@ -1,6 +1,8 @@
 import { BaseEntity } from './../../shared';
 import {Comuna} from '../comuna';
 import {Situacao} from '../situacao';
+import {Provincia} from '../provincia';
+import {Municipio} from '../municipio';
 
 export class SistemaAgua implements BaseEntity {
     constructor(
@@ -57,7 +59,9 @@ export class SistemaAgua implements BaseEntity {
         public nmModeloBombaManualUtilizada?: string,
         public nmTpBombaEnergia?: string,
         public situacao?: Situacao,
-        public comuna?: Comuna
+        public comuna?: Comuna,
+        public provincia?: Provincia,
+        public municipio?: Municipio
     ) {
     }
 }

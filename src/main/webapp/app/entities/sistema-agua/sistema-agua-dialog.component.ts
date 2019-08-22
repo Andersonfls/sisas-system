@@ -1,16 +1,18 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {HttpResponse, HttpErrorResponse} from '@angular/common/http';
 
-import { Observable } from 'rxjs/Observable';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
+import {Observable} from 'rxjs/Observable';
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {JhiEventManager, JhiAlertService} from 'ng-jhipster';
 
-import { SistemaAgua } from './sistema-agua.model';
-import { SistemaAguaPopupService } from './sistema-agua-popup.service';
-import { SistemaAguaService } from './sistema-agua.service';
-import { Situacao, SituacaoService } from '../situacao';
-import { Comuna, ComunaService } from '../comuna';
+import {SistemaAgua} from './sistema-agua.model';
+import {SistemaAguaPopupService} from './sistema-agua-popup.service';
+import {SistemaAguaService} from './sistema-agua.service';
+import {Situacao, SituacaoService} from '../situacao';
+import {Comuna, ComunaService} from '../comuna';
+import {Provincia, ProvinciaService} from '../provincia';
+import {Municipio, MunicipioService} from '../municipio';
 
 @Component({
     selector: 'jhi-sistema-agua-dialog',
@@ -21,8 +23,9 @@ export class SistemaAguaDialogComponent implements OnInit {
     sistemaAgua: SistemaAgua;
     isSaving: boolean;
     situacaos: Situacao[];
-
     comunas: Comuna[];
+    provincias: Provincia[];
+    municipios: Municipio[];
     dtLancamentoDp: any;
     dtUltimaAlteracaoDp: any;
     public tipoComunaAldeias: Array<any> = ['Concentrada', 'Dispersa', 'Semi-Dispersa'];
@@ -33,6 +36,8 @@ export class SistemaAguaDialogComponent implements OnInit {
         private sistemaAguaService: SistemaAguaService,
         private situacaoService: SituacaoService,
         private comunaService: ComunaService,
+        private municipioService: MunicipioService,
+        private provinciaService: ProvinciaService,
         private eventManager: JhiEventManager
     ) {
     }
@@ -40,9 +45,26 @@ export class SistemaAguaDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.situacaoService.query()
-            .subscribe((res: HttpResponse<Situacao[]>) => { this.situacaos = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+            .subscribe((res: HttpResponse<Situacao[]>) => {
+                this.situacaos = res.body;
+            }, (res: HttpErrorResponse) => this.onError(res.message));
+
         this.comunaService.query()
-            .subscribe((res: HttpResponse<Comuna[]>) => { this.comunas = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+            .subscribe((res: HttpResponse<Comuna[]>) => {
+                this.comunas = res.body;
+            }, (res: HttpErrorResponse) => this.onError(res.message));
+
+        this.municipioService.query().subscribe(
+            (res: HttpResponse<Municipio[]>) => {
+                this.municipios = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message));
+
+        this.provinciaService.query().subscribe(
+            (res: HttpResponse<Provincia[]>) => {
+                this.provincias = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message));
 
         const now = new Date();
         this.sistemaAgua.dtLancamento = {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()};
@@ -69,7 +91,7 @@ export class SistemaAguaDialogComponent implements OnInit {
     }
 
     private onSaveSuccess(result: SistemaAgua) {
-        this.eventManager.broadcast({ name: 'sistemaAguaListModification', content: 'OK'});
+        this.eventManager.broadcast({name: 'sistemaAguaListModification', content: 'OK'});
         this.isSaving = false;
         this.activeModal.dismiss(result);
     }
@@ -102,11 +124,12 @@ export class SistemaAguaPopupComponent implements OnInit, OnDestroy {
     constructor(
         private route: ActivatedRoute,
         private sistemaAguaPopupService: SistemaAguaPopupService
-    ) {}
+    ) {
+    }
 
     ngOnInit() {
         this.routeSub = this.route.params.subscribe((params) => {
-            if ( params['id'] ) {
+            if (params['id']) {
                 this.sistemaAguaPopupService
                     .open(SistemaAguaDialogComponent as Component, params['id']);
             } else {
