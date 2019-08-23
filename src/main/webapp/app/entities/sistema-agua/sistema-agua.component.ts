@@ -10,7 +10,7 @@ import { ITEMS_PER_PAGE, Principal } from '../../shared';
 
 @Component({
     selector: 'jhi-sistema-agua',
-    templateUrl: './sistema-agua.component.html'
+    templateUrl: './sistema-agua.component.html',
 })
 export class SistemaAguaComponent implements OnInit, OnDestroy {
 
