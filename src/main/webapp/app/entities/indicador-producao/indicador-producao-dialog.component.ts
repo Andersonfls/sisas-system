@@ -49,6 +49,10 @@ export class IndicadorProducaoDialogComponent implements OnInit {
             .subscribe((res: HttpResponse<SistemaAgua[]>) => { this.sistemaaguas = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
         this.comunaService.query()
             .subscribe((res: HttpResponse<Comuna[]>) => { this.comunas = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+
+        this.indicadorProducao.comuna = null;
+        this.indicadorProducao.sistemaAgua = null;
+        this.indicadorProducao.situacao = null;
     }
 
     clear() {

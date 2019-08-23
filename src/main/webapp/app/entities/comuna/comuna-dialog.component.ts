@@ -36,6 +36,8 @@ export class ComunaDialogComponent implements OnInit {
         this.municipioService.query()
             .subscribe((res: HttpResponse<Municipio[]>) => { this.municipios = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
         console.log(this.comuna);
+
+        this.comuna.municipio = null;
     }
 
     clear() {

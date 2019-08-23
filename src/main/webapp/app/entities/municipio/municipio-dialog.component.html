@@ -38,7 +38,7 @@
                 Provincia</label>
             <select class="form-control" id="field_idProvincia" name="idProvincia" [(ngModel)]="municipio.provincia"
                     required>
-                <option *ngIf="!editForm.value.provincia" [ngValue]="null" selected></option>
+                <option *ngIf="!editForm.value.provincia" [ngValue]="null" selected>Selecione a Província...</option>
                 <option [ngValue]="provinciaOption.id===municipio.provincia?.id ? municipio.provincia:provinciaOption"
                         *ngFor="let provinciaOption of provincias; trackBy: trackProvinciaById">{{provinciaOption.nmProvincia}}</option>
             </select>

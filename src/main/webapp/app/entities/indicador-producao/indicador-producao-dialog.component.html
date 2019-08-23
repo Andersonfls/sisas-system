@@ -1211,8 +1211,8 @@
 
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="sisasApp.indicadorProducao.idSituacao" for="field_idSituacao">Id Situacao</label>
-            <select class="form-control" id="field_idSituacao" name="idSituacao" [(ngModel)]="indicadorProducao.idSituacaoId"  required>
-                <option *ngIf="!editForm.value.idSituacao" [ngValue]="null" selected></option>
+            <select class="form-control" id="field_idSituacao" name="idSituacao" [(ngModel)]="indicadorProducao.situacao"  required>
+                <option *ngIf="!editForm.value.situacao" [ngValue]="null" selected>Selecione a Situação...</option>
                 <option [ngValue]="situacaoOption" *ngFor="let situacaoOption of situacaos; trackBy: trackSituacaoById">{{situacaoOption.nmSituacao}}</option>
             </select>
         </div>
@@ -1224,8 +1224,8 @@
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="sisasApp.indicadorProducao.idSistemaAgua" for="field_idSistemaAgua">Id Sistema Agua</label>
-            <select class="form-control" id="field_idSistemaAgua" name="idSistemaAgua" [(ngModel)]="indicadorProducao.idSistemaAguaId"  required>
-                <option *ngIf="!editForm.value.idSistemaAgua" [ngValue]="null" selected></option>
+            <select class="form-control" id="field_idSistemaAgua" name="idSistemaAgua" [(ngModel)]="indicadorProducao.sistemaAgua"  required>
+                <option *ngIf="!editForm.value.sistemaAgua" [ngValue]="null" selected>Selecione o Sistema de Água...</option>
                 <option [ngValue]="sistemaAguaOption" *ngFor="let sistemaAguaOption of sistemaaguas; trackBy: trackSistemaAguaById">{{sistemaAguaOption.nmSistemaAgua}}</option>
             </select>
         </div>
@@ -1237,8 +1237,8 @@
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="sisasApp.indicadorProducao.idComuna" for="field_idComuna">Id Comuna</label>
-            <select class="form-control" id="field_idComuna" name="idComuna" [(ngModel)]="indicadorProducao.idComunaId"  required>
-                <option *ngIf="!editForm.value.idComuna" [ngValue]="null" selected></option>
+            <select class="form-control" id="field_idComuna" name="idComuna" [(ngModel)]="indicadorProducao.comuna"  required>
+                <option *ngIf="!editForm.value.comuna" [ngValue]="null" selected>Selecione uma Comuna..</option>
                 <option [ngValue]="comunaOption" *ngFor="let comunaOption of comunas; trackBy: trackComunaById">{{comunaOption.nmComuna}}</option>
             </select>
         </div>

@@ -32,7 +32,7 @@
             <label class="form-control-label" jhiTranslate="sisasApp.comuna.idMunicipio" for="field_idMunicipio">Municipio</label>
             <select class="form-control" id="field_idMunicipio" name="idMunicipio" [(ngModel)]="comuna.municipio"
                     required>
-                <option [ngValue]="null"></option>
+                <option [ngValue]="null">Selecione a Comuna...</option>
                 <option [ngValue]="municipioOption.id === comuna.municipio?.id ? comuna.municipio : municipioOption"
                         *ngFor="let municipioOption of municipios; trackBy: trackMunicipioById">{{municipioOption.nmMunicipio}}</option>
             </select>
