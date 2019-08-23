@@ -1,17 +1,17 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {HttpResponse, HttpErrorResponse} from '@angular/common/http';
 
-import { Observable } from 'rxjs/Observable';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
+import {Observable} from 'rxjs/Observable';
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {JhiEventManager, JhiAlertService} from 'ng-jhipster';
 
-import { IndicadorProducao } from './indicador-producao.model';
-import { IndicadorProducaoPopupService } from './indicador-producao-popup.service';
-import { IndicadorProducaoService } from './indicador-producao.service';
-import { Situacao, SituacaoService } from '../situacao';
-import { SistemaAgua, SistemaAguaService } from '../sistema-agua';
-import { Comuna, ComunaService } from '../comuna';
+import {IndicadorProducao} from './indicador-producao.model';
+import {IndicadorProducaoPopupService} from './indicador-producao-popup.service';
+import {IndicadorProducaoService} from './indicador-producao.service';
+import {Situacao, SituacaoService} from '../situacao';
+import {SistemaAgua, SistemaAguaService} from '../sistema-agua';
+import {Comuna, ComunaService} from '../comuna';
 
 @Component({
     selector: 'jhi-indicador-producao-dialog',
@@ -30,6 +30,8 @@ export class IndicadorProducaoDialogComponent implements OnInit {
     dtLancamentoDp: any;
     dtUltimaAlteracaoDp: any;
 
+    somaTotal: number;
+
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
@@ -44,11 +46,17 @@ export class IndicadorProducaoDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.situacaoService.query()
-            .subscribe((res: HttpResponse<Situacao[]>) => { this.situacaos = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+            .subscribe((res: HttpResponse<Situacao[]>) => {
+                this.situacaos = res.body;
+            }, (res: HttpErrorResponse) => this.onError(res.message));
         this.sistemaAguaService.query()
-            .subscribe((res: HttpResponse<SistemaAgua[]>) => { this.sistemaaguas = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+            .subscribe((res: HttpResponse<SistemaAgua[]>) => {
+                this.sistemaaguas = res.body;
+            }, (res: HttpErrorResponse) => this.onError(res.message));
         this.comunaService.query()
-            .subscribe((res: HttpResponse<Comuna[]>) => { this.comunas = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+            .subscribe((res: HttpResponse<Comuna[]>) => {
+                this.comunas = res.body;
+            }, (res: HttpErrorResponse) => this.onError(res.message));
     }
 
     clear() {
@@ -72,7 +80,7 @@ export class IndicadorProducaoDialogComponent implements OnInit {
     }
 
     private onSaveSuccess(result: IndicadorProducao) {
-        this.eventManager.broadcast({ name: 'indicadorProducaoListModification', content: 'OK'});
+        this.eventManager.broadcast({name: 'indicadorProducaoListModification', content: 'OK'});
         this.isSaving = false;
         this.activeModal.dismiss(result);
     }
@@ -109,11 +117,12 @@ export class IndicadorProducaoPopupComponent implements OnInit, OnDestroy {
     constructor(
         private route: ActivatedRoute,
         private indicadorProducaoPopupService: IndicadorProducaoPopupService
-    ) {}
+    ) {
+    }
 
     ngOnInit() {
         this.routeSub = this.route.params.subscribe((params) => {
-            if ( params['id'] ) {
+            if (params['id']) {
                 this.indicadorProducaoPopupService
                     .open(IndicadorProducaoDialogComponent as Component, params['id']);
             } else {
