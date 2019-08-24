@@ -93,7 +93,7 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.idComuna" for="field_idComuna">Id Comuna</label>
             <select class="form-control" id="field_idComuna" name="idComuna" [(ngModel)]="programasProjectos.comuna"  required>
-                <option *ngIf="!editForm.value.comuna" [ngValue]="null" selected></option>
+                <option [ngValue]="null" selected>Selecione a Comuna...</option>
                 <option [ngValue]="comunaOption" *ngFor="let comunaOption of comunas; trackBy: trackComunaById">{{comunaOption.nmComuna}}</option>
             </select>
         </div>

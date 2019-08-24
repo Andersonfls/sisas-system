@@ -57,6 +57,10 @@ export class IndicadorProducaoDialogComponent implements OnInit {
                 this.comunas = res.body;
             }, (res: HttpErrorResponse) => this.onError(res.message));
         this.findLastIndicador();
+
+        this.indicadorProducao.comuna = null;
+        this.indicadorProducao.sistemaAgua = null;
+        this.indicadorProducao.situacao = null;
     }
 
     clear() {

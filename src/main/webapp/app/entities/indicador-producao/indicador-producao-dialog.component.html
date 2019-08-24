@@ -184,11 +184,11 @@
                             </div>
                         </div>
                         <!--<div>-->
-                            <!--do component {{(editForm.controls.qtdMediaHorasParagem.value)+5}}-->
-                            <!--<input type="number" class="form-control" name="teste"-->
-                                   <!--id="field_teste"-->
-                                   <!--value="(editForm.controls.qtdMediaHorasParagem.value)/24" readonly-->
-                                   <!--placeholder="vai ser o total"/>-->
+                        <!--do component {{(editForm.controls.qtdMediaHorasParagem.value)+5}}-->
+                        <!--<input type="number" class="form-control" name="teste"-->
+                        <!--id="field_teste"-->
+                        <!--value="(editForm.controls.qtdMediaHorasParagem.value)/24" readonly-->
+                        <!--placeholder="vai ser o total"/>-->
                         <!--</div>-->
                     </div>
                     <div class="col">
@@ -551,6 +551,7 @@
                             </div>
                         </div>
 
+                        <<<<<<< HEAD
                     </div>
                     <div class="col">
                         <div class="form-group">
@@ -1822,95 +1823,148 @@
                                 </small>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="form-control-label"
-                                   jhiTranslate="sisasApp.indicadorProducao.qtdManuaisRealizados"
-                                   for="field_qtdManuaisRealizados">Qtd Manuais Realizados</label>
-                            <input type="number" class="form-control" name="qtdManuaisRealizados"
-                                   id="field_qtdManuaisRealizados"
-                                   [(ngModel)]="indicadorProducao.qtdManuaisRealizados" required
-                                   placeholder="Quantidade de manuais"/>
-                            <div
-                                [hidden]="!(editForm.controls.qtdManuaisRealizados?.dirty && editForm.controls.qtdManuaisRealizados?.invalid)">
-                                <small class="form-text text-danger"
-                                       [hidden]="!editForm.controls.qtdManuaisRealizados?.errors?.required"
-                                       jhiTranslate="entity.validation.required">
-                                    This field is required.
-                                </small>
-                                <small class="form-text text-danger"
-                                       [hidden]="!editForm.controls.qtdManuaisRealizados?.errors?.number"
-                                       jhiTranslate="entity.validation.number">
-                                    This field should be a number.
-                                </small>
-                            </div>
-                        </div>
+                        <!--<div class="form-group">-->
+                        <!--<label class="form-control-label"-->
+                        <!--jhiTranslate="sisasApp.indicadorProducao.qtdManuaisRealizados"-->
+                        <!--for="field_qtdManuaisRealizados">Qtd Manuais Realizados</label>-->
+                        <!--<input type="number" class="form-control" name="qtdManuaisRealizados"-->
+                        <!--id="field_qtdManuaisRealizados"-->
+                        <!--[(ngModel)]="indicadorProducao.qtdManuaisRealizados" required-->
+                        <!--placeholder="Quantidade de manuais"/>-->
+                        <!--<div-->
+                        <!--[hidden]="!(editForm.controls.qtdManuaisRealizados?.dirty && editForm.controls.qtdManuaisRealizados?.invalid)">-->
+                        <!--<small class="form-text text-danger"-->
+                        <!--[hidden]="!editForm.controls.qtdManuaisRealizados?.errors?.required"-->
+                        <!--jhiTranslate="entity.validation.required">-->
+                        <!--This field is required.-->
+                        <!--</small>-->
+                        <!--<small class="form-text text-danger"-->
+                        <!--[hidden]="!editForm.controls.qtdManuaisRealizados?.errors?.number"-->
+                        <!--jhiTranslate="entity.validation.number">-->
+                        <!--This field should be a number.-->
+                        <!--</small>-->
+                        <!--</div>-->
+                        <!--</div>-->
 
-                        <div class="form-group">
-                            <label class="form-control-label" jhiTranslate="sisasApp.indicadorProducao.idSituacao"
-                                   for="field_idSituacao">Id Situacao</label>
-                            <select class="form-control" id="field_idSituacao" name="idSituacao"
-                                    [(ngModel)]="indicadorProducao.situacao" required>
-                                <option *ngIf="!editForm.value.idSituacao" [ngValue]="null" selected></option>
-                                <option [ngValue]="situacaoOption"
-                                        *ngFor="let situacaoOption of situacaos; trackBy: trackSituacaoById">{{situacaoOption.nmSituacao}}</option>
-                            </select>
-                        </div>
-                        <div [hidden]="!(editForm.controls.idSituacao?.dirty && editForm.controls.idSituacao?.invalid)">
-                            <small class="form-text text-danger"
-                                   [hidden]="!editForm.controls.idSituacao?.errors?.required"
-                                   jhiTranslate="entity.validation.required">
-                                This field is required.
-                            </small>
-                        </div>
-                        <!--<div *n></div>-->
-                        <div class="form-group">
-                            <label class="form-control-label" jhiTranslate="sisasApp.indicadorProducao.idSistemaAgua"
-                                   for="field_idSistemaAgua">Id Sistema Agua</label>
-                            <select class="form-control" id="field_idSistemaAgua" name="idSistemaAgua"
-                                    [(ngModel)]="indicadorProducao.sistemaAgua" required>
-                                <option *ngIf="!editForm.value.idSistemaAgua" [ngValue]="null" selected></option>
-                                <option [ngValue]="sistemaAguaOption"
-                                        *ngFor="let sistemaAguaOption of sistemaaguas; trackBy: trackSistemaAguaById">{{sistemaAguaOption.nmSistemaAgua}}</option>
-                            </select>
-                        </div>
-                        <div
-                            [hidden]="!(editForm.controls.idSistemaAgua?.dirty && editForm.controls.idSistemaAgua?.invalid)">
-                            <small class="form-text text-danger"
-                                   [hidden]="!editForm.controls.idSistemaAgua?.errors?.required"
-                                   jhiTranslate="entity.validation.required">
-                                This field is required.
-                            </small>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-control-label" jhiTranslate="sisasApp.indicadorProducao.idComuna"
-                                   for="field_idComuna">Id
-                                Comuna</label>
-                            <select class="form-control" id="field_idComuna" name="idComuna"
-                                    [(ngModel)]="indicadorProducao.comuna"
-                                    required>
-                                <option *ngIf="!editForm.value.idComuna" [ngValue]="null" selected></option>
-                                <option [ngValue]="comunaOption"
-                                        *ngFor="let comunaOption of comunas; trackBy: trackComunaById">{{comunaOption.nmComuna}}</option>
-                            </select>
-                        </div>
-                        <div [hidden]="!(editForm.controls.idComuna?.dirty && editForm.controls.idComuna?.invalid)">
-                            <small class="form-text text-danger"
-                                   [hidden]="!editForm.controls.idComuna?.errors?.required"
-                                   jhiTranslate="entity.validation.required">
-                                This field is required.
-                            </small>
-                        </div>
+                        <!--<div class="form-group">-->
+                        <!--<label class="form-control-label" jhiTranslate="sisasApp.indicadorProducao.idSituacao"-->
+                        <!--for="field_idSituacao">Id Situacao</label>-->
+                        <!--<select class="form-control" id="field_idSituacao" name="idSituacao"-->
+                        <!--[(ngModel)]="indicadorProducao.situacao" required>-->
+                        <!--<option *ngIf="!editForm.value.idSituacao" [ngValue]="null" selected></option>-->
+                        <!--<option [ngValue]="situacaoOption"-->
+                        <!--*ngFor="let situacaoOption of situacaos; trackBy: trackSituacaoById">{{situacaoOption.nmSituacao}}</option>-->
+                        <!--</select>-->
+                        <!--</div>-->
+                        <!--<div [hidden]="!(editForm.controls.idSituacao?.dirty && editForm.controls.idSituacao?.invalid)">-->
+                        <!--<small class="form-text text-danger"-->
+                        <!--[hidden]="!editForm.controls.idSituacao?.errors?.required"-->
+                        <!--jhiTranslate="entity.validation.required">-->
+                        <!--This field is required.-->
+                        <!--</small>-->
+                        <!--</div>-->
+                        <!--&lt;!&ndash;<div *n></div>&ndash;&gt;-->
+                        <!--<div class="form-group">-->
+                        <!--<label class="form-control-label" jhiTranslate="sisasApp.indicadorProducao.idSistemaAgua"-->
+                        <!--for="field_idSistemaAgua">Id Sistema Agua</label>-->
+                        <!--<select class="form-control" id="field_idSistemaAgua" name="idSistemaAgua"-->
+                        <!--[(ngModel)]="indicadorProducao.sistemaAgua" required>-->
+                        <!--<option *ngIf="!editForm.value.idSistemaAgua" [ngValue]="null" selected></option>-->
+                        <!--<option [ngValue]="sistemaAguaOption"-->
+                        <!--*ngFor="let sistemaAguaOption of sistemaaguas; trackBy: trackSistemaAguaById">{{sistemaAguaOption.nmSistemaAgua}}</option>-->
+                        <!--</select>-->
+                        <!--</div>-->
+                        <!--<div-->
+                        <!--[hidden]="!(editForm.controls.idSistemaAgua?.dirty && editForm.controls.idSistemaAgua?.invalid)">-->
+                        <!--<small class="form-text text-danger"-->
+                        <!--[hidden]="!editForm.controls.idSistemaAgua?.errors?.required"-->
+                        <!--jhiTranslate="entity.validation.required">-->
+                        <!--This field is required.-->
+                        <!--</small>-->
+                        <!--</div>-->
+                        <!--<div class="form-group">-->
+                        <!--<label class="form-control-label" jhiTranslate="sisasApp.indicadorProducao.idComuna"-->
+                        <!--for="field_idComuna">Id-->
+                        <!--Comuna</label>-->
+                        <!--<select class="form-control" id="field_idComuna" name="idComuna"-->
+                        <!--[(ngModel)]="indicadorProducao.comuna"-->
+                        <!--required>-->
+                        <!--<option *ngIf="!editForm.value.idComuna" [ngValue]="null" selected></option>-->
+                        <!--<option [ngValue]="comunaOption"-->
+                        <!--*ngFor="let comunaOption of comunas; trackBy: trackComunaById">{{comunaOption.nmComuna}}</option>-->
+                        <!--</select>-->
+                        <!--</div>-->
+                        <!--<div [hidden]="!(editForm.controls.idComuna?.dirty && editForm.controls.idComuna?.invalid)">-->
+                        <!--<small class="form-text text-danger"-->
+                        <!--[hidden]="!editForm.controls.idComuna?.errors?.required"-->
+                        <!--jhiTranslate="entity.validation.required">-->
+                        <!--This field is required.-->
+                        <!--</small>-->
+                        <!--</div>-->
                     </div>
                 </div>
             </div>
+            <div class="form-group">
+                <label class="form-control-label" jhiTranslate="sisasApp.indicadorProducao.idSituacao"
+                       for="field_idSituacao">Id Situacao</label>
+                <select class="form-control" id="field_idSituacao" name="idSituacao"
+                        [(ngModel)]="indicadorProducao.situacao" required>
+                    <option *ngIf="!editForm.value.situacao" [ngValue]="null" selected>Selecione a Situação...</option>
+                    <option [ngValue]="situacaoOption"
+                            *ngFor="let situacaoOption of situacaos; trackBy: trackSituacaoById">{{situacaoOption.nmSituacao}}</option>
+                </select>
+            </div>
+            <div [hidden]="!(editForm.controls.idSituacao?.dirty && editForm.controls.idSituacao?.invalid)">
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.idSituacao?.errors?.required"
+                       jhiTranslate="entity.validation.required">
+                    This field is required.
+                </small>
+            </div>
+            <div class="form-group">
+                <label class="form-control-label" jhiTranslate="sisasApp.indicadorProducao.idSistemaAgua"
+                       for="field_idSistemaAgua">Id Sistema Agua</label>
+                <select class="form-control" id="field_idSistemaAgua" name="idSistemaAgua"
+                        [(ngModel)]="indicadorProducao.sistemaAgua" required>
+                    <option *ngIf="!editForm.value.sistemaAgua" [ngValue]="null" selected>Selecione o Sistema de
+                        Água...
+                    </option>
+                    <option [ngValue]="sistemaAguaOption"
+                            *ngFor="let sistemaAguaOption of sistemaaguas; trackBy: trackSistemaAguaById">{{sistemaAguaOption.nmSistemaAgua}}</option>
+                </select>
+            </div>
+            <div [hidden]="!(editForm.controls.idSistemaAgua?.dirty && editForm.controls.idSistemaAgua?.invalid)">
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.idSistemaAgua?.errors?.required"
+                       jhiTranslate="entity.validation.required">
+                    This field is required.
+                </small>
+            </div>
+            <div class="form-group">
+                <label class="form-control-label" jhiTranslate="sisasApp.indicadorProducao.idComuna"
+                       for="field_idComuna">Id Comuna</label>
+                <select class="form-control" id="field_idComuna" name="idComuna" [(ngModel)]="indicadorProducao.comuna"
+                        required>
+                    <option *ngIf="!editForm.value.comuna" [ngValue]="null" selected>Selecione uma Comuna..</option>
+                    <option [ngValue]="comunaOption"
+                            *ngFor="let comunaOption of comunas; trackBy: trackComunaById">{{comunaOption.nmComuna}}</option>
+                </select>
+            </div>
+            <div [hidden]="!(editForm.controls.idComuna?.dirty && editForm.controls.idComuna?.invalid)">
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.idComuna?.errors?.required"
+                       jhiTranslate="entity.validation.required">
+                    This field is required.
+                </small>
+            </div>
         </div>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
-            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
-        </button>
-        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
-            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
-        </button>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+                <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+            </button>
+            <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+            </button>
+        </div>
     </div>
 </form>

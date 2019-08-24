@@ -37,6 +37,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
         this.isSaving = false;
         this.comunaService.query()
             .subscribe((res: HttpResponse<Comuna[]>) => { this.comunas = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+        this.programasProjectos.comuna = null;
     }
 
     clear() {
