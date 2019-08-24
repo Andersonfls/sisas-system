@@ -1,6 +1,7 @@
 package com.minea.sisas.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.minea.sisas.domain.SistemaAgua;
 import com.minea.sisas.repository.SistemaAguaRepository;
 import com.minea.sisas.security.AuthoritiesConstants;
 import com.minea.sisas.service.SistemaAguaService;
@@ -25,7 +26,10 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -116,6 +120,30 @@ public class SistemaAguaResource {
         Page<SistemaAguaDTO> page = sistemaAguaRepository.buscarPorNome(nome, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/sistema-aguas");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    @GetMapping("/sistema-aguas/municipioFiltro")
+    public ResponseEntity<List<SistemaAgua>> getByMunicipio(@RequestParam(value = "nome") String nome) {
+        List<SistemaAgua> page = sistemaAguaRepository.findAllByMunicipioNmMunicipioEquals(nome);
+        return new ResponseEntity<>(page, null, HttpStatus.OK);
+    }
+
+    @GetMapping("/sistema-aguas/provinciaFiltro")
+    public ResponseEntity<List<SistemaAgua>> getByProvincia(@RequestParam(value = "nome") String nome) {
+        List<SistemaAgua> page = sistemaAguaRepository.findAllByProvinciaNmProvinciaEquals(nome);
+        return new ResponseEntity<>(page, null, HttpStatus.OK);
+    }
+
+    @GetMapping("/sistema-aguas/comunaFiltro")
+    public ResponseEntity<List<SistemaAgua>> getByComuna(@RequestParam(value = "nome") String nome) {
+        List<SistemaAgua> page = sistemaAguaRepository.findAllByComunaNmComunaEquals(nome);
+        return new ResponseEntity<>(page, null, HttpStatus.OK);
+    }
+
+    @GetMapping("/sistema-aguas/periodoFiltro")
+    public ResponseEntity<List<SistemaAgua>> getByPeriodo(@RequestParam(value = "dtInicial") String dtInicial, @RequestParam(value = "dtFinal") String dtFinal) throws ParseException {
+        List<SistemaAgua> page = sistemaAguaRepository.getAllBetweenDates(LocalDate.parse(dtInicial), LocalDate.parse(dtFinal));
+        return new ResponseEntity<>(page, null, HttpStatus.OK);
     }
 
     /**

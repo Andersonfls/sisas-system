@@ -29,6 +29,7 @@ export class SistemaAguaDialogComponent implements OnInit {
     dtLancamentoDp: any;
     dtUltimaAlteracaoDp: any;
     public tipoComunaAldeias: Array<any> = ['Concentrada', 'Dispersa', 'Semi-Dispersa'];
+    esconderFiltros: boolean;
 
     constructor(
         public activeModal: NgbActiveModal,

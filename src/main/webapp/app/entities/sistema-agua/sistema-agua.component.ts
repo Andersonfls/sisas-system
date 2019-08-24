@@ -7,6 +7,9 @@ import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
 import { SistemaAgua } from './sistema-agua.model';
 import { SistemaAguaService } from './sistema-agua.service';
 import { ITEMS_PER_PAGE, Principal } from '../../shared';
+import {Comuna, ComunaService} from '../comuna';
+import {Provincia, ProvinciaService} from '../provincia';
+import {Municipio, MunicipioService} from '../municipio';
 
 @Component({
     selector: 'jhi-sistema-agua',
@@ -29,6 +32,13 @@ currentAccount: any;
     predicate: any;
     previousPage: any;
     reverse: any;
+    esconderFiltros: boolean;
+    sistemaAgua: SistemaAgua;
+    comunas: Comuna[];
+    provincias: Provincia[];
+    municipios: Municipio[];
+    dataInicialBusca: Date;
+    dataFinalBusca: Date;
 
     constructor(
         private sistemaAguaService: SistemaAguaService,
@@ -37,7 +47,10 @@ currentAccount: any;
         private principal: Principal,
         private activatedRoute: ActivatedRoute,
         private router: Router,
-        private eventManager: JhiEventManager
+        private eventManager: JhiEventManager,
+        private comunaService: ComunaService,
+        private municipioService: MunicipioService,
+        private provinciaService: ProvinciaService
     ) {
         this.itemsPerPage = ITEMS_PER_PAGE;
         this.routeData = this.activatedRoute.data.subscribe((data) => {
@@ -91,6 +104,77 @@ currentAccount: any;
         }
     }
 
+    buscaPorMunicipio() {
+        if (this.sistemaAgua.municipio === null) {
+            alert('Selecione um município');
+        } else {
+            this.sistemaAguaService.queryMunicipio({
+                page: this.page - 1,
+                size: this.itemsPerPage,
+                nome: this.sistemaAgua.municipio.nmMunicipio
+            }).subscribe((res) => {
+                this.sistemaAguas = res.body;
+                this.links = this.parseLinks.parse(res.headers.get('link'));
+                this.totalItems = +res.headers.get('X-Total-Count');
+                this.queryCount = this.totalItems;
+            });
+        }
+    }
+
+    buscaPorProvincia() {
+        if (this.sistemaAgua.provincia === null) {
+            alert('Selecione uma Província');
+        } else {
+            this.sistemaAguaService.queryProvincia({
+                page: this.page - 1,
+                size: this.itemsPerPage,
+                nome: this.sistemaAgua.provincia.nmProvincia
+            }).subscribe((res) => {
+                this.sistemaAguas = res.body;
+                this.links = this.parseLinks.parse(res.headers.get('link'));
+                this.totalItems = +res.headers.get('X-Total-Count');
+                this.queryCount = this.totalItems;
+            });
+        }
+    }
+
+    buscaPorComuna() {
+        if (this.sistemaAgua.comuna === null) {
+            alert('Selecione uma Comuna');
+        } else {
+            this.sistemaAguaService.queryComuna({
+                page: this.page - 1,
+                size: this.itemsPerPage,
+                nome: this.sistemaAgua.comuna.nmComuna
+            }).subscribe((res) => {
+                this.sistemaAguas = res.body;
+                this.links = this.parseLinks.parse(res.headers.get('link'));
+                this.totalItems = +res.headers.get('X-Total-Count');
+                this.queryCount = this.totalItems;
+            });
+        }
+    }
+
+    buscaPorPeriodo() {
+        console.log(this.dataInicialBusca);
+        console.log(this.dataFinalBusca);
+        if (this.dataInicialBusca === null || this.dataFinalBusca === null) {
+            alert('Digite o Período (Data Inicial e Data Final)');
+        } else {
+            this.sistemaAguaService.queryPeríodo({
+                page: this.page - 1,
+                size: this.itemsPerPage,
+                dtInicial: this.dataInicialBusca,
+                dtFinal: this.dataFinalBusca
+            }).subscribe((res) => {
+                this.sistemaAguas = res.body;
+                this.links = this.parseLinks.parse(res.headers.get('link'));
+                this.totalItems = +res.headers.get('X-Total-Count');
+                this.queryCount = this.totalItems;
+            });
+        }
+    }
+
     clear() {
         this.page = 0;
         this.router.navigate(['/sistema-agua', {
@@ -99,12 +183,43 @@ currentAccount: any;
         }]);
         this.loadAll();
     }
+
+    mostrarFiltros() {
+        this.esconderFiltros = !this.esconderFiltros;
+
+        if (this.esconderFiltros) {
+            this.loadAll();
+        }
+    }
+
     ngOnInit() {
         this.loadAll();
         this.principal.identity().then((account) => {
             this.currentAccount = account;
         });
         this.registerChangeInSistemaAguas();
+        this.esconderFiltros = true;
+        this.sistemaAgua = new SistemaAgua();
+        this.sistemaAgua.comuna = null;
+        this.sistemaAgua.provincia = null;
+        this.sistemaAgua.municipio = null;
+
+        this.comunaService.query()
+            .subscribe((res: HttpResponse<Comuna[]>) => {
+                this.comunas = res.body;
+            }, (res: HttpErrorResponse) => this.onError(res.message));
+
+        this.municipioService.query().subscribe(
+            (res: HttpResponse<Municipio[]>) => {
+                this.municipios = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message));
+
+        this.provinciaService.query().subscribe(
+            (res: HttpResponse<Provincia[]>) => {
+                this.provincias = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message));
     }
 
     ngOnDestroy() {

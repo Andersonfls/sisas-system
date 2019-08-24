@@ -1,14 +1,67 @@
 <div>
     <h2>
         <span jhiTranslate="sisasApp.sistemaAgua.home.title">Sistema Aguas</span>
+        <button class="btn btn-primary jh-create-entity create-produto" (click)="mostrarFiltros()" style="float: left; margin-right: 25%;">
+            <span class="fa fa-plus"> </span>
+            <span>{{esconderFiltros ? 'Adicionar' : 'Retirar' }} filtros</span>
+        </button>
         <button class="btn btn-primary float-right jh-create-entity redondo"
                 [routerLink]="['/', { outlets: { popup: ['sistema-agua-new'] } }]">
             <span class="fa fa-plus"></span>
         </button>
     </h2>
+    <div class="card-body" [hidden]="esconderFiltros">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <div class="input-group" style="max-width: 97%; margin-bottom: 1%">
+                    <input type="text" class="form-control" name="filtro" [(ngModel)]="nome" placeholder="Digite o Nome do Sistema, Fonte Água, Localidade ou Tipo Área..." style="font-style:italic"/>
+                    <span class="input-group-btn">
+                            <button class="btn btn-search" type="button" (click)="onChangeNome()" ><i class="fa fa-search fa-fw"></i></button>
+                    </span>
+                </div>
+
+                <div class="input-group" style="max-width: 97%; margin-bottom: 1%">
+                    <select class="form-control" id="field_idProvincia" name="provincia" [(ngModel)]="sistemaAgua.provincia">
+                        <option [ngValue]="null" selected>Selecione a Província..</option>
+                        <option [ngValue]="provinciaOption.id === sistemaAgua.provincia?.id ? sistemaAgua.provincia : provinciaOption"
+                                *ngFor="let provinciaOption of provincias">{{provinciaOption.nmProvincia}}</option>
+                    </select>
+                    <span class="input-group-btn">
+                            <button class="btn btn-search" type="button" (click)="buscaPorProvincia()" ><i class="fa fa-search fa-fw"></i></button>
+                    </span>
+                    <select class="form-control" id="field_idMunicipio" name="municipio" [(ngModel)]="sistemaAgua.municipio">
+                        <option [ngValue]="null" selected>Selecione o Municipio..</option>
+                        <option [ngValue]="municipioOption.id === sistemaAgua.municipio?.id ? sistemaAgua.municipio : municipioOption"
+                                *ngFor="let municipioOption of municipios">{{municipioOption.nmMunicipio}}</option>
+                    </select>
+                    <span class="input-group-btn">
+                            <button class="btn btn-search" type="button" (click)="buscaPorMunicipio()" ><i class="fa fa-search fa-fw"></i></button>
+                    </span>
+
+                    <select class="form-control" id="field_idComuna" name="comuna" [(ngModel)]="sistemaAgua.comuna">
+                        <option [ngValue]="null" selected>Selecione a Comuna...</option>
+                        <option [ngValue]="comunaOption.id === sistemaAgua.comuna?.id ? sistemaAgua.comuna :comunaOption "
+                                *ngFor="let comunaOption of comunas">{{comunaOption.nmComuna}}</option>
+                    </select>
+                    <span class="input-group-btn">
+                            <button class="btn btn-search" type="button" (click)="buscaPorComuna()" ><i class="fa fa-search fa-fw"></i></button>
+                    </span>
+                </div>
+
+                <div class="input-group" style="max-width: 97%; margin-bottom: 1%">
+                    <label class="form-control-label" style="margin-right: 1%">Período:</label>
+                    <input type="date" class="form-control" name="filtro" [(ngModel)]="dataInicialBusca" (ngModelChange)="onChangeNome()"
+                           placeholder="Periodo Inicial dd/mm/yyyy" style="margin-right: 5%;"/>
+                    <input type="date" class="form-control" name="filtro" [(ngModel)]="dataFinalBusca" (ngModelChange)="onChangeNome()"
+                           placeholder="Periodo Final dd/mm/yyyy" />
+                    <span class="input-group-btn">
+                            <button class="btn btn-search" type="button" (click)="buscaPorPeriodo()" ><i class="fa fa-search fa-fw"></i></button>
+                    </span>
+                </div>
+            </div>
+        </form>
+    </div>
     <jhi-alert></jhi-alert>
-    <input type="text" class="form-control pesquisa" name="filtro" [(ngModel)]="nome" (ngModelChange)="onChangeNome()"
-           placeholder="Buscar..." style="font-style:italic"/>
 
     <br/>
     <div class="table-responsive" *ngIf="sistemaAguas">
@@ -184,7 +237,7 @@
             </tbody>
         </table>
     </div>
-    <div *ngIf="sistemaAguas && sistemaAguas.length">
+    <div *ngIf="sistemaAguas != null && sistemaAguas.length > 1">
         <div class="row justify-content-center">
             <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5"
                             [itemsPerPage]="itemsPerPage"></jhi-item-count>

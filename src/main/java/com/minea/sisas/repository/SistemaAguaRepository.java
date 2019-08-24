@@ -9,6 +9,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.List;
+
 
 /**
  * Spring Data JPA repository for the SistemaAgua entity.
@@ -22,4 +26,17 @@ public interface SistemaAguaRepository extends JpaRepository<SistemaAgua, Long>,
         "or LOWER(s.nmLocalidade) like LOWER(concat(:nome,'%'))" +
         "or LOWER(s.nmTpArea) like LOWER(concat(:nome,'%'))")
     Page buscarPorNome(@Param("nome") String nome, Pageable pageable);
+
+    //PROVINCIA
+    List<SistemaAgua> findAllByProvinciaNmProvinciaEquals(String nmProvincia);
+
+    //MUNICIPIO
+    List<SistemaAgua> findAllByMunicipioNmMunicipioEquals(String nmMunicipio);
+
+    //COMUNA
+    List<SistemaAgua> findAllByComunaNmComunaEquals(String nmComuna);
+
+    //PERIODO
+    @Query(value = "from SistemaAgua t where t.dtLancamento BETWEEN :startDate AND :endDate")
+    public List<SistemaAgua> getAllBetweenDates(@Param("startDate") LocalDate startDate, @Param("endDate")LocalDate endDate);
 }

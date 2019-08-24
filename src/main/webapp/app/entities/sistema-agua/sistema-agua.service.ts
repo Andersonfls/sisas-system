@@ -51,6 +51,50 @@ export class SistemaAguaService {
         });
     }
 
+    queryMunicipio(req: any): Observable<HttpResponse<SistemaAgua[]>> {
+        const params: HttpParams = createRequestOption(req);
+
+        const requestURL = SERVER_API_URL + 'api/sistema-aguas/municipioFiltro';
+
+        return this.http.get<SistemaAgua[]>(requestURL, {
+            params,
+            observe: 'response'
+        });
+    }
+
+    queryProvincia(req: any): Observable<HttpResponse<SistemaAgua[]>> {
+        const params: HttpParams = createRequestOption(req);
+
+        const requestURL = SERVER_API_URL + 'api/sistema-aguas/provinciaFiltro';
+
+        return this.http.get<SistemaAgua[]>(requestURL, {
+            params,
+            observe: 'response'
+        });
+    }
+
+    queryComuna(req: any): Observable<HttpResponse<SistemaAgua[]>> {
+        const params: HttpParams = createRequestOption(req);
+
+        const requestURL = SERVER_API_URL + 'api/sistema-aguas/comunaFiltro';
+
+        return this.http.get<SistemaAgua[]>(requestURL, {
+            params,
+            observe: 'response'
+        });
+    }
+
+    queryPeríodo(req: any): Observable<HttpResponse<SistemaAgua[]>> {
+        const params: HttpParams = createRequestOption(req);
+
+        const requestURL = SERVER_API_URL + 'api/sistema-aguas/periodoFiltro';
+
+        return this.http.get<SistemaAgua[]>(requestURL, {
+            params,
+            observe: 'response'
+        });
+    }
+
     delete(id: number): Observable<HttpResponse<any>> {
         return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response'});
     }
