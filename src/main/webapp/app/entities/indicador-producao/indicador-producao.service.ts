@@ -55,6 +55,11 @@ export class IndicadorProducaoService {
         });
     }
 
+    findLast(): Observable<EntityResponseType> {
+        return this.http.get<IndicadorProducao>(`${this.resourceUrl}/last`, { observe: 'response'})
+            .map((res: EntityResponseType) => this.convertResponse(res));
+    }
+
     private convertResponse(res: EntityResponseType): EntityResponseType {
         const body: IndicadorProducao = this.convertItemFromServer(res.body);
         return res.clone({body});

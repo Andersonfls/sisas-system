@@ -25,6 +25,7 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -65,6 +66,7 @@ public class IndicadorProducaoResource {
         if (indicadorProducaoDTO.getId() != null) {
             throw new BadRequestAlertException("A new indicadorProducao cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        indicadorProducaoDTO.setDtUltimaAlteracao(LocalDate.now());
         IndicadorProducaoDTO result = indicadorProducaoService.save(indicadorProducaoDTO);
         return ResponseEntity.created(new URI("/api/indicador-producaos/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
@@ -129,6 +131,14 @@ public class IndicadorProducaoResource {
     public ResponseEntity<IndicadorProducaoDTO> getIndicadorProducao(@PathVariable Long id) {
         log.debug("REST request to get IndicadorProducao : {}", id);
         IndicadorProducaoDTO indicadorProducaoDTO = indicadorProducaoService.findOne(id);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(indicadorProducaoDTO));
+    }
+
+    @GetMapping("/indicador-producaos/last")
+    @Timed
+    public ResponseEntity<IndicadorProducaoDTO> getLastIndicadorProducao() {
+        log.debug("REST request to get Last IndicadorProducao");
+        IndicadorProducaoDTO indicadorProducaoDTO = indicadorProducaoService.findLast();
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(indicadorProducaoDTO));
     }
 
