@@ -1,10 +1,10 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {HttpResponse, HttpErrorResponse} from '@angular/common/http';
+import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
 
 import {Observable} from 'rxjs/Observable';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {JhiEventManager, JhiAlertService} from 'ng-jhipster';
+import {JhiAlertService, JhiEventManager} from 'ng-jhipster';
 
 import {IndicadorProducao} from './indicador-producao.model';
 import {IndicadorProducaoPopupService} from './indicador-producao-popup.service';
@@ -20,6 +20,7 @@ import {Comuna, ComunaService} from '../comuna';
 export class IndicadorProducaoDialogComponent implements OnInit {
 
     indicadorProducao: IndicadorProducao;
+
     isSaving: boolean;
 
     situacaos: Situacao[];
@@ -29,8 +30,6 @@ export class IndicadorProducaoDialogComponent implements OnInit {
     comunas: Comuna[];
     dtLancamentoDp: any;
     dtUltimaAlteracaoDp: any;
-
-    somaTotal: number;
 
     constructor(
         public activeModal: NgbActiveModal,
@@ -57,6 +56,7 @@ export class IndicadorProducaoDialogComponent implements OnInit {
             .subscribe((res: HttpResponse<Comuna[]>) => {
                 this.comunas = res.body;
             }, (res: HttpErrorResponse) => this.onError(res.message));
+        this.findLastIndicador();
     }
 
     clear() {
@@ -72,6 +72,8 @@ export class IndicadorProducaoDialogComponent implements OnInit {
             this.subscribeToSaveResponse(
                 this.indicadorProducaoService.create(this.indicadorProducao));
         }
+        //  this.findLastIndicador();
+
     }
 
     private subscribeToSaveResponse(result: Observable<HttpResponse<IndicadorProducao>>) {
@@ -103,6 +105,16 @@ export class IndicadorProducaoDialogComponent implements OnInit {
 
     trackComunaById(index: number, item: Comuna) {
         return item.id;
+    }
+
+    findLastIndicador() {
+        this.indicadorProducaoService.findLast().subscribe(
+            (res: HttpResponse<IndicadorProducao>) => {
+                (this.indicadorProducao = res.body);
+            },
+            error1 => {
+                (this.onError(error1));
+            });
     }
 }
 

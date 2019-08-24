@@ -13,15 +13,15 @@
         <nav class="d-flex justify-content-center">
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                 <a class="nav-item nav-link active" id="nav-part1-tab" data-toggle="tab" href="#nav-part1" role="tab"
-                   aria-controls="nav-part1" aria-selected="true">PARTE 1</a>
+                   aria-controls="nav-part1" aria-selected="true">Parte 1</a>
                 <a class="nav-item nav-link" id="nav-part2-tab" data-toggle="tab" href="#nav-part2" role="tab"
-                   aria-controls="nav-part2" aria-selected="false">PARTE 2</a>
+                   aria-controls="nav-part2" aria-selected="false">Parte 2</a>
                 <a class="nav-item nav-link" id="nav-part3-tab" data-toggle="tab" href="#nav-part3" role="tab"
-                   aria-controls="nav-part3" aria-selected="false">PARTE 3</a>
+                   aria-controls="nav-part3" aria-selected="false">Parte 3</a>
                 <a class="nav-item nav-link" id="nav-part4-tab" data-toggle="tab" href="#nav-part4" role="tab"
-                   aria-controls="nav-part4" aria-selected="false">PARTE 4</a>
+                   aria-controls="nav-part4" aria-selected="false">Parte 4</a>
                 <a class="nav-item nav-link" id="nav-part5-tab" data-toggle="tab" href="#nav-part5" role="tab"
-                   aria-controls="nav-part5" aria-selected="false">PARTE 5</a>
+                   aria-controls="nav-part5" aria-selected="false">Parte 5</a>
             </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
@@ -168,7 +168,6 @@
                             <input type="number" class="form-control" name="qtdMediaHorasParagem"
                                    id="field_qtdMediaHorasParagem"
                                    [(ngModel)]="indicadorProducao.qtdMediaHorasParagem"
-                                   [valueAsNumber]="(editForm.controls.qtdMediaHorasDistribuicaoDiaria.value)/24"
                                    placeholder="Numero da média de horas"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdMediaHorasParagem?.dirty && editForm.controls.qtdMediaHorasParagem?.invalid)">
@@ -184,13 +183,13 @@
                                 </small>
                             </div>
                         </div>
-                        <div>
-                            do component {{(editForm.controls.qtdMediaHorasParagem.value)+5}}
-                            <input type="number" class="form-control" name="teste"
-                                   id="field_teste"
-                                   [value]="(editForm.controls.qtdMediaHorasParagem.value)/24" readonly
-                                   placeholder="vai ser o total"/>
-                        </div>
+                        <!--<div>-->
+                            <!--do component {{(editForm.controls.qtdMediaHorasParagem.value)+5}}-->
+                            <!--<input type="number" class="form-control" name="teste"-->
+                                   <!--id="field_teste"-->
+                                   <!--value="(editForm.controls.qtdMediaHorasParagem.value)/24" readonly-->
+                                   <!--placeholder="vai ser o total"/>-->
+                        <!--</div>-->
                     </div>
                     <div class="col">
                         <div class="form-group">
