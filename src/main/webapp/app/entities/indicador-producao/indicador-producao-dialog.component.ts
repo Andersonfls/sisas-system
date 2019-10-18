@@ -116,7 +116,7 @@ export class IndicadorProducaoDialogComponent implements OnInit {
             (res: HttpResponse<IndicadorProducao>) => {
                 (this.indicadorProducao = res.body);
             },
-            error1 => {
+            (error1) => {
                 (this.onError(error1));
             });
     }
