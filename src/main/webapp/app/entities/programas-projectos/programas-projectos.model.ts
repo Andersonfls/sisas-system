@@ -14,5 +14,7 @@ export class ProgramasProjectos implements BaseEntity {
         public especialidade?: string,
         public comuna?: Comuna,
     ) {
+        this.id = id ? id : null;
+        this.comuna = comuna ? comuna : null;
     }
 }
