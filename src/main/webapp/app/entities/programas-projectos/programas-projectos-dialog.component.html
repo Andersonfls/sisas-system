@@ -474,7 +474,7 @@
 
     <!--CONTRATO-->
     <div class="modal fade bd-contrato-xl" tabindex="-1" role="dialog" aria-labelledby="contrato" aria-hidden="true">
-        <div class="modal-dialog modal-md" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
 
                 <div class="modal-header">
@@ -489,40 +489,48 @@
                         <input type="text" class="form-control" id="ctid" name="ctid"
                                [(ngModel)]="contrato.id" readonly />
                     </div>
-                    <div class="form-group">
-                        <label class="form-control-label" jhiTranslate="sisasApp.contrato.tipoEmpreitada" for="field_tipoEmpreitada">Tipo Empreitada</label>
-                        <select class="form-control" id="field_tipoEmpreitada" name="tipoEmpreitada" [(ngModel)]="contrato.tipoEmpreitada"  required>
-                            <option value="Abastecimento de água ">Abastecimento de água </option>
-                            <option value="Saneamento de águas residuais">Saneamento de águas residuais</option>
-                        </select>
 
-                        <div [hidden]="!(editForm.controls.tipoEmpreitada?.dirty && editForm.controls.tipoEmpreitada?.invalid)">
-                            <small class="form-text text-danger"
-                                   [hidden]="!editForm.controls.tipoEmpreitada?.errors?.required" jhiTranslate="entity.validation.required">
-                                This field is required.
-                            </small>
-                            <small class="form-text text-danger"
-                                   [hidden]="!editForm.controls.tipoEmpreitada?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 150 }">
-                                This field cannot be longer than 150 characters.
-                            </small>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <div class="form-group">
+                                <label class="form-control-label" jhiTranslate="sisasApp.contrato.tipoEmpreitada" for="field_tipoEmpreitada">Tipo Empreitada</label>
+                                <select class="form-control" id="field_tipoEmpreitada" name="tipoEmpreitada" [(ngModel)]="contrato.tipoEmpreitada"  required>
+                                    <option value="Abastecimento de água ">Abastecimento de água </option>
+                                    <option value="Saneamento de águas residuais">Saneamento de águas residuais</option>
+                                </select>
+
+                                <div [hidden]="!(editForm.controls.tipoEmpreitada?.dirty && editForm.controls.tipoEmpreitada?.invalid)">
+                                    <small class="form-text text-danger"
+                                           [hidden]="!editForm.controls.tipoEmpreitada?.errors?.required" jhiTranslate="entity.validation.required">
+                                        This field is required.
+                                    </small>
+                                    <small class="form-text text-danger"
+                                           [hidden]="!editForm.controls.tipoEmpreitada?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 150 }">
+                                        This field cannot be longer than 150 characters.
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <div class="form-group">
+                                <label class="form-control-label" jhiTranslate="sisasApp.contrato.dtLancamento" for="field_ctdtLancamento">Dt Lancamento</label>
+                                <div class="input-group">
+                                    <input id="field_ctdtLancamento" type="text" class="form-control" name="ctdtLancamento" ngbDatepicker  #ccdtLancamentoDp="ngbDatepicker" [(ngModel)]="contrato.dtLancamento"
+                                           required placeholder="Data de lancamento"/>
+                                    <span class="input-group-append">
+                                        <button type="button" class="btn btn-secondary" (click)="ccdtLancamentoDp.toggle()"><i class="fa fa-calendar"></i></button>
+                                    </span>
+                                </div>
+                                <div [hidden]="!(editForm.controls.dtLancamento?.dirty && editForm.controls.dtLancamento?.invalid)">
+                                    <small class="form-text text-danger"
+                                           [hidden]="!editForm.controls.dtLancamento?.errors?.required" jhiTranslate="entity.validation.required">
+                                        This field is required.
+                                    </small>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="form-control-label" jhiTranslate="sisasApp.contrato.dtLancamento" for="field_ctdtLancamento">Dt Lancamento</label>
-                        <div class="input-group">
-                            <input id="field_ctdtLancamento" type="text" class="form-control" name="ctdtLancamento" ngbDatepicker  #ccdtLancamentoDp="ngbDatepicker" [(ngModel)]="contrato.dtLancamento"
-                                   required placeholder="Data de lancamento"/>
-                            <span class="input-group-append">
-                    <button type="button" class="btn btn-secondary" (click)="ccdtLancamentoDp.toggle()"><i class="fa fa-calendar"></i></button>
-                </span>
-                        </div>
-                        <div [hidden]="!(editForm.controls.dtLancamento?.dirty && editForm.controls.dtLancamento?.invalid)">
-                            <small class="form-text text-danger"
-                                   [hidden]="!editForm.controls.dtLancamento?.errors?.required" jhiTranslate="entity.validation.required">
-                                This field is required.
-                            </small>
-                        </div>
-                    </div>
+
                     <div class="form-group">
                         <label class="form-control-label" jhiTranslate="sisasApp.contrato.nmEmpresaAdjudicitaria" for="field_nmEmpresaAdjudicitaria">Nm Empresa Adjudicitaria</label>
                         <input type="text" class="form-control" name="nmEmpresaAdjudicitaria" id="field_nmEmpresaAdjudicitaria"
@@ -534,160 +542,213 @@
                             </small>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="form-control-label" jhiTranslate="sisasApp.contrato.valorContrato" for="field_valorContrato">Valor Contrato</label>
-                        <input type="number" class="form-control" name="valorContrato" id="field_valorContrato"
-                               [(ngModel)]="contrato.valorContrato" required placeholder="Valor de contrato"/>
-                        <div [hidden]="!(editForm.controls.valorContrato?.dirty && editForm.controls.valorContrato?.invalid)">
-                            <small class="form-text text-danger"
-                                   [hidden]="!editForm.controls.valorContrato?.errors?.required" jhiTranslate="entity.validation.required">
-                                This field is required.
-                            </small>
-                            <small class="form-text text-danger"
-                                   [hidden]="!editForm.controls.valorContrato?.errors?.number" jhiTranslate="entity.validation.number">
-                                This field should be a number.
-                            </small>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-control-label" jhiTranslate="sisasApp.contrato.dtAssinatura" for="field_dtAssinatura">Dt Assinatura</label>
-                        <div class="input-group">
-                            <input id="field_dtAssinatura" type="text" class="form-control" name="dtAssinatura" ngbDatepicker  #ccdtAssinaturaDp="ngbDatepicker" [(ngModel)]="contrato.dtAssinatura"
-                                 placeholder="Data da assinatura"/>
-                            <span class="input-group-append">
-                    <button type="button" class="btn btn-secondary" (click)="ccdtAssinaturaDp.toggle()"><i class="fa fa-calendar"></i></button>
-                </span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-control-label" jhiTranslate="sisasApp.contrato.dtFinalizacaoProcessoHomologAprov" for="field_dtFinalizacaoProcessoHomologAprov">Dt Finalizacao Processo Homolog Aprov</label>
-                        <div class="input-group">
-                            <input id="field_dtFinalizacaoProcessoHomologAprov" type="text" class="form-control" name="dtFinalizacaoProcessoHomologAprov" ngbDatepicker  #ccdtFinalizacaoProcessoHomologAprovDp="ngbDatepicker" [(ngModel)]="contrato.dtFinalizacaoProcessoHomologAprov"
-                                 placeholder="Data de finalização processo homologação"/>
-                            <span class="input-group-append">
-                    <button type="button" class="btn btn-secondary" (click)="ccdtFinalizacaoProcessoHomologAprovDp.toggle()"><i class="fa fa-calendar"></i></button>
-                </span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-control-label" jhiTranslate="sisasApp.contrato.tipoMoeda" for="field_tipoMoeda">Tipo Moeda</label>
-                        <select class="form-control" id="field_tipoMoeda" name="tipoMoeda" [(ngModel)]="contrato.tipoMoeda"  required>
-                            <option value="EUR">EUR</option>
-                            <option value="USD">USD</option>
-                            <option value="AOA">AOA</option>
-                        </select>
 
-                        <div [hidden]="!(editForm.controls.tipoMoeda?.dirty && editForm.controls.tipoMoeda?.invalid)">
-                            <small class="form-text text-danger"
-                                   [hidden]="!editForm.controls.tipoMoeda?.errors?.required" jhiTranslate="entity.validation.required">
-                                This field is required.
-                            </small>
-                            <small class="form-text text-danger"
-                                   [hidden]="!editForm.controls.tipoMoeda?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 150 }">
-                                This field cannot be longer than 150 characters.
-                            </small>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <div class="form-group">
+                                <label class="form-control-label" jhiTranslate="sisasApp.contrato.valorContrato" for="field_valorContrato">Valor Contrato</label>
+                                <input type="number" class="form-control" name="valorContrato" id="field_valorContrato"
+                                       [(ngModel)]="contrato.valorContrato" required placeholder="Valor de contrato"/>
+                                <div [hidden]="!(editForm.controls.valorContrato?.dirty && editForm.controls.valorContrato?.invalid)">
+                                    <small class="form-text text-danger"
+                                           [hidden]="!editForm.controls.valorContrato?.errors?.required" jhiTranslate="entity.validation.required">
+                                        This field is required.
+                                    </small>
+                                    <small class="form-text text-danger"
+                                           [hidden]="!editForm.controls.valorContrato?.errors?.number" jhiTranslate="entity.validation.number">
+                                        This field should be a number.
+                                    </small>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-control-label" jhiTranslate="sisasApp.contrato.valorAdiantamento" for="field_valorAdiantamento">Valor Adiantamento</label>
-                        <input type="number" class="form-control" name="valorAdiantamento" id="field_valorAdiantamento"
-                               [(ngModel)]="contrato.valorAdiantamento" required placeholder="Valor adiantamento"/>
-                        <div [hidden]="!(editForm.controls.valorAdiantamento?.dirty && editForm.controls.valorAdiantamento?.invalid)">
-                            <small class="form-text text-danger"
-                                   [hidden]="!editForm.controls.valorAdiantamento?.errors?.required" jhiTranslate="entity.validation.required">
-                                This field is required.
-                            </small>
-                            <small class="form-text text-danger"
-                                   [hidden]="!editForm.controls.valorAdiantamento?.errors?.number" jhiTranslate="entity.validation.number">
-                                This field should be a number.
-                            </small>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-control-label" jhiTranslate="sisasApp.contrato.dtAdiantamento" for="field_dtAdiantamento">Dt Adiantamento</label>
-                        <div class="input-group">
-                            <input id="field_dtAdiantamento" type="text" class="form-control" name="dtAdiantamento" ngbDatepicker  #ccdtAdiantamentoDp="ngbDatepicker" [(ngModel)]="contrato.dtAdiantamento"
-                                placeholder="Data de adiantamento"/>
-                            <span class="input-group-append">
-                    <button type="button" class="btn btn-secondary" (click)="ccdtAdiantamentoDp.toggle()"><i class="fa fa-calendar"></i></button>
-                </span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-control-label" jhiTranslate="sisasApp.contrato.dtInicio" for="field_dtInicio">Dt Inicio</label>
-                        <div class="input-group">
-                            <input id="field_dtInicio" type="text" class="form-control" name="dtInicio" ngbDatepicker  #ccdtInicioDp="ngbDatepicker" [(ngModel)]="contrato.dtInicio"
-                                placeholder="Data de Início"/>
-                            <span class="input-group-append">
-                    <button type="button" class="btn btn-secondary" (click)="ccdtInicioDp.toggle()"><i class="fa fa-calendar"></i></button>
-                </span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-control-label" jhiTranslate="sisasApp.contrato.prazoExecucao" for="field_prazoExecucao">Prazo Execucao</label>
-                        <input type="number" class="form-control" name="prazoExecucao" id="field_prazoExecucao"
-                               placeholder="Prazo de execução" [(ngModel)]="contrato.prazoExecucao" />
-                    </div>
-                    <div class="form-group">
-                        <label class="form-control-label" jhiTranslate="sisasApp.contrato.dtRecepcaoProvisoria" for="field_dtRecepcaoProvisoria">Dt Recepcao Provisoria</label>
-                        <div class="input-group">
-                            <input id="field_dtRecepcaoProvisoria" type="text" class="form-control" name="dtRecepcaoProvisoria" ngbDatepicker  #ccdtRecepcaoProvisoriaDp="ngbDatepicker" [(ngModel)]="contrato.dtRecepcaoProvisoria"
-                                placeholder="Data de recepção ptovisória"/>
-                            <span class="input-group-append">
-                    <button type="button" class="btn btn-secondary" (click)="ccdtRecepcaoProvisoriaDp.toggle()"><i class="fa fa-calendar"></i></button>
-                </span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-control-label" jhiTranslate="sisasApp.contrato.dtRecepcaoDefinitiva" for="field_dtRecepcaoDefinitiva">Dt Recepcao Definitiva</label>
-                        <div class="input-group">
-                            <input id="field_dtRecepcaoDefinitiva" type="text" class="form-control" name="dtRecepcaoDefinitiva" ngbDatepicker  #ccdtRecepcaoDefinitivaDp="ngbDatepicker" [(ngModel)]="contrato.dtRecepcaoDefinitiva"
-                                placeholder="Data recepção definitiva"/>
-                            <span class="input-group-append">
-                    <button type="button" class="btn btn-secondary" (click)="ccdtRecepcaoDefinitivaDp.toggle()"><i class="fa fa-calendar"></i></button>
-                </span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-control-label" jhiTranslate="sisasApp.contrato.dtRecepcaoComicionamento" for="field_dtRecepcaoComicionamento">Dt Recepcao Comicionamento</label>
-                        <div class="input-group">
-                            <input id="field_dtRecepcaoComicionamento" type="text" class="form-control" name="dtRecepcaoComicionamento" ngbDatepicker  #ccdtRecepcaoComicionamentoDp="ngbDatepicker" [(ngModel)]="contrato.dtRecepcaoComicionamento"
-                                placeholder="Data recepção comicionamento"/>
-                            <span class="input-group-append">
-                    <button type="button" class="btn btn-secondary" (click)="ccdtRecepcaoComicionamentoDp.toggle()"><i class="fa fa-calendar"></i></button>
-                </span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-control-label" jhiTranslate="sisasApp.contrato.nmResposavelAntProjeto" for="field_nmResposavelAntProjeto">Nm Resposavel Ant Projeto</label>
-                        <input type="text" class="form-control" name="nmResposavelAntProjeto" id="field_nmResposavelAntProjeto"
-                               [(ngModel)]="contrato.nmResposavelAntProjeto" maxlength="200" placeholder="Nome responsável projeto"/>
-                        <div [hidden]="!(editForm.controls.nmResposavelAntProjeto?.dirty && editForm.controls.nmResposavelAntProjeto?.invalid)">
-                            <small class="form-text text-danger"
-                                   [hidden]="!editForm.controls.nmResposavelAntProjeto?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 200 }">
-                                This field cannot be longer than 200 characters.
-                            </small>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-control-label" jhiTranslate="sisasApp.contrato.nmResposavelProjeto" for="field_nmResposavelProjeto">Nm Resposavel Projeto</label>
-                        <input type="text" class="form-control" name="nmResposavelProjeto" id="field_nmResposavelProjeto"
-                               [(ngModel)]="contrato.nmResposavelProjeto" maxlength="200" placeholder=" Nome responsável projeto"/>
-                        <div [hidden]="!(editForm.controls.nmResposavelProjeto?.dirty && editForm.controls.nmResposavelProjeto?.invalid)">
-                            <small class="form-text text-danger"
-                                   [hidden]="!editForm.controls.nmResposavelProjeto?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 200 }">
-                                This field cannot be longer than 200 characters.
-                            </small>
+                        <div class="form-group col-sm-6">
+                            <div class="form-group">
+                                <label class="form-control-label" jhiTranslate="sisasApp.contrato.tipoMoeda" for="field_tipoMoeda">Tipo Moeda</label>
+                                <select class="form-control" id="field_tipoMoeda" name="tipoMoeda" [(ngModel)]="contrato.tipoMoeda"  required>
+                                    <option value="EUR">EUR</option>
+                                    <option value="USD">USD</option>
+                                    <option value="AOA">AOA</option>
+                                </select>
+
+                                <div [hidden]="!(editForm.controls.tipoMoeda?.dirty && editForm.controls.tipoMoeda?.invalid)">
+                                    <small class="form-text text-danger"
+                                           [hidden]="!editForm.controls.tipoMoeda?.errors?.required" jhiTranslate="entity.validation.required">
+                                        This field is required.
+                                    </small>
+                                    <small class="form-text text-danger"
+                                           [hidden]="!editForm.controls.tipoMoeda?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 150 }">
+                                        This field cannot be longer than 150 characters.
+                                    </small>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="form-control-label" jhiTranslate="sisasApp.contrato.idSistemaAgua" for="field_ctidSistemaAgua">Id Sistema Agua</label>
-                        <select class="form-control" id="field_ctidSistemaAgua" name="ctidSistemaAgua" [(ngModel)]="contrato.idSistemaAguaId"  required>
-                            <option [ngValue]="null" selected>Seleciona o sistema de água...</option>
-                            <option [ngValue]="sistemaAguaOption.id" *ngFor="let sistemaAguaOption of sistemaaguas">{{sistemaAguaOption.nmSistemaAgua}}</option>
-                        </select>
+
+
+
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <div class="form-group">
+                                <label class="form-control-label" jhiTranslate="sisasApp.contrato.dtAssinatura" for="field_dtAssinatura">Dt Assinatura</label>
+                                <div class="input-group">
+                                    <input id="field_dtAssinatura" type="text" class="form-control" name="dtAssinatura" ngbDatepicker  #ccdtAssinaturaDp="ngbDatepicker" [(ngModel)]="contrato.dtAssinatura"
+                                           placeholder="Data da assinatura"/>
+                                    <span class="input-group-append">
+                                <button type="button" class="btn btn-secondary" (click)="ccdtAssinaturaDp.toggle()"><i class="fa fa-calendar"></i></button>
+                            </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <div class="form-group">
+                                <label class="form-control-label" jhiTranslate="sisasApp.contrato.dtFinalizacaoProcessoHomologAprov" for="field_dtFinalizacaoProcessoHomologAprov">Dt Finalizacao Processo Homolog Aprov</label>
+                                <div class="input-group">
+                                    <input id="field_dtFinalizacaoProcessoHomologAprov" type="text" class="form-control" name="dtFinalizacaoProcessoHomologAprov" ngbDatepicker  #ccdtFinalizacaoProcessoHomologAprovDp="ngbDatepicker" [(ngModel)]="contrato.dtFinalizacaoProcessoHomologAprov"
+                                           placeholder="Data de finalização processo homologação"/>
+                                    <span class="input-group-append">
+                                <button type="button" class="btn btn-secondary" (click)="ccdtFinalizacaoProcessoHomologAprovDp.toggle()"><i class="fa fa-calendar"></i></button>
+                            </span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <div class="form-group">
+                                <label class="form-control-label" jhiTranslate="sisasApp.contrato.valorAdiantamento" for="field_valorAdiantamento">Valor Adiantamento</label>
+                                <input type="number" class="form-control" name="valorAdiantamento" id="field_valorAdiantamento"
+                                       [(ngModel)]="contrato.valorAdiantamento" required placeholder="Valor adiantamento"/>
+                                <div [hidden]="!(editForm.controls.valorAdiantamento?.dirty && editForm.controls.valorAdiantamento?.invalid)">
+                                    <small class="form-text text-danger"
+                                           [hidden]="!editForm.controls.valorAdiantamento?.errors?.required" jhiTranslate="entity.validation.required">
+                                        This field is required.
+                                    </small>
+                                    <small class="form-text text-danger"
+                                           [hidden]="!editForm.controls.valorAdiantamento?.errors?.number" jhiTranslate="entity.validation.number">
+                                        This field should be a number.
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <div class="form-group">
+                                <label class="form-control-label" jhiTranslate="sisasApp.contrato.dtAdiantamento" for="field_dtAdiantamento">Dt Adiantamento</label>
+                                <div class="input-group">
+                                    <input id="field_dtAdiantamento" type="text" class="form-control" name="dtAdiantamento" ngbDatepicker  #ccdtAdiantamentoDp="ngbDatepicker" [(ngModel)]="contrato.dtAdiantamento"
+                                           placeholder="Data de adiantamento"/>
+                                    <span class="input-group-append">
+                                <button type="button" class="btn btn-secondary" (click)="ccdtAdiantamentoDp.toggle()"><i class="fa fa-calendar"></i></button>
+                            </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <div class="form-group">
+                                <label class="form-control-label" jhiTranslate="sisasApp.contrato.dtInicio" for="field_dtInicio">Dt Inicio</label>
+                                <div class="input-group">
+                                    <input id="field_dtInicio" type="text" class="form-control" name="dtInicio" ngbDatepicker  #ccdtInicioDp="ngbDatepicker" [(ngModel)]="contrato.dtInicio"
+                                           placeholder="Data de Início"/>
+                                    <span class="input-group-append">
+                                <button type="button" class="btn btn-secondary" (click)="ccdtInicioDp.toggle()"><i class="fa fa-calendar"></i></button>
+                            </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <div class="form-group">
+                                <label class="form-control-label" jhiTranslate="sisasApp.contrato.prazoExecucao" for="field_prazoExecucao">Prazo Execucao</label>
+                                <input type="number" class="form-control" name="prazoExecucao" id="field_prazoExecucao"
+                                       placeholder="Prazo de execução" [(ngModel)]="contrato.prazoExecucao" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <div class="form-group">
+                                <label class="form-control-label" jhiTranslate="sisasApp.contrato.dtRecepcaoProvisoria" for="field_dtRecepcaoProvisoria">Dt Recepcao Provisoria</label>
+                                <div class="input-group">
+                                    <input id="field_dtRecepcaoProvisoria" type="text" class="form-control" name="dtRecepcaoProvisoria" ngbDatepicker  #ccdtRecepcaoProvisoriaDp="ngbDatepicker" [(ngModel)]="contrato.dtRecepcaoProvisoria"
+                                           placeholder="Data de recepção ptovisória"/>
+                                    <span class="input-group-append">
+                                <button type="button" class="btn btn-secondary" (click)="ccdtRecepcaoProvisoriaDp.toggle()"><i class="fa fa-calendar"></i></button>
+                            </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <div class="form-group">
+                                <label class="form-control-label" jhiTranslate="sisasApp.contrato.dtRecepcaoDefinitiva" for="field_dtRecepcaoDefinitiva">Dt Recepcao Definitiva</label>
+                                <div class="input-group">
+                                    <input id="field_dtRecepcaoDefinitiva" type="text" class="form-control" name="dtRecepcaoDefinitiva" ngbDatepicker  #ccdtRecepcaoDefinitivaDp="ngbDatepicker" [(ngModel)]="contrato.dtRecepcaoDefinitiva"
+                                           placeholder="Data recepção definitiva"/>
+                                    <span class="input-group-append">
+                                <button type="button" class="btn btn-secondary" (click)="ccdtRecepcaoDefinitivaDp.toggle()"><i class="fa fa-calendar"></i></button>
+                            </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <div class="form-group">
+                                <label class="form-control-label" jhiTranslate="sisasApp.contrato.dtRecepcaoComicionamento" for="field_dtRecepcaoComicionamento">Dt Recepcao Comicionamento</label>
+                                <div class="input-group">
+                                    <input id="field_dtRecepcaoComicionamento" type="text" class="form-control" name="dtRecepcaoComicionamento" ngbDatepicker  #ccdtRecepcaoComicionamentoDp="ngbDatepicker" [(ngModel)]="contrato.dtRecepcaoComicionamento"
+                                           placeholder="Data recepção comicionamento"/>
+                                    <span class="input-group-append">
+                                <button type="button" class="btn btn-secondary" (click)="ccdtRecepcaoComicionamentoDp.toggle()"><i class="fa fa-calendar"></i></button>
+                            </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <div class="form-group">
+                                <label class="form-control-label" jhiTranslate="sisasApp.contrato.nmResposavelAntProjeto" for="field_nmResposavelAntProjeto">Nm Resposavel Ant Projeto</label>
+                                <input type="text" class="form-control" name="nmResposavelAntProjeto" id="field_nmResposavelAntProjeto"
+                                       [(ngModel)]="contrato.nmResposavelAntProjeto" maxlength="200" placeholder="Nome responsável projeto"/>
+                                <div [hidden]="!(editForm.controls.nmResposavelAntProjeto?.dirty && editForm.controls.nmResposavelAntProjeto?.invalid)">
+                                    <small class="form-text text-danger"
+                                           [hidden]="!editForm.controls.nmResposavelAntProjeto?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 200 }">
+                                        This field cannot be longer than 200 characters.
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <div class="form-group">
+                                <label class="form-control-label" jhiTranslate="sisasApp.contrato.nmResposavelProjeto" for="field_nmResposavelProjeto">Nm Resposavel Projeto</label>
+                                <input type="text" class="form-control" name="nmResposavelProjeto" id="field_nmResposavelProjeto"
+                                       [(ngModel)]="contrato.nmResposavelProjeto" maxlength="200" placeholder=" Nome responsável projeto"/>
+                                <div [hidden]="!(editForm.controls.nmResposavelProjeto?.dirty && editForm.controls.nmResposavelProjeto?.invalid)">
+                                    <small class="form-text text-danger"
+                                           [hidden]="!editForm.controls.nmResposavelProjeto?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 200 }">
+                                        This field cannot be longer than 200 characters.
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <div class="form-group">
+                                <label class="form-control-label" jhiTranslate="sisasApp.contrato.idSistemaAgua" for="field_ctidSistemaAgua">Id Sistema Agua</label>
+                                <select class="form-control" id="field_ctidSistemaAgua" name="ctidSistemaAgua" [(ngModel)]="contrato.idSistemaAguaId"  required>
+                                    <option [ngValue]="null" selected>Seleciona o sistema de água...</option>
+                                    <option [ngValue]="sistemaAguaOption.id" *ngFor="let sistemaAguaOption of sistemaaguas">{{sistemaAguaOption.nmSistemaAgua}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
                     <div [hidden]="!(editForm.controls.idSistemaAgua?.dirty && editForm.controls.idSistemaAgua?.invalid)">
                         <small class="form-text text-danger"
                                [hidden]="!editForm.controls.idSistemaAgua?.errors?.required" jhiTranslate="entity.validation.required">
