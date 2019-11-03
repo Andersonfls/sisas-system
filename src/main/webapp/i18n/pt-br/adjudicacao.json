@@ -18,12 +18,12 @@
             },
             "idAdjudicacao": "Id Adjudicacao",
             "tipoConcurso": "Tipo Concurso",
-            "dtLancamento": "Dt Lancamento",
-            "dtComunicaoAdjudicacao": "Dt Comunicao Adjudicacao",
-            "dtPrestacaoGarantBoaExec": "Dt Prestacao Garant Boa Exec",
-            "dtSubmissaoMinutContrato": "Dt Submissao Minut Contrato",
-            "idProgramasProjectos": "Id Programas Projectos",
-            "idSistemaAgua": "Id Sistema Agua"
+            "dtLancamento": "Data Lancamento",
+            "dtComunicaoAdjudicacao": "Data Comunicao Adjudicacao",
+            "dtPrestacaoGarantBoaExec": "Data Prestacao Garant Boa Exec",
+            "dtSubmissaoMinutContrato": "Data Submissao Minuta Contrato",
+            "idProgramasProjectos": "Programas Projectos",
+            "idSistemaAgua": "Sistema Agua"
         }
     }
 }

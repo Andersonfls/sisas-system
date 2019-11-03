@@ -27,7 +27,8 @@ import {
     ErrorComponent,
     SidebarComponent
 } from './layouts';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbDateParserFormatter, NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbDateCustomParserFormatter} from './entities/programas-projectos/NgbDateCustomParserFormatter';
 
 @NgModule({
     imports: [
@@ -87,7 +88,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
             deps: [
                 Injector
             ]
-        }
+        },
+        { provide: NgbDateParserFormatter, useClass: NgbDateCustomParserFormatter }
     ],
     bootstrap: [ JhiMainComponent ]
 })

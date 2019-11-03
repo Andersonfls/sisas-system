@@ -22,21 +22,21 @@
             "nmEmpresaAdjudicitaria": "Nm Empresa Adjudicitaria",
             "valorContrato": "Valor Contrato",
             "dtAssinatura": "Dt Assinatura",
-            "dtFinalizacaoProcessoHomologAprov": "Dt Finalizacao Processo Homolog Aprov",
+            "dtFinalizacaoProcessoHomologAprov": "Dt Finalização Processo Homolog Aprov",
             "tipoMoeda": "Tipo Moeda",
             "valorAdiantamento": "Valor Adiantamento",
             "dtAdiantamento": "Dt Adiantamento",
             "dtInicio": "Dt Inicio",
-            "prazoExecucao": "Prazo Execucao",
-            "dtRecepcaoProvisoria": "Dt Recepcao Provisoria",
-            "dtRecepcaoDefinitiva": "Dt Recepcao Definitiva",
-            "dtRecepcaoComicionamento": "Dt Recepcao Comicionamento",
+            "prazoExecucao": "Prazo Execução",
+            "dtRecepcaoProvisoria": "Dt Recepção Provisoria",
+            "dtRecepcaoDefinitiva": "Dt Recepção Definitiva",
+            "dtRecepcaoComicionamento": "Dt Recepção Comicionamento",
             "nmResposavelAntProjeto": "Nm Resposavel Ant Projeto",
             "nmResposavelProjeto": "Nm Resposavel Projeto",
-            "idProgramasProjectos": "Id Programas Projectos",
-            "idSistemaAgua": "Id Sistema Agua",
+            "idProgramasProjectos": "Programas Projectos",
+            "idSistemaAgua": "Sistema Agua",
             "empreitada": "Empreitada",
-            "execucao": "Execucao"
+            "execucao": "Execução"
         }
     }
 }

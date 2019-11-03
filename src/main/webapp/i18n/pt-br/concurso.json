@@ -18,15 +18,15 @@
             },
             "idConcurso": "Id Concurso",
             "tipoConcurso": "Tipo Concurso",
-            "dtLancamento": "Dt Lancamento",
-            "dtUltimaAlteracao": "Dt Ultima Alteracao",
-            "dtEntregaProposta": "Dt Entrega Proposta",
-            "dtAberturaProposta": "Dt Abertura Proposta",
-            "dtConclusaoAvaliacaoRelPrel": "Dt Conclusao Avaliacao Rel Prel",
-            "dtNegociacao": "Dt Negociacao",
-            "dtAprovRelAvalFinal": "Dt Aprov Rel Aval Final",
-            "idProgramasProjectos": "Id Programas Projectos",
-            "idSistemaAgua": "Id Sistema Agua"
+            "dtLancamento": "Data Lancamento",
+            "dtUltimaAlteracao": "Data Ultima Alteração",
+            "dtEntregaProposta": "Data Entrega Proposta",
+            "dtAberturaProposta": "Data Abertura Proposta",
+            "dtConclusaoAvaliacaoRelPrel": "Data Conclução Avaliação Rel Prel",
+            "dtNegociacao": "Data Negociação",
+            "dtAprovRelAvalFinal": "Data Aprov Rel Aval Final",
+            "idProgramasProjectos": "Programas Projectos",
+            "idSistemaAgua": "Sistema Agua"
         }
     }
 }

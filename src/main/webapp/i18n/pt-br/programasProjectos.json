@@ -16,8 +16,8 @@
             "detail": {
                 "title": "Programas Projectos"
             },
-            "dtLancamento": "Dt Lancamento",
-            "dtUltimaAlteracao": "Dt Ultima Alteracao",
+            "dtLancamento": "Data Lancamento",
+            "dtUltimaAlteracao": "Data Ultima Alteracao",
             "idUsuario": "Usuario",
             "nmDesignacaoProjeto": "Nome",
             "nmDescricaoProjeto": "Descricao ",

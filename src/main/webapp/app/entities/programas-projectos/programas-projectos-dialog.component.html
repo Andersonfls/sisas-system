@@ -66,8 +66,15 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.tipoFinanciamento" for="field_tipoFinanciamento">Tipo Financiamento</label>
-                    <input type="text" class="form-control" name="tipoFinanciamento" id="field_tipoFinanciamento"
-                        [(ngModel)]="programasProjectos.tipoFinanciamento" required maxlength="150" placeholder="Tipo do financiamento"/>
+
+                    <select class="form-control" id="field_tipoFinanciamento" name="tipoFinanciamento" [(ngModel)]="programasProjectos.tipoFinanciamento"  required>
+                        <option value="null" selected>Selecione a tipo...</option>
+                        <option value="ROT (Recursos Ordinários do Tesouro)">ROT (Recursos Ordinários do Tesouro)</option>
+                        <option value="ROT (Recursos Ordinários do Tesouro)"> FI (Financiamento Interno)</option>
+                        <option value="FE (Financiamento Externo)"> FE (Financiamento Externo) </option>
+                        <option value="DAD (Despesas de Apoio ao Desenvolvimento)">DAD (Despesas de Apoio ao Desenvolvimento)</option>
+                    </select>
+
                     <div [hidden]="!(editForm.controls.tipoFinanciamento?.dirty && editForm.controls.tipoFinanciamento?.invalid)">
                         <small class="form-text text-danger"
                            [hidden]="!editForm.controls.tipoFinanciamento?.errors?.required" jhiTranslate="entity.validation.required">
@@ -151,8 +158,13 @@
                     </div>
                     <div class="form-group">
                         <label class="form-control-label" jhiTranslate="sisasApp.concepcao.tipoConcurso" for="field_tipoConcurso">Tipo Concurso</label>
-                        <input type="text" class="form-control" name="tipoConcurso" id="field_tipoConcurso"
-                               [(ngModel)]="concepcao.tipoConcurso" required maxlength="150" placeholder="Tipo de Concurso" />
+                        <select class="form-control" id="field_tipoConcurso" name="tipoConcurso" [(ngModel)]="concepcao.tipoConcurso"  required>
+                            <option value="Obras ">Obras </option>
+                            <option value="Serviços">Serviços</option>
+                            <option value="Fornecimentos">Fornecimentos</option>
+                            <option value="Fiscalização">Fiscalização</option>
+                        </select>
+
                         <div [hidden]="!(editForm.controls.tipoConcurso?.dirty && editForm.controls.tipoConcurso?.invalid)">
                             <small class="form-text text-danger"
                                    [hidden]="!editForm.controls.tipoConcurso?.errors?.required" jhiTranslate="entity.validation.required">
@@ -247,8 +259,12 @@
                     </div>
                     <div class="form-group">
                         <label class="form-control-label" jhiTranslate="sisasApp.concurso.tipoConcurso" for="field_cctipoConcurso">Tipo Concurso</label>
-                        <input type="text" class="form-control" name="cctipoConcurso" id="field_cctipoConcurso"
-                               [(ngModel)]="concurso.tipoConcurso" required maxlength="150" placeholder="Tipo de Concurso" />
+                        <select class="form-control" id="field_cctipoConcurso" name="cctipoConcurso" [(ngModel)]="concurso.tipoConcurso"  required>
+                            <option value="Obras ">Obras </option>
+                            <option value="Serviços">Serviços</option>
+                            <option value="Fornecimentos">Fornecimentos</option>
+                            <option value="Fiscalização">Fiscalização</option>
+                        </select>
                         <div [hidden]="!(editForm.controls.tipoConcurso?.dirty && editForm.controls.tipoConcurso?.invalid)">
                             <small class="form-text text-danger"
                                    [hidden]="!editForm.controls.tipoConcurso?.errors?.required" jhiTranslate="entity.validation.required">
@@ -374,8 +390,12 @@
                     </div>
                     <div class="form-group">
                         <label class="form-control-label" jhiTranslate="sisasApp.adjudicacao.tipoConcurso" for="field_adtipoConcurso">Tipo Concurso</label>
-                        <input type="text" class="form-control" name="adtipoConcurso" id="field_adtipoConcurso"
-                               [(ngModel)]="adjudicacao.tipoConcurso" required maxlength="150" placeholder="Tipo de concurso"/>
+                        <select class="form-control" id="field_adtipoConcurso" name="adtipoConcurso" [(ngModel)]="adjudicacao.tipoConcurso"  required>
+                            <option value="Obras ">Obras </option>
+                            <option value="Serviços">Serviços</option>
+                            <option value="Fornecimentos">Fornecimentos</option>
+                            <option value="Fiscalização">Fiscalização</option>
+                        </select>
                         <div [hidden]="!(editForm.controls.tipoConcurso?.dirty && editForm.controls.tipoConcurso?.invalid)">
                             <small class="form-text text-danger"
                                    [hidden]="!editForm.controls.tipoConcurso?.errors?.required" jhiTranslate="entity.validation.required">
@@ -471,8 +491,11 @@
                     </div>
                     <div class="form-group">
                         <label class="form-control-label" jhiTranslate="sisasApp.contrato.tipoEmpreitada" for="field_tipoEmpreitada">Tipo Empreitada</label>
-                        <input type="text" class="form-control" name="tipoEmpreitada" id="field_tipoEmpreitada"
-                               [(ngModel)]="contrato.tipoEmpreitada" required maxlength="150" placeholder="Tipo de empreitada"/>
+                        <select class="form-control" id="field_tipoEmpreitada" name="tipoEmpreitada" [(ngModel)]="contrato.tipoEmpreitada"  required>
+                            <option value="Abastecimento de água ">Abastecimento de água </option>
+                            <option value="Saneamento de águas residuais">Saneamento de águas residuais</option>
+                        </select>
+
                         <div [hidden]="!(editForm.controls.tipoEmpreitada?.dirty && editForm.controls.tipoEmpreitada?.invalid)">
                             <small class="form-text text-danger"
                                    [hidden]="!editForm.controls.tipoEmpreitada?.errors?.required" jhiTranslate="entity.validation.required">
@@ -548,8 +571,12 @@
                     </div>
                     <div class="form-group">
                         <label class="form-control-label" jhiTranslate="sisasApp.contrato.tipoMoeda" for="field_tipoMoeda">Tipo Moeda</label>
-                        <input type="text" class="form-control" name="tipoMoeda" id="field_tipoMoeda"
-                               [(ngModel)]="contrato.tipoMoeda" required maxlength="150" placeholder="Tipo de moeda"/>
+                        <select class="form-control" id="field_tipoMoeda" name="tipoMoeda" [(ngModel)]="contrato.tipoMoeda"  required>
+                            <option value="EUR">EUR</option>
+                            <option value="USD">USD</option>
+                            <option value="AOA">AOA</option>
+                        </select>
+
                         <div [hidden]="!(editForm.controls.tipoMoeda?.dirty && editForm.controls.tipoMoeda?.invalid)">
                             <small class="form-text text-danger"
                                    [hidden]="!editForm.controls.tipoMoeda?.errors?.required" jhiTranslate="entity.validation.required">

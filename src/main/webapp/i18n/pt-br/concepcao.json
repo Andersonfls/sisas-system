@@ -16,14 +16,14 @@
             "detail": {
                 "title": "Concepcao"
             },
-            "idConcepcao": "Id Concepcao",
+            "idConcepcao": "Id Concepção",
             "tipoConcurso": "Tipo Concurso",
-            "dtLancamento": "Dt Lancamento",
-            "dtUltimaAlteracao": "Dt Ultima Alteracao",
-            "dtElaboracaoCon": "Dt Elaboracao Con",
-            "dtAprovacaoCon": "Dt Aprovacao Con",
-            "idProgramasProjectos": "Id Programas Projectos",
-            "idSistemaAgua": "Id Sistema Agua"
+            "dtLancamento": "Data Lancamento",
+            "dtUltimaAlteracao": "Data Ultima Alteração",
+            "dtElaboracaoCon": "Data Elaboração Con",
+            "dtAprovacaoCon": "Data Aprovação Con",
+            "idProgramasProjectos": "Programas Projectos",
+            "idSistemaAgua": "Sistema Agua"
         }
     }
 }
