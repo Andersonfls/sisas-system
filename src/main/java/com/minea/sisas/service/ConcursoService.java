@@ -69,6 +69,13 @@ public class ConcursoService {
         return concursoMapper.toDto(concurso);
     }
 
+    @Transactional(readOnly = true)
+    public ConcursoDTO findOneByProgramasProjectos(Long id) {
+        log.debug("Request to get Concurso : {}", id);
+        Concurso concurso = concursoRepository.findByProgramasProjectosId(id);
+        return concursoMapper.toDto(concurso);
+    }
+
     /**
      * Delete the concurso by id.
      *

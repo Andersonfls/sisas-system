@@ -34,6 +34,11 @@ export class AdjudicacaoService {
             .map((res: EntityResponseType) => this.convertResponse(res));
     }
 
+    findByProgramasProjectos(id: number): Observable<EntityResponseType> {
+        return this.http.get<Adjudicacao>(`${this.resourceUrl}/programas-projectos/${id}`, { observe: 'response'})
+            .map((res: EntityResponseType) => this.convertResponse(res));
+    }
+
     query(req?: any): Observable<HttpResponse<Adjudicacao[]>> {
         const options = createRequestOption(req);
         return this.http.get<Adjudicacao[]>(this.resourceUrl, { params: options, observe: 'response' })

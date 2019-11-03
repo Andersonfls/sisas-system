@@ -1,6 +1,8 @@
 package com.minea.sisas.service.dto;
 
 
+import com.minea.sisas.domain.ProgramasProjectos;
+
 import java.time.LocalDate;
 import javax.validation.constraints.*;
 import java.io.Serializable;
@@ -12,9 +14,6 @@ import java.util.Objects;
 public class ConcepcaoDTO implements Serializable {
 
     private Long id;
-
-    @NotNull
-    private Long idConcepcao;
 
     @NotNull
     @Size(max = 150)
@@ -29,7 +28,7 @@ public class ConcepcaoDTO implements Serializable {
 
     private LocalDate dtAprovacaoCon;
 
-    private Long idProgramasProjectosId;
+    private ProgramasProjectos programasProjectos;
 
     private Long idSistemaAguaId;
 
@@ -39,14 +38,6 @@ public class ConcepcaoDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getIdConcepcao() {
-        return idConcepcao;
-    }
-
-    public void setIdConcepcao(Long idConcepcao) {
-        this.idConcepcao = idConcepcao;
     }
 
     public String getTipoConcurso() {
@@ -89,12 +80,12 @@ public class ConcepcaoDTO implements Serializable {
         this.dtAprovacaoCon = dtAprovacaoCon;
     }
 
-    public Long getIdProgramasProjectosId() {
-        return idProgramasProjectosId;
+    public ProgramasProjectos getProgramasProjectos() {
+        return programasProjectos;
     }
 
-    public void setIdProgramasProjectosId(Long programasProjectosId) {
-        this.idProgramasProjectosId = programasProjectosId;
+    public void setProgramasProjectos(ProgramasProjectos programasProjectos) {
+        this.programasProjectos = programasProjectos;
     }
 
     public Long getIdSistemaAguaId() {
@@ -130,7 +121,6 @@ public class ConcepcaoDTO implements Serializable {
     public String toString() {
         return "ConcepcaoDTO{" +
             "id=" + getId() +
-            ", idConcepcao=" + getIdConcepcao() +
             ", tipoConcurso='" + getTipoConcurso() + "'" +
             ", dtLancamento='" + getDtLancamento() + "'" +
             ", dtUltimaAlteracao='" + getDtUltimaAlteracao() + "'" +

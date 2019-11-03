@@ -1,6 +1,8 @@
 package com.minea.sisas.service.dto;
 
 
+import com.minea.sisas.domain.ProgramasProjectos;
+
 import java.time.LocalDate;
 import javax.validation.constraints.*;
 import java.io.Serializable;
@@ -32,7 +34,7 @@ public class ConcursoDTO implements Serializable {
 
     private LocalDate dtAprovRelAvalFinal;
 
-    private Long idProgramasProjectosId;
+    private ProgramasProjectos programasProjectos;
 
     private Long idSistemaAguaId;
 
@@ -108,12 +110,12 @@ public class ConcursoDTO implements Serializable {
         this.dtAprovRelAvalFinal = dtAprovRelAvalFinal;
     }
 
-    public Long getIdProgramasProjectosId() {
-        return idProgramasProjectosId;
+    public ProgramasProjectos getProgramasProjectos() {
+        return programasProjectos;
     }
 
-    public void setIdProgramasProjectosId(Long programasProjectosId) {
-        this.idProgramasProjectosId = programasProjectosId;
+    public void setProgramasProjectos(ProgramasProjectos programasProjectos) {
+        this.programasProjectos = programasProjectos;
     }
 
     public Long getIdSistemaAguaId() {

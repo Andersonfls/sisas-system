@@ -27,6 +27,7 @@ import {
     ErrorComponent,
     SidebarComponent
 } from './layouts';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
     imports: [
@@ -37,7 +38,8 @@ import {
         SisasHomeModule,
         SisasAdminModule,
         SisasAccountModule,
-        SisasEntityModule
+        SisasEntityModule,
+        NgbModule.forRoot()
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [

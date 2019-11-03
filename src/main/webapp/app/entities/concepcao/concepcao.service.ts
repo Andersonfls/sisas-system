@@ -34,6 +34,11 @@ export class ConcepcaoService {
             .map((res: EntityResponseType) => this.convertResponse(res));
     }
 
+    findByProgramasProjectos(id: number): Observable<EntityResponseType> {
+        return this.http.get<Concepcao>(`${this.resourceUrl}/programas-projectos/${id}`, { observe: 'response'})
+            .map((res: EntityResponseType) => this.convertResponse(res));
+    }
+
     query(req?: any): Observable<HttpResponse<Concepcao[]>> {
         const options = createRequestOption(req);
         return this.http.get<Concepcao[]>(this.resourceUrl, { params: options, observe: 'response' })

@@ -100,7 +100,7 @@ public class ConcursoResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final ConcursoResource concursoResource = new ConcursoResource(concursoService);
+        final ConcursoResource concursoResource = new ConcursoResource(concursoService, null);
         this.restConcursoMockMvc = MockMvcBuilders.standaloneSetup(concursoResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -128,7 +128,7 @@ public class ConcursoResourceIntTest {
         ProgramasProjectos idProgramasProjectos = ProgramasProjectosResourceIntTest.createEntity(em);
         em.persist(idProgramasProjectos);
         em.flush();
-        concurso.setIdProgramasProjectos(idProgramasProjectos);
+        concurso.setProgramasProjectos(idProgramasProjectos);
         return concurso;
     }
 
@@ -857,7 +857,7 @@ public class ConcursoResourceIntTest {
         ProgramasProjectos idProgramasProjectos = ProgramasProjectosResourceIntTest.createEntity(em);
         em.persist(idProgramasProjectos);
         em.flush();
-        concurso.setIdProgramasProjectos(idProgramasProjectos);
+        concurso.setProgramasProjectos(idProgramasProjectos);
         concursoRepository.saveAndFlush(concurso);
         Long idProgramasProjectosId = idProgramasProjectos.getId();
 

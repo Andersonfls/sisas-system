@@ -49,11 +49,12 @@ public class Concurso implements Serializable {
     @Column(name = "dt_aprov_rel_aval_final")
     private LocalDate dtAprovRelAvalFinal;
 
-    @ManyToOne(optional = false)
-    @NotNull
-    private ProgramasProjectos idProgramasProjectos;
+    @ManyToOne()
+    @JoinColumn(name = "id_programas_projectos")
+    private ProgramasProjectos programasProjectos;
 
-    @ManyToOne
+    @ManyToOne()
+    @JoinColumn(name = "id_sistema_agua")
     private SistemaAgua idSistemaAgua;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
@@ -169,17 +170,17 @@ public class Concurso implements Serializable {
         this.dtAprovRelAvalFinal = dtAprovRelAvalFinal;
     }
 
-    public ProgramasProjectos getIdProgramasProjectos() {
-        return idProgramasProjectos;
+    public ProgramasProjectos getProgramasProjectos() {
+        return programasProjectos;
     }
 
-    public Concurso idProgramasProjectos(ProgramasProjectos programasProjectos) {
-        this.idProgramasProjectos = programasProjectos;
+    public Concurso programasProjectos(ProgramasProjectos programasProjectos) {
+        this.programasProjectos = programasProjectos;
         return this;
     }
 
-    public void setIdProgramasProjectos(ProgramasProjectos programasProjectos) {
-        this.idProgramasProjectos = programasProjectos;
+    public void setProgramasProjectos(ProgramasProjectos programasProjectos) {
+        this.programasProjectos = programasProjectos;
     }
 
     public SistemaAgua getIdSistemaAgua() {

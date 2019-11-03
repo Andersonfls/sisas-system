@@ -91,9 +91,6 @@ public class AdjudicacaoQueryService extends QueryService<Adjudicacao> {
             if (criteria.getDtSubmissaoMinutContrato() != null) {
                 specification = specification.and(buildRangeSpecification(criteria.getDtSubmissaoMinutContrato(), Adjudicacao_.dtSubmissaoMinutContrato));
             }
-            if (criteria.getIdProgramasProjectosId() != null) {
-                specification = specification.and(buildReferringEntitySpecification(criteria.getIdProgramasProjectosId(), Adjudicacao_.idProgramasProjectos, ProgramasProjectos_.id));
-            }
             if (criteria.getIdSistemaAguaId() != null) {
                 specification = specification.and(buildReferringEntitySpecification(criteria.getIdSistemaAguaId(), Adjudicacao_.idSistemaAgua, SistemaAgua_.id));
             }

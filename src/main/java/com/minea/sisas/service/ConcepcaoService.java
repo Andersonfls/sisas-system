@@ -69,6 +69,13 @@ public class ConcepcaoService {
         return concepcaoMapper.toDto(concepcao);
     }
 
+    @Transactional(readOnly = true)
+    public ConcepcaoDTO findOneByProgramaProjectoId(Long id) {
+        log.debug("Request to get Concepcao : {}", id);
+        Concepcao concepcao = concepcaoRepository.findByProgramasProjectosId(id);
+        return concepcaoMapper.toDto(concepcao);
+    }
+
     /**
      * Delete the concepcao by id.
      *

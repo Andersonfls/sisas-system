@@ -1,4 +1,5 @@
 import { BaseEntity } from './../../shared';
+import {ProgramasProjectos} from '../programas-projectos';
 
 export class Concepcao implements BaseEntity {
     constructor(
@@ -9,8 +10,10 @@ export class Concepcao implements BaseEntity {
         public dtUltimaAlteracao?: any,
         public dtElaboracaoCon?: any,
         public dtAprovacaoCon?: any,
-        public idProgramasProjectosId?: number,
+        public programasProjectos?: ProgramasProjectos,
         public idSistemaAguaId?: number,
     ) {
+        this.id = id ? id : null;
+        this.programasProjectos = programasProjectos ? programasProjectos : null;
     }
 }

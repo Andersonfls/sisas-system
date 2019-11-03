@@ -23,11 +23,8 @@ public class Contrato implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @NotNull
     @Column(name = "id_contrato", nullable = false)
-    private Long idContrato;
+    private Long id;
 
     @NotNull
     @Size(max = 150)
@@ -87,12 +84,12 @@ public class Contrato implements Serializable {
     @Column(name = "nm_resposavel_projeto", length = 200)
     private String nmResposavelProjeto;
 
-    @ManyToOne(optional = false)
-    @NotNull
-    private ProgramasProjectos idProgramasProjectos;
+    @ManyToOne()
+    @JoinColumn(name = "id_programas_projectos")
+    private ProgramasProjectos programasProjectos;
 
-    @ManyToOne(optional = false)
-    @NotNull
+    @ManyToOne()
+    @JoinColumn(name = "id_sistema_agua")
     private SistemaAgua idSistemaAgua;
 
     @OneToMany(mappedBy = "idContrato")
@@ -110,19 +107,6 @@ public class Contrato implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getIdContrato() {
-        return idContrato;
-    }
-
-    public Contrato idContrato(Long idContrato) {
-        this.idContrato = idContrato;
-        return this;
-    }
-
-    public void setIdContrato(Long idContrato) {
-        this.idContrato = idContrato;
     }
 
     public String getTipoEmpreitada() {
@@ -333,17 +317,17 @@ public class Contrato implements Serializable {
         this.nmResposavelProjeto = nmResposavelProjeto;
     }
 
-    public ProgramasProjectos getIdProgramasProjectos() {
-        return idProgramasProjectos;
+    public ProgramasProjectos getProgramasProjectos() {
+        return programasProjectos;
     }
 
-    public Contrato idProgramasProjectos(ProgramasProjectos programasProjectos) {
-        this.idProgramasProjectos = programasProjectos;
+    public Contrato programasProjectos(ProgramasProjectos programasProjectos) {
+        this.programasProjectos = programasProjectos;
         return this;
     }
 
-    public void setIdProgramasProjectos(ProgramasProjectos programasProjectos) {
-        this.idProgramasProjectos = programasProjectos;
+    public void setProgramasProjectos(ProgramasProjectos programasProjectos) {
+        this.programasProjectos = programasProjectos;
     }
 
     public SistemaAgua getIdSistemaAgua() {
@@ -434,7 +418,6 @@ public class Contrato implements Serializable {
     public String toString() {
         return "Contrato{" +
             "id=" + getId() +
-            ", idContrato=" + getIdContrato() +
             ", tipoEmpreitada='" + getTipoEmpreitada() + "'" +
             ", dtLancamento='" + getDtLancamento() + "'" +
             ", nmEmpresaAdjudicitaria='" + getNmEmpresaAdjudicitaria() + "'" +

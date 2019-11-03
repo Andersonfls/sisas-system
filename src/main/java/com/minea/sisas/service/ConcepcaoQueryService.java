@@ -93,9 +93,6 @@ public class ConcepcaoQueryService extends QueryService<Concepcao> {
             if (criteria.getDtAprovacaoCon() != null) {
                 specification = specification.and(buildRangeSpecification(criteria.getDtAprovacaoCon(), Concepcao_.dtAprovacaoCon));
             }
-            if (criteria.getIdProgramasProjectosId() != null) {
-                specification = specification.and(buildReferringEntitySpecification(criteria.getIdProgramasProjectosId(), Concepcao_.idProgramasProjectos, ProgramasProjectos_.id));
-            }
             if (criteria.getIdSistemaAguaId() != null) {
                 specification = specification.and(buildReferringEntitySpecification(criteria.getIdSistemaAguaId(), Concepcao_.idSistemaAgua, SistemaAgua_.id));
             }

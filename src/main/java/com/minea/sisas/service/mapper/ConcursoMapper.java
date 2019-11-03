@@ -11,11 +11,10 @@ import org.mapstruct.*;
 @Mapper(componentModel = "spring", uses = {ProgramasProjectosMapper.class, SistemaAguaMapper.class})
 public interface ConcursoMapper extends EntityMapper<ConcursoDTO, Concurso> {
 
-    @Mapping(source = "idProgramasProjectos.id", target = "idProgramasProjectosId")
+    @Mapping(source = "programasProjectos", target = "programasProjectos")
     @Mapping(source = "idSistemaAgua.id", target = "idSistemaAguaId")
     ConcursoDTO toDto(Concurso concurso);
 
-    @Mapping(source = "idProgramasProjectosId", target = "id")
     Concurso toEntity(ConcursoDTO concursoDTO);
 
     default Concurso fromId(Long id) {

@@ -2,6 +2,7 @@ package com.minea.sisas.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.minea.sisas.service.ConcursoService;
+import com.minea.sisas.service.ProgramasProjectosService;
 import com.minea.sisas.web.rest.errors.BadRequestAlertException;
 import com.minea.sisas.web.rest.util.HeaderUtil;
 import com.minea.sisas.web.rest.util.PaginationUtil;
@@ -22,6 +23,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -37,11 +39,14 @@ public class ConcursoResource {
 
     private final ConcursoService concursoService;
 
+    private final ProgramasProjectosService programasProjectosService;
+
     //private final ConcursoQueryService concursoQueryService;
 
-    public ConcursoResource(ConcursoService concursoService) {
+    public ConcursoResource(ConcursoService concursoService, ProgramasProjectosService programasProjectosService) {
         this.concursoService = concursoService;
        // this.concursoQueryService = concursoQueryService;
+        this.programasProjectosService = programasProjectosService;
     }
 
     /**
@@ -57,6 +62,9 @@ public class ConcursoResource {
         log.debug("REST request to save Concurso : {}", concursoDTO);
         if (concursoDTO.getId() != null) {
             throw new BadRequestAlertException("A new concurso cannot already have an ID", ENTITY_NAME, "idexists");
+        }
+        if (Objects.nonNull(this.programasProjectosService)){
+            concursoDTO.setProgramasProjectos(this.programasProjectosService.findOne(concursoDTO.getProgramasProjectos().getId()));
         }
         ConcursoDTO result = concursoService.save(concursoDTO);
         return ResponseEntity.created(new URI("/api/concursos/" + result.getId()))
@@ -79,6 +87,9 @@ public class ConcursoResource {
         log.debug("REST request to update Concurso : {}", concursoDTO);
         if (concursoDTO.getId() == null) {
             return createConcurso(concursoDTO);
+        }
+        if (Objects.nonNull(this.programasProjectosService)){
+            concursoDTO.setProgramasProjectos(this.programasProjectosService.findOne(concursoDTO.getProgramasProjectos().getId()));
         }
         ConcursoDTO result = concursoService.save(concursoDTO);
         return ResponseEntity.ok()
@@ -113,6 +124,21 @@ public class ConcursoResource {
     public ResponseEntity<ConcursoDTO> getConcurso(@PathVariable Long id) {
         log.debug("REST request to get Concurso : {}", id);
         ConcursoDTO concursoDTO = concursoService.findOne(id);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(concursoDTO));
+    }
+
+
+    /**
+     * GET  /concursos/programas-projectos/:id : get the "id" concurso.
+     *
+     * @param id the id of the concursoDTO to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the concursoDTO, or with status 404 (Not Found)
+     */
+    @GetMapping("/concursos/programas-projectos/{id}")
+    @Timed
+    public ResponseEntity<ConcursoDTO> getConcursoByProgramasProjectos(@PathVariable Long id) {
+        log.debug("REST request to get Concurso : {}", id);
+        ConcursoDTO concursoDTO = concursoService.findOneByProgramasProjectos(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(concursoDTO));
     }
 

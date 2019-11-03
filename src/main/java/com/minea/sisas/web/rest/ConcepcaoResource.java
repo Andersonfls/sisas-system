@@ -1,7 +1,9 @@
 package com.minea.sisas.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.minea.sisas.repository.ProgramasProjectosRepository;
 import com.minea.sisas.service.ConcepcaoService;
+import com.minea.sisas.service.ProgramasProjectosService;
 import com.minea.sisas.web.rest.errors.BadRequestAlertException;
 import com.minea.sisas.web.rest.util.HeaderUtil;
 import com.minea.sisas.web.rest.util.PaginationUtil;
@@ -23,6 +25,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -40,9 +43,13 @@ public class ConcepcaoResource {
 
     private final ConcepcaoQueryService concepcaoQueryService;
 
-    public ConcepcaoResource(ConcepcaoService concepcaoService, ConcepcaoQueryService concepcaoQueryService) {
+    private final ProgramasProjectosService programasProjectosService;
+
+    public ConcepcaoResource(ConcepcaoService concepcaoService, ConcepcaoQueryService concepcaoQueryService,
+                             ProgramasProjectosService programasProjectosService) {
         this.concepcaoService = concepcaoService;
         this.concepcaoQueryService = concepcaoQueryService;
+        this.programasProjectosService = programasProjectosService;
     }
 
     /**
@@ -58,6 +65,9 @@ public class ConcepcaoResource {
         log.debug("REST request to save Concepcao : {}", concepcaoDTO);
         if (concepcaoDTO.getId() != null) {
             throw new BadRequestAlertException("A new concepcao cannot already have an ID", ENTITY_NAME, "idexists");
+        }
+        if (Objects.nonNull(this.programasProjectosService)){
+            concepcaoDTO.setProgramasProjectos(this.programasProjectosService.findOne(concepcaoDTO.getProgramasProjectos().getId()));
         }
         ConcepcaoDTO result = concepcaoService.save(concepcaoDTO);
         return ResponseEntity.created(new URI("/api/concepcaos/" + result.getId()))
@@ -80,6 +90,9 @@ public class ConcepcaoResource {
         log.debug("REST request to update Concepcao : {}", concepcaoDTO);
         if (concepcaoDTO.getId() == null) {
             return createConcepcao(concepcaoDTO);
+        }
+        if (Objects.nonNull(this.programasProjectosService)){
+            concepcaoDTO.setProgramasProjectos(this.programasProjectosService.findOne(concepcaoDTO.getProgramasProjectos().getId()));
         }
         ConcepcaoDTO result = concepcaoService.save(concepcaoDTO);
         return ResponseEntity.ok()
@@ -114,6 +127,20 @@ public class ConcepcaoResource {
     public ResponseEntity<ConcepcaoDTO> getConcepcao(@PathVariable Long id) {
         log.debug("REST request to get Concepcao : {}", id);
         ConcepcaoDTO concepcaoDTO = concepcaoService.findOne(id);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(concepcaoDTO));
+    }
+
+    /**
+     * GET  /concepcaos/programas-projectos/:id : get the "id" Programas e Projectos.
+     *
+     * @param id the id of the concepcaoDTO to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the concepcaoDTO, or with status 404 (Not Found)
+     */
+    @GetMapping("/concepcaos/programas-projectos/{id}")
+    @Timed
+    public ResponseEntity<ConcepcaoDTO> getConcepcaoByProgramasProjectosId(@PathVariable Long id) {
+        log.debug("REST request to get Concepcao : {}", id);
+        ConcepcaoDTO concepcaoDTO = concepcaoService.findOneByProgramaProjectoId(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(concepcaoDTO));
     }
 

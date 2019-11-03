@@ -132,7 +132,7 @@ public class ContratoResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final ContratoResource contratoResource = new ContratoResource(contratoService, contratoQueryService);
+        final ContratoResource contratoResource = new ContratoResource(contratoService, contratoQueryService, null);
         this.restContratoMockMvc = MockMvcBuilders.standaloneSetup(contratoResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -148,7 +148,6 @@ public class ContratoResourceIntTest {
      */
     public static Contrato createEntity(EntityManager em) {
         Contrato contrato = new Contrato()
-            .idContrato(DEFAULT_ID_CONTRATO)
             .tipoEmpreitada(DEFAULT_TIPO_EMPREITADA)
             .dtLancamento(DEFAULT_DT_LANCAMENTO)
             .nmEmpresaAdjudicitaria(DEFAULT_NM_EMPRESA_ADJUDICITARIA)
@@ -169,7 +168,7 @@ public class ContratoResourceIntTest {
         ProgramasProjectos idProgramasProjectos = ProgramasProjectosResourceIntTest.createEntity(em);
         em.persist(idProgramasProjectos);
         em.flush();
-        contrato.setIdProgramasProjectos(idProgramasProjectos);
+        contrato.setProgramasProjectos(idProgramasProjectos);
         // Add required entity
         SistemaAgua idSistemaAgua = SistemaAguaResourceIntTest.createEntity(em);
         em.persist(idSistemaAgua);
@@ -199,7 +198,6 @@ public class ContratoResourceIntTest {
         List<Contrato> contratoList = contratoRepository.findAll();
         assertThat(contratoList).hasSize(databaseSizeBeforeCreate + 1);
         Contrato testContrato = contratoList.get(contratoList.size() - 1);
-        assertThat(testContrato.getIdContrato()).isEqualTo(DEFAULT_ID_CONTRATO);
         assertThat(testContrato.getTipoEmpreitada()).isEqualTo(DEFAULT_TIPO_EMPREITADA);
         assertThat(testContrato.getDtLancamento()).isEqualTo(DEFAULT_DT_LANCAMENTO);
         assertThat(testContrato.getNmEmpresaAdjudicitaria()).isEqualTo(DEFAULT_NM_EMPRESA_ADJUDICITARIA);
@@ -243,7 +241,6 @@ public class ContratoResourceIntTest {
     public void checkIdContratoIsRequired() throws Exception {
         int databaseSizeBeforeTest = contratoRepository.findAll().size();
         // set the field null
-        contrato.setIdContrato(null);
 
         // Create the Contrato, which fails.
         ContratoDTO contratoDTO = contratoMapper.toDto(contrato);
@@ -1325,7 +1322,7 @@ public class ContratoResourceIntTest {
         ProgramasProjectos idProgramasProjectos = ProgramasProjectosResourceIntTest.createEntity(em);
         em.persist(idProgramasProjectos);
         em.flush();
-        contrato.setIdProgramasProjectos(idProgramasProjectos);
+        contrato.setProgramasProjectos(idProgramasProjectos);
         contratoRepository.saveAndFlush(contrato);
         Long idProgramasProjectosId = idProgramasProjectos.getId();
 
@@ -1452,7 +1449,6 @@ public class ContratoResourceIntTest {
         // Disconnect from session so that the updates on updatedContrato are not directly saved in db
         em.detach(updatedContrato);
         updatedContrato
-            .idContrato(UPDATED_ID_CONTRATO)
             .tipoEmpreitada(UPDATED_TIPO_EMPREITADA)
             .dtLancamento(UPDATED_DT_LANCAMENTO)
             .nmEmpresaAdjudicitaria(UPDATED_NM_EMPRESA_ADJUDICITARIA)
@@ -1480,7 +1476,6 @@ public class ContratoResourceIntTest {
         List<Contrato> contratoList = contratoRepository.findAll();
         assertThat(contratoList).hasSize(databaseSizeBeforeUpdate);
         Contrato testContrato = contratoList.get(contratoList.size() - 1);
-        assertThat(testContrato.getIdContrato()).isEqualTo(UPDATED_ID_CONTRATO);
         assertThat(testContrato.getTipoEmpreitada()).isEqualTo(UPDATED_TIPO_EMPREITADA);
         assertThat(testContrato.getDtLancamento()).isEqualTo(UPDATED_DT_LANCAMENTO);
         assertThat(testContrato.getNmEmpresaAdjudicitaria()).isEqualTo(UPDATED_NM_EMPRESA_ADJUDICITARIA);

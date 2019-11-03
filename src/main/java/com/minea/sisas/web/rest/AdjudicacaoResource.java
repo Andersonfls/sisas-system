@@ -1,6 +1,7 @@
 package com.minea.sisas.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.minea.sisas.service.ProgramasProjectosService;
 import com.minea.sisas.web.rest.errors.BadRequestAlertException;
 import com.minea.sisas.web.rest.util.HeaderUtil;
 import com.minea.sisas.web.rest.util.PaginationUtil;
@@ -22,6 +23,7 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -39,9 +41,13 @@ public class AdjudicacaoResource {
 
     private final AdjudicacaoQueryService adjudicacaoQueryService;
 
-    public AdjudicacaoResource(AdjudicacaoService adjudicacaoService, AdjudicacaoQueryService adjudicacaoQueryService) {
+    private final ProgramasProjectosService programasProjectosService;
+
+    public AdjudicacaoResource(AdjudicacaoService adjudicacaoService, AdjudicacaoQueryService adjudicacaoQueryService,
+                               ProgramasProjectosService programasProjectosService) {
         this.adjudicacaoService = adjudicacaoService;
         this.adjudicacaoQueryService = adjudicacaoQueryService;
+        this.programasProjectosService = programasProjectosService;
     }
 
     /**
@@ -57,6 +63,9 @@ public class AdjudicacaoResource {
         log.debug("REST request to save Adjudicacao : {}", adjudicacaoDTO);
         if (adjudicacaoDTO.getId() != null) {
             throw new BadRequestAlertException("A new adjudicacao cannot already have an ID", ENTITY_NAME, "idexists");
+        }
+        if (Objects.nonNull(this.programasProjectosService)){
+            adjudicacaoDTO.setProgramasProjectos(this.programasProjectosService.findOne(adjudicacaoDTO.getProgramasProjectos().getId()));
         }
         AdjudicacaoDTO result = adjudicacaoService.save(adjudicacaoDTO);
         return ResponseEntity.created(new URI("/api/adjudicacaos/" + result.getId()))
@@ -79,6 +88,9 @@ public class AdjudicacaoResource {
         log.debug("REST request to update Adjudicacao : {}", adjudicacaoDTO);
         if (adjudicacaoDTO.getId() == null) {
             return createAdjudicacao(adjudicacaoDTO);
+        }
+        if (Objects.nonNull(this.programasProjectosService)){
+            adjudicacaoDTO.setProgramasProjectos(this.programasProjectosService.findOne(adjudicacaoDTO.getProgramasProjectos().getId()));
         }
         AdjudicacaoDTO result = adjudicacaoService.save(adjudicacaoDTO);
         return ResponseEntity.ok()
@@ -113,6 +125,20 @@ public class AdjudicacaoResource {
     public ResponseEntity<AdjudicacaoDTO> getAdjudicacao(@PathVariable Long id) {
         log.debug("REST request to get Adjudicacao : {}", id);
         AdjudicacaoDTO adjudicacaoDTO = adjudicacaoService.findOne(id);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(adjudicacaoDTO));
+    }
+
+    /**
+     * GET  /adjudicacaos/programas-projectos/:id : get the "id" adjudicacao.
+     *
+     * @param id the id of the adjudicacaoDTO to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the adjudicacaoDTO, or with status 404 (Not Found)
+     */
+    @GetMapping("/adjudicacaos/programas-projectos/{id}")
+    @Timed
+    public ResponseEntity<AdjudicacaoDTO> getAdjudicacaoByProgramasProjectos(@PathVariable Long id) {
+        log.debug("REST request to get Adjudicacao : {}", id);
+        AdjudicacaoDTO adjudicacaoDTO = adjudicacaoService.findOneByProgramasProjectos(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(adjudicacaoDTO));
     }
 

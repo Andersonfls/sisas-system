@@ -69,6 +69,13 @@ public class ContratoService {
         return contratoMapper.toDto(contrato);
     }
 
+    @Transactional(readOnly = true)
+    public ContratoDTO findOneByProgramasProjectos(Long id) {
+        log.debug("Request to get Contrato : {}", id);
+        Contrato contrato = contratoRepository.findByProgramasProjectosId(id);
+        return contratoMapper.toDto(contrato);
+    }
+
     /**
      * Delete the contrato by id.
      *

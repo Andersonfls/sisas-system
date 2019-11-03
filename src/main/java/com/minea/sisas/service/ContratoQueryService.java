@@ -78,9 +78,6 @@ public class ContratoQueryService extends QueryService<Contrato> {
             if (criteria.getId() != null) {
                 specification = specification.and(buildSpecification(criteria.getId(), Contrato_.id));
             }
-            if (criteria.getIdContrato() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getIdContrato(), Contrato_.idContrato));
-            }
             if (criteria.getTipoEmpreitada() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getTipoEmpreitada(), Contrato_.tipoEmpreitada));
             }
@@ -128,9 +125,6 @@ public class ContratoQueryService extends QueryService<Contrato> {
             }
             if (criteria.getNmResposavelProjeto() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getNmResposavelProjeto(), Contrato_.nmResposavelProjeto));
-            }
-            if (criteria.getIdProgramasProjectosId() != null) {
-                specification = specification.and(buildReferringEntitySpecification(criteria.getIdProgramasProjectosId(), Contrato_.idProgramasProjectos, ProgramasProjectos_.id));
             }
             if (criteria.getIdSistemaAguaId() != null) {
                 specification = specification.and(buildReferringEntitySpecification(criteria.getIdSistemaAguaId(), Contrato_.idSistemaAgua, SistemaAgua_.id));

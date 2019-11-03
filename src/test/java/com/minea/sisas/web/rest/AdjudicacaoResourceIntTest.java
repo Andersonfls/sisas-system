@@ -96,7 +96,8 @@ public class AdjudicacaoResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final AdjudicacaoResource adjudicacaoResource = new AdjudicacaoResource(adjudicacaoService, adjudicacaoQueryService);
+        final AdjudicacaoResource adjudicacaoResource = new AdjudicacaoResource(adjudicacaoService, adjudicacaoQueryService, null
+        );
         this.restAdjudicacaoMockMvc = MockMvcBuilders.standaloneSetup(adjudicacaoResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -121,7 +122,7 @@ public class AdjudicacaoResourceIntTest {
         ProgramasProjectos idProgramasProjectos = ProgramasProjectosResourceIntTest.createEntity(em);
         em.persist(idProgramasProjectos);
         em.flush();
-        adjudicacao.setIdProgramasProjectos(idProgramasProjectos);
+        adjudicacao.setProgramasProjectos(idProgramasProjectos);
         return adjudicacao;
     }
 
@@ -643,7 +644,7 @@ public class AdjudicacaoResourceIntTest {
         ProgramasProjectos idProgramasProjectos = ProgramasProjectosResourceIntTest.createEntity(em);
         em.persist(idProgramasProjectos);
         em.flush();
-        adjudicacao.setIdProgramasProjectos(idProgramasProjectos);
+        adjudicacao.setProgramasProjectos(idProgramasProjectos);
         adjudicacaoRepository.saveAndFlush(adjudicacao);
         Long idProgramasProjectosId = idProgramasProjectos.getId();
 

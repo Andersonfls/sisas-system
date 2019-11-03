@@ -15,6 +15,12 @@ import {
     programasProjectosPopupRoute,
     ProgramasProjectosResolvePagingParams,
 } from './';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {ConcepcaoService} from '../concepcao';
+import {ConcursoService} from '../concurso';
+import {AdjudicacaoService} from '../adjudicacao';
+import {ContratoService} from '../contrato';
+import {SistemaAguaService} from '../sistema-agua';
 
 const ENTITY_STATES = [
     ...programasProjectosRoute,
@@ -24,7 +30,8 @@ const ENTITY_STATES = [
 @NgModule({
     imports: [
         SisasSharedModule,
-        RouterModule.forChild(ENTITY_STATES)
+        RouterModule.forChild(ENTITY_STATES),
+        NgbModule.forRoot()
     ],
     declarations: [
         ProgramasProjectosComponent,
@@ -45,6 +52,11 @@ const ENTITY_STATES = [
         ProgramasProjectosService,
         ProgramasProjectosPopupService,
         ProgramasProjectosResolvePagingParams,
+        ConcepcaoService,
+        ConcursoService,
+        AdjudicacaoService,
+        ContratoService,
+        SistemaAguaService,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

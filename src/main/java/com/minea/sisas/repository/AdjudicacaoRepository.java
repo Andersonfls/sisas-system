@@ -13,4 +13,5 @@ import org.springframework.data.jpa.repository.*;
 @Repository
 public interface AdjudicacaoRepository extends JpaRepository<Adjudicacao, Long>, JpaSpecificationExecutor<Adjudicacao> {
 
+    Adjudicacao findByProgramasProjectosId(long id);
 }

@@ -96,7 +96,7 @@ public class ConcepcaoResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final ConcepcaoResource concepcaoResource = new ConcepcaoResource(concepcaoService, concepcaoQueryService);
+        final ConcepcaoResource concepcaoResource = new ConcepcaoResource(concepcaoService, concepcaoQueryService, null);
         this.restConcepcaoMockMvc = MockMvcBuilders.standaloneSetup(concepcaoResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -121,7 +121,7 @@ public class ConcepcaoResourceIntTest {
         ProgramasProjectos idProgramasProjectos = ProgramasProjectosResourceIntTest.createEntity(em);
         em.persist(idProgramasProjectos);
         em.flush();
-        concepcao.setIdProgramasProjectos(idProgramasProjectos);
+        concepcao.setProgramasProjectos(idProgramasProjectos);
         return concepcao;
     }
 
@@ -643,7 +643,7 @@ public class ConcepcaoResourceIntTest {
         ProgramasProjectos idProgramasProjectos = ProgramasProjectosResourceIntTest.createEntity(em);
         em.persist(idProgramasProjectos);
         em.flush();
-        concepcao.setIdProgramasProjectos(idProgramasProjectos);
+        concepcao.setProgramasProjectos(idProgramasProjectos);
         concepcaoRepository.saveAndFlush(concepcao);
         Long idProgramasProjectosId = idProgramasProjectos.getId();
 

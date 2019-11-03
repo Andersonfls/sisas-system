@@ -40,11 +40,12 @@ public class Concepcao implements Serializable {
     @Column(name = "dt_aprovacao_con")
     private LocalDate dtAprovacaoCon;
 
-    @ManyToOne(optional = false)
-    @NotNull
-    private ProgramasProjectos idProgramasProjectos;
+    @ManyToOne()
+    @JoinColumn(name = "id_programas_projectos")
+    private ProgramasProjectos programasProjectos;
 
-    @ManyToOne
+    @ManyToOne()
+    @JoinColumn(name = "id_sistema_agua")
     private SistemaAgua idSistemaAgua;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
@@ -121,17 +122,17 @@ public class Concepcao implements Serializable {
         this.dtAprovacaoCon = dtAprovacaoCon;
     }
 
-    public ProgramasProjectos getIdProgramasProjectos() {
-        return idProgramasProjectos;
+    public ProgramasProjectos getProgramasProjectos() {
+        return programasProjectos;
     }
 
-    public Concepcao idProgramasProjectos(ProgramasProjectos programasProjectos) {
-        this.idProgramasProjectos = programasProjectos;
+    public Concepcao programasProjectos(ProgramasProjectos programasProjectos) {
+        this.programasProjectos = programasProjectos;
         return this;
     }
 
-    public void setIdProgramasProjectos(ProgramasProjectos programasProjectos) {
-        this.idProgramasProjectos = programasProjectos;
+    public void setProgramasProjectos(ProgramasProjectos programasProjectos) {
+        this.programasProjectos = programasProjectos;
     }
 
     public SistemaAgua getIdSistemaAgua() {

@@ -69,6 +69,13 @@ public class AdjudicacaoService {
         return adjudicacaoMapper.toDto(adjudicacao);
     }
 
+    @Transactional(readOnly = true)
+    public AdjudicacaoDTO findOneByProgramasProjectos(Long id) {
+        log.debug("Request to get Adjudicacao : {}", id);
+        Adjudicacao adjudicacao = adjudicacaoRepository.findByProgramasProjectosId(id);
+        return adjudicacaoMapper.toDto(adjudicacao);
+    }
+
     /**
      * Delete the adjudicacao by id.
      *

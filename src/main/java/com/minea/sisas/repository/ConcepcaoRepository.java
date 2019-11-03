@@ -13,4 +13,5 @@ import org.springframework.data.jpa.repository.*;
 @Repository
 public interface ConcepcaoRepository extends JpaRepository<Concepcao, Long>, JpaSpecificationExecutor<Concepcao> {
 
+    Concepcao findByProgramasProjectosId(long id);
 }

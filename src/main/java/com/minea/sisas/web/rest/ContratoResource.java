@@ -2,6 +2,7 @@ package com.minea.sisas.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.minea.sisas.service.ContratoService;
+import com.minea.sisas.service.ProgramasProjectosService;
 import com.minea.sisas.web.rest.errors.BadRequestAlertException;
 import com.minea.sisas.web.rest.util.HeaderUtil;
 import com.minea.sisas.web.rest.util.PaginationUtil;
@@ -23,6 +24,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -40,9 +42,13 @@ public class ContratoResource {
 
     private final ContratoQueryService contratoQueryService;
 
-    public ContratoResource(ContratoService contratoService, ContratoQueryService contratoQueryService) {
+    private final ProgramasProjectosService programasProjectosService;
+
+    public ContratoResource(ContratoService contratoService, ContratoQueryService contratoQueryService,
+                            ProgramasProjectosService programasProjectosService) {
         this.contratoService = contratoService;
         this.contratoQueryService = contratoQueryService;
+        this.programasProjectosService = programasProjectosService;
     }
 
     /**
@@ -58,6 +64,9 @@ public class ContratoResource {
         log.debug("REST request to save Contrato : {}", contratoDTO);
         if (contratoDTO.getId() != null) {
             throw new BadRequestAlertException("A new contrato cannot already have an ID", ENTITY_NAME, "idexists");
+        }
+        if (Objects.nonNull(this.programasProjectosService)){
+            contratoDTO.setProgramasProjectos(this.programasProjectosService.findOne(contratoDTO.getProgramasProjectos().getId()));
         }
         ContratoDTO result = contratoService.save(contratoDTO);
         return ResponseEntity.created(new URI("/api/contratoes/" + result.getId()))
@@ -80,6 +89,9 @@ public class ContratoResource {
         log.debug("REST request to update Contrato : {}", contratoDTO);
         if (contratoDTO.getId() == null) {
             return createContrato(contratoDTO);
+        }
+        if (Objects.nonNull(this.programasProjectosService)){
+            contratoDTO.setProgramasProjectos(this.programasProjectosService.findOne(contratoDTO.getProgramasProjectos().getId()));
         }
         ContratoDTO result = contratoService.save(contratoDTO);
         return ResponseEntity.ok()
@@ -114,6 +126,20 @@ public class ContratoResource {
     public ResponseEntity<ContratoDTO> getContrato(@PathVariable Long id) {
         log.debug("REST request to get Contrato : {}", id);
         ContratoDTO contratoDTO = contratoService.findOne(id);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(contratoDTO));
+    }
+
+    /**
+     * GET  /contratoes/programas-projectos/:id : get the "id" contrato.
+     *
+     * @param id the id of the contratoDTO to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the contratoDTO, or with status 404 (Not Found)
+     */
+    @GetMapping("/contratoes/programas-projectos/{id}")
+    @Timed
+    public ResponseEntity<ContratoDTO> getContratoByProgramasProjectos(@PathVariable Long id) {
+        log.debug("REST request to get Contrato : {}", id);
+        ContratoDTO contratoDTO = contratoService.findOneByProgramasProjectos(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(contratoDTO));
     }
 
