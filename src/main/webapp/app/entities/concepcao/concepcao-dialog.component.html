@@ -91,7 +91,7 @@
 
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="sisasApp.concepcao.idProgramasProjectos" for="field_idProgramasProjectos">Id Programas Projectos</label>
-            <select class="form-control" id="field_idProgramasProjectos" name="idProgramasProjectos" [(ngModel)]="concepcao.idProgramasProjectosId"  required>
+            <select class="form-control" id="field_idProgramasProjectos" name="idProgramasProjectos" [(ngModel)]="concepcao.programasProjectos"  required>
                 <option *ngIf="!editForm.value.idProgramasProjectos" [ngValue]="null" selected></option>
                 <option [ngValue]="programasProjectosOption.id" *ngFor="let programasProjectosOption of programasprojectos; trackBy: trackProgramasProjectosById">{{programasProjectosOption.id}}</option>
             </select>

@@ -15,7 +15,7 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="sisasApp.programasProjectosLog.idProgramasProjectosLog" for="field_idProgramasProjectosLog">Id Programas Projectos Log</label>
             <input type="number" class="form-control" name="idProgramasProjectosLog" id="field_idProgramasProjectosLog"
-                [(ngModel)]="programasProjectosLog.idProgramasProjectosLog" required/>
+                [(ngModel)]="programasProjectosLog.programasProjectos" required/>
             <div [hidden]="!(editForm.controls.idProgramasProjectosLog?.dirty && editForm.controls.idProgramasProjectosLog?.invalid)">
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.idProgramasProjectosLog?.errors?.required" jhiTranslate="entity.validation.required">
@@ -45,7 +45,7 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="sisasApp.programasProjectosLog.idUsuario" for="field_idUsuario">Id Usuario</label>
             <input type="number" class="form-control" name="idUsuario" id="field_idUsuario"
-                [(ngModel)]="programasProjectosLog.idUsuario" required/>
+                [(ngModel)]="programasProjectosLog.usuario" required/>
             <div [hidden]="!(editForm.controls.idUsuario?.dirty && editForm.controls.idUsuario?.invalid)">
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.idUsuario?.errors?.required" jhiTranslate="entity.validation.required">
@@ -91,7 +91,7 @@
 
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="sisasApp.programasProjectosLog.idProgramasProjectos" for="field_idProgramasProjectos">Id Programas Projectos</label>
-            <select class="form-control" id="field_idProgramasProjectos" name="idProgramasProjectos" [(ngModel)]="programasProjectosLog.idProgramasProjectosId"  required>
+            <select class="form-control" id="field_idProgramasProjectos" name="idProgramasProjectos" [(ngModel)]="programasProjectosLog.programasProjectos"  required>
                 <option *ngIf="!editForm.value.idProgramasProjectos" [ngValue]="null" selected></option>
                 <option [ngValue]="programasProjectosOption.id" *ngFor="let programasProjectosOption of programasprojectos; trackBy: trackProgramasProjectosById">{{programasProjectosOption.id}}</option>
             </select>
