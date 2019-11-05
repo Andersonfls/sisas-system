@@ -56,18 +56,18 @@
             </div>
             <div class="form-group col-sm-6">
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.idComuna" for="field_idComuna">Id
-                        Comuna</label>
-                    <select class="form-control" id="field_idComuna" name="comuna" [(ngModel)]="sistemaAgua.comuna"
-                            required>
-                        <option *ngIf="!editForm.value.comuna" [ngValue]="null" selected>Selecione a Comuna...</option>
-                        <option [ngValue]="comunaOption.id === sistemaAgua.comuna?.id ? sistemaAgua.comuna :comunaOption "
-                            *ngFor="let comunaOption of comunas">{{comunaOption.nmComuna}}</option>
+                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.idProvincia"
+                           for="field_idProvincia">id
+                        Provincia</label>
+                    <select class="form-control" id="field_idProvincia" name="provincia" [(ngModel)]="sistemaAgua.provincia" required>
+                        <option *ngIf="!editForm.value.provincia" [ngValue]="null" selected>Selecione a Província..</option>
+                        <option [ngValue]="provinciaOption.id === sistemaAgua.provincia?.id ? sistemaAgua.provincia : provinciaOption"
+                                *ngFor="let provinciaOption of provincias">{{provinciaOption.nmProvincia}}</option>
                     </select>
                 </div>
-                <div [hidden]="!(editForm.controls.comuna?.dirty && editForm.controls.comuna?.invalid)">
+                <div [hidden]="!(editForm.controls.municipio?.dirty && editForm.controls.municipio?.invalid)">
                     <small class="form-text text-danger"
-                           [hidden]="!editForm.controls.comuna?.errors?.required"
+                           [hidden]="!editForm.controls.municipio?.errors?.required"
                            jhiTranslate="entity.validation.required">
                         This field is required.
                     </small>
@@ -99,18 +99,18 @@
 
             <div class="form-group col-sm-6">
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.idProvincia"
-                           for="field_idProvincia">id
-                        Provincia</label>
-                    <select class="form-control" id="field_idProvincia" name="provincia" [(ngModel)]="sistemaAgua.provincia" required>
-                        <option *ngIf="!editForm.value.provincia" [ngValue]="null" selected>Selecione a Província..</option>
-                        <option [ngValue]="provinciaOption.id === sistemaAgua.provincia?.id ? sistemaAgua.provincia : provinciaOption"
-                            *ngFor="let provinciaOption of provincias">{{provinciaOption.nmProvincia}}</option>
+                    <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.idComuna" for="field_idComuna">Id
+                        Comuna</label>
+                    <select class="form-control" id="field_idComuna" name="comuna" [(ngModel)]="sistemaAgua.comuna"
+                            required>
+                        <option *ngIf="!editForm.value.comuna" [ngValue]="null" selected>Selecione a Comuna...</option>
+                        <option [ngValue]="comunaOption.id === sistemaAgua.comuna?.id ? sistemaAgua.comuna :comunaOption "
+                                *ngFor="let comunaOption of comunas">{{comunaOption.nmComuna}}</option>
                     </select>
                 </div>
-                <div [hidden]="!(editForm.controls.municipio?.dirty && editForm.controls.municipio?.invalid)">
+                <div [hidden]="!(editForm.controls.comuna?.dirty && editForm.controls.comuna?.invalid)">
                     <small class="form-text text-danger"
-                           [hidden]="!editForm.controls.municipio?.errors?.required"
+                           [hidden]="!editForm.controls.comuna?.errors?.required"
                            jhiTranslate="entity.validation.required">
                         This field is required.
                     </small>
