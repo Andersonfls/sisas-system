@@ -3,8 +3,9 @@
         "sistemaAgua": {
             "home": {
                 "title": "Sistema de Águas",
-                "createLabel": "Criar novo",
-                "createOrEditLabel": "Criar ou editar"
+                "createLabel": "Criar novo Sistema de Água",
+                "createOrEditLabel": "Criar ou editar",
+                "editLabel": "Editar Sistema de Água"
             },
             "created": "Um novo Sistema de Agua foi criado com o identificador {{ param }}",
             "updated": "Um Sistema de Água foi atualizado com o identificador {{ param }}",

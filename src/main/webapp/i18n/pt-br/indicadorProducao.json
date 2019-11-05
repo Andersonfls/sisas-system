@@ -5,7 +5,8 @@
             "home": {
                 "title": "Indicador Produção",
                 "createLabel": "Criar novo Indicador Produção",
-                "createOrEditLabel": "Criar ou editar Indicador Produção"
+                "createOrEditLabel": "Criar ou editar Indicador Produção",
+                "editLabel": "Editar Indicador Produção"
             },
             "created": "Um novo Indicador Producao foi criado com o identificador {{ param }}",
             "updated": "Um Indicador Producao foi atualizado com o identificador {{ param }}",

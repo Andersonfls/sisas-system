@@ -1,7 +1,8 @@
 <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
 
     <div class="modal-header">
-        <h4 class="modal-title" id="myProgramasProjectosLabel" jhiTranslate="sisasApp.programasProjectos.home.createOrEditLabel">Create or edit a Programas Projectos</h4>
+        <h4 [hidden]="programasProjectos.id" class="modal-title" id="myProgramasProjectosLabelc" jhiTranslate="sisasApp.programasProjectos.home.createLabel">Create or edit a Programas Projectos</h4>
+        <h4 [hidden]="!programasProjectos.id" class="modal-title" id="myProgramasProjectosLabele" jhiTranslate="sisasApp.programasProjectos.home.editLabel">Create or edit a Programas Projectos</h4>
     </div>
 
     <div class="card">
@@ -145,7 +146,9 @@
         <div class="modal-dialog modal-md" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myConcepcaoLabel" jhiTranslate="sisasApp.concepcao.home.createOrEditLabel">Create or edit a Concepcao</h4>
+                    <h4 [hidden]="concepcao.id" class="modal-title" id="myConcepcaoLabelc" jhiTranslate="sisasApp.concepcao.home.createLabel">Create or edit a Concepcao</h4>
+                    <h4 [hidden]="!concepcao.id" class="modal-title" id="myConcepcaoLabele" jhiTranslate="sisasApp.concepcao.home.editLabel">Create or edit a Concepcao</h4>
+
                     <button #closeModal type="button" class="close" data-dismiss="modal" aria-hidden="true"
                             (click)="clear()">&times;</button>
                 </div>
@@ -246,7 +249,8 @@
         <div class="modal-dialog modal-md" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myConcursoLabel" jhiTranslate="sisasApp.concurso.home.createOrEditLabel">Create or edit a Concurso</h4>
+                    <h4 [hidden]="concurso.id" class="modal-title" id="myConcursoLabelc" jhiTranslate="sisasApp.concurso.home.createLabel">Create or edit a Concurso</h4>
+                    <h4 [hidden]="!concurso.id" class="modal-title" id="myConcursoLabele" jhiTranslate="sisasApp.concurso.home.editLabel">Create or edit a Concurso</h4>
                     <button #closeModalConcurso type="button" class="close" data-dismiss="modal" aria-hidden="true"
                             (click)="clear()">&times;</button>
                 </div>
@@ -377,7 +381,8 @@
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myAdjudicacaoLabel" jhiTranslate="sisasApp.adjudicacao.home.createOrEditLabel">Create or edit a Adjudicacao</h4>
+                    <h4 [hidden]="adjudicacao.id" class="modal-title" id="myAdjudicacaoLabec" jhiTranslate="sisasApp.adjudicacao.home.createLabel">Create or edit a Adjudicacao</h4>
+                    <h4 [hidden]="!adjudicacao.id" class="modal-title" id="myAdjudicacaoLabele" jhiTranslate="sisasApp.adjudicacao.home.editLabel">Create or edit a Adjudicacao</h4>
                     <button #closeModalAdj type="button" class="close" data-dismiss="modal" aria-hidden="true"
                             (click)="clear()">&times;</button>
                 </div>
@@ -477,7 +482,8 @@
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myContratoLabel" jhiTranslate="sisasApp.contrato.home.createOrEditLabel">Create or edit a Contrato</h4>
+                    <h4 [hidden]="contrato.id" class="modal-title" id="myContratoLabel" jhiTranslate="sisasApp.contrato.home.createLabel">Create or edit a Contrato</h4>
+                    <h4 [hidden]="!contrato.id" class="modal-title" id="myContratoLabel" jhiTranslate="sisasApp.contrato.home.editLabel">Create or edit a Contrato</h4>
                     <button #closeModalContrato type="button" class="close" data-dismiss="modal" aria-hidden="true"
                             (click)="clear()">&times;</button>
                 </div>

@@ -5,7 +5,8 @@
             "home": {
                 "title": "Concursos",
                 "createLabel": "Criar novo Concurso",
-                "createOrEditLabel": "Criar ou editar Concurso"
+                "createOrEditLabel": "Criar ou editar Concurso",
+                "editLabel": "Editar Concurso"
             },
             "created": "Um novo Concurso foi criado com o identificador {{ param }}",
             "updated": "Um Concurso foi atualizado com o identificador {{ param }}",

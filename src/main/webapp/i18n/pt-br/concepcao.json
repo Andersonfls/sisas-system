@@ -4,17 +4,18 @@
         "concepcao" : {
             "home": {
                 "title": "Concepcaos",
-                "createLabel": "Criar novo Concepcao",
-                "createOrEditLabel": "Criar ou editar Concepcao"
+                "createLabel": "Criar novo Concepção",
+                "createOrEditLabel": "Criar ou editar Concepção",
+                "editLabel": "Editar Concepção"
             },
-            "created": "Um novo Concepcao foi criado com o identificador {{ param }}",
-            "updated": "Um Concepcao foi atualizado com o identificador {{ param }}",
-            "deleted": "Um Concepcao foi deletado com o identificador {{ param }}",
+            "created": "Um novo Concepção foi criado com o identificador {{ param }}",
+            "updated": "Um Concepção foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Concepção foi deletado com o identificador {{ param }}",
             "delete": {
                 "question": "Tem certeza de que deseja excluir Concepcao {{ id }}?"
             },
             "detail": {
-                "title": "Concepcao"
+                "title": "Concepção"
             },
             "idConcepcao": "Id Concepção",
             "tipoConcurso": "Tipo Concurso",

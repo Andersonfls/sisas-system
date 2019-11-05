@@ -1,8 +1,11 @@
 <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
 
     <div class="modal-header">
-        <h4 class="modal-title" id="mySistemaAguaLabel" jhiTranslate="sisasApp.sistemaAgua.home.createOrEditLabel">
+        <h4 [hidden]="sistemaAgua.id" class="modal-title" id="mySistemaAguaLabelc" jhiTranslate="sisasApp.sistemaAgua.home.createLabel">
             Create or edit a Sistema Agua</h4>
+        <h4 [hidden]="!sistemaAgua.id" class="modal-title" id="mySistemaAguaLabele" jhiTranslate="sisasApp.sistemaAgua.home.editLabel">
+            Create or edit a Sistema Agua</h4>
+
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 (click)="clear()">&times;
         </button>

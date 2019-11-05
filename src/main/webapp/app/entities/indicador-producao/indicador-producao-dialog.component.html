@@ -1,8 +1,10 @@
 <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
 
     <div class="modal-header">
-        <h4 class="modal-title" id="myIndicadorProducaoLabel"
-            jhiTranslate="sisasApp.indicadorProducao.home.createOrEditLabel">Create or edit a Indicador Producao</h4>
+        <h4 [hidden]="indicadorProducao.id" class="modal-title" id="myIndicadorProducaoLabelc"
+            jhiTranslate="sisasApp.indicadorProducao.home.createLabel">Create or edit a Indicador Producao</h4>
+        <h4 [hidden]="!indicadorProducao.id" class="modal-title" id="myIndicadorProducaoLabele"
+            jhiTranslate="sisasApp.indicadorProducao.home.editLabel">Create or edit a Indicador Producao</h4>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 (click)="clear()">&times;
         </button>

@@ -4,17 +4,18 @@
         "adjudicacao" : {
             "home": {
                 "title": "Adjudicacaos",
-                "createLabel": "Criar novo Adjudicacao",
-                "createOrEditLabel": "Criar ou editar Adjudicacao"
+                "createLabel": "Criar novo Adjudicação",
+                "createOrEditLabel": "Criar ou editar Adjudicação",
+                "editLabel": "Editar Adjudicação"
             },
-            "created": "Um novo Adjudicacao foi criado com o identificador {{ param }}",
-            "updated": "Um Adjudicacao foi atualizado com o identificador {{ param }}",
-            "deleted": "Um Adjudicacao foi deletado com o identificador {{ param }}",
+            "created": "Um novo Adjudicação foi criado com o identificador {{ param }}",
+            "updated": "Um Adjudicação foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Adjudicação foi deletado com o identificador {{ param }}",
             "delete": {
-                "question": "Tem certeza de que deseja excluir Adjudicacao {{ id }}?"
+                "question": "Tem certeza de que deseja excluir Adjudicação {{ id }}?"
             },
             "detail": {
-                "title": "Adjudicacao"
+                "title": "Adjudicação"
             },
             "idAdjudicacao": "Id Adjudicacao",
             "tipoConcurso": "Tipo Concurso",

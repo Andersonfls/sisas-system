@@ -4,8 +4,9 @@
         "programasProjectos" : {
             "home": {
                 "title": "Programas Projectos",
-                "createLabel": "Criar novo Programas Projectos",
-                "createOrEditLabel": "Criar ou editar Programas Projectos"
+                "createLabel": "Criar novo Programas e Projectos",
+                "createOrEditLabel": "Criar ou editar Programas Projectos",
+                "editLabel": "Editar Programas e Projectos"
             },
             "created": "Um novo Programas Projectos foi criado com o identificador {{ param }}",
             "updated": "Um Programas Projectos foi atualizado com o identificador {{ param }}",
