@@ -51,6 +51,8 @@ export class HomeComponent implements OnInit {
     }
 
     isAuthenticated() {
+        // console.log(this.principal);
+        // console.log(this.principal.isAuthenticated());
         return this.principal.isAuthenticated();
     }
 

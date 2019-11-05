@@ -1,0 +1,119 @@
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-3 teste-acima" style="padding-top: 10px;">
+            <div class="card card-dash">
+                <canvas baseChart style="height: 284px;"
+                        [colors]="pieColors"
+                        [data]="pieChartData"
+                        [labels]="pieChartLabels"
+                        [chartType]="pieChartType"
+                        (chartHover)="chartHoveredPieChart($event)"
+                        (chartClick)="chartClickedPieChart($event)">
+                </canvas>
+            </div>
+        </div>
+
+        <div id="barchart" class="col-md-6" style="padding-top: 10px;">
+            <div class="card card-dash">
+                <canvas baseChart style="height: 284px;"
+                        [colors]="barColorsEmprestimo"
+                        [datasets]="barChartDataEmprestimo"
+                        [labels]="barChartLabelsEmprestimo"
+                        [options]="barChartOptionsEmprestimo"
+                        [legend]="barChartLegendEmprestimo"
+                        [chartType]="barChartTypeEmprestimo"
+                        (chartHover)="chartHoveredEmprestimo($event)"
+                        (chartClick)="chartClickedEmprestimo($event)">
+                </canvas>
+            </div>
+        </div>
+
+        <div id="pieChart" class="col-md-3" style="padding-top: 10px;">
+            <div class="card card-dash">
+                <canvas baseChart style="height: 284px;"
+                        [colors]="pieColors"
+                        [data]="doughnutChartData"
+                        [labels]="doughnutChartLabels"
+                        [chartType]="doughnutChartType"
+                        (chartHover)="chartHoveredDonut($event)"
+                        (chartClick)="chartClickedDonut($event)">
+                </canvas>
+            </div>
+        </div>
+    </div>
+
+    <br/>
+
+    <div class="row">
+        <div class="col-md-6" style="padding-top: 10px;">
+            <div class="card card-dash">
+                <canvas baseChart
+                        [colors]="barColorsReserva"
+                        [datasets]="barChartDataReseva"
+                        [labels]="barChartLabelsReserva"
+                        [options]="barChartOptionsReserva"
+                        [legend]="barChartLegendReserva"
+                        [chartType]="barChartTypeReserva"
+                        (chartHover)="chartHoveredReserva($event)"
+                        (chartClick)="chartClickedReserva($event)">
+                </canvas>
+            </div>
+        </div>
+
+        <div id="lineChart" class="col-md-6" style="padding-top: 10px;">
+            <div class="card card-dash">
+                <canvas baseChart
+                        [data]="lineChartData"
+                        [labels]="lineChartLabels"
+                        [chartType]="lineChartType"
+                        (chartHover)="chartHoveredLineChart($event)"
+                        (chartClick)="chartClickedLineChart($event)">
+                </canvas>
+            </div>
+        </div>
+    </div>
+
+    <br/>
+
+    <div class="row">
+        <div class="col-md-4" style="padding-top: 10px;">
+            <div class="card card-dash" style="height: 420px; color: #865a39;">
+                <p style="text-align: center; "><b>Top 5 - Provincias</b></p>
+                <div style="padding-left: 4px; color: #865a39;">
+                    1) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
+                    2) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
+                    3) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
+                    4) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
+                    5) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
+                </div>
+            </div>
+        </div>
+
+        <div id="topReservas" class="col-md-4" style="padding-top: 10px;">
+            <div class="card card-dash" style="height: 420px; color: #865a39;">
+                <p style="text-align: center; "><b>Top 5 - Municipios</b></p>
+                <div style="padding-left: 4px; color: #865a39;">
+                    1) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
+                    2) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
+                    3) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
+                    4) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
+                    5) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
+                </div>
+            </div>
+        </div>
+
+        <div id="circulacao" class="col-md-4" style="padding-top: 10px;">
+            <div class="card card-dash" style="height: 420px; color: #865a39;">
+                <p style="text-align: center;"><b>Top 5 Comunas</b></p>
+                <div style="padding-left: 4px; color: #865a39;">
+                    1) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
+                    2) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
+                    3) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
+                    4) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
+                    5) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

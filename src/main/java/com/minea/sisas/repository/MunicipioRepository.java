@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import org.springframework.data.jpa.repository.*;
 
+import java.util.List;
+
 
 /**
  * Spring Data JPA repository for the Municipio entity.
@@ -18,4 +20,6 @@ public interface MunicipioRepository extends JpaRepository<Municipio, Long>, Jpa
     @Query("select m from Municipio m where LOWER(m.nmMunicipio) like LOWER(concat(:nome,'%')) " +
         "or LOWER(m.provincia.nmProvincia) like LOWER(concat(:nome,'%'))")
     Page buscarPorNome(@Param("nome") String nome, Pageable pageable);
+
+    List<Municipio> findAllByProvinciaId(Long id);
 }

@@ -29,6 +29,7 @@ import {
 } from './layouts';
 import {NgbDateParserFormatter, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgbDateCustomParserFormatter} from './entities/programas-projectos/NgbDateCustomParserFormatter';
+import {SisasRelatoriosModule} from './Relatorios/relatorios.module';
 
 @NgModule({
     imports: [
@@ -40,6 +41,7 @@ import {NgbDateCustomParserFormatter} from './entities/programas-projectos/NgbDa
         SisasAdminModule,
         SisasAccountModule,
         SisasEntityModule,
+        SisasRelatoriosModule,
         NgbModule.forRoot()
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
