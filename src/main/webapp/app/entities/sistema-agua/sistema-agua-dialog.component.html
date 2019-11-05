@@ -195,7 +195,7 @@
                     <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmTpArea" for="field_nmTpArea">Nm
                         Tp Area</label>
                     <select class="form-control" id="field_nmTpArea" name="nmTpArea" [(ngModel)]="sistemaAgua.nmTpArea" required>
-                        <option *ngIf="!editForm.value.nmTpArea" [ngValue]="null" selected>Selecione tipo Área...</option>
+                        <option [ngValue]="null" selected>Selecione tipo Área...</option>
                         <option label="Rural">Rural</option>
                         <option label="Urbana">Urbana</option>
                     </select>
@@ -215,7 +215,7 @@
                 </div>
             </div>
         </div>
-        <div *ngIf="editForm.controls.possuiSistemaAgua.value===0 && !editForm.form.invalid">
+        <div *ngIf="(editForm.controls.possuiSistemaAgua && editForm.controls.possuiSistemaAgua.value===0) && !editForm.form.invalid">
             <div class="card border-success text-center">
                 <div class="card-body text-success">
                     <h5 class="card-title">QUESTIONÁRIO CONCLUÍDO</h5>
@@ -225,7 +225,7 @@
                 </div>
             </div>
         </div>
-        <div *ngIf="editForm.controls.possuiSistemaAgua.value===1">
+        <div *ngIf="editForm.controls.possuiSistemaAgua && editForm.controls.possuiSistemaAgua.value===1">
             <div class="form-group">
                 <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmSistemaAgua"
                        for="field_nmSistemaAgua">Nm Sistema Agua</label>
@@ -695,7 +695,7 @@
                         <label class="form-control-label" jhiTranslate="sisasApp.sistemaAgua.nmTpTratamentoAgua"
                                for="field_nmTpTratamentoAgua">Nm Tp Tratamento Agua</label>
                         <select class="form-control" id="field_nmTpTratamentoAgua" name="nmTpTratamentoAgua"  [(ngModel)]="sistemaAgua.nmTpTratamentoAgua">
-                            <option *ngIf="!editForm.value.nmTpTratamentoAgua" [ngValue]="null" selected>Selecione o tipo de Tratamento...</option>
+                            <option [ngValue]="null" selected>Selecione o tipo de Tratamento...</option>
                             <option label="Tratamento Padrão">Tratamento Padrão</option>
                             <option label="Tratamento Básico-Cloro">Tratamento Básico-Cloro</option>
                             <option label="Não Realiza">Não Realiza</option>
@@ -745,7 +745,7 @@
                                for="field_existeAvariaSistemaTratamento">Existe Avaria Sistema Tratamento</label>
                         <select class="form-control" id="field_existeAvariaSistemaTratamento"  name="existeAvariaSistemaTratamento"
                                 [(ngModel)]="sistemaAgua.existeAvariaSistemaTratamento" >
-                            <option *ngIf="!editForm.value.existeAvariaSistemaTratamento" [ngValue]="null" selected>Selecione avaria no sistema...</option>
+                            <option [ngValue]="null" selected>Selecione avaria no sistema...</option>
                             <option label="Não, Existem outros motivos">Não, Existem outros motivos</option>
                             <option label="Sim, Sistema Avariado">Sim, Sistema Avariado</option>
                         </select>

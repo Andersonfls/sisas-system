@@ -102,7 +102,7 @@
                     <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.idComuna" for="field_idComuna">Id Comuna</label>
                     <select class="form-control" id="field_idComuna" name="idComuna" [(ngModel)]="programasProjectos.comuna"  required>
                         <option [ngValue]="null" selected>Selecione a Comuna...</option>
-                        <option [ngValue]="comunaOption" *ngFor="let comunaOption of comunas; trackBy: trackComunaById">{{comunaOption.nmComuna}}</option>
+                        <option [ngValue]="option.id == programasProjectos.comuna.id ? programasProjectos.comuna : option" *ngFor="let option of comunas; trackBy: trackComunaById">{{option.nmComuna}}</option>
                     </select>
                 </div>
                 <div [hidden]="!(editForm.controls.comuna?.dirty && editForm.controls.comuna?.invalid)">
@@ -227,7 +227,7 @@
                     <div class="form-group">
                         <label class="form-control-label" jhiTranslate="sisasApp.concepcao.idSistemaAgua" for="field_idSistemaAgua">Id Sistema Agua</label>
                         <select class="form-control" id="field_idSistemaAgua" name="idSistemaAgua" [(ngModel)]="concepcao.idSistemaAguaId">
-                            <option [ngValue]="null">Selecione o sistema de Água...</option>
+                            <option [ngValue]="null" selected>Seleciona o sistema de água...</option>
                             <option [ngValue]="sistemaAguaOption.id" *ngFor="let sistemaAguaOption of sistemaaguas">{{sistemaAguaOption.nmSistemaAgua}}</option>
                         </select>
                     </div>
@@ -457,7 +457,7 @@
                     <div class="form-group">
                         <label class="form-control-label" jhiTranslate="sisasApp.adjudicacao.idSistemaAgua" for="field_adidSistemaAgua">Id Sistema Agua</label>
                         <select class="form-control" id="field_adidSistemaAgua" name="adidSistemaAgua" [(ngModel)]="adjudicacao.idSistemaAguaId" >
-                            <option [ngValue]="null">Selecione o sistema de água</option>
+                            <option [ngValue]="null" selected>Seleciona o sistema de água...</option>
                             <option [ngValue]="sistemaAguaOption.id" *ngFor="let sistemaAguaOption of sistemaaguas">{{sistemaAguaOption.nmSistemaAgua}}</option>
                         </select>
                     </div>
@@ -494,7 +494,7 @@
                             <div class="form-group">
                                 <label class="form-control-label" jhiTranslate="sisasApp.contrato.tipoEmpreitada" for="field_tipoEmpreitada">Tipo Empreitada</label>
                                 <select class="form-control" id="field_tipoEmpreitada" name="tipoEmpreitada" [(ngModel)]="contrato.tipoEmpreitada"  required>
-                                    <option value="Abastecimento de água ">Abastecimento de água </option>
+                                    <option value="Abastecimento de água">Abastecimento de água </option>
                                     <option value="Saneamento de águas residuais">Saneamento de águas residuais</option>
                                 </select>
 

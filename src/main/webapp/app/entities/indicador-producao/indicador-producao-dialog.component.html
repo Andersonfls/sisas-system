@@ -1905,11 +1905,10 @@
             <div class="form-group">
                 <label class="form-control-label" jhiTranslate="sisasApp.indicadorProducao.idSituacao"
                        for="field_idSituacao">Id Situacao</label>
-                <select class="form-control" id="field_idSituacao" name="idSituacao"
-                        [(ngModel)]="indicadorProducao.situacao" required>
+                <select class="form-control" id="field_idSituacao" name="idSituacao" [(ngModel)]="indicadorProducao.situacao" required>
                     <option *ngIf="!editForm.value.situacao" [ngValue]="null" selected>Selecione a Situação...</option>
-                    <option [ngValue]="situacaoOption"
-                            *ngFor="let situacaoOption of situacaos; trackBy: trackSituacaoById">{{situacaoOption.nmSituacao}}</option>
+                    <option [ngValue]="option.nmSituacao == indicadorProducao.situacao.nmSituacao ? indicadorProducao.situacao : option"
+                             *ngFor="let option of situacaos">{{ option.nmSituacao }}</option>
                 </select>
             </div>
             <div [hidden]="!(editForm.controls.idSituacao?.dirty && editForm.controls.idSituacao?.invalid)">
@@ -1927,8 +1926,7 @@
                     <option *ngIf="!editForm.value.sistemaAgua" [ngValue]="null" selected>Selecione o Sistema de
                         Água...
                     </option>
-                    <option [ngValue]="sistemaAguaOption"
-                            *ngFor="let sistemaAguaOption of sistemaaguas; trackBy: trackSistemaAguaById">{{sistemaAguaOption.nmSistemaAgua}}</option>
+                    <option [ngValue]="option.id == indicadorProducao.sistemaAgua.id ? indicadorProducao.sistemaAgua : option" *ngFor="let option of sistemaaguas">{{option.nmSistemaAgua}}</option>
                 </select>
             </div>
             <div [hidden]="!(editForm.controls.idSistemaAgua?.dirty && editForm.controls.idSistemaAgua?.invalid)">
@@ -1944,8 +1942,8 @@
                 <select class="form-control" id="field_idComuna" name="idComuna" [(ngModel)]="indicadorProducao.comuna"
                         required>
                     <option *ngIf="!editForm.value.comuna" [ngValue]="null" selected>Selecione uma Comuna..</option>
-                    <option [ngValue]="comunaOption"
-                            *ngFor="let comunaOption of comunas; trackBy: trackComunaById">{{comunaOption.nmComuna}}</option>
+                    <option [ngValue]="option.id == indicadorProducao.comuna.id ? indicadorProducao.comuna : option"
+                            *ngFor="let option of comunas; trackBy: trackComunaById">{{option.nmComuna}}</option>
                 </select>
             </div>
             <div [hidden]="!(editForm.controls.idComuna?.dirty && editForm.controls.idComuna?.invalid)">

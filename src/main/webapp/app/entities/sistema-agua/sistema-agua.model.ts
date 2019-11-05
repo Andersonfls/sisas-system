@@ -63,5 +63,13 @@ export class SistemaAgua implements BaseEntity {
         public provincia?: Provincia,
         public municipio?: Municipio
     ) {
+        this.id = id ? id : null;
+        this.comuna = comuna ? comuna : null;
+        this.situacao = situacao ? situacao : null;
+        this.provincia = provincia ? provincia : null;
+        this.municipio = municipio ? municipio : null;
+        this.possuiSistemaAgua = possuiSistemaAgua ? possuiSistemaAgua : null;
+        this.nmTpComunaAldeia = nmTpComunaAldeia ? nmTpComunaAldeia : null;
+        this.nmTpArea = nmTpArea ? nmTpArea : null;
     }
 }

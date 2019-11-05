@@ -67,10 +67,11 @@ export class SistemaAguaDialogComponent implements OnInit {
             },
             (res: HttpErrorResponse) => this.onError(res.message));
 
-        this.inicializarCampos();
+        // this.inicializarCampos();
 
         const now = new Date();
         this.sistemaAgua.dtLancamento = {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()};
+        console.log(this.sistemaAgua);
     }
 
     inicializarCampos() {
