@@ -1,2 +1,2 @@
-export * from './sector-agua.component';
-export * from './sector-agua.route';
+export * from './sector-agua-saneamento.component';
+export * from './sector-agua-saneamento.route';

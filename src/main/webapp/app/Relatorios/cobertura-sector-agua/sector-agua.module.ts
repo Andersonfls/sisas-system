@@ -1,12 +1,13 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SisasSharedModule } from '../../shared';
-import { DashboardResolvePagingParams, dashboardRoute } from './dashboard.route';
-import { DashboardComponent } from './dashboard.component';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
+import {sectorAguaAguaRoute, SectorAguaResolvePagingParams} from './sector-agua.route';
+import {CoberturaSectorAguaComponent} from './sector-agua.component';
+import {ProvinciaService} from '../../entities/provincia';
 
 const ENTITY_STATES = [
-    ...dashboardRoute
+    ...sectorAguaAguaRoute
 ];
 
 @NgModule({
@@ -16,14 +17,15 @@ const ENTITY_STATES = [
         RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [
-        DashboardComponent
+        CoberturaSectorAguaComponent
     ],
     entryComponents: [
-        DashboardComponent
+        CoberturaSectorAguaComponent
     ],
     providers: [
-        DashboardResolvePagingParams
+        SectorAguaResolvePagingParams,
+        ProvinciaService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class SisasDashboardModule {}
+export class SisasSectorAguaModule {}

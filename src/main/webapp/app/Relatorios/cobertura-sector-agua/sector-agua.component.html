@@ -1,119 +1,62 @@
-<div class="container">
-
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<div>
+    <h2 style="margin-left: 20%">
+        <span>Cobertura no sector de Água (Nível provincial)</span>
+    </h2>
+    <jhi-alert></jhi-alert>
     <div class="row">
-        <div class="col-md-3 teste-acima" style="padding-top: 10px;">
-            <div class="card card-dash">
-                <canvas baseChart style="height: 284px;"
-                        [colors]="pieColors"
-                        [data]="pieChartData"
-                        [labels]="pieChartLabels"
-                        [chartType]="pieChartType"
-                        (chartHover)="chartHoveredPieChart($event)"
-                        (chartClick)="chartClickedPieChart($event)">
-                </canvas>
-            </div>
-        </div>
+    </div>
+    <br/>
 
-        <div id="barchart" class="col-md-6" style="padding-top: 10px;">
-            <div class="card card-dash">
-                <canvas baseChart style="height: 284px;"
-                        [colors]="barColorsEmprestimo"
-                        [datasets]="barChartDataEmprestimo"
-                        [labels]="barChartLabelsEmprestimo"
-                        [options]="barChartOptionsEmprestimo"
-                        [legend]="barChartLegendEmprestimo"
-                        [chartType]="barChartTypeEmprestimo"
-                        (chartHover)="chartHoveredEmprestimo($event)"
-                        (chartClick)="chartClickedEmprestimo($event)">
-                </canvas>
-            </div>
-        </div>
-
-        <div id="pieChart" class="col-md-3" style="padding-top: 10px;">
-            <div class="card card-dash">
-                <canvas baseChart style="height: 284px;"
-                        [colors]="pieColors"
-                        [data]="doughnutChartData"
-                        [labels]="doughnutChartLabels"
-                        [chartType]="doughnutChartType"
-                        (chartHover)="chartHoveredDonut($event)"
-                        (chartClick)="chartClickedDonut($event)">
-                </canvas>
-            </div>
+    <div class="card">
+        <div class="table-responsive" *ngIf="listaTabela">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th><span>Provincia</span></th>
+                    <th><span>N° de Municípios</span></th>
+                    <th><span>N° de Comunas</span></th>
+                    <th><span>N° Sistemas que Funcionam</span></th>
+                    <th><span>Populacao Total</span></th>
+                    <th><span>Beneficiários Sevicos de Água</span></th>
+                    <th><span>Cobertura (%)</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let provincia of listaTabela ;trackBy: trackId">
+                    <td>{{provincia.nomeProvincia}}</td>
+                    <td>{{provincia.municipios}}</td>
+                    <td>{{provincia.comunas}}</td>
+                    <td>{{provincia.sistemasFuncionam}}</td>
+                    <td>{{provincia.populacaoTotal | number }}</td>
+                    <td>{{provincia.beneficiarios | number }}</td>
+                    <td>{{provincia.cobertura}}%</td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td> <span style="font-weight: bold">Total: </span></td>
+                    <td> <span style="font-weight: bold">{{totalMunicipios}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalComuna}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalSistemas}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalPopulacao | number }} </span></td>
+                    <td> <span style="font-weight: bold">{{totalBeneficiarios | number }} </span></td>
+                    <td> <span style="font-weight: bold">{{totalCobertura}}% </span></td>
+                </tr>
+                </tfoot>
+            </table>
         </div>
     </div>
 
-    <br/>
+    <br>
 
-    <div class="row">
-        <div class="col-md-6" style="padding-top: 10px;">
-            <div class="card card-dash">
-                <canvas baseChart
-                        [colors]="barColorsReserva"
-                        [datasets]="barChartDataReseva"
-                        [labels]="barChartLabelsReserva"
-                        [options]="barChartOptionsReserva"
-                        [legend]="barChartLegendReserva"
-                        [chartType]="barChartTypeReserva"
-                        (chartHover)="chartHoveredReserva($event)"
-                        (chartClick)="chartClickedReserva($event)">
-                </canvas>
-            </div>
-        </div>
-
-        <div id="lineChart" class="col-md-6" style="padding-top: 10px;">
-            <div class="card card-dash">
-                <canvas baseChart
-                        [data]="lineChartData"
-                        [labels]="lineChartLabels"
-                        [chartType]="lineChartType"
-                        (chartHover)="chartHoveredLineChart($event)"
-                        (chartClick)="chartClickedLineChart($event)">
-                </canvas>
-            </div>
-        </div>
+    <div class="card">
+        <div id="chartContainer" style="height: 400px; width: 97%; margin-left: 3%"></div>
     </div>
 
-    <br/>
-
-    <div class="row">
-        <div class="col-md-4" style="padding-top: 10px;">
-            <div class="card card-dash" style="height: 420px; color: #865a39;">
-                <p style="text-align: center; "><b>Top 5 - Provincias</b></p>
-                <div style="padding-left: 4px; color: #865a39;">
-                    1) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-                    2) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-                    3) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-                    4) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-                    5) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-                </div>
-            </div>
-        </div>
-
-        <div id="topReservas" class="col-md-4" style="padding-top: 10px;">
-            <div class="card card-dash" style="height: 420px; color: #865a39;">
-                <p style="text-align: center; "><b>Top 5 - Municipios</b></p>
-                <div style="padding-left: 4px; color: #865a39;">
-                    1) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-                    2) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-                    3) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-                    4) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-                    5) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-                </div>
-            </div>
-        </div>
-
-        <div id="circulacao" class="col-md-4" style="padding-top: 10px;">
-            <div class="card card-dash" style="height: 420px; color: #865a39;">
-                <p style="text-align: center;"><b>Top 5 Comunas</b></p>
-                <div style="padding-left: 4px; color: #865a39;">
-                    1) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-                    2) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-                    3) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-                    4) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-                    5) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-                </div>
-            </div>
-        </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" [routerLink]="['/../../dashboard']"  >
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
     </div>
 </div>

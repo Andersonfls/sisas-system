@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes } from '@angular/router';
 import { JhiPaginationUtil } from 'ng-jhipster';
 import { UserRouteAccessService } from '../../shared';
-import {CoberturaSectorAguaComponent} from './sector-agua.component';
+import {CoberturaSectorAguaSaneamentoComponent} from './sector-agua-saneamento.component';
 
 @Injectable()
-export class SectorAguaResolvePagingParams implements Resolve<any> {
+export class SectorAguaSaneamentoResolvePagingParams implements Resolve<any> {
 
     constructor(private paginationUtil: JhiPaginationUtil) {}
 
@@ -20,16 +20,16 @@ export class SectorAguaResolvePagingParams implements Resolve<any> {
     }
 }
 
-export const sectorAguaAguaRoute: Routes = [
+export const sectorAguaSaneamentoRoute: Routes = [
     {
-        path: 'sector-agua',
-        component: CoberturaSectorAguaComponent,
+        path: 'sector-agua-saneamento',
+        component: CoberturaSectorAguaSaneamentoComponent,
         resolve: {
-            'pagingParams': SectorAguaResolvePagingParams
+            'pagingParams': SectorAguaSaneamentoResolvePagingParams
         },
         data: {
             authorities: ['ROLE_USER', 'ROLE_ADMIN'],
-            pageTitle: 'relatorios.title.sector-agua'
+            pageTitle: 'relatorios.title.sector-agua-saneamento'
         },
         canActivate: [UserRouteAccessService]
     }

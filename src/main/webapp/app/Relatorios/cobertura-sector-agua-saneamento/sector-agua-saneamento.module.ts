@@ -2,12 +2,12 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SisasSharedModule } from '../../shared';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
-import {sectorAguaAguaRoute, SectorAguaResolvePagingParams} from './sector-agua.route';
-import {CoberturaSectorAguaComponent} from './sector-agua.component';
+import { CoberturaSectorAguaSaneamentoComponent} from './sector-agua-saneamento.component';
 import {ProvinciaService} from '../../entities/provincia';
+import {SectorAguaSaneamentoResolvePagingParams, sectorAguaSaneamentoRoute} from './sector-agua-saneamento.route';
 
 const ENTITY_STATES = [
-    ...sectorAguaAguaRoute
+    ...sectorAguaSaneamentoRoute
 ];
 
 @NgModule({
@@ -17,15 +17,15 @@ const ENTITY_STATES = [
         RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [
-        CoberturaSectorAguaComponent
+        CoberturaSectorAguaSaneamentoComponent
     ],
     entryComponents: [
-        CoberturaSectorAguaComponent
+        CoberturaSectorAguaSaneamentoComponent
     ],
     providers: [
-        SectorAguaResolvePagingParams,
+        SectorAguaSaneamentoResolvePagingParams,
         ProvinciaService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class SisasSectorAguaModule {}
+export class SisasSectorAguaSaneamentoModule {}

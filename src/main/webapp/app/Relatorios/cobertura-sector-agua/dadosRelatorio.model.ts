@@ -1,13 +1,8 @@
 
-export class CoberturaServicos {
+export class DadosRelatorio {
     constructor(
-        public ambito?: string,
-        public populacao?: number,
-        public popupacaoPorcentagem?: number,
-        public habitantesAgua?: number,
-        public habitantesAguaPercentagem?: number,
-        public habitantesSaneamento?: number,
-        public habitantesSaneamentoPercentagem?: number
+        public label?: any,
+        public y?: any
     ) {
     }
 }

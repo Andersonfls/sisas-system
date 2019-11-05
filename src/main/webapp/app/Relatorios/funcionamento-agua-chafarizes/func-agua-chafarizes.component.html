@@ -1,7 +1,7 @@
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <div>
-    <h2 style="margin-left: 20%">
-        <span>Cobertura no sector de Água (Nível provincial)</span>
+    <h2>
+        <span>Funcionamento de Sistemas de Água e Chafarizes (Nível provincial)</span>
     </h2>
     <jhi-alert></jhi-alert>
     <div class="row">
@@ -14,34 +14,43 @@
                 <thead>
                 <tr>
                     <th><span>Provincia</span></th>
-                    <th><span>Nro de Municípios</span></th>
-                    <th><span>Nro de Comunas</span></th>
-                    <th><span>Nro Sistemas que Funcionam</span></th>
-                    <th><span>Populacao Total</span></th>
-                    <th><span>Beneficiários Sevicos de Água</span></th>
-                    <th><span>Cobertura (%)</span></th>
+                    <th><span>N° de Sistemas</span></th>
+                    <th><span>N° Funcionam</span></th>
+                    <th><span>N° não Funcionam</span></th>
+                    <th><span>(%) Funciona</span></th>
+                    <th><span>(%) Não Funciona</span></th>
+                    <th><span>Número de Chafarizes</span></th>
+                    <th><span>N° Funcionam</span></th>
+                    <th><span>N° não Funcionam</span></th>
+                    <th><span>(%) Não Funciona</span></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr *ngFor="let provincia of listaTabela ;trackBy: trackId">
                     <td>{{provincia.nomeProvincia}}</td>
-                    <td>{{provincia.municipios}}</td>
-                    <td>{{provincia.comunas}}</td>
-                    <td>{{provincia.sistemasFuncionam}}</td>
-                    <td>{{provincia.populacaoTotal | number : '1.2-2'}}</td>
-                    <td>{{provincia.beneficiarios | number : '1.2-2'}}</td>
-                    <td>{{provincia.cobertura}}%</td>
+                    <td>{{provincia.numeroSistemas | number}}</td>
+                    <td>{{provincia.funcionamAgua | number}}</td>
+                    <td>{{provincia.naoFuncionamAgua | number}}</td>
+                    <td>{{provincia.funcionamAguaPerc}}%</td>
+                    <td>{{provincia.naoFuncionamAguaPerc}}%</td>
+                    <td>{{provincia.numeroChafarizes | number}}</td>
+                    <td>{{provincia.funcionamChafariz | number}}</td>
+                    <td>{{provincia.naoFuncionamChafariz}}</td>
+                    <td>{{provincia.naoFuncionamChafarizPerc}}%</td>
                 </tr>
                 </tbody>
                 <tfoot>
                 <tr>
                     <td> <span style="font-weight: bold">Total: </span></td>
-                    <td> <span style="font-weight: bold">{{totalMunicipios}} </span></td>
-                    <td> <span style="font-weight: bold">{{totalComuna}} </span></td>
-                    <td> <span style="font-weight: bold">{{totalSistemas}} </span></td>
-                    <td> <span style="font-weight: bold">{{totalPopulacao | number : '1.2-2'}} </span></td>
-                    <td> <span style="font-weight: bold">{{totalBeneficiarios | number : '1.2-2'}} </span></td>
-                    <td> <span style="font-weight: bold">{{totalCobertura}}% </span></td>
+                    <td> <span style="font-weight: bold">{{totalnumeroSistemas | number }} </span></td>
+                    <td> <span style="font-weight: bold">{{totalfuncionamAgua | number }} </span></td>
+                    <td> <span style="font-weight: bold">{{totalnaoFuncionamAgua | number}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalfuncionamAguaPerc }}% </span></td>
+                    <td> <span style="font-weight: bold">{{totalnaoFuncionamAguaPerc}}% </span></td>
+                    <td> <span style="font-weight: bold">{{totalnumeroChafarizes | number}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalfuncionamChafariz | number}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalnaoFuncionamChafariz | number}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalnaoFuncionamChafarizPerc}}% </span></td>
                 </tr>
                 </tfoot>
             </table>
@@ -50,9 +59,9 @@
 
     <br>
 
-    <div class="card">
-        <div id="chartContainer" style="height: 400px; width: 97%; margin-left: 3%"></div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" [routerLink]="['/../../dashboard']"  >
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
     </div>
-
-
 </div>
