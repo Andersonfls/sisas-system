@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot, Routes} from '@angular/router';
 import {JhiPaginationUtil} from 'ng-jhipster';
-import {UserRouteAccessService} from '../../shared';
+import {UserRouteAccessService} from '../../shared/index';
 import {MapComponent} from './map.component';
 
 @Injectable()

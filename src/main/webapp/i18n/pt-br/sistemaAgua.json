@@ -49,7 +49,7 @@
             "qtdComprimentoCondutaAdutoraAguaBruta": "Agua Bruta Comprimento(m)",
             "qtdDiametroCondutaAdutoraAguaTratada": "Diâmetro da Conduta Adutora de Água Tratada(mm)",
             "qtdComprimentoCondutaAdutoraAguaTratada": "Comprimento(m) Agua Tratada",
-            "descMaterialUtilizadoCondutas": "Indique o Material Utilizado nas Condutas",
+            "descMaterialUtilizadoCondutas": "Indique o Material Utilizado na Conduta",
             "qtdReservatoriosApoiados": "Nº de Reservatorios Apoiados",
             "qtdCapacidadeReservatoriosApoiados": "Capacidade dos Resevatórios Apoiados(m3)",
             "qtdReservatoriosElevados": "Nº de Reservatorios Elevados",

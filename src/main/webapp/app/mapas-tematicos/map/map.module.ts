@@ -1,6 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { SisasSharedModule } from '../../shared';
+import { SisasSharedModule } from '../../shared/index';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import {MapComponent} from './map.component';
 import {MapResolvePagingParams, mapRoute} from './map.route';

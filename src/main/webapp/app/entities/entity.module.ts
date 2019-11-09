@@ -12,7 +12,6 @@ import {SisasProvinciaModule} from './provincia/provincia.module';
 import {SisasSistemaAguaLogModule} from './sistema-agua-log/sistema-agua-log.module';
 import {SisasIndicadorProducaoLogModule} from './indicador-producao-log/indicador-producao-log.module';
 import {SisasProgramasProjectosLogModule} from './programas-projectos-log/programas-projectos-log.module';
-import {SisasMapModule} from './map/map.module';
 
 @NgModule({
     imports: [
@@ -28,8 +27,7 @@ import {SisasMapModule} from './map/map.module';
         SisasProvinciaModule,
         SisasSistemaAguaLogModule,
         SisasIndicadorProducaoLogModule,
-        SisasProgramasProjectosLogModule,
-        SisasMapModule
+        SisasProgramasProjectosLogModule
     ],
     declarations: [],
     entryComponents: [],

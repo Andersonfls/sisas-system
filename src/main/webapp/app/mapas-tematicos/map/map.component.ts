@@ -5,8 +5,8 @@ import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
 import {Principal} from '../../shared/auth/principal.service';
 import * as CanvasJS from '../../../content/js/canvasjs.min.js';
 import {ActivatedRoute} from '@angular/router';
-import {Municipio, MunicipioService} from '../municipio';
-import {Comuna, ComunaService} from '../comuna';
+import {Municipio, MunicipioService} from '../../entities/municipio/index';
+import {Comuna, ComunaService} from '../../entities/comuna/index';
 
 @Component({
     selector: 'jhi-map',
