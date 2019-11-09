@@ -5,7 +5,7 @@ import { JhiPaginationUtil } from 'ng-jhipster';
 import { UserRouteAccessService } from '../../shared';
 import { SistemaAguaComponent } from './sistema-agua.component';
 import { SistemaAguaDetailComponent } from './sistema-agua-detail.component';
-import { SistemaAguaPopupComponent } from './sistema-agua-dialog.component';
+import {SistemaAguaDialogComponent, SistemaAguaPopupComponent} from './sistema-agua-dialog.component';
 import { SistemaAguaDeletePopupComponent } from './sistema-agua-delete-dialog.component';
 
 @Injectable()
@@ -44,30 +44,48 @@ export const sistemaAguaRoute: Routes = [
             pageTitle: 'sisasApp.sistemaAgua.home.title'
         },
         canActivate: [UserRouteAccessService]
+    },
+    {
+        path: 'sistema-agua-new',
+        component: SistemaAguaDialogComponent,
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'sisasApp.sistemaAgua.home.title'
+        },
+        canActivate: [UserRouteAccessService],
+    },
+    {
+        path: 'sistema-agua/:id/edit',
+        component: SistemaAguaDialogComponent,
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'sisasApp.sistemaAgua.home.title'
+        },
+        canActivate: [UserRouteAccessService],
     }
 ];
 
 export const sistemaAguaPopupRoute: Routes = [
-    {
-        path: 'sistema-agua-new',
-        component: SistemaAguaPopupComponent,
-        data: {
-            authorities: ['ROLE_USER'],
-            pageTitle: 'sisasApp.sistemaAgua.home.title'
-        },
-        canActivate: [UserRouteAccessService],
-        outlet: 'popup'
-    },
-    {
-        path: 'sistema-agua/:id/edit',
-        component: SistemaAguaPopupComponent,
-        data: {
-            authorities: ['ROLE_USER'],
-            pageTitle: 'sisasApp.sistemaAgua.home.title'
-        },
-        canActivate: [UserRouteAccessService],
-        outlet: 'popup'
-    },
+    // {
+    //     path: 'sistema-agua-new',
+    //     component: SistemaAguaPopupComponent,
+    //     data: {
+    //         authorities: ['ROLE_USER'],
+    //         pageTitle: 'sisasApp.sistemaAgua.home.title'
+    //     },
+    //     canActivate: [UserRouteAccessService],
+    //     outlet: 'popup'
+    // },
+    // {
+    //     path: 'sistema-agua/:id/edit',
+    //     component: SistemaAguaPopupComponent,
+    //     data: {
+    //         authorities: ['ROLE_USER'],
+    //         pageTitle: 'sisasApp.sistemaAgua.home.title'
+    //     },
+    //     canActivate: [UserRouteAccessService],
+    //     outlet: 'popup'
+    // },
     {
         path: 'sistema-agua/:id/delete',
         component: SistemaAguaDeletePopupComponent,

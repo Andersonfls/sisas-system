@@ -16,7 +16,10 @@ import {Municipio, MunicipioService} from '../municipio';
 
 @Component({
     selector: 'jhi-sistema-agua-dialog',
-    templateUrl: './sistema-agua-dialog.component.html'
+    templateUrl: './sistema-agua-dialog.component.html',
+    styleUrls: [
+        'sistemaAgua.css'
+    ]
 })
 export class SistemaAguaDialogComponent implements OnInit {
 
@@ -29,22 +32,32 @@ export class SistemaAguaDialogComponent implements OnInit {
     dtLancamentoDp: any;
     dtUltimaAlteracaoDp: any;
     public tipoComunaAldeias: Array<any> = ['Concentrada', 'Dispersa', 'Semi-Dispersa'];
-    esconderFiltros: boolean;
+    routeSub: any;
 
     constructor(
-        public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private sistemaAguaService: SistemaAguaService,
         private situacaoService: SituacaoService,
         private comunaService: ComunaService,
         private municipioService: MunicipioService,
         private provinciaService: ProvinciaService,
-        private eventManager: JhiEventManager
+        private eventManager: JhiEventManager,
+        private route: ActivatedRoute
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false;
+        this.sistemaAgua = new SistemaAgua();
+
+        this.routeSub = this.route.params.subscribe((params) => {
+            if (params['id']) {
+                this.load(params['id']);
+            } else {
+                this.sistemaAgua = new SistemaAgua();
+            }
+        });
+
         this.situacaoService.query()
             .subscribe((res: HttpResponse<Situacao[]>) => {
                 this.situacaos = res.body;
@@ -103,8 +116,30 @@ export class SistemaAguaDialogComponent implements OnInit {
         this.sistemaAgua.tempoServicoDisponivel = null;
     }
 
+    load(id) {
+        this.sistemaAguaService.find(id)
+            .subscribe((sistemaAguaResponse: HttpResponse<SistemaAgua>) => {
+                const sistemaAgua: SistemaAgua = sistemaAguaResponse.body;
+                if (sistemaAgua.dtLancamento) {
+                    sistemaAgua.dtLancamento = {
+                        year: sistemaAgua.dtLancamento.getFullYear(),
+                        month: sistemaAgua.dtLancamento.getMonth() + 1,
+                        day: sistemaAgua.dtLancamento.getDate()
+                    };
+                }
+                if (sistemaAgua.dtUltimaAlteracao) {
+                    sistemaAgua.dtUltimaAlteracao = {
+                        year: sistemaAgua.dtUltimaAlteracao.getFullYear(),
+                        month: sistemaAgua.dtUltimaAlteracao.getMonth() + 1,
+                        day: sistemaAgua.dtUltimaAlteracao.getDate()
+                    };
+                }
+                this.sistemaAgua = sistemaAgua;
+            });
+    }
+
     clear() {
-        this.activeModal.dismiss('cancel');
+        // this.activeModal.dismiss('cancel');
     }
 
     save() {
@@ -126,7 +161,7 @@ export class SistemaAguaDialogComponent implements OnInit {
     private onSaveSuccess(result: SistemaAgua) {
         this.eventManager.broadcast({name: 'sistemaAguaListModification', content: 'OK'});
         this.isSaving = false;
-        this.activeModal.dismiss(result);
+        // this.activeModal.dismiss(result);
     }
 
     private onSaveError() {
@@ -143,6 +178,9 @@ export class SistemaAguaDialogComponent implements OnInit {
 
     trackComunaById(index: number, item: Comuna) {
         return item.id;
+    }
+    previousState() {
+        window.history.back();
     }
 }
 
