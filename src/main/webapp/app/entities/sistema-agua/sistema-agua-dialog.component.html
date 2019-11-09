@@ -336,16 +336,16 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-sm-8">
+                        <div class="form-group col-sm-8" [ngClass]="{ 'subte':sistemaAgua.nmTpFonte==='Subterrânea'}">
                             <div *ngIf="sistemaAgua.nmTpFonte==='Superficial'">
                                 <div class="form-group">
                                     <label class="form-control-label negrito" jhiTranslate="sisasApp.sistemaAgua.nmTipoBomba"
                                            for="field_nmTipoBomba">Nm Tipo Bomba</label>
                                     <select class="form-control" id="field_nmTipoBomba" name="nmTipoBomba"  [(ngModel)]="sistemaAgua.nmTipoBomba">
                                         <option *ngIf="!editForm.value.nmTipoBomba" [ngValue]="null" selected>Selecione Tipo da Bomba...</option>
-                                        <option label="Elétrica">Elétrica</option>
-                                        <option label="Diesel">Diesel</option>
-                                        <option label="Gravidade">Gravidade</option>
+                                        <option label="Elétrica">Bomba Elétrica</option>
+                                        <option label="Diesel">Bomba a Diesel</option>
+                                        <option label="Gravidade">Bomba por Gravidade</option>
                                     </select>
                                 </div>
                             </div>
@@ -355,21 +355,22 @@
                                            for="field_nmTipoBomba">Nm Tipo Bomba</label>
                                     <select class="form-control" id="field_nmTipoBombaSubterranea" name="nmTipoBomba" [(ngModel)]="sistemaAgua.nmTipoBomba">
                                         <option *ngIf="!editForm.value.nmTipoBomba" [ngValue]="null" selected>Selecione Nome Tipo Bomba..</option>
-                                        <option label="Energia">Energia</option>
-                                        <option label="Manual">Manual</option>
-                                        <option label="Gravidade">Gravidade</option>
+                                        <option label="Energia">Bomba de Energia</option>
+                                        <option label="Manual">Bombagem Manual</option>
+                                        <option label="Gravidade">Sistema por Gravidade</option>
+                                        <option label="Outro">Outro Tipo de Bomba</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group col-sm-4">
-                            <div *ngIf="sistemaAgua.nmTpFonte==='Superficial' || sistemaAgua.nmTpFonte==='Subterrânea'">
 
+                        <div class="form-group col-sm-4">
+                            <div *ngIf="sistemaAgua.nmTpFonte==='Superficial'">
                                 <div class="form-group">
                                     <label class="form-control-label negrito" jhiTranslate="sisasApp.sistemaAgua.nmFonteAguaUtilizada"
                                            for="field_nmFonteAguaUtilizada">Nm Fonte Agua Utilizada</label>
                                     <select class="form-control" id="field_nmFonteAguaUtilizada" name="nmFonteAguaUtilizada"  [(ngModel)]="sistemaAgua.nmFonteAguaUtilizada">
-                                        <option *ngIf="!editForm.value.nmFonteAguaUtilizada" [ngValue]="null" selected>Selecione Nome Fonte Água...</option>
+                                        <option *ngIf="!editForm.value.nmFonteAguaUtilizada" [ngValue]="null" selected>Selecione...</option>
                                         <option label="Rio">Rio</option>
                                         <option label="Lagoa">Lagoa</option>
                                         <option label="Água da Chuva">Água da Chuva</option>
@@ -472,9 +473,14 @@
                             <div class="form-group">
                                 <label class="form-control-label negrito" jhiTranslate="sisasApp.sistemaAgua.anoConstrucaoSistema"
                                        for="field_anoConstrucaoSistema">Ano Construcao Sistema</label>
-                                <input type="number" class="form-control" name="anoConstrucaoSistema"
-                                       id="field_anoConstrucaoSistema"
-                                       [(ngModel)]="sistemaAgua.anoConstrucaoSistema" placeholder="Ano da construção"/>
+
+                                <select class="form-control" id="field_anoConstrucaoSistema" name="anoConstrucaoSistema"
+                                        [(ngModel)]="sistemaAgua.anoConstrucaoSistema">
+                                    <option [ngValue]="null" selected>Selecione o Ano...</option>
+                                    <option *ngFor="let opt of listaAnos" [value]="opt">{{opt}}</option>
+
+                                </select>
+
                             </div>
                         </div>
                     </div>

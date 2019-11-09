@@ -33,6 +33,7 @@ export class SistemaAguaDialogComponent implements OnInit {
     dtUltimaAlteracaoDp: any;
     public tipoComunaAldeias: Array<any> = ['Concentrada', 'Dispersa', 'Semi-Dispersa'];
     routeSub: any;
+    listaAnos: number[];
 
     constructor(
         private jhiAlertService: JhiAlertService,
@@ -85,6 +86,7 @@ export class SistemaAguaDialogComponent implements OnInit {
         const now = new Date();
         this.sistemaAgua.dtLancamento = {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()};
         console.log(this.sistemaAgua);
+        this.montaListaAnos();
     }
 
     inicializarCampos() {
@@ -140,6 +142,15 @@ export class SistemaAguaDialogComponent implements OnInit {
 
     clear() {
         // this.activeModal.dismiss('cancel');
+    }
+
+    montaListaAnos() {
+        this.listaAnos = new Array();
+        const ano = 2030;
+
+        for (let i = ano; i >= 1973; i-- ) {
+            this.listaAnos.push(i);
+        }
     }
 
     save() {
