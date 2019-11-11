@@ -98,6 +98,10 @@ public class SistemaAgua implements Serializable {
     @Column(name = "qtd_chafarises_funcionando")
     private Long qtdChafarisesFuncionando;
 
+    //novo
+    @Column(name = "qtd_chafarises_existentes")
+    private Integer qtdChafarisesExistentes;
+
     @Column(name = "qtd_contadores_ligados")
     private Long qtdContadoresLigados;
 
@@ -142,6 +146,11 @@ public class SistemaAgua implements Serializable {
     @Column(name = "desc_material_utilizado_condutas", length = 150)
     private String descMaterialUtilizadoCondutas;
 
+    //novo
+    @Size(max = 150)
+    @Column(name = "desc_material_utilizado_condutas_obs", length = 150)
+    private String descMaterialUtilizadoCondutasObs;
+
     @Column(name = "qtd_reservatorios_apoiados")
     private Long qtdReservatoriosApoiados;
 
@@ -165,9 +174,24 @@ public class SistemaAgua implements Serializable {
     @Column(name = "nm_tp_tratamento_padrao_utilizado", length = 50)
     private String nmTpTratamentoPadraoUtilizado;
 
+    //novo
+    @Size(max = 50)
+    @Column(name = "nm_tp_tratamento_padrao_utilizado_obs", length = 50)
+    private String nmTpTratamentoPadraoUtilizadoObs;
+
+    //novo
+    @Size(max = 50)
+    @Column(name = "estado_funcionamento_sistema", length = 70)
+    private String estadoFuncionamentoSistema;
+
     @Size(max = 50)
     @Column(name = "nm_tp_tratamento_basico_utilizado", length = 50)
     private String nmTpTratamentoBasicoUtilizado;
+
+    //novo
+    @Size(max = 50)
+    @Column(name = "nm_tp_tratamento_basico_utilizado_obs", length = 50)
+    private String nmTpTratamentoBasicoUtilizadoObs;
 
     @Size(max = 50)
     @Column(name = "existe_avaria_sistema_tratamento", length = 50)
@@ -177,9 +201,19 @@ public class SistemaAgua implements Serializable {
     @Column(name = "existe_motivo_ausencia_tratamento", length = 50)
     private String existeMotivoAusenciaTratamento;
 
+    //novo
+    @Size(max = 50)
+    @Column(name = "existe_motivo_ausencia_tratamento_obs", length = 50)
+    private String existeMotivoAusenciaTratamentoObs;
+
     @Size(max = 50)
     @Column(name = "nm_equipamentos_com_avaria", length = 50)
     private String nmEquipamentosComAvaria;
+
+    //NOVO
+    @Size(max = 50)
+    @Column(name = "nm_equipamentos_com_avaria_obs", length = 50)
+    private String nmEquipamentosComAvariaObs;
 
     @Column(name = "caudal_do_sistema")
     private Long caudalDoSistema;
@@ -200,6 +234,11 @@ public class SistemaAgua implements Serializable {
     @Size(max = 50)
     @Column(name = "nm_modelo_bomba_manual_utilizada", length = 50)
     private String nmModeloBombaManualUtilizada;
+
+    //novo
+    @Size(max = 50)
+    @Column(name = "nm_modelo_bomba_manual_utilizada_obs", length = 50)
+    private String nmModeloBombaManualUtilizadaObs;
 
     @Size(max = 50)
     @Column(name = "nm_tp_bomba_energia", length = 50)
@@ -947,6 +986,70 @@ public class SistemaAgua implements Serializable {
         this.municipio = municipio;
     }
 
+    public Integer getQtdChafarisesExistentes() {
+        return qtdChafarisesExistentes;
+    }
+
+    public void setQtdChafarisesExistentes(Integer qtdChafarisesExistentes) {
+        this.qtdChafarisesExistentes = qtdChafarisesExistentes;
+    }
+
+    public String getDescMaterialUtilizadoCondutasObs() {
+        return descMaterialUtilizadoCondutasObs;
+    }
+
+    public void setDescMaterialUtilizadoCondutasObs(String descMaterialUtilizadoCondutasObs) {
+        this.descMaterialUtilizadoCondutasObs = descMaterialUtilizadoCondutasObs;
+    }
+
+    public String getNmTpTratamentoPadraoUtilizadoObs() {
+        return nmTpTratamentoPadraoUtilizadoObs;
+    }
+
+    public void setNmTpTratamentoPadraoUtilizadoObs(String nmTpTratamentoPadraoUtilizadoObs) {
+        this.nmTpTratamentoPadraoUtilizadoObs = nmTpTratamentoPadraoUtilizadoObs;
+    }
+
+    public String getEstadoFuncionamentoSistema() {
+        return estadoFuncionamentoSistema;
+    }
+
+    public void setEstadoFuncionamentoSistema(String estadoFuncionamentoSistema) {
+        this.estadoFuncionamentoSistema = estadoFuncionamentoSistema;
+    }
+
+    public String getNmTpTratamentoBasicoUtilizadoObs() {
+        return nmTpTratamentoBasicoUtilizadoObs;
+    }
+
+    public void setNmTpTratamentoBasicoUtilizadoObs(String nmTpTratamentoBasicoUtilizadoObs) {
+        this.nmTpTratamentoBasicoUtilizadoObs = nmTpTratamentoBasicoUtilizadoObs;
+    }
+
+    public String getExisteMotivoAusenciaTratamentoObs() {
+        return existeMotivoAusenciaTratamentoObs;
+    }
+
+    public void setExisteMotivoAusenciaTratamentoObs(String existeMotivoAusenciaTratamentoObs) {
+        this.existeMotivoAusenciaTratamentoObs = existeMotivoAusenciaTratamentoObs;
+    }
+
+    public String getNmEquipamentosComAvariaObs() {
+        return nmEquipamentosComAvariaObs;
+    }
+
+    public void setNmEquipamentosComAvariaObs(String nmEquipamentosComAvariaObs) {
+        this.nmEquipamentosComAvariaObs = nmEquipamentosComAvariaObs;
+    }
+
+    public String getNmModeloBombaManualUtilizadaObs() {
+        return nmModeloBombaManualUtilizadaObs;
+    }
+
+    public void setNmModeloBombaManualUtilizadaObs(String nmModeloBombaManualUtilizadaObs) {
+        this.nmModeloBombaManualUtilizadaObs = nmModeloBombaManualUtilizadaObs;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -970,58 +1073,70 @@ public class SistemaAgua implements Serializable {
     @Override
     public String toString() {
         return "SistemaAgua{" +
-            "id=" + getId() +
-            ", idUsuario=" + getIdUsuario() +
-            ", nmInqueridor='" + getNmInqueridor() + "'" +
-            ", dtLancamento='" + getDtLancamento() + "'" +
-            ", dtUltimaAlteracao='" + getDtUltimaAlteracao() + "'" +
-            ", nmLocalidade='" + getNmLocalidade() + "'" +
-            ", qtdPopulacaoActual=" + getQtdPopulacaoActual() +
-            ", qtdCasasLocalidade=" + getQtdCasasLocalidade() +
-            ", nmTpComunaAldeia='" + getNmTpComunaAldeia() + "'" +
-            ", nmTpArea='" + getNmTpArea() + "'" +
-            ", possuiSistemaAgua=" + getPossuiSistemaAgua() +
-            ", nmSistemaAgua='" + getNmSistemaAgua() + "'" +
-            ", nmFonteAgua='" + getNmFonteAgua() + "'" +
-            ", latitude=" + getLatitude() +
-            ", longitude=" + getLongitude() +
-            ", altitude=" + getAltitude() +
-            ", nmTpFonte='" + getNmTpFonte() + "'" +
-            ", nmFonteAguaUtilizada='" + getNmFonteAguaUtilizada() + "'" +
-            ", nmTipoBomba='" + getNmTipoBomba() + "'" +
-            ", qtdCasasAguaLigada=" + getQtdCasasAguaLigada() +
-            ", qtdChafarisesFuncionando=" + getQtdChafarisesFuncionando() +
-            ", qtdContadoresLigados=" + getQtdContadoresLigados() +
-            ", qtdBebedouros=" + getQtdBebedouros() +
-            ", qtdHabitantesAcessoServicoAgua=" + getQtdHabitantesAcessoServicoAgua() +
-            ", anoConstrucaoSistema=" + getAnoConstrucaoSistema() +
-            ", nmTpAvariaSistema='" + getNmTpAvariaSistema() + "'" +
-            ", causaAvariaSistema='" + getCausaAvariaSistema() + "'" +
-            ", statusResolucao='" + getStatusResolucao() + "'" +
-            ", tempoServicoDisponivel='" + getTempoServicoDisponivel() + "'" +
-            ", qtdDiametroCondutaAdutoraAguaBruta=" + getQtdDiametroCondutaAdutoraAguaBruta() +
-            ", qtdComprimentoCondutaAdutoraAguaBruta=" + getQtdComprimentoCondutaAdutoraAguaBruta() +
-            ", qtdDiametroCondutaAdutoraAguaTratada=" + getQtdDiametroCondutaAdutoraAguaTratada() +
-            ", qtdComprimentoCondutaAdutoraAguaTratada=" + getQtdComprimentoCondutaAdutoraAguaTratada() +
-            ", descMaterialUtilizadoCondutas='" + getDescMaterialUtilizadoCondutas() + "'" +
-            ", qtdReservatoriosApoiados=" + getQtdReservatoriosApoiados() +
-            ", qtdCapacidadeReservatoriosApoiados=" + getQtdCapacidadeReservatoriosApoiados() +
-            ", qtdReservatoriosElevados=" + getQtdReservatoriosElevados() +
-            ", qtdCapacidadeReservatoriosElevados=" + getQtdCapacidadeReservatoriosElevados() +
-            ", alturaReservatoriosElevados=" + getAlturaReservatoriosElevados() +
-            ", nmTpTratamentoAgua='" + getNmTpTratamentoAgua() + "'" +
-            ", nmTpTratamentoPadraoUtilizado='" + getNmTpTratamentoPadraoUtilizado() + "'" +
-            ", nmTpTratamentoBasicoUtilizado='" + getNmTpTratamentoBasicoUtilizado() + "'" +
-            ", existeAvariaSistemaTratamento='" + getExisteAvariaSistemaTratamento() + "'" +
-            ", existeMotivoAusenciaTratamento='" + getExisteMotivoAusenciaTratamento() + "'" +
-            ", nmEquipamentosComAvaria='" + getNmEquipamentosComAvaria() + "'" +
-            ", caudalDoSistema=" + getCaudalDoSistema() +
-            ", qtdConsumoPercaptaLitrosHomemDia=" + getQtdConsumoPercaptaLitrosHomemDia() +
-            ", qtdDotacaoPercapta=" + getQtdDotacaoPercapta() +
-            ", qtdDiariaHorasServicoSistema=" + getQtdDiariaHorasServicoSistema() +
-            ", esquema='" + getEsquema() + "'" +
-            ", nmModeloBombaManualUtilizada='" + getNmModeloBombaManualUtilizada() + "'" +
-            ", nmTpBombaEnergia='" + getNmTpBombaEnergia() + "'" +
-            "}";
+            "id=" + id +
+            ", idUsuario=" + idUsuario +
+            ", nmInqueridor='" + nmInqueridor + '\'' +
+            ", dtLancamento=" + dtLancamento +
+            ", dtUltimaAlteracao=" + dtUltimaAlteracao +
+            ", nmLocalidade='" + nmLocalidade + '\'' +
+            ", qtdPopulacaoActual=" + qtdPopulacaoActual +
+            ", qtdCasasLocalidade=" + qtdCasasLocalidade +
+            ", nmTpComunaAldeia='" + nmTpComunaAldeia + '\'' +
+            ", nmTpArea='" + nmTpArea + '\'' +
+            ", possuiSistemaAgua=" + possuiSistemaAgua +
+            ", nmSistemaAgua='" + nmSistemaAgua + '\'' +
+            ", nmFonteAgua='" + nmFonteAgua + '\'' +
+            ", latitude='" + latitude + '\'' +
+            ", longitude='" + longitude + '\'' +
+            ", altitude='" + altitude + '\'' +
+            ", nmTpFonte='" + nmTpFonte + '\'' +
+            ", nmFonteAguaUtilizada='" + nmFonteAguaUtilizada + '\'' +
+            ", nmTipoBomba='" + nmTipoBomba + '\'' +
+            ", qtdCasasAguaLigada=" + qtdCasasAguaLigada +
+            ", qtdChafarisesFuncionando=" + qtdChafarisesFuncionando +
+            ", qtdChafarisesExistentes=" + qtdChafarisesExistentes +
+            ", qtdContadoresLigados=" + qtdContadoresLigados +
+            ", qtdBebedouros=" + qtdBebedouros +
+            ", qtdHabitantesAcessoServicoAgua=" + qtdHabitantesAcessoServicoAgua +
+            ", anoConstrucaoSistema=" + anoConstrucaoSistema +
+            ", nmTpAvariaSistema='" + nmTpAvariaSistema + '\'' +
+            ", causaAvariaSistema='" + causaAvariaSistema + '\'' +
+            ", statusResolucao='" + statusResolucao + '\'' +
+            ", tempoServicoDisponivel='" + tempoServicoDisponivel + '\'' +
+            ", qtdDiametroCondutaAdutoraAguaBruta=" + qtdDiametroCondutaAdutoraAguaBruta +
+            ", qtdComprimentoCondutaAdutoraAguaBruta=" + qtdComprimentoCondutaAdutoraAguaBruta +
+            ", qtdDiametroCondutaAdutoraAguaTratada=" + qtdDiametroCondutaAdutoraAguaTratada +
+            ", qtdComprimentoCondutaAdutoraAguaTratada=" + qtdComprimentoCondutaAdutoraAguaTratada +
+            ", descMaterialUtilizadoCondutas='" + descMaterialUtilizadoCondutas + '\'' +
+            ", descMaterialUtilizadoCondutasObs='" + descMaterialUtilizadoCondutasObs + '\'' +
+            ", qtdReservatoriosApoiados=" + qtdReservatoriosApoiados +
+            ", qtdCapacidadeReservatoriosApoiados=" + qtdCapacidadeReservatoriosApoiados +
+            ", qtdReservatoriosElevados=" + qtdReservatoriosElevados +
+            ", qtdCapacidadeReservatoriosElevados=" + qtdCapacidadeReservatoriosElevados +
+            ", alturaReservatoriosElevados=" + alturaReservatoriosElevados +
+            ", nmTpTratamentoAgua='" + nmTpTratamentoAgua + '\'' +
+            ", nmTpTratamentoPadraoUtilizado='" + nmTpTratamentoPadraoUtilizado + '\'' +
+            ", nmTpTratamentoPadraoUtilizadoObs='" + nmTpTratamentoPadraoUtilizadoObs + '\'' +
+            ", estadoFuncionamentoSistema='" + estadoFuncionamentoSistema + '\'' +
+            ", nmTpTratamentoBasicoUtilizado='" + nmTpTratamentoBasicoUtilizado + '\'' +
+            ", nmTpTratamentoBasicoUtilizadoObs='" + nmTpTratamentoBasicoUtilizadoObs + '\'' +
+            ", existeAvariaSistemaTratamento='" + existeAvariaSistemaTratamento + '\'' +
+            ", existeMotivoAusenciaTratamento='" + existeMotivoAusenciaTratamento + '\'' +
+            ", existeMotivoAusenciaTratamentoObs='" + existeMotivoAusenciaTratamentoObs + '\'' +
+            ", nmEquipamentosComAvaria='" + nmEquipamentosComAvaria + '\'' +
+            ", nmEquipamentosComAvariaObs='" + nmEquipamentosComAvariaObs + '\'' +
+            ", caudalDoSistema=" + caudalDoSistema +
+            ", qtdConsumoPercaptaLitrosHomemDia=" + qtdConsumoPercaptaLitrosHomemDia +
+            ", qtdDotacaoPercapta=" + qtdDotacaoPercapta +
+            ", qtdDiariaHorasServicoSistema=" + qtdDiariaHorasServicoSistema +
+            ", esquema='" + esquema + '\'' +
+            ", nmModeloBombaManualUtilizada='" + nmModeloBombaManualUtilizada + '\'' +
+            ", nmModeloBombaManualUtilizadaObs='" + nmModeloBombaManualUtilizadaObs + '\'' +
+            ", nmTpBombaEnergia='" + nmTpBombaEnergia + '\'' +
+            ", situacao=" + situacao +
+            ", comuna=" + comuna +
+            ", provincia=" + provincia +
+            ", municipio=" + municipio +
+            '}';
     }
 }

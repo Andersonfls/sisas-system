@@ -162,6 +162,15 @@ public class SistemaAguaDTO implements Serializable {
     @NotNull
     private Municipio municipio;
 
+    private Integer qtdChafarisesExistentes;
+    private String descMaterialUtilizadoCondutasObs;
+    private String nmTpTratamentoPadraoUtilizadoObs;
+    private String estadoFuncionamentoSistema;
+    private String nmTpTratamentoBasicoUtilizadoObs;
+    private String existeMotivoAusenciaTratamentoObs;
+    private String nmEquipamentosComAvariaObs;
+    private String nmModeloBombaManualUtilizadaObs;
+
     public Long getId() {
         return id;
     }
@@ -608,6 +617,70 @@ public class SistemaAguaDTO implements Serializable {
 
     public void setMunicipio(Municipio municipio) {
         this.municipio = municipio;
+    }
+
+    public Integer getQtdChafarisesExistentes() {
+        return qtdChafarisesExistentes;
+    }
+
+    public void setQtdChafarisesExistentes(Integer qtdChafarisesExistentes) {
+        this.qtdChafarisesExistentes = qtdChafarisesExistentes;
+    }
+
+    public String getDescMaterialUtilizadoCondutasObs() {
+        return descMaterialUtilizadoCondutasObs;
+    }
+
+    public void setDescMaterialUtilizadoCondutasObs(String descMaterialUtilizadoCondutasObs) {
+        this.descMaterialUtilizadoCondutasObs = descMaterialUtilizadoCondutasObs;
+    }
+
+    public String getNmTpTratamentoPadraoUtilizadoObs() {
+        return nmTpTratamentoPadraoUtilizadoObs;
+    }
+
+    public void setNmTpTratamentoPadraoUtilizadoObs(String nmTpTratamentoPadraoUtilizadoObs) {
+        this.nmTpTratamentoPadraoUtilizadoObs = nmTpTratamentoPadraoUtilizadoObs;
+    }
+
+    public String getEstadoFuncionamentoSistema() {
+        return estadoFuncionamentoSistema;
+    }
+
+    public void setEstadoFuncionamentoSistema(String estadoFuncionamentoSistema) {
+        this.estadoFuncionamentoSistema = estadoFuncionamentoSistema;
+    }
+
+    public String getNmTpTratamentoBasicoUtilizadoObs() {
+        return nmTpTratamentoBasicoUtilizadoObs;
+    }
+
+    public void setNmTpTratamentoBasicoUtilizadoObs(String nmTpTratamentoBasicoUtilizadoObs) {
+        this.nmTpTratamentoBasicoUtilizadoObs = nmTpTratamentoBasicoUtilizadoObs;
+    }
+
+    public String getExisteMotivoAusenciaTratamentoObs() {
+        return existeMotivoAusenciaTratamentoObs;
+    }
+
+    public void setExisteMotivoAusenciaTratamentoObs(String existeMotivoAusenciaTratamentoObs) {
+        this.existeMotivoAusenciaTratamentoObs = existeMotivoAusenciaTratamentoObs;
+    }
+
+    public String getNmEquipamentosComAvariaObs() {
+        return nmEquipamentosComAvariaObs;
+    }
+
+    public void setNmEquipamentosComAvariaObs(String nmEquipamentosComAvariaObs) {
+        this.nmEquipamentosComAvariaObs = nmEquipamentosComAvariaObs;
+    }
+
+    public String getNmModeloBombaManualUtilizadaObs() {
+        return nmModeloBombaManualUtilizadaObs;
+    }
+
+    public void setNmModeloBombaManualUtilizadaObs(String nmModeloBombaManualUtilizadaObs) {
+        this.nmModeloBombaManualUtilizadaObs = nmModeloBombaManualUtilizadaObs;
     }
 
     @Override

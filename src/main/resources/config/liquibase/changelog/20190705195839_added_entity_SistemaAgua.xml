@@ -234,6 +234,38 @@
                 <constraints nullable="false" />
             </column>
 
+            <column name="qtd_chafarises_existentes" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="desc_material_utilizado_condutas_obs" type="varchar(150)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="nm_tp_tratamento_padrao_utilizado_obs" type="varchar(150)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="estado_funcionamento_sistema" type="varchar(70)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="nm_tp_tratamento_basico_utilizado_obs" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="existe_motivo_ausencia_tratamento_obs" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="nm_equipamentos_com_avaria_obs" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="nm_modelo_bomba_manual_utilizada_obs" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         

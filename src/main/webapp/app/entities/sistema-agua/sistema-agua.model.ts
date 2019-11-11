@@ -61,7 +61,16 @@ export class SistemaAgua implements BaseEntity {
         public situacao?: Situacao,
         public comuna?: Comuna,
         public provincia?: Provincia,
-        public municipio?: Municipio
+        public municipio?: Municipio,
+        public descMaterialUtilizadoCondutasObs?: string,
+        public nmTpTratamentoPadraoUtilizadoObs?: string,
+        public estadoFuncionamentoSistema?: string,
+        public nmTpTratamentoBasicoUtilizadoObs?: string,
+        public existeMotivoAusenciaTratamentoObs?: string,
+        public nmEquipamentosComAvariaObs?: string,
+        public nmModeloBombaManualUtilizadaObs?: string,
+        public qtdChafarisesExistentes?: number
+
     ) {
         this.id = id ? id : null;
         this.comuna = comuna ? comuna : null;
@@ -123,6 +132,5 @@ export class SistemaAgua implements BaseEntity {
         this.esquema = esquema ? esquema : null;
         this.nmModeloBombaManualUtilizada = nmModeloBombaManualUtilizada ? nmModeloBombaManualUtilizada : null;
         this.nmTpBombaEnergia = nmTpBombaEnergia ? nmTpBombaEnergia : null;
-
     }
 }
