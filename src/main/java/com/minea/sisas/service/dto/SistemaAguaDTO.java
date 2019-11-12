@@ -170,6 +170,15 @@ public class SistemaAguaDTO implements Serializable {
     private String existeMotivoAusenciaTratamentoObs;
     private String nmEquipamentosComAvariaObs;
     private String nmModeloBombaManualUtilizadaObs;
+    private String motivoAvariaSistema;
+
+    public String getMotivoAvariaSistema() {
+        return motivoAvariaSistema;
+    }
+
+    public void setMotivoAvariaSistema(String motivoAvariaSistema) {
+        this.motivoAvariaSistema = motivoAvariaSistema;
+    }
 
     public Long getId() {
         return id;

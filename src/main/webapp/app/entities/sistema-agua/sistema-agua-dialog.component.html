@@ -215,7 +215,7 @@
                         <div class="form-group">
                             <label class="form-control-label negrito" jhiTranslate="sisasApp.sistemaAgua.possuiSistemaAgua"
                                    for="possuiSistemaAgua">Possui Sistema Agua</label>
-                            <select class="form-control" id="possuiSistemaAgua" name="possuiSistemaAgua" [(ngModel)]="sistemaAgua.possuiSistemaAgua" required>
+                            <select class="form-control" id="possuiSistemaAgua" name="possuiSistemaAgua" (change)="validaExclusaoDados()" [(ngModel)]="sistemaAgua.possuiSistemaAgua" required>
                                 <option [ngValue]="null" selected>Selecione uma Opção..</option>
                                 <option [ngValue]="1">Sim</option>
                                 <option [ngValue]="0">Não</option>
@@ -431,7 +431,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row" *ngIf="sistemaAgua.nmTipoBomba!=='Bombagem Manual'">
                         <div class="form-group col-sm-6">
                             <div class="form-group">
                                 <label class="form-control-label negrito" jhiTranslate="sisasApp.sistemaAgua.qtdCasasAguaLigada"
@@ -456,7 +456,7 @@
 
 
 
-                    <div class="row">
+                    <div class="row" *ngIf="sistemaAgua.nmTipoBomba!=='Bombagem Manual'">
                         <div class="form-group col-sm-6">
                             <div class="form-group">
                                 <label class="form-control-label negrito" jhiTranslate="sisasApp.sistemaAgua.qtdChafarisesExistentes"
@@ -472,7 +472,7 @@
                                 <label class="form-control-label negrito" jhiTranslate="sisasApp.sistemaAgua.qtdChafarisesFuncionando"
                                        for="field_qtdChafarisesFuncionando">Qtd Chafarises Funcionando</label>
                                 <input type="number" class="form-control" name="qtdChafarisesFuncionando"
-                                       id="field_qtdChafarisesFuncionando"
+                                       id="field_qtdChafarisesFuncionando" (change)="verificaChafariz()"
                                        [(ngModel)]="sistemaAgua.qtdChafarisesFuncionando"
                                        placeholder="Quantidade de chafarises"/>
                             </div>
@@ -482,7 +482,7 @@
 
 
                     <div class="row">
-                        <div class="form-group col-sm-3">
+                        <div class="form-group col-sm-3" *ngIf="sistemaAgua.nmTipoBomba!=='Bombagem Manual'">
                             <div class="form-group">
                                 <label class="form-control-label negrito" jhiTranslate="sisasApp.sistemaAgua.qtdBebedouros"
                                        for="field_qtdBebedouros">Qtd Bebedouros</label>
@@ -529,7 +529,7 @@
                                 <label class="form-control-label negrito" jhiTranslate="sisasApp.sistemaAgua.nmTpAvariaSistema"
                                        for="field_nmTpAvariaSistema">Nm Tp Avaria Sistema</label>
                                 <select class="form-control" id="field_nmTpAvariaSistema" name="nmTpAvariaSistema"
-                                        [(ngModel)]="sistemaAgua.nmTpAvariaSistema">
+                                        [(ngModel)]="sistemaAgua.nmTpAvariaSistema" multiple>
                                     <option [ngValue]="null" selected>Selecione o a avaria no sistema...</option>
                                     <option label="Avaria Mecânica">Avaria Mecânica</option>
                                     <option label="Avaria nas Estruturas(Roturas,Entupimento)">Avaria nas
@@ -653,7 +653,7 @@
                                        for="field_descMaterialUtilizadoCondutas">Desc Material Utilizado Condutas</label>
 
                                 <select class="form-control" id="field_descMaterialUtilizadoCondutas" name="descMaterialUtilizadoCondutas" [(ngModel)]="sistemaAgua.descMaterialUtilizadoCondutas">
-                                    <option [ngValue]="null" selected>Selecione o tipo de Tratamento...</option>
+                                    <option [ngValue]="null" selected>Selecione o Material...</option>
                                     <option label="Fibro Cimento">Fibro Cimento</option>
                                     <option label="Ferro Galvanizado">Ferro Galvanizado</option>
                                     <option label="Ferro Fundido">Ferro Fundido</option>
@@ -765,7 +765,7 @@
                                        jhiTranslate="sisasApp.sistemaAgua.nmTpTratamentoPadraoUtilizado"
                                        for="field_nmTpTratamentoPadraoUtilizado">Nm Tp Tratamento Padrao Utilizado</label>
                                 <select class="form-control" id="field_nmTpTratamentoPadraoUtilizado" name="nmTpTratamentoPadraoUtilizado"
-                                        [(ngModel)]="sistemaAgua.nmTpTratamentoPadraoUtilizado">
+                                        [(ngModel)]="sistemaAgua.nmTpTratamentoPadraoUtilizado" multiple>
                                     <option *ngIf="!editForm.value.nmTpTratamentoPadraoUtilizado" [ngValue]="null" selected>Selecione o Tratemnto Padrao...</option>
                                     <option label="Pré-Tratamento">Pré-Tratamento</option>
                                     <option label="Coagulação, floculação, decantação,filtração">Coagulação, floculação,
@@ -903,7 +903,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
             <div class="card">
@@ -912,6 +911,36 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
+                        <div class="form-group col-sm-12">
+                            <div>
+                                <div class="form-group">
+                                    <label class="form-control-label negrito" jhiTranslate="sisasApp.sistemaAgua.estadoFuncionamentoSistema"
+                                           for="field_estado_funcionamento">Estado Funcionamento Sistema</label>
+                                    <select class="form-control" id="field_estado_funcionamento" name="estadoFunc" [(ngModel)]="sistemaAgua.estadoFuncionamentoSistema">
+                                        <option *ngIf="!editForm.value.estadoFuncionamentoSistema" [ngValue]="null" selected>Selecione o Estado de Funcionamento...</option>
+                                        <option label="Está em Funcionamento (Bom)">Está em Funcionamento (Bom)</option>
+                                        <option label="Não está em Funcionamento">Não está em Funcionamento</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" *ngIf="sistemaAgua.estadoFuncionamentoSistema==='Não está em Funcionamento'">
+                        <div class="form-group col-sm-8 subte" >
+                            <div class="form-group">
+                                <label class="form-control-label negrito"
+                                       jhiTranslate="sisasApp.sistemaAgua.motivoAvariaSistema"
+                                       for="motivoavaria">Existe Motivo Ausencia Tratament Obs</label>
+
+                                <textarea class="form-control" name="motivoavaria" id="motivoavaria" rows="6" cols="50"
+                                          [(ngModel)]="sistemaAgua.motivoAvariaSistema"
+                                          placeholder="Descreva os Motivos para o Não funcionamento do Sistema"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" *ngIf="sistemaAgua.estadoFuncionamentoSistema==='Está em Funcionamento (Bom)'">
                         <div class="form-group col-sm-6">
                             <div class="form-group">
                                 <label class="form-control-label negrito" jhiTranslate="sisasApp.sistemaAgua.caudalDoSistema"
@@ -934,7 +963,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row" *ngIf="sistemaAgua.estadoFuncionamentoSistema==='Está em Funcionamento (Bom)'">
                         <div class="form-group col-sm-6">
                             <div class="form-group">
                                 <label class="form-control-label negrito" jhiTranslate="sisasApp.sistemaAgua.qtdDotacaoPercapta"
@@ -956,23 +985,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="row">
-                        <div class="form-group col-sm-12">
-                            <div>
-                                <div class="form-group">
-                                    <label class="form-control-label negrito" jhiTranslate="sisasApp.sistemaAgua.estadoFuncionamentoSistema"
-                                           for="field_estado_funcionamento">Estado Funcionamento Sistema</label>
-                                    <select class="form-control" id="field_estado_funcionamento" name="estadoFunc" [(ngModel)]="sistemaAgua.estadoFuncionamentoSistema">
-                                        <option *ngIf="!editForm.value.estadoFuncionamentoSistema" [ngValue]="null" selected>Selecione o Estado de Funcionamento...</option>
-                                        <option label="Está em Funcionamento (Bom)">Está em Funcionamento (Bom)</option>
-                                        <option label="Não está em Funcionamento">Não está em Funcionamento</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
 

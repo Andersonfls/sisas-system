@@ -69,7 +69,8 @@ export class SistemaAgua implements BaseEntity {
         public existeMotivoAusenciaTratamentoObs?: string,
         public nmEquipamentosComAvariaObs?: string,
         public nmModeloBombaManualUtilizadaObs?: string,
-        public qtdChafarisesExistentes?: number
+        public qtdChafarisesExistentes?: number,
+        public motivoAvariaSistema?: string
 
     ) {
         this.id = id ? id : null;

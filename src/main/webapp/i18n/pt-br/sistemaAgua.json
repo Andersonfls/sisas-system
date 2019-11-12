@@ -41,7 +41,7 @@
             "qtdBebedouros": "Nº de Bebedouros",
             "qtdHabitantesAcessoServicoAgua": "Nº de Habitantes com Acesso ao Servico de Agua",
             "anoConstrucaoSistema": "Ano de Construcao",
-            "nmTpAvariaSistema": "Indique o Tipo de Avaria",
+            "nmTpAvariaSistema": "Indique o Tipo de Avaria no Equipamento",
             "causaAvariaSistema": "Indique a Causa da Avaria",
             "statusResolucao": "Qual o Progresso da Resolução",
             "tempoServicoDisponivel": "Quanto tempo o Serviço está Indisponível",
@@ -59,7 +59,7 @@
             "nmTpTratamentoAgua": "Indique o Tipo de Tratamento de Agua",
             "nmTpTratamentoPadraoUtilizado": "Tratamento Padrão Utilizado",
             "nmTpTratamentoPadraoUtilizadoObs": "Outros Tratamentos Padroes Utilizados",
-            "nmTpTratamentoBasicoUtilizado": "Tratamento Basico Utilizado",
+            "nmTpTratamentoBasicoUtilizado": "Para Tratamento Basico Utilizado",
             "nmTpTratamentoBasicoUtilizadoObs": "Outros Tratamentos Basicos Utilizados",
             "existeAvariaSistemaTratamento": "Diga se tem Avaria no Sistema de Tratamento",
             "existeMotivoAusenciaTratamento": "Motivos para Ausencia de Tratamento",
@@ -86,7 +86,8 @@
             "execucao": "Execucao",
             "indicadorProducao": "Indicador Producao",
             "qtdChafarisesExistentes": "Nº de Chafarises Existentes",
-            "estadoFuncionamentoSistema": "Estado de Funcionamento do Sistema"
+            "estadoFuncionamentoSistema": "Estado de Funcionamento do Sistema",
+            "motivoAvariaSistema": "Motivos do Não Funcionamento"
         },
         "sistemaAguaDTO": {
             "idSistemaAgua": "Id Sistema Agua",
@@ -114,7 +115,7 @@
             "qtdBebedouros": "Nº de Bebedouros",
             "qtdHabitantesAcessoServicoAgua": "Nº de Habitantes com Acesso ao Servico de Agua",
             "anoConstrucaoSistema": "Ano de Construcao doSistema",
-            "nmTpAvariaSistema": "Indique o Tipo de Avaria",
+            "nmTpAvariaSistema": "Indique o Tipo de Avaria no Equipamento",
             "causaAvariaSistema": "Indique a Causa da Avaria",
             "statusResolucao": "Qual o Progresso da Resolução",
             "tempoServicoDisponivel": "Quanto tempo o Serviço está Indisponível",

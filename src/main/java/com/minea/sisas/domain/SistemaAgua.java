@@ -260,6 +260,9 @@ public class SistemaAgua implements Serializable {
     @JoinColumn(name = "id_municipio")
     private Municipio municipio;
 
+    @Column(name = "motivo_avaria_sistema")
+    private String motivoAvariaSistema;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -1048,6 +1051,14 @@ public class SistemaAgua implements Serializable {
 
     public void setNmModeloBombaManualUtilizadaObs(String nmModeloBombaManualUtilizadaObs) {
         this.nmModeloBombaManualUtilizadaObs = nmModeloBombaManualUtilizadaObs;
+    }
+
+    public String getMotivoAvariaSistema() {
+        return motivoAvariaSistema;
+    }
+
+    public void setMotivoAvariaSistema(String motivoAvariaSistema) {
+        this.motivoAvariaSistema = motivoAvariaSistema;
     }
 
     @Override

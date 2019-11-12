@@ -81,41 +81,46 @@ export class SistemaAguaDialogComponent implements OnInit {
             },
             (res: HttpErrorResponse) => this.onError(res.message));
 
-        // this.inicializarCampos();
-
         const now = new Date();
         this.sistemaAgua.dtLancamento = {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()};
         console.log(this.sistemaAgua);
         this.montaListaAnos();
     }
 
+    verificaChafariz() {
+        if (this.sistemaAgua.qtdChafarisesFuncionando > this.sistemaAgua.qtdChafarisesExistentes) {
+            alert('A quantidade de Chafarizes Funcionando é maior que a Existente!!!');
+            this.sistemaAgua.qtdChafarisesFuncionando = null;
+        }
+    }
+
+    validaExclusaoDados() {
+        if (this.sistemaAgua.possuiSistemaAgua ===0) {
+            if (this.sistemaAgua.nmSistemaAgua != null && this.sistemaAgua.nmSistemaAgua != undefined) {
+                if (confirm('Os dados digitados anteriormente serao apagados, deseja continuar?')) {
+                    this.inicializarCampos();
+                }
+            }
+            this.inicializarCampos();
+        }
+    }
+
     inicializarCampos() {
-        this.sistemaAgua.situacao = null;
-        this.sistemaAgua.comuna = null;
-        this.sistemaAgua.municipio = null;
-        this.sistemaAgua.provincia = null;
-        this.sistemaAgua.nmTpComunaAldeia = null;
-        this.sistemaAgua.nmTpArea = null;
-        this.sistemaAgua.possuiSistemaAgua = null;
-        this.sistemaAgua.nmTpFonte = null;
-        this.sistemaAgua.nmFonteAgua = null;
-        this.sistemaAgua.esquema = null;
-        this.sistemaAgua.nmTipoBomba = null;
-        this.sistemaAgua.nmTipoBomba = null;
-        this.sistemaAgua.nmFonteAguaUtilizada = null;
-        this.sistemaAgua.nmTpBombaEnergia = null;
-        this.sistemaAgua.nmModeloBombaManualUtilizada = null;
-        this.sistemaAgua.nmTpTratamentoAgua = null;
-        this.sistemaAgua.nmTpTratamentoPadraoUtilizado = null;
-        this.sistemaAgua.nmTpTratamentoBasicoUtilizado = null;
-        this.sistemaAgua.existeAvariaSistemaTratamento = null;
-        this.sistemaAgua.nmTpTratamentoBasicoUtilizado = null;
-        this.sistemaAgua.existeMotivoAusenciaTratamento = null;
-        this.sistemaAgua.nmEquipamentosComAvaria = null;
-        this.sistemaAgua.nmTpAvariaSistema = null;
-        this.sistemaAgua.causaAvariaSistema = null;
-        this.sistemaAgua.statusResolucao = null;
-        this.sistemaAgua.tempoServicoDisponivel = null;
+        const temp = this.sistemaAgua;
+
+        this.sistemaAgua = new SistemaAgua();
+        this.sistemaAgua.id = temp.id;
+        this.sistemaAgua.nmInqueridor = temp.nmInqueridor;
+        this.sistemaAgua.situacao = temp.situacao;
+        this.sistemaAgua.provincia = temp.provincia;
+        this.sistemaAgua.municipio = temp.municipio;
+        this.sistemaAgua.comuna = temp.comuna;
+        this.sistemaAgua.nmLocalidade = temp.nmLocalidade;
+        this.sistemaAgua.qtdPopulacaoActual = temp.qtdPopulacaoActual;
+        this.sistemaAgua.qtdCasasLocalidade = temp.qtdCasasLocalidade
+        this.sistemaAgua.nmTpComunaAldeia = temp.nmTpComunaAldeia;
+        this.sistemaAgua.nmTpArea = temp.nmTpArea;
+        this.sistemaAgua.possuiSistemaAgua = temp.possuiSistemaAgua;
     }
 
     load(id) {
