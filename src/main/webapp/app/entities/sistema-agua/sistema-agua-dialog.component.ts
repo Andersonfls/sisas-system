@@ -95,8 +95,8 @@ export class SistemaAguaDialogComponent implements OnInit {
     }
 
     validaExclusaoDados() {
-        if (this.sistemaAgua.possuiSistemaAgua ===0) {
-            if (this.sistemaAgua.nmSistemaAgua != null && this.sistemaAgua.nmSistemaAgua != undefined) {
+        if (this.sistemaAgua.possuiSistemaAgua === 0) {
+            if (this.sistemaAgua.nmSistemaAgua !== null && this.sistemaAgua.nmSistemaAgua !== undefined) {
                 if (confirm('Os dados digitados anteriormente serao apagados, deseja continuar?')) {
                     this.inicializarCampos();
                 }
@@ -117,7 +117,7 @@ export class SistemaAguaDialogComponent implements OnInit {
         this.sistemaAgua.comuna = temp.comuna;
         this.sistemaAgua.nmLocalidade = temp.nmLocalidade;
         this.sistemaAgua.qtdPopulacaoActual = temp.qtdPopulacaoActual;
-        this.sistemaAgua.qtdCasasLocalidade = temp.qtdCasasLocalidade
+        this.sistemaAgua.qtdCasasLocalidade = temp.qtdCasasLocalidade;
         this.sistemaAgua.nmTpComunaAldeia = temp.nmTpComunaAldeia;
         this.sistemaAgua.nmTpArea = temp.nmTpArea;
         this.sistemaAgua.possuiSistemaAgua = temp.possuiSistemaAgua;
