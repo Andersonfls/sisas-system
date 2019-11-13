@@ -1,0 +1,164 @@
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<div>
+    <h2 style="margin-left: 17%">
+        <span>Estatística de Inquéritos Preenchidos (Nível Nacional)</span>
+    </h2>
+    <jhi-alert></jhi-alert>
+
+        <div class="row" *ngIf="tipoRelatorio == null">
+            <div class="form-group col-sm-12">
+                <div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_tipo_relatorio" style="font-weight: bold">Escolha o tipo de Relatório</label>
+                        <select class="form-control" id="field_tipo_relatorio" name="tprelatorio" [(ngModel)]="tipoRelatorio" (change)="validaTipoRelatorio()">
+                            <option [ngValue]="null" selected>Selecione o Modelo de Relatório...</option>
+                            <option label="Modelo 1">Modelo 1</option>
+                            <option label="Modelo 2">Modelo 2</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <br/>
+
+    <div class="card" *ngIf="tipoRelatorio==='Modelo 1'">
+        <div class="table-responsive" *ngIf="listaTabela">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th><span>Provincia</span></th>
+                    <th><span>N° de Municípios</span></th>
+                    <th><span>N° de Comunas</span></th>
+                    <th><span>Águas(SIM)</span></th>
+                    <th><span>Águas(NAO)</span></th>
+                    <th><span>Total Águas</span></th>
+                    <th><span>Saneamento(SIM)</span></th>
+                    <th><span>Saneamento(NAO)</span></th>
+                    <th><span>Total Saneamento</span></th>
+                    <th><span>Total Inquéritos Sector</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let provincia of listaTabela ;trackBy: trackId">
+                    <td>{{provincia.nomeProvincia}}</td>
+                    <td>{{provincia.municipios}}</td>
+                    <td>{{provincia.comunas}}</td>
+                    <td>{{provincia.aguasSim}}</td>
+                    <td>{{provincia.aguasNao | number }}</td>
+                    <td>{{provincia.totalAguas | number }}</td>
+                    <td>{{provincia.saneamentoSim}}</td>
+                    <td>{{provincia.saneamentoNao}}</td>
+                    <td>{{provincia.totalSaneamento}}</td>
+                    <td>{{provincia.totalInqueritoSector}}</td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td> <span style="font-weight: bold">Total: </span></td>
+                    <td> <span style="font-weight: bold">{{totalMunicipios}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalComuna}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalAguasSim}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalAguasNao | number }} </span></td>
+                    <td> <span style="font-weight: bold">{{totalAguas | number }} </span></td>
+                    <td> <span style="font-weight: bold">{{totalSaneamentoSim}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalSaneamentoNao}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalSaneamento}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalInqueritosSector}} </span></td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+    <div class="card" *ngIf="tipoRelatorio==='Modelo 2'">
+        <div class="table-responsive" *ngIf="listaTabela">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th><span>Provincia</span></th>
+                    <th><span>N° de Municípios</span></th>
+                    <th><span>N° de Comunas</span></th>
+                    <th><span>Águas(SIM)</span></th>
+                    <th><span>Águas(NAO)</span></th>
+                    <th><span>Saneamento</span></th>
+                    <th><span>Total</span></th>
+                    <th><span>Escolas</span></th>
+                    <th><span>Hospitais</span></th>
+                    <th><span>Famílias</span></th>
+                    <th><span>Total</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let provincia of listaTabela">
+                    <td>{{provincia.nomeProvincia}}</td>
+                    <td>{{provincia.municipios}}</td>
+                    <td>{{provincia.comunas}}</td>
+                    <td>{{provincia.aguasSim}}</td>
+                    <td>{{provincia.aguasNao | number }}</td>
+                    <td>{{provincia.totalSaneamento | number }}</td>
+                    <td>{{provincia.totalSaneamento}}</td>
+                    <td>{{provincia.escolas}}</td>
+                    <td>{{provincia.hospitais}}</td>
+                    <td>{{provincia.familias}}</td>
+                    <td>{{provincia.totalGeral}}</td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td> <span style="font-weight: bold">Total: </span></td>
+                    <td> <span style="font-weight: bold">{{totalMunicipios}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalComuna}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalAguasSim}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalAguasNao | number }} </span></td>
+                    <td> <span style="font-weight: bold">{{totalSaneamento | number }} </span></td>
+                    <td> <span style="font-weight: bold">{{total}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalEscola}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalHospitais}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalFamilias}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalGeral}} </span></td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="card" *ngIf="tipoRelatorio==='Modelo 1'">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-dash">
+                    <div id="chartAgua" style="height: 370px; width: 98%; margin-left: 3%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="card" *ngIf="tipoRelatorio==='Modelo 1'">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-dash">
+                    <div id="chartSaneamento" style="height: 370px; width: 98%; margin-left: 3%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" *ngIf="tipoRelatorio==='Modelo 2'">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-dash">
+                    <div id="chartTotalInqueritos" style="height: 370px; width: 98%; margin-left: 3%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" [routerLink]="['/../../dashboard']"  >
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+    </div>
+</div>

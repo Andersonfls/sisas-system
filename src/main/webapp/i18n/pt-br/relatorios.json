@@ -3,7 +3,9 @@
         "title": {
             "sector-agua": "Relatório Sector de Águas",
             "func-agua-chafariz": "Relatório Sistemas de Água e Chafarizes",
-            "sector-agua-saneamento": "Relatório Sector de Água e Saneamento"
+            "sector-agua-saneamento": "Relatório Sector de Água e Saneamento",
+            "inqueritos-preenchidos": "Inquéritos Preenchidos",
+            "tratamento-sistemas-agua":"Tratamento de Sistemas de Água"
         },
         "home": {
             "obras": "Obras",

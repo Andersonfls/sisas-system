@@ -759,7 +759,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group col-sm-6">
+                        <div class="form-group col-sm-6" *ngIf="sistemaAgua.nmTpTratamentoAgua!=='Tratamento Básico-Cloro' && sistemaAgua.nmTpTratamentoAgua!=='Não Realiza'">
                             <div class="form-group">
                                 <label class="form-control-label negrito"
                                        jhiTranslate="sisasApp.sistemaAgua.nmTpTratamentoPadraoUtilizado"
@@ -795,7 +795,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row" *ngIf="sistemaAgua.nmTpTratamentoAgua!=='Tratamento Padrão' && sistemaAgua.nmTpTratamentoAgua!=='Não Realiza'">
                         <div class="form-group col-sm-6">
                             <div class="form-group">
                                 <label class="form-control-label negrito"
@@ -811,7 +811,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group col-sm-6">
+                        <div class="form-group col-sm-6" *ngIf="sistemaAgua.nmTpTratamentoAgua!=='Tratamento Básico-Cloro'">
                             <div class="form-group">
                                 <label class="form-control-label negrito"
                                        jhiTranslate="sisasApp.sistemaAgua.existeAvariaSistemaTratamento"
@@ -842,7 +842,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row" *ngIf="sistemaAgua.nmTpTratamentoAgua!=='Tratamento Padrão' && sistemaAgua.nmTpTratamentoAgua!=='Tratamento Básico-Cloro'">
                         <div class="form-group col-sm-6">
                             <div class="form-group">
                                 <label class="form-control-label negrito"
@@ -905,7 +905,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card">
+            <div class="card" *ngIf="sistemaAgua.nmTpTratamentoAgua=== null || sistemaAgua.nmTpTratamentoAgua==''">
                 <div class="card-header text-center">
                     <label class="form-control-label negrito">Dados do sistema</label>
                 </div>

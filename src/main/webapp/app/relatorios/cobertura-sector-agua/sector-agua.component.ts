@@ -8,6 +8,7 @@ import * as CanvasJS from '../../../content/js/canvasjs.min.js';
 import {Provincia, ProvinciaService} from '../../entities/provincia';
 import {DadosRelatorio} from './dadosRelatorio.model';
 import {SectorAguaDados} from './SectorAguaDados.model';
+import {RelatoriosService} from '../relatorios.service';
 
 @Component({
     selector: 'jhi-sector-agua',
@@ -39,7 +40,7 @@ export class CoberturaSectorAguaComponent implements OnInit {
         private jhiAlertService: JhiAlertService,
         private userService: UserService,
         private principal: Principal,
-        private provinciaService: ProvinciaService,
+        private relatorioService: RelatoriosService,
     ) {}
 
     ngOnInit() {
@@ -51,7 +52,7 @@ export class CoberturaSectorAguaComponent implements OnInit {
     }
 
     buscaDadosTabela() {
-        this.provinciaService.buscaDadosSectorAgua().subscribe(
+        this.relatorioService.buscaDadosSectorAgua().subscribe(
             (res: HttpResponse<SectorAguaDados[]>) => {
                 this.listaTabela = res.body;
                 console.log(this.listaTabela);

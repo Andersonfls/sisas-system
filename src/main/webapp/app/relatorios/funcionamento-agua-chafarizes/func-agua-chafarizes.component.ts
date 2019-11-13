@@ -6,6 +6,7 @@ import { User } from '../../shared/user/user.model';
 import { Principal } from '../../shared/auth/principal.service';
 import {Provincia, ProvinciaService} from '../../entities/provincia';
 import {FuncAguaChafarizes} from './FuncAguaChafarizes.model';
+import {RelatoriosService} from '../relatorios.service';
 
 @Component({
     selector: 'jhi-func-sist-agua-chafariz',
@@ -37,7 +38,7 @@ export class FuncAguaChafarizesComponent implements OnInit {
         private jhiAlertService: JhiAlertService,
         private userService: UserService,
         private principal: Principal,
-        private provinciaService: ProvinciaService,
+        private relatorioService: RelatoriosService,
     ) {}
 
     ngOnInit() {
@@ -48,7 +49,7 @@ export class FuncAguaChafarizesComponent implements OnInit {
     }
 
     buscaDadosTabela() {
-        this.provinciaService.buscaDadosFuncAguaChafariz().subscribe(
+        this.relatorioService.buscaDadosFuncAguaChafariz().subscribe(
             (res: HttpResponse<FuncAguaChafarizes[]>) => {
                 this.listaTabela = res.body;
                 console.log(this.listaTabela);
