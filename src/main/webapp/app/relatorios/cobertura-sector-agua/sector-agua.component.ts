@@ -5,7 +5,7 @@ import { HttpResponse } from '@angular/common/http';
 import { User } from '../../shared/user/user.model';
 import { Principal } from '../../shared/auth/principal.service';
 import * as CanvasJS from '../../../content/js/canvasjs.min.js';
-import {Provincia, ProvinciaService} from '../../entities/provincia';
+import {Provincia} from '../../entities/provincia';
 import {DadosRelatorio} from './dadosRelatorio.model';
 import {SectorAguaDados} from './SectorAguaDados.model';
 import {RelatoriosService} from '../relatorios.service';
@@ -29,6 +29,7 @@ export class CoberturaSectorAguaComponent implements OnInit {
     chart: any;
     listaMedia: DadosRelatorio[];
     listaCobertura: DadosRelatorio[];
+    tipoRelatorio: string;
     totalMunicipios = 0;
     totalComuna = 0;
     totalSistemas = 0;
@@ -47,8 +48,24 @@ export class CoberturaSectorAguaComponent implements OnInit {
         this.principal.identity().then((userIdentity) => {
             this.user = userIdentity;
         });
-        this.buscaDadosTabela();
         this.totalCobertura = 35;
+        this.tipoRelatorio = null;
+    }
+
+    validaTipoRelatorio() {
+        if (this.tipoRelatorio === 'Nível Provincial') {
+            this.buscaDadosTabela();
+        }
+        if (this.tipoRelatorio === 'Nível Municipal') {
+            this.buscaDadosTabela();
+        }
+        if (this.tipoRelatorio === 'Nível Comunal') {
+            this.buscaDadosTabela();
+        }
+    }
+
+    voltarEscolha() {
+        this.tipoRelatorio = null;
     }
 
     buscaDadosTabela() {
@@ -137,24 +154,4 @@ export class CoberturaSectorAguaComponent implements OnInit {
         this.chart.render();
     }
 
-    addSymbols(e) {
-        const suffixes = ['', 'K', 'M', 'B'];
-        let order = Math.max(Math.floor(Math.log(e.value) / Math.log(1000)), 0);
-
-        if (order > suffixes.length - 1) {
-            order = suffixes.length - 1;
-        }
-
-        const suffix = suffixes[order];
-        return CanvasJS.formatNumber(e.value / Math.pow(1000, order)) + suffix;
-    }
-
-    toggleDataSeries(e) {
-        if (typeof (e.dataSeries.visible) === 'undefined' || e.dataSeries.visible) {
-            e.dataSeries.visible = false;
-        } else {
-            e.dataSeries.visible = true;
-        }
-        e.chart.render();
-    }
 }

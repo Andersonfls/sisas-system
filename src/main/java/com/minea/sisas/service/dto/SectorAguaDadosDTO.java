@@ -10,7 +10,9 @@ public class SectorAguaDadosDTO implements Serializable {
 
     private String nomeProvincia;
     private Integer municipios;
+    private String nomeMunicipio;
     private Integer comunas;
+    private String nomeComuna;
     private Integer sistemasFuncionam;
     private Long populacaoTotal;
     private Long beneficiarios;
@@ -83,5 +85,21 @@ public class SectorAguaDadosDTO implements Serializable {
 
     public void setCobertura(Integer cobertura) {
         this.cobertura = cobertura;
+    }
+
+    public String getNomeMunicipio() {
+        return nomeMunicipio;
+    }
+
+    public void setNomeMunicipio(String nomeMunicipio) {
+        this.nomeMunicipio = nomeMunicipio;
+    }
+
+    public String getNomeComuna() {
+        return nomeComuna;
+    }
+
+    public void setNomeComuna(String nomeComuna) {
+        this.nomeComuna = nomeComuna;
     }
 }

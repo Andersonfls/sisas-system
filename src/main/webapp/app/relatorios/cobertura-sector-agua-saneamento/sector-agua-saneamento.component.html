@@ -1,14 +1,47 @@
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <div>
-    <h2>
-        <span>Cobertura no sector de Água e Saneamento (Nível nacional)</span>
-    </h2>
-    <jhi-alert></jhi-alert>
     <div class="row">
+        <h2 style="margin-left: 20%" *ngIf="tipoRelatorio == null">
+            <span>Cobertura no sector de Água e Saneamento</span>
+        </h2>
+        <h2 *ngIf="tipoRelatorio ==='Nível Nacional'">
+            <span>Cobertura no sector de Água e Saneamento (Nível nacional)</span>
+        </h2>
+        <h2 *ngIf="tipoRelatorio==='Nível Provincial'">
+            <span>Cobertura no sector de Água e Saneamento (Nível Provincial)</span>
+        </h2>
+        <h2 *ngIf="tipoRelatorio==='Nível Municipal'">
+            <span>Cobertura no sector de Água e Saneamento (Nível Municipal)</span>
+        </h2>
+        <h2 *ngIf="tipoRelatorio==='Nível Comunal'">
+            <span>Cobertura no sector de Água e Saneamento (Nível Comunal)</span>
+        </h2>
+
+        <button *ngIf="tipoRelatorio !== null" type="button" style="margin-left: auto" class="btn btn-secondary" data-dismiss="modal" (click)="voltarEscolha()">
+            <span class="fa fa-bars"></span>&nbsp;<span>Tipo Relatorio</span>
+        </button>
+    </div>
+
+    <jhi-alert></jhi-alert>
+    <div class="row" *ngIf="tipoRelatorio == null">
+        <div class="form-group col-sm-12">
+            <div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_tipo_relatorio" style="font-weight: bold">Escolha o tipo de Relatório</label>
+                    <select class="form-control" id="field_tipo_relatorio" name="tprelatorio" [(ngModel)]="tipoRelatorio" (change)="validaTipoRelatorio()">
+                        <option [ngValue]="null" selected>Selecione o Modelo de Relatório...</option>
+                        <option label="Nível Nacional">Nível Nacional</option>
+                        <option label="Nível Provincial">Nível Provincial</option>
+                        <option label="Nível Municipal">Nível Municipal</option>
+                        <option label="Nível Comunal">Nível Comunal</option>
+                    </select>
+                </div>
+            </div>
+        </div>
     </div>
     <br/>
 
-    <div class="card">
+    <div class="card" *ngIf="tipoRelatorio==='Nível Nacional'">
         <div class="table-responsive" *ngIf="listaTabela">
             <table class="table table-striped">
                 <thead>
@@ -37,9 +70,153 @@
         </div>
     </div>
 
+    <div class="card" *ngIf="tipoRelatorio==='Nível Provincial'">
+        <div class="table-responsive" *ngIf="listaTabela">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th><span>Províncias</span></th>
+                    <th><span>N° de Municípios</span></th>
+                    <th><span>N° de Comunas</span></th>
+                    <th><span>Populacao Total</span></th>
+                    <th><span>Água</span></th>
+                    <th><span>Saneamento</span></th>
+                    <th><span>Águas%</span></th>
+                    <th><span>Saneamento%</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let provincia of listaTabela ;trackBy: trackId">
+                    <td>{{provincia.provincia}}</td>
+                    <td>{{provincia.municipios | number }}</td>
+                    <td>{{provincia.comunas}}%</td>
+                    <td>{{provincia.populacaoTotal | number }}</td>
+                    <td>{{provincia.populacaoBeneficiadaAgua}}%</td>
+                    <td>{{provincia.populacaoBeneficiadaSaneamento  | number }}</td>
+                    <td>{{provincia.coberturaAgua}}%</td>
+                    <td>{{provincia.coberturaSaneamento}}%</td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td> <span style="font-weight: bold">Total Provincial: </span></td>
+                    <td> <span style="font-weight: bold">{{totalMunicipios}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalComunas}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalPopulacao}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalBenefAgua | number }} </span></td>
+                    <td> <span style="font-weight: bold">{{totalBenefSaneamento | number }} </span></td>
+                    <td> <span style="font-weight: bold">{{totalCobertAgua}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalCobertSaneamento}} </span></td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+    <div class="card" *ngIf="tipoRelatorio==='Nível Municipal'">
+        <div class="table-responsive" *ngIf="listaTabela">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th colspan="2"><span style="float: right">Populacão Beneficiária</span></th>
+                    <th colspan="2"><span style="margin-left: 20%;">COBERTURA %</span></th>
+                </tr>
+                <tr>
+                    <th><span>Províncias</span></th>
+                    <th><span>Município</span></th>
+                    <th><span>N° de Comunas</span></th>
+                    <th><span>Populacão Total</span></th>
+                    <th><span>Água</span></th>
+                    <th><span>Saneamento</span></th>
+                    <th><span>Água</span></th>
+                    <th><span>Saneamento</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let provincia of listaTabela ;trackBy: trackId">
+                    <td>{{provincia.provincia}}</td>
+                    <td>{{provincia.nomeMunicipio | number }}</td>
+                    <td>{{provincia.comunas}}%</td>
+                    <td>{{provincia.populacaoTotal | number }}</td>
+                    <td>{{provincia.populacaoBeneficiadaAgua}}%</td>
+                    <td>{{provincia.populacaoBeneficiadaSaneamento  | number }}</td>
+                    <td>{{provincia.coberturaAgua}}%</td>
+                    <td>{{provincia.coberturaSaneamento}}%</td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td> <span style="font-weight: bold"></span></td>
+                    <td> <span style="font-weight: bold">Total Municipal: </span></td>
+                    <td> <span style="font-weight: bold">{{totalComunas}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalPopulacao}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalBenefAgua | number }} </span></td>
+                    <td> <span style="font-weight: bold">{{totalBenefSaneamento | number }} </span></td>
+                    <td> <span style="font-weight: bold">{{totalCobertAgua}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalCobertSaneamento}} </span></td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+    <div class="card" *ngIf="tipoRelatorio==='Nível Comunal'">
+        <div class="table-responsive" *ngIf="listaTabela">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th colspan="2"><span style="float: right">Populacão Beneficiária</span></th>
+                    <th colspan="2"><span style="margin-left: 20%;">COBERTURA %</span></th>
+                </tr>
+                <tr>
+                    <th><span>Províncias</span></th>
+                    <th><span>Município</span></th>
+                    <th><span>Comuna</span></th>
+                    <th><span>Populacão Total</span></th>
+                    <th><span>Água</span></th>
+                    <th><span>Saneamento</span></th>
+                    <th><span>Água</span></th>
+                    <th><span>Saneamento</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let provincia of listaTabela ;trackBy: trackId">
+                    <td>{{provincia.provincia}}</td>
+                    <td>{{provincia.nomeMunicipio | number }}</td>
+                    <td>{{provincia.nomeComuna}}%</td>
+                    <td>{{provincia.populacaoTotal | number }}</td>
+                    <td>{{provincia.populacaoBeneficiadaAgua}}%</td>
+                    <td>{{provincia.populacaoBeneficiadaSaneamento  | number }}</td>
+                    <td>{{provincia.coberturaAgua}}%</td>
+                    <td>{{provincia.coberturaSaneamento}}%</td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td> <span style="font-weight: bold"></span></td>
+                    <td> <span style="font-weight: bold"></span></td>
+                    <td> <span style="font-weight: bold">Total Comunal: </span></td>
+                    <td> <span style="font-weight: bold">{{totalPopulacao}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalBenefAgua | number }} </span></td>
+                    <td> <span style="font-weight: bold">{{totalBenefSaneamento | number }} </span></td>
+                    <td> <span style="font-weight: bold">{{totalCobertAgua}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalCobertSaneamento}} </span></td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
     <br>
 
-    <div class="card">
+    <div class="card" *ngIf="tipoRelatorio==='Nível Nacional'">
         <div class="row">
             <div class="col-md-6 teste-acima">
                 <div class="card card-dash">
@@ -62,6 +239,10 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="card" *ngIf="tipoRelatorio==='Nível Provincial'">
+        <div id="chartProvincial" style="height: 400px; width: 97%; margin-left: 3%"></div>
     </div>
 
     <div class="modal-footer">

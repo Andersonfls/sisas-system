@@ -2,10 +2,14 @@
     "relatorios": {
         "title": {
             "sector-agua": "Relatório Sector de Águas",
+            "func-agua": "Relatório Sistemas de Água",
             "func-agua-chafariz": "Relatório Sistemas de Água e Chafarizes",
             "sector-agua-saneamento": "Relatório Sector de Água e Saneamento",
             "inqueritos-preenchidos": "Inquéritos Preenchidos",
-            "tratamento-sistemas-agua":"Tratamento de Sistemas de Água"
+            "tratamento-sistemas-agua":"Tratamento de Sistemas de Água",
+            "benef-agua-fonte-superficial-tecnica":"Beneficiários de Água por Fonte Superficial e Opcao Técnica",
+            "benef-agua-fonte-subterranea-mecanica":"Beneficiários de Água por Fonte Subterranea e Bomba Mecanica",
+            "benef-agua-subterranea-tp-bomba":"Beneficiários de Água por Fonte Subterranea e Tipo Bomba"
         },
         "home": {
             "obras": "Obras",

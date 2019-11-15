@@ -1,0 +1,184 @@
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<div>
+    <br>
+    <div class="row">
+        <h2 style="margin-left: 2%" *ngIf="tipoRelatorio == null">
+            <span>Beneficiários de Água por Fonte Subterrânea e por Tipo Bomba</span>
+        </h2>
+        <h2 style="margin-left: 2%; font-size: 1.3rem;" *ngIf="tipoRelatorio==='Nível Municipal'">
+            <span>Beneficiários de Água por Fonte Subterrânea e por Tipo Bomba (Nível Municipal)</span>
+        </h2>
+        <h2 style="margin-left: 2%; font-size: 1.3rem;" *ngIf="tipoRelatorio==='Nível Comunal'">
+            <span>Beneficiários de Água por Fonte Subterrânea e por Tipo Bomba (Nível Comunal)</span>
+        </h2>
+
+        <button *ngIf="tipoRelatorio !== null" type="button" style="margin-left: auto; margin-right: 1%" class="btn btn-secondary" data-dismiss="modal" (click)="voltarEscolha()">
+            <span class="fa fa-bars"></span>&nbsp;<span>Tipo Relatorio</span>
+        </button>
+    </div>
+
+    <jhi-alert></jhi-alert>
+    <div class="row" *ngIf="tipoRelatorio == null">
+        <div class="form-group col-sm-12">
+            <div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_tipo_relatorio" style="font-weight: bold">Escolha o tipo de Relatório</label>
+                    <select class="form-control" id="field_tipo_relatorio" name="tprelatorio" [(ngModel)]="tipoRelatorio" (change)="validaTipoRelatorio()">
+                        <option [ngValue]="null" selected>Selecione o Modelo de Relatório...</option>
+                        <option label="Nível Municipal">Nível Municipal</option>
+                        <option label="Nível Comunal">Nível Comunal</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div class="card" *ngIf="tipoRelatorio==='Nível Municipal'">
+        <div class="table-responsive" *ngIf="listaTabela">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th colspan="10"><span style="margin-left: 30%">N° de Sistemas por Tipo de Bomba Manual</span></th>
+                </tr>
+                <tr>
+                    <th><span>Província</span></th>
+                    <th><span>Municipal</span></th>
+                    <th><span>Populacao</span></th>
+                    <th><span>Poco Melhorado</span></th>
+                    <th><span>Furo</span></th>
+                    <th><span>Nascente</span></th>
+
+                    <th><span>Afridev</span></th>
+                    <th><span>Populacao</span></th>
+                    <th><span>Vernet</span></th>
+                    <th><span>Populacao</span></th>
+                    <th><span>Volanta</span></th>
+                    <th><span>Populacao</span></th>
+                    <th><span>India Marck II</span></th>
+                    <th><span>Populacao</span></th>
+                    <th><span>Outro</span></th>
+                    <th><span>Populacao</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let provincia of listaTabela">
+                    <td>{{provincia.nomeProvincia}}</td>
+                    <td>{{provincia.nomeMunicipio}}</td>
+                    <td>{{provincia.populacao | number}}</td>
+                    <td>{{provincia.pocoMelhorado}}</td>
+                    <td>{{provincia.furo}}</td>
+                    <td>{{provincia.nascente}}</td>
+                    <td>{{provincia.afridev}}</td>
+                    <td>{{provincia.afridevPopulacao}}</td>
+                    <td>{{provincia.vergnet}}</td>
+                    <td>{{provincia.vergnetPopulacao}}</td>
+
+                    <td>{{provincia.volanta}}</td>
+                    <td>{{provincia.volantaPopulacao}}</td>
+                    <td>{{provincia.indiaMarck}}</td>
+                    <td>{{provincia.indiaMarckPopulacao}}</td>
+                    <td>{{provincia.outro}}</td>
+                    <td>{{provincia.outroPopulacao}}</td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td> <span style="font-weight: bold"></span></td>
+                    <td> <span style="font-weight: bold">Total Municipal: </span></td>
+                    <td> <span style="font-weight: bold">{{totalPopulacao | number }}</span></td>
+                    <td> <span style="font-weight: bold">{{totalPocoMelhorado | number }}</span></td>
+                    <td> <span style="font-weight: bold">{{totalFuro | number}}</span></td>
+                    <td> <span style="font-weight: bold">{{totalNascente | number}}</span></td>
+
+                    <td> <span style="font-weight: bold">{{totalAfridev | number }} </span></td>
+                    <td> <span style="font-weight: bold">{{totalAfridevPopulacao | number}} </span></td>
+
+                    <td> <span style="font-weight: bold">{{totalVergnet | number }}</span></td>
+                    <td> <span style="font-weight: bold">{{totalVergnetPopulacao | number}}</span></td>
+
+                    <td> <span style="font-weight: bold">{{totalVolanta | number }}</span></td>
+                    <td> <span style="font-weight: bold">{{totalVolantaPopulacao | number}}</span></td>
+
+                    <td> <span style="font-weight: bold">{{totalIndia | number }}</span></td>
+                    <td> <span style="font-weight: bold">{{totalIndiaPopulacao | number}}</span></td>
+
+                    <td> <span style="font-weight: bold">{{totalOutro | number }}</span></td>
+                    <td> <span style="font-weight: bold">{{totalOutroPopulacao | number}}</span></td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+    <div class="card" *ngIf="tipoRelatorio==='Nível Comunal'">
+        <div class="table-responsive" *ngIf="listaTabela">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th colspan="4"><span style=" font-size: 0.8em;">N° de Sistemas por Tipo de Bomba Gravidade e Outros</span></th>
+                </tr>
+                <tr>
+                    <th><span>Província</span></th>
+                    <th><span>Municipio</span></th>
+                    <th><span>Comuna</span></th>
+                    <th><span>Poco Melhorado</span></th>
+                    <th><span>Furo</span></th>
+                    <th><span>Nascente</span></th>
+                    <th><span>Gravidade</span></th>
+                    <th><span>Populacao</span></th>
+                    <th><span>Outro</span></th>
+                    <th><span>Populacao</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let provincia of listaTabela">
+                    <td>{{provincia.nomeProvincia}}</td>
+                    <td>{{provincia.nomeMunicipio}}</td>
+                    <td>{{provincia.nomeComuna}}</td>
+                    <td>{{provincia.pocoMelhorado}}</td>
+                    <td>{{provincia.furo}}</td>
+                    <td>{{provincia.nascente}}</td>
+                    <td>{{provincia.gravidade}}</td>
+                    <td>{{provincia.gravidadePopulacao}}</td>
+                    <td>{{provincia.outro}}</td>
+                    <td>{{provincia.outroPopulacao}}</td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td> <span style="font-weight: bold"></span></td>
+                    <td> <span style="font-weight: bold"></span></td>
+                    <td> <span style="font-weight: bold">Total Comunal: </span></td>
+                    <td> <span style="font-weight: bold">{{totalPocoMelhorado | number }}</span></td>
+                    <td> <span style="font-weight: bold">{{totalFuro | number}}</span></td>
+                    <td> <span style="font-weight: bold">{{totalNascente | number}}</span></td>
+                    <td> <span style="font-weight: bold">{{totalGravidade | number }} </span></td>
+                    <td> <span style="font-weight: bold">{{totalGravidadePopulacao | number}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalOutro | number }}</span></td>
+                    <td> <span style="font-weight: bold">{{totalOutroPopulacao | number}}</span></td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    <br>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" [routerLink]="['/../../dashboard']"  >
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+    </div>
+</div>

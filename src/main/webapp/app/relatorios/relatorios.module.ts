@@ -5,6 +5,10 @@ import {SisasFuncAguaChafarizesModule} from './funcionamento-agua-chafarizes/fun
 import {SisasInqueritosPreenchidosModule} from './inqueritos-preenchidos/inqueritos-preenchidos.module';
 import {RelatoriosService} from './relatorios.service';
 import {SisasTratamentoSistemasAguaModule} from './tratamento-sistemas-agua/tratamento-sistemas-agua.module';
+import {SisasFuncAguaModule} from './funcionamento-agua/func-agua.module';
+import {SisasBenefOptTecnicaModule} from './beneficiarios-agua-ft-super-opt-tecnica/beneficiarios-opt-tecnica.module';
+import {SisasBenefBmbMecanicaModule} from './beneficiarios-agua-ft-subt-bomb-mecanica/beneficiarios-bmb-mecanica.module';
+import {SisasBeneficiariosTpBombaModule} from './beneficiarios-agua-ft-subt-bomba/beneficiarios-tp-bmb.module';
 
 @NgModule({
     imports: [
@@ -12,7 +16,11 @@ import {SisasTratamentoSistemasAguaModule} from './tratamento-sistemas-agua/trat
         SisasSectorAguaSaneamentoModule,
         SisasFuncAguaChafarizesModule,
         SisasInqueritosPreenchidosModule,
-        SisasTratamentoSistemasAguaModule
+        SisasTratamentoSistemasAguaModule,
+        SisasFuncAguaModule,
+        SisasBenefOptTecnicaModule,
+        SisasBenefBmbMecanicaModule,
+        SisasBeneficiariosTpBombaModule
     ],
     declarations: [],
     entryComponents: [],

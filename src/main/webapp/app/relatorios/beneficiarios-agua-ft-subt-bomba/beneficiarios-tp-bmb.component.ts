@@ -4,36 +4,52 @@ import { UserService } from '../../shared/user/user.service';
 import { HttpResponse } from '@angular/common/http';
 import { User } from '../../shared/user/user.model';
 import { Principal } from '../../shared/auth/principal.service';
-import {Provincia, ProvinciaService} from '../../entities/provincia';
-import {FuncAguaChafarizes} from './FuncAguaChafarizes.model';
 import {RelatoriosService} from '../relatorios.service';
+import {DadosRelatorio} from '../cobertura-sector-agua/dadosRelatorio.model';
+import {BeneficiariosBmbMecanica} from './beneficiarios-tp-bmb.model';
 
 @Component({
-    selector: 'jhi-func-sist-agua-chafariz',
-    templateUrl: './func-agua-chafarizes.component.html',
+    selector: 'jhi-benef-opt-tecnica',
+    templateUrl: './beneficiarios-tp-bmb.component.html',
     styleUrls: [
-        'func-agua-chafarizes.css'
+        'beneficiarios-tp-bmb.css'
     ]
 })
 
-export class FuncAguaChafarizesComponent implements OnInit {
+export class BeneficiariosTpBombaComponent implements OnInit {
 
     user: User;
-    listaTabela: FuncAguaChafarizes[];
+    listaTabela: BeneficiariosBmbMecanica[];
     tipoRelatorio: string;
     predicate: any;
     reverse: any;
+    chart: any;
+    listaFuncionam: DadosRelatorio[];
+    listaNaoFuncionam: DadosRelatorio[];
+    listaNumSistemas: DadosRelatorio[];
 
-    totalnumeroSistemas = 0;
-    totalfuncionamAgua = 0;
-    totalnaoFuncionamAgua = 0;
-    totalfuncionamAguaPerc = 0;
-    totalnaoFuncionamAguaPerc = 0;
-    totalnumeroChafarizes = 0;
-    totalfuncionamChafariz = 0;
-    totalnaoFuncionamChafariz = 0;
-    totalfuncionamChafarizPerc = 0;
-    totalnaoFuncionamChafarizPerc = 0;
+    totalPopulacao = 0;
+    totalPocoMelhorado = 0;
+    totalFuro = 0;
+    totalNascente = 0;
+
+    totalAfridevPopulacao = 0;
+    totalAfridev= 0;
+
+    totalVergnetPopulacao = 0;
+    totalVergnet = 0;
+
+    totalVolantaPopulacao = 0;
+    totalVolanta = 0;
+
+    totalIndiaPopulacao = 0;
+    totalIndia = 0;
+
+    totalOutro = 0;
+    totalOutroPopulacao = 0;
+
+    totalGravidade = 0;
+    totalGravidadePopulacao = 0;
 
     constructor(
         private jhiAlertService: JhiAlertService,
@@ -50,9 +66,6 @@ export class FuncAguaChafarizesComponent implements OnInit {
     }
 
     validaTipoRelatorio() {
-        if (this.tipoRelatorio === 'Nível Provincial') {
-            this.buscaDadosTabela();
-        }
         if (this.tipoRelatorio === 'Nível Municipal') {
             this.buscaDadosTabela();
         }
@@ -67,21 +80,16 @@ export class FuncAguaChafarizesComponent implements OnInit {
 
     buscaDadosTabela() {
         this.relatorioService.buscaDadosFuncAguaChafariz().subscribe(
-            (res: HttpResponse<FuncAguaChafarizes[]>) => {
+            (res: HttpResponse<BeneficiariosBmbMecanica[]>) => {
                 this.listaTabela = res.body;
                 console.log(this.listaTabela);
 
+                this.listaNaoFuncionam = new Array();
+                this.listaFuncionam = new Array();
+                this.listaNumSistemas = new Array();
+
                 this.listaTabela.forEach( (i) => {
-                    this.totalnumeroSistemas += i.numeroSistemas;
-                    this.totalfuncionamAgua += i.funcionamAgua;
-                    this.totalnaoFuncionamAgua += i.naoFuncionamAgua;
-                    this.totalfuncionamAguaPerc = 76;
-                    this.totalnaoFuncionamAguaPerc = 24;
-                    this.totalnumeroChafarizes += i.numeroChafarizes;
-                    this.totalfuncionamChafariz += i.funcionamChafariz;
-                    this.totalnaoFuncionamChafariz += i.naoFuncionamChafariz;
-                    this.totalfuncionamChafarizPerc += i.funcionamChafarizPerc;
-                    this.totalnaoFuncionamChafarizPerc = 25;
+                    const item: DadosRelatorio = new DadosRelatorio();
                 });
             });
     }
@@ -92,10 +100,6 @@ export class FuncAguaChafarizesComponent implements OnInit {
             result.push('id');
         }
         return result;
-    }
-
-    trackId(index: number, item: Provincia) {
-        return item.id;
     }
 
 }

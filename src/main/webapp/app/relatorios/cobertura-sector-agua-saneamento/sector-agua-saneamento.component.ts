@@ -5,7 +5,7 @@ import { HttpResponse } from '@angular/common/http';
 import { User } from '../../shared/user/user.model';
 import { Principal } from '../../shared/auth/principal.service';
 import * as CanvasJS from '../../../content/js/canvasjs.min.js';
-import {Provincia, ProvinciaService} from '../../entities/provincia';
+import {Provincia} from '../../entities/provincia';
 import {SectorAguaSaneamentoDados} from './SectorAguaSaneamentoDados.model';
 import {DadosRelatorio} from '../cobertura-sector-agua/dadosRelatorio.model';
 import {RelatoriosService} from '../relatorios.service';
@@ -27,9 +27,20 @@ export class CoberturaSectorAguaSaneamentoComponent implements OnInit {
     predicate: any;
     reverse: any;
     chart: any;
-    listaMedia: DadosRelatorio[];
     listaCobertura: DadosRelatorio[];
     listaSaneamento: DadosRelatorio[];
+    tipoRelatorio: string;
+
+    listaAgua: DadosRelatorio[];
+    listaMedia: DadosRelatorio[];
+
+    totalMunicipios = 0;
+    totalComunas = 0;
+    totalPopulacao = 0;
+    totalBenefAgua = 0;
+    totalBenefSaneamento = 0;
+    totalCobertAgua = 0;
+    totalCobertSaneamento = 0;
 
     constructor(
         private jhiAlertService: JhiAlertService,
@@ -42,7 +53,27 @@ export class CoberturaSectorAguaSaneamentoComponent implements OnInit {
         this.principal.identity().then((userIdentity) => {
             this.user = userIdentity;
         });
-        this.buscaDadosTabela();
+        this.tipoRelatorio = null;
+    }
+
+    validaTipoRelatorio() {
+        if (this.tipoRelatorio === 'Nível Provincial') {
+            this.buscaDadosTabela();
+            this.iniciarChartProvincial();
+        }
+        if (this.tipoRelatorio === 'Nível Municipal') {
+            this.buscaDadosTabela();
+        }
+        if (this.tipoRelatorio === 'Nível Comunal') {
+            this.buscaDadosTabela();
+        }
+        if (this.tipoRelatorio === 'Nível Nacional') {
+            this.buscaDadosTabela();
+        }
+    }
+
+    voltarEscolha() {
+        this.tipoRelatorio = null;
     }
 
     buscaDadosTabela() {
@@ -187,6 +218,53 @@ export class CoberturaSectorAguaSaneamentoComponent implements OnInit {
                     xValueFormatString: 'string',
                     yValueFormatString: '#%',
                     dataPoints: this.listaSaneamento
+                }]
+        });
+        this.chart.render();
+    }
+
+    iniciarChartProvincial() {
+        this.chart = new CanvasJS.Chart('chartProvincial', {
+            animationEnabled: true,
+            theme: 'light2',
+            title: {
+                text: 'Cobertura no sector de Água e Saneamento'
+            },
+            axisX: {
+                valueFormatString: 'string'
+            },
+            axisY: {
+                suffix: '%'
+            },
+            toolTip: {
+                shared: true
+            },
+            legend: {
+                cursor: 'pointer'
+            },
+            data: [
+                {
+                    type: 'column',
+                    name: 'Água',
+                    showInLegend: true,
+                    xValueFormatString: 'string',
+                    yValueFormatString: '#%',
+                    dataPoints: this.listaAgua
+                },
+                {
+                    type: 'column',
+                    name: 'Saneamento',
+                    showInLegend: true,
+                    xValueFormatString: 'string',
+                    yValueFormatString: '#%',
+                    dataPoints: this.listaSaneamento
+                },
+                {
+                    type: 'line',
+                    name: 'Média',
+                    showInLegend: true,
+                    yValueFormatString: '#%',
+                    dataPoints: this.listaMedia
                 }]
         });
         this.chart.render();
