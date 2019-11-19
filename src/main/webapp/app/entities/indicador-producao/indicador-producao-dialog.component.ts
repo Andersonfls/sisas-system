@@ -56,7 +56,7 @@ export class IndicadorProducaoDialogComponent implements OnInit {
             .subscribe((res: HttpResponse<Comuna[]>) => {
                 this.comunas = res.body;
             }, (res: HttpErrorResponse) => this.onError(res.message));
-        // this.findLastIndicador();
+         this.findLastIndicador();
 
     }
 
@@ -107,14 +107,45 @@ export class IndicadorProducaoDialogComponent implements OnInit {
         return item.id;
     }
 
+    // VERDE = Recebe o resultado do último mês(Mês Anterior):
+    // V1, V2, V22 AO V25,V32,V33, V56 AO V62, V73, V74, V77 AO 79
     findLastIndicador() {
         this.indicadorProducaoService.findLast().subscribe(
             (res: HttpResponse<IndicadorProducao>) => {
-                (this.indicadorProducao = res.body);
+                let indicadorMesAnterior = res.body;
+                if (indicadorMesAnterior) {
+                    this.indicadorProducao.qtdCaptacoes = indicadorMesAnterior.qtdCaptacoes;  // 56
+                    this.indicadorProducao.qtdEtas = indicadorMesAnterior.qtdEtas; // 57
+                    this.indicadorProducao.qtdReservatorios = indicadorMesAnterior.qtdReservatorios; // 58
+                    this.indicadorProducao.qtdEstacoesElevatorias = indicadorMesAnterior.qtdEstacoesElevatorias; // 59
+                    this.indicadorProducao.qtdComprimentoAdutoras = indicadorMesAnterior.qtdComprimentoAdutoras; // 60
+                    this.indicadorProducao.qtdComprimentoRedes = indicadorMesAnterior.qtdComprimentoRedes; // 61
+                    this.indicadorProducao.qtdComprimentoRamais = indicadorMesAnterior.qtdComprimentoRamais; // 62
+                    this.indicadorProducao.qtdManuaisMoPrevistos = indicadorMesAnterior.qtdManuaisMoPrevistos; // 73
+                    this.indicadorProducao.qtdManuaisMmsPrevistos = indicadorMesAnterior.qtdManuaisMmsPrevistos; // 74
+                    this.indicadorProducao.qtdAcoesManuaisMoRealizadas = indicadorMesAnterior.qtdAcoesManuaisMoRealizadas; // 77
+                    this.indicadorProducao.qtdManuaisMmsRealizadas = indicadorMesAnterior.qtdManuaisMmsRealizadas; // 78
+                    this.indicadorProducao.qtdManuaisCmpRealizadas = indicadorMesAnterior.qtdManuaisCmpRealizadas; // 79
+                }
+                this.somaCampos();
             },
             (error1) => {
                 (this.onError(error1));
             });
+    }
+
+    // AZUL = Recebe a soma dos campos(Não precisa digitar):
+    // V55, V67, V72, V76, V80
+    somaCampos() {
+        this.indicadorProducao.vlrCustoTotaisCapexOpex = this.indicadorProducao.vlrCustoOperacionaisOpex + this.indicadorProducao.vlrCustoAmortizaAnualInvestOpCapex; // 55
+       // this.indicadorProducao.// 67
+        this.indicadorProducao.qtdAcoesFormacaoRealizadas = this.indicadorProducao.qtdAcoesFormacaoMoRealizadas
+            + this.indicadorProducao.qtdAcoesFormacaoMmsRealizadas + this.indicadorProducao.qtdAcoesFormacaoCmpRealizadas
+            + this.indicadorProducao.qtdAcoesFormacaoSoftwareFornecidosRealizadas;// 72
+        this.indicadorProducao.qtdManuaisPrevistos = this.indicadorProducao.qtdManuaisMoPrevistos
+            + this.indicadorProducao.qtdManuaisMmsPrevistos + this.indicadorProducao.qtdManuaisCmpPrevistos; // 76
+        this.indicadorProducao.qtdManuaisRealizados = this.indicadorProducao.qtdAcoesManuaisMoRealizadas
+            + this.indicadorProducao.qtdManuaisMmsRealizadas + this.indicadorProducao.qtdManuaisCmpRealizadas// 80
     }
 }
 

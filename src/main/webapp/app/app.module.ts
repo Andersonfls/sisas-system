@@ -31,10 +31,12 @@ import {NgbDateParserFormatter, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgbDateCustomParserFormatter} from './entities/programas-projectos/NgbDateCustomParserFormatter';
 import {SisasRelatoriosModule} from './Relatorios/relatorios.module';
 import {SisasMapasTematicosModule} from './mapas-tematicos/mapas.module';
+import {NgxCurrencyModule} from 'ngx-currency';
 
 @NgModule({
     imports: [
         BrowserModule,
+        NgxCurrencyModule,
         SisasAppRoutingModule,
         Ng2Webstorage.forRoot({ prefix: 'jhi', separator: '-'}),
         SisasSharedModule,

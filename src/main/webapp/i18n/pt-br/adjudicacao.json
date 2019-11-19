@@ -20,9 +20,9 @@
             "idAdjudicacao": "Id Adjudicacao",
             "tipoConcurso": "Tipo Concurso",
             "dtLancamento": "Data Lancamento",
-            "dtComunicaoAdjudicacao": "Data Comunicao Adjudicacao",
+            "dtComunicaoAdjudicacao": "Data Comunição Adjudicação",
             "dtPrestacaoGarantBoaExec": "Data Prestacao Garant Boa Exec",
-            "dtSubmissaoMinutContrato": "Data Submissao Minuta Contrato",
+            "dtSubmissaoMinutContrato": "Data Submissão Minuta Contrato",
             "idProgramasProjectos": "Programas Projectos",
             "idSistemaAgua": "Sistema Agua"
         }

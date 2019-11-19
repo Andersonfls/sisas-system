@@ -21,6 +21,7 @@ import {ConcursoService} from '../concurso';
 import {AdjudicacaoService} from '../adjudicacao';
 import {ContratoService} from '../contrato';
 import {SistemaAguaService} from '../sistema-agua';
+import {NgxCurrencyModule} from 'ngx-currency';
 
 const ENTITY_STATES = [
     ...programasProjectosRoute,
@@ -30,6 +31,7 @@ const ENTITY_STATES = [
 @NgModule({
     imports: [
         SisasSharedModule,
+        NgxCurrencyModule,
         RouterModule.forChild(ENTITY_STATES),
         NgbModule.forRoot()
     ],

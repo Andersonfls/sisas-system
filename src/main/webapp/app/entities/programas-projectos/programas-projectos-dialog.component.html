@@ -227,13 +227,13 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="form-control-label" jhiTranslate="sisasApp.concepcao.idSistemaAgua" for="field_idSistemaAgua">Id Sistema Agua</label>
-                        <select class="form-control" id="field_idSistemaAgua" name="idSistemaAgua" [(ngModel)]="concepcao.idSistemaAguaId">
-                            <option [ngValue]="null" selected>Seleciona o sistema de água...</option>
-                            <option [ngValue]="sistemaAguaOption.id" *ngFor="let sistemaAguaOption of sistemaaguas">{{sistemaAguaOption.nmSistemaAgua}}</option>
-                        </select>
-                    </div>
+                    <!--<div class="form-group">-->
+                        <!--<label class="form-control-label" jhiTranslate="sisasApp.concepcao.idSistemaAgua" for="field_idSistemaAgua">Id Sistema Agua</label>-->
+                        <!--<select class="form-control" id="field_idSistemaAgua" name="idSistemaAgua" [(ngModel)]="concepcao.idSistemaAguaId">-->
+                            <!--<option [ngValue]="null" selected>Seleciona o sistema de água...</option>-->
+                            <!--<option [ngValue]="sistemaAguaOption.id" *ngFor="let sistemaAguaOption of sistemaaguas">{{sistemaAguaOption.nmSistemaAgua}}</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
                 </div>
 
                 <div class="modal-footer">
@@ -358,13 +358,13 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="form-control-label" jhiTranslate="sisasApp.concurso.idSistemaAgua" for="field_ccidSistemaAgua">Id Sistema Agua</label>
-                        <select class="form-control" id="field_ccidSistemaAgua" name="ccidSistemaAgua" [(ngModel)]="concurso.idSistemaAguaId" >
-                            <option [ngValue]="null">Seleciona o sistema de Água...</option>
-                            <option [ngValue]="sistemaAguaOption.id" *ngFor="let sistemaAguaOption of sistemaaguas">{{sistemaAguaOption.nmSistemaAgua}}</option>
-                        </select>
-                    </div>
+                    <!--<div class="form-group">-->
+                        <!--<label class="form-control-label" jhiTranslate="sisasApp.concurso.idSistemaAgua" for="field_ccidSistemaAgua">Id Sistema Agua</label>-->
+                        <!--<select class="form-control" id="field_ccidSistemaAgua" name="ccidSistemaAgua" [(ngModel)]="concurso.idSistemaAguaId" >-->
+                            <!--<option [ngValue]="null">Seleciona o sistema de Água...</option>-->
+                            <!--<option [ngValue]="sistemaAguaOption.id" *ngFor="let sistemaAguaOption of sistemaaguas">{{sistemaAguaOption.nmSistemaAgua}}</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
                 </div>
 
                 <div class="modal-footer">
@@ -459,13 +459,13 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="form-control-label" jhiTranslate="sisasApp.adjudicacao.idSistemaAgua" for="field_adidSistemaAgua">Id Sistema Agua</label>
-                        <select class="form-control" id="field_adidSistemaAgua" name="adidSistemaAgua" [(ngModel)]="adjudicacao.idSistemaAguaId" >
-                            <option [ngValue]="null" selected>Seleciona o sistema de água...</option>
-                            <option [ngValue]="sistemaAguaOption.id" *ngFor="let sistemaAguaOption of sistemaaguas">{{sistemaAguaOption.nmSistemaAgua}}</option>
-                        </select>
-                    </div>
+                    <!--<div class="form-group">-->
+                        <!--<label class="form-control-label" jhiTranslate="sisasApp.adjudicacao.idSistemaAgua" for="field_adidSistemaAgua">Id Sistema Agua</label>-->
+                        <!--<select class="form-control" id="field_adidSistemaAgua" name="adidSistemaAgua" [(ngModel)]="adjudicacao.idSistemaAguaId" >-->
+                            <!--<option [ngValue]="null" selected>Seleciona o sistema de água...</option>-->
+                            <!--<option [ngValue]="sistemaAguaOption.id" *ngFor="let sistemaAguaOption of sistemaaguas">{{sistemaAguaOption.nmSistemaAgua}}</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
                 </div>
 
                 <div class="modal-footer">
@@ -482,7 +482,6 @@
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h4 [hidden]="contrato.id" class="modal-title" id="myContratoLabel" jhiTranslate="sisasApp.contrato.home.createLabel">Create or edit a Contrato</h4>
                     <h4 [hidden]="!contrato.id" class="modal-title" id="myContratoLabel" jhiTranslate="sisasApp.contrato.home.editLabel">Create or edit a Contrato</h4>
                     <button #closeModalContrato type="button" class="close" data-dismiss="modal" aria-hidden="true"
                             (click)="clear()">&times;</button>
@@ -552,8 +551,13 @@
                         <div class="form-group col-sm-6">
                             <div class="form-group">
                                 <label class="form-control-label" jhiTranslate="sisasApp.contrato.valorContrato" for="field_valorContrato">Valor Contrato</label>
-                                <input type="number" class="form-control" name="valorContrato" id="field_valorContrato"
-                                       [(ngModel)]="contrato.valorContrato" required placeholder="Valor de contrato"/>
+
+                                <input *ngIf="contrato.tipoMoeda==='EUR'" type="text" class="form-control" name="valorContrato" id="field_valorContratoEUR"
+                                       currencyMask [options]="{ prefix: '€ ', thousands: '.', decimal: ',', allowNegative: false }" [(ngModel)]="contrato.valorContrato" required placeholder="Valor de contrato"/>
+                                <input *ngIf="contrato.tipoMoeda==='USD'" type="text" class="form-control" name="valorContrato" id="field_valorContratoUSD"
+                                       currencyMask [options]="{ prefix: '$ ', thousands: '.', decimal: ',', allowNegative: false }" [(ngModel)]="contrato.valorContrato" required placeholder="Valor de contrato"/>
+                                <input *ngIf="contrato.tipoMoeda!=='EUR' && contrato.tipoMoeda!=='USD'"type="text" class="form-control" name="valorContratoKz" id="field_valorContrato"
+                                       currencyMask [options]="{ prefix: 'Kz ', thousands: '.', decimal: ',', allowNegative: false }" [(ngModel)]="contrato.valorContrato" required placeholder="Valor de contrato"/>
                                 <div [hidden]="!(editForm.controls.valorContrato?.dirty && editForm.controls.valorContrato?.invalid)">
                                     <small class="form-text text-danger"
                                            [hidden]="!editForm.controls.valorContrato?.errors?.required" jhiTranslate="entity.validation.required">
@@ -739,15 +743,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group col-sm-6">
-                            <div class="form-group">
-                                <label class="form-control-label" jhiTranslate="sisasApp.contrato.idSistemaAgua" for="field_ctidSistemaAgua">Id Sistema Agua</label>
-                                <select class="form-control" id="field_ctidSistemaAgua" name="ctidSistemaAgua" [(ngModel)]="contrato.idSistemaAguaId"  required>
-                                    <option [ngValue]="null" selected>Seleciona o sistema de água...</option>
-                                    <option [ngValue]="sistemaAguaOption.id" *ngFor="let sistemaAguaOption of sistemaaguas">{{sistemaAguaOption.nmSistemaAgua}}</option>
-                                </select>
-                            </div>
-                        </div>
+                        <!--<div class="form-group col-sm-6">-->
+                            <!--<div class="form-group">-->
+                                <!--<label class="form-control-label" jhiTranslate="sisasApp.contrato.idSistemaAgua" for="field_ctidSistemaAgua">Id Sistema Agua</label>-->
+                                <!--<select class="form-control" id="field_ctidSistemaAgua" name="ctidSistemaAgua" [(ngModel)]="contrato.idSistemaAguaId"  required>-->
+                                    <!--<option [ngValue]="null" selected>Seleciona o sistema de água...</option>-->
+                                    <!--<option [ngValue]="sistemaAguaOption.id" *ngFor="let sistemaAguaOption of sistemaaguas">{{sistemaAguaOption.nmSistemaAgua}}</option>-->
+                                <!--</select>-->
+                            <!--</div>-->
+                        <!--</div>-->
                     </div>
 
                     <div [hidden]="!(editForm.controls.idSistemaAgua?.dirty && editForm.controls.idSistemaAgua?.invalid)">

@@ -26,6 +26,7 @@
     "ng2-charts": "^1.6.0",
     "ngx-barcode": "^0.2.4",
     "ngx-cookie": "2.0.1",
+    "ngx-currency": "^2.0.0",
     "ngx-infinite-scroll": "0.5.1",
     "ngx-webstorage": "2.0.1",
     "reflect-metadata": "0.1.10",

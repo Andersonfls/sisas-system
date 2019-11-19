@@ -16,7 +16,7 @@
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="idUsuario"><span jhiTranslate="sisasApp.indicadorProducao.idUsuario">Id Usuario</span> <span class="fa fa-sort"></span></th>
+            <!--<th jhiSortBy="idUsuario"><span jhiTranslate="sisasApp.indicadorProducao.idUsuario">Id Usuario</span> <span class="fa fa-sort"></span></th>-->
             <th jhiSortBy="dtLancamento"><span jhiTranslate="sisasApp.indicadorProducao.dtLancamento">Dt Lancamento</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="dtUltimaAlteracao"><span jhiTranslate="sisasApp.indicadorProducao.dtUltimaAlteracao">Dt Ultima Alteracao</span> <span class="fa fa-sort"></span></th>
             <!--<th jhiSortBy="qtdPopulacaoCobertaInfraestrutura"><span jhiTranslate="sisasApp.indicadorProducao.qtdPopulacaoCobertaInfraestrutura">Qtd Populacao Coberta Infraestrutura</span> <span class="fa fa-sort"></span></th>-->
@@ -107,7 +107,7 @@
             <tbody>
             <tr *ngFor="let indicadorProducao of indicadorProducaos ;trackBy: trackId">
                 <td><a [routerLink]="['../indicador-producao', indicadorProducao.id ]">{{indicadorProducao.id}}</a></td>
-                <td>{{indicadorProducao.idUsuario}}</td>
+                <!--<td>{{indicadorProducao.idUsuario}}</td>-->
                 <td>{{indicadorProducao.dtLancamento | date:'mediumDate'}}</td>
                 <td>{{indicadorProducao.dtUltimaAlteracao | date:'mediumDate'}}</td>
                 <!--<td>{{indicadorProducao.qtdPopulacaoCobertaInfraestrutura}}</td>-->

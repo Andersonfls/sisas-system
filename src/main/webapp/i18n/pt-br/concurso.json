@@ -23,11 +23,11 @@
             "dtUltimaAlteracao": "Data Ultima Alteração",
             "dtEntregaProposta": "Data Entrega Proposta",
             "dtAberturaProposta": "Data Abertura Proposta",
-            "dtConclusaoAvaliacaoRelPrel": "Data Conclução Avaliação Rel Prel",
+            "dtConclusaoAvaliacaoRelPrel": "Data Conclusão Avaliação Rel Prel",
             "dtNegociacao": "Data Negociação",
             "dtAprovRelAvalFinal": "Data Aprov Rel Aval Final",
             "idProgramasProjectos": "Programas Projectos",
-            "idSistemaAgua": "Sistema Agua"
+            "idSistemaAgua": "Sistema Água"
         }
     }
 }
