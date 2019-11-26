@@ -1,2 +1,2 @@
-export * from './map.component';
-export * from './map.route';
+export * from './map2.component';
+export * from './map2.route';

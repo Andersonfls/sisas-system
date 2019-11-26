@@ -34,9 +34,9 @@ export class IndicadorProducaoDialogComponent implements OnInit {
     municipios: Municipio[];
     dtLancamentoDp: any;
     dtUltimaAlteracaoDp: any;
+    routeSub: any;
 
     constructor(
-        public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private indicadorProducaoService: IndicadorProducaoService,
         private situacaoService: SituacaoService,
@@ -44,12 +44,22 @@ export class IndicadorProducaoDialogComponent implements OnInit {
         private comunaService: ComunaService,
         private municipioService: MunicipioService,
         private provinciaService: ProvinciaService,
-        private eventManager: JhiEventManager
+        private eventManager: JhiEventManager,
+        private route: ActivatedRoute
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false;
+
+        this.routeSub = this.route.params.subscribe((params) => {
+            if (params['id']) {
+                this.load(params['id']);
+            } else {
+                this.indicadorProducao = new IndicadorProducao();
+            }
+        });
+
         this.situacaoService.query()
             .subscribe((res: HttpResponse<Situacao[]>) => {
                 this.situacaos = res.body;
@@ -80,9 +90,31 @@ export class IndicadorProducaoDialogComponent implements OnInit {
 
     }
 
-    clear() {
-        this.activeModal.dismiss('cancel');
+    load(id) {
+        this.indicadorProducaoService.find(id)
+            .subscribe((indicadorResponse: HttpResponse<IndicadorProducao>) => {
+                const indicadorProducao: IndicadorProducao = indicadorResponse.body;
+                if (indicadorProducao.dtLancamento) {
+                    indicadorProducao.dtLancamento = {
+                        year: indicadorProducao.dtLancamento.getFullYear(),
+                        month: indicadorProducao.dtLancamento.getMonth() + 1,
+                        day: indicadorProducao.dtLancamento.getDate()
+                    };
+                }
+                if (indicadorProducao.dtUltimaAlteracao) {
+                    indicadorProducao.dtUltimaAlteracao = {
+                        year: indicadorProducao.dtUltimaAlteracao.getFullYear(),
+                        month: indicadorProducao.dtUltimaAlteracao.getMonth() + 1,
+                        day: indicadorProducao.dtUltimaAlteracao.getDate()
+                    };
+                }
+                this.indicadorProducao = indicadorProducao;
+            });
     }
+
+    // clear() {
+    //     this.activeModal.dismiss('cancel');
+    // }
 
     save() {
         this.isSaving = true;
@@ -104,7 +136,7 @@ export class IndicadorProducaoDialogComponent implements OnInit {
     private onSaveSuccess(result: IndicadorProducao) {
         this.eventManager.broadcast({name: 'indicadorProducaoListModification', content: 'OK'});
         this.isSaving = false;
-        this.activeModal.dismiss(result);
+       // this.activeModal.dismiss(result);
     }
 
     private onSaveError() {
@@ -166,6 +198,10 @@ export class IndicadorProducaoDialogComponent implements OnInit {
             + this.indicadorProducao.qtdManuaisMmsPrevistos + this.indicadorProducao.qtdManuaisCmpPrevistos; // 76
         this.indicadorProducao.qtdManuaisRealizados = this.indicadorProducao.qtdAcoesManuaisMoRealizadas
             + this.indicadorProducao.qtdManuaisMmsRealizadas + this.indicadorProducao.qtdManuaisCmpRealizadas; // 80
+    }
+
+    previousState() {
+        window.history.back();
     }
 }
 

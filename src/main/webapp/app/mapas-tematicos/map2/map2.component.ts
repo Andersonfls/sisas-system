@@ -10,13 +10,13 @@ import {Comuna, ComunaService} from '../../entities/comuna/index';
 
 @Component({
     selector: 'jhi-map',
-    templateUrl: './map.component.html',
+    templateUrl: './map2.component.html',
     styleUrls: [
         'style.css'
     ]
 })
 
-export class MapComponent implements OnInit {
+export class Map2Component implements OnInit {
     municipios: Municipio[];
     comunas: Comuna[];
     currentAccount: any;

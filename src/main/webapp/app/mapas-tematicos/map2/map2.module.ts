@@ -2,11 +2,11 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SisasSharedModule } from '../../shared/index';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
-import {MapComponent} from './map.component';
-import {MapResolvePagingParams, mapRoute} from './map.route';
+import {Map2Component} from './map2.component';
+import {MapResolvePagingParams, map2Route} from './map2.route';
 
 const ENTITY_STATES = [
-    ...mapRoute
+    ...map2Route
 ];
 
 @NgModule({
@@ -16,14 +16,14 @@ const ENTITY_STATES = [
         RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [
-        MapComponent
+        Map2Component
     ],
     entryComponents: [
-        MapComponent
+        Map2Component
     ],
     providers: [
         MapResolvePagingParams
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class SisasMapModule {}
+export class SisasMap2Module {}

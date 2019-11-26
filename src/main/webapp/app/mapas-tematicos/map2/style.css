@@ -1,32 +1,144 @@
 body {
-    background-color: white;
+    background: #1F1F1F;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    --default-blue-stroke: #0098ff;
+    --default-grey-black-fill: #525252;
+    --default-strok: rgb(141, 141, 141);
 }
-
-section {
-    /* Configurações para tag section */
-    padding-top: 45px!important;
-    /*Distância da parte superior */
-    padding-bottom: 20px!important;
-    /*Distância da parte inferior */
-    min-height: 98vh!important;
-    /*Altura mínima */
+svg text{
+    fill: var(--default-strok);
+    font-family: monospace;
+    font-weight: bolder;
 }
-.mapa {
-
-    width: 80% !important;
-    margin: auto!important;
-}
-.mapa path {
-    fill: #3faee0;
-    stroke: #eaf9fc;
+.mapa-svg-estados {
+    fill: #373737;
+    -webkit-transition: .8s ease;
+    -moz-transition: .8s ease;
+    -ms-transition: .8s ease;
+    -o-transition: .8s ease;
+    transition: .8s ease;
+    stroke-dasharray: 180%;
+    stroke-dashoffset: -120%;
     stroke-width: 2px;
-    transition: fill 0.2s;
-    border-radius: 15px;
+    stroke: var(--default-strok);
 }
-.mapa path:hover {
-    fill: blue;
+.mapa-svg-estados text {
+    stroke:none
 }
 
-.table {
-    text-align: center !important;
+.mapa-svg-estados:hover {
+    cursor: pointer;
+    fill: var(--default-grey-black-fill);
+
+}
+
+.mapa-svg-estados-active {
+    cursor: pointer;
+    stroke: var(--default-blue-stroke);
+    fill: var(--default-grey-black-fill);
+    stroke-dashoffset: 0%;
+    -webkit-transition: .8s ease;
+    -moz-transition: .8s ease;
+    -ms-transition: .8s ease;
+    -o-transition: .8s ease;
+}
+.mapa-svg-estados-active text{
+    stroke: none;
+}
+
+.pointer-svg-map {
+    fill: var(--default-blue-stroke);
+    animation-direction: normal;
+    animation-delay: .3s;
+}
+
+.inactive-map-svg {
+    opacity: .5;
+    stroke: none !important;
+}
+
+.inactive-map-svg:hover {
+    stroke-dashoffset: -120%;
+    cursor: inherit;
+    fill: var(--default-grey-black-fill);
+}
+
+@keyframes pointer {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+#sotreq-select {
+    display: flex;
+    flex-direction: column;
+}
+
+.class-select {
+    outline: none;
+    height: 40px;
+    width: 250px;
+    padding: 10px 18px;
+    border-radius: 32px;
+    color: #3c3c3c;
+    margin-bottom: 2rem;
+}
+
+
+
+
+
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
 }

@@ -15,6 +15,7 @@ import {
     indicadorProducaoPopupRoute,
     IndicadorProducaoResolvePagingParams,
 } from './';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 const ENTITY_STATES = [
     ...indicadorProducaoRoute,
@@ -24,7 +25,8 @@ const ENTITY_STATES = [
 @NgModule({
     imports: [
         SisasSharedModule,
-        RouterModule.forChild(ENTITY_STATES)
+        RouterModule.forChild(ENTITY_STATES),
+        NgbModule.forRoot()
     ],
     declarations: [
         IndicadorProducaoComponent,

@@ -6,7 +6,7 @@
         <h4 [hidden]="!indicadorProducao.id" class="modal-title" id="myIndicadorProducaoLabele"
             jhiTranslate="sisasApp.indicadorProducao.home.editLabel">Create or edit a Indicador Producao</h4>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                (click)="clear()">&times;
+                (click)="previousState()">&times;
         </button>
     </div>
 
@@ -1996,7 +1996,7 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="previousState()">
                 <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
             </button>
             <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">

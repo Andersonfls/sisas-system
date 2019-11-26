@@ -1,7 +1,7 @@
 <div>
     <h2>
         <span jhiTranslate="sisasApp.indicadorProducao.home.title">Indicador Producaos</span>
-        <button class="btn btn-primary float-right jh-create-entity redondo" [routerLink]="['/', { outlets: { popup: ['indicador-producao-new'] } }]">
+        <button class="btn btn-primary float-right jh-create-entity redondo" [routerLink]="['../indicador-producao-new' ]" >
             <span class="fa fa-plus"></span>
         </button>
     </h2>
@@ -211,13 +211,20 @@
                                 class="btn btn-info btn-sm">
                             <span class="fa fa-eye"></span>
                         </button>
+                        <!--<button type="submit"-->
+                                <!--[routerLink]="['/', { outlets: { popup: 'indicador-producao/'+ indicadorProducao.id + '/edit'} }]"-->
+                                <!--replaceUrl="true"-->
+                                <!--queryParamsHandling="merge"-->
+                                <!--class="btn btn-primary btn-sm">-->
+                            <!--<span class="fa fa-pencil"></span>-->
+                        <!--</button>-->
+
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'indicador-producao/'+ indicadorProducao.id + '/edit'} }]"
-                                replaceUrl="true"
-                                queryParamsHandling="merge"
+                                [routerLink]="['../indicador-producao-edit', indicadorProducao.id ]"
                                 class="btn btn-primary btn-sm">
                             <span class="fa fa-pencil"></span>
                         </button>
+
                         <button type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'indicador-producao/'+ indicadorProducao.id + '/delete'} }]"
                                 replaceUrl="true"
