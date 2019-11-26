@@ -26,5 +26,17 @@
                                  referencedColumnNames="id"
                                  referencedTableName="comuna"/>
 
+        <addForeignKeyConstraint baseColumnNames="id_provincia"
+                                 baseTableName="ind_producao"
+                                 constraintName="indicador_prod_id_provincia"
+                                 referencedColumnNames="id"
+                                 referencedTableName="provincia"/>
+
+        <addForeignKeyConstraint baseColumnNames="id_municipio"
+                                 baseTableName="ind_producao"
+                                 constraintName="indicador_prod_id_municipio"
+                                 referencedColumnNames="id"
+                                 referencedTableName="municipio"/>
+
     </changeSet>
 </databaseChangeLog>

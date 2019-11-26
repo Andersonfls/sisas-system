@@ -358,9 +358,17 @@ public class IndicadorProducao implements Serializable {
     @JoinColumn(name = "id_sistema_agua")
     private SistemaAgua sistemaAgua;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn(name = "id_comuna")
     private Comuna comuna;
+
+    @ManyToOne
+    @JoinColumn(name = "id_provincia")
+    private Provincia provincia;
+
+    @ManyToOne
+    @JoinColumn(name = "id_municipio")
+    private Municipio municipio;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -1476,6 +1484,21 @@ public class IndicadorProducao implements Serializable {
         this.comuna = comuna;
     }
 
+    public Provincia getProvincia() {
+        return provincia;
+    }
+
+    public void setProvincia(Provincia provincia) {
+        this.provincia = provincia;
+    }
+
+    public Municipio getMunicipio() {
+        return municipio;
+    }
+
+    public void setMunicipio(Municipio municipio) {
+        this.municipio = municipio;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override

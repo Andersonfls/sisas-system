@@ -1,9 +1,7 @@
 package com.minea.sisas.service.dto;
 
 
-import com.minea.sisas.domain.Comuna;
-import com.minea.sisas.domain.SistemaAgua;
-import com.minea.sisas.domain.Situacao;
+import com.minea.sisas.domain.*;
 
 import java.time.LocalDate;
 import javax.validation.constraints.*;
@@ -264,7 +262,14 @@ public class IndicadorProducaoDTO implements Serializable {
 
     private SistemaAgua sistemaAgua;
 
+    @NotNull
     private Comuna comuna;
+
+    @NotNull
+    private Provincia provincia;
+
+    @NotNull
+    private Municipio municipio;
 
     public Long getId() {
         return id;
@@ -952,6 +957,22 @@ public class IndicadorProducaoDTO implements Serializable {
 
     public void setComuna(Comuna comunaId) {
         this.comuna = comunaId;
+    }
+
+    public Provincia getProvincia() {
+        return provincia;
+    }
+
+    public void setProvincia(Provincia provincia) {
+        this.provincia = provincia;
+    }
+
+    public Municipio getMunicipio() {
+        return municipio;
+    }
+
+    public void setMunicipio(Municipio municipio) {
+        this.municipio = municipio;
     }
 
     @Override

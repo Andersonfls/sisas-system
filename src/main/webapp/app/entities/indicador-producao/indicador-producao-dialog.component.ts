@@ -12,6 +12,8 @@ import {IndicadorProducaoService} from './indicador-producao.service';
 import {Situacao, SituacaoService} from '../situacao';
 import {SistemaAgua, SistemaAguaService} from '../sistema-agua';
 import {Comuna, ComunaService} from '../comuna';
+import {Provincia, ProvinciaService} from '../provincia';
+import {Municipio, MunicipioService} from '../municipio';
 
 @Component({
     selector: 'jhi-indicador-producao-dialog',
@@ -28,6 +30,8 @@ export class IndicadorProducaoDialogComponent implements OnInit {
     sistemaaguas: SistemaAgua[];
 
     comunas: Comuna[];
+    provincias: Provincia[];
+    municipios: Municipio[];
     dtLancamentoDp: any;
     dtUltimaAlteracaoDp: any;
 
@@ -38,6 +42,8 @@ export class IndicadorProducaoDialogComponent implements OnInit {
         private situacaoService: SituacaoService,
         private sistemaAguaService: SistemaAguaService,
         private comunaService: ComunaService,
+        private municipioService: MunicipioService,
+        private provinciaService: ProvinciaService,
         private eventManager: JhiEventManager
     ) {
     }
@@ -52,10 +58,24 @@ export class IndicadorProducaoDialogComponent implements OnInit {
             .subscribe((res: HttpResponse<SistemaAgua[]>) => {
                 this.sistemaaguas = res.body;
             }, (res: HttpErrorResponse) => this.onError(res.message));
+
         this.comunaService.query()
             .subscribe((res: HttpResponse<Comuna[]>) => {
                 this.comunas = res.body;
             }, (res: HttpErrorResponse) => this.onError(res.message));
+
+        this.municipioService.query().subscribe(
+            (res: HttpResponse<Municipio[]>) => {
+                this.municipios = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message));
+
+        this.provinciaService.query().subscribe(
+            (res: HttpResponse<Provincia[]>) => {
+                this.provincias = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message));
+
          this.findLastIndicador();
 
     }
@@ -112,7 +132,7 @@ export class IndicadorProducaoDialogComponent implements OnInit {
     findLastIndicador() {
         this.indicadorProducaoService.findLast().subscribe(
             (res: HttpResponse<IndicadorProducao>) => {
-                let indicadorMesAnterior = res.body;
+                const indicadorMesAnterior = res.body;
                 if (indicadorMesAnterior) {
                     this.indicadorProducao.qtdCaptacoes = indicadorMesAnterior.qtdCaptacoes;  // 56
                     this.indicadorProducao.qtdEtas = indicadorMesAnterior.qtdEtas; // 57
@@ -141,11 +161,11 @@ export class IndicadorProducaoDialogComponent implements OnInit {
        // this.indicadorProducao.// 67
         this.indicadorProducao.qtdAcoesFormacaoRealizadas = this.indicadorProducao.qtdAcoesFormacaoMoRealizadas
             + this.indicadorProducao.qtdAcoesFormacaoMmsRealizadas + this.indicadorProducao.qtdAcoesFormacaoCmpRealizadas
-            + this.indicadorProducao.qtdAcoesFormacaoSoftwareFornecidosRealizadas;// 72
+            + this.indicadorProducao.qtdAcoesFormacaoSoftwareFornecidosRealizadas; // 72
         this.indicadorProducao.qtdManuaisPrevistos = this.indicadorProducao.qtdManuaisMoPrevistos
             + this.indicadorProducao.qtdManuaisMmsPrevistos + this.indicadorProducao.qtdManuaisCmpPrevistos; // 76
         this.indicadorProducao.qtdManuaisRealizados = this.indicadorProducao.qtdAcoesManuaisMoRealizadas
-            + this.indicadorProducao.qtdManuaisMmsRealizadas + this.indicadorProducao.qtdManuaisCmpRealizadas// 80
+            + this.indicadorProducao.qtdManuaisMmsRealizadas + this.indicadorProducao.qtdManuaisCmpRealizadas; // 80
     }
 }
 

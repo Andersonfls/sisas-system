@@ -29,7 +29,7 @@
                 </a>
             </div>
 
-            <a href="#menu3x"  class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false" *jhiHasAnyAuthority="['ROLE_ADMIN']">
+            <a href="#menu3x"  class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false">
                 <i class="fa fa-archive" ngbTooltip="Inventário de Inquérito" title="Inventário de Inquérito"></i>
                 <span class="d-none d-md-inline" jhiTranslate="sidebar.item3.title">Inventário de Inquérito</span>
             </a>
@@ -40,7 +40,7 @@
                     <i class="fa fa-shower" style="size: 10px !important;"> </i>
                     <span class="d-md-inline" jhiTranslate="sidebar.item3.subItem1">Sistema de Águas</span>
                 </a>
-                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="sistema-agua-log" routerLinkActive="active">
+                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="sistema-agua-log" routerLinkActive="active" *jhiHasAnyAuthority="['ROLE_ADMIN']">
                     <i class="fa fa-address-card-o" style="size: 10px !important;"> </i>
                     <span class="d-md-inline" jhiTranslate="sidebar.item3.subItem2">Log Sistema de Águas</span>
                 </a>
@@ -50,7 +50,7 @@
                     <span class="d-md-inline" jhiTranslate="sidebar.item3.subItem3">Indicador de Produção</span>
                 </a>
 
-                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="indicador-producao-log" routerLinkActive="active">
+                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="indicador-producao-log" routerLinkActive="active" *jhiHasAnyAuthority="['ROLE_ADMIN']">
                     <i class="fa fa-address-card-o" style="size: 10px !important;"> </i>
                     <span class="d-md-inline" jhiTranslate="sidebar.item3.subItem4">Log Indicador de Produção</span>
                 </a>

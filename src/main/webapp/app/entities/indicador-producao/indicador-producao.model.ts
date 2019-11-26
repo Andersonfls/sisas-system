@@ -2,6 +2,8 @@ import { BaseEntity } from './../../shared';
 import {Comuna} from '../comuna';
 import {SistemaAgua} from '../sistema-agua';
 import {Situacao} from '../situacao';
+import {Provincia} from '../provincia';
+import {Municipio} from '../municipio';
 
 export class IndicadorProducao implements BaseEntity {
     constructor(
@@ -91,10 +93,14 @@ export class IndicadorProducao implements BaseEntity {
         public situacao?: Situacao,
         public sistemaAgua?: SistemaAgua,
         public comuna?: Comuna,
+        public provincia?: Provincia,
+        public municipio?: Municipio
     ) {
         this.id = id ? id : null;
-        this.comuna = comuna ? comuna : null;
         this.situacao = situacao ? situacao : null;
         this.sistemaAgua = sistemaAgua ? sistemaAgua : null;
+        this.comuna = comuna ? comuna : null;
+        this.provincia = provincia ? provincia : null;
+        this.municipio = municipio ? municipio : null;
     }
 }
