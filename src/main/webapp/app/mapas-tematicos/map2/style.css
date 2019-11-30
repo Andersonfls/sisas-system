@@ -13,8 +13,8 @@
     margin-top: 10%;
 }
 
-#map {
-    height: 100%;
-    width: 100%;
+.mapa-padrao {
+    height: 600px;
+    margin-top: 6%;
 }
 
