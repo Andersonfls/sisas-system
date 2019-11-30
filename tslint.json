@@ -17,8 +17,7 @@
         ],
         "label-position": true,
         "max-line-length": [
-            true,
-            180
+            false
         ],
         "member-access": false,
         "member-ordering": [

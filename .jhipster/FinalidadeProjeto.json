@@ -1,0 +1,16 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "nmFinalidade",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20191128130521",
+    "entityTableName": "finalidade_projeto",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

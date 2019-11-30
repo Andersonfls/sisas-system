@@ -1,0 +1,22 @@
+
+{
+    "sisasApp": {
+        "finalidadeProjeto" : {
+            "home": {
+                "title": "Finalidade Projetos",
+                "createLabel": "Criar novo Finalidade Projeto",
+                "createOrEditLabel": "Criar ou editar Finalidade Projeto"
+            },
+            "created": "Um novo Finalidade Projeto foi criado com o identificador {{ param }}",
+            "updated": "Um Finalidade Projeto foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Finalidade Projeto foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Finalidade Projeto {{ id }}?"
+            },
+            "detail": {
+                "title": "Finalidade Projeto"
+            },
+            "nmFinalidade": "Nm Finalidade"
+        }
+    }
+}

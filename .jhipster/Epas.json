@@ -1,0 +1,24 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "nmEpas",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nrContribuinte",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nmLocalidade",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20191126194841",
+    "entityTableName": "epas",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

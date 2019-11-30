@@ -1,0 +1,43 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myFinalidadeProjetoLabel" jhiTranslate="sisasApp.finalidadeProjeto.home.createOrEditLabel">Create or edit
+            a FinalidadeProjeto</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;
+        </button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.finalidadeProjeto.nmFinalidade" for="field_nmFinalidade">Nome
+                FinalidadeProjeto</label>
+            <input type="text" class="form-control" name="nmFinalidade" id="field_nmFinalidade"
+                   [(ngModel)]="finalidadeProjeto.nmFinalidade" maxlength="45" placeholder="Nome da finalidadeProjeto"/>
+            <div [hidden]="!(editForm.controls.nmFinalidade?.dirty && editForm.controls.nmFinalidade?.invalid)">
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.nmFinalidade?.errors?.required"
+                       jhiTranslate="entity.validation.required">
+                    This field is required.
+                </small>
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.nmFinalidade?.errors?.maxlength"
+                       jhiTranslate="entity.validation.maxlength" translateValues="{ max: 45 }">
+                    This field cannot be longer than 45 characters.
+                </small>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+
+        <!--<button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+            </button> -->
+    </div>
+</form>
