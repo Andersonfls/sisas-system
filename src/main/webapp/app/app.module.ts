@@ -32,6 +32,7 @@ import {NgbDateCustomParserFormatter} from './entities/programas-projectos/NgbDa
 import {SisasRelatoriosModule} from './Relatorios/relatorios.module';
 import {SisasMapasTematicosModule} from './mapas-tematicos/mapas.module';
 import {NgxCurrencyModule} from 'ngx-currency';
+import {LeafletModule} from '@asymmetrik/ngx-leaflet';
 
 @NgModule({
     imports: [
@@ -46,7 +47,8 @@ import {NgxCurrencyModule} from 'ngx-currency';
         SisasEntityModule,
         SisasRelatoriosModule,
         SisasMapasTematicosModule,
-        NgbModule.forRoot()
+        NgbModule.forRoot(),
+        LeafletModule.forRoot()
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [

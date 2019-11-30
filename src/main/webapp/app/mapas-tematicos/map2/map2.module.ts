@@ -4,6 +4,7 @@ import { SisasSharedModule } from '../../shared/index';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import {Map2Component} from './map2.component';
 import {MapResolvePagingParams, map2Route} from './map2.route';
+import {LeafletModule} from '@asymmetrik/ngx-leaflet';
 
 const ENTITY_STATES = [
     ...map2Route
@@ -13,6 +14,7 @@ const ENTITY_STATES = [
     imports: [
         SisasSharedModule,
         ChartsModule,
+        LeafletModule,
         RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [

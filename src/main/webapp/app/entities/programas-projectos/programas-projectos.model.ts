@@ -13,8 +13,10 @@ export class ProgramasProjectos implements BaseEntity {
         public tipoFinanciamento?: string,
         public especialidade?: string,
         public comuna?: Comuna,
+        public associadoInquerito?: string
     ) {
         this.id = id ? id : null;
         this.comuna = comuna ? comuna : null;
+        this.associadoInquerito = associadoInquerito ? associadoInquerito : null;
     }
 }

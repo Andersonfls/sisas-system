@@ -20,19 +20,20 @@
             "dtLancamento": "Data Lancamento",
             "dtUltimaAlteracao": "Data Ultima Alteracao",
             "idUsuario": "Usuario",
-            "nmDesignacaoProjeto": "Nome",
-            "nmDescricaoProjeto": "Descricao ",
+            "nmDesignacaoProjeto": "Designação do Projecto",
+            "nmDescricaoProjeto": "Descrição ",
             "idSaaAssociado": "Saa Associado",
             "tipoFinanciamento": "Tipo Financiamento",
             "especialidade": "Especialidade",
             "idComuna": "Comuna",
-            "adjudicacao": "Adjudicacao",
+            "adjudicacao": "Adjudicação",
             "concepcao": "Concepcao",
             "concurso": "Concurso",
             "contrato": "Contrato",
             "empreitada": "Empreitada",
             "execucao": "Execucao",
-            "programasProjectosLog": "Programas Projectos Log"
+            "programasProjectosLog": "Programas Projectos Log",
+            "associado-inqu": "Associado a Inquérito/Inventário"
         }
     }
 }

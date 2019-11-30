@@ -14,37 +14,55 @@
                     <input type="text" class="form-control" id="id" name="id"
                            [(ngModel)]="programasProjectos.id" readonly />
                 </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.dtLancamento" for="field_dttLancamento">Dt Lancamento</label>
-                    <div class="input-group">
-                        <input id="field_dttLancamento" type="text" class="form-control" name="dttLancamento" ngbDatepicker  #dttLancamentoDp="ngbDatepicker" [(ngModel)]="programasProjectos.dtLancamento"
-                        required placeholder="Selecione a data do lançamento"/>
-                        <span class="input-group-append">
+
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.dtLancamento" for="field_dttLancamento">Dt Lancamento</label>
+                            <div class="input-group">
+                                <input id="field_dttLancamento" type="text" class="form-control" name="dttLancamento" ngbDatepicker  #dttLancamentoDp="ngbDatepicker" [(ngModel)]="programasProjectos.dtLancamento"
+                                       required placeholder="Selecione a data do lançamento"/>
+                                <span class="input-group-append">
                             <button type="button" class="btn btn-secondary" (click)="dttLancamentoDp.toggle()"><i class="fa fa-calendar"></i></button>
                         </span>
+                            </div>
+                            <div [hidden]="!(editForm.controls.dtLancamento?.dirty && editForm.controls.dtLancamento?.invalid)">
+                                <small class="form-text text-danger"
+                                       [hidden]="!editForm.controls.dtLancamento?.errors?.required" jhiTranslate="entity.validation.required">
+                                    This field is required.
+                                </small>
+                            </div>
+                        </div>
                     </div>
-                    <div [hidden]="!(editForm.controls.dtLancamento?.dirty && editForm.controls.dtLancamento?.invalid)">
-                        <small class="form-text text-danger"
-                           [hidden]="!editForm.controls.dtLancamento?.errors?.required" jhiTranslate="entity.validation.required">
-                           This field is required.
-                        </small>
+
+                    <div class="form-group col-sm-6">
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.associado-inqu" for="field_assin">Associado</label>
+                            <select class="form-control" id="field_assin" name="tipoFinanciamento" [(ngModel)]="programasProjectos.associadoInquerito"  required>
+                                <option value="null" selected>Selecione...</option>
+                                <option value="SIM">SIM</option>
+                                <option value="NAO">NAO</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
+
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.nmDesignacaoProjeto" for="field_nmDesignacaoProjeto">Nm Designacao Projeto</label>
                     <input type="text" class="form-control" name="nmDesignacaoProjeto" id="field_nmDesignacaoProjeto"
-                        [(ngModel)]="programasProjectos.nmDesignacaoProjeto" required maxlength="250" placeholder="Nome do projeto"/>
+                           [(ngModel)]="programasProjectos.nmDesignacaoProjeto" required maxlength="250" placeholder="Nome do projeto"/>
                     <div [hidden]="!(editForm.controls.nmDesignacaoProjeto?.dirty && editForm.controls.nmDesignacaoProjeto?.invalid)">
                         <small class="form-text text-danger"
-                           [hidden]="!editForm.controls.nmDesignacaoProjeto?.errors?.required" jhiTranslate="entity.validation.required">
-                           This field is required.
+                               [hidden]="!editForm.controls.nmDesignacaoProjeto?.errors?.required" jhiTranslate="entity.validation.required">
+                            This field is required.
                         </small>
                         <small class="form-text text-danger"
-                           [hidden]="!editForm.controls.nmDesignacaoProjeto?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 250 }">
-                           This field cannot be longer than 250 characters.
+                               [hidden]="!editForm.controls.nmDesignacaoProjeto?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 250 }">
+                            This field cannot be longer than 250 characters.
                         </small>
                     </div>
                 </div>
+
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.nmDescricaoProjeto" for="field_nmDescricaoProjeto">Nm Descricao Projeto</label>
                     <input type="text" class="form-control" name="nmDescricaoProjeto" id="field_nmDescricaoProjeto"
