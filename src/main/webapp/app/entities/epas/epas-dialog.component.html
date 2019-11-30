@@ -1,0 +1,132 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myEpasLabel" jhiTranslate="sisasApp.epas.home.createOrEditLabel">Create or edit
+            a Epas</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;
+        </button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.epas.nmEpas" for="field_nmEpas">Nome
+                Epas</label>
+            <input type="text" class="form-control" name="nmEpas" id="field_nmEpas"
+                   [(ngModel)]="epas.nmEpas" maxlength="100" placeholder="Nome da epas"/>
+            <div [hidden]="!(editForm.controls.nmEpas?.dirty && editForm.controls.nmEpas?.invalid)">
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.nmEpas?.errors?.required"
+                       jhiTranslate="entity.validation.required">
+                    This field is required.
+                </small>
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.nmEpas?.errors?.maxlength"
+                       jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
+                    This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.epas.nrContribuinte" for="field_nrContribuinte">Nr
+                Contribuinte</label>
+            <input type="text" class="form-control" name="nrContribuinte" id="field_nrContribuinte"
+                   [(ngModel)]="epas.nrContribuinte" maxlength="80" placeholder="Nr do contribuinte"/>
+            <div [hidden]="!(editForm.controls.nrContribuinte?.dirty && editForm.controls.nrContribuinte?.invalid)">
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.nrContribuinte?.errors?.required"
+                       jhiTranslate="entity.validation.required">
+                    This field is required.
+                </small>
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.nrContribuinte?.errors?.maxlength"
+                       jhiTranslate="entity.validation.maxlength" translateValues="{ max: 80 }">
+                    This field cannot be longer than 80 characters.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label negrito" jhiTranslate="sisasApp.epas.Provincia"
+                   for="field_idProvincia">Provincia</label>
+            <select class="form-control" id="field_idProvincia" name="provincia" [(ngModel)]="epas.provincia">
+                <option *ngIf="!editForm.value.provincia" [ngValue]="null" selected>Selecione a Província..</option>
+                <option [ngValue]="provinciaOption.id === epas.provincia?.id ? epas.provincia : provinciaOption"
+                        *ngFor="let provinciaOption of provincias">{{provinciaOption.nmProvincia}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.provincia?.dirty && editForm.controls.provincia?.invalid)">
+            <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.provincia?.errors?.required"
+                   jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label negrito" jhiTranslate="sisasApp.epas.Municipio"
+                   for="field_idMunicipio">Municipio</label>
+            <select class="form-control" id="field_idMunicipio" name="municipio"
+                    [(ngModel)]="epas.municipio">
+                <option *ngIf="!editForm.value.municipio" [ngValue]="null" selected>Selecione o Municipio..</option>
+                <option [ngValue]="municipioOption.id === epas.municipio?.id ? epas.municipio : municipioOption"
+                        *ngFor="let municipioOption of municipios">{{municipioOption.nmMunicipio}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.municipio?.dirty && editForm.controls.municipio?.invalid)">
+            <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.municipio?.errors?.required"
+                   jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label negrito" jhiTranslate="sisasApp.epas.Comuna" for="field_idComuna">Comuna</label>
+            <select class="form-control" id="field_idComuna" name="comuna" [(ngModel)]="epas.comuna">
+                <option *ngIf="!editForm.value.comuna" [ngValue]="null" selected>Selecione a Comuna...</option>
+                <option [ngValue]="comunaOption.id === epas.comuna?.id ? epas.comuna :comunaOption "
+                        *ngFor="let comunaOption of comunas">{{comunaOption.nmComuna}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.comuna?.dirty && editForm.controls.comuna?.invalid)">
+            <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.comuna?.errors?.required"
+                   jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.epas.nmLocalidade" for="field_nmLocalidade">Nm
+                Localidade</label>
+            <input type="text" class="form-control" name="nmLocalidade" id="field_nmLocalidade"
+                   [(ngModel)]="epas.nmLocalidade" maxlength="100" placeholder="Nm da Localidade"/>
+            <div [hidden]="!(editForm.controls.nmLocalidade?.dirty && editForm.controls.nmLocalidade?.invalid)">
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.nmEpas?.errors?.required"
+                       jhiTranslate="entity.validation.required">
+                    This field is required.
+                </small>
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.nmLocalidade?.errors?.maxlength"
+                       jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
+                    This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+
+        <!--<button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+            </button> -->
+    </div>
+</form>

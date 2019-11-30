@@ -1,0 +1,90 @@
+<div>
+    <h2>
+        <span jhiTranslate="sisasApp.epas.home.title">Epas</span>
+        <button class="btn btn-primary float-right jh-create-entity redondo" [routerLink]="['/', { outlets: { popup: ['epas-new'] } }]">
+            <span class="fa fa-plus"></span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+
+    <input type="text" class="form-control pesquisa" name="filtro" [(ngModel)]="nome" (ngModelChange)="onChangeNome()" placeholder="Buscar..." style="font-style:italic"/>
+
+    <br/>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="epass">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+                <th jhiSortBy="id"><span>ID</span> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="nmEpas"><span>Nm Epas</span> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="nrContribuinte"><span>Nr Contribuinte</span> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="idProvincia"><span>Provincia</span> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="idMunicipio"><span>Municipio</span> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="idComuna"><span>Comuna</span> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="nmLocalidade"><span>Nm Localidade</span><span class="fa fa-sort"></span></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let epas of epass ;trackBy: trackId">
+                <td><a [routerLink]="['../epas', epas.id ]">{{epas.id}}</a></td>
+                <td>{{epas.nmEpas}}</td>
+                <td>{{epas.nrContribuinte}}</td>
+                <td>
+                    <div *ngIf="epas.provincia">
+                        <a [routerLink]="['../provincia', epas.provincia.id  ]" >{{epas.provincia.nmProvincia}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="epas.municipio">
+                        <a [routerLink]="['../municipio', epas.municipio.id  ]" >{{epas.municipio.nmMunicipio}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="epas.comuna">
+                        <a [routerLink]="['../comuna', epas.comuna.id  ]" >{{epas.comuna.nmComuna}}</a>
+                    </div>
+                </td>
+                <td>{{epas.nmLocalidade}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../epas', epas.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'epas/'+ epas.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'epas/'+ epas.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="epass && epass.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

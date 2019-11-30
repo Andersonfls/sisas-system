@@ -1,0 +1,57 @@
+
+<div *ngIf="epas">
+    <h2><span jhiTranslate="sisasApp.epas.detail.title">Epas</span> {{epas.nmEpas}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="sisasApp.epas.nmEpas">Nm Epas</span></dt>
+        <dd>
+            <span>{{epas.nmEpas}}</span>
+        </dd>
+
+        <dt><span jhiTranslate="sisasApp.epas.nrContribuinte">Nr Contribuinte</span></dt>
+        <dd>
+            <span>{{epas.nrContribuinte}}</span>
+        </dd>
+
+        <dt><span jhiTranslate="sisasApp.epas.Provincia">Provincia</span></dt>
+        <dd>
+            <div *ngIf="epas.provincia.nmProvincia">
+                <a [routerLink]="['/provincia', epas.provincia.id]">{{epas.provincia.nmProvincia}}</a>
+            </div>
+        </dd>
+
+        <dt><span jhiTranslate="sisasApp.epas.Municipio">Municipio</span></dt>
+        <dd>
+            <div *ngIf="epas.municipio.nmMunicipio">
+                <a [routerLink]="['/municipio', epas.municipio.id]">{{epas.municipio.nmMunicipio}}</a>
+            </div>
+        </dd>
+
+        <dt><span jhiTranslate="sisasApp.epas.Comuna">Comuna</span></dt>
+        <dd>
+            <div *ngIf="epas.comuna.nmComuna">
+                <a [routerLink]="['/comuna', epas.comuna.id]">{{epas.comuna.nmComuna}}</a>
+            </div>
+        </dd>
+
+        <dt><span jhiTranslate="sisasApp.epas.nmLocalidade">Nm Localidade</span></dt>
+        <dd>
+            <span>{{epas.nmLocalidade}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'epas/'+ epas.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

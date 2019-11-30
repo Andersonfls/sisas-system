@@ -32,9 +32,9 @@ spring:
         serialization.indent_output: true
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:mysql://localhost:3306/sisas_control_acess?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
-        username: root
-        password: CP1227@.
+        url: jdbc:mysql://localhost:3306/sisas?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+        username: sisas
+        password: sisas
     jpa:
         database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
         database: mysql
@@ -45,7 +45,7 @@ spring:
             hibernate.cache.use_query_cache: false
             hibernate.generate_statistics: true
             hibernate.cache.region.factory_class: io.github.jhipster.config.jcache.NoDefaultJCacheRegionFactory
-            hibernate.default_schema: sisas_control_acess
+            hibernate.default_schema: sisas
     mail:
         host: localhost
         port: 25

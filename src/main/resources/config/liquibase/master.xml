@@ -36,6 +36,8 @@
     <!--<include file="config/liquibase/changelog/20190705195840_added_entity_SistemaAguaLog.xml" relativeToChangelogFile="false"/>-->
     <!--<include file="config/liquibase/changelog/20190705195841_added_entity_Situacao.xml" relativeToChangelogFile="false"/>-->
     <!--<include file="config/liquibase/changelog/20190705195842_added_entity_SobreDna.xml" relativeToChangelogFile="false"/>-->
+    <!--<include file="config/liquibase/changelog/20191126194841_added_entity_Epas.xml" relativeToChangelogFile="false"/>-->
+    <!--<include file="config/liquibase/changelog/20191128130521_added_entity_FinalidadeProjeto.xml" relativeToChangelogFile="false"/>-->
 
 
     <!--<include file="config/liquibase/changelog/20190705195813_added_entity_constraints_Adjudicacao.xml" relativeToChangelogFile="false"/>-->

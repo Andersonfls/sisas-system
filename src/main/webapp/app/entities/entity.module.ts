@@ -12,6 +12,8 @@ import {SisasProvinciaModule} from './provincia/provincia.module';
 import {SisasSistemaAguaLogModule} from './sistema-agua-log/sistema-agua-log.module';
 import {SisasIndicadorProducaoLogModule} from './indicador-producao-log/indicador-producao-log.module';
 import {SisasProgramasProjectosLogModule} from './programas-projectos-log/programas-projectos-log.module';
+import {SisasEpasModule} from './epas/epas.module';
+import {SisasFinalidadeProjetoModule} from './finalidade-projeto/finalidade-projeto.module';
 
 @NgModule({
     imports: [
@@ -25,6 +27,8 @@ import {SisasProgramasProjectosLogModule} from './programas-projectos-log/progra
         SisasMunicipioModule,
         SisasFornecedorModule,
         SisasProvinciaModule,
+        SisasEpasModule,
+        SisasFinalidadeProjetoModule,
         SisasSistemaAguaLogModule,
         SisasIndicadorProducaoLogModule,
         SisasProgramasProjectosLogModule

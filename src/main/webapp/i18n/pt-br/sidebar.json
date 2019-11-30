@@ -9,7 +9,9 @@
             "subItem4": "Província",
             "subItem5": "Município",
             "subItem6": "Comuna",
-            "subItem7": "Fornecedores"
+            "subItem7": "Fornecedores",
+            "subItem8": "Epas",
+            "subItem9": "Finalidade do Projeto"
         },
         "item3": {
             "title": "Inventario de Inquérito",
