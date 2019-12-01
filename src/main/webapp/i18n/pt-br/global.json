@@ -39,6 +39,7 @@
                 "situacao": "Situacao",
                 "sobreDna": "Sobre Dna",
 
+                "especialidades": "Especialidades",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

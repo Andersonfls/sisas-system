@@ -1,0 +1,16 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "nmEspecialidade",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20191130162644",
+    "entityTableName": "especialidades",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}
