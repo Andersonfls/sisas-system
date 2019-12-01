@@ -4,13 +4,16 @@
 </h2>
 </div>
 <br> <br>
+
 <div class="map-container">
     <div class="mapa-padrao"
-         leaflet
-         [leafletOptions]="options" (leafletMapMoveEnd)="onMapClick($event)">
+        leaflet
+        [leafletLayers]="layers"
+        [leafletOptions]="options"
+        (leafletMapReady)="onMapReady($event)">
     </div>
-</div>
 
+</div>
 
 <!--<div class="map-area-transform">-->
     <!--<svg xmlns="http://www.w3.org/2000/svg" class="mapa-svg-estados-svg" width="802" height="642"-->

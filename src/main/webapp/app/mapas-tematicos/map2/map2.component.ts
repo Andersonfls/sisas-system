@@ -1,14 +1,13 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {JhiAlertService, JhiParseLinks} from 'ng-jhipster';
 import {UserService} from '../../shared/user/user.service';
-import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
 import {Principal} from '../../shared/auth/principal.service';
-import * as CanvasJS from '../../../content/js/canvasjs.min.js';
 import {ActivatedRoute} from '@angular/router';
 import {Municipio, MunicipioService} from '../../entities/municipio/index';
 import {Comuna, ComunaService} from '../../entities/comuna/index';
-import {icon, latLng, LatLngBounds, Map, marker, point, polyline, tileLayer} from 'leaflet';
+import { latLng, Map, tileLayer} from 'leaflet';
 import * as L from 'leaflet';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
     selector: 'jhi-map',
@@ -34,14 +33,17 @@ export class Map2Component implements OnInit {
     reverse: any;
     predicate: any;
 
-    private map;
-
+    map: L.Map;
+    json;
     options = {
         layers: [
-            tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '...' })
+            L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 18,
+                attribution: ''
+            })
         ],
-        zoom: 4,
-        center: latLng(-12.382928338487396, 42.71484375000001)
+        zoom: 7,
+        center: L.latLng(-6.435, 14.788)
     };
 
     constructor(
@@ -52,6 +54,7 @@ export class Map2Component implements OnInit {
         private userService: UserService,
         private principal: Principal,
         private activatedRoute: ActivatedRoute,
+        private http: HttpClient
     ) {
         this.routeData = this.activatedRoute.data.subscribe((data) => {
             this.page = data.pagingParams.page;
@@ -67,26 +70,72 @@ export class Map2Component implements OnInit {
         });
     }
 
-    private initMap(): void {
-        this.map = L.map('map', {
-            center: [ 11.882, 16.711 ],
-            zoom: 6
+    onMapReady(map: L.Map) {
+        this.http.get('content/departements.json').subscribe((json: any) => {
+            console.log(json);
+            this.json = json;
+            L.geoJSON(this.json, {style: this.style}).addTo(map);
         });
 
-        const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        });
+        const legend = new (L.Control.extend({
+            options: { position: 'bottomright' }
+        }));
 
-        tiles.addTo(this.map);
+        legend.onAdd = function() {
 
+            const div = L.DomUtil.create('div', 'info legend'),
+                grades = [ 1, 20, 40, 60, 80, 100];
+
+            // loop through our density intervals and generate a label with a colored square for each interval
+            for (let i = 0; i < grades.length; i++) {
+                let cor = '';
+                const d = grades[i] + 1;
+
+               cor = d > 100  ? '#bd7727' :
+                        d > 80  ? '#b84ee3' :
+                            d > 60  ? '#fc93be' :
+                                    d > 40   ? '#5ce5fe' :
+                                            '#feff1c';
+                div.innerHTML +=
+                    '<i style="background:' + cor + '"></i> ' +
+                    grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+            }
+
+            return div;
+        };
+
+        legend.addTo(map);
+
+    }
+
+    public style() {
+        const collor = '#5ce5fe';
+        return {
+            fillColor: collor,
+            weight: 2,
+            opacity: 1,
+            color: 'white',
+            dashArray: '3',
+            fillOpacity: 0.7
+        };
+    }
+
+    public getColor(d) {
+        return d > 1000 ? '#800026' :
+            d > 500  ? '#BD0026' :
+                d > 200  ? '#E31A1C' :
+                    d > 100  ? '#FC4E2A' :
+                        d > 50   ? '#FD8D3C' :
+                            d > 20   ? '#FEB24C' :
+                                d > 10   ? '#FED976' :
+                                    '#FFEDA0';
     }
 
     onMapClick(map: Map) {
        console.log(map);
     }
 
-    sort() {
+    public sort() {
         const result = [this.predicate + ',' + (this.reverse ? 'asc' : 'desc')];
         if (this.predicate !== 'id') {
             result.push('id');
