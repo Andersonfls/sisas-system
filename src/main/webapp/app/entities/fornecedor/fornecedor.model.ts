@@ -1,4 +1,5 @@
 import { BaseEntity } from './../../shared';
+import {Especialidades} from '../especialidades/especialidades.model';
 
 export class Fornecedor implements BaseEntity {
     constructor(
@@ -7,7 +8,7 @@ export class Fornecedor implements BaseEntity {
         public numContribuinte?: string,
         public endereco?: string,
         public email?: string,
-        public especialidade?: string,
+        public especialidades?: Especialidades,
         public contato?: string,
     ) {
     }

@@ -4,11 +4,13 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager } from 'ng-jhipster';
+import {JhiAlertService, JhiEventManager} from 'ng-jhipster';
 
 import { Fornecedor } from './fornecedor.model';
 import { FornecedorPopupService } from './fornecedor-popup.service';
 import { FornecedorService } from './fornecedor.service';
+import {Especialidades} from '../especialidades/especialidades.model';
+import {EspecialidadesService} from '../especialidades/especialidades.service';
 
 @Component({
     selector: 'jhi-fornecedor-dialog',
@@ -19,15 +21,25 @@ export class FornecedorDialogComponent implements OnInit {
     fornecedor: Fornecedor;
     isSaving: boolean;
 
+    especialidadess: Especialidades[];
+
     constructor(
         public activeModal: NgbActiveModal,
+        private jhiAlertService: JhiAlertService,
         private fornecedorService: FornecedorService,
+        private especialidadesService: EspecialidadesService,
         private eventManager: JhiEventManager
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false;
+
+    this.especialidadesService.query()
+        .subscribe((res: HttpResponse<Especialidades[]>) => { this.especialidadess = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+    console.log(this.fornecedor);
+
+    this.fornecedor.especialidades = null;
     }
 
     clear() {
@@ -58,6 +70,10 @@ export class FornecedorDialogComponent implements OnInit {
 
     private onSaveError() {
         this.isSaving = false;
+    }
+
+    private onError(error: any) {
+        this.jhiAlertService.error(error.message, null, null);
     }
 }
 

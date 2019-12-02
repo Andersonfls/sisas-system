@@ -1,6 +1,8 @@
 package com.minea.sisas.service.dto;
 
 
+import com.minea.sisas.domain.Especialidades;
+
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -27,8 +29,7 @@ public class FornecedorDTO implements Serializable {
     @Size(max = 80)
     private String email;
 
-    @Size(max = 100)
-    private String especialidade;
+    private Especialidades especialidades;
 
     @Size(max = 20)
     private String contato;
@@ -73,12 +74,12 @@ public class FornecedorDTO implements Serializable {
         this.email = email;
     }
 
-    public String getEspecialidade() {
-        return especialidade;
+    public Especialidades getEspecialidades() {
+        return especialidades;
     }
 
-    public void setEspecialidade(String especialidade) {
-        this.especialidade = especialidade;
+    public void setEspecialidades(Especialidades especialidades) {
+        this.especialidades = especialidades;
     }
 
     public String getContato() {
@@ -118,7 +119,7 @@ public class FornecedorDTO implements Serializable {
             ", numContribuinte='" + getNumContribuinte() + "'" +
             ", endereco='" + getEndereco() + "'" +
             ", email='" + getEmail() + "'" +
-            ", especialidade='" + getEspecialidade() + "'" +
+            ", especialidade='" + getEspecialidades() + "'" +
             ", contato='" + getContato() + "'" +
             "}";
     }

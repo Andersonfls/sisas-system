@@ -21,7 +21,7 @@
             "numContribuinte": "Contribuinte",
             "endereco": "Endereco",
             "email": "Email",
-            "especialidade": "Especialidade",
+            "Especialidades": "Especialidades",
             "contato": "Contato"
         },"fornecedorDTO": {
             "idFornecedor": "Id Fornecedor",
@@ -29,7 +29,7 @@
             "numContribuinte": "Nr Contribuinte",
             "endereco": "Endereco",
             "email": "Email",
-            "especialidade": "Especialidade",
+            "Especialidades": "Especialidades",
             "contato": "Contato"
 
         }

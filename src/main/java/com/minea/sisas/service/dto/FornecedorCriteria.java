@@ -38,7 +38,7 @@ public class FornecedorCriteria implements Serializable {
 
     private StringFilter email;
 
-    private StringFilter especialidade;
+    private LongFilter especialidades;
 
     private StringFilter contato;
 
@@ -93,12 +93,12 @@ public class FornecedorCriteria implements Serializable {
         this.email = email;
     }
 
-    public StringFilter getEspecialidade() {
-        return especialidade;
+    public LongFilter getEspecialidades() {
+        return especialidades;
     }
 
-    public void setEspecialidade(StringFilter especialidade) {
-        this.especialidade = especialidade;
+    public void setEspecialidades(LongFilter especialidades) {
+        this.especialidades = especialidades;
     }
 
     public StringFilter getContato() {
@@ -118,7 +118,7 @@ public class FornecedorCriteria implements Serializable {
                 (numContribuinte != null ? "numContribuinte=" + numContribuinte + ", " : "") +
                 (endereco != null ? "endereco=" + endereco + ", " : "") +
                 (email != null ? "email=" + email + ", " : "") +
-                (especialidade != null ? "especialidade=" + especialidade + ", " : "") +
+                (especialidades != null ? "especialidades=" + especialidades + ", " : "") +
                 (contato != null ? "contato=" + contato + ", " : "") +
 
             "}";

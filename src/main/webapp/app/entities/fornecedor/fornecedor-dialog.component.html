@@ -69,15 +69,21 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="sisasApp.fornecedor.especialidade" for="field_especialidade">Especialidade</label>
-            <input type="text" class="form-control" name="especialidade" id="field_especialidade"
-                [(ngModel)]="fornecedor.especialidade" maxlength="100" placeholder="Especialdiade do fornecedor"/>
-            <div [hidden]="!(editForm.controls.especialidade?.dirty && editForm.controls.especialidade?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.especialidade?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
-                   This field cannot be longer than 100 characters.
-                </small>
-            </div>
+            <label class="form-control-label negrito" jhiTranslate="sisasApp.fornecedor.Especialidades"
+                   for="field_idEspecialidades">Especialidades</label>
+            <select class="form-control" id="field_idEspecialidades" name="especialidades"
+                    [(ngModel)]="fornecedor.especialidades">
+                <option *ngIf="!editForm.value.especialidades" [ngValue]="null" selected>Selecione o Especialidades..</option>
+                <option [ngValue]="especialidadesOption.id === fornecedor.especialidades?.id ? fornecedor.especialidades : especialidadesOption"
+                        *ngFor="let especialidadesOption of especialidadess">{{especialidadesOption.nmEspecialidade}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.especialidades?.dirty && editForm.controls.especialidades?.invalid)">
+            <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.especialidades?.errors?.required"
+                   jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="sisasApp.fornecedor.contato" for="field_contato">Contato</label>

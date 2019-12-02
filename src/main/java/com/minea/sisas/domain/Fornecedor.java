@@ -40,9 +40,9 @@ public class Fornecedor implements Serializable {
     @Column(name = "email", length = 80)
     private String email;
 
-    @Size(max = 100)
-    @Column(name = "especialidade", length = 100)
-    private String especialidade;
+    @ManyToOne
+    @JoinColumn(name = "id_especialidade")
+    private Especialidades especialidades;
 
     @Size(max = 20)
     @Column(name = "contato", length = 20)
@@ -109,19 +109,15 @@ public class Fornecedor implements Serializable {
         this.email = email;
     }
 
-    public String getEspecialidade() {
-        return especialidade;
+    public Especialidades getEspecialidades() {
+        return especialidades;
     }
 
-    public Fornecedor especialidade(String especialidade) {
-        this.especialidade = especialidade;
-        return this;
+    public void setEspecialidades(Especialidades especialidades) {
+        this.especialidades = especialidades;
     }
 
-    public void setEspecialidade(String especialidade) {
-        this.especialidade = especialidade;
-    }
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+// jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     public String getContato() {
         return contato;
@@ -164,7 +160,7 @@ public class Fornecedor implements Serializable {
             ", numContribuinte='" + getNumContribuinte() + "'" +
             ", endereco='" + getEndereco() + "'" +
             ", email='" + getEmail() + "'" +
-            ", especialidade='" + getEspecialidade() + "'" +
+            ", especialidades='" + getEspecialidades() + "'" +
             ", contato='" + getContato() + "'" +
             "}";
     }

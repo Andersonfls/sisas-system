@@ -56,7 +56,7 @@ public class EspecialidadesDTO implements Serializable {
     public String toString() {
         return "EspecialidadesDTO{" +
             "id=" + getId() +
-            ", nmEspecialidades='" + getNmEspecialidade() + "'" +
+            ", nmEspecialidade='" + getNmEspecialidade() + "'" +
             "}";
     }
 }

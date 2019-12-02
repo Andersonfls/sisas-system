@@ -16,11 +16,7 @@ import org.springframework.data.jpa.repository.*;
 @Repository
 public interface EpasRepository extends JpaRepository<Epas, Long>, JpaSpecificationExecutor<Epas> {
 
-    @Query("select e from Epas e where LOWER(e.nmEpas) like LOWER(concat(:nome,'%'))" +
-        "or LOWER(e.municipio.nmMunicipio) like LOWER(CONCAT(:nome,'%'))")
+    @Query("select e from Epas e where LOWER(e.nmEpas) like LOWER(concat(:nome,'%'))")
     Page buscarPorNome(@Param("nome") String nome, Pageable pageable);
-
-    @Query("select count(e) from Epas e where e.municipio.id = :id ")
-    Integer quantidadeEpassPorMunicipio(@Param("id") Long id);
 
 }

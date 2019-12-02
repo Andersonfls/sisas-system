@@ -12,7 +12,11 @@ import org.mapstruct.*;
 @Mapper(componentModel = "spring", uses = {})
 public interface FornecedorMapper extends EntityMapper<FornecedorDTO, Fornecedor> {
 
+    @Mapping(source = "especialidades", target = "especialidades")
+    FornecedorDTO toDto(Fornecedor fornecedor);
 
+    @Mapping(source = "especialidades", target = "especialidades")
+    Fornecedor toEntity(FornecedorDTO fornecedorDTO);
 
     default Fornecedor fromId(Long id) {
         if (id == null) {

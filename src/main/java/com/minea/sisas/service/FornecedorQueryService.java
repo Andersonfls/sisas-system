@@ -1,6 +1,8 @@
 package com.minea.sisas.service;
 
 
+import com.minea.sisas.domain.Especialidades;
+import com.minea.sisas.domain.Especialidades_;
 import com.minea.sisas.domain.Fornecedor_;
 import com.minea.sisas.domain.Fornecedor;
 import com.minea.sisas.repository.FornecedorRepository;
@@ -87,8 +89,8 @@ public class FornecedorQueryService extends QueryService<Fornecedor> {
             if (criteria.getEmail() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getEmail(), Fornecedor_.email));
             }
-            if (criteria.getEspecialidade() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getEspecialidade(), Fornecedor_.especialidade));
+            if (criteria.getEspecialidades() != null) {
+                specification = specification.and(buildReferringEntitySpecification(criteria.getEspecialidades(), Fornecedor_.especialidades, Especialidades_.id));
             }
             if (criteria.getContato() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getContato(), Fornecedor_.contato));

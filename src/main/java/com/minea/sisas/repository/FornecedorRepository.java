@@ -18,7 +18,6 @@ public interface FornecedorRepository extends JpaRepository<Fornecedor, Long>, J
     @Query("select f from Fornecedor f where LOWER(f.nmFornecedor) like LOWER(concat(:nome,'%')) " +
         "or LOWER(f.endereco) like LOWER(concat(:nome,'%'))" +
         "or LOWER(f.email) like LOWER(concat(:nome,'%'))" +
-        "or LOWER(f.especialidade) like LOWER(concat(:nome,'%'))" +
         "or LOWER(f.contato) like LOWER(concat(:nome,'%'))" +
         "or LOWER(f.numContribuinte) like LOWER(concat(:nome,'%'))")
     Page buscarPorNome(@Param("nome") String nome, Pageable pageable);

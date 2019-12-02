@@ -25,9 +25,7 @@
                     class="fa fa-sort"></span></th>
                 <th jhiSortBy="email"><span jhiTranslate="sisasApp.fornecedor.email">Email</span> <span
                     class="fa fa-sort"></span></th>
-                <th jhiSortBy="especialidade"><span
-                    jhiTranslate="sisasApp.fornecedor.especialidade">Especialidade</span> <span
-                    class="fa fa-sort"></span></th>
+                <th jhiSortBy="idEspecialidade"><span>Especialidades</span> <span class="fa fa-sort"></span></th>
                 <th jhiSortBy="contato"><span jhiTranslate="sisasApp.fornecedor.contato">Contato</span> <span
                     class="fa fa-sort"></span></th>
 
@@ -40,7 +38,11 @@
                 <td>{{fornecedor.numContribuinte}}</td>
                 <td>{{fornecedor.endereco}}</td>
                 <td>{{fornecedor.email}}</td>
-                <td>{{fornecedor.especialidade}}</td>
+                <td>
+                    <div *ngIf="fornecedor.especialidades">
+                        <a [routerLink]="['../especialidades', fornecedor.especialidades.id  ]" >{{fornecedor.especialidades.nmEspecialidade}}</a>
+                    </div>
+                </td>
                 <td>{{fornecedor.contato}}</td>
 
                 <td class="text-right">
