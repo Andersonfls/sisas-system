@@ -3,9 +3,6 @@ import {JhiAlertService, JhiParseLinks} from 'ng-jhipster';
 import {UserService} from '../../shared/user/user.service';
 import {Principal} from '../../shared/auth/principal.service';
 import {ActivatedRoute} from '@angular/router';
-import {Municipio, MunicipioService} from '../../entities/municipio/index';
-import {Comuna, ComunaService} from '../../entities/comuna/index';
-import { latLng, Map, tileLayer} from 'leaflet';
 import * as L from 'leaflet';
 import {HttpClient} from '@angular/common/http';
 
@@ -18,8 +15,6 @@ import {HttpClient} from '@angular/common/http';
 })
 
 export class Map2Component implements OnInit {
-    municipios: Municipio[];
-    comunas: Comuna[];
     currentAccount: any;
     routeData: any;
 
@@ -42,13 +37,11 @@ export class Map2Component implements OnInit {
                 attribution: ''
             })
         ],
-        zoom: 7,
-        center: L.latLng(-6.435, 14.788)
+        zoom: 6,
+        center: L.latLng(-11.114, 18.716)
     };
 
     constructor(
-        private municipioService: MunicipioService,
-        private comunaService: ComunaService,
         private parseLinks: JhiParseLinks,
         private jhiAlertService: JhiAlertService,
         private userService: UserService,
@@ -71,12 +64,9 @@ export class Map2Component implements OnInit {
     }
 
     onMapReady(map: L.Map) {
-        this.http.get('content/departements.json').subscribe((json: any) => {
-            console.log(json);
-            this.json = json;
-            L.geoJSON(this.json, {style: this.style}).addTo(map);
-        });
+        let geojson;
 
+        // LEGENDA
         const legend = new (L.Control.extend({
             options: { position: 'bottomright' }
         }));
@@ -84,27 +74,96 @@ export class Map2Component implements OnInit {
         legend.onAdd = function() {
 
             const div = L.DomUtil.create('div', 'info legend'),
-                grades = [ 1, 20, 40, 60, 80, 100];
+                grades = [ 1, 20, 40, 60, 80];
 
+            div.innerHTML +=
+                '<i></i> <span style="font-weight:bold"> **Legenda**</span>' + '<br>' ;
             // loop through our density intervals and generate a label with a colored square for each interval
             for (let i = 0; i < grades.length; i++) {
                 let cor = '';
                 const d = grades[i] + 1;
 
-               cor = d > 100  ? '#bd7727' :
-                        d > 80  ? '#b84ee3' :
-                            d > 60  ? '#fc93be' :
-                                    d > 40   ? '#5ce5fe' :
+               cor = d > 80   ? '#bd7019' :
+                        d > 60  ? '#b84ee3' :
+                            d > 40  ? '#fc5794' :
+                                    d > 20   ? '#5ce5fe' :
                                             '#feff1c';
                 div.innerHTML +=
                     '<i style="background:' + cor + '"></i> ' +
-                    grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+                    grades[i] + (grades[i + 1] ? ' até ' + grades[i + 1] + '<br>' : ' até 100');
             }
 
             return div;
         };
 
         legend.addTo(map);
+
+        // INFO TOP MAPA
+        let info;
+
+        info = new L.Control();
+
+        info.onAdd = function() {
+            this._div = L.DomUtil.create('div', 'info');
+            this.update();
+            return this._div;
+        };
+
+        info.update = function(props) {
+            this._div.innerHTML = '<h4>Informações</h4>' +  (props ?   '<b>' + props.nome + '</b><br />'
+                : '');
+        };
+
+        info.addTo(map);
+
+        // FUNCOES DE HIGHT LIGHT DE INFORMACOES
+        function resetHighlight(e) {
+            geojson.resetStyle(e.target);
+            info.update();
+        }
+
+        function zoomToFeature(e) {
+            map.fitBounds(e.target.getBounds());
+        }
+
+        function highlightFeature(e) {
+            const layer = e.target;
+
+            layer.setStyle({
+                weight: 5,
+                color: '#666',
+                dashArray: '',
+                fillOpacity: 0.2
+            });
+
+            if (!L.Browser.ie &&  !L.Browser.edge) {
+                layer.bringToFront();
+            }
+
+            info.update(layer.feature.properties);
+        }
+
+        // INICIALIZAZAO DO MAPA
+        this.http.get('content/departements.json').subscribe((json: any) => {
+            geojson =  L.geoJSON(json, {
+                style: function(feature) {
+                    switch (feature.properties.code) {
+                        case 1: return {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7};
+                        case 2:   return {color: 'white', weight: 2, opacity: 1, fillColor: '#FCCC9E', fillOpacity: 0.7};
+                        case 3:   return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7};
+                        case 4:   return {color: 'white', weight: 2, opacity: 1, fillColor: '#9CCDFE', fillOpacity: 0.7};
+                        case 5:   return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7};
+                    }
+                },
+                onEachFeature: function onEachFeature(feature, layer) {
+                    layer.on({
+                        mouseover: highlightFeature,
+                        mouseout: resetHighlight,
+                        click: zoomToFeature
+                    });
+                }
+            }).addTo(map);
+        });
 
     }
 
@@ -120,64 +179,9 @@ export class Map2Component implements OnInit {
         };
     }
 
-    public getColor(d) {
-        return d > 1000 ? '#800026' :
-            d > 500  ? '#BD0026' :
-                d > 200  ? '#E31A1C' :
-                    d > 100  ? '#FC4E2A' :
-                        d > 50   ? '#FD8D3C' :
-                            d > 20   ? '#FEB24C' :
-                                d > 10   ? '#FED976' :
-                                    '#FFEDA0';
-    }
-
-    onMapClick(map: Map) {
-       console.log(map);
-    }
-
-    public sort() {
-        const result = [this.predicate + ',' + (this.reverse ? 'asc' : 'desc')];
-        if (this.predicate !== 'id') {
-            result.push('id');
-        }
-        return result;
-    }
-
     private onSuccess(data, headers) {
         this.links = this.parseLinks.parse(headers.get('link'));
         this.totalItems = headers.get('X-Total-Count');
         this.queryCount = this.totalItems;
-        // this.page = pagingParams.page;
-        this.municipios = data;
-    }
-
-    /*-----------------------------------------BarChart-Reserva-------------------------------------*/
-
-    public chartClickedReserva(e: any): void {
-        console.log(e);
-    }
-    public chartHoveredReserva(e: any): void {
-        console.log(e);
-    }
-    /*----------------------------------------------------------------------------------------*/
-
-    /*------------------------------------------Donut--------------------------------------------*/
-    public chartClickedDonut(e: any): void {
-        console.log(e);
-    }
-    public chartHoveredDonut(e: any): void {
-        console.log(e);
-    }
-    public chartClickedPieChart(e: any): void {
-        console.log(e);
-    }
-    public chartHoveredPieChart(e: any): void {
-        console.log(e);
-    }
-    public chartClickedLineChart(e: any): void {
-        console.log(e);
-    }
-    public chartHoveredLineChart(e: any): void {
-        console.log(e);
     }
 }
