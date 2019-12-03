@@ -3,27 +3,27 @@
     "sisasApp": {
         "programasProjectos" : {
             "home": {
-                "title": "Programas Projectos",
+                "title": "Programas e Projectos",
                 "createLabel": "Criar novo Programas e Projectos",
-                "createOrEditLabel": "Criar ou editar Programas Projectos",
+                "createOrEditLabel": "Criar ou editar Programas e Projectos",
                 "editLabel": "Editar Programas e Projectos"
             },
             "created": "Um novo Programas Projectos foi criado com o identificador {{ param }}",
             "updated": "Um Programas Projectos foi atualizado com o identificador {{ param }}",
             "deleted": "Um Programas Projectos foi deletado com o identificador {{ param }}",
             "delete": {
-                "question": "Tem certeza de que deseja excluir Programas Projectos {{ id }}?"
+                "question": "Tem certeza de que deseja excluir Programas e Projectos {{ id }}?"
             },
             "detail": {
-                "title": "Programas Projectos"
+                "title": "Programas e Projectos"
             },
             "dtLancamento": "Data Lancamento",
             "dtUltimaAlteracao": "Data Ultima Alteracao",
             "idUsuario": "Usuario",
             "nmDesignacaoProjeto": "Designação do Projecto",
-            "nmDescricaoProjeto": "Descrição ",
+            "nmDescricaoProjeto": "Descrição do Programa/Projecto",
             "idSaaAssociado": "Saa Associado",
-            "tipoFinanciamento": "Tipo Financiamento",
+            "tipoFinanciamento": "Financiamento do Projecto/Programa",
             "especialidade": "Especialidade",
             "idComuna": "Comuna",
             "adjudicacao": "Adjudicação",

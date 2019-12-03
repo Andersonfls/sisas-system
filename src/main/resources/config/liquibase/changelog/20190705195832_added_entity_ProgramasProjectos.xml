@@ -55,6 +55,18 @@
                 <constraints nullable="false" />
             </column>
 
+            <column name="id_provincia" type="bigint">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="id_municipio" type="bigint">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="associado_inquerito" type="boolean">
+                <constraints nullable="false" />
+            </column>
+
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         

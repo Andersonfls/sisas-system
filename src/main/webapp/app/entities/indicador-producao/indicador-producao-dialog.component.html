@@ -1,9 +1,9 @@
 <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
 
     <div class="modal-header">
-        <h4 [hidden]="indicadorProducao.id" class="modal-title" id="myIndicadorProducaoLabelc"
+        <h4 [hidden]="indicadorProducao?.id" class="modal-title" id="myIndicadorProducaoLabelc"
             jhiTranslate="sisasApp.indicadorProducao.home.createLabel">Create or edit a Indicador Producao</h4>
-        <h4 [hidden]="!indicadorProducao.id" class="modal-title" id="myIndicadorProducaoLabele"
+        <h4 [hidden]="!indicadorProducao?.id" class="modal-title" id="myIndicadorProducaoLabele"
             jhiTranslate="sisasApp.indicadorProducao.home.editLabel">Create or edit a Indicador Producao</h4>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 (click)="previousState()">&times;
@@ -30,7 +30,7 @@
             <div class="tab-pane fade show active" id="nav-part1" role="tabpanel" aria-labelledby="nav-part1-tab">
                 <div class="row">
                     <div class="col">
-                        <div class="form-group" [hidden]="!indicadorProducao.id">
+                        <div class="form-group" [hidden]="!indicadorProducao?.id">
                             <label for="id" jhiTranslate="global.field.id">ID</label>
                             <input type="text" class="form-control" id="id" name="id"
                                    [(ngModel)]="indicadorProducao.id" readonly/>
@@ -87,9 +87,9 @@
                                        name="dtUltimaAlteracao"
                                        ngbDatepicker #dtUltimaAlteracaoDp="ngbDatepicker"
                                        [(ngModel)]="indicadorProducao.dtUltimaAlteracao" placeholder="Selecione a data"
-                                />
+                                 readonly />
                                 <span class="input-group-append">
-                    <button type="button" class="btn btn-secondary" (click)="dtUltimaAlteracaoDp.toggle()"><i
+                    <button type="button" class="btn btn-secondary"><i
                         class="fa fa-calendar"></i></button>
                 </span>
                             </div>
@@ -125,7 +125,7 @@
                             <input type="number" class="form-control" name="qtdFontanariosChafarisesOperacionais"
                                    id="field_qtdFontanariosChafarisesOperacionais"
                                    [(ngModel)]="indicadorProducao.qtdFontanariosChafarisesOperacionais" required
-                                   placeholder="Quantidade de fontanarios chafarises"/>
+                                   placeholder="Nº de fontanarios chafarises"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdFontanariosChafarisesOperacionais?.dirty && editForm.controls.qtdFontanariosChafarisesOperacionais?.invalid)">
                                 <small class="form-text text-danger"
@@ -148,7 +148,7 @@
                             <input type="number" class="form-control" name="qtdMediaHorasDistribuicaoDiaria"
                                    id="field_qtdMediaHorasDistribuicaoDiaria"
                                    [(ngModel)]="indicadorProducao.qtdMediaHorasDistribuicaoDiaria" required
-                                   placeholder="Numero da média de horas"/>
+                                   placeholder="Nº da média de horas"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdMediaHorasDistribuicaoDiaria?.dirty && editForm.controls.qtdMediaHorasDistribuicaoDiaria?.invalid)">
                                 <small class="form-text text-danger"
@@ -170,7 +170,7 @@
                             <input type="number" class="form-control" name="qtdMediaHorasParagem"
                                    id="field_qtdMediaHorasParagem"
                                    [(ngModel)]="indicadorProducao.qtdMediaHorasParagem"
-                                   placeholder="Numero da média de horas"/>
+                                   placeholder="Nº da média de horas"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdMediaHorasParagem?.dirty && editForm.controls.qtdMediaHorasParagem?.invalid)">
                                 <small class="form-text text-danger"
@@ -185,13 +185,6 @@
                                 </small>
                             </div>
                         </div>
-                        <!--<div>-->
-                        <!--do component {{(editForm.controls.qtdMediaHorasParagem.value)+5}}-->
-                        <!--<input type="number" class="form-control" name="teste"-->
-                        <!--id="field_teste"-->
-                        <!--value="(editForm.controls.qtdMediaHorasParagem.value)/24" readonly-->
-                        <!--placeholder="vai ser o total"/>-->
-                        <!--</div>-->
                     </div>
                     <div class="col">
                         <div class="form-group">
@@ -202,7 +195,7 @@
                             <input type="number" class="form-control" name="qtdMediaHorasInterrupcaoFaltaEnergia"
                                    id="field_qtdMediaHorasInterrupcaoFaltaEnergia"
                                    [(ngModel)]="indicadorProducao.qtdMediaHorasInterrupcaoFaltaEnergia" required
-                                   placeholder="Numero da média de horas"/>
+                                   placeholder="Nº da média de horas"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdMediaHorasInterrupcaoFaltaEnergia?.dirty && editForm.controls.qtdMediaHorasInterrupcaoFaltaEnergia?.invalid)">
                                 <small class="form-text text-danger"
@@ -1904,96 +1897,63 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="form-control-label" jhiTranslate="sisasApp.indicadorProducao.idSituacao"
-                       for="field_idSituacao">Id Situacao</label>
-                <select class="form-control" id="field_idSituacao" name="idSituacao" [(ngModel)]="indicadorProducao.situacao" required>
-                    <option *ngIf="!editForm.value.situacao" [ngValue]="null" selected>Selecione a Situação...</option>
-                    <option [ngValue]="option.id == indicadorProducao.situacao?.id ? indicadorProducao.situacao : option"
-                             *ngFor="let option of situacaos">{{ option.nmSituacao }}</option>
-                </select>
-            </div>
-            <div [hidden]="!(editForm.controls.idSituacao?.dirty && editForm.controls.idSituacao?.invalid)">
-                <small class="form-text text-danger"
-                       [hidden]="!editForm.controls.idSituacao?.errors?.required"
-                       jhiTranslate="entity.validation.required">
-                    This field is required.
-                </small>
-            </div>
-            <div class="form-group">
-                <label class="form-control-label" jhiTranslate="sisasApp.indicadorProducao.idSistemaAgua"
-                       for="field_idSistemaAgua">Id Sistema Agua</label>
-                <select class="form-control" id="field_idSistemaAgua" name="idSistemaAgua"
-                        [(ngModel)]="indicadorProducao.sistemaAgua" required>
-                    <option *ngIf="!editForm.value.sistemaAgua" [ngValue]="null" selected>Selecione o Sistema de
-                        Água...
-                    </option>
-                    <option [ngValue]="option.id == indicadorProducao.sistemaAgua?.id ? indicadorProducao.sistemaAgua : option" *ngFor="let option of sistemaaguas">{{option.nmSistemaAgua}}</option>
-                </select>
-            </div>
-            <div [hidden]="!(editForm.controls.idSistemaAgua?.dirty && editForm.controls.idSistemaAgua?.invalid)">
-                <small class="form-text text-danger"
-                       [hidden]="!editForm.controls.idSistemaAgua?.errors?.required"
-                       jhiTranslate="entity.validation.required">
-                    This field is required.
-                </small>
-            </div>
+            <!--<div class="form-group">-->
+                <!--<label class="form-control-label" jhiTranslate="sisasApp.indicadorProducao.idSistemaAgua"-->
+                       <!--for="field_idSistemaAgua">Id Sistema Agua</label>-->
+                <!--<select class="form-control" id="field_idSistemaAgua" name="idSistemaAgua"-->
+                        <!--[(ngModel)]="indicadorProducao.sistemaAgua" required>-->
+                    <!--<option *ngIf="!editForm.value.sistemaAgua" [ngValue]="null" selected>Selecione o Sistema de-->
+                        <!--Água...-->
+                    <!--</option>-->
+                    <!--<option [ngValue]="option.id == indicadorProducao.sistemaAgua?.id ? indicadorProducao.sistemaAgua : option" *ngFor="let option of sistemaaguas">{{option.nmSistemaAgua}}</option>-->
+                <!--</select>-->
+            <!--</div>-->
+            <!--<div [hidden]="!(editForm.controls.idSistemaAgua?.dirty && editForm.controls.idSistemaAgua?.invalid)">-->
+                <!--<small class="form-text text-danger"-->
+                       <!--[hidden]="!editForm.controls.idSistemaAgua?.errors?.required"-->
+                       <!--jhiTranslate="entity.validation.required">-->
+                    <!--This field is required.-->
+                <!--</small>-->
+            <!--</div>-->
 
-            <div class="form-group">
-                <label class="form-control-label negrito" jhiTranslate="sisasApp.sistemaAgua.idProvincia"
-                       for="field_idProvincia">id
-                    Provincia</label>
-                <select class="form-control" id="field_idProvincia" name="provincia" [(ngModel)]="indicadorProducao.provincia" required>
-                    <option *ngIf="!editForm.value.provincia" [ngValue]="null" selected>Selecione a Província..</option>
-                    <option [ngValue]="provinciaOption.id === indicadorProducao.provincia?.id ? indicadorProducao.provincia : provinciaOption"
-                            *ngFor="let provinciaOption of provincias">{{provinciaOption.nmProvincia}}</option>
-                </select>
-                <div [hidden]="!(editForm.controls.municipio?.dirty && editForm.controls.municipio?.invalid)">
-                    <small class="form-text text-danger"
-                           [hidden]="!editForm.controls.municipio?.errors?.required"
-                           jhiTranslate="entity.validation.required">
-                        This field is required.
-                    </small>
-                </div>
-            </div>
+            <!--<div class="form-group">-->
+                <!--<label class="form-control-label negrito" jhiTranslate="sisasApp.sistemaAgua.idProvincia"-->
+                       <!--for="field_idProvincia">id-->
+                    <!--Provincia</label>-->
+                <!--<select class="form-control" id="field_idProvincia" name="provincia" [(ngModel)]="indicadorProducao.provincia" required>-->
+                    <!--<option *ngIf="!editForm.value.provincia" [ngValue]="null" selected>Selecione a Província..</option>-->
+                    <!--<option [ngValue]="provinciaOption.id === indicadorProducao.provincia?.id ? indicadorProducao.provincia : provinciaOption"-->
+                            <!--*ngFor="let provinciaOption of provincias">{{provinciaOption.nmProvincia}}</option>-->
+                <!--</select>-->
+                <!--<div [hidden]="!(editForm.controls.municipio?.dirty && editForm.controls.municipio?.invalid)">-->
+                    <!--<small class="form-text text-danger"-->
+                           <!--[hidden]="!editForm.controls.municipio?.errors?.required"-->
+                           <!--jhiTranslate="entity.validation.required">-->
+                        <!--This field is required.-->
+                    <!--</small>-->
+                <!--</div>-->
+            <!--</div>-->
 
-            <div class="form-group">
-                <div class="form-group">
-                    <label class="form-control-label negrito" jhiTranslate="sisasApp.sistemaAgua.idMunicipio" for="field_idMunicipio">id
-                        Municipio</label>
-                    <select class="form-control" id="field_idMunicipio" name="municipio"
-                            [(ngModel)]="indicadorProducao.municipio" required>
-                        <option *ngIf="!editForm.value.municipio" [ngValue]="null" selected>Selecione o Municipio..</option>
-                        <option [ngValue]="municipioOption.id === indicadorProducao.municipio?.id ? indicadorProducao.municipio : municipioOption"
-                                *ngFor="let municipioOption of municipios">{{municipioOption.nmMunicipio}}</option>
-                    </select>
-                </div>
-                <div [hidden]="!(editForm.controls.municipio?.dirty && editForm.controls.municipio?.invalid)">
-                    <small class="form-text text-danger"
-                           [hidden]="!editForm.controls.municipio?.errors?.required"
-                           jhiTranslate="entity.validation.required">
-                        This field is required.
-                    </small>
-                </div>
-            </div>
+            <!--<div class="form-group">-->
+                <!--<div class="form-group">-->
+                    <!--<label class="form-control-label negrito" jhiTranslate="sisasApp.sistemaAgua.idMunicipio" for="field_idMunicipio">id-->
+                        <!--Municipio</label>-->
+                    <!--<select class="form-control" id="field_idMunicipio" name="municipio"-->
+                            <!--[(ngModel)]="indicadorProducao.municipio" required>-->
+                        <!--<option *ngIf="!editForm.value.municipio" [ngValue]="null" selected>Selecione o Municipio..</option>-->
+                        <!--<option [ngValue]="municipioOption.id === indicadorProducao.municipio?.id ? indicadorProducao.municipio : municipioOption"-->
+                                <!--*ngFor="let municipioOption of municipios">{{municipioOption.nmMunicipio}}</option>-->
+                    <!--</select>-->
+                <!--</div>-->
+                <!--<div [hidden]="!(editForm.controls.municipio?.dirty && editForm.controls.municipio?.invalid)">-->
+                    <!--<small class="form-text text-danger"-->
+                           <!--[hidden]="!editForm.controls.municipio?.errors?.required"-->
+                           <!--jhiTranslate="entity.validation.required">-->
+                        <!--This field is required.-->
+                    <!--</small>-->
+                <!--</div>-->
+            <!--</div>-->
 
-            <div class="form-group">
-                <label class="form-control-label" jhiTranslate="sisasApp.indicadorProducao.idComuna"
-                       for="field_idComuna">Id Comuna</label>
-                <select class="form-control" id="field_idComuna" name="idComuna" [(ngModel)]="indicadorProducao.comuna"
-                        required>
-                    <option *ngIf="!editForm.value.comuna" [ngValue]="null" selected>Selecione uma Comuna..</option>
-                    <option [ngValue]="option.id == indicadorProducao.comuna?.id ? indicadorProducao.comuna : option"
-                            *ngFor="let option of comunas; trackBy: trackComunaById">{{option.nmComuna}}</option>
-                </select>
-            </div>
-            <div [hidden]="!(editForm.controls.idComuna?.dirty && editForm.controls.idComuna?.invalid)">
-                <small class="form-text text-danger"
-                       [hidden]="!editForm.controls.idComuna?.errors?.required"
-                       jhiTranslate="entity.validation.required">
-                    This field is required.
-                </small>
-            </div>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="previousState()">

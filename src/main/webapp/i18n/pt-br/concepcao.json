@@ -21,8 +21,8 @@
             "tipoConcurso": "Tipo Concurso",
             "dtLancamento": "Data Lancamento",
             "dtUltimaAlteracao": "Data Ultima Alteração",
-            "dtElaboracaoCon": "Data Elaboração Con",
-            "dtAprovacaoCon": "Data Aprovação Con",
+            "dtElaboracaoCon": "Data de Elab Documentos/Concurso",
+            "dtAprovacaoCon": "Data de Aprov. Doc. Concurso",
             "idProgramasProjectos": "Programas Projectos",
             "idSistemaAgua": "Sistema Água"
         }

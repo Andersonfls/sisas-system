@@ -18,7 +18,7 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-                <th jhiSortBy="id"><span>ID</span> <span class="fa fa-sort"></span></th>
+                <!--<th jhiSortBy="id"><span>ID</span> <span class="fa fa-sort"></span></th>-->
                 <th jhiSortBy="nmEpas"><span>Nm Epas</span> <span class="fa fa-sort"></span></th>
                 <th jhiSortBy="nrContribuinte"><span>Nr Contribuinte</span> <span class="fa fa-sort"></span></th>
                 <th jhiSortBy="idProvincia"><span>Província</span> <span class="fa fa-sort"></span></th>
@@ -30,7 +30,7 @@
             </thead>
             <tbody>
             <tr *ngFor="let epas of epass ;trackBy: trackId">
-                <td><a [routerLink]="['../epas', epas.id ]">{{epas.id}}</a></td>
+                <!--<td><a [routerLink]="['../epas', epas.id ]">{{epas.id}}</a></td>-->
                 <td>{{epas.nmEpas}}</td>
                 <td>{{epas.nrContribuinte}}</td>
                 <td>

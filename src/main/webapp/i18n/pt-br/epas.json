@@ -16,12 +16,12 @@
             "detail": {
                 "title": "Epas"
             },
-            "nmEpas": "Nm Epas",
+            "nmEpas": "Nome Epas",
             "nrContribuinte": "Nr Contribuinte",
             "Comuna": "Comuna",
             "Provincia": "Provincia",
             "Municipio": "Municipio",
-            "nmLocalidade": "Nm Localidade"
+            "nmLocalidade": "Nome Localidade"
         }
     }
 }

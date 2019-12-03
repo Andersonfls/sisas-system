@@ -39,9 +39,9 @@
                         <div class="form-group">
                             <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.associado-inqu" for="field_assin">Associado</label>
                             <select class="form-control" id="field_assin" name="tipoFinanciamento" [(ngModel)]="programasProjectos.associadoInquerito"  required>
-                                <option value="null" selected>Selecione...</option>
-                                <option value="SIM">SIM</option>
-                                <option value="NAO">NAO</option>
+                                <!--<option [value]="null">Selecione...</option>-->
+                                <option [value]="true">SIM</option>
+                                <option [value]="false">NÃO</option>
                             </select>
                         </div>
                     </div>
@@ -80,8 +80,12 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.idSaaAssociado" for="field_idSaaAssociado">Id Saa Associado</label>
-                    <input type="number" class="form-control" name="idSaaAssociado" id="field_idSaaAssociado"
-                        [(ngModel)]="programasProjectos.idSaaAssociado" placeholder="Número do saa associado"/>
+                    <select class="form-control" id="field_idSaaAssociado" name="associado" [(ngModel)]="programasProjectos.idSaaAssociado" required>
+                        <option [ngValue]="null">Selecione o Saa..</option>
+                        <option [ngValue]="opt.id"
+                                *ngFor="let opt of sistemaaguas">{{opt.id}} - {{opt.nmSistemaAgua}}</option>
+                    </select>
+
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.tipoFinanciamento" for="field_tipoFinanciamento">Tipo Financiamento</label>
@@ -118,10 +122,48 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="form-control-label negrito" jhiTranslate="sisasApp.sistemaAgua.idProvincia"
+                           for="field_idProvincia">id
+                        Provincia</label>
+                    <select class="form-control" id="field_idProvincia" name="provincia" [(ngModel)]="programasProjectos.provincia" required>
+                        <option *ngIf="!editForm.value.provincia" [ngValue]="null" selected>Selecione a Província..</option>
+                        <option [ngValue]="provinciaOption.id === programasProjectos.provincia?.id ? programasProjectos.provincia : provinciaOption"
+                                *ngFor="let provinciaOption of provincias">{{provinciaOption.nmProvincia}}</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.municipio?.dirty && editForm.controls.municipio?.invalid)">
+                        <small class="form-text text-danger"
+                               [hidden]="!editForm.controls.municipio?.errors?.required"
+                               jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-group">
+                        <label class="form-control-label negrito" jhiTranslate="sisasApp.sistemaAgua.idMunicipio" for="field_idMunicipio">id
+                            Municipio</label>
+                        <select class="form-control" id="field_idMunicipio" name="municipio"
+                                [(ngModel)]="programasProjectos.municipio" required>
+                            <option *ngIf="!editForm.value.municipio" [ngValue]="null" selected>Selecione o Municipio..</option>
+                            <option [ngValue]="municipioOption.id === programasProjectos.municipio?.id ? programasProjectos.municipio : municipioOption"
+                                    *ngFor="let municipioOption of municipios">{{municipioOption.nmMunicipio}}</option>
+                        </select>
+                    </div>
+                    <div [hidden]="!(editForm.controls.municipio?.dirty && editForm.controls.municipio?.invalid)">
+                        <small class="form-text text-danger"
+                               [hidden]="!editForm.controls.municipio?.errors?.required"
+                               jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.idComuna" for="field_idComuna">Id Comuna</label>
                     <select class="form-control" id="field_idComuna" name="idComuna" [(ngModel)]="programasProjectos.comuna"  required>
                         <option [ngValue]="null" selected>Selecione a Comuna...</option>
-                        <option [ngValue]="option.id == programasProjectos.comuna.id ? programasProjectos.comuna : option" *ngFor="let option of comunas; trackBy: trackComunaById">{{option.nmComuna}}</option>
+                        <option [ngValue]="option.id == programasProjectos.comuna?.id ? programasProjectos.comuna : option" *ngFor="let option of comunas; trackBy: trackComunaById">{{option.nmComuna}}</option>
                     </select>
                 </div>
                 <div [hidden]="!(editForm.controls.comuna?.dirty && editForm.controls.comuna?.invalid)">
@@ -172,11 +214,11 @@
                 </div>
                 <div class="modal-body">
                     <jhi-alert-error></jhi-alert-error>
-                    <div class="form-group" [hidden]="!concepcao.id">
-                        <label for="cpid" jhiTranslate="global.field.id">ID</label>
-                        <input type="text" class="form-control" id="cpid" name="cpid"
-                               [(ngModel)]="concepcao.id" readonly />
-                    </div>
+                    <!--<div class="form-group" [hidden]="!concepcao.id">-->
+                        <!--<label for="cpid" jhiTranslate="global.field.id">ID</label>-->
+                        <!--<input type="text" class="form-control" id="cpid" name="cpid"-->
+                               <!--[(ngModel)]="concepcao.id" readonly />-->
+                    <!--</div>-->
                     <div class="form-group">
                         <label class="form-control-label" jhiTranslate="sisasApp.concepcao.tipoConcurso" for="field_tipoConcurso">Tipo Concurso</label>
                         <select class="form-control" id="field_tipoConcurso" name="tipoConcurso" [(ngModel)]="concepcao.tipoConcurso"  required>
@@ -218,9 +260,9 @@
                         <label class="form-control-label" jhiTranslate="sisasApp.concepcao.dtUltimaAlteracao" for="field_dtUltimaAlteracao">Dt Ultima Alteracao</label>
                         <div class="input-group">
                             <input id="field_dtUltimaAlteracao" type="text" class="form-control" name="dtUltimaAlteracao" ngbDatepicker  #cdtUltimaAlteracaoDp="ngbDatepicker" [(ngModel)]="concepcao.dtUltimaAlteracao"
-                                   placeholder="Data da Última Alteração" />
+                                   placeholder="Data da Última Alteração" readonly/>
                             <span class="input-group-append">
-                             <button type="button" class="btn btn-secondary" (click)="cdtUltimaAlteracaoDp.toggle()"><i class="fa fa-calendar"></i></button>
+                             <button type="button" class="btn btn-secondary"><i class="fa fa-calendar"></i></button>
                              </span>
                         </div>
                     </div>
@@ -274,14 +316,14 @@
                 </div>
                 <div class="modal-body">
                     <jhi-alert-error></jhi-alert-error>
-                    <div class="form-group" [hidden]="!concurso.id">
-                        <label for="ccid" jhiTranslate="global.field.id">ID</label>
-                        <input type="text" class="form-control" id="ccid" name="ccid"
-                               [(ngModel)]="concurso.id" readonly />
-                    </div>
+                    <!--<div class="form-group" [hidden]="!concurso.id">-->
+                        <!--<label for="ccid" jhiTranslate="global.field.id">ID</label>-->
+                        <!--<input type="text" class="form-control" id="ccid" name="ccid"-->
+                               <!--[(ngModel)]="concurso.id" readonly />-->
+                    <!--</div>-->
                     <div class="form-group">
                         <label class="form-control-label" jhiTranslate="sisasApp.concurso.tipoConcurso" for="field_cctipoConcurso">Tipo Concurso</label>
-                        <select class="form-control" id="field_cctipoConcurso" name="cctipoConcurso" [(ngModel)]="concurso.tipoConcurso"  required>
+                        <select class="form-control" id="field_cctipoConcurso" name="cctipoConcurso" [(ngModel)]="concurso.tipoConcurso"  readonly>
                             <option value="Obras ">Obras </option>
                             <option value="Serviços">Serviços</option>
                             <option value="Fornecimentos">Fornecimentos</option>
@@ -319,9 +361,9 @@
                         <label class="form-control-label" jhiTranslate="sisasApp.concurso.dtUltimaAlteracao" for="field_ccdtUltimaAlteracao">Dt Ultima Alteracao</label>
                         <div class="input-group">
                             <input id="field_ccdtUltimaAlteracao" type="text" class="form-control" name="ccdtUltimaAlteracao" ngbDatepicker  #condtUltimaAlteracaoDp="ngbDatepicker" [(ngModel)]="concurso.dtUltimaAlteracao"
-                                   placeholder="Data última alteração"/>
+                                   placeholder="Data última alteração" readonly/>
                             <span class="input-group-append">
-                                <button type="button" class="btn btn-secondary" (click)="condtUltimaAlteracaoDp.toggle()"><i class="fa fa-calendar"></i></button>
+                                <button type="button" class="btn btn-secondary"><i class="fa fa-calendar"></i></button>
                             </span>
                         </div>
                     </div>
@@ -406,14 +448,14 @@
                 </div>
                 <div class="modal-body">
                     <jhi-alert-error></jhi-alert-error>
-                    <div class="form-group" [hidden]="!adjudicacao.id">
-                        <label for="adid" jhiTranslate="global.field.id">ID</label>
-                        <input type="text" class="form-control" id="adid" name="adid"
-                               [(ngModel)]="adjudicacao.id" readonly />
-                    </div>
+                    <!--<div class="form-group" [hidden]="!adjudicacao.id">-->
+                        <!--<label for="adid" jhiTranslate="global.field.id">ID</label>-->
+                        <!--<input type="text" class="form-control" id="adid" name="adid"-->
+                               <!--[(ngModel)]="adjudicacao.id" readonly />-->
+                    <!--</div>-->
                     <div class="form-group">
                         <label class="form-control-label" jhiTranslate="sisasApp.adjudicacao.tipoConcurso" for="field_adtipoConcurso">Tipo Concurso</label>
-                        <select class="form-control" id="field_adtipoConcurso" name="adtipoConcurso" [(ngModel)]="adjudicacao.tipoConcurso"  required>
+                        <select class="form-control" id="field_adtipoConcurso" name="adtipoConcurso" [(ngModel)]="adjudicacao.tipoConcurso"  readonly>
                             <option value="Obras ">Obras </option>
                             <option value="Serviços">Serviços</option>
                             <option value="Fornecimentos">Fornecimentos</option>

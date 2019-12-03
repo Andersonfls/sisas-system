@@ -16,6 +16,8 @@ import {SistemaAgua, SistemaAguaService} from '../sistema-agua';
 import {Concurso, ConcursoService} from '../concurso';
 import {Adjudicacao, AdjudicacaoService} from '../adjudicacao';
 import {Contrato, ContratoService} from '../contrato';
+import {Provincia, ProvinciaService} from '../provincia';
+import {Municipio, MunicipioService} from '../municipio';
 
 @Component({
     selector: 'jhi-programas-projectos-dialog',
@@ -28,7 +30,8 @@ export class ProgramasProjectosDialogComponent implements OnInit {
     isSaving: boolean;
 
     comunas: Comuna[];
-    dttLancamentoDp: any;
+    provincias: Provincia[];
+    municipios: Municipio[];
     dtUltimaAlteracaoDp: any;
     controleSessoes: string;
     private subscription: Subscription;
@@ -55,6 +58,8 @@ export class ProgramasProjectosDialogComponent implements OnInit {
         private jhiAlertService: JhiAlertService,
         private programasProjectosService: ProgramasProjectosService,
         private comunaService: ComunaService,
+        private municipioService: MunicipioService,
+        private provinciaService: ProvinciaService,
         private eventManager: JhiEventManager,
         private route: ActivatedRoute,
         private concepcaoService: ConcepcaoService,
@@ -80,8 +85,23 @@ export class ProgramasProjectosDialogComponent implements OnInit {
         this.adjudicacao = new Adjudicacao();
         this.contrato = new Contrato();
         this.loadAllSisstemasAgua();
+
         this.comunaService.query()
-            .subscribe((res: HttpResponse<Comuna[]>) => { this.comunas = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+            .subscribe((res: HttpResponse<Comuna[]>) => {
+                this.comunas = res.body;
+            }, (res: HttpErrorResponse) => this.onError(res.message));
+
+        this.municipioService.query().subscribe(
+            (res: HttpResponse<Municipio[]>) => {
+                this.municipios = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message));
+
+        this.provinciaService.query().subscribe(
+            (res: HttpResponse<Provincia[]>) => {
+                this.provincias = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message));
     }
 
     loadAllSisstemasAgua() {
@@ -110,6 +130,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                     };
                 }
                 this.programasProjectos = programasProjectos;
+                console.log(this.programasProjectos);
                 this.loadConcepcao(this.programasProjectos.id);
                 this.loadConcurso(this.programasProjectos.id);
                 this.loadAdjudiacao(this.programasProjectos.id);

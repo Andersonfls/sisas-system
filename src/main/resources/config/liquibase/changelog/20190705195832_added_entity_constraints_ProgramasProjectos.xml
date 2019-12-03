@@ -14,5 +14,23 @@
                                  referencedColumnNames="id"
                                  referencedTableName="comuna"/>
 
+        <addForeignKeyConstraint baseColumnNames="id_comuna"
+                                 baseTableName="programas_projectos"
+                                 constraintName="programas_projectos_id_comuna"
+                                 referencedColumnNames="id"
+                                 referencedTableName="comuna"/>
+
+        <addForeignKeyConstraint baseColumnNames="id_provincia"
+                                 baseTableName="programas_projectos"
+                                 constraintName="programas_projectos_id_provincia"
+                                 referencedColumnNames="id"
+                                 referencedTableName="provincia"/>
+
+        <addForeignKeyConstraint baseColumnNames="id_municipio"
+                                 baseTableName="programas_projectos"
+                                 constraintName="programas_projectos_id_municipio"
+                                 referencedColumnNames="id"
+                                 referencedTableName="municipio"/>
+
     </changeSet>
 </databaseChangeLog>

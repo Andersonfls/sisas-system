@@ -115,7 +115,6 @@ public class FornecedorResourceIntTest {
             .numContribuinte(DEFAULT_NUM_CONTRIBUINTE)
             .endereco(DEFAULT_ENDERECO)
             .email(DEFAULT_EMAIL)
-            .especialidade(DEFAULT_ESPECIALIDADE)
             .contato(DEFAULT_CONTATO);
         return fornecedor;
     }
@@ -145,7 +144,6 @@ public class FornecedorResourceIntTest {
         assertThat(testFornecedor.getNumContribuinte()).isEqualTo(DEFAULT_NUM_CONTRIBUINTE);
         assertThat(testFornecedor.getEndereco()).isEqualTo(DEFAULT_ENDERECO);
         assertThat(testFornecedor.getEmail()).isEqualTo(DEFAULT_EMAIL);
-        assertThat(testFornecedor.getEspecialidade()).isEqualTo(DEFAULT_ESPECIALIDADE);
         assertThat(testFornecedor.getContato()).isEqualTo(DEFAULT_CONTATO);
     }
 
@@ -597,8 +595,7 @@ public class FornecedorResourceIntTest {
             .nmFornecedor(UPDATED_NM_FORNECEDOR)
             .numContribuinte(UPDATED_NUM_CONTRIBUINTE)
             .endereco(UPDATED_ENDERECO)
-            .email(UPDATED_EMAIL)
-            .especialidade(UPDATED_ESPECIALIDADE);
+            .email(UPDATED_EMAIL);
         FornecedorDTO fornecedorDTO = fornecedorMapper.toDto(updatedFornecedor);
 
         restFornecedorMockMvc.perform(put("/api/fornecedors")
@@ -614,7 +611,6 @@ public class FornecedorResourceIntTest {
         assertThat(testFornecedor.getNumContribuinte()).isEqualTo(UPDATED_NUM_CONTRIBUINTE);
         assertThat(testFornecedor.getEndereco()).isEqualTo(UPDATED_ENDERECO);
         assertThat(testFornecedor.getEmail()).isEqualTo(UPDATED_EMAIL);
-        assertThat(testFornecedor.getEspecialidade()).isEqualTo(UPDATED_ESPECIALIDADE);
     }
 
     @Test
