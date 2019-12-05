@@ -25,5 +25,7 @@
     "include": [
         "src/main/webapp/app",
         "src/test/javascript/"
-    ]
+    ],
+    "resolveJsonModule": true,
+    "esModuleInterop": true
 }

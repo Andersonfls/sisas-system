@@ -7,7 +7,7 @@ public class UploadFileResponseDTO {
     private long size;
     private Long obraId;
 
-    public UploadFileResponseDTO(String fileName, String fileDownloadUri, String fileType, long size, Long obraId) {
+    public UploadFileResponseDTO(String fileName, String fileDownloadUri, String fileType, long size) {
         this.fileName = fileName;
         this.fileDownloadUri = fileDownloadUri;
         this.fileType = fileType;

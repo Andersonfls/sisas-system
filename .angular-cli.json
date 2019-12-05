@@ -9,7 +9,8 @@
         "assets": [
             "content",
             "i18n",
-            "favicon.ico"
+            "favicon.ico",
+            { "glob": "data.json", "input": "./", "output": "./content/" }
         ],
         "index": "index.html",
         "main": "app/app.main.ts",

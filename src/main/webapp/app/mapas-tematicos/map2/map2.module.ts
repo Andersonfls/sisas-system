@@ -5,6 +5,7 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 import {Map2Component} from './map2.component';
 import {MapResolvePagingParams, map2Route} from './map2.route';
 import {LeafletModule} from '@asymmetrik/ngx-leaflet';
+import {UploadFileService} from './upload-file.service';
 
 const ENTITY_STATES = [
     ...map2Route
@@ -24,7 +25,8 @@ const ENTITY_STATES = [
         Map2Component
     ],
     providers: [
-        MapResolvePagingParams
+        MapResolvePagingParams,
+        UploadFileService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

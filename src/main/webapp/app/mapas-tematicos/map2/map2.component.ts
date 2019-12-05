@@ -5,6 +5,7 @@ import {Principal} from '../../shared/auth/principal.service';
 import {ActivatedRoute} from '@angular/router';
 import * as L from 'leaflet';
 import {HttpClient} from '@angular/common/http';
+import {UploadFileService} from './upload-file.service';
 
 @Component({
     selector: 'jhi-map',
@@ -47,7 +48,8 @@ export class Map2Component implements OnInit {
         private userService: UserService,
         private principal: Principal,
         private activatedRoute: ActivatedRoute,
-        private http: HttpClient
+        private http: HttpClient,
+        private uploadService: UploadFileService
     ) {
         this.routeData = this.activatedRoute.data.subscribe((data) => {
             this.page = data.pagingParams.page;
@@ -144,15 +146,16 @@ export class Map2Component implements OnInit {
         }
 
         // INICIALIZAZAO DO MAPA
-        this.http.get('content/departements.json').subscribe((json: any) => {
+        this.http.get('api/downloadFile/data.json').subscribe((json: any) => {
+            console.log(json);
             geojson =  L.geoJSON(json, {
                 style: function(feature) {
                     switch (feature.properties.code) {
                         case 1: return {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7};
-                        case 2:   return {color: 'white', weight: 2, opacity: 1, fillColor: '#FCCC9E', fillOpacity: 0.7};
-                        case 3:   return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7};
-                        case 4:   return {color: 'white', weight: 2, opacity: 1, fillColor: '#9CCDFE', fillOpacity: 0.7};
-                        case 5:   return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7};
+                        case 2: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FCCC9E', fillOpacity: 0.7};
+                        case 3: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7};
+                        case 4: return {color: 'white', weight: 2, opacity: 1, fillColor: '#9CCDFE', fillOpacity: 0.7};
+                        case 5: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7};
                     }
                 },
                 onEachFeature: function onEachFeature(feature, layer) {

@@ -102,7 +102,7 @@
                             <input type="number" class="form-control" name="qtdPopulacaoCobertaInfraestrutura"
                                    id="field_qtdPopulacaoCobertaInfraestrutura"
                                    [(ngModel)]="indicadorProducao.qtdPopulacaoCobertaInfraestrutura" required
-                                   placeholder="Quantidade de pessoas"/>
+                                   placeholder="Quantidade de pessoas" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdPopulacaoCobertaInfraestrutura?.dirty && editForm.controls.qtdPopulacaoCobertaInfraestrutura?.invalid)">
                                 <small class="form-text text-danger"
@@ -125,7 +125,7 @@
                             <input type="number" class="form-control" name="qtdFontanariosChafarisesOperacionais"
                                    id="field_qtdFontanariosChafarisesOperacionais"
                                    [(ngModel)]="indicadorProducao.qtdFontanariosChafarisesOperacionais" required
-                                   placeholder="Nº de fontanarios chafarises"/>
+                                   placeholder="Nº de fontanarios chafarises" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdFontanariosChafarisesOperacionais?.dirty && editForm.controls.qtdFontanariosChafarisesOperacionais?.invalid)">
                                 <small class="form-text text-danger"
@@ -148,7 +148,7 @@
                             <input type="number" class="form-control" name="qtdMediaHorasDistribuicaoDiaria"
                                    id="field_qtdMediaHorasDistribuicaoDiaria"
                                    [(ngModel)]="indicadorProducao.qtdMediaHorasDistribuicaoDiaria" required
-                                   placeholder="Nº da média de horas"/>
+                                   placeholder="Nº da média de horas" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdMediaHorasDistribuicaoDiaria?.dirty && editForm.controls.qtdMediaHorasDistribuicaoDiaria?.invalid)">
                                 <small class="form-text text-danger"
@@ -170,7 +170,7 @@
                             <input type="number" class="form-control" name="qtdMediaHorasParagem"
                                    id="field_qtdMediaHorasParagem"
                                    [(ngModel)]="indicadorProducao.qtdMediaHorasParagem"
-                                   placeholder="Nº da média de horas"/>
+                                   placeholder="Nº da média de horas" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdMediaHorasParagem?.dirty && editForm.controls.qtdMediaHorasParagem?.invalid)">
                                 <small class="form-text text-danger"
@@ -195,7 +195,7 @@
                             <input type="number" class="form-control" name="qtdMediaHorasInterrupcaoFaltaEnergia"
                                    id="field_qtdMediaHorasInterrupcaoFaltaEnergia"
                                    [(ngModel)]="indicadorProducao.qtdMediaHorasInterrupcaoFaltaEnergia" required
-                                   placeholder="Nº da média de horas"/>
+                                   placeholder="Nº da média de horas" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdMediaHorasInterrupcaoFaltaEnergia?.dirty && editForm.controls.qtdMediaHorasInterrupcaoFaltaEnergia?.invalid)">
                                 <small class="form-text text-danger"
@@ -217,7 +217,7 @@
                             <input type="number" class="form-control" name="qtdVolumeAguaCaptada"
                                    id="field_qtdVolumeAguaCaptada"
                                    [(ngModel)]="indicadorProducao.qtdVolumeAguaCaptada" required
-                                   placeholder="Quantidade do volume de água captada"/>
+                                   placeholder="Quantidade do volume de água captada" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdVolumeAguaCaptada?.dirty && editForm.controls.qtdVolumeAguaCaptada?.invalid)">
                                 <small class="form-text text-danger"
@@ -239,7 +239,7 @@
                             <input type="number" class="form-control" name="qtdVolumeAguaTratada"
                                    id="field_qtdVolumeAguaTratada"
                                    [(ngModel)]="indicadorProducao.qtdVolumeAguaTratada" required
-                                   placeholder="Quantidade do volume de água tratada"/>
+                                   placeholder="Quantidade do volume de água tratada" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdVolumeAguaTratada?.dirty && editForm.controls.qtdVolumeAguaTratada?.invalid)">
                                 <small class="form-text text-danger"
@@ -261,7 +261,7 @@
                             <input type="number" class="form-control" name="qtdVolumeAguaDistribuida"
                                    id="field_qtdVolumeAguaDistribuida"
                                    [(ngModel)]="indicadorProducao.qtdVolumeAguaDistribuida" required
-                                   placeholder="Quantidade do volume de água distribuida"/>
+                                   placeholder="Quantidade do volume de água distribuida" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdVolumeAguaDistribuida?.dirty && editForm.controls.qtdVolumeAguaDistribuida?.invalid)">
                                 <small class="form-text text-danger"
@@ -283,7 +283,7 @@
                             <input type="number" class="form-control" name="qtdConsumoEnergia"
                                    id="field_qtdConsumoEnergia"
                                    [(ngModel)]="indicadorProducao.qtdConsumoEnergia" required
-                                   placeholder="Quantidade do comsumo de energia"/>
+                                   placeholder="Quantidade do comsumo de energia" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdConsumoEnergia?.dirty && editForm.controls.qtdConsumoEnergia?.invalid)">
                                 <small class="form-text text-danger"
@@ -305,7 +305,7 @@
                             <input type="number" class="form-control" name="qtdConsumoCombustivel"
                                    id="field_qtdConsumoCombustivel"
                                    [(ngModel)]="indicadorProducao.qtdConsumoCombustivel" required
-                                   placeholder="Quantidade do consumo combustível"/>
+                                   placeholder="Quantidade do consumo combustível" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdConsumoCombustivel?.dirty && editForm.controls.qtdConsumoCombustivel?.invalid)">
                                 <small class="form-text text-danger"
@@ -327,7 +327,7 @@
                             <input type="number" class="form-control" name="qtdConsumoHipocloritroCalcio"
                                    id="field_qtdConsumoHipocloritroCalcio"
                                    [(ngModel)]="indicadorProducao.qtdConsumoHipocloritroCalcio" required
-                                   placeholder="Quantidade do consumo"/>
+                                   placeholder="Quantidade do consumo" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdConsumoHipocloritroCalcio?.dirty && editForm.controls.qtdConsumoHipocloritroCalcio?.invalid)">
                                 <small class="form-text text-danger"
@@ -355,7 +355,7 @@
                             <input type="number" class="form-control" name="qtdConsumoSulfatoAluminio"
                                    id="field_qtdConsumoSulfatoAluminio"
                                    [(ngModel)]="indicadorProducao.qtdConsumoSulfatoAluminio" required
-                                   placeholder="Quantidade do consumo"/>
+                                   placeholder="Quantidade do consumo" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdConsumoSulfatoAluminio?.dirty && editForm.controls.qtdConsumoSulfatoAluminio?.invalid)">
                                 <small class="form-text text-danger"
@@ -377,7 +377,7 @@
                             <input type="number" class="form-control" name="qtdConsumoHidroxidoCalcio"
                                    id="field_qtdConsumoHidroxidoCalcio"
                                    [(ngModel)]="indicadorProducao.qtdConsumoHidroxidoCalcio" required
-                                   placeholder="Quantidade do consumo"/>
+                                   placeholder="Quantidade do consumo" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdConsumoHidroxidoCalcio?.dirty && editForm.controls.qtdConsumoHidroxidoCalcio?.invalid)">
                                 <small class="form-text text-danger"
@@ -399,7 +399,7 @@
                             <input type="number" class="form-control" name="qtdReparoCaptacaoEtas"
                                    id="field_qtdReparoCaptacaoEtas"
                                    [(ngModel)]="indicadorProducao.qtdReparoCaptacaoEtas" required
-                                   placeholder="Quantidade de reparos"/>
+                                   placeholder="Quantidade de reparos" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdReparoCaptacaoEtas?.dirty && editForm.controls.qtdReparoCaptacaoEtas?.invalid)">
                                 <small class="form-text text-danger"
@@ -421,7 +421,7 @@
                             <input type="number" class="form-control" name="qtdReparoAdutoras"
                                    id="field_qtdReparoAdutoras"
                                    [(ngModel)]="indicadorProducao.qtdReparoAdutoras" required
-                                   placeholder="Quantidade de reparos"/>
+                                   placeholder="Quantidade de reparos" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdReparoAdutoras?.dirty && editForm.controls.qtdReparoAdutoras?.invalid)">
                                 <small class="form-text text-danger"
@@ -443,7 +443,7 @@
                             <input type="number" class="form-control" name="qtdReparoRedeDistribuicao"
                                    id="field_qtdReparoRedeDistribuicao"
                                    [(ngModel)]="indicadorProducao.qtdReparoRedeDistribuicao" required
-                                   placeholder="Quantidade de reparos"/>
+                                   placeholder="Quantidade de reparos" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdReparoRedeDistribuicao?.dirty && editForm.controls.qtdReparoRedeDistribuicao?.invalid)">
                                 <small class="form-text text-danger"
@@ -463,7 +463,7 @@
                                    for="field_qtdReparoRamais">Qtd Reparo Ramais</label>
                             <input type="number" class="form-control" name="qtdReparoRamais" id="field_qtdReparoRamais"
                                    [(ngModel)]="indicadorProducao.qtdReparoRamais" required
-                                   placeholder="Quantidade de reparos"/>
+                                   placeholder="Quantidade de reparos" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdReparoRamais?.dirty && editForm.controls.qtdReparoRamais?.invalid)">
                                 <small class="form-text text-danger"
@@ -485,7 +485,7 @@
                             <input type="number" class="form-control" name="qtdManutencaoCurativa"
                                    id="field_qtdManutencaoCurativa"
                                    [(ngModel)]="indicadorProducao.qtdManutencaoCurativa" required
-                                   placeholder="Quantidade de manutenções"/>
+                                   placeholder="Quantidade de manutenções" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdManutencaoCurativa?.dirty && editForm.controls.qtdManutencaoCurativa?.invalid)">
                                 <small class="form-text text-danger"
@@ -507,7 +507,7 @@
                             <input type="number" class="form-control" name="qtdManutencaoPreventiva"
                                    id="field_qtdManutencaoPreventiva"
                                    [(ngModel)]="indicadorProducao.qtdManutencaoPreventiva" required
-                                   placeholder="Quantidade de manutenções"/>
+                                   placeholder="Quantidade de manutenções" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdManutencaoPreventiva?.dirty && editForm.controls.qtdManutencaoPreventiva?.invalid)">
                                 <small class="form-text text-danger"
@@ -530,7 +530,7 @@
                             <input type="number" class="form-control" name="qtdManutencaoVerificadoSolicitado"
                                    id="field_qtdManutencaoVerificadoSolicitado"
                                    [(ngModel)]="indicadorProducao.qtdManutencaoVerificadoSolicitado" required
-                                   placeholder="Quantidade de reparos"/>
+                                   placeholder="Quantidade de reparos" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdManutencaoVerificadoSolicitado?.dirty && editForm.controls.qtdManutencaoVerificadoSolicitado?.invalid)">
                                 <small class="form-text text-danger"
@@ -554,7 +554,7 @@
                             <input type="number" class="form-control" name="qtdReservatorioLavado"
                                    id="field_qtdReservatorioLavado"
                                    [(ngModel)]="indicadorProducao.qtdReservatorioLavado" required
-                                   placeholder="Quantidade de reservatorios"/>
+                                   placeholder="Quantidade de reservatorios" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdReservatorioLavado?.dirty && editForm.controls.qtdReservatorioLavado?.invalid)">
                                 <small class="form-text text-danger"
@@ -574,7 +574,7 @@
                                    for="field_qtdFuncionarios">Qtd Funcionarios</label>
                             <input type="number" class="form-control" name="qtdFuncionarios" id="field_qtdFuncionarios"
                                    placeholder="Quantidade de funcionários"
-                                   [(ngModel)]="indicadorProducao.qtdFuncionarios" required/>
+                                   [(ngModel)]="indicadorProducao.qtdFuncionarios" required min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdFuncionarios?.dirty && editForm.controls.qtdFuncionarios?.invalid)">
                                 <small class="form-text text-danger"
@@ -596,7 +596,7 @@
                             <input type="number" class="form-control" name="qtdFuncionariosEfectivos"
                                    id="field_qtdFuncionariosEfectivos"
                                    [(ngModel)]="indicadorProducao.qtdFuncionariosEfectivos" required
-                                   placeholder="Quantidade de funcionários efetivos"/>
+                                   placeholder="Quantidade de funcionários efetivos" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdFuncionariosEfectivos?.dirty && editForm.controls.qtdFuncionariosEfectivos?.invalid)">
                                 <small class="form-text text-danger"
@@ -618,7 +618,7 @@
                             <input type="number" class="form-control" name="qtdFuncionariosContratados"
                                    id="field_qtdFuncionariosContratados"
                                    [(ngModel)]="indicadorProducao.qtdFuncionariosContratados" required
-                                   placeholder="Quantidade de funcionários"/>
+                                   placeholder="Quantidade de funcionários" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdFuncionariosContratados?.dirty && editForm.controls.qtdFuncionariosContratados?.invalid)">
                                 <small class="form-text text-danger"
@@ -640,7 +640,7 @@
                             <input type="number" class="form-control" name="qtdFuncionariosOutrasEntidades"
                                    id="field_qtdFuncionariosOutrasEntidades"
                                    [(ngModel)]="indicadorProducao.qtdFuncionariosOutrasEntidades" required
-                                   placeholder="Quantidade de funcionários"/>
+                                   placeholder="Quantidade de funcionários" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdFuncionariosOutrasEntidades?.dirty && editForm.controls.qtdFuncionariosOutrasEntidades?.invalid)">
                                 <small class="form-text text-danger"
@@ -662,7 +662,7 @@
                             <input type="number" class="form-control" name="qtdNovasLigacoesNovosContratos"
                                    id="field_qtdNovasLigacoesNovosContratos"
                                    [(ngModel)]="indicadorProducao.qtdNovasLigacoesNovosContratos" required
-                                   placeholder="Quantidade de novas ligações"/>
+                                   placeholder="Quantidade de novas ligações" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdNovasLigacoesNovosContratos?.dirty && editForm.controls.qtdNovasLigacoesNovosContratos?.invalid)">
                                 <small class="form-text text-danger"
@@ -686,7 +686,7 @@
                             <input type="number" class="form-control" name="qtdNovasLigacoesDomesticasNovosContratos"
                                    id="field_qtdNovasLigacoesDomesticasNovosContratos"
                                    [(ngModel)]="indicadorProducao.qtdNovasLigacoesDomesticasNovosContratos" required
-                                   placeholder="Quantidade de novas ligações"/>
+                                   placeholder="Quantidade de novas ligações" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdNovasLigacoesDomesticasNovosContratos?.dirty && editForm.controls.qtdNovasLigacoesDomesticasNovosContratos?.invalid)">
                                 <small class="form-text text-danger"
@@ -709,7 +709,7 @@
                             <input type="number" class="form-control" name="qtdLigacoesIlegaisRegularizadas"
                                    id="field_qtdLigacoesIlegaisRegularizadas"
                                    [(ngModel)]="indicadorProducao.qtdLigacoesIlegaisRegularizadas" required
-                                   placeholder="Quantidade de ligações"/>
+                                   placeholder="Quantidade de ligações" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdLigacoesIlegaisRegularizadas?.dirty && editForm.controls.qtdLigacoesIlegaisRegularizadas?.invalid)">
                                 <small class="form-text text-danger"
@@ -731,7 +731,7 @@
                             <input type="number" class="form-control" name="qtdLigacoesFechadas"
                                    id="field_qtdLigacoesFechadas"
                                    [(ngModel)]="indicadorProducao.qtdLigacoesFechadas" required
-                                   placeholder="Quantidade de ligações"/>
+                                   placeholder="Quantidade de ligações" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdLigacoesFechadas?.dirty && editForm.controls.qtdLigacoesFechadas?.invalid)">
                                 <small class="form-text text-danger"
@@ -759,7 +759,7 @@
                                 Cortes</label>
                             <input type="number" class="form-control" name="qtdCortes" id="field_qtdCortes"
                                    [(ngModel)]="indicadorProducao.qtdCortes" required
-                                   placeholder="Quantidade de ligações"/>
+                                   placeholder="Quantidade de ligações" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdCortes?.dirty && editForm.controls.qtdCortes?.invalid)">
                                 <small class="form-text text-danger"
@@ -779,7 +779,7 @@
                                    for="field_qtdReligacoes">Qtd Religacoes</label>
                             <input type="number" class="form-control" name="qtdReligacoes" id="field_qtdReligacoes"
                                    [(ngModel)]="indicadorProducao.qtdReligacoes" required
-                                   placeholder="Quantidade de religações"/>
+                                   placeholder="Quantidade de religações" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdReligacoes?.dirty && editForm.controls.qtdReligacoes?.invalid)">
                                 <small class="form-text text-danger"
@@ -801,7 +801,7 @@
                             <input type="number" class="form-control" name="qtdLigacoesActivas"
                                    id="field_qtdLigacoesActivas"
                                    [(ngModel)]="indicadorProducao.qtdLigacoesActivas" required
-                                   placeholder="Quantidade de ligações"/>
+                                   placeholder="Quantidade de ligações" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdLigacoesActivas?.dirty && editForm.controls.qtdLigacoesActivas?.invalid)">
                                 <small class="form-text text-danger"
@@ -823,7 +823,7 @@
                             <input type="number" class="form-control" name="qtdLigacoesDomesticasActivas"
                                    id="field_qtdLigacoesDomesticasActivas"
                                    [(ngModel)]="indicadorProducao.qtdLigacoesDomesticasActivas" required
-                                   placeholder="Quantidade de ligações"/>
+                                   placeholder="Quantidade de ligações" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdLigacoesDomesticasActivas?.dirty && editForm.controls.qtdLigacoesDomesticasActivas?.invalid)">
                                 <small class="form-text text-danger"
@@ -847,7 +847,7 @@
                             <input type="number" class="form-control" name="qtdLigacoesFacturadasBaseLeiturasReais"
                                    id="field_qtdLigacoesFacturadasBaseLeiturasReais"
                                    [(ngModel)]="indicadorProducao.qtdLigacoesFacturadasBaseLeiturasReais" required
-                                   placeholder="Quantidade de ligações"/>
+                                   placeholder="Quantidade de ligações" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdLigacoesFacturadasBaseLeiturasReais?.dirty && editForm.controls.qtdLigacoesFacturadasBaseLeiturasReais?.invalid)">
                                 <small class="form-text text-danger"
@@ -871,7 +871,7 @@
                             <input type="number" class="form-control" name="qtdLigacoesFacturadasBaseEstimativasAvenca"
                                    id="field_qtdLigacoesFacturadasBaseEstimativasAvenca"
                                    [(ngModel)]="indicadorProducao.qtdLigacoesFacturadasBaseEstimativasAvenca" required
-                                   placeholder="Quantidade de ligações"/>
+                                   placeholder="Quantidade de ligações" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdLigacoesFacturadasBaseEstimativasAvenca?.dirty && editForm.controls.qtdLigacoesFacturadasBaseEstimativasAvenca?.invalid)">
                                 <small class="form-text text-danger"
@@ -893,7 +893,7 @@
                             <input type="number" class="form-control" name="qtdVolumeAguaFacturada"
                                    id="field_qtdVolumeAguaFacturada"
                                    [(ngModel)]="indicadorProducao.qtdVolumeAguaFacturada" required
-                                   placeholder="Quantidade do volume"/>
+                                   placeholder="Quantidade do volume" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdVolumeAguaFacturada?.dirty && editForm.controls.qtdVolumeAguaFacturada?.invalid)">
                                 <small class="form-text text-danger"
@@ -920,7 +920,7 @@
                             <input type="number" class="form-control" name="qtdVolumeTotalFacturadaLigacoesDomesticas"
                                    id="field_qtdVolumeTotalFacturadaLigacoesDomesticas"
                                    [(ngModel)]="indicadorProducao.qtdVolumeTotalFacturadaLigacoesDomesticas" required
-                                   placeholder="Quantidade do volume"/>
+                                   placeholder="Quantidade do volume" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdVolumeTotalFacturadaLigacoesDomesticas?.dirty && editForm.controls.qtdVolumeTotalFacturadaLigacoesDomesticas?.invalid)">
                                 <small class="form-text text-danger"
@@ -943,7 +943,7 @@
                             <input type="number" class="form-control" name="qtdVolumeFacturadoBaseLeituraReais"
                                    id="field_qtdVolumeFacturadoBaseLeituraReais"
                                    [(ngModel)]="indicadorProducao.qtdVolumeFacturadoBaseLeituraReais" required
-                                   placeholder="Quantidade do volume"/>
+                                   placeholder="Quantidade do volume" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdVolumeFacturadoBaseLeituraReais?.dirty && editForm.controls.qtdVolumeFacturadoBaseLeituraReais?.invalid)">
                                 <small class="form-text text-danger"
@@ -965,7 +965,7 @@
                             <input type="number" class="form-control" name="vlrTotalFacturado"
                                    id="field_vlrTotalFacturado"
                                    [(ngModel)]="indicadorProducao.vlrTotalFacturado" required
-                                   placeholder="Valor total"/>
+                                   placeholder="Valor total" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.vlrTotalFacturado?.dirty && editForm.controls.vlrTotalFacturado?.invalid)">
                                 <small class="form-text text-danger"
@@ -988,7 +988,7 @@
                             <input type="number" class="form-control" name="vlrFacturasCanceladasNotasCreditos"
                                    id="field_vlrFacturasCanceladasNotasCreditos"
                                    [(ngModel)]="indicadorProducao.vlrFacturasCanceladasNotasCreditos" required
-                                   placeholder="Valor total"/>
+                                   placeholder="Valor total" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.vlrFacturasCanceladasNotasCreditos?.dirty && editForm.controls.vlrFacturasCanceladasNotasCreditos?.invalid)">
                                 <small class="form-text text-danger"
@@ -1007,7 +1007,7 @@
                             <label class="form-control-label" jhiTranslate="sisasApp.indicadorProducao.vlrRealFacturado"
                                    for="field_vlrRealFacturado">Vlr Real Facturado</label>
                             <input type="number" class="form-control" name="vlrRealFacturado"
-                                   id="field_vlrRealFacturado"
+                                   id="field_vlrRealFacturado" min="0"
                                    [(ngModel)]="indicadorProducao.vlrRealFacturado" required placeholder="Valor total"/>
                             <div
                                 [hidden]="!(editForm.controls.vlrRealFacturado?.dirty && editForm.controls.vlrRealFacturado?.invalid)">
@@ -1027,7 +1027,7 @@
                             <label class="form-control-label" jhiTranslate="sisasApp.indicadorProducao.vlrTotalCobrado"
                                    for="field_vlrTotalCobrado">Vlr Total Cobrado</label>
                             <input type="number" class="form-control" name="vlrTotalCobrado" id="field_vlrTotalCobrado"
-                                   [(ngModel)]="indicadorProducao.vlrTotalCobrado" required placeholder="Valor total"/>
+                                   [(ngModel)]="indicadorProducao.vlrTotalCobrado" required placeholder="Valor total" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.vlrTotalCobrado?.dirty && editForm.controls.vlrTotalCobrado?.invalid)">
                                 <small class="form-text text-danger"
@@ -1046,7 +1046,7 @@
                             <label class="form-control-label" jhiTranslate="sisasApp.indicadorProducao.qtdReclamacoes"
                                    for="field_qtdReclamacoes">Qtd Reclamacoes</label>
                             <input type="number" class="form-control" name="qtdReclamacoes" id="field_qtdReclamacoes"
-                                   [(ngModel)]="indicadorProducao.qtdReclamacoes" required placeholder="Valor total"/>
+                                   [(ngModel)]="indicadorProducao.qtdReclamacoes" required placeholder="Valor total" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdReclamacoes?.dirty && editForm.controls.qtdReclamacoes?.invalid)">
                                 <small class="form-text text-danger"
@@ -1079,7 +1079,7 @@
                                    name="qtdReclamacoesRespondidasMenorIgualCincoDias"
                                    id="field_qtdReclamacoesRespondidasMenorIgualCincoDias"
                                    [(ngModel)]="indicadorProducao.qtdReclamacoesRespondidasMenorIgualCincoDias"
-                                   placeholder="Quantidade de Reclamações"/>
+                                   placeholder="Quantidade de Reclamações" min="0"/>
                         </div>
                         <div class="form-group">
                             <label class="form-control-label"
@@ -1092,7 +1092,7 @@
                                    name="qtdReclamacoesRespondidasMaisCincoMenosVinteDias"
                                    id="field_qtdReclamacoesRespondidasMaisCincoMenosVinteDias"
                                    [(ngModel)]="indicadorProducao.qtdReclamacoesRespondidasMaisCincoMenosVinteDias"
-                                   placeholder="Quantidade de Reclamações"/>
+                                   placeholder="Quantidade de Reclamações" min="0"/>
                         </div>
                         <div class="form-group">
                             <label class="form-control-label"
@@ -1105,14 +1105,14 @@
                                    name="qtdReclamacoesRespondidasMaiorIgualVinteDias"
                                    id="field_qtdReclamacoesRespondidasMaiorIgualVinteDias"
                                    [(ngModel)]="indicadorProducao.qtdReclamacoesRespondidasMaiorIgualVinteDias"
-                                   placeholder="Quantidade de Reclamações"/>
+                                   placeholder="Quantidade de Reclamações" min="0"/>
                         </div>
                         <div class="form-group">
                             <label class="form-control-label" jhiTranslate="sisasApp.indicadorProducao.vlrCustoPessoal"
                                    for="field_vlrCustoPessoal">Vlr Custo Pessoal</label>
                             <input type="number" class="form-control" name="vlrCustoPessoal" id="field_vlrCustoPessoal"
                                    [(ngModel)]="indicadorProducao.vlrCustoPessoal" required
-                                   placeholder="Valor do custo pessoal"/>
+                                   placeholder="Valor do custo pessoal" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.vlrCustoPessoal?.dirty && editForm.controls.vlrCustoPessoal?.invalid)">
                                 <small class="form-text text-danger"
@@ -1131,7 +1131,7 @@
                             <label class="form-control-label" jhiTranslate="sisasApp.indicadorProducao.vlrCustoFse"
                                    for="field_vlrCustoFse">Vlr Custo Fse</label>
                             <input type="number" class="form-control" name="vlrCustoFse" id="field_vlrCustoFse"
-                                   [(ngModel)]="indicadorProducao.vlrCustoFse" required placeholder="Valor do custo"/>
+                                   [(ngModel)]="indicadorProducao.vlrCustoFse" required placeholder="Valor do custo" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.vlrCustoFse?.dirty && editForm.controls.vlrCustoFse?.invalid)">
                                 <small class="form-text text-danger"
@@ -1151,7 +1151,7 @@
                                    for="field_vlrCustoEnergia">Vlr Custo Energia</label>
                             <input type="number" class="form-control" name="vlrCustoEnergia" id="field_vlrCustoEnergia"
                                    [(ngModel)]="indicadorProducao.vlrCustoEnergia" required
-                                   placeholder="Valor do custo"/>
+                                   placeholder="Valor do custo" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.vlrCustoEnergia?.dirty && editForm.controls.vlrCustoEnergia?.invalid)">
                                 <small class="form-text text-danger"
@@ -1173,7 +1173,7 @@
                             <input type="number" class="form-control" name="vlrCustoManutencao"
                                    id="field_vlrCustoManutencao"
                                    [(ngModel)]="indicadorProducao.vlrCustoManutencao" required
-                                   placeholder="Valor do custo"/>
+                                   placeholder="Valor do custo" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.vlrCustoManutencao?.dirty && editForm.controls.vlrCustoManutencao?.invalid)">
                                 <small class="form-text text-danger"
@@ -1197,7 +1197,7 @@
                             <input type="number" class="form-control" name="vlrCustoReagentes"
                                    id="field_vlrCustoReagentes"
                                    [(ngModel)]="indicadorProducao.vlrCustoReagentes" required
-                                   placeholder="Valor do custo"/>
+                                   placeholder="Valor do custo" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.vlrCustoReagentes?.dirty && editForm.controls.vlrCustoReagentes?.invalid)">
                                 <small class="form-text text-danger"
@@ -1219,7 +1219,7 @@
                             <input type="number" class="form-control" name="vlrCustoDestinoFinalLamas"
                                    id="field_vlrCustoDestinoFinalLamas"
                                    [(ngModel)]="indicadorProducao.vlrCustoDestinoFinalLamas" required
-                                   placeholder="Valor do custo"/>
+                                   placeholder="Valor do custo" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.vlrCustoDestinoFinalLamas?.dirty && editForm.controls.vlrCustoDestinoFinalLamas?.invalid)">
                                 <small class="form-text text-danger"
@@ -1241,7 +1241,7 @@
                             <input type="number" class="form-control" name="vlrCustoOperacionaisOpex"
                                    id="field_vlrCustoOperacionaisOpex"
                                    [(ngModel)]="indicadorProducao.vlrCustoOperacionaisOpex" required
-                                   placeholder="Valor do custo"/>
+                                   placeholder="Valor do custo" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.vlrCustoOperacionaisOpex?.dirty && editForm.controls.vlrCustoOperacionaisOpex?.invalid)">
                                 <small class="form-text text-danger"
@@ -1264,7 +1264,7 @@
                             <input type="number" class="form-control" name="vlrCustoAmortizaAnualInvestOpCapex"
                                    id="field_vlrCustoAmortizaAnualInvestOpCapex"
                                    [(ngModel)]="indicadorProducao.vlrCustoAmortizaAnualInvestOpCapex" required
-                                   placeholder="Valor do custo"/>
+                                   placeholder="Valor do custo" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.vlrCustoAmortizaAnualInvestOpCapex?.dirty && editForm.controls.vlrCustoAmortizaAnualInvestOpCapex?.invalid)">
                                 <small class="form-text text-danger"
@@ -1286,7 +1286,7 @@
                             <input type="number" class="form-control" name="vlrCustoTotaisCapexOpex"
                                    id="field_vlrCustoTotaisCapexOpex"
                                    [(ngModel)]="indicadorProducao.vlrCustoTotaisCapexOpex" required
-                                   placeholder="Valor do custo" disabled/>
+                                   placeholder="Valor do custo" disabled min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.vlrCustoTotaisCapexOpex?.dirty && editForm.controls.vlrCustoTotaisCapexOpex?.invalid)">
                                 <small class="form-text text-danger"
@@ -1305,7 +1305,7 @@
                             <label class="form-control-label" jhiTranslate="sisasApp.indicadorProducao.qtdCaptacoes"
                                    for="field_qtdCaptacoes">Qtd Captacoes</label>
                             <input type="number" class="form-control" name="qtdCaptacoes" id="field_qtdCaptacoes"
-                                   [(ngModel)]="indicadorProducao.qtdCaptacoes" required placeholder="Valor do custo"/>
+                                   [(ngModel)]="indicadorProducao.qtdCaptacoes" required placeholder="Valor do custo" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdCaptacoes?.dirty && editForm.controls.qtdCaptacoes?.invalid)">
                                 <small class="form-text text-danger"
@@ -1326,7 +1326,7 @@
                                 Etas</label>
                             <input type="number" class="form-control" name="qtdEtas" id="field_qtdEtas"
                                    [(ngModel)]="indicadorProducao.qtdEtas" required placeholder="Valor do custo"/>
-                            <div [hidden]="!(editForm.controls.qtdEtas?.dirty && editForm.controls.qtdEtas?.invalid)">
+                            <div [hidden]="!(editForm.controls.qtdEtas?.dirty && editForm.controls.qtdEtas?.invalid)" min="0">
                                 <small class="form-text text-danger"
                                        [hidden]="!editForm.controls.qtdEtas?.errors?.required"
                                        jhiTranslate="entity.validation.required">
@@ -1345,7 +1345,7 @@
                             <input type="number" class="form-control" name="qtdReservatorios"
                                    id="field_qtdReservatorios"
                                    [(ngModel)]="indicadorProducao.qtdReservatorios" required
-                                   placeholder="Quantidade de reservatórios"/>
+                                   placeholder="Quantidade de reservatórios" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdReservatorios?.dirty && editForm.controls.qtdReservatorios?.invalid)">
                                 <small class="form-text text-danger"
@@ -1373,7 +1373,7 @@
                             <input type="number" class="form-control" name="qtdEstacoesElevatorias"
                                    id="field_qtdEstacoesElevatorias"
                                    [(ngModel)]="indicadorProducao.qtdEstacoesElevatorias" required
-                                   placeholder="Quantidade estações"/>
+                                   placeholder="Quantidade estações" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdEstacoesElevatorias?.dirty && editForm.controls.qtdEstacoesElevatorias?.invalid)">
                                 <small class="form-text text-danger"
@@ -1395,7 +1395,7 @@
                             <input type="number" class="form-control" name="qtdComprimentoAdutoras"
                                    id="field_qtdComprimentoAdutoras"
                                    [(ngModel)]="indicadorProducao.qtdComprimentoAdutoras" required
-                                   placeholder="Numero do comprimento"/>
+                                   placeholder="Numero do comprimento" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdComprimentoAdutoras?.dirty && editForm.controls.qtdComprimentoAdutoras?.invalid)">
                                 <small class="form-text text-danger"
@@ -1417,7 +1417,7 @@
                             <input type="number" class="form-control" name="qtdComprimentoRedes"
                                    id="field_qtdComprimentoRedes"
                                    [(ngModel)]="indicadorProducao.qtdComprimentoRedes" required
-                                   placeholder="Numero do comprimento"/>
+                                   placeholder="Numero do comprimento" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdComprimentoRedes?.dirty && editForm.controls.qtdComprimentoRedes?.invalid)">
                                 <small class="form-text text-danger"
@@ -1439,7 +1439,7 @@
                             <input type="number" class="form-control" name="qtdComprimentoRamais"
                                    id="field_qtdComprimentoRamais"
                                    [(ngModel)]="indicadorProducao.qtdComprimentoRamais" required
-                                   placeholder="Numero do comprimento"/>
+                                   placeholder="Numero do comprimento" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdComprimentoRamais?.dirty && editForm.controls.qtdComprimentoRamais?.invalid)">
                                 <small class="form-text text-danger"
@@ -1461,7 +1461,7 @@
                             <input type="number" class="form-control" name="qtdAcoesFormacaoMoPlaneadas"
                                    id="field_qtdAcoesFormacaoMoPlaneadas"
                                    [(ngModel)]="indicadorProducao.qtdAcoesFormacaoMoPlaneadas" required
-                                   placeholder="Quantidade de ações"/>
+                                   placeholder="Quantidade de ações" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdAcoesFormacaoMoPlaneadas?.dirty && editForm.controls.qtdAcoesFormacaoMoPlaneadas?.invalid)">
                                 <small class="form-text text-danger"
@@ -1483,7 +1483,7 @@
                             <input type="number" class="form-control" name="qtdAcoesFormacaoMmsPlaneadas"
                                    id="field_qtdAcoesFormacaoMmsPlaneadas"
                                    [(ngModel)]="indicadorProducao.qtdAcoesFormacaoMmsPlaneadas" required
-                                   placeholder="Quantidade de ações"/>
+                                   placeholder="Quantidade de ações" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdAcoesFormacaoMmsPlaneadas?.dirty && editForm.controls.qtdAcoesFormacaoMmsPlaneadas?.invalid)">
                                 <small class="form-text text-danger"
@@ -1505,7 +1505,7 @@
                             <input type="number" class="form-control" name="qtdAcoesFormacaoCmpPlaneadas"
                                    id="field_qtdAcoesFormacaoCmpPlaneadas"
                                    [(ngModel)]="indicadorProducao.qtdAcoesFormacaoCmpPlaneadas" required
-                                   placeholder="Quantidade de ações"/>
+                                   placeholder="Quantidade de ações" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdAcoesFormacaoCmpPlaneadas?.dirty && editForm.controls.qtdAcoesFormacaoCmpPlaneadas?.invalid)">
                                 <small class="form-text text-danger"
@@ -1530,7 +1530,7 @@
                                    name="qtdAcoesFormacaoSoftwareFornecidosPlanejadas"
                                    id="field_qtdAcoesFormacaoSoftwareFornecidosPlanejadas"
                                    [(ngModel)]="indicadorProducao.qtdAcoesFormacaoSoftwareFornecidosPlanejadas" required
-                                   placeholder="Quantidade de ações"/>
+                                   placeholder="Quantidade de ações" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdAcoesFormacaoSoftwareFornecidosPlanejadas?.dirty && editForm.controls.qtdAcoesFormacaoSoftwareFornecidosPlanejadas?.invalid)">
                                 <small class="form-text text-danger"
@@ -1552,7 +1552,7 @@
                             <input type="number" class="form-control" name="qtdAcoesFormacaoMoRealizadas"
                                    id="field_qtdAcoesFormacaoMoRealizadas"
                                    [(ngModel)]="indicadorProducao.qtdAcoesFormacaoMoRealizadas" required
-                                   placeholder="Quantidade de ações"/>
+                                   placeholder="Quantidade de ações" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdAcoesFormacaoMoRealizadas?.dirty && editForm.controls.qtdAcoesFormacaoMoRealizadas?.invalid)">
                                 <small class="form-text text-danger"
@@ -1574,7 +1574,7 @@
                             <input type="number" class="form-control" name="qtdAcoesFormacaoMmsRealizadas"
                                    id="field_qtdAcoesFormacaoMmsRealizadas"
                                    [(ngModel)]="indicadorProducao.qtdAcoesFormacaoMmsRealizadas" required
-                                   placeholder="Quantidade de ações"/>
+                                   placeholder="Quantidade de ações" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdAcoesFormacaoMmsRealizadas?.dirty && editForm.controls.qtdAcoesFormacaoMmsRealizadas?.invalid)">
                                 <small class="form-text text-danger"
@@ -1596,7 +1596,7 @@
                             <input type="number" class="form-control" name="qtdAcoesFormacaoCmpRealizadas"
                                    id="field_qtdAcoesFormacaoCmpRealizadas"
                                    [(ngModel)]="indicadorProducao.qtdAcoesFormacaoCmpRealizadas" required
-                                   placeholder="Quantidade de ações"/>
+                                   placeholder="Quantidade de ações" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdAcoesFormacaoCmpRealizadas?.dirty && editForm.controls.qtdAcoesFormacaoCmpRealizadas?.invalid)">
                                 <small class="form-text text-danger"
@@ -1621,7 +1621,7 @@
                                    name="qtdAcoesFormacaoSoftwareFornecidosRealizadas"
                                    id="field_qtdAcoesFormacaoSoftwareFornecidosRealizadas"
                                    [(ngModel)]="indicadorProducao.qtdAcoesFormacaoSoftwareFornecidosRealizadas" required
-                                   placeholder="Quantidade de ações"/>
+                                   placeholder="Quantidade de ações" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdAcoesFormacaoSoftwareFornecidosRealizadas?.dirty && editForm.controls.qtdAcoesFormacaoSoftwareFornecidosRealizadas?.invalid)">
                                 <small class="form-text text-danger"
@@ -1647,7 +1647,7 @@
                             <input type="number" class="form-control" name="qtdAcoesFormacaoRealizadas"
                                    id="field_qtdAcoesFormacaoRealizadas"
                                    [(ngModel)]="indicadorProducao.qtdAcoesFormacaoRealizadas" required
-                                   placeholder="Quantidade de ações" disabled/>
+                                   placeholder="Quantidade de ações" min="0" disabled/>
                             <div
                                 [hidden]="!(editForm.controls.qtdAcoesFormacaoRealizadas?.dirty && editForm.controls.qtdAcoesFormacaoRealizadas?.invalid)">
                                 <small class="form-text text-danger"
@@ -1669,7 +1669,7 @@
                             <input type="number" class="form-control" name="qtdManuaisMoPrevistos"
                                    id="field_qtdManuaisMoPrevistos"
                                    [(ngModel)]="indicadorProducao.qtdManuaisMoPrevistos" required
-                                   placeholder="Quantidade de manuais"/>
+                                   placeholder="Quantidade de manuais" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdManuaisMoPrevistos?.dirty && editForm.controls.qtdManuaisMoPrevistos?.invalid)">
                                 <small class="form-text text-danger"
@@ -1691,7 +1691,7 @@
                             <input type="number" class="form-control" name="qtdManuaisMmsPrevistos"
                                    id="field_qtdManuaisMmsPrevistos"
                                    [(ngModel)]="indicadorProducao.qtdManuaisMmsPrevistos" required
-                                   placeholder="Quantidade de manuais"/>
+                                   placeholder="Quantidade de manuais" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdManuaisMmsPrevistos?.dirty && editForm.controls.qtdManuaisMmsPrevistos?.invalid)">
                                 <small class="form-text text-danger"
@@ -1713,7 +1713,7 @@
                             <input type="number" class="form-control" name="qtdManuaisCmpPrevistos"
                                    id="field_qtdManuaisCmpPrevistos"
                                    [(ngModel)]="indicadorProducao.qtdManuaisCmpPrevistos" required
-                                   placeholder="Quantidade de manuais"/>
+                                   placeholder="Quantidade de manuais" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdManuaisCmpPrevistos?.dirty && editForm.controls.qtdManuaisCmpPrevistos?.invalid)">
                                 <small class="form-text text-danger"
@@ -1735,7 +1735,7 @@
                             <input type="number" class="form-control" name="qtdManuaisPrevistos"
                                    id="field_qtdManuaisPrevistos"
                                    [(ngModel)]="indicadorProducao.qtdManuaisPrevistos" required
-                                   placeholder="Quantidade de manuais" disabled/>
+                                   placeholder="Quantidade de manuais" min="0" disabled/>
                             <div
                                 [hidden]="!(editForm.controls.qtdManuaisPrevistos?.dirty && editForm.controls.qtdManuaisPrevistos?.invalid)">
                                 <small class="form-text text-danger"
@@ -1757,7 +1757,7 @@
                             <input type="number" class="form-control" name="qtdAcoesManuaisMoRealizadas"
                                    id="field_qtdAcoesManuaisMoRealizadas"
                                    [(ngModel)]="indicadorProducao.qtdAcoesManuaisMoRealizadas" required
-                                   placeholder="Quantidade de ações"/>
+                                   placeholder="Quantidade de ações" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdAcoesManuaisMoRealizadas?.dirty && editForm.controls.qtdAcoesManuaisMoRealizadas?.invalid)">
                                 <small class="form-text text-danger"
@@ -1779,7 +1779,7 @@
                             <input type="number" class="form-control" name="qtdManuaisMmsRealizadas"
                                    id="field_qtdManuaisMmsRealizadas"
                                    [(ngModel)]="indicadorProducao.qtdManuaisMmsRealizadas" required
-                                   placeholder="Quantidade de manuais"/>
+                                   placeholder="Quantidade de manuais" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdManuaisMmsRealizadas?.dirty && editForm.controls.qtdManuaisMmsRealizadas?.invalid)">
                                 <small class="form-text text-danger"
@@ -1801,7 +1801,7 @@
                             <input type="number" class="form-control" name="qtdManuaisCmpRealizadas"
                                    id="field_qtdManuaisCmpRealizadas"
                                    [(ngModel)]="indicadorProducao.qtdManuaisCmpRealizadas" required
-                                   placeholder="Quantidade de manuais"/>
+                                   placeholder="Quantidade de manuais" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdManuaisCmpRealizadas?.dirty && editForm.controls.qtdManuaisCmpRealizadas?.invalid)">
                                 <small class="form-text text-danger"
