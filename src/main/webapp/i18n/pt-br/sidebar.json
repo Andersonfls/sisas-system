@@ -18,11 +18,11 @@
             "title": "Inventario de Inquérito",
             "subItem1": "Sistema de Águas",
             "subItem2": "Log Sistema de Águas",
-            "subItem3": "Indicador de Produção",
-            "subItem4": "Log Indicador de produção"
+            "subItem3": "Indicadores de Produção",
+            "subItem4": "Log Indicadores de produção"
         },
         "item4": {
-            "title": "Programas-Projectos",
+            "title": "Programas e Projectos",
             "subItem1": "Programas e Projectos",
             "subItem2": "Log Programas e Projectos"
         },
@@ -31,30 +31,30 @@
             "subItem1": "Início Banner",
             "subItem2": "Início Destaques",
             "subItem3": "Início Últimas Notícias",
-            "subItem4": "Início Publicacao PDF",
+            "subItem4": "Início Publicão PDF",
             "subItem5": "Sobre DNA Banner",
             "subItem6": "Sobre DNA"
         },
         "item6": {
             "title": "Relatórios",
             "subItem1": "Estat. Inquéritos Preenchidos",
-            "subItem2": "Sist. Agua Fonte Subt. e Bomba Manual",
-            "subItem3": "Sist. Agua Fonte Subt. e Bomba Energia",
-            "subItem4": "Sist. Agua Fonte Subt. e Bomba Gravidade/Outros",
-            "subItem5": "Sist. Água Fonte Super.. e Opcao Técnica",
+            "subItem2": "Sist. Água Fonte Subt. e Bomba Manual",
+            "subItem3": "Sist. Água Fonte Subt. e Bomba Energia",
+            "subItem4": "Sist. Água Fonte Subt. e Bomba Gravidade/Outros",
+            "subItem5": "Sist. Água Fonte Super. e Opcão Técnica",
             "subItem6": "Cober. Servicos de Água e Saneamento",
             "subItem7": "Cober. Sector de Água",
             "subItem8": "Cober. Sector de Água e Saneamento",
-            "subItem9": "Func. sistemas de Água",
-            "subItem10": "Func. sistemas de Água e Chafarizes",
-            "subItem11": "Benef. Agua por fonte Super. e Opcao Técnica",
-            "subItem12": "Benef. Agua por fonte Subt. e Bomba de Energia",
-            "subItem13": "Benef. Agua por fonte Subt. e Bomba Mecanica",
-            "subItem14": "Benef. Agua por fonte Subt. e Bomba de Manual",
-            "subItem15": "Benef. Agua por fonte Subt. e Tipo de Bomba ",
+            "subItem9": "Func. Sistemas de Água",
+            "subItem10": "Func. Sistemas de Água e Chafarizes",
+            "subItem11": "Benef. Água por fonte Super. e Opcao Técnica",
+            "subItem12": "Benef. Água por fonte Subt. e Bomba de Energia",
+            "subItem13": "Benef. Água por fonte Subt. e Bomba Mecanica",
+            "subItem14": "Benef. Água por fonte Subt. e Bomba de Manual",
+            "subItem15": "Benef. Água por fonte Subt. e Tipo de Bomba ",
             "subItem16": "Trat. Sistemas de Água"
         },
-        "item7": "Mapa-Temático"
+        "item7": "Mapas Temáticos"
 
     }
 }
