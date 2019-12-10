@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import org.springframework.data.jpa.repository.*;
 
+import java.util.List;
+
 
 /**
  * Spring Data JPA repository for the Comuna entity.
@@ -22,5 +24,8 @@ public interface ComunaRepository extends JpaRepository<Comuna, Long>, JpaSpecif
 
     @Query("select count(c) from Comuna c where c.municipio.id = :id ")
     Integer quantidadeComunasPorMunicipio(@Param("id") Long id);
+
+    @Query("select c from Comuna c where c.municipio.id in (?1) order by c.nmComuna")
+    List<Comuna> findByMunicipioId(Long municipioId);
 
 }

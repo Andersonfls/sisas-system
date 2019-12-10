@@ -2,6 +2,7 @@ package com.minea.sisas.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.minea.sisas.domain.Epas;
+import com.minea.sisas.domain.Municipio;
 import com.minea.sisas.repository.EpasRepository;
 import com.minea.sisas.security.AuthoritiesConstants;
 import com.minea.sisas.service.EpasService;

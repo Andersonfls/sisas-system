@@ -134,6 +134,12 @@ public class ComunaResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(comunaService.findOne(id)));
     }
 
+    @GetMapping("/comunas/comunaByMunicipio")
+    public List<Comuna> getAllComunaByMunicipio(Long municipioId) {
+        log.debug("REST request to get all Disciplina");
+        return comunaRepository.findByMunicipioId(municipioId);
+    }
+
     /**
      * DELETE  /comunas/:id : delete the "id" comuna.
      *

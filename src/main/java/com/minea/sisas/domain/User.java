@@ -106,6 +106,18 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Column(length = 100, unique = true)
     private String email;
 
+    @ManyToOne
+    @JoinColumn(name = "id_provincia")
+    private Provincia provincia;
+
+    @ManyToOne
+    @JoinColumn(name = "id_municipio")
+    private Municipio municipio;
+
+    @ManyToOne
+    @JoinColumn(name = "id_comuna")
+    private Comuna comuna;
+
     @NotNull
     @Column(nullable = false)
     private boolean activated = false;
@@ -141,6 +153,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
     private Set<Authority> authorities = new HashSet<>();
 
     /*---------------------ID-----------------*/
+
     public Long getId() {
         return id;
     }
@@ -284,6 +297,43 @@ public class User extends AbstractAuditingEntity implements Serializable {
         this.email = email;
     }
     /*------------------------------------------------------*/
+
+    /*------------------------Provincia-------------------------*/
+    public Provincia getProvincia() {
+        return provincia;
+    }
+    public User provincia(Provincia provincia) { this.provincia = provincia;
+        return this;
+    }
+    public void setProvincia(Provincia provincia) {
+        this.provincia = provincia;
+    }
+    /*------------------------Provincia-------------------------*/
+
+    /*------------------------Municipio-------------------------*/
+    public Municipio getMunicipio() {
+        return municipio;
+    }
+    public User municipio(Municipio municipio) {
+        this.municipio = municipio;
+        return this;
+    }
+    public void setMunicipio(Municipio municipio) {
+        this.municipio = municipio;
+    }
+    /*------------------------Municipio-------------------------*/
+
+    /*------------------------Comuna-------------------------*/
+    public Comuna getComuna() {
+        return comuna;
+    }
+    public User comuna(Comuna comuna) { this.comuna = comuna;
+        return this;
+    }
+    public void setComuna(Comuna comuna) {
+        this.comuna = comuna;
+    }
+    /*------------------------Comuna-------------------------*/
 
     /*----------------------------ImageUrl------------------------------*/
     public String getImageUrl() {

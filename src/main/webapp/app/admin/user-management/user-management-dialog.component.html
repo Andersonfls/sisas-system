@@ -113,12 +113,20 @@
             <!--</div>-->
             <div class="col-md-6">
                 <div class="form-group">
-                    <label class="form-control-label" for="enderecoCidade">Provincia</label>
-                    <input type="text" class="form-control"
-                           name="enderecoCidade" id="enderecoCidade"
-                           [(ngModel)]="user.enderecoCidade"
-                           maxlength="75"
-                    >
+                    <label class="form-control-label negrito"
+                           for="field_idProvincia">Provincia</label>
+                    <select class="form-control" id="field_idProvincia" name="provincia" [(ngModel)]="user.provincia" (change)="onChangeMunicipios()">
+                        <option *ngIf="!editForm.value.provincia" [ngValue]="null" selected>Selecione a Província..</option>
+                        <option [ngValue]="provinciaOption.id === user.provincia?.id ? user.provincia : provinciaOption"
+                                *ngFor="let provinciaOption of provincias">{{provinciaOption.nmProvincia}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.provincia?.dirty && editForm.controls.provincia?.invalid)">
+                    <small class="form-text text-danger"
+                           [hidden]="!editForm.controls.provincia?.errors?.required"
+                           jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
                 </div>
             </div>
         </div>
@@ -126,20 +134,38 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label class="form-control-label" for="enderecoCep">Municipio</label>
-                    <input type="text"
-                           class="form-control" name="enderecoCep" id="enderecoCep"
-                           [(ngModel)]="user.enderecoCidade"
-                    >
+                    <label class="form-control-label negrito"
+                           for="field_idMunicipio">Municipio</label>
+                    <select class="form-control" id="field_idMunicipio" name="municipio" [(ngModel)]="user.municipio" (change)="onChangeComunas()">
+                        <option *ngIf="!editForm.value.municipio" [ngValue]="null" selected>Selecione o Municipio..</option>
+                        <option [ngValue]="municipioOption.id === user.municipio?.id ? user.municipio : municipioOption"
+                                *ngFor="let municipioOption of municipios">{{municipioOption.nmMunicipio}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.municipio?.dirty && editForm.controls.municipio?.invalid)">
+                    <small class="form-text text-danger"
+                           [hidden]="!editForm.controls.municipio?.errors?.required"
+                           jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label class="form-control-label" for="comuna">Comuna</label>
-                    <input type="text" class="form-control" name="enderecoUf" id="comuna"
-                           [(ngModel)]="user.enderecoCidade" maxlength="2"
-                    >
+                    <label class="form-control-label negrito" for="field_idComuna">Comuna</label>
+                    <select class="form-control" id="field_idComuna" name="comuna" [(ngModel)]="user.comuna">
+                        <option *ngIf="!editForm.value.comuna" [ngValue]="null" selected>Selecione a Comuna...</option>
+                        <option [ngValue]="comunaOption.id === user.comuna?.id ? user.comuna :comunaOption "
+                                *ngFor="let comunaOption of comunas">{{comunaOption.nmComuna}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.comuna?.dirty && editForm.controls.comuna?.invalid)">
+                    <small class="form-text text-danger"
+                           [hidden]="!editForm.controls.comuna?.errors?.required"
+                           jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
                 </div>
             </div>
         </div>

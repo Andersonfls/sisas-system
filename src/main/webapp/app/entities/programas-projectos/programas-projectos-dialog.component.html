@@ -125,7 +125,7 @@
                     <label class="form-control-label negrito" jhiTranslate="sisasApp.sistemaAgua.idProvincia"
                            for="field_idProvincia">id
                         Provincia</label>
-                    <select class="form-control" id="field_idProvincia" name="provincia" [(ngModel)]="programasProjectos.provincia" required>
+                    <select class="form-control" id="field_idProvincia" name="provincia" [(ngModel)]="programasProjectos.provincia" (change)="onChangeMunicipios()" required>
                         <option *ngIf="!editForm.value.provincia" [ngValue]="null" selected>Selecione a Província..</option>
                         <option [ngValue]="provinciaOption.id === programasProjectos.provincia?.id ? programasProjectos.provincia : provinciaOption"
                                 *ngFor="let provinciaOption of provincias">{{provinciaOption.nmProvincia}}</option>
@@ -144,7 +144,7 @@
                         <label class="form-control-label negrito" jhiTranslate="sisasApp.sistemaAgua.idMunicipio" for="field_idMunicipio">id
                             Municipio</label>
                         <select class="form-control" id="field_idMunicipio" name="municipio"
-                                [(ngModel)]="programasProjectos.municipio" required>
+                                [(ngModel)]="programasProjectos.municipio" (change)="onChangeComunas()" required>
                             <option *ngIf="!editForm.value.municipio" [ngValue]="null" selected>Selecione o Municipio..</option>
                             <option [ngValue]="municipioOption.id === programasProjectos.municipio?.id ? programasProjectos.municipio : municipioOption"
                                     *ngFor="let municipioOption of municipios">{{municipioOption.nmMunicipio}}</option>

@@ -25,6 +25,9 @@
         "createdBy": "Criado por",
         "createdDate": "Criado em",
         "lastModifiedBy": "Alterado por",
-        "lastModifiedDate": "Alterado em"
+        "lastModifiedDate": "Alterado em",
+        "Comuna": "Comuna",
+        "Provincia": "Provincia",
+        "Municipio": "Municipio"
     }
 }

@@ -1,9 +1,16 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager } from 'ng-jhipster';
+import {JhiAlertService, JhiEventManager} from 'ng-jhipster';
 import { UserModalService } from './user-modal.service';
 import { JhiLanguageHelper, User, UserService } from '../../shared';
+import {Comuna} from '../../entities/comuna/comuna.model';
+import {Municipio} from '../../entities/municipio/municipio.model';
+import {Provincia} from '../../entities/provincia/provincia.model';
+import {ComunaService} from '../../entities/comuna/comuna.service';
+import {MunicipioService} from '../../entities/municipio/municipio.service';
+import {ProvinciaService} from '../../entities/provincia/provincia.service';
+import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
 
 @Component({
     selector: 'jhi-user-mgmt-dialog',
@@ -15,11 +22,21 @@ export class UserMgmtDialogComponent implements OnInit {
     languages: any[];
     authorities: any[];
     isSaving: Boolean;
+    provincias: Provincia[];
+    provincia: Provincia;
+    municipios: Municipio[];
+    municipio: Municipio;
+    comunas: Comuna[];
+    comuna: Comuna;
 
     constructor(
+        private jhiAlertService: JhiAlertService,
         public activeModal: NgbActiveModal,
         private languageHelper: JhiLanguageHelper,
         private userService: UserService,
+        private provinciaService: ProvinciaService,
+        private municipioService: MunicipioService,
+        private comunaService: ComunaService,
         private eventManager: JhiEventManager
     ) {}
 
@@ -33,6 +50,13 @@ export class UserMgmtDialogComponent implements OnInit {
             this.languages = languages;
         });
         this.status();
+
+        this.provinciaService.query().subscribe(
+            (res: HttpResponse<Provincia[]>) => {
+                this.provincias = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message));
+
     }
 
     status() {
@@ -60,8 +84,35 @@ export class UserMgmtDialogComponent implements OnInit {
         this.activeModal.dismiss(result.body);
     }
 
+    private onError(error: any) {
+        this.jhiAlertService.error(error.message, null, null);
+    }
+
     private onSaveError() {
         this.isSaving = false;
+    }
+
+    onChangeMunicipios() {
+        this.municipio = null;
+        this.comuna = null;
+
+        this.municipioService.queryMunicipioByProvinciaId({
+            provinciaId: this.user.provincia.id
+        })
+            .subscribe(res => {
+                this.municipios = res.body;
+            });
+    }
+
+    onChangeComunas() {
+        this.comuna = null;
+
+        this.comunaService.queryComunaByMunicipioId({
+            municipioId: this.user.municipio.id
+        })
+            .subscribe(res => {
+                this.comunas = res.body;
+            });
     }
 }
 

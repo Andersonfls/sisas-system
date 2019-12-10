@@ -29,9 +29,12 @@ export class ProgramasProjectosDialogComponent implements OnInit {
     programasProjectos: ProgramasProjectos = new ProgramasProjectos();
     isSaving: boolean;
 
-    comunas: Comuna[];
     provincias: Provincia[];
+    provincia: Provincia;
     municipios: Municipio[];
+    municipio: Municipio;
+    comunas: Comuna[];
+    comuna: Comuna;
     dtUltimaAlteracaoDp: any;
     controleSessoes: string;
     private subscription: Subscription;
@@ -588,6 +591,29 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                 this.contrato = event.body;
             });
         }
+    }
+
+    onChangeMunicipios() {
+        this.municipio = null;
+        this.comuna = null;
+
+        this.municipioService.queryMunicipioByProvinciaId({
+            provinciaId: this.programasProjectos.provincia.id
+        })
+            .subscribe(res => {
+                this.municipios = res.body;
+            });
+    }
+
+    onChangeComunas() {
+        this.comuna = null;
+
+        this.comunaService.queryComunaByMunicipioId({
+            municipioId: this.programasProjectos.municipio.id
+        })
+            .subscribe(res => {
+                this.comunas = res.body;
+            });
     }
 
     public hideModalContrato() {

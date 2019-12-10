@@ -2,8 +2,7 @@ package com.minea.sisas.service.dto;
 
 import com.minea.sisas.config.Constants;
 
-import com.minea.sisas.domain.Authority;
-import com.minea.sisas.domain.User;
+import com.minea.sisas.domain.*;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
@@ -67,6 +66,12 @@ public class UserDTO {
     @Size(min = 5, max = 100)
     private String email;
 
+    private Provincia provincia;
+
+    private Municipio municipio;
+
+    private Comuna comuna;
+
     @Size(max = 256)
     private String imageUrl;
 
@@ -112,6 +117,9 @@ public class UserDTO {
         this.celular = user.getCelular();
         this.telefone = user.getTelefone();
         this.email = user.getEmail();
+        this.provincia = user.getProvincia();
+        this.municipio = user.getMunicipio();
+        this.comuna = user.getComuna();
         this.activated = user.getActivated();
         this.imageUrl = user.getImageUrl();
         this.langKey = user.getLangKey();
@@ -320,6 +328,33 @@ public class UserDTO {
         this.email = email;
     }
     /*------------------------------------------------------*/
+
+    /*---------------------------Provincia----------------------*/
+    public Provincia getProvincia() {
+        return provincia;
+    }
+    public void setProvincia(Provincia provincia) {
+        this.provincia = provincia;
+    }
+    /*---------------------------Provincia--------------------------*/
+
+    /*---------------------------Municipio----------------------*/
+    public Municipio getMunicipio() {
+        return municipio;
+    }
+    public void setMunicipio(Municipio municipio) {
+        this.municipio = municipio;
+    }
+    /*---------------------------Municipio--------------------------*/
+
+    /*---------------------------Comuna----------------------*/
+    public Comuna getComuna() {
+        return comuna;
+    }
+    public void setComuna(Comuna comuna) {
+        this.comuna = comuna;
+    }
+    /*---------------------------Comuna----------------------*/
 
     /*--------------------------ImageURl--------------------------------*/
     public String getImageUrl() {

@@ -3,6 +3,7 @@ package com.minea.sisas.service.mapper;
 import com.minea.sisas.domain.Authority;
 import com.minea.sisas.domain.User;
 import com.minea.sisas.service.dto.UserDTO;
+import org.mapstruct.Mapping;
 
 import org.springframework.stereotype.Service;
 

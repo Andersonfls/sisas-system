@@ -1,6 +1,7 @@
 package com.minea.sisas.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.minea.sisas.domain.Municipio;
 import com.minea.sisas.repository.MunicipioRepository;
 import com.minea.sisas.service.MunicipioQueryService;
 import com.minea.sisas.service.MunicipioService;
@@ -125,6 +126,12 @@ public class MunicipioResource {
         log.debug("REST request to get Municipio : {}", id);
         MunicipioDTO municipioDTO = municipioService.findOne(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(municipioDTO));
+    }
+
+    @GetMapping("/municipios/municipioByProvincia")
+    public List<Municipio> getAllMunicipioByProvincia(Long provinciaId) {
+        log.debug("REST request to get all Disciplina");
+        return municipioRepository.findByProvinciaId(provinciaId);
     }
 
     /**

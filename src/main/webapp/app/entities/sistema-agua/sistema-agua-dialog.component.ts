@@ -26,9 +26,12 @@ export class SistemaAguaDialogComponent implements OnInit {
     sistemaAgua: SistemaAgua;
     isSaving: boolean;
     situacaos: Situacao[];
-    comunas: Comuna[];
     provincias: Provincia[];
+    provincia: Provincia;
     municipios: Municipio[];
+    municipio: Municipio;
+    comunas: Comuna[];
+    comuna: Comuna;
     dtLancamentoDp: any;
     dtUltimaAlteracaoDp: any;
     public tipoComunaAldeias: Array<any> = ['Concentrada', 'Dispersa', 'Semi-Dispersa'];
@@ -197,6 +200,29 @@ export class SistemaAguaDialogComponent implements OnInit {
     }
     previousState() {
         window.history.back();
+    }
+
+    onChangeMunicipios() {
+        this.municipio = null;
+        this.comuna = null;
+
+        this.municipioService.queryMunicipioByProvinciaId({
+            provinciaId: this.sistemaAgua.provincia.id
+        })
+            .subscribe(res => {
+                this.municipios = res.body;
+            });
+    }
+
+    onChangeComunas() {
+        this.comuna = null;
+
+        this.comunaService.queryComunaByMunicipioId({
+            municipioId: this.sistemaAgua.municipio.id
+        })
+            .subscribe(res => {
+                this.comunas = res.body;
+            });
     }
 }
 

@@ -19,6 +19,7 @@
                 <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
                     <th jhiSortBy="login"><span jhiTranslate="userManagement.login">Login</span> <span class="fa fa-sort"></span></th>
                     <th jhiSortBy="email"><span jhiTranslate="userManagement.email">Email</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="idProvincia"><span>Província</span> <span class="fa fa-sort"></span></th>
                     <th>Status</th>
                     <th><span jhiTranslate="userManagement.profiles">Profiles</span></th>
                     <th jhiSortBy="createdDate"><span jhiTranslate="userManagement.createdDate">Created Date</span> <span class="fa fa-sort"></span></th>
@@ -31,6 +32,11 @@
                 <tr *ngFor="let user of users; trackBy: trackIdentity">
                     <td>{{user.login}}</td>
                     <td>{{user.email}}</td>
+                    <td>
+                        <div *ngIf="user.provincia">
+                            <a [routerLink]="['../provincia', user.provincia.id  ]" >{{user.provincia.nmProvincia}}</a>
+                        </div>
+                    </td>
                     <td>
                         <button class="btn btn-danger btn-sm" (click)="setActive(user, true)" *ngIf="!user.activated"
                                 jhiTranslate="userManagement.deactivated">Deactivated</button>

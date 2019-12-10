@@ -7,11 +7,13 @@ import {Municipio} from './municipio.model';
 import {createRequestOption} from '../../shared';
 
 export type EntityResponseType = HttpResponse<Municipio>;
+type EntityArrayResponseType = HttpResponse<Municipio[]>;
 
 @Injectable()
 export class MunicipioService {
 
     private resourceUrl =  SERVER_API_URL + 'api/municipios';
+    public resourceUrl2 = SERVER_API_URL + 'api/municipios/municipioByProvincia';
 
     constructor(private http: HttpClient) { }
 
@@ -47,6 +49,11 @@ export class MunicipioService {
             params,
             observe: 'response'
         });
+    }
+
+    queryMunicipioByProvinciaId(req?: any): Observable<EntityArrayResponseType> {
+        const options = createRequestOption(req);
+        return this.http.get<Municipio[]>(this.resourceUrl2, { params: options, observe: 'response' });
     }
 
     delete(id: number): Observable<HttpResponse<any>> {

@@ -1,3 +1,7 @@
+import {Provincia} from '../../entities/provincia/provincia.model';
+import {Municipio} from '../../entities/municipio/municipio.model';
+import {Comuna} from '../../entities/comuna/comuna.model';
+
 export class User {
 
     public id?: any;
@@ -22,6 +26,9 @@ export class User {
     public telefone?: string;
     public celular?: string;
     public email?: string;
+    public provincia?: Provincia;
+    public municipio?: Municipio;
+    public comuna?: Comuna;
     public activated?: Boolean;
     public langKey?: string;
     public authorities?: any[];
@@ -54,6 +61,9 @@ export class User {
         telefone?: string,
         celular?: string,
         email?: string,
+        provincia?: Provincia,
+        municipio?: Municipio,
+        comuna?: Comuna,
         activated?: Boolean,
         langKey?: string,
         authorities?: any[],
@@ -78,6 +88,9 @@ export class User {
         this.qrAssociado = qrAssociado ? qrAssociado : null;
         this.nfAssociado = nfAssociado ? nfAssociado : null;
         this.email = email ? email : null;
+        this.provincia = provincia ? provincia : null;
+        this.municipio = municipio ? municipio : null;
+        this.comuna = comuna ? comuna : null;
         this.activated = activated ? activated : false;
         this.langKey = langKey ? langKey : null;
         this.authorities = authorities ? authorities : null;

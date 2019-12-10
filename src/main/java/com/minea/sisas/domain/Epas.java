@@ -30,7 +30,7 @@ public class Epas implements Serializable {
     private String nrContribuinte;
 
 
-    @ManyToOne(optional = false)
+    @ManyToOne
     @JoinColumn(name = "id_comuna")
     private Comuna comuna;
 

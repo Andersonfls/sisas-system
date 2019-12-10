@@ -26,8 +26,11 @@ export class EpasDialogComponent implements OnInit {
     isSaving: boolean;
 
     provincias: Provincia[];
+    provincia: Provincia;
     municipios: Municipio[];
+    municipio: Municipio;
     comunas: Comuna[];
+    comuna: Comuna;
 
     constructor(
         public activeModal: NgbActiveModal,
@@ -36,30 +39,31 @@ export class EpasDialogComponent implements OnInit {
         private provinciaService: ProvinciaService,
         private municipioService: MunicipioService,
         private comunaService: ComunaService,
-        private eventManager: JhiEventManager
+        private eventManager: JhiEventManager,
+        private route: ActivatedRoute
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false;
 
-        this.provinciaService.query()
-            .subscribe((res: HttpResponse<Provincia[]>) => { this.provincias = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
-        console.log(this.epas);
+/*        if (this.epas.id !== null) {
+            this.provincia = this.epas.comuna.municipio.provincia;
+            this.municipio = this.epas.comuna.municipio;
+            this.comuna = this.epas.comuna;
 
-        this.epas.provincia = null;
+            this.provinciaService.query()
+                .subscribe((res: HttpResponse<Provincia[]>) => {
+                    this.provincias = res.body;
+                }, (res: HttpErrorResponse) => this.onError(res.message));
 
-        this.municipioService.query()
-            .subscribe((res: HttpResponse<Municipio[]>) => { this.municipios = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
-        console.log(this.epas);
+            this.municipioService.queryMunicipioByProvinciaId({provinciaId: this.provincia.id}).subscribe(res => {
+                this.municipios = res.body;
+            });
 
-        this.epas.municipio = null;
-
-        this.comunaService.query()
-            .subscribe((res: HttpResponse<Comuna[]>) => { this.comunas = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
-        console.log(this.epas);
-
-        this.epas.comuna = null;
+            this.comunaService.queryComunaByMunicipioId({municipioId: this.municipio.id}).subscribe(res => {
+                this.comunas = res.body;
+            });*/
     }
 
     clear() {
@@ -98,6 +102,29 @@ export class EpasDialogComponent implements OnInit {
 
     trackMunicipioById(index: number, item: Municipio) {
         return item.id;
+    }
+
+    onChangeMunicipios() {
+        this.municipio = null;
+        this.comuna = null;
+
+        this.municipioService.queryMunicipioByProvinciaId({
+            provinciaId: this.epas.provincia.id
+        })
+            .subscribe(res => {
+                this.municipios = res.body;
+            });
+    }
+
+    onChangeComunas() {
+        this.comuna = null;
+
+        this.comunaService.queryComunaByMunicipioId({
+            municipioId: this.epas.municipio.id
+        })
+            .subscribe(res => {
+                this.comunas = res.body;
+            });
     }
 }
 
