@@ -2,6 +2,7 @@ package com.minea.sisas.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.minea.sisas.service.EmpreitadaService;
+import com.minea.sisas.service.dto.ConcursoDTO;
 import com.minea.sisas.web.rest.errors.BadRequestAlertException;
 import com.minea.sisas.web.rest.util.HeaderUtil;
 import com.minea.sisas.web.rest.util.PaginationUtil;
@@ -114,6 +115,20 @@ public class EmpreitadaResource {
     public ResponseEntity<EmpreitadaDTO> getEmpreitada(@PathVariable Long id) {
         log.debug("REST request to get Empreitada : {}", id);
         EmpreitadaDTO empreitadaDTO = empreitadaService.findOne(id);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(empreitadaDTO));
+    }
+
+    /**
+     * GET  /concursos/programas-projectos/:id : get the "id" concurso.
+     *
+     * @param id the id of the concursoDTO to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the concursoDTO, or with status 404 (Not Found)
+     */
+    @GetMapping("/empreitadas/programas-projectos/{id}")
+    @Timed
+    public ResponseEntity<EmpreitadaDTO> getConcursoByProgramasProjectos(@PathVariable Long id) {
+        log.debug("REST request to get Empreitada : {}", id);
+        EmpreitadaDTO empreitadaDTO = empreitadaService.findOneByProgramasProjectos(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(empreitadaDTO));
     }
 

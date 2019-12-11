@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 
 import { ProgramasProjectos } from './programas-projectos.model';
@@ -18,6 +17,8 @@ import {Adjudicacao, AdjudicacaoService} from '../adjudicacao';
 import {Contrato, ContratoService} from '../contrato';
 import {Provincia, ProvinciaService} from '../provincia';
 import {Municipio, MunicipioService} from '../municipio';
+import {Execucao, ExecucaoService} from '../execucao';
+import {Empreitada, EmpreitadaService} from '../empreitada';
 
 @Component({
     selector: 'jhi-programas-projectos-dialog',
@@ -54,6 +55,14 @@ export class ProgramasProjectosDialogComponent implements OnInit {
     contrato: Contrato;
     @ViewChild('closeModalContrato') private closeModalContrato: ElementRef;
 
+    //EMPREITADA
+    empreitada: Empreitada;
+    @ViewChild('closeModalEmpreitada') private closeModalEmpreitada: ElementRef;
+
+    //EXECUCAO
+    execucao: Execucao;
+    @ViewChild('closeModalExecucao') private closeModalExecucao: ElementRef;
+
     constructor(
         private jhiAlertService: JhiAlertService,
         private programasProjectosService: ProgramasProjectosService,
@@ -67,6 +76,8 @@ export class ProgramasProjectosDialogComponent implements OnInit {
         private adjService: AdjudicacaoService,
         private contratoService: ContratoService,
         private sistemaAguaService: SistemaAguaService,
+        private empreitadaService: EmpreitadaService,
+        private execucaoService: ExecucaoService
     ) {
     }
 
@@ -84,6 +95,8 @@ export class ProgramasProjectosDialogComponent implements OnInit {
         this.concurso = new Concurso();
         this.adjudicacao = new Adjudicacao();
         this.contrato = new Contrato();
+        this.empreitada = new Empreitada();
+        this.execucao = new Execucao();
         this.loadAllSisstemasAgua();
 
         this.comunaService.query()
@@ -135,6 +148,8 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                 this.loadConcurso(this.programasProjectos.id);
                 this.loadAdjudiacao(this.programasProjectos.id);
                 this.loadContrato(this.programasProjectos.id);
+                this.loadEmpreitada(this.programasProjectos.id);
+                this.loadExecucao(this.programasProjectos.id)
             });
     }
 
@@ -421,6 +436,59 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                 }
 
                 this.contrato = contrato;
+            });
+    }
+
+    //EXECUCAO
+    loadExecucao(id) {
+        this.execucaoService.findByProgramasProjectos(id)
+            .subscribe((execucaoResponse: HttpResponse<Execucao>) => {
+                const execucao: Execucao = execucaoResponse.body;
+                if (execucao.dtLancamento) {
+                    execucao.dtLancamento = {
+                        year: execucao.dtLancamento.getFullYear(),
+                        month: execucao.dtLancamento.getMonth() + 1,
+                        day: execucao.dtLancamento.getDate()
+                    };
+                }
+                if (execucao.dtPeridoReferencia) {
+                    execucao.dtPeridoReferencia = {
+                        year: execucao.dtPeridoReferencia.getFullYear(),
+                        month: execucao.dtPeridoReferencia.getMonth() + 1,
+                        day: execucao.dtPeridoReferencia.getDate()
+                    };
+                }
+                if (execucao.dtFimReferencia) {
+                    execucao.dtFimReferencia = {
+                        year: execucao.dtFimReferencia.getFullYear(),
+                        month: execucao.dtFimReferencia.getMonth() + 1,
+                        day: execucao.dtFimReferencia.getDate()
+                    };
+                }
+                if (execucao.dtFactura) {
+                    execucao.dtFactura = {
+                        year: execucao.dtFactura.getFullYear(),
+                        month: execucao.dtFactura.getMonth() + 1,
+                        day: execucao.dtFactura.getDate()
+                    };
+                }
+                this.execucao = execucao;
+            });
+    }
+
+    //EMPREITADA
+    loadEmpreitada(id) {
+        this.empreitadaService.findByProgramasProjectos(id)
+            .subscribe((empreitadaResponse: HttpResponse<Empreitada>) => {
+                const empreitada: Empreitada = empreitadaResponse.body;
+                if (empreitada.dtLancamento) {
+                    empreitada.dtLancamento = {
+                        year: empreitada.dtLancamento.getFullYear(),
+                        month: empreitada.dtLancamento.getMonth() + 1,
+                        day: empreitada.dtLancamento.getDate()
+                    };
+                }
+                this.empreitada = empreitada;
             });
     }
 

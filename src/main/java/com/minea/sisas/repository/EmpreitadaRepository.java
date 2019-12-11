@@ -13,4 +13,5 @@ import org.springframework.data.jpa.repository.*;
 @Repository
 public interface EmpreitadaRepository extends JpaRepository<Empreitada, Long>, JpaSpecificationExecutor<Empreitada> {
 
+    Empreitada findByIdProgramasProjectosId(long id);
 }

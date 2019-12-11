@@ -1,7 +1,9 @@
 package com.minea.sisas.service;
 
+import com.minea.sisas.domain.Contrato;
 import com.minea.sisas.domain.Empreitada;
 import com.minea.sisas.repository.EmpreitadaRepository;
+import com.minea.sisas.service.dto.ContratoDTO;
 import com.minea.sisas.service.dto.EmpreitadaDTO;
 import com.minea.sisas.service.mapper.EmpreitadaMapper;
 import org.slf4j.Logger;
@@ -66,6 +68,13 @@ public class EmpreitadaService {
     public EmpreitadaDTO findOne(Long id) {
         log.debug("Request to get Empreitada : {}", id);
         Empreitada empreitada = empreitadaRepository.findOne(id);
+        return empreitadaMapper.toDto(empreitada);
+    }
+
+    @Transactional(readOnly = true)
+    public EmpreitadaDTO findOneByProgramasProjectos(Long id) {
+        log.debug("Request to get Empreitada : {}", id);
+        Empreitada empreitada = empreitadaRepository.findByIdProgramasProjectosId(id);
         return empreitadaMapper.toDto(empreitada);
     }
 

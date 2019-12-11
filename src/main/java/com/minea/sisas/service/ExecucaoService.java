@@ -1,7 +1,9 @@
 package com.minea.sisas.service;
 
+import com.minea.sisas.domain.Empreitada;
 import com.minea.sisas.domain.Execucao;
 import com.minea.sisas.repository.ExecucaoRepository;
+import com.minea.sisas.service.dto.EmpreitadaDTO;
 import com.minea.sisas.service.dto.ExecucaoDTO;
 import com.minea.sisas.service.mapper.ExecucaoMapper;
 import org.slf4j.Logger;
@@ -67,6 +69,13 @@ public class ExecucaoService {
         log.debug("Request to get Execucao : {}", id);
         Execucao execucao = execucaoRepository.findOne(id);
         return execucaoMapper.toDto(execucao);
+    }
+
+    @Transactional(readOnly = true)
+    public ExecucaoDTO findOneByProgramasProjectos(Long id) {
+        log.debug("Request to get Execucao : {}", id);
+        Execucao empreitada = execucaoRepository.findByIdProgramasProjectosId(id);
+        return execucaoMapper.toDto(empreitada);
     }
 
     /**
