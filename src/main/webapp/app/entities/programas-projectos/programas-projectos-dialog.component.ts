@@ -19,6 +19,7 @@ import {Provincia, ProvinciaService} from '../provincia';
 import {Municipio, MunicipioService} from '../municipio';
 import {Execucao, ExecucaoService} from '../execucao';
 import {Empreitada, EmpreitadaService} from '../empreitada';
+import {Situacao, SituacaoService} from '../situacao';
 
 @Component({
     selector: 'jhi-programas-projectos-dialog',
@@ -36,6 +37,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
     dtUltimaAlteracaoDp: any;
     controleSessoes: string;
     private subscription: Subscription;
+    situacaos: Situacao[];
 
     // Concepcao
     concepcao: Concepcao;
@@ -77,7 +79,8 @@ export class ProgramasProjectosDialogComponent implements OnInit {
         private contratoService: ContratoService,
         private sistemaAguaService: SistemaAguaService,
         private empreitadaService: EmpreitadaService,
-        private execucaoService: ExecucaoService
+        private execucaoService: ExecucaoService,
+        private situacaoService: SituacaoService
     ) {
     }
 
@@ -90,6 +93,8 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                 this.programasProjectos = new ProgramasProjectos();
             }
         });
+        this.situacaoService.query()
+            .subscribe((res: HttpResponse<Situacao[]>) => { this.situacaos = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
 
         this.concepcao = new Concepcao();
         this.concurso = new Concurso();

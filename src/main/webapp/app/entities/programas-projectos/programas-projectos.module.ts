@@ -24,6 +24,7 @@ import {SistemaAguaService} from '../sistema-agua';
 import {NgxCurrencyModule} from 'ngx-currency';
 import {ExecucaoService} from '../execucao';
 import {EmpreitadaService} from '../empreitada';
+import {SituacaoService} from '../situacao';
 
 const ENTITY_STATES = [
     ...programasProjectosRoute,
@@ -63,6 +64,7 @@ const ENTITY_STATES = [
         SistemaAguaService,
         ExecucaoService,
         EmpreitadaService,
+        SituacaoService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

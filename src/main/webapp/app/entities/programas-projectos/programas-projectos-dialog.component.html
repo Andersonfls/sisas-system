@@ -1269,7 +1269,7 @@
                         <label class="form-control-label" jhiTranslate="sisasApp.execucao.idSituacao" for="field_idSituacao">Id Situacao</label>
                         <select class="form-control" id="field_idSituacao" name="idSituacao" [(ngModel)]="execucao.idSituacaoId"  required>
                             <option *ngIf="!editForm.value.idSituacao" [ngValue]="null" selected></option>
-                            <option [ngValue]="situacaoOption.id" *ngFor="let situacaoOption of situacaos; trackBy: trackSituacaoById">{{situacaoOption.id}}</option>
+                            <option [ngValue]="situacaoOption.id" *ngFor="let situacaoOption of situacaos">{{situacaoOption.id}}</option>
                         </select>
                     </div>
                     <div [hidden]="!(editForm.controls.idSituacao?.dirty && editForm.controls.idSituacao?.invalid)">
