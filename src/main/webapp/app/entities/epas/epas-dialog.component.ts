@@ -47,23 +47,22 @@ export class EpasDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
 
-/*        if (this.epas.id !== null) {
-            this.provincia = this.epas.comuna.municipio.provincia;
-            this.municipio = this.epas.comuna.municipio;
-            this.comuna = this.epas.comuna;
-
-            this.provinciaService.query()
-                .subscribe((res: HttpResponse<Provincia[]>) => {
-                    this.provincias = res.body;
-                }, (res: HttpErrorResponse) => this.onError(res.message));
-
-            this.municipioService.queryMunicipioByProvinciaId({provinciaId: this.provincia.id}).subscribe(res => {
-                this.municipios = res.body;
-            });
-
-            this.comunaService.queryComunaByMunicipioId({municipioId: this.municipio.id}).subscribe(res => {
+        this.comunaService.query()
+            .subscribe((res: HttpResponse<Comuna[]>) => {
                 this.comunas = res.body;
-            });*/
+            }, (res: HttpErrorResponse) => this.onError(res.message));
+
+        this.municipioService.query().subscribe(
+            (res: HttpResponse<Municipio[]>) => {
+                this.municipios = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message));
+
+        this.provinciaService.query().subscribe(
+            (res: HttpResponse<Provincia[]>) => {
+                this.provincias = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message));
     }
 
     clear() {
@@ -105,8 +104,8 @@ export class EpasDialogComponent implements OnInit {
     }
 
     onChangeMunicipios() {
-        this.municipio = null;
-        this.comuna = null;
+        this.municipios = null;
+        this.comunas = null;
 
         this.municipioService.queryMunicipioByProvinciaId({
             provinciaId: this.epas.provincia.id
@@ -117,7 +116,7 @@ export class EpasDialogComponent implements OnInit {
     }
 
     onChangeComunas() {
-        this.comuna = null;
+        this.comunas = null;
 
         this.comunaService.queryComunaByMunicipioId({
             municipioId: this.epas.municipio.id

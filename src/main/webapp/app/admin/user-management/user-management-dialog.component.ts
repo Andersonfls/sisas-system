@@ -51,6 +51,17 @@ export class UserMgmtDialogComponent implements OnInit {
         });
         this.status();
 
+        this.comunaService.query()
+            .subscribe((res: HttpResponse<Comuna[]>) => {
+                this.comunas = res.body;
+            }, (res: HttpErrorResponse) => this.onError(res.message));
+
+        this.municipioService.query().subscribe(
+            (res: HttpResponse<Municipio[]>) => {
+                this.municipios = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message));
+
         this.provinciaService.query().subscribe(
             (res: HttpResponse<Provincia[]>) => {
                 this.provincias = res.body;
@@ -93,8 +104,8 @@ export class UserMgmtDialogComponent implements OnInit {
     }
 
     onChangeMunicipios() {
-        this.municipio = null;
-        this.comuna = null;
+        this.municipios = null;
+        this.comunas = null;
 
         this.municipioService.queryMunicipioByProvinciaId({
             provinciaId: this.user.provincia.id
@@ -105,7 +116,7 @@ export class UserMgmtDialogComponent implements OnInit {
     }
 
     onChangeComunas() {
-        this.comuna = null;
+        this.comunas = null;
 
         this.comunaService.queryComunaByMunicipioId({
             municipioId: this.user.municipio.id

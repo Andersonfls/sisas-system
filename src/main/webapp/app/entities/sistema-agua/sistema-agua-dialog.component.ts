@@ -203,8 +203,8 @@ export class SistemaAguaDialogComponent implements OnInit {
     }
 
     onChangeMunicipios() {
-        this.municipio = null;
-        this.comuna = null;
+        this.municipios = null;
+        this.comunas = null;
 
         this.municipioService.queryMunicipioByProvinciaId({
             provinciaId: this.sistemaAgua.provincia.id
@@ -215,7 +215,7 @@ export class SistemaAguaDialogComponent implements OnInit {
     }
 
     onChangeComunas() {
-        this.comuna = null;
+        this.comunas = null;
 
         this.comunaService.queryComunaByMunicipioId({
             municipioId: this.sistemaAgua.municipio.id

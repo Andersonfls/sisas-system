@@ -594,8 +594,8 @@ export class ProgramasProjectosDialogComponent implements OnInit {
     }
 
     onChangeMunicipios() {
-        this.municipio = null;
-        this.comuna = null;
+        this.municipios = null;
+        this.comunas = null;
 
         this.municipioService.queryMunicipioByProvinciaId({
             provinciaId: this.programasProjectos.provincia.id
@@ -606,7 +606,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
     }
 
     onChangeComunas() {
-        this.comuna = null;
+        this.comunas = null;
 
         this.comunaService.queryComunaByMunicipioId({
             municipioId: this.programasProjectos.municipio.id
