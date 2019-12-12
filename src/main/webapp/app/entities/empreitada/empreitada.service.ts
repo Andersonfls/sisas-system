@@ -7,6 +7,7 @@ import { JhiDateUtils } from 'ng-jhipster';
 
 import { Empreitada } from './empreitada.model';
 import { createRequestOption } from '../../shared';
+import {Adjudicacao} from '../adjudicacao';
 
 export type EntityResponseType = HttpResponse<Empreitada>;
 
@@ -31,6 +32,11 @@ export class EmpreitadaService {
 
     find(id: number): Observable<EntityResponseType> {
         return this.http.get<Empreitada>(`${this.resourceUrl}/${id}`, { observe: 'response'})
+            .map((res: EntityResponseType) => this.convertResponse(res));
+    }
+
+    findByProgramasProjectos(id: number): Observable<EntityResponseType> {
+        return this.http.get<Empreitada>(`${this.resourceUrl}/programas-projectos/${id}`, { observe: 'response'})
             .map((res: EntityResponseType) => this.convertResponse(res));
     }
 

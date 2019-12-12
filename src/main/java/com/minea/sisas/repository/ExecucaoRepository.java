@@ -13,4 +13,5 @@ import org.springframework.data.jpa.repository.*;
 @Repository
 public interface ExecucaoRepository extends JpaRepository<Execucao, Long>, JpaSpecificationExecutor<Execucao> {
 
+    Execucao findByIdProgramasProjectosId(long id);
 }

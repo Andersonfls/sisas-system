@@ -7,6 +7,7 @@ import { JhiDateUtils } from 'ng-jhipster';
 
 import { Execucao } from './execucao.model';
 import { createRequestOption } from '../../shared';
+import {Adjudicacao} from '../adjudicacao';
 
 export type EntityResponseType = HttpResponse<Execucao>;
 
@@ -31,6 +32,11 @@ export class ExecucaoService {
 
     find(id: number): Observable<EntityResponseType> {
         return this.http.get<Execucao>(`${this.resourceUrl}/${id}`, { observe: 'response'})
+            .map((res: EntityResponseType) => this.convertResponse(res));
+    }
+
+    findByProgramasProjectos(id: number): Observable<EntityResponseType> {
+        return this.http.get<Execucao>(`${this.resourceUrl}/programas-projectos/${id}`, { observe: 'response'})
             .map((res: EntityResponseType) => this.convertResponse(res));
     }
 

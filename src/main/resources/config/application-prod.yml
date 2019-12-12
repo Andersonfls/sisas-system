@@ -49,12 +49,20 @@ spring:
             hibernate.cache.region.factory_class: io.github.jhipster.config.jcache.NoDefaultJCacheRegionFactory
             hibernate.default_schema: sisas
     mail:
-        host: localhost
-        port: 25
-        username:
-        password:
-    thymeleaf:
-        cache: true
+        host: smtp.gmail.com
+        port: 587
+        username: scged.4quality@gmail.com
+        password: k@A77r!7
+        protocol: smtp
+        tls: true
+        auth: true
+        from: scged.4quality@gmail.com
+        properties.mail.smtp:
+            auth: true
+            starttls.enable: true
+            ssl.trust: smtp.gmail.com
+        thymeleaf:
+            cache: false
 
 liquibase:
     contexts: prod

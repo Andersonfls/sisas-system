@@ -4,30 +4,31 @@
         "execucao" : {
             "home": {
                 "title": "Execucaos",
-                "createLabel": "Criar novo Execucao",
-                "createOrEditLabel": "Criar ou editar Execucao"
+                "createLabel": "Criar nova Execução",
+                "editLabel": "Editar nova Execução",
+                "createOrEditLabel": "Criar ou editar Execução"
             },
-            "created": "Um novo Execucao foi criado com o identificador {{ param }}",
-            "updated": "Um Execucao foi atualizado com o identificador {{ param }}",
-            "deleted": "Um Execucao foi deletado com o identificador {{ param }}",
+            "created": "Uma nova Execucção foi criado com o identificador {{ param }}",
+            "updated": "Uma Execução foi atualizado com o identificador {{ param }}",
+            "deleted": "Uma Execução foi deletado com o identificador {{ param }}",
             "delete": {
-                "question": "Tem certeza de que deseja excluir Execucao {{ id }}?"
+                "question": "Tem certeza de que deseja excluir Execução {{ id }}?"
             },
             "detail": {
                 "title": "Execucao"
             },
-            "idExecucao": "Id Execucao",
+            "idExecucao": "Id Execução",
             "tipoEmpreitada": "Tipo Empreitada",
-            "dtLancamento": "Dt Lancamento",
-            "dtPeridoReferencia": "Dt Perido Referencia",
-            "dtFimReferencia": "Dt Fim Referencia",
-            "valorFacturadoPeriodo": "Valor Facturado Periodo",
-            "dtFactura": "Dt Factura",
-            "numFactura": "Num Factura",
-            "txCambio": "Tx Cambio",
+            "dtLancamento": "Data Lançamento",
+            "dtPeridoReferencia": "Data Perido Referência",
+            "dtFimReferencia": "Data Fim Referência",
+            "valorFacturadoPeriodo": "Valor Facturado Período",
+            "dtFactura": "Data Factura",
+            "numFactura": "Nº Factura",
+            "txCambio": "Taxa Câmbio",
             "constrangimento": "Constrangimento",
             "valorPagoPeriodo": "Valor Pago Periodo",
-            "idSituacao": "Id Situacao",
+            "idSituacao": "Situação",
             "idProgramasProjectos": "Id Programas Projectos",
             "idSistemaAgua": "Id Sistema Agua",
             "idContrato": "Id Contrato"

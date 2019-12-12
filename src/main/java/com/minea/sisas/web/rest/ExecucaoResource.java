@@ -2,6 +2,7 @@ package com.minea.sisas.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.minea.sisas.service.ExecucaoService;
+import com.minea.sisas.service.dto.ConcursoDTO;
 import com.minea.sisas.web.rest.errors.BadRequestAlertException;
 import com.minea.sisas.web.rest.util.HeaderUtil;
 import com.minea.sisas.web.rest.util.PaginationUtil;
@@ -102,6 +103,21 @@ public class ExecucaoResource {
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/execucaos");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
+
+    /**
+     * GET  /concursos/programas-projectos/:id : get the "id" concurso.
+     *
+     * @param id the id of the concursoDTO to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the concursoDTO, or with status 404 (Not Found)
+     */
+    @GetMapping("/execucaos/programas-projectos/{id}")
+    @Timed
+    public ResponseEntity<ExecucaoDTO> getConcursoByProgramasProjectos(@PathVariable Long id) {
+        log.debug("REST request to get Execucao : {}", id);
+        ExecucaoDTO execucaoDTO = execucaoService.findOneByProgramasProjectos(id);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(execucaoDTO));
+    }
+
 
     /**
      * GET  /execucaos/:id : get the "id" execucao.
