@@ -149,7 +149,7 @@ export class Map2Component implements OnInit {
         this.http.get('api/downloadFile/data.json').subscribe((json: any) => {
             console.log(json);
             geojson =  L.geoJSON(json, {
-                style: function(feature) {
+                style: (feature) => {
                     switch (feature.properties.code) {
                         case 1: return {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7};
                         case 2: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FCCC9E', fillOpacity: 0.7};

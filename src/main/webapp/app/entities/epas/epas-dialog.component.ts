@@ -110,7 +110,7 @@ export class EpasDialogComponent implements OnInit {
         this.municipioService.queryMunicipioByProvinciaId({
             provinciaId: this.epas.provincia.id
         })
-            .subscribe(res => {
+            .subscribe((res) => {
                 this.municipios = res.body;
             });
     }
@@ -121,7 +121,7 @@ export class EpasDialogComponent implements OnInit {
         this.comunaService.queryComunaByMunicipioId({
             municipioId: this.epas.municipio.id
         })
-            .subscribe(res => {
+            .subscribe((res) => {
                 this.comunas = res.body;
             });
     }

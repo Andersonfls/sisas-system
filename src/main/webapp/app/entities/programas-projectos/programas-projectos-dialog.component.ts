@@ -60,11 +60,11 @@ export class ProgramasProjectosDialogComponent implements OnInit {
     contrato: Contrato;
     @ViewChild('closeModalContrato') private closeModalContrato: ElementRef;
 
-    //EMPREITADA
+    // EMPREITADA
     empreitada: Empreitada;
     @ViewChild('closeModalEmpreitada') private closeModalEmpreitada: ElementRef;
 
-    //EXECUCAO
+    // EXECUCAO
     execucao: Execucao;
     @ViewChild('closeModalExecucao') private closeModalExecucao: ElementRef;
 
@@ -157,96 +157,96 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                 this.loadAdjudiacao(this.programasProjectos.id);
                 this.loadContrato(this.programasProjectos.id);
                 this.loadEmpreitada(this.programasProjectos.id);
-                this.loadExecucao(this.programasProjectos.id)
+                this.loadExecucao(this.programasProjectos.id);
             });
     }
 
     validaData() {
-       const aprovacao: Date = new Date(this.concepcao.dtAprovacaoCon.year,this.concepcao.dtAprovacaoCon.month-1,this.concepcao.dtAprovacaoCon.day);
-       const elaboracao = new Date(this.concepcao.dtElaboracaoCon.year, this.concepcao.dtElaboracaoCon.month-1,this.concepcao.dtElaboracaoCon.day );
+       const aprovacao: Date = new Date(this.concepcao.dtAprovacaoCon.year, this.concepcao.dtAprovacaoCon.month - 1, this.concepcao.dtAprovacaoCon.day);
+       const elaboracao = new Date(this.concepcao.dtElaboracaoCon.year, this.concepcao.dtElaboracaoCon.month - 1, this.concepcao.dtElaboracaoCon.day );
 
         console.log(aprovacao);
         console.log(elaboracao);
-        if (aprovacao > elaboracao ){
+        if (aprovacao > elaboracao ) {
             alert('A Data de Aprovação não pode ser maior que a Data de Elaboração');
             this.concepcao.dtAprovacaoCon = null;
         }
     }
 
     validaDataAberturaProposta() {
-        const entrega: Date = new Date(this.concurso.dtEntregaProposta.year,this.concurso.dtEntregaProposta.month-1, this.concurso.dtEntregaProposta.day);
-        const abertura = new Date(this.concurso.dtAberturaProposta.year, this.concurso.dtAberturaProposta.month-1, this.concurso.dtAberturaProposta.day );
+        const entrega: Date = new Date(this.concurso.dtEntregaProposta.year, this.concurso.dtEntregaProposta.month - 1, this.concurso.dtEntregaProposta.day);
+        const abertura = new Date(this.concurso.dtAberturaProposta.year, this.concurso.dtAberturaProposta.month - 1, this.concurso.dtAberturaProposta.day );
 
-        if (abertura > entrega ){
+        if (abertura > entrega ) {
             alert('A Data de Abertura não pode ser maior que a Data de Entrega');
             this.concurso.dtAberturaProposta = null;
         }
     }
 
     validaDataConclusaoAvaliacao() {
-        const entrega: Date = new Date(this.concurso.dtEntregaProposta.year,this.concurso.dtEntregaProposta.month-1, this.concurso.dtEntregaProposta.day);
-        const conclusao = new Date(this.concurso.dtConclusaoAvaliacaoRelPrel.year, this.concurso.dtConclusaoAvaliacaoRelPrel.month-1, this.concurso.dtConclusaoAvaliacaoRelPrel.day );
+        const entrega: Date = new Date(this.concurso.dtEntregaProposta.year, this.concurso.dtEntregaProposta.month - 1, this.concurso.dtEntregaProposta.day);
+        const conclusao = new Date(this.concurso.dtConclusaoAvaliacaoRelPrel.year, this.concurso.dtConclusaoAvaliacaoRelPrel.month - 1, this.concurso.dtConclusaoAvaliacaoRelPrel.day );
 
-        if (conclusao > entrega ){
+        if (conclusao > entrega ) {
             alert('A Data de Conclusão não pode ser maior que a Data de Entrega');
             this.concurso.dtConclusaoAvaliacaoRelPrel = null;
         }
     }
 
     validaDataNegociacao() {
-        const entrega: Date = new Date(this.concurso.dtEntregaProposta.year,this.concurso.dtEntregaProposta.month-1, this.concurso.dtEntregaProposta.day);
-        const negociacao = new Date(this.concurso.dtNegociacao.year, this.concurso.dtNegociacao.month-1, this.concurso.dtNegociacao.day );
+        const entrega: Date = new Date(this.concurso.dtEntregaProposta.year, this.concurso.dtEntregaProposta.month - 1, this.concurso.dtEntregaProposta.day);
+        const negociacao = new Date(this.concurso.dtNegociacao.year, this.concurso.dtNegociacao.month - 1, this.concurso.dtNegociacao.day );
 
-        if (negociacao > entrega ){
+        if (negociacao > entrega ) {
             alert('A Data de Negociação não pode ser maior que a Data de Entrega');
             this.concurso.dtNegociacao = null;
         }
     }
 
     validaDataAprovacaoFinal() {
-        const entrega: Date = new Date(this.concurso.dtEntregaProposta.year,this.concurso.dtEntregaProposta.month-1, this.concurso.dtEntregaProposta.day);
-        const aprovacaoFinal = new Date(this.concurso.dtAprovRelAvalFinal.year, this.concurso.dtAprovRelAvalFinal.month-1, this.concurso.dtAprovRelAvalFinal.day );
+        const entrega: Date = new Date(this.concurso.dtEntregaProposta.year, this.concurso.dtEntregaProposta.month - 1, this.concurso.dtEntregaProposta.day);
+        const aprovacaoFinal = new Date(this.concurso.dtAprovRelAvalFinal.year, this.concurso.dtAprovRelAvalFinal.month - 1, this.concurso.dtAprovRelAvalFinal.day );
 
-        if (aprovacaoFinal > entrega ){
+        if (aprovacaoFinal > entrega ) {
             alert('A Data de Aprovacão Rel. Aval. Final não pode ser maior que a Data de Entrega');
             this.concurso.dtAprovRelAvalFinal = null;
         }
     }
 
     validaDataAdjudicacao(data: any, tipo) {
-        const dataLancamento: Date = new Date(this.adjudicacao.dtLancamento.year,this.concurso.dtLancamento.month-1, this.concurso.dtLancamento.day);
-        const dt = new Date(data.year, data.month-1, data.day );
+        const dataLancamento: Date = new Date(this.adjudicacao.dtLancamento.year, this.concurso.dtLancamento.month - 1, this.concurso.dtLancamento.day);
+        const dt = new Date(data.year, data.month - 1, data.day );
 
-        if (dt > dataLancamento ){
+        if (dt > dataLancamento ) {
             alert('A Data Informada não pode ser maior que a Data de Lancamento');
             if (tipo === 'submissao') {
                 this.adjudicacao.dtSubmissaoMinutContrato = null;
-            } else if (tipo ==='prestacao') {
+            } else if (tipo === 'prestacao') {
                 this.adjudicacao.dtPrestacaoGarantBoaExec = null;
-            } else if (tipo ==='comunicacao') {
+            } else if (tipo === 'comunicacao') {
                 this.adjudicacao.dtComunicaoAdjudicacao = null;
             }
         }
     }
 
     validaDataContrato(data: any, tipo) {
-        const dataAssinatura: Date = new Date(this.contrato.dtAssinatura.year,this.contrato.dtAssinatura.month-1, this.contrato.dtAssinatura.day);
-        const dt = new Date(data.year, data.month-1, data.day );
+        const dataAssinatura: Date = new Date(this.contrato.dtAssinatura.year, this.contrato.dtAssinatura.month - 1, this.contrato.dtAssinatura.day);
+        const dt = new Date(data.year, data.month - 1, data.day );
 
-        if (dt > dataAssinatura ){
+        if (dt > dataAssinatura ) {
             alert('A Data Informada não pode ser maior que a Data de Assinatura!');
 
-            if (tipo ==='inicio') {
+            if (tipo === 'inicio') {
                 this.contrato.dtInicio = null;
-            } else if (tipo ==='recepcao') {
+            } else if (tipo === 'recepcao') {
                 this.contrato.dtRecepcaoProvisoria = null;
-            } else if (tipo ==='finalizacao') {
+            } else if (tipo === 'finalizacao') {
                 this.contrato.dtFinalizacaoProcessoHomologAprov = null;
-            } else if (tipo ==='adiantamento') {
+            } else if (tipo === 'adiantamento') {
                 this.contrato.dtAdiantamento = null;
-            } else if (tipo ==='definitiva') {
+            } else if (tipo === 'definitiva') {
                 this.contrato.dtRecepcaoDefinitiva = null;
-            } else if (tipo ==='comissionamento') {
+            } else if (tipo === 'comissionamento') {
                 this.contrato.dtRecepcaoComicionamento = null;
             }
         }
@@ -447,7 +447,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
             });
     }
 
-    //EXECUCAO
+    // EXECUCAO
     loadExecucao(id) {
         this.execucaoService.findByProgramasProjectos(id)
             .subscribe((execucaoResponse: HttpResponse<Execucao>) => {
@@ -484,7 +484,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
             });
     }
 
-    //EMPREITADA
+    // EMPREITADA
     loadEmpreitada(id) {
         this.empreitadaService.findByProgramasProjectos(id)
             .subscribe((empreitadaResponse: HttpResponse<Empreitada>) => {
@@ -673,7 +673,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
         this.municipioService.queryMunicipioByProvinciaId({
             provinciaId: this.programasProjectos.provincia.id
         })
-            .subscribe(res => {
+            .subscribe((res) => {
                 this.municipios = res.body;
             });
     }
@@ -684,7 +684,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
         this.comunaService.queryComunaByMunicipioId({
             municipioId: this.programasProjectos.municipio.id
         })
-            .subscribe(res => {
+            .subscribe((res) => {
                 this.comunas = res.body;
             });
     }

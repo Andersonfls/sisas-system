@@ -5,6 +5,7 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 import {sectorAguaAguaRoute, SectorAguaResolvePagingParams} from './sector-agua.route';
 import {CoberturaSectorAguaComponent} from './sector-agua.component';
 import {ProvinciaService} from '../../entities/provincia';
+import {RelatoriosService} from '../relatorios.service';
 
 const ENTITY_STATES = [
     ...sectorAguaAguaRoute
@@ -24,7 +25,8 @@ const ENTITY_STATES = [
     ],
     providers: [
         SectorAguaResolvePagingParams,
-        ProvinciaService
+        ProvinciaService,
+        RelatoriosService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -209,7 +209,7 @@ export class SistemaAguaDialogComponent implements OnInit {
         this.municipioService.queryMunicipioByProvinciaId({
             provinciaId: this.sistemaAgua.provincia.id
         })
-            .subscribe(res => {
+            .subscribe((res) => {
                 this.municipios = res.body;
             });
     }
@@ -220,7 +220,7 @@ export class SistemaAguaDialogComponent implements OnInit {
         this.comunaService.queryComunaByMunicipioId({
             municipioId: this.sistemaAgua.municipio.id
         })
-            .subscribe(res => {
+            .subscribe((res) => {
                 this.comunas = res.body;
             });
     }

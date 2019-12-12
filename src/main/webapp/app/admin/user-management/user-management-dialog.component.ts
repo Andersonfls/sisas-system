@@ -110,7 +110,7 @@ export class UserMgmtDialogComponent implements OnInit {
         this.municipioService.queryMunicipioByProvinciaId({
             provinciaId: this.user.provincia.id
         })
-            .subscribe(res => {
+            .subscribe((res) => {
                 this.municipios = res.body;
             });
     }
@@ -121,7 +121,7 @@ export class UserMgmtDialogComponent implements OnInit {
         this.comunaService.queryComunaByMunicipioId({
             municipioId: this.user.municipio.id
         })
-            .subscribe(res => {
+            .subscribe((res) => {
                 this.comunas = res.body;
             });
     }

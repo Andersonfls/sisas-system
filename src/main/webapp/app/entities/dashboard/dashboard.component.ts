@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { JhiAlertService } from 'ng-jhipster';
 import { UserService } from '../../shared/user/user.service';
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { HttpResponse } from '@angular/common/http';
 import { User } from '../../shared/user/user.model';
 import { Principal } from '../../shared/auth/principal.service';
 import * as CanvasJS from '../../../content/js/canvasjs.min.js';
-import {DadosRelatorio} from '../../relatorios/cobertura-sector-agua/dadosRelatorio.model';
 import {SectorAguaSaneamentoDados} from '../../relatorios/cobertura-sector-agua-saneamento/SectorAguaSaneamentoDados.model';
 import {Provincia} from '../provincia/provincia.model';
-import {RelatoriosService} from '../../relatorios/relatorios.service';
+import {DashboardService} from './dashboard.service';
+import {DadosDashboardModel} from './dadosDashboard.model';
 
 @Component({
     selector: 'jhi-dashboard',
@@ -27,12 +27,12 @@ export class DashboardComponent implements OnInit {
     predicate: any;
     reverse: any;
     chart: any;
-    listaCobertura: DadosRelatorio[];
-    listaSaneamento: DadosRelatorio[];
+    listaCobertura: DadosDashboardModel[];
+    listaSaneamento: DadosDashboardModel[];
     tipoRelatorio: string;
 
-    listaAgua: DadosRelatorio[];
-    listaMedia: DadosRelatorio[];
+    listaAgua: DadosDashboardModel[];
+    listaMedia: DadosDashboardModel[];
 
     totalMunicipios = 0;
     totalComunas = 0;
@@ -46,15 +46,14 @@ export class DashboardComponent implements OnInit {
         private jhiAlertService: JhiAlertService,
         private userService: UserService,
         private principal: Principal,
-        private relatorioService: RelatoriosService,
+        private relatorioService: DashboardService,
     ) {}
 
     ngOnInit() {
         this.principal.identity().then((userIdentity) => {
             this.user = userIdentity;
 
-            if (this.user.authorities[0] === 'ROLE_ADMIN_LOCAL')
-            {
+            if (this.user.authorities[0] === 'ROLE_ADMIN_LOCAL') {
                 this.buscaDadosTabela();
                 this.iniciarChartProvincial();
             } else {
@@ -73,7 +72,7 @@ export class DashboardComponent implements OnInit {
                 this.listaSaneamento = Array<any>();
 
                 this.listaTabela.forEach((p) => {
-                    const item: DadosRelatorio = new DadosRelatorio();
+                    const item: DadosDashboardModel = new DadosDashboardModel();
                     item.label = p.ambito;
                     item.y = p.habitantesPercent;
 
@@ -81,7 +80,7 @@ export class DashboardComponent implements OnInit {
                 });
 
                 this.listaTabela.forEach((p) => {
-                    const item: DadosRelatorio = new DadosRelatorio();
+                    const item: DadosDashboardModel = new DadosDashboardModel();
                     item.label = p.ambito;
                     item.y = p.habitantesSaneamentoPer;
 
