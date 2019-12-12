@@ -15,6 +15,7 @@ import {SisasProgramasProjectosLogModule} from './programas-projectos-log/progra
 import {SisasEpasModule} from './epas/epas.module';
 import {SisasFinalidadeProjetoModule} from './finalidade-projeto/finalidade-projeto.module';
 import {SisasEspecialidadesModule} from './especialidades/especialidades.module';
+import {RelatoriosService} from '../relatorios/relatorios.service';
 
 @NgModule({
     imports: [
@@ -37,7 +38,7 @@ import {SisasEspecialidadesModule} from './especialidades/especialidades.module'
     ],
     declarations: [],
     entryComponents: [],
-    providers: [],
+    providers: [RelatoriosService],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SisasEntityModule {

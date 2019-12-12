@@ -1,4 +1,4 @@
-<header class="main-header" *jhiHasAnyAuthority="['ROLE_USER', 'ROLE_ADMIN']">
+<header class="main-header" *jhiHasAnyAuthority="['ROLE_USER', 'ROLE_ADMIN', 'ROLE_ADMIN_LOCAL']">
     <router-outlet name="navbar"></router-outlet>
 </header>
 
@@ -8,7 +8,7 @@
 
 <br/><br/>
 <div class="container-fluid">
-    <div class="card jh-card" *jhiHasAnyAuthority="['ROLE_USER', 'ROLE_ADMIN']">
+    <div class="card jh-card" *jhiHasAnyAuthority="['ROLE_USER', 'ROLE_ADMIN', 'ROLE_ADMIN_LOCAL']">
         <router-outlet></router-outlet>
         <router-outlet name="popup"></router-outlet>
     </div>

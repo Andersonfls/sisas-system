@@ -32,7 +32,7 @@ export const sistemaAguaRoute: Routes = [
             'pagingParams': SistemaAguaResolvePagingParams
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ROLE_ADMIN_LOCAL'],
             pageTitle: 'sisasApp.sistemaAgua.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -40,7 +40,7 @@ export const sistemaAguaRoute: Routes = [
         path: 'sistema-agua/:id',
         component: SistemaAguaDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ROLE_ADMIN_LOCAL'],
             pageTitle: 'sisasApp.sistemaAgua.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -49,7 +49,7 @@ export const sistemaAguaRoute: Routes = [
         path: 'sistema-agua-new',
         component: SistemaAguaDialogComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ROLE_ADMIN_LOCAL'],
             pageTitle: 'sisasApp.sistemaAgua.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -58,7 +58,7 @@ export const sistemaAguaRoute: Routes = [
         path: 'sistema-agua/:id/edit',
         component: SistemaAguaDialogComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ROLE_ADMIN_LOCAL'],
             pageTitle: 'sisasApp.sistemaAgua.home.title'
         },
         canActivate: [UserRouteAccessService],

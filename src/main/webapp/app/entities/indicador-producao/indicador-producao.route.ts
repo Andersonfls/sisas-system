@@ -33,7 +33,7 @@ export const indicadorProducaoRoute: Routes = [
             'pagingParams': IndicadorProducaoResolvePagingParams
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ROLE_ADMIN_LOCAL'],
             pageTitle: 'sisasApp.indicadorProducao.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -41,7 +41,7 @@ export const indicadorProducaoRoute: Routes = [
         path: 'indicador-producao/:id',
         component: IndicadorProducaoDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ROLE_ADMIN_LOCAL'],
             pageTitle: 'sisasApp.indicadorProducao.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -51,7 +51,7 @@ export const indicadorProducaoRoute: Routes = [
         path: 'indicador-producao-new',
         component: IndicadorProducaoDialogComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ROLE_ADMIN_LOCAL'],
             pageTitle: 'sisasApp.indicadorProducao.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -60,7 +60,7 @@ export const indicadorProducaoRoute: Routes = [
         path: 'indicador-producao/:id/edit',
         component: IndicadorProducaoDialogComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ROLE_ADMIN_LOCAL'],
             pageTitle: 'sisasApp.indicadorProducao.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -69,7 +69,7 @@ export const indicadorProducaoRoute: Routes = [
         path: 'indicador-producao-edit/:id',
         component: IndicadorProducaoDialogComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ROLE_ADMIN_LOCAL'],
             pageTitle: 'sisasApp.indicadorProducao.home.title'
         },
         canActivate: [UserRouteAccessService]

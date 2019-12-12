@@ -5,6 +5,10 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { User } from '../../shared/user/user.model';
 import { Principal } from '../../shared/auth/principal.service';
 import * as CanvasJS from '../../../content/js/canvasjs.min.js';
+import {DadosRelatorio} from '../../relatorios/cobertura-sector-agua/dadosRelatorio.model';
+import {SectorAguaSaneamentoDados} from '../../relatorios/cobertura-sector-agua-saneamento/SectorAguaSaneamentoDados.model';
+import {Provincia} from '../provincia/provincia.model';
+import {RelatoriosService} from '../../relatorios/relatorios.service';
 
 @Component({
     selector: 'jhi-dashboard',
@@ -18,262 +22,238 @@ export class DashboardComponent implements OnInit {
 
     user: User;
 
-    /*DASHBOARD = ROLE_USER*/
-    reservasUser: number;
-    emprestimosUser: number;
-    devolucoesUser: number;
+    provincias: Provincia[];
+    listaTabela: SectorAguaSaneamentoDados[];
+    predicate: any;
+    reverse: any;
+    chart: any;
+    listaCobertura: DadosRelatorio[];
+    listaSaneamento: DadosRelatorio[];
+    tipoRelatorio: string;
 
-    /*Dashboard = ROLE_ADMIN*/
-    usersAdmin: number;
-    obrasAdmin: number;
-    emprestimosAdmin: number;
-    reservasAdmin: number;
+    listaAgua: DadosRelatorio[];
+    listaMedia: DadosRelatorio[];
 
-    public pieColors: any[] = [
-        {
-            backgroundColor: ['#613b18', '#b87524', '#fb9e37']
-        }];
-    public lineChartType = 'line';
-    public lineChartLabels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-    public barChartOptionsEmprestimo: any = {
-        scaleShowVerticalLines: false,
-        responsive: true
-    };
-    public donutColors: any[] = [
-        {
-            backgroundColor: ['#613b18', '#b87524', '#fb9e37']
-        }];
-    public pieChartLabels: string[] = ['Download Sales', 'In-Store Sales', 'Mail Sales'];
-    public pieChartData: number[] = [300, 500, 100];
-    public pieChartType = 'pie';
-    public doughnutChartLabels: string[] = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
-    public doughnutChartData: number[] = [350, 450, 100];
-    public doughnutChartType = 'doughnut';
-    public barChartLabelsReserva: string[] = ['JAN', 'FEV', 'MAR', 'ABR' ];
-    public barChartTypeReserva = 'bar';
-    public barChartLegendReserva = true;
-    public barChartDataReseva: any[] = [
-        {data: [28, 48, 40, 55], label: 'Reservas'}
-    ];
-    public barChartLabelsEmprestimo: string[] = ['JAN', 'FEV', 'MAR', 'ABR' ];
-    public barChartTypeEmprestimo = 'bar';
-    public barChartLegendEmprestimo = true;
-    public barChartDataEmprestimo: any[] = [
-        {data: [65, 59, 80, 100], label: 'Empréstimos'}
-    ];
+    totalMunicipios = 0;
+    totalComunas = 0;
+    totalPopulacao = 0;
+    totalBenefAgua = 0;
+    totalBenefSaneamento = 0;
+    totalCobertAgua = 0;
+    totalCobertSaneamento = 0;
 
-    public barColorsEmprestimo: any[] = [
-        {
-            backgroundColor: ['#967138', '#967138', '#967138', '#967138']
-        }];
-
-    public barChartOptionsReserva: any = {
-        scaleShowVerticalLines: false,
-        responsive: true
-    };
-
-    public barColorsReserva: any[] = [
-        {
-            backgroundColor: ['#978138', '#978138', '#978138', '#978138']
-        }];
-
-    public barColorsLine: any[] = [
-        {
-            backgroundColor: ['#1C502F', '#007bff']
-        }];
-
-    public lineChartData: Array<any> = [
-        [65, 59, 80, 81, 56, 55, 40],
-        [28, 48, 40, 19, 86, 27, 90]
-    ];
     constructor(
         private jhiAlertService: JhiAlertService,
         private userService: UserService,
         private principal: Principal,
-
+        private relatorioService: RelatoriosService,
     ) {}
 
     ngOnInit() {
         this.principal.identity().then((userIdentity) => {
             this.user = userIdentity;
-            if (this.user.authorities[0] === 'ROLE_ADMIN') {
-                this.userService.queryUserDashboard().subscribe(
-                    (res: HttpResponse<number>) => {
-                        this.usersAdmin = res.body;
-                    }, (res: HttpErrorResponse) => this.onError(res.message)
-                );
 
-                // this.emprestimoService.queryEmprestimoDashboard().subscribe(
-                //     (res: HttpResponse<number>) => {
-                //         this.emprestimosAdmin = res.body;
-                //     }, (res: HttpErrorResponse) => this.onError(res.message)
-                // );
-
-                // this.reservaService.queryReservaDashboard().subscribe(
-                //     (res: HttpResponse<number>) => {
-                //         this.reservasAdmin = res.body;
-                //     }, (res: HttpErrorResponse) => this.onError(res.message)
-                // );
+            if (this.user.authorities[0] === 'ROLE_ADMIN_LOCAL')
+            {
+                this.buscaDadosTabela();
+                this.iniciarChartProvincial();
             } else {
-                // this.emprestimoService.queryEmprestimoUser(this.user.id).subscribe(
-                //     (res: HttpResponse<number>) => {
-                //         this.emprestimosUser = res.body;
-                //     }, (res: HttpErrorResponse) => this.onError(res.message)
-                // );
-
-                // this.reservaService.queryReservaUser(this.user.id).subscribe(
-                //     (res: HttpResponse<number>) => {
-                //         this.reservasUser = res.body;
-                //     }, (res: HttpErrorResponse) => this.onError(res.message)
-                // );
-
-                // this.emprestimoService.queryDevolucaoUser(this.user.id).subscribe(
-                //     (res: HttpResponse<number>) => {
-                //         this.devolucoesUser = res.body;
-                //     }, (res: HttpErrorResponse) => this.onError(res.message)
-                // );
+                this.buscaDadosTabela();
             }
-
-            // this.obraService.queryObraDashboard().subscribe(
-            //     (res: HttpResponse<number>) => {
-            //         this.obrasAdmin = res.body;
-            //     }, (res: HttpErrorResponse) => this.onError(res.message)
-            // );
         });
-        this.carregarChart();
-        this.carregarBarChar();
     }
 
-    private onError(error: any) {
-        this.jhiAlertService.error(error.message, null, null);
+    buscaDadosTabela() {
+        this.relatorioService.buscaDadosSectorAguaSaneamento().subscribe(
+            (res: HttpResponse<SectorAguaSaneamentoDados[]>) => {
+                this.listaTabela = res.body;
+                console.log(this.listaTabela);
+
+                this.listaCobertura = Array<any>();
+                this.listaSaneamento = Array<any>();
+
+                this.listaTabela.forEach((p) => {
+                    const item: DadosRelatorio = new DadosRelatorio();
+                    item.label = p.ambito;
+                    item.y = p.habitantesPercent;
+
+                    this.listaCobertura.push(item);
+                });
+
+                this.listaTabela.forEach((p) => {
+                    const item: DadosRelatorio = new DadosRelatorio();
+                    item.label = p.ambito;
+                    item.y = p.habitantesSaneamentoPer;
+
+                    this.listaSaneamento.push(item);
+                });
+
+                this.iniciarChart();
+                this.iniciarChartSaneamento();
+                this.iniciarChartAguaSaneamento();
+            });
     }
 
-    /*--------Canvas Gráficos-------*/
-    carregarChart() {
-        const chart = new CanvasJS.Chart('chartContainer', {
+    sort() {
+        const result = [this.predicate + ',' + (this.reverse ? 'asc' : 'desc')];
+        if (this.predicate !== 'id') {
+            result.push('id');
+        }
+        return result;
+    }
+
+    trackId(index: number, item: Provincia) {
+        return item.id;
+    }
+
+    iniciarChart() {
+        this.chart = new CanvasJS.Chart('chartContainer', {
+            animationEnabled: true,
             theme: 'light2',
-            animationEnabled: true,
-            exportEnabled: true,
             title: {
-                text: 'Empréstimos'
+                text: 'Cobertura Serviços de Água'
             },
-            data: [{
-                type: 'pie',
-                showInLegend: true,
-                toolTipContent: '<b>{name}</b>: ${y} (#percent%)',
-                indexLabel: '{name} - #percent%',
-                dataPoints: [
-                    { y: 450, name: 'Food' },
-                    { y: 120, name: 'Insurance' },
-                    { y: 300, name: 'Traveling' },
-                ]
-            }]
+            axisX: {
+                valueFormatString: 'string'
+            },
+            axisY: {
+                suffix: '%'
+            },
+            toolTip: {
+                shared: true
+            },
+            legend: {
+                cursor: 'pointer'
+            },
+            data: [
+                {
+                    type: 'column',
+                    name: 'Porcentagem',
+                    showInLegend: true,
+                    xValueFormatString: 'string',
+                    yValueFormatString: '#%',
+                    dataPoints: this.listaCobertura
+                }]
         });
-
-        chart.render();
+        this.chart.render();
     }
-    carregarBarChar() {
-        const chart = new CanvasJS.Chart('chartContainer2', {
+
+    iniciarChartSaneamento() {
+        this.chart = new CanvasJS.Chart('chartContainerSan', {
             animationEnabled: true,
-            exportEnabled: true,
+            theme: 'light2',
             title: {
-                text: 'Empréstimos'
+                text: 'Cobertura Serviços Saneamento'
             },
-            data: [{
-                type: 'column',
-                dataPoints: [
-                    { y: 71, label: '2016' },
-                    { y: 55, label: '2017' },
-                    { y: 50, label: '2018' },
-                    { y: 65, label: '2019' },
-                ]
-            }]
+            axisX: {
+                valueFormatString: 'string'
+            },
+            axisY: {
+                suffix: '%'
+            },
+            toolTip: {
+                shared: true
+            },
+            legend: {
+                cursor: 'pointer'
+            },
+            data: [
+                {
+                    type: 'column',
+                    name: 'Cobertura',
+                    showInLegend: true,
+                    xValueFormatString: 'string',
+                    yValueFormatString: '#%',
+                    dataPoints: this.listaSaneamento
+                }]
         });
-
-        chart.render();
-    }
-    /*------------------------------*/
-
-    /*-----------------------------------------BarChart-Emprestimo-------------------------------------*/
-
-    public chartClickedEmprestimo(e: any): void {
-        console.log(e);
-    }
-    public chartHoveredEmprestimo(e: any): void {
-        console.log(e);
-    }
-    public randomizeEmprestimo(): void {
-        // Only Change 3 values
-        const data = [
-            Math.round(Math.random() * 100),
-            59,
-            80,
-            (Math.random() * 100),
-            56,
-            (Math.random() * 100),
-            40];
-        const clone = JSON.parse(JSON.stringify(this.barChartDataEmprestimo));
-        clone[0].data = data;
-        this.barChartDataEmprestimo = clone;
-        /**
-         * (My guess), for Angular to recognize the change in the dataset
-         * it has to change the dataset variable directly,
-         * so one way around it, is to clone the data, change it and then
-         * assign it;
-         */
+        this.chart.render();
     }
 
-    /*----------------------------------------------------------------------------------------*/
+    iniciarChartAguaSaneamento() {
+        this.chart = new CanvasJS.Chart('chartAguaSaneamento', {
+            animationEnabled: true,
+            theme: 'light2',
+            title: {
+                text: 'Cobertura de Serviços de Água e Saneamento (Nível nacional)'
+            },
+            axisX: {
+                valueFormatString: 'string'
+            },
+            axisY: {
+                suffix: '%'
+            },
+            toolTip: {
+                shared: true
+            },
+            legend: {
+                cursor: 'pointer'
+            },
+            data: [
+                {
+                    type: 'column',
+                    name: 'Água',
+                    showInLegend: true,
+                    xValueFormatString: 'string',
+                    yValueFormatString: '#%',
+                    dataPoints: this.listaCobertura
+                },
+                {
+                    type: 'column',
+                    name: 'Saneamento',
+                    showInLegend: true,
+                    xValueFormatString: 'string',
+                    yValueFormatString: '#%',
+                    dataPoints: this.listaSaneamento
+                }]
+        });
+        this.chart.render();
+    }
 
-    /*-----------------------------------------BarChart-Reserva-------------------------------------*/
-
-    public chartClickedReserva(e: any): void {
-        console.log(e);
+    iniciarChartProvincial() {
+        this.chart = new CanvasJS.Chart('chartProvincial', {
+            animationEnabled: true,
+            theme: 'light2',
+            title: {
+                text: 'Cobertura no sector de Água e Saneamento'
+            },
+            axisX: {
+                valueFormatString: 'string'
+            },
+            axisY: {
+                suffix: '%'
+            },
+            toolTip: {
+                shared: true
+            },
+            legend: {
+                cursor: 'pointer'
+            },
+            data: [
+                {
+                    type: 'column',
+                    name: 'Água',
+                    showInLegend: true,
+                    xValueFormatString: 'string',
+                    yValueFormatString: '#%',
+                    dataPoints: this.listaAgua
+                },
+                {
+                    type: 'column',
+                    name: 'Saneamento',
+                    showInLegend: true,
+                    xValueFormatString: 'string',
+                    yValueFormatString: '#%',
+                    dataPoints: this.listaSaneamento
+                },
+                {
+                    type: 'line',
+                    name: 'Média',
+                    showInLegend: true,
+                    yValueFormatString: '#%',
+                    dataPoints: this.listaMedia
+                }]
+        });
+        this.chart.render();
     }
-    public chartHoveredReserva(e: any): void {
-        console.log(e);
-    }
-    public randomizeReserva(): void {
-        // Only Change 3 values
-        const data = [
-            Math.round(Math.random() * 100),
-            59,
-            80,
-            (Math.random() * 100),
-            56,
-            (Math.random() * 100),
-            40];
-        const clone = JSON.parse(JSON.stringify(this.barChartDataReseva));
-        clone[0].data = data;
-        this.barChartDataReseva = clone;
-        /**
-         * (My guess), for Angular to recognize the change in the dataset
-         * it has to change the dataset variable directly,
-         * so one way around it, is to clone the data, change it and then
-         * assign it;
-         */
-    }
-
-    /*----------------------------------------------------------------------------------------*/
-
-    /*------------------------------------------Donut--------------------------------------------*/
-    public chartClickedDonut(e: any): void {
-        console.log(e);
-    }
-    public chartHoveredDonut(e: any): void {
-        console.log(e);
-    }
-    public chartClickedPieChart(e: any): void {
-        console.log(e);
-    }
-    public chartHoveredPieChart(e: any): void {
-        console.log(e);
-    }
-    public chartClickedLineChart(e: any): void {
-        console.log(e);
-    }
-    public chartHoveredLineChart(e: any): void {
-        console.log(e);
-    }
-    /*--------------------------------------------------------------------------------------------------*/
 }

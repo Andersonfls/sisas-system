@@ -28,7 +28,7 @@ export const dashboardRoute: Routes = [
             'pagingParams': DashboardResolvePagingParams
         },
         data: {
-            authorities: ['ROLE_USER', 'ROLE_ADMIN'],
+            authorities: ['ROLE_USER', 'ROLE_ADMIN', 'ROLE_ADMIN_LOCAL'],
             pageTitle: 'dashboard.title.home'
         },
         canActivate: [UserRouteAccessService]

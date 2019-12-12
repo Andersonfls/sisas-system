@@ -1,119 +1,97 @@
-<div class="container">
-
-    <div class="row">
-        <div class="col-md-3 teste-acima" style="padding-top: 10px;">
-            <div class="card card-dash">
-                <canvas baseChart style="height: 284px;"
-                        [colors]="pieColors"
-                        [data]="pieChartData"
-                        [labels]="pieChartLabels"
-                        [chartType]="pieChartType"
-                        (chartHover)="chartHoveredPieChart($event)"
-                        (chartClick)="chartClickedPieChart($event)">
-                </canvas>
-            </div>
-        </div>
-
-        <div id="barchart" class="col-md-6" style="padding-top: 10px;">
-            <div class="card card-dash">
-                <canvas baseChart style="height: 284px;"
-                        [colors]="barColorsEmprestimo"
-                        [datasets]="barChartDataEmprestimo"
-                        [labels]="barChartLabelsEmprestimo"
-                        [options]="barChartOptionsEmprestimo"
-                        [legend]="barChartLegendEmprestimo"
-                        [chartType]="barChartTypeEmprestimo"
-                        (chartHover)="chartHoveredEmprestimo($event)"
-                        (chartClick)="chartClickedEmprestimo($event)">
-                </canvas>
-            </div>
-        </div>
-
-        <div id="pieChart" class="col-md-3" style="padding-top: 10px;">
-            <div class="card card-dash">
-                <canvas baseChart style="height: 284px;"
-                        [colors]="pieColors"
-                        [data]="doughnutChartData"
-                        [labels]="doughnutChartLabels"
-                        [chartType]="doughnutChartType"
-                        (chartHover)="chartHoveredDonut($event)"
-                        (chartClick)="chartClickedDonut($event)">
-                </canvas>
-            </div>
-        </div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<jhi-alert></jhi-alert>
+<div *jhiHasAnyAuthority="['ROLE_ADMIN']">
+    <div class="table-responsive" *ngIf="listaTabela">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th><span>Ambito</span></th>
+                <th><span>Populacao</span></th>
+                <th><span>%</span></th>
+                <th><span>N de Habitantes</span></th>
+                <th><span>%</span></th>
+                <th><span>N de Habitantes</span></th>
+                <th><span>%</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let provincia of listaTabela ;trackBy: trackId">
+                <td>{{provincia.ambito}}</td>
+                <td>{{provincia.populacao | number }}</td>
+                <td>{{provincia.populacaoPercentage}}%</td>
+                <td>{{provincia.habitantes | number }}</td>
+                <td>{{provincia.habitantesPercent}}%</td>
+                <td>{{provincia.habitantesSaneamento  | number }}</td>
+                <td>{{provincia.habitantesSaneamentoPer}}%</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
-
     <br/>
-
     <div class="row">
-        <div class="col-md-6" style="padding-top: 10px;">
+        <div class="col-md-6 teste-acima">
             <div class="card card-dash">
-                <canvas baseChart
-                        [colors]="barColorsReserva"
-                        [datasets]="barChartDataReseva"
-                        [labels]="barChartLabelsReserva"
-                        [options]="barChartOptionsReserva"
-                        [legend]="barChartLegendReserva"
-                        [chartType]="barChartTypeReserva"
-                        (chartHover)="chartHoveredReserva($event)"
-                        (chartClick)="chartClickedReserva($event)">
-                </canvas>
+                <div id="chartContainer" style="height: 370px; width: 98%; margin-left: 3%"></div>
             </div>
         </div>
-
-        <div id="lineChart" class="col-md-6" style="padding-top: 10px;">
+        <div class="col-md-6">
             <div class="card card-dash">
-                <canvas baseChart
-                        [data]="lineChartData"
-                        [labels]="lineChartLabels"
-                        [chartType]="lineChartType"
-                        (chartHover)="chartHoveredLineChart($event)"
-                        (chartClick)="chartClickedLineChart($event)">
-                </canvas>
+                <div id="chartContainerSan" style="height: 370px; width: 98%; margin-left: 3%"></div>
             </div>
         </div>
     </div>
-
     <br/>
-
     <div class="row">
-        <div class="col-md-4" style="padding-top: 10px;">
-            <div class="card card-dash" style="height: 420px; color: #865a39;">
-                <p style="text-align: center; "><b>Top 5 - Provincias</b></p>
-                <div style="padding-left: 4px; color: #865a39;">
-                    1) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-                    2) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-                    3) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-                    4) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-                    5) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-                </div>
-            </div>
-        </div>
-
-        <div id="topReservas" class="col-md-4" style="padding-top: 10px;">
-            <div class="card card-dash" style="height: 420px; color: #865a39;">
-                <p style="text-align: center; "><b>Top 5 - Municipios</b></p>
-                <div style="padding-left: 4px; color: #865a39;">
-                    1) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-                    2) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-                    3) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-                    4) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-                    5) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-                </div>
-            </div>
-        </div>
-
-        <div id="circulacao" class="col-md-4" style="padding-top: 10px;">
-            <div class="card card-dash" style="height: 420px; color: #865a39;">
-                <p style="text-align: center;"><b>Top 5 Comunas</b></p>
-                <div style="padding-left: 4px; color: #865a39;">
-                    1) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-                    2) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-                    3) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-                    4) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-                    5) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-                </div>
+        <div class="col-md-12">
+            <div class="card card-dash">
+                <div id="chartAguaSaneamento" style="height: 370px; width: 98%; margin-left: 3%"></div>
             </div>
         </div>
     </div>
+</div>
+
+
+<div *jhiHasAnyAuthority="['ROLE_ADMIN_LOCAL']">
+    <div class="table-responsive" *ngIf="listaTabela">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th><span>Províncias</span></th>
+                <th><span>N° de Municípios</span></th>
+                <th><span>N° de Comunas</span></th>
+                <th><span>Populacao Total</span></th>
+                <th><span>Água</span></th>
+                <th><span>Saneamento</span></th>
+                <th><span>Águas%</span></th>
+                <th><span>Saneamento%</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let provincia of listaTabela ;trackBy: trackId">
+                <td>{{provincia.provincia}}</td>
+                <td>{{provincia.municipios | number }}</td>
+                <td>{{provincia.comunas}}%</td>
+                <td>{{provincia.populacaoTotal | number }}</td>
+                <td>{{provincia.populacaoBeneficiadaAgua}}%</td>
+                <td>{{provincia.populacaoBeneficiadaSaneamento  | number }}</td>
+                <td>{{provincia.coberturaAgua}}%</td>
+                <td>{{provincia.coberturaSaneamento}}%</td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td> <span style="font-weight: bold">Total Provincial: </span></td>
+                <td> <span style="font-weight: bold">{{totalMunicipios}} </span></td>
+                <td> <span style="font-weight: bold">{{totalComunas}} </span></td>
+                <td> <span style="font-weight: bold">{{totalPopulacao}} </span></td>
+                <td> <span style="font-weight: bold">{{totalBenefAgua | number }} </span></td>
+                <td> <span style="font-weight: bold">{{totalBenefSaneamento | number }} </span></td>
+                <td> <span style="font-weight: bold">{{totalCobertAgua}} </span></td>
+                <td> <span style="font-weight: bold">{{totalCobertSaneamento}} </span></td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+    <br/>
+    <div id="chartProvincial" style="height: 400px; width: 97%; margin-left: 3%"></div>
 </div>

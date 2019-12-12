@@ -10,7 +10,7 @@ import {Provincia} from '../../entities/provincia/provincia.model';
 import {ComunaService} from '../../entities/comuna/comuna.service';
 import {MunicipioService} from '../../entities/municipio/municipio.service';
 import {ProvinciaService} from '../../entities/provincia/provincia.service';
-import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
+import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
 
 @Component({
     selector: 'jhi-user-mgmt-dialog',
