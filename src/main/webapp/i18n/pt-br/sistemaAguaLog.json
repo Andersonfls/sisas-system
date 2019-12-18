@@ -18,10 +18,10 @@
             },
             "idSistemaAguaLog": "Id Sistema Agua Log",
             "acao": "Ação",
-            "idUsuario": "Usuario",
+            "idUsuario": "Usuário",
             "log": "Log",
             "dtLog": "Data Log",
-            "idSistemaAgua": "Sistema Agua"
+            "idSistemaAgua": "Sistema de Água"
         }
     }
 }

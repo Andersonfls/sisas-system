@@ -129,7 +129,7 @@
             "fieldValidateRules": [
                 "maxlength"
             ],
-            "fieldValidateRulesMaxlength": 11
+            "fieldValidateRulesMaxlength": 21
         },
         {
             "fieldName": "possuiSistemaAgua",
@@ -189,7 +189,7 @@
                 "required",
                 "maxlength"
             ],
-            "fieldValidateRulesMaxlength": 11
+            "fieldValidateRulesMaxlength": 50
         },
         {
             "fieldName": "qtdCasasAguaLigada",

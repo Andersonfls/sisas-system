@@ -40,7 +40,7 @@ public class SistemaAguaDTO implements Serializable {
     @Size(max = 20)
     private String nmTpComunaAldeia;
 
-    @Size(max = 11)
+    @Size(max = 21)
     private String nmTpArea;
 
     private Long possuiSistemaAgua;
@@ -67,7 +67,7 @@ public class SistemaAguaDTO implements Serializable {
     @Size(max = 20)
     private String nmFonteAguaUtilizada;
 
-    @Size(max = 11)
+    @Size(max = 50)
     private String nmTipoBomba;
 
     private Long qtdCasasAguaLigada;

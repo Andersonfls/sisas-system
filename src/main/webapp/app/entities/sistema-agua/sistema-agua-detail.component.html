@@ -72,8 +72,8 @@
                 </dd>
                 <dt><span jhiTranslate="sisasApp.sistemaAgua.possuiSistemaAgua">Possui Sistema Agua</span></dt>
                 <dd>
-                    <span *ngIf="sistemaAgua.possuiSistemaAgua===1">SIM</span>
-                    <span *ngIf="sistemaAgua.possuiSistemaAgua===0">NÃO</span>
+                    <span *ngIf="sistemaAgua.possuiSistemaAgua===1">Sim</span>
+                    <span *ngIf="sistemaAgua.possuiSistemaAgua===0">Não</span>
                 </dd>
                 <div *ngIf="sistemaAgua.possuiSistemaAgua===1">
                     <dt><span jhiTranslate="sisasApp.sistemaAgua.nmFonteAgua">Nm Fonte Agua</span></dt>
@@ -278,11 +278,11 @@
 
                     <dt><span jhiTranslate="sisasApp.sistemaAgua.dtLancamento">Dt Lancamento</span></dt>
                     <dd>
-                        <span>{{sistemaAgua.dtLancamento | date:'mediumDate'}}</span>
+                        <span>{{sistemaAgua.dtLancamento | date:'dd/MM/yy'}}</span>
                     </dd>
                     <dt><span jhiTranslate="sisasApp.sistemaAgua.dtUltimaAlteracao">Dt Ultima Alteracao</span></dt>
                     <dd>
-                        <span>{{sistemaAgua.dtUltimaAlteracao | date:'mediumDate'}}</span>
+                        <span>{{sistemaAgua.dtUltimaAlteracao | date:'dd/MM/yy'}}</span>
                     </dd>
                 </div>
             </div>
@@ -297,7 +297,7 @@
     </button>
 
     <button type="button"
-            [routerLink]="['/', { outlets: { popup: 'sistema-agua/'+ sistemaAgua.id + '/edit'} }]"
+            [routerLink]="['../sistema-agua/'+ sistemaAgua.id + '/edit']"
             replaceUrl="true"
             queryParamsHandling="merge"
             class="btn btn-primary">

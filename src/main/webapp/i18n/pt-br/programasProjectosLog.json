@@ -16,8 +16,8 @@
             "detail": {
                 "title": "Programas Projectos Log"
             },
-            "acao": "Acao",
-            "idUsuario": "Usuario",
+            "acao": "Ação",
+            "idUsuario": "Usuário",
             "log": "Log",
             "dtLog": "Data Log",
             "idProgramasProjectos": "Nome"

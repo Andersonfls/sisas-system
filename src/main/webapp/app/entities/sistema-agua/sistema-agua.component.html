@@ -14,7 +14,7 @@
         <form class="form-horizontal">
             <div class="form-group">
                 <div class="input-group" style="max-width: 97%; margin-bottom: 1%">
-                    <input type="text" class="form-control" name="filtro" [(ngModel)]="nome" placeholder="Digite o Nome do Sistema, Fonte Água, Localidade ou Tipo Área..." style="font-style:italic"/>
+                    <input type="text" class="form-control" name="filtro" [(ngModel)]="nome" placeholder="Digite o Nome do Sistema, Fonte de Água, Localidade ou Tipo Área..." style="font-style:italic"/>
                     <span class="input-group-btn">
                             <button class="btn btn-search" type="button" (click)="onChangeNome()" ><i class="fa fa-search fa-fw"></i></button>
                     </span>
@@ -30,7 +30,7 @@
                             <button class="btn btn-search" type="button" (click)="buscaPorProvincia()" ><i class="fa fa-search fa-fw"></i></button>
                     </span>
                     <select class="form-control" id="field_idMunicipio" name="municipio" [(ngModel)]="sistemaAgua.municipio">
-                        <option [ngValue]="null" selected>Selecione o Municipio..</option>
+                        <option [ngValue]="null" selected>Selecione o Município..</option>
                         <option [ngValue]="municipioOption.id === sistemaAgua.municipio?.id ? sistemaAgua.municipio : municipioOption"
                                 *ngFor="let municipioOption of municipios">{{municipioOption.nmMunicipio}}</option>
                     </select>
@@ -88,7 +88,7 @@
                     <!--<th jhiSortBy="nmTpComunaAldeia"><span jhiTranslate="sisasApp.sistemaAgua.nmTpComunaAldeia">Nm Tp Comuna Aldeia</span> <span class="fa fa-sort"></span></th>-->
                     <!--<th jhiSortBy="nmTpArea"><span jhiTranslate="sisasApp.sistemaAgua.nmTpArea">Nm Tp Area</span> <span class="fa fa-sort"></span></th>-->
                     <!--<th jhiSortBy="possuiSistemaAgua"><span jhiTranslate="sisasApp.sistemaAgua.possuiSistemaAgua">Possui Sistema Agua</span> <span class="fa fa-sort"></span></th>-->
-                    <th jhiSortBy="possuiSistemaAgua"><span jhiTranslate="sisasApp.sistemaAgua.possuiSistemaAgua">Possui Sistema água</span> <span
+                    <th jhiSortBy="possuiSistemaAgua"><span jhiTranslate="sisasApp.sistemaAgua.possuiSistemaAgua">Possui sistema de água</span> <span
                         class="fa fa-sort"></span></th>
                     <!--<th jhiSortBy="latitude"><span jhiTranslate="sisasApp.sistemaAgua.latitude">Latitude</span> <span-->
                     <!--class="fa fa-sort"></span></th>-->
@@ -168,8 +168,8 @@
                     <!--<td>{{sistemaAgua.qtdCasasLocalidade}}</td>-->
                     <!--<td>{{sistemaAgua.nmTpComunaAldeia}}</td>-->
                     <!--<td>{{sistemaAgua.nmTpArea}}</td>-->
-                    <td *ngIf="sistemaAgua.possuiSistemaAgua">SIM</td>
-                    <td *ngIf="!sistemaAgua.possuiSistemaAgua">NÃO</td>
+                    <td *ngIf="sistemaAgua.possuiSistemaAgua">Sim</td>
+                    <td *ngIf="!sistemaAgua.possuiSistemaAgua">Não</td>
                     <!--<td>{{sistemaAgua.latitude}}</td>-->
                     <!--<td>{{sistemaAgua.longitude}}</td>-->
                     <!--<td>{{sistemaAgua.altitude}}</td>-->
@@ -260,7 +260,7 @@
 
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" [routerLink]="['/../../dashboard']"  >
-            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+            <span class="fa fa-line-chart"></span>&nbsp;<span jhiTranslate="sidebar.item1">Dashboard</span>
         </button>
     </div>
 </div>

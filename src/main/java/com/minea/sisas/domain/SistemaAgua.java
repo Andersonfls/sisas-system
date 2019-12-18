@@ -1,3 +1,4 @@
+
 package com.minea.sisas.domain;
 
 import javax.persistence.*;
@@ -52,8 +53,8 @@ public class SistemaAgua implements Serializable {
     @Column(name = "nm_tp_comuna_aldeia", length = 20)
     private String nmTpComunaAldeia;
 
-    @Size(max = 11)
-    @Column(name = "nm_tp_area", length = 11)
+    @Size(max = 21)
+    @Column(name = "nm_tp_area", length = 21)
     private String nmTpArea;
 
     @Column(name = "possui_sistema_agua")
@@ -88,8 +89,8 @@ public class SistemaAgua implements Serializable {
     @Column(name = "nm_fonte_agua_utilizada", length = 20)
     private String nmFonteAguaUtilizada;
 
-    @Size(max = 11)
-    @Column(name = "nm_tipo_bomba", length = 11)
+    @Size(max = 50)
+    @Column(name = "nm_tipo_bomba", length = 50)
     private String nmTipoBomba;
 
     @Column(name = "qtd_casas_agua_ligada")

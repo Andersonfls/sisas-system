@@ -70,7 +70,7 @@ public class SistemaAguaResource {
         if (sistemaAguaDTO.getId() != null) {
             throw new BadRequestAlertException("A new sistemaAgua cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        sistemaAguaDTO.setDtLancamento(LocalDate.now()); //SETANDO DATA DE LANCAMENTO DEFAUT
+        //sistemaAguaDTO.setDtLancamento(LocalDate.now()); //SETANDO DATA DE LANCAMENTO DEFAUT
         SistemaAguaDTO result = sistemaAguaService.save(sistemaAguaDTO);
         return ResponseEntity.created(new URI("/api/sistema-aguas/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
@@ -93,6 +93,7 @@ public class SistemaAguaResource {
         if (sistemaAguaDTO.getId() == null) {
             return createSistemaAgua(sistemaAguaDTO);
         }
+        sistemaAguaDTO.setDtUltimaAlteracao(LocalDate.now());
         SistemaAguaDTO result = sistemaAguaService.save(sistemaAguaDTO);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, sistemaAguaDTO.getId().toString()))

@@ -12,8 +12,7 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="acao"><span jhiTranslate="sisasApp.programasProjectosLog.acao">Acao</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="acao"><span jhiTranslate="sisasApp.programasProjectosLog.acao">Ação</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="idUsuario"><span jhiTranslate="sisasApp.programasProjectosLog.idUsuario">Id Usuario</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="log"><span jhiTranslate="sisasApp.programasProjectosLog.log">Log</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="dtLog"><span jhiTranslate="sisasApp.programasProjectosLog.dtLog">Dt Log</span> <span class="fa fa-sort"></span></th>

@@ -1,5 +1,5 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {HttpResponse, HttpErrorResponse} from '@angular/common/http';
 
 import {Observable} from 'rxjs/Observable';
@@ -46,7 +46,8 @@ export class SistemaAguaDialogComponent implements OnInit {
         private municipioService: MunicipioService,
         private provinciaService: ProvinciaService,
         private eventManager: JhiEventManager,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private router: Router
     ) {
     }
 
@@ -62,21 +63,10 @@ export class SistemaAguaDialogComponent implements OnInit {
             }
         });
 
-        this.situacaoService.query()
-            .subscribe((res: HttpResponse<Situacao[]>) => {
+        this.situacaoService.query().subscribe(
+            (res: HttpResponse<Situacao[]>) => {
                 this.situacaos = res.body;
             }, (res: HttpErrorResponse) => this.onError(res.message));
-
-        this.comunaService.query()
-            .subscribe((res: HttpResponse<Comuna[]>) => {
-                this.comunas = res.body;
-            }, (res: HttpErrorResponse) => this.onError(res.message));
-
-        this.municipioService.query().subscribe(
-            (res: HttpResponse<Municipio[]>) => {
-                this.municipios = res.body;
-            },
-            (res: HttpErrorResponse) => this.onError(res.message));
 
         this.provinciaService.query().subscribe(
             (res: HttpResponse<Provincia[]>) => {
@@ -84,15 +74,26 @@ export class SistemaAguaDialogComponent implements OnInit {
             },
             (res: HttpErrorResponse) => this.onError(res.message));
 
+        this.municipioService.query().subscribe(
+            (res: HttpResponse<Municipio[]>) => {
+                this.municipios = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message));
+
+        this.comunaService.query().subscribe(
+            (res: HttpResponse<Comuna[]>) => {
+                this.comunas = res.body;
+            }, (res: HttpErrorResponse) => this.onError(res.message));
+
+        this.montaListaAnos();
+
         const now = new Date();
         this.sistemaAgua.dtLancamento = {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()};
-        console.log(this.sistemaAgua);
-        this.montaListaAnos();
     }
 
     verificaChafariz() {
         if (this.sistemaAgua.qtdChafarisesFuncionando > this.sistemaAgua.qtdChafarisesExistentes) {
-            alert('A quantidade de Chafarizes Funcionando é maior que a Existente!!!');
+            alert('A quantidade de chafarizes funcionando é maior que a existente!!!');
             this.sistemaAgua.qtdChafarisesFuncionando = null;
         }
     }
@@ -100,11 +101,10 @@ export class SistemaAguaDialogComponent implements OnInit {
     validaExclusaoDados() {
         if (this.sistemaAgua.possuiSistemaAgua === 0) {
             if (this.sistemaAgua.nmSistemaAgua !== null && this.sistemaAgua.nmSistemaAgua !== undefined) {
-                if (confirm('Os dados digitados anteriormente serao apagados, deseja continuar?')) {
+                if (confirm('Os dados digitados anteriormente serão apagados, deseja continuar?')) {
                     this.inicializarCampos();
                 }
             }
-            this.inicializarCampos();
         }
     }
 
@@ -124,6 +124,8 @@ export class SistemaAguaDialogComponent implements OnInit {
         this.sistemaAgua.nmTpComunaAldeia = temp.nmTpComunaAldeia;
         this.sistemaAgua.nmTpArea = temp.nmTpArea;
         this.sistemaAgua.possuiSistemaAgua = temp.possuiSistemaAgua;
+        const now = new Date();
+        this.sistemaAgua.dtLancamento = {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()};
     }
 
     load(id) {
@@ -199,7 +201,7 @@ export class SistemaAguaDialogComponent implements OnInit {
         return item.id;
     }
     previousState() {
-        window.history.back();
+        this.router.navigate(['sistema-agua']);
     }
 
     onChangeMunicipios() {
