@@ -33,6 +33,8 @@ import {SisasRelatoriosModule} from './Relatorios/relatorios.module';
 import {SisasMapasTematicosModule} from './mapas-tematicos/mapas.module';
 import {NgxCurrencyModule} from 'ngx-currency';
 import {LeafletModule} from '@asymmetrik/ngx-leaflet';
+import {CKEditorModule} from 'ng2-ckeditor';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
     imports: [
@@ -48,7 +50,9 @@ import {LeafletModule} from '@asymmetrik/ngx-leaflet';
         SisasRelatoriosModule,
         SisasMapasTematicosModule,
         NgbModule.forRoot(),
-        LeafletModule.forRoot()
+        LeafletModule.forRoot(),
+        CKEditorModule,
+        FormsModule
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [

@@ -1,0 +1,111 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myNoticiasPortalLabel" jhiTranslate="sisasApp.noticiasPortal.home.createOrEditLabel">Create or edit a Noticias Portal</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <!--<div class="form-group" [hidden]="!noticiasPortal.id">-->
+            <!--<label for="id" jhiTranslate="global.field.id">ID</label>-->
+            <!--<input type="text" class="form-control" id="id" name="id"-->
+                   <!--[(ngModel)]="noticiasPortal.id" readonly />-->
+        <!--</div>-->
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.noticiasPortal.titulo" for="field_titulo">Titulo</label>
+            <input type="text" class="form-control" name="titulo" id="field_titulo"
+                [(ngModel)]="noticiasPortal.titulo" />
+        </div>
+        <!--<div class="form-group">-->
+            <!--<label class="form-control-label" jhiTranslate="sisasApp.noticiasPortal.texto" for="field_texto">Texto</label>-->
+            <!--<textarea class="form-control" name="texto" id="field_texto"-->
+                <!--[(ngModel)]="noticiasPortal.texto" ></textarea>-->
+        <!--</div>-->
+
+        <!--[config]="{uiColor: '#293e49'}"-->
+        <!--<div class="form-group">-->
+            <!--<ckeditor-->
+                <!--[(ngModel)]="noticiasPortal.texto"-->
+                <!--[readonly]="false"-->
+                <!--(change)="onChange($event)"-->
+                <!--(ready)="onReady($event)"-->
+                <!--(focus)="onFocus($event)"-->
+                <!--(blur)="onBlur($event)"-->
+                <!--(contentDom)="onContentDom($event)"-->
+                <!--(fileUploadRequest)="onFileUploadRequest($event)"-->
+                <!--(fileUploadResponse)="onFileUploadResponse($event)"-->
+                <!--(paste)="onPaste($event)"-->
+                <!--(drop)="onDrop($event)"-->
+                <!--debounce="500">-->
+            <!--</ckeditor>-->
+        <!--</div>-->
+        <div class="form-group">
+            <ckeditor name="texto"
+                [(ngModel)]="noticiasPortal.texto"
+                [readonly]="false"
+            debounce="500">
+            </ckeditor>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.noticiasPortal.imagemCapa" for="field_imagemCapa">Imagem Capa</label>
+            <div>
+                <img [src]="'data:' + noticiasPortal.imagemCapaContentType + ';base64,' + noticiasPortal.imagemCapa" style="max-height: 100px;" *ngIf="noticiasPortal.imagemCapa" alt="noticiasPortal image"/>
+                <div *ngIf="noticiasPortal.imagemCapa" class="form-text text-danger clearfix">
+                    <span class="pull-left">{{noticiasPortal.imagemCapaContentType}}, {{byteSize(noticiasPortal.imagemCapa)}}</span>
+                    <button type="button" (click)="clearInputImage('imagemCapa', 'imagemCapaContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" id="file_imagemCapa" (change)="setFileData($event, noticiasPortal, 'imagemCapa', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+            </div>
+            <input type="hidden" class="form-control" name="imagemCapa" id="field_imagemCapa"
+                [(ngModel)]="noticiasPortal.imagemCapa" />
+            <input type="hidden" class="form-control" name="imagemCapaContentType" id="field_imagemCapaContentType"
+                [(ngModel)]="noticiasPortal.imagemCapaContentType" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.noticiasPortal.dataCriacao" for="field_dataCriacao">Data Criacao</label>
+            <div class="input-group">
+                <input id="field_dataCriacao" type="text" class="form-control" name="dataCriacao" ngbDatepicker  #dataCriacaoDp="ngbDatepicker" [(ngModel)]="noticiasPortal.dataCriacao"
+                disabled="true" />
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" ><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.noticiasPortal.dataAlteracao" for="field_dataAlteracao">Data Alteracao</label>
+            <div class="input-group">
+                <input id="field_dataAlteracao" type="text" class="form-control" name="dataAlteracao" ngbDatepicker  #dataAlteracaoDp="ngbDatepicker" [(ngModel)]="noticiasPortal.dataAlteracao"
+                 disabled="true"/>
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" ><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group" style="padding-top: 32px;">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <span>Status</span>
+
+                    <div class="check-box-scged" style="padding-bottom: 29px;">
+                        <input id="someSwitchOptionSuccess" type="checkbox" name="status"
+                               [(ngModel)]="noticiasPortal.status" />
+                        <label for="someSwitchOptionSuccess" class="label-success"></label>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

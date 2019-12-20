@@ -79,7 +79,7 @@ export class Map2Component implements OnInit {
                 grades = [ 1, 20, 40, 60, 80];
 
             div.innerHTML +=
-                '<i></i> <span style="font-weight:bold"> **Legenda**</span>' + '<br>' ;
+                '<i></i> <span style="font-weight:bold"> **(% Funcionam )**</span>' + '<br>' ;
             // loop through our density intervals and generate a label with a colored square for each interval
             for (let i = 0; i < grades.length; i++) {
                 let cor = '';

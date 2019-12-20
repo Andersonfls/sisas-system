@@ -1,0 +1,39 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "titulo",
+            "fieldType": "String",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "texto",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "imagemCapa",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "dataCriacao",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dataAlteracao",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20191213232425",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "noticias_portal",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

@@ -1,0 +1,51 @@
+
+<div *ngIf="noticiasPortal">
+    <h2><span jhiTranslate="sisasApp.noticiasPortal.detail.title">Noticias Portal</span> {{noticiasPortal.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="sisasApp.noticiasPortal.titulo">Titulo</span></dt>
+        <dd>
+            <span>{{noticiasPortal.titulo}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.noticiasPortal.texto">Texto</span></dt>
+        <dd>
+            <span>{{noticiasPortal.texto}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.noticiasPortal.imagemCapa">Imagem Capa</span></dt>
+        <dd>
+            <div *ngIf="noticiasPortal.imagemCapa">
+                <a (click)="openFile(noticiasPortal.imagemCapaContentType, noticiasPortal.imagemCapa)">
+                    <img [src]="'data:' + noticiasPortal.imagemCapaContentType + ';base64,' + noticiasPortal.imagemCapa" style="max-width: 100%;" alt="noticiasPortal image"/>
+                </a>
+                {{noticiasPortal.imagemCapaContentType}}, {{byteSize(noticiasPortal.imagemCapa)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.noticiasPortal.dataCriacao">Data Criacao</span></dt>
+        <dd>
+            <span>{{noticiasPortal.dataCriacao | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.noticiasPortal.dataAlteracao">Data Alteracao</span></dt>
+        <dd>
+            <span>{{noticiasPortal.dataAlteracao | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="sisasApp.noticiasPortal.status">Status</span></dt>
+        <dd>
+            <span>{{noticiasPortal.status}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'noticias-portal/'+ noticiasPortal.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,29 @@
+
+{
+    "sisasApp": {
+        "banner" : {
+            "home": {
+                "title": "Banner- Sisas Portal",
+                "createLabel": "Criar novo Banner",
+                "createOrEditLabel": "Criar ou editar Banner"
+            },
+            "created": "Um nov Banner foi criado com o identificador {{ param }}",
+            "updated": "Um Banne foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Banner foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Banner {{ id }}?"
+            },
+            "detail": {
+                "title": "Banner"
+            },
+            "titulo": "Título",
+            "autor": "Autor",
+            "paginas": "Páginas",
+            "descricao": "Descricao",
+            "capa": "Imagem Banner"
+        },"comunaDTO": {
+            "nmComuna": "Nome Comuna",
+            "idMunicipio": "Municipio"
+        }
+    }
+}

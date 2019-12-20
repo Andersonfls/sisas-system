@@ -1,0 +1,27 @@
+
+{
+    "sisasApp": {
+        "noticiasPortal" : {
+            "home": {
+                "title": "Notícias Portal",
+                "createLabel": "Criar Noticia",
+                "createOrEditLabel": "Criar ou editar Noticia Portal"
+            },
+            "created": "Uma nova Noticia foi criada com o identificador {{ param }}",
+            "updated": "Uma Noticia foi atualizada com o identificador {{ param }}",
+            "deleted": "Uma Noticia foi deletada com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Noticias Portal {{ id }}?"
+            },
+            "detail": {
+                "title": "Notícias Portal"
+            },
+            "titulo": "Título",
+            "texto": "Texto",
+            "imagemCapa": "Imagem Capa",
+            "dataCriacao": "Data Criação",
+            "dataAlteracao": "Data Alteração",
+            "status": "Status"
+        }
+    }
+}

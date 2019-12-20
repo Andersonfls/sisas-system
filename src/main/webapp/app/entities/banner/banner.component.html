@@ -1,0 +1,70 @@
+    <div class="card" style="width: 100% !important; padding-top: 0px">
+        <div class="card-header">
+            <h1 class="well" style="text-align: center" >
+                <!--<button class="btn btn-primary float-left jh-create-entity create-produto" (click)="esconderFiltros = !esconderFiltros">-->
+                    <!--<span class="fa fa-plus"> </span>-->
+                    <!--<span>{{esconderFiltros ? 'Adicionar' : 'Retirar' }} filtros</span>-->
+                <!--</button>-->
+
+                <span jhiTranslate="sisasApp.banner.home.title">Biblioteca Editora Zakarewicz </span>
+                <button class="btn btn-primary float-right jh-create-entity create-produto" [routerLink]="['/', { outlets: { popup: ['banner-new'] } }]">
+                    <span class="fa fa-plus"></span>
+                    <span  jhiTranslate="sisasApp.banner.home.createLabel">Create new Produto </span>
+                </button>
+            </h1>
+        </div>
+        <!--<div class="card-body" [hidden]="esconderFiltros">-->
+            <!--<form class="form-horizontal">-->
+                <!--<div class="form-group row">-->
+                    <!--<div class="input-group">-->
+                        <!--<input type="text" class="form-control" placeholder="Procure por Título..." [(ngModel)]="nomePesquisa" name="nomePesquisa">-->
+                        <!--<span class="input-group-btn" *jhiHasAnyAuthority="['ADMIN']">-->
+                            <!--<button class="btn btn-search" type="button" (click)="getProdutos()" ><i class="fa fa-search fa-fw"></i></button>-->
+                        <!--</span>-->
+
+                        <!--<select class="form-control" id="field_item" name="itemAssinatura" [(ngModel)]="itemPesquisa" style="width: 40%">-->
+                            <!--<option [ngValue]="itemoOption.id" *ngFor="let itemoOption of itensAssinatura">{{itemoOption.nome}}</option>-->
+                        <!--</select>-->
+                        <!--<span class="input-group-btn">-->
+                            <!--<button class="btn btn-search" type="button" ><i class="fa fa-search fa-fw"></i></button>-->
+                        <!--</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</form>-->
+        <!--</div>-->
+
+        </div>
+    <br/>
+
+    <div class="row" style="margin-left: 5px">
+        <br/>
+        <div class="col-md-4 col-sm-4" style="margin-bottom: 20px; max-width: 45%; margin-left: 5px" *ngFor="let prod of produtos ;trackBy: trackId">
+            <div style="text-align: center">
+                <button type="submit" [routerLink]="['../banner', prod.id ]"
+                        class="btn btn-info btn-sm">
+                    <span class="fa fa-eye"></span>
+                </button>
+                <button type="submit" [routerLink]="['/', { outlets: { popup: 'banner/'+ prod.id + '/edit'} }]"
+                        replaceUrl="true" queryParamsHandling="merge"
+                        class="btn btn-primary btn-sm">
+                    <span class="fa fa-pencil"></span>
+                </button>
+                <button type="submit" [routerLink]="['/', { outlets: { popup: 'banner/'+ prod.id + '/delete'} }]"
+                        replaceUrl="true" queryParamsHandling="merge"
+                        class="btn btn-danger btn-sm">
+                    <span class="fa fa-remove"></span>
+                </button>
+            </div>
+
+            <div style="text-align: center">
+                <img [src]="'data:' + prod.contentType + ';base64,' + prod.imagemBanner" style="height: 320px; width: 350px" class="thumbnail" alt="capa"/>
+            </div>
+
+            <h4 class="title" style="height: 35px; font-weight: 200; text-align: center">{{ prod.titulo }}</h4>
+            <!--<a class="btn btn-primary btn-block">Ler Revista</a>-->
+        </div>
+    </div>
+    <div *ngIf="valorAtual < produtosFilt?.length">
+        <button (click)="loadMore()" class="btn loadMore">Carregar mais...</button>
+    </div>
+</div>

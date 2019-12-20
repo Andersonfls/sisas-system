@@ -1,0 +1,97 @@
+<div class="container" *ngIf="produto">
+    <div class="col-md-4 col-sm-4" style="float: left;">
+        <a (click)="openFile(produto.capaContentType, produto.capa)">
+        <img [src]="'data:' + produto.capaContentType + ';base64,' + produto.capa" width="100%" alt="capa da Revista"/>
+        </a>
+    </div>
+
+    <div class="col-md-8 col-sm-8" style="float: right">
+        <h2 class="well" style="text-align: center">{{ produto.titulo }}</h2>
+        <ul class="bookInfo">
+            <li>Author: {{produto.autor}}</li>
+            <li>Número Edição: {{produto.paginas}}</li>
+            <li>Data Cadastro: {{produto.dataCadastro | date:'medium'}}</li>
+            <li>Download Arquivo: <a href="{{produto.uri}}" target='_blank'>arquivo</a> </li>
+        </ul>
+        <br>
+        <p>{{ produto.descricao}}</p>
+        <br/>
+
+    </div>
+    <div class="col-md-4 col-sm-4" style="text-align: center">
+        <button type="submit" (click)="previousState()" class="btn btn-info">
+            <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+        </button>
+
+        <button type="button"  [routerLink]="['/', { outlets: { popup: 'produto/'+ produto.id + '/edit'} }]"
+                replaceUrl="true"  queryParamsHandling="merge" class="btn btn-primary">
+            <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+        </button>
+    </div>
+
+    <p></p>
+</div>
+
+<!--<div *ngIf="produto">-->
+    <!--<h2><span jhiTranslate="sisasApp.banner.detail.title">Produto</span> {{produto.id}}</h2>-->
+    <!--<hr>-->
+    <!--<jhi-alert-error></jhi-alert-error>-->
+    <!--<dl class="row-md jh-entity-details">-->
+        <!--<dt><span jhiTranslate="sisasApp.banner.titulo">Titulo</span></dt>-->
+        <!--<dd>-->
+            <!--<span>{{produto.titulo}}</span>-->
+            <!--<span jhiTranslate="sisasApp.banner.autor">Autor</span>-->
+            <!--<span>{{produto.autor}}</span>-->
+        <!--</dd>-->
+        <!--<dt><span jhiTranslate="sisasApp.banner.preco">Preco</span></dt>-->
+        <!--<dd>-->
+            <!--<span>{{produto.preco}}</span>-->
+        <!--</dd>-->
+        <!--<dt><span jhiTranslate="sisasApp.banner.paginas">Paginas</span></dt>-->
+        <!--<dd>-->
+            <!--<span>{{produto.paginas}}</span>-->
+        <!--</dd>-->
+
+        <!--<dt><span jhiTranslate="sisasApp.banner.descricao">Descricao</span></dt>-->
+        <!--<dd>-->
+            <!--<span>{{produto.descricao}}</span>-->
+        <!--</dd>-->
+
+        <!--<dt><span jhiTranslate="sisasApp.banner.dataCadastro">Data Cadastro</span></dt>-->
+        <!--<dd>-->
+            <!--<span>{{produto.dataCadastro | date:'medium'}}</span>-->
+        <!--</dd>-->
+
+        <!--<dt><span jhiTranslate="sisasApp.banner.uri">Uri</span></dt>-->
+        <!--<dd>-->
+            <!--<span>{{produto.uri}}</span>-->
+        <!--</dd>-->
+
+        <!--<dt><span jhiTranslate="sisasApp.banner.capa">Capa</span></dt>-->
+        <!--<dd>-->
+            <!--<div *ngIf="produto.capa">-->
+                <!--<a (click)="openFile(produto.capaContentType, produto.capa)">-->
+                    <!--<img [src]="'data:' + produto.capaContentType + ';base64,' + produto.capa" style="max-width: 100%;" alt="produto image"/>-->
+                <!--</a>-->
+            <!--</div>-->
+        <!--</dd>-->
+        <!--<dt><span jhiTranslate="sisasApp.banner.status">Status</span></dt>-->
+        <!--<dd>-->
+            <!--<span>{{produto.status}}</span>-->
+        <!--</dd>-->
+    <!--</dl>-->
+
+    <!--<button type="submit"-->
+            <!--(click)="previousState()"-->
+            <!--class="btn btn-info">-->
+        <!--<span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>-->
+    <!--</button>-->
+
+    <!--<button type="button"-->
+            <!--[routerLink]="['/', { outlets: { popup: 'produto/'+ produto.id + '/edit'} }]"-->
+            <!--replaceUrl="true"-->
+            <!--queryParamsHandling="merge"-->
+            <!--class="btn btn-primary">-->
+        <!--<span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>-->
+    <!--</button>-->
+<!--</div>-->

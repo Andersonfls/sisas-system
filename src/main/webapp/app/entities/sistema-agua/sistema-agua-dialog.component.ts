@@ -99,6 +99,7 @@ export class SistemaAguaDialogComponent implements OnInit {
     }
 
     validaExclusaoDados() {
+        console.log('Valor Possui sistema agua --', this.sistemaAgua.possuiSistemaAgua);
         if (this.sistemaAgua.possuiSistemaAgua === 0) {
             if (this.sistemaAgua.nmSistemaAgua !== null && this.sistemaAgua.nmSistemaAgua !== undefined) {
                 if (confirm('Os dados digitados anteriormente serão apagados, deseja continuar?')) {
@@ -182,7 +183,7 @@ export class SistemaAguaDialogComponent implements OnInit {
     private onSaveSuccess(result: SistemaAgua) {
         this.eventManager.broadcast({name: 'sistemaAguaListModification', content: 'OK'});
         this.isSaving = false;
-        // this.activeModal.dismiss(result);
+        this.previousState();
     }
 
     private onSaveError() {

@@ -1,0 +1,47 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myProdutoLabel" jhiTranslate="sisasApp.banner.home.createOrEditLabel">Create or edit a Produto</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.banner.titulo" for="field_titulo">Titulo</label>
+            <input type="text" class="form-control" name="titulo" id="field_titulo"
+                [(ngModel)]="produto.titulo" required/>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.banner.capa" for="field_imagemCapa">Imagem Capa</label>
+            <div>
+                <img [src]="'data:' + produto.contentType + ';base64,' + produto.imagemBanner" style="max-height: 100px;" *ngIf="produto.imagemBanner" alt="Banner image"/>
+                <div *ngIf="produto.imagemBanner" class="form-text text-danger clearfix">
+                    <span class="pull-left">{{produto.contentType}}, {{byteSize(produto.imagemBanner)}}</span>
+                    <button type="button" (click)="clearInputImage('imagemBanner', 'contentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" id="file_imagemCapa" (change)="setFileData($event, produto, 'imagemBanner', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+            </div>
+            <input type="hidden" class="form-control" name="imagemBanner" id="field_imagemCapa"
+                   [(ngModel)]="produto.imagemBanner" />
+            <input type="hidden" class="form-control" name="contentType" id="field_imagemCapaContentType"
+                   [(ngModel)]="produto.contentType" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sisasApp.banner.descricao" for="field_descricao">Descricao</label>
+            <input type="text" class="form-control" name="descricao" id="field_descricao" [(ngModel)]="produto.descricao" required/>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
