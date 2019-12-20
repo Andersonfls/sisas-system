@@ -1,4 +1,11 @@
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<h2>
+    <span class="fa fa-bar-chart" style="margin-left: 5%"></span><span style="margin-left: 1%">Dashboard</span>
+    <button class="btn btn-primary float-right jh-create-entity redondo" [routerLink]="['/', { outlets: { popup: ['provincia-new'] } }]">
+        <span class="fa fa-plus"></span>
+    </button>
+</h2>
+<br/>
 <jhi-alert></jhi-alert>
 <div *jhiHasAnyAuthority="['ROLE_ADMIN']">
     <div class="table-responsive" *ngIf="listaTabela">
