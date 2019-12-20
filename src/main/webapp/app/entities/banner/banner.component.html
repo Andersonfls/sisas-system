@@ -1,39 +1,50 @@
-    <div class="card" style="width: 100% !important; padding-top: 0px">
-        <div class="card-header">
-            <h1 class="well" style="text-align: center" >
-                <!--<button class="btn btn-primary float-left jh-create-entity create-produto" (click)="esconderFiltros = !esconderFiltros">-->
-                    <!--<span class="fa fa-plus"> </span>-->
-                    <!--<span>{{esconderFiltros ? 'Adicionar' : 'Retirar' }} filtros</span>-->
+    <!--<div class="card" style="width: 100% !important; padding-top: 0px">-->
+        <!--<div class="card-header">-->
+            <!--<h1 class="well" style="text-align: center" >-->
+                <!--&lt;!&ndash;<button class="btn btn-primary float-left jh-create-entity create-produto" (click)="esconderFiltros = !esconderFiltros">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<span class="fa fa-plus"> </span>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<span>{{esconderFiltros ? 'Adicionar' : 'Retirar' }} filtros</span>&ndash;&gt;-->
+                <!--&lt;!&ndash;</button>&ndash;&gt;-->
+
+                <!--<span jhiTranslate="sisasApp.banner.home.title">Biblioteca Editora Zakarewicz </span>-->
+                <!--<button class="btn btn-primary float-right jh-create-entity create-produto" [routerLink]="['/', { outlets: { popup: ['banner-new'] } }]">-->
+                    <!--<span class="fa fa-plus"></span>-->
+                    <!--<span  jhiTranslate="sisasApp.banner.home.createLabel">Create new Produto </span>-->
                 <!--</button>-->
-
-                <span jhiTranslate="sisasApp.banner.home.title">Biblioteca Editora Zakarewicz </span>
-                <button class="btn btn-primary float-right jh-create-entity create-produto" [routerLink]="['/', { outlets: { popup: ['banner-new'] } }]">
-                    <span class="fa fa-plus"></span>
-                    <span  jhiTranslate="sisasApp.banner.home.createLabel">Create new Produto </span>
-                </button>
-            </h1>
-        </div>
-        <!--<div class="card-body" [hidden]="esconderFiltros">-->
-            <!--<form class="form-horizontal">-->
-                <!--<div class="form-group row">-->
-                    <!--<div class="input-group">-->
-                        <!--<input type="text" class="form-control" placeholder="Procure por Título..." [(ngModel)]="nomePesquisa" name="nomePesquisa">-->
-                        <!--<span class="input-group-btn" *jhiHasAnyAuthority="['ADMIN']">-->
-                            <!--<button class="btn btn-search" type="button" (click)="getProdutos()" ><i class="fa fa-search fa-fw"></i></button>-->
-                        <!--</span>-->
-
-                        <!--<select class="form-control" id="field_item" name="itemAssinatura" [(ngModel)]="itemPesquisa" style="width: 40%">-->
-                            <!--<option [ngValue]="itemoOption.id" *ngFor="let itemoOption of itensAssinatura">{{itemoOption.nome}}</option>-->
-                        <!--</select>-->
-                        <!--<span class="input-group-btn">-->
-                            <!--<button class="btn btn-search" type="button" ><i class="fa fa-search fa-fw"></i></button>-->
-                        <!--</span>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</form>-->
+            <!--</h1>-->
         <!--</div>-->
+        <!--&lt;!&ndash;<div class="card-body" [hidden]="esconderFiltros">&ndash;&gt;-->
+            <!--&lt;!&ndash;<form class="form-horizontal">&ndash;&gt;-->
+                <!--&lt;!&ndash;<div class="form-group row">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="input-group">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<input type="text" class="form-control" placeholder="Procure por Título..." [(ngModel)]="nomePesquisa" name="nomePesquisa">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<span class="input-group-btn" *jhiHasAnyAuthority="['ADMIN']">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<button class="btn btn-search" type="button" (click)="getProdutos()" ><i class="fa fa-search fa-fw"></i></button>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</span>&ndash;&gt;-->
+
+                        <!--&lt;!&ndash;<select class="form-control" id="field_item" name="itemAssinatura" [(ngModel)]="itemPesquisa" style="width: 40%">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<option [ngValue]="itemoOption.id" *ngFor="let itemoOption of itensAssinatura">{{itemoOption.nome}}</option>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</select>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<span class="input-group-btn">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<button class="btn btn-search" type="button" ><i class="fa fa-search fa-fw"></i></button>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</span>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--&lt;!&ndash;</form>&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
 
         </div>
+
+    <h2>
+        <span style="margin-left: 5%" jhiTranslate="sisasApp.banner.home.title">Banner</span>
+        <button class="btn btn-primary float-left redondo"
+                [routerLink]="['../dashboard']">
+            <span class="fa fa-chevron-left"></span>
+        </button>
+        <button class="btn btn-primary float-right jh-create-entity redondo" [routerLink]="['/', { outlets: { popup: ['banner-new'] } }]" >
+            <span class="fa fa-plus"></span>
+        </button>
+    </h2>
     <br/>
 
     <div class="row" style="margin-left: 5px">
