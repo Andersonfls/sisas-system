@@ -1,7 +1,12 @@
 <div>
     <h2>
-        <span jhiTranslate="sisasApp.indicadorProducaoLog.home.title">Indicador Producao Logs</span>
+        <span style="margin-left: 5%" jhiTranslate="sisasApp.indicadorProducaoLog.home.title">Indicador Producao Logs</span>
+        <button class="btn btn-primary float-left redondo"
+                [routerLink]="['../dashboard']">
+            <span class="fa fa-chevron-left"></span>
+        </button>
     </h2>
+    <br/>
     <jhi-alert></jhi-alert>
     <input type="text" class="form-control pesquisa" name="filtro" [(ngModel)]="nome" (ngModelChange)="onChangeNome()"
            placeholder="Buscar..." style="font-style:italic"/>
@@ -27,7 +32,7 @@
                 <td>{{indicadorProducaoLog.acao}}</td>
                 <td>{{indicadorProducaoLog.idUsuario}}</td>
                 <td>{{indicadorProducaoLog.log}}</td>
-                <td>{{indicadorProducaoLog.dtLog | date:'mediumDate'}}</td>
+                <td>{{indicadorProducaoLog.dtLog | date:'dd/MM/yy'}}</td>
                 <td>
                     <div *ngIf="indicadorProducaoLog.idIndicadorProducaoId">
                         <a [routerLink]="['../indicador-producao', indicadorProducaoLog.idIndicadorProducaoId.id  ]" >{{indicadorProducaoLog.idIndicadorProducaoId.id}}</a>

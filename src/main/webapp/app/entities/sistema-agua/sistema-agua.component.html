@@ -1,7 +1,11 @@
 <div>
     <h2>
-        <span jhiTranslate="sisasApp.sistemaAgua.home.title">Sistema Aguas</span>
-        <button class="btn btn-primary jh-create-entity create-produto" (click)="mostrarFiltros()" style="float: left; margin-right: 25%;">
+        <span style="margin-left: 25%" jhiTranslate="sisasApp.sistemaAgua.home.title">Sistema Aguas</span>
+        <button class="btn btn-primary float-left redondo"
+                [routerLink]="['../dashboard']">
+            <span class="fa fa-chevron-left"></span>
+        </button>
+        <button class="btn btn-primary jh-create-entity create-produto" (click)="mostrarFiltros()" style="float: left; margin-left: 1%;">
             <span class="fa fa-plus"> </span>
             <span>{{esconderFiltros ? 'Adicionar' : 'Retirar' }} filtros</span>
         </button>
@@ -256,11 +260,5 @@
             <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5"
                             [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
         </div>
-    </div>
-
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" [routerLink]="['/../../dashboard']"  >
-            <span class="fa fa-line-chart"></span>&nbsp;<span jhiTranslate="sidebar.item1">Dashboard</span>
-        </button>
     </div>
 </div>

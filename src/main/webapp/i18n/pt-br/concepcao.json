@@ -3,7 +3,7 @@
     "sisasApp": {
         "concepcao" : {
             "home": {
-                "title": "Concepcaos",
+                "title": "Concepcos",
                 "createLabel": "Criar novo Concepção",
                 "createOrEditLabel": "Criar ou editar Concepção",
                 "editLabel": "Editar Concepção"
@@ -17,14 +17,14 @@
             "detail": {
                 "title": "Concepção"
             },
-            "idConcepcao": "Id Concepção",
-            "tipoConcurso": "Tipo Concurso",
-            "dtLancamento": "Data Lançamento",
-            "dtUltimaAlteracao": "Data Ultima Alteração",
-            "dtElaboracaoCon": "Data de Elab Documentos/Concurso",
-            "dtAprovacaoCon": "Data de Aprov. Doc. Concurso",
-            "idProgramasProjectos": "Programas Projectos",
-            "idSistemaAgua": "Sistema Água"
+            "idConcepcao": "Id concepção",
+            "tipoConcurso": "Tipo concurso",
+            "dtLancamento": "Data de lançamento",
+            "dtUltimaAlteracao": "Data última alteração",
+            "dtElaboracaoCon": "Data de elab documentos/concurso",
+            "dtAprovacaoCon": "Data de aprov. doc. concurso",
+            "idProgramasProjectos": "Programas e Projectos",
+            "idSistemaAgua": "Sistema de Água"
         }
     }
 }

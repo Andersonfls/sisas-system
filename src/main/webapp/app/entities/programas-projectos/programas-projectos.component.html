@@ -1,11 +1,16 @@
 <div>
     <h2>
-        <span jhiTranslate="sisasApp.programasProjectos.home.title">Programas Projectos</span>
+        <span style="margin-left: 5%" jhiTranslate="sisasApp.programasProjectos.home.title">Programas Projectos</span>
+        <button class="btn btn-primary float-left redondo"
+                [routerLink]="['../dashboard']">
+            <span class="fa fa-chevron-left"></span>
+        </button>
         <!--<button class="btn btn-primary float-right jh-create-entity redondo" [routerLink]="['/', { outlets: { popup: ['programas-projectos-new'] } }]">-->
         <button type="submit" class="btn btn-primary float-right jh-create-entity redondo" [routerLink]="['../programas-projectos-new']">
             <span class="fa fa-plus"></span>
         </button>
     </h2>
+    <br/>
     <jhi-alert></jhi-alert>
     <input type="text" class="form-control pesquisa" name="filtro" [(ngModel)]="nome" (ngModelChange)="onChangeNome()"
            placeholder="Buscar..." style="font-style:italic"/>
@@ -16,13 +21,13 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-                <th jhiSortBy="nmDesignacaoProjeto"><span jhiTranslate="sisasApp.programasProjectos.nmDesignacaoProjeto">Nm Designacao Projeto</span> <span class="fa fa-sort"></span></th>
-                <th jhiSortBy="nmDescricaoProjeto"><span jhiTranslate="sisasApp.programasProjectos.nmDescricaoProjeto">Nm Descricao Projeto</span> <span class="fa fa-sort"></span></th>
-                <th jhiSortBy="idUsuario"><span jhiTranslate="sisasApp.programasProjectos.idUsuario">Id Usuario</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="nmDesignacaoProjeto"><span jhiTranslate="sisasApp.programasProjectos.nmDesignacaoProjeto">Nm Designacao Projeto</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="nmDescricaoProjeto"><span jhiTranslate="sisasApp.programasProjectos.nmDescricaoProjeto">Nm Descricao Projeto</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idUsuario"><span jhiTranslate="sisasApp.programasProjectos.idUsuario">Id Usuario</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="idSaaAssociado"><span jhiTranslate="sisasApp.programasProjectos.idSaaAssociado">Id Saa Associado</span> <span class="fa fa-sort"></span></th>
             <!--<th jhiSortBy="tipoFinanciamento"><span jhiTranslate="sisasApp.programasProjectos.tipoFinanciamento">Tipo Financiamento</span> <span class="fa fa-sort"></span></th>-->
             <th jhiSortBy="especialidade"><span jhiTranslate="sisasApp.programasProjectos.especialidade">Especialidade</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="idComunaId"><span jhiTranslate="sisasApp.programasProjectos.idComuna">Id Comuna</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idProvinciaId"><span jhiTranslate="sisasApp.programasProjectos.idProvincia">Id Provincia</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -35,8 +40,8 @@
                 <!--<td>{{programasProjectos.tipoFinanciamento}}</td>-->
                 <td>{{programasProjectos.especialidade}}</td>
                 <td>
-                    <div *ngIf="programasProjectos.comuna">
-                        <a [routerLink]="['../comuna', programasProjectos.comuna  ]" >{{programasProjectos.comuna.nmComuna}}</a>
+                    <div *ngIf="programasProjectos.provincia">
+                        <a [routerLink]="['../provincia', programasProjectos.provincia  ]" >{{programasProjectos.provincia.nmProvincia}}</a>
                     </div>
                 </td>
                 <td class="text-right">
@@ -78,11 +83,5 @@
         <div class="row justify-content-center">
             <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
         </div>
-    </div>
-
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" [routerLink]="['/../../dashboard']"  >
-            <span class="fa fa-line-chart"></span>&nbsp;<span jhiTranslate="sidebar.item1">Dashboard</span>
-        </button>
     </div>
 </div>

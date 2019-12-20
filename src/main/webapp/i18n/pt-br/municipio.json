@@ -3,28 +3,28 @@
     "sisasApp": {
         "municipio" : {
             "home": {
-                "title": "Municipios",
-                "createLabel": "Criar novo Municipio",
-                "createOrEditLabel": "Criar ou editar Municipio"
+                "title": "Municípios",
+                "createLabel": "Criar novo Município",
+                "createOrEditLabel": "Criar ou editar Município"
             },
-            "created": "Um novo Municipio foi criado com o identificador {{ param }}",
-            "updated": "Um Municipio foi atualizado com o identificador {{ param }}",
-            "deleted": "Um Municipio foi deletado com o identificador {{ param }}",
+            "created": "Novo Município foi criado com sucesso",
+            "updated": "Município foi atualizado com sucesso",
+            "deleted": "Município foi deletado com sucesso",
             "delete": {
-                "question": "Tem certeza de que deseja excluir Municipio {{ id }}?"
+                "question": "Tem certeza de que deseja excluir Município?"
             },
             "detail": {
-                "title": "Municipio"
+                "title": "Município"
             },
-            "idMunicipio": "Id Municipio",
-            "nmMunicipio": "Nome Municipio",
-            "idProvincia": "Provincia",
+            "idMunicipio": "Id Município",
+            "nmMunicipio": "Nome",
+            "idProvincia": "Província",
             "comuna": "Comuna",
-            "municipiosAtendidos": "Municipios Atendidos"
+            "municipiosAtendidos": "Municípios Atendidos"
         },  "municipioDTO": {
-            "idMunicipio": "Id Municipio",
-            "nmMunicipio": "Nome Municipio",
-            "provincia": "Provincia"
+            "idMunicipio": "Id Município",
+            "nmMunicipio": "Nome",
+            "provincia": "Província"
         }
     }
 }

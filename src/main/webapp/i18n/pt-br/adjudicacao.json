@@ -17,14 +17,14 @@
             "detail": {
                 "title": "Adjudicação"
             },
-            "idAdjudicacao": "Id Adjudicacao",
-            "tipoConcurso": "Tipo Concurso",
-            "dtLancamento": "Data Lançamento",
-            "dtComunicaoAdjudicacao": "Data Comunição Adjudicação",
-            "dtPrestacaoGarantBoaExec": "Data Prestacao Garant Boa Exec",
-            "dtSubmissaoMinutContrato": "Data Submissão Minuta Contrato",
-            "idProgramasProjectos": "Programas Projectos",
-            "idSistemaAgua": "Sistema Agua"
+            "idAdjudicacao": "Id adjudicação",
+            "tipoConcurso": "Tipo concurso",
+            "dtLancamento": "Data de lançamento",
+            "dtComunicaoAdjudicacao": "Data comunição adjudicação",
+            "dtPrestacaoGarantBoaExec": "Data prestação garant. boa exec.",
+            "dtSubmissaoMinutContrato": "Data submissão minuta contrato",
+            "idProgramasProjectos": "Programas e Projectos",
+            "idSistemaAgua": "Sistema de Agua"
         }
     }
 }

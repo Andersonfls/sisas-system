@@ -249,7 +249,7 @@ public class SistemaAgua implements Serializable {
     @JoinColumn(name = "id_situacao")
     private Situacao situacao;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
     @JoinColumn(name = "id_comuna")
     private Comuna comuna;
 

@@ -1,10 +1,15 @@
 <div>
     <h2>
-        <span jhiTranslate="sisasApp.indicadorProducao.home.title">Indicador Producaos</span>
+        <span style="margin-left: 5%" jhiTranslate="sisasApp.indicadorProducao.home.title">Indicador Producaos</span>
+        <button class="btn btn-primary float-left redondo"
+                [routerLink]="['../dashboard']">
+            <span class="fa fa-chevron-left"></span>
+        </button>
         <button class="btn btn-primary float-right jh-create-entity redondo" [routerLink]="['../indicador-producao-new' ]" >
             <span class="fa fa-plus"></span>
         </button>
     </h2>
+    <br/>
     <jhi-alert></jhi-alert>
     <input type="text" class="form-control pesquisa" name="filtro" [(ngModel)]="nome" (ngModelChange)="onChangeNome()"
            placeholder="Buscar..." style="font-style:italic"/>
@@ -15,7 +20,7 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <!--<th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>-->
             <!--<th jhiSortBy="idUsuario"><span jhiTranslate="sisasApp.indicadorProducao.idUsuario">Id Usuario</span> <span class="fa fa-sort"></span></th>-->
             <th jhiSortBy="dtLancamento"><span jhiTranslate="sisasApp.indicadorProducao.dtLancamento">Dt Lancamento</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="dtUltimaAlteracao"><span jhiTranslate="sisasApp.indicadorProducao.dtUltimaAlteracao">Dt Ultima Alteracao</span> <span class="fa fa-sort"></span></th>
@@ -106,10 +111,10 @@
             </thead>
             <tbody>
             <tr *ngFor="let indicadorProducao of indicadorProducaos ;trackBy: trackId">
-                <td><a [routerLink]="['../indicador-producao', indicadorProducao.id ]">{{indicadorProducao.id}}</a></td>
+                <!--<td><a [routerLink]="['../indicador-producao', indicadorProducao.id ]">{{indicadorProducao.id}}</a></td>-->
                 <!--<td>{{indicadorProducao.idUsuario}}</td>-->
-                <td>{{indicadorProducao.dtLancamento | date:'mediumDate'}}</td>
-                <td>{{indicadorProducao.dtUltimaAlteracao | date:'mediumDate'}}</td>
+                <td>{{indicadorProducao.dtLancamento | date:'dd/MM/yy'}}</td>
+                <td>{{indicadorProducao.dtUltimaAlteracao | date:'dd/MM/yy'}}</td>
                 <!--<td>{{indicadorProducao.qtdPopulacaoCobertaInfraestrutura}}</td>-->
                 <!--<td>{{indicadorProducao.qtdFontanariosChafarisesOperacionais}}</td>-->
                 <!--<td>{{indicadorProducao.qtdMediaHorasDistribuicaoDiaria}}</td>-->
@@ -245,11 +250,5 @@
         <div class="row justify-content-center">
             <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
         </div>
-    </div>
-
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" [routerLink]="['/../../dashboard']"  >
-            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
-        </button>
     </div>
 </div>

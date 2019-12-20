@@ -8,32 +8,34 @@
                 "createOrEditLabel": "Criar ou editar Programas e Projectos",
                 "editLabel": "Editar Programas e Projectos"
             },
-            "created": "Um novo Programas e Projectos foi criado com o identificador {{ param }}",
-            "updated": "Um Programas e Projectos foi atualizado com o identificador {{ param }}",
-            "deleted": "Um Programas e Projectos foi deletado com o identificador {{ param }}",
+            "created": "Novo Programas e Projectos foi criado com sucesso",
+            "updated": "Programas e Projectos foi atualizado com sucesso",
+            "deleted": "Programas e Projectos foi deletado com sucesso",
             "delete": {
-                "question": "Tem certeza de que deseja excluir Programas e Projectos {{ id }}?"
+                "question": "Tem certeza de que deseja excluir Programas e Projectos?"
             },
             "detail": {
                 "title": "Programas e Projectos"
             },
-            "dtLancamento": "Data Lançamento",
-            "dtUltimaAlteracao": "Data Última Alteração",
-            "idUsuario": "Usuario",
-            "nmDesignacaoProjeto": "Designação do Projecto",
-            "nmDescricaoProjeto": "Descrição do Programa/Projecto",
-            "idSaaAssociado": "Saa Associado",
-            "tipoFinanciamento": "Financiamento do Projecto/Programa",
+            "dtLancamento": "Data de Lançamento",
+            "dtUltimaAlteracao": "Data última alteração",
+            "idUsuario": "Usuário",
+            "nmDesignacaoProjeto": "Designação do projecto",
+            "nmDescricaoProjeto": "Descrição do programa/projecto",
+            "idSaaAssociado": "SAA associado",
+            "tipoFinanciamento": "Financiamento do projecto/programa",
             "especialidade": "Especialidade",
             "idComuna": "Comuna",
+            "idMunicipio": "Município",
+            "idProvincia": "Província",
             "adjudicacao": "Adjudicação",
             "concepcao": "Concepção",
             "concurso": "Concurso",
             "contrato": "Contrato",
             "empreitada": "Empreitada",
             "execucao": "Execução",
-            "programasProjectosLog": "Programas Projectos Log",
-            "associado-inqu": "Associado a Inquérito/Inventário"
+            "programasProjectosLog": "Programas projectos log",
+            "associado-inqu": "Associado a inquérito/inventário"
         }
     }
 }

@@ -1,11 +1,16 @@
 <div>
     <h2>
-        <span jhiTranslate="sisasApp.fornecedor.home.title">Fornecedors</span>
+        <span style="margin-left: 5%" jhiTranslate="sisasApp.fornecedor.home.title">Fornecedores</span>
+        <button class="btn btn-primary float-left redondo"
+                [routerLink]="['../dashboard']">
+            <span class="fa fa-chevron-left"></span>
+        </button>
         <button class="btn btn-primary float-right jh-create-entity redondo"
                 [routerLink]="['/', { outlets: { popup: ['fornecedor-new'] } }]">
             <span class="fa fa-plus"></span>
         </button>
     </h2>
+    <br/>
     <jhi-alert></jhi-alert>
     <input type="text" class="form-control pesquisa" name="filtro" [(ngModel)]="nome" (ngModelChange)="onChangeNome()"
            placeholder="Buscar..." style="font-style:italic"/>
@@ -84,10 +89,5 @@
             <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5"
                             [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
         </div>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" [routerLink]="['/../../dashboard']"  >
-            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
-        </button>
     </div>
 </div>

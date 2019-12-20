@@ -17,17 +17,17 @@
             "detail": {
                 "title": "Concurso"
             },
-            "idConcurso": "Id Concurso",
-            "tipoConcurso": "Tipo Concurso",
-            "dtLancamento": "Data Lancamento",
-            "dtUltimaAlteracao": "Data Ultima Alteração",
-            "dtEntregaProposta": "Data Entrega Proposta",
-            "dtAberturaProposta": "Data Abertura Proposta",
-            "dtConclusaoAvaliacaoRelPrel": "Data Conclusão Avaliação Rel Prel",
-            "dtNegociacao": "Data Negociação",
-            "dtAprovRelAvalFinal": "Data Aprov Rel Aval Final",
-            "idProgramasProjectos": "Programas Projectos",
-            "idSistemaAgua": "Sistema Água"
+            "idConcurso": "Id concurso",
+            "tipoConcurso": "Tipo concurso",
+            "dtLancamento": "Data lançamento",
+            "dtUltimaAlteracao": "Data última alteração",
+            "dtEntregaProposta": "Data entrega proposta",
+            "dtAberturaProposta": "Data abertura proposta",
+            "dtConclusaoAvaliacaoRelPrel": "Data conclusão avaliação rel. prel.",
+            "dtNegociacao": "Data negociação",
+            "dtAprovRelAvalFinal": "Data aprov. rel. aval. final",
+            "idProgramasProjectos": "Programas e Projectos",
+            "idSistemaAgua": "Sistema de Água"
         }
     }
 }

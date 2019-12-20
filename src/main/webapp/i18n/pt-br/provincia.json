@@ -3,26 +3,26 @@
     "sisasApp": {
         "provincia" : {
             "home": {
-                "title": "Provincias",
-                "createLabel": "Criar novo Provincia",
-                "createOrEditLabel": "Criar ou editar Provincia"
+                "title": "Províncias",
+                "createLabel": "Criar novo Província",
+                "createOrEditLabel": "Criar ou editar Província"
             },
-            "created": "Um novo Provincia foi criado com o identificador {{ param }}",
-            "updated": "Um Provincia foi atualizado com o identificador {{ param }}",
-            "deleted": "Um Provincia foi deletado com o identificador {{ param }}",
+            "created": "Novo Provincia foi criado com sucesso",
+            "updated": "Província foi atualizado com sucesso",
+            "deleted": "Província foi deletado com sucesso",
             "delete": {
-                "question": "Tem certeza de que deseja excluir Provincia {{ id }}?"
+                "question": "Tem certeza de que deseja excluir Província?"
             },
             "detail": {
-                "title": "Provincia"
+                "title": "Província"
             },
             "idProvincia": "Id Provincia",
-            "nmProvincia": "Nome Provincia",
-            "municipio": "Municipio"
+            "nmProvincia": "Nome",
+            "municipio": "Município"
         },"provinciaDTO": {
-            "idProvincia": "Id Provincia",
-            "nmProvincia": "Nome Provincia",
-            "municipio": "Municipio"
+            "idProvincia": "Id Província",
+            "nmProvincia": "Nome",
+            "municipio": "Município"
         }
     }
 }

@@ -2,6 +2,8 @@ package com.minea.sisas.service.dto;
 
 
 import com.minea.sisas.domain.Comuna;
+import com.minea.sisas.domain.Municipio;
+import com.minea.sisas.domain.Provincia;
 import com.minea.sisas.domain.User;
 
 import java.time.LocalDate;
@@ -40,7 +42,14 @@ public class ProgramasProjectosDTO implements Serializable {
     @Size(max = 100)
     private String especialidade;
 
+    @NotNull
     private Comuna comuna;
+
+    @NotNull
+    private Provincia provincia;
+
+    @NotNull
+    private Municipio municipio;
 
     public Long getId() {
         return id;
@@ -121,6 +130,14 @@ public class ProgramasProjectosDTO implements Serializable {
     public void setComuna(Comuna comuna) {
         this.comuna = comuna;
     }
+
+    public Provincia getProvincia() { return provincia; }
+
+    public void setProvincia(Provincia provincia) { this.provincia = provincia; }
+
+    public Municipio getMunicipio() { return municipio; }
+
+    public void setMunicipio(Municipio municipio) { this.municipio = municipio; }
 
     @Override
     public boolean equals(Object o) {

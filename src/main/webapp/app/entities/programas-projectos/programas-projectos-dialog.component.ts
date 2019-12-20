@@ -154,7 +154,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                 console.log(this.programasProjectos);
                 this.loadConcepcao(this.programasProjectos.id);
                 this.loadConcurso(this.programasProjectos.id);
-                this.loadAdjudiacao(this.programasProjectos.id);
+                this.loadAdjudicacao(this.programasProjectos.id);
                 this.loadContrato(this.programasProjectos.id);
                 this.loadEmpreitada(this.programasProjectos.id);
                 this.loadExecucao(this.programasProjectos.id);
@@ -168,7 +168,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
         console.log(aprovacao);
         console.log(elaboracao);
         if (aprovacao > elaboracao ) {
-            alert('A Data de Aprovação não pode ser maior que a Data de Elaboração');
+            alert('A data de aprovação não pode ser maior que a data de elaboração');
             this.concepcao.dtAprovacaoCon = null;
         }
     }
@@ -178,7 +178,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
         const abertura = new Date(this.concurso.dtAberturaProposta.year, this.concurso.dtAberturaProposta.month - 1, this.concurso.dtAberturaProposta.day );
 
         if (abertura > entrega ) {
-            alert('A Data de Abertura não pode ser maior que a Data de Entrega');
+            alert('A data de abertura não pode ser maior que a data de entrega');
             this.concurso.dtAberturaProposta = null;
         }
     }
@@ -188,7 +188,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
         const conclusao = new Date(this.concurso.dtConclusaoAvaliacaoRelPrel.year, this.concurso.dtConclusaoAvaliacaoRelPrel.month - 1, this.concurso.dtConclusaoAvaliacaoRelPrel.day );
 
         if (conclusao > entrega ) {
-            alert('A Data de Conclusão não pode ser maior que a Data de Entrega');
+            alert('A data de conclusão não pode ser maior que a data de entrega');
             this.concurso.dtConclusaoAvaliacaoRelPrel = null;
         }
     }
@@ -198,7 +198,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
         const negociacao = new Date(this.concurso.dtNegociacao.year, this.concurso.dtNegociacao.month - 1, this.concurso.dtNegociacao.day );
 
         if (negociacao > entrega ) {
-            alert('A Data de Negociação não pode ser maior que a Data de Entrega');
+            alert('A data de negociação não pode ser maior que a data de entrega');
             this.concurso.dtNegociacao = null;
         }
     }
@@ -208,7 +208,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
         const aprovacaoFinal = new Date(this.concurso.dtAprovRelAvalFinal.year, this.concurso.dtAprovRelAvalFinal.month - 1, this.concurso.dtAprovRelAvalFinal.day );
 
         if (aprovacaoFinal > entrega ) {
-            alert('A Data de Aprovacão Rel. Aval. Final não pode ser maior que a Data de Entrega');
+            alert('A data de aprovacão rel. aval. final não pode ser maior que a data de entrega');
             this.concurso.dtAprovRelAvalFinal = null;
         }
     }
@@ -218,7 +218,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
         const dt = new Date(data.year, data.month - 1, data.day );
 
         if (dt > dataLancamento ) {
-            alert('A Data Informada não pode ser maior que a Data de Lancamento');
+            alert('A data informada não pode ser maior que a data de lançamento');
             if (tipo === 'submissao') {
                 this.adjudicacao.dtSubmissaoMinutContrato = null;
             } else if (tipo === 'prestacao') {
@@ -234,7 +234,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
         const dt = new Date(data.year, data.month - 1, data.day );
 
         if (dt > dataAssinatura ) {
-            alert('A Data Informada não pode ser maior que a Data de Assinatura!');
+            alert('A data informada não pode ser maior que a data de assinatura!');
 
             if (tipo === 'inicio') {
                 this.contrato.dtInicio = null;
@@ -345,7 +345,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
             });
     }
 
-    loadAdjudiacao(id) {
+    loadAdjudicacao(id) {
         this.adjService.findByProgramasProjectos(id)
             .subscribe((adjResponse: HttpResponse<Adjudicacao>) => {
                 const adjudicacao: Adjudicacao = adjResponse.body;
@@ -534,14 +534,14 @@ export class ProgramasProjectosDialogComponent implements OnInit {
 
         if (this.concepcao.id !== undefined && this.concepcao.id !== null) {
                 this.concepcaoService.update(this.concepcao).subscribe( (event) => {
-                    alert('Concepcao salva com sucesso!!');
+                    alert('Concepção foi atualizado com sucesso');
                     console.log(event);
                     this.hideModalConcepcao();
                     this.concepcao = event.body;
                 });
         } else {
             this.concepcaoService.create(this.concepcao).subscribe( (event) => {
-                alert('Concepcao salva com sucesso!!');
+                alert('Concepção foi criado com sucesso');
                 console.log(event);
                 this.hideModalConcepcao();
                 this.concepcao = event.body;
@@ -573,14 +573,14 @@ export class ProgramasProjectosDialogComponent implements OnInit {
     salvarConcurso() {
         if (this.concurso.id !== undefined && this.concurso.id !== null) {
             this.concursoService.update(this.concurso).subscribe( (event) => {
-                alert('Concurso salvo com sucesso!!');
+                alert('Concurso foi atualizado com sucesso');
                 console.log(event);
                 this.hideModalConcurso();
                 this.concurso = event.body;
             });
         } else {
             this.concursoService.create(this.concurso).subscribe( (event) => {
-                alert('Concurso salvo com sucesso!!');
+                alert('Concurso foi criado com sucesso');
                 console.log(event);
                 this.hideModalConcurso();
                 this.concurso = event.body;
@@ -592,7 +592,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
         this.closeModalConcurso.nativeElement.click();
     }
 
-    // ADJUDIACAO
+    // ADJUDICACAO
     validaAdjudicacao() {
         if (this.programasProjectos.id === undefined || this.programasProjectos.id === null) {
             this.programasProjectosService.create(this.programasProjectos).subscribe( (resp) => {
@@ -612,14 +612,14 @@ export class ProgramasProjectosDialogComponent implements OnInit {
     salvarAdjudicacao() {
         if (this.adjudicacao.id !== undefined) {
             this.adjService.update(this.adjudicacao).subscribe( (event) => {
-                alert('Adjudicacao salvo com sucesso!!');
+                alert('Adjudicacao foi atualizado com sucesso');
                 console.log(event);
                 this.hideModalAdj();
                 this.adjudicacao = event.body;
             });
         } else {
             this.adjService.create(this.adjudicacao).subscribe( (event) => {
-                alert('Adjudicacao salvo com sucesso!!');
+                alert('Adjudicacao foi criado com sucesso');
                 console.log(event);
                 this.hideModalAdj();
                 this.adjudicacao = event.body;
@@ -651,14 +651,14 @@ export class ProgramasProjectosDialogComponent implements OnInit {
     salvarContrato() {
         if (this.contrato.id !== undefined && this.contrato.id !== null) {
             this.contratoService.update(this.contrato).subscribe( (event) => {
-                alert('Contrato salvo com sucesso!!');
+                alert('Contrato foi atualizado com sucesso');
                 console.log(event);
                 this.hideModalContrato();
                 this.contrato = event.body;
             });
         } else {
             this.contratoService.create(this.contrato).subscribe( (event) => {
-                alert('Contrato salvo com sucesso!!');
+                alert('Contrato foi criado com sucesso');
                 console.log(event);
                 this.hideModalContrato();
                 this.contrato = event.body;

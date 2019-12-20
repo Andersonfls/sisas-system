@@ -1,13 +1,17 @@
 <div>
     <h2>
-        <span jhiTranslate="sisasApp.provincia.home.title">Provincias</span>
+        <span style="margin-left: 5%" jhiTranslate="sisasApp.provincia.home.title">Províncias</span>
+        <button class="btn btn-primary float-left redondo"
+                [routerLink]="['../dashboard']">
+            <span class="fa fa-chevron-left"></span>
+        </button>
         <button class="btn btn-primary float-right jh-create-entity redondo" [routerLink]="['/', { outlets: { popup: ['provincia-new'] } }]">
             <span class="fa fa-plus"></span>
         </button>
     </h2>
+    <br/>
     <jhi-alert></jhi-alert>
     <input type="text" class="form-control pesquisa" name="filtro" [(ngModel)]="nome" (ngModelChange)="onChangeNome()" placeholder="Buscar..." style="font-style:italic"/>
-
     <div class="row">
     </div>
     <br/>
@@ -15,14 +19,12 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="nmProvincia"><span jhiTranslate="sisasApp.provincia.nmProvincia">Nm Provincia</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let provincia of provincias ;trackBy: trackId">
-                <td><a [routerLink]="['../provincia', provincia.id ]">{{provincia.id}}</a></td>
                 <td>{{provincia.nmProvincia}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
@@ -61,10 +63,5 @@
         <div class="row justify-content-center">
             <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
         </div>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" [routerLink]="['/../../dashboard']"  >
-            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
-        </button>
     </div>
 </div>

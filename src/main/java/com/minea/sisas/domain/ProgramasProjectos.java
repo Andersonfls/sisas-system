@@ -54,11 +54,10 @@ public class ProgramasProjectos implements Serializable {
     @Column(name = "especialidade", length = 100)
     private String especialidade;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
     @JoinColumn(name = "id_comuna")
     private Comuna comuna;
 
-    //novos campos
     @ManyToOne
     @JoinColumn(name = "id_provincia")
     private Provincia provincia;
@@ -67,8 +66,8 @@ public class ProgramasProjectos implements Serializable {
     @JoinColumn(name = "id_municipio")
     private Municipio municipio;
 
-    @Column(name = "associado_inquerito")
-    private Boolean associadoInquerito;
+/*    @Column(name = "associado_inquerito")
+    private Boolean associadoInquerito;*/
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -187,13 +186,22 @@ public class ProgramasProjectos implements Serializable {
         return comuna;
     }
 
-    public ProgramasProjectos comuna(Comuna comuna) {
+    public ProgramasProjectos idComuna(Comuna comuna) {
         this.comuna = comuna;
         return this;
     }
 
+    public void setComuna(Comuna comuna) {
+        this.comuna = comuna;
+    }
+
     public Provincia getProvincia() {
         return provincia;
+    }
+
+    public ProgramasProjectos idProvincia(Provincia provincia) {
+        this.provincia = provincia;
+        return this;
     }
 
     public void setProvincia(Provincia provincia) {
@@ -204,20 +212,13 @@ public class ProgramasProjectos implements Serializable {
         return municipio;
     }
 
+    public ProgramasProjectos idMunicipio(Municipio municipio) {
+        this.municipio = municipio;
+        return this;
+    }
+
     public void setMunicipio(Municipio municipio) {
         this.municipio = municipio;
-    }
-
-    public Boolean getAssociadoInquerito() {
-        return associadoInquerito;
-    }
-
-    public void setAssociadoInquerito(Boolean associadoInquerito) {
-        this.associadoInquerito = associadoInquerito;
-    }
-
-    public void setComuna(Comuna comuna) {
-        this.comuna = comuna;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove

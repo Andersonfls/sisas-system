@@ -7,25 +7,25 @@
                 "createLabel": "Criar novo Situação",
                 "createOrEditLabel": "Criar ou editar Situação"
             },
-            "created": "Um novo Situacao foi criado com o identificador {{ param }}",
-            "updated": "Um Situacao foi atualizado com o identificador {{ param }}",
-            "deleted": "Um Situacao foi deletado com o identificador {{ param }}",
+            "created": "Novo Situação foi criado com sucesso",
+            "updated": "Situação foi atualizado com sucesso",
+            "deleted": "Situação foi deletado com sucesso",
             "delete": {
-                "question": "Tem certeza de que deseja excluir Situação {{ id }}?"
+                "question": "Tem certeza de que deseja excluir Situação?"
             },
             "detail": {
-                "title": "Situacao"
+                "title": "Situação"
             },
             "idSituacao": "Id Situação",
-            "nmSituacao": "Nome Situação",
+            "nmSituacao": "Nome",
             "contactos": "Contactos",
             "execucao": "Execução",
             "indicadorProducao": "Indicador Produção",
-            "inicio": "Inicio",
-            "noticias": "Noticias",
+            "inicio": "Início",
+            "noticias": "Notícias",
             "projectos": "Projectos",
             "publicacao": "Publicação",
-            "sistemaAgua": "Sistema Agua",
+            "sistemaAgua": "Sistema de Água",
             "sobreDna": "Sobre Dna"
         }
     }

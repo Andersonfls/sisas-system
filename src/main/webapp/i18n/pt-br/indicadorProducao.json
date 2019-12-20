@@ -8,9 +8,9 @@
                 "createOrEditLabel": "Criar ou editar Indicadores de Produção",
                 "editLabel": "Editar Indicadores de Produção"
             },
-            "created": "Um novo Indicador de Producao foi criado com o identificador {{ param }}",
-            "updated": "Um Indicador de Producao foi atualizado com o identificador {{ param }}",
-            "deleted": "Um Indicador de Producao foi deletado com o identificador {{ param }}",
+            "created": "Novo Indicador de Producao foi criado com sucesso",
+            "updated": "Indicador de Producao foi atualizado com sucesso",
+            "deleted": "Indicador de Producao foi deletado com sucesso",
             "delete": {
                 "question": "Tem certeza de que deseja excluir Indicador de Producao {{ id }}?"
             },
@@ -19,8 +19,8 @@
             },
             "idIndicadorProducao": "Id Indicador Producao",
             "idUsuario": "Id Usuario",
-            "dtLancamento": "Dt Lancamento",
-            "dtUltimaAlteracao": "Dt Ultima Alteracao",
+            "dtLancamento": "Data de lançamento",
+            "dtUltimaAlteracao": "Data última alteração",
             "qtdPopulacaoCobertaInfraestrutura": "Qtd Populacao Coberta Infraestrutura",
             "qtdFontanariosChafarisesOperacionais": "Qtd Fontanarios Chafarises Operacionais",
             "qtdMediaHorasDistribuicaoDiaria": "Qtd Media Horas Distribuicao Diaria",

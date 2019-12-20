@@ -1,7 +1,12 @@
 <div>
     <h2>
-        <span jhiTranslate="sisasApp.programasProjectosLog.home.title">Programas Projectos Logs</span>
+        <span style="margin-left: 5%" jhiTranslate="sisasApp.programasProjectosLog.home.title">Programas Projectos Logs</span>
+        <button class="btn btn-primary float-left redondo"
+                [routerLink]="['../dashboard']">
+            <span class="fa fa-chevron-left"></span>
+        </button>
     </h2>
+    <br/>
     <jhi-alert></jhi-alert>
     <input type="text" class="form-control pesquisa" name="filtro" [(ngModel)]="nome" (ngModelChange)="onChangeNome()"
            placeholder="Buscar..." style="font-style:italic"/>
@@ -22,16 +27,16 @@
             </thead>
             <tbody>
             <tr *ngFor="let programasProjectosLog of programasProjectosLogs ;trackBy: trackId">
-                <td><a [routerLink]="['../programas-projectos-log', programasProjectosLog.id ]">{{programasProjectosLog.id}}</a></td>
                 <td>{{programasProjectosLog.acao}}</td>
                 <td>{{programasProjectosLog.usuario.nome}}</td>
                 <td>{{programasProjectosLog.log}}</td>
-                <td>{{programasProjectosLog.dtLog | date:'mediumDate'}}</td>
+                <td>{{programasProjectosLog.dtLog | date:'dd/MM/yy'}}</td>
                 <td>
                     <div *ngIf="programasProjectosLog.programasProjectos">
                         <a [routerLink]="['../programas-projectos', programasProjectosLog.programasProjectos.id  ]" >{{programasProjectosLog.programasProjectos.nmDesignacaoProjeto}}</a>
                     </div>
                 </td>
+
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

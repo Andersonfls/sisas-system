@@ -1,7 +1,12 @@
 <div>
     <h2>
-        <span jhiTranslate="sisasApp.sistemaAguaLog.home.title">Sistema Agua Logs</span>
+        <span style="margin-left: 5%" jhiTranslate="sisasApp.sistemaAguaLog.home.title">Sistema Agua Logs</span>
+        <button class="btn btn-primary float-left redondo"
+                [routerLink]="['../dashboard']">
+            <span class="fa fa-chevron-left"></span>
+        </button>
     </h2>
+    <br/>
     <jhi-alert></jhi-alert>
     <input type="text" class="form-control pesquisa" name="filtro" [(ngModel)]="nome" (ngModelChange)="onChangeNome()"
            placeholder="Buscar..." style="font-style:italic"/>
@@ -25,7 +30,7 @@
                 <td>{{sistemaAguaLog.acao}}</td>
                 <td>{{sistemaAguaLog.idUsuario}}</td>
                 <td>{{sistemaAguaLog.log}}</td>
-                <td>{{sistemaAguaLog.dtLog | date:'mediumDate'}}</td>
+                <td>{{sistemaAguaLog.dtLog | date:'dd/MM/yy'}}</td>
                 <td>
                     <div *ngIf="sistemaAguaLog.idSistemaAguaId">
                         <a [routerLink]="['../sistema-agua', sistemaAguaLog.idSistemaAguaId.id  ]" >{{sistemaAguaLog.idSistemaAguaId.nmSistemaAgua}}</a>
@@ -52,11 +57,5 @@
         <div class="row justify-content-center">
             <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
         </div>
-    </div>
-
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" [routerLink]="['/../../dashboard']"  >
-            <span class="fa fa-line-chart"></span>&nbsp;<span>Dashboard</span>
-        </button>
     </div>
 </div>
