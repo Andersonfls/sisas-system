@@ -1,0 +1,29 @@
+
+{
+    "sisasApp": {
+        "pdf" : {
+            "home": {
+                "title": "Arquivos Pdf - Sisas Portal",
+                "createLabel": "Criar novo Arquivo",
+                "createOrEditLabel": "Criar ou editar Arquivo"
+            },
+            "created": "Um nov Arquivo foi criado com o identificador {{ param }}",
+            "updated": "Um Arquivo foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Arquivo foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Arquivo {{ id }}?"
+            },
+            "detail": {
+                "title": "Arquivo"
+            },
+            "titulo": "Título",
+            "autor": "Autor",
+            "paginas": "Páginas",
+            "descricao": "Descricao",
+            "capa": "Imagem Banner"
+        },"comunaDTO": {
+            "nmComuna": "Nome Comuna",
+            "idMunicipio": "Municipio"
+        }
+    }
+}

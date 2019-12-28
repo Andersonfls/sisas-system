@@ -28,6 +28,7 @@ currentAccount: any;
     predicate: any;
     previousPage: any;
     reverse: any;
+    sobre: SobreDna;
 
     constructor(
         private sobreDnaService: SobreDnaService,
@@ -45,6 +46,7 @@ currentAccount: any;
             this.reverse = data.pagingParams.ascending;
             this.predicate = data.pagingParams.predicate;
         });
+        this.sobre = new SobreDna();
     }
 
     loadAll() {

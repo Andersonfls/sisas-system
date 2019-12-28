@@ -17,6 +17,8 @@ import {SisasFinalidadeProjetoModule} from './finalidade-projeto/finalidade-proj
 import {SisasEspecialidadesModule} from './especialidades/especialidades.module';
 import {SisasNoticiasPortalModule} from './noticias-portal/noticias-portal.module';
 import {SisasBannerModule} from './banner/banner.module';
+import {SisasPdfModule} from './cadastro-pdf/cadPdf.module';
+import {SisasSobreDnaModule} from './sobre-dna/sobre-dna.module';
 
 @NgModule({
     imports: [
@@ -37,7 +39,9 @@ import {SisasBannerModule} from './banner/banner.module';
         SisasIndicadorProducaoLogModule,
         SisasProgramasProjectosLogModule,
         SisasNoticiasPortalModule,
-        SisasBannerModule
+        SisasBannerModule,
+        SisasPdfModule,
+        SisasSobreDnaModule
     ],
     declarations: [],
     entryComponents: [],

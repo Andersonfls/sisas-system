@@ -1,0 +1,44 @@
+<div>
+    <h2>
+        <span style="margin-left: 5%" jhiTranslate="sisasApp.pdf.home.title">Banner</span>
+        <button class="btn btn-primary float-left redondo"
+                [routerLink]="['../dashboard']">
+            <span class="fa fa-chevron-left"></span>
+        </button>
+        <button class="btn btn-primary float-right jh-create-entity redondo" [routerLink]="['/', { outlets: { popup: ['banner-new'] } }]" >
+            <span class="fa fa-plus"></span>
+        </button>
+    </h2>
+    <br/>
+
+    <div class="row" style="margin-left: 5px">
+        <br/>
+        <div class="col-md-4 col-sm-4" style="margin-bottom: 20px; max-width: 25%; margin-left: 5px" *ngFor="let prod of produtos ;trackBy: trackId">
+            <div style="text-align: center">
+                <button type="submit" [routerLink]="['../banner', prod.id ]"
+                        class="btn btn-info btn-sm">
+                    <span class="fa fa-eye"></span>
+                </button>
+                <button type="submit" [routerLink]="['/', { outlets: { popup: 'banner/'+ prod.id + '/edit'} }]"
+                        replaceUrl="true" queryParamsHandling="merge"
+                        class="btn btn-primary btn-sm">
+                    <span class="fa fa-pencil"></span>
+                </button>
+                <button type="submit" [routerLink]="['/', { outlets: { popup: 'banner/'+ prod.id + '/delete'} }]"
+                        replaceUrl="true" queryParamsHandling="merge"
+                        class="btn btn-danger btn-sm">
+                    <span class="fa fa-remove"></span>
+                </button>
+            </div>
+
+            <div style="text-align: center">
+                <img src="pdf-icon.png" style="height: 200px; width: 200px" class="thumbnail" alt="capa"/>
+            </div>
+
+            <h4 class="title" style="height: 35px; font-weight: 200; text-align: center">{{ prod.titulo }}</h4>
+        </div>
+    </div>
+    <div *ngIf="valorAtual < produtosFilt?.length">
+        <button (click)="loadMore()" class="btn loadMore">Carregar mais...</button>
+    </div>
+</div>

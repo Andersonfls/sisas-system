@@ -6,15 +6,12 @@ import {
     SobreDnaService,
     SobreDnaPopupService,
     SobreDnaComponent,
-    SobreDnaDetailComponent,
-    SobreDnaDialogComponent,
-    SobreDnaPopupComponent,
-    SobreDnaDeletePopupComponent,
-    SobreDnaDeleteDialogComponent,
     sobreDnaRoute,
     sobreDnaPopupRoute,
     SobreDnaResolvePagingParams,
 } from './';
+import {CKEditorModule} from 'ng2-ckeditor';
+import {FormsModule} from '@angular/forms';
 
 const ENTITY_STATES = [
     ...sobreDnaRoute,
@@ -24,22 +21,15 @@ const ENTITY_STATES = [
 @NgModule({
     imports: [
         SisasSharedModule,
-        RouterModule.forChild(ENTITY_STATES)
+        RouterModule.forChild(ENTITY_STATES),
+        CKEditorModule,
+        FormsModule
     ],
     declarations: [
-        SobreDnaComponent,
-        SobreDnaDetailComponent,
-        SobreDnaDialogComponent,
-        SobreDnaDeleteDialogComponent,
-        SobreDnaPopupComponent,
-        SobreDnaDeletePopupComponent,
+        SobreDnaComponent
     ],
     entryComponents: [
-        SobreDnaComponent,
-        SobreDnaDialogComponent,
-        SobreDnaPopupComponent,
-        SobreDnaDeleteDialogComponent,
-        SobreDnaDeletePopupComponent,
+        SobreDnaComponent
     ],
     providers: [
         SobreDnaService,
@@ -48,4 +38,4 @@ const ENTITY_STATES = [
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class sisasSobreDnaModule {}
+export class SisasSobreDnaModule {}

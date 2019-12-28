@@ -4,9 +4,6 @@ import { JhiPaginationUtil } from 'ng-jhipster';
 
 import { UserRouteAccessService } from '../../shared';
 import { SobreDnaComponent } from './sobre-dna.component';
-import { SobreDnaDetailComponent } from './sobre-dna-detail.component';
-import { SobreDnaPopupComponent } from './sobre-dna-dialog.component';
-import { SobreDnaDeletePopupComponent } from './sobre-dna-delete-dialog.component';
 
 @Injectable()
 export class SobreDnaResolvePagingParams implements Resolve<any> {
@@ -36,46 +33,8 @@ export const sobreDnaRoute: Routes = [
             pageTitle: 'sisasApp.sobreDna.home.title'
         },
         canActivate: [UserRouteAccessService]
-    }, {
-        path: 'sobre-dna/:id',
-        component: SobreDnaDetailComponent,
-        data: {
-            authorities: ['ROLE_USER'],
-            pageTitle: 'sisasApp.sobreDna.home.title'
-        },
-        canActivate: [UserRouteAccessService]
     }
 ];
 
 export const sobreDnaPopupRoute: Routes = [
-    {
-        path: 'sobre-dna-new',
-        component: SobreDnaPopupComponent,
-        data: {
-            authorities: ['ROLE_USER'],
-            pageTitle: 'sisasApp.sobreDna.home.title'
-        },
-        canActivate: [UserRouteAccessService],
-        outlet: 'popup'
-    },
-    {
-        path: 'sobre-dna/:id/edit',
-        component: SobreDnaPopupComponent,
-        data: {
-            authorities: ['ROLE_USER'],
-            pageTitle: 'sisasApp.sobreDna.home.title'
-        },
-        canActivate: [UserRouteAccessService],
-        outlet: 'popup'
-    },
-    {
-        path: 'sobre-dna/:id/delete',
-        component: SobreDnaDeletePopupComponent,
-        data: {
-            authorities: ['ROLE_USER'],
-            pageTitle: 'sisasApp.sobreDna.home.title'
-        },
-        canActivate: [UserRouteAccessService],
-        outlet: 'popup'
-    }
 ];

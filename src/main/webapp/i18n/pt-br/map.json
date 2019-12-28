@@ -1,7 +1,11 @@
 {
     "map": {
         "title": {
-            "home": "Mapa-Temático"
+            "home": "Mapa-Temático",
+            "hulia": "Hulia",
+            "huambo": "Huambo",
+            "Kuanzanorte": "Kuanza Norte",
+            "nacional": "Nacional"
         }
     }
 }

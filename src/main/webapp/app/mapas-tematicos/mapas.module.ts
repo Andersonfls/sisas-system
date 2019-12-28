@@ -1,11 +1,15 @@
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
-import {SisasMapModule} from './map/map.module';
-import {SisasMap2Module} from './map2/map2.module';
+import {SisasMap2Module} from './nacional/map2.module';
+import {SisasHuliaModule} from './hulia/hulia.module';
+import {SisasHuamboModule} from './huambo/huambo.module';
+import {SisasKuanzaNorteModule} from './kuanzaNorte/kuanzaNorte.module';
 
 @NgModule({
     imports: [
-        SisasMapModule,
-        SisasMap2Module
+        SisasMap2Module,
+        SisasHuliaModule,
+        SisasHuamboModule,
+        SisasKuanzaNorteModule
     ],
     declarations: [],
     entryComponents: [],
