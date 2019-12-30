@@ -3,13 +3,15 @@ import {SisasMap2Module} from './nacional/map2.module';
 import {SisasHuliaModule} from './hulia/hulia.module';
 import {SisasHuamboModule} from './huambo/huambo.module';
 import {SisasKuanzaNorteModule} from './kuanzaNorte/kuanzaNorte.module';
+import {SisasMunicipalModule} from './municipal/municipal.module';
 
 @NgModule({
     imports: [
         SisasMap2Module,
         SisasHuliaModule,
         SisasHuamboModule,
-        SisasKuanzaNorteModule
+        SisasKuanzaNorteModule,
+        SisasMunicipalModule
     ],
     declarations: [],
     entryComponents: [],

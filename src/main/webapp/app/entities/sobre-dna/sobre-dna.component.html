@@ -16,7 +16,7 @@
         <div class="form-group">
             <label style="font-weight: bold" class="form-control-label" jhiTranslate="sisasApp.noticiasPortal.titulo" for="field_titulo">Titulo</label>
             <input type="text" class="form-control" name="titulo" id="field_titulo"
-                   [(ngModel)]="sobre.tituloSobreDna" />
+                   [(ngModel)]="sobre.tituloSobreDna"/>
         </div>
         <div class="form-group">
             <ckeditor name="texto"
@@ -25,7 +25,6 @@
                       debounce="500">
             </ckeditor>
         </div>
-
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
