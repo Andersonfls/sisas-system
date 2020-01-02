@@ -50,9 +50,9 @@ public class ProgramasProjectos implements Serializable {
     @Column(name = "tipo_financiamento", length = 150, nullable = false)
     private String tipoFinanciamento;
 
-    @Size(max = 100)
-    @Column(name = "especialidade", length = 100)
-    private String especialidade;
+    @ManyToOne
+    @JoinColumn(name = "id_especialidade")
+    private Especialidades especialidades;
 
     @ManyToOne
     @JoinColumn(name = "id_comuna")
@@ -65,6 +65,14 @@ public class ProgramasProjectos implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_municipio")
     private Municipio municipio;
+
+    @Size(max = 150)
+    @Column(name = "nm_localidade", length = 150)
+    private String nmLocalidade;
+
+    @Size(max = 150)
+    @Column(name = "finalidade_projeto", length = 150)
+    private String finalidadeProjeto;
 
 /*    @Column(name = "associado_inquerito")
     private Boolean associadoInquerito;*/
@@ -169,17 +177,17 @@ public class ProgramasProjectos implements Serializable {
         this.tipoFinanciamento = tipoFinanciamento;
     }
 
-    public String getEspecialidade() {
-        return especialidade;
+    public Especialidades getEspecialidades() {
+        return especialidades;
     }
 
-    public ProgramasProjectos especialidade(String especialidade) {
-        this.especialidade = especialidade;
+    public ProgramasProjectos idEspecialidades(Especialidades especialidades) {
+        this.especialidades = especialidades;
         return this;
     }
 
-    public void setEspecialidade(String especialidade) {
-        this.especialidade = especialidade;
+    public void setEspecialidades(Especialidades especialidades) {
+        this.especialidades = especialidades;
     }
 
     public Comuna getComuna() {
@@ -217,8 +225,34 @@ public class ProgramasProjectos implements Serializable {
         return this;
     }
 
-    public void setMunicipio(Municipio municipio) {
-        this.municipio = municipio;
+    public Municipio setMunicipio() {
+        return municipio;
+    }
+
+    public String getNmLocalidade() {
+        return nmLocalidade;
+    }
+
+    public ProgramasProjectos nmLocalidade(String nmLocalidade) {
+        this.nmLocalidade = nmLocalidade;
+        return this;
+    }
+
+    public void setNmLocalidade(String nmLocalidade) {
+        this.nmLocalidade = nmLocalidade;
+    }
+
+    public String getFinalidadeProjeto() {
+        return finalidadeProjeto;
+    }
+
+    public ProgramasProjectos finalidadeProjeto(String finalidadeProjeto) {
+        this.finalidadeProjeto = finalidadeProjeto;
+        return this;
+    }
+
+    public void setFinalidadeProjeto(String finalidadeProjeto) {
+        this.finalidadeProjeto = finalidadeProjeto;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
@@ -254,7 +288,7 @@ public class ProgramasProjectos implements Serializable {
             ", nmDescricaoProjeto='" + getNmDescricaoProjeto() + "'" +
             ", idSaaAssociado=" + getIdSaaAssociado() +
             ", tipoFinanciamento='" + getTipoFinanciamento() + "'" +
-            ", especialidade='" + getEspecialidade() + "'" +
+            ", especialidades='" + getEspecialidades() + "'" +
             "}";
     }
 }

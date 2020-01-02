@@ -20,7 +20,7 @@ public interface ProgramasProjectosRepository extends JpaRepository<ProgramasPro
         "or LOWER(p.usuario) like LOWER(CONCAT(:nome,'%'))"+
         "or LOWER(p.idSaaAssociado) like LOWER(CONCAT(:nome,'%'))"+
         "or LOWER(p.tipoFinanciamento) like LOWER(CONCAT(:nome,'%'))"+
-        "or LOWER(p.especialidade) like LOWER(CONCAT(:nome,'%'))"+
+        "or LOWER(p.especialidades) like LOWER(CONCAT(:nome,'%'))"+
         "or LOWER(p.comuna) like LOWER(CONCAT(:nome,'%'))")
     Page buscarPorNome(@Param("nome") String nome, Pageable pageable);
 }

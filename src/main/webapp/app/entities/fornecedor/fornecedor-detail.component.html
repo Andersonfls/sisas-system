@@ -20,7 +20,7 @@
         <dd>
             <span>{{fornecedor.email}}</span>
         </dd>
-        <dt><span jhiTranslate="sisasApp.fornecedor.Comuna">Especialidades</span></dt>
+        <dt><span jhiTranslate="sisasApp.fornecedor.Especialidades">Especialidades</span></dt>
         <dd>
             <div *ngIf="fornecedor.especialidades.nmEspecialidade">
                 <a [routerLink]="['/especialidades', fornecedor.especialidades.id]">{{fornecedor.especialidades.nmEspecialidade}}</a>

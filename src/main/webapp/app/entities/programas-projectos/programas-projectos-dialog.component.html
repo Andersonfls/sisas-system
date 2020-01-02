@@ -73,6 +73,24 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.finalidadeProjeto" for="field_finalidadeProjeto">
+                        Finalidade do projeto</label>
+                    <input type="text" class="form-control" name="finalidadeProjeto" id="field_finalidadeProjeto"
+                           [(ngModel)]="programasProjectos.finalidadeProjeto" maxlength="150" placeholder="Descrição da finalidade do projeto"/>
+                    <div [hidden]="!(editForm.controls.finalidadeProjeto?.dirty && editForm.controls.finalidadeProjeto?.invalid)">
+                        <small class="form-text text-danger"
+                               [hidden]="!editForm.controls.finalidadeProjeto?.errors?.required"
+                               jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               [hidden]="!editForm.controls.nmLocalidade?.errors?.maxlength"
+                               jhiTranslate="entity.validation.maxlength" translateValues="{ max: 150 }">
+                            This field cannot be longer than 150 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.idSaaAssociado" for="field_idSaaAssociado">Id Saa Associado</label>
                     <select class="form-control" id="field_idSaaAssociado" name="associado" [(ngModel)]="programasProjectos.idSaaAssociado" required>
                         <option [ngValue]="null">Selecione o Saa..</option>
@@ -104,15 +122,21 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.especialidade" for="field_especialidade">Especialidade</label>
-                    <input type="text" class="form-control" name="especialidade" id="field_especialidade"
-                        [(ngModel)]="programasProjectos.especialidade" maxlength="100" placeholder="Nome da especialidade"/>
-                    <div [hidden]="!(editForm.controls.especialidade?.dirty && editForm.controls.especialidade?.invalid)">
-                        <small class="form-text text-danger"
-                           [hidden]="!editForm.controls.especialidade?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
-                           This field cannot be longer than 100 characters.
-                        </small>
-                    </div>
+                    <label class="form-control-label negrito" jhiTranslate="sisasApp.programasProjectos.especialidades"
+                           for="field_idEspecialidades">Especialidades</label>
+                    <select class="form-control" id="field_idEspecialidades" name="especialidades"
+                            [(ngModel)]="programasProjectos.especialidades">
+                        <option *ngIf="!editForm.value.especialidades" [ngValue]="null" selected>Selecione o Especialidades..</option>
+                        <option [ngValue]="especialidadesOption.id === programasProjectos.especialidades?.id ? programasProjectos.especialidades : especialidadesOption"
+                                *ngFor="let especialidadesOption of especialidadess">{{especialidadesOption.nmEspecialidade}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.especialidades?.dirty && editForm.controls.especialidades?.invalid)">
+                    <small class="form-text text-danger"
+                           [hidden]="!editForm.controls.especialidades?.errors?.required"
+                           jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
                 </div>
 
                 <div class="form-group">
@@ -165,6 +189,25 @@
                         [hidden]="!editForm.controls.comuna?.errors?.required" jhiTranslate="entity.validation.required">
                         This field is required.
                     </small>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.Localidade" for="field_nmLocalidade">
+                        Localidade</label>
+                    <input type="text" class="form-control" name="nmLocalidade" id="field_nmLocalidade"
+                           [(ngModel)]="programasProjectos.nmLocalidade" maxlength="150" placeholder="Nome da localidade"/>
+                    <div [hidden]="!(editForm.controls.nmLocalidade?.dirty && editForm.controls.nmLocalidade?.invalid)">
+                        <small class="form-text text-danger"
+                               [hidden]="!editForm.controls.nmEpas?.errors?.required"
+                               jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               [hidden]="!editForm.controls.nmLocalidade?.errors?.maxlength"
+                               jhiTranslate="entity.validation.maxlength" translateValues="{ max: 150 }">
+                            This field cannot be longer than 150 characters.
+                        </small>
+                    </div>
                 </div>
             </div>
         </div>
@@ -544,12 +587,6 @@
                 </div>
                 <div class="modal-body">
                     <jhi-alert-error></jhi-alert-error>
-                    <div class="form-group" [hidden]="!contrato.id">
-                        <label for="ctid" jhiTranslate="global.field.id">ID</label>
-                        <input type="text" class="form-control" id="ctid" name="ctid"
-                               [(ngModel)]="contrato.id" readonly />
-                    </div>
-
                     <div class="row">
                         <div class="form-group col-sm-6">
                             <div class="form-group">
@@ -1109,7 +1146,7 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary" (click)="validaConcepcao()" >Salvar mudanças</button>
+                    <button type="button" class="btn btn-primary" (click)="validaEmpreitada()" >Salvar mudanças</button>
                 </div>
             </div>
         </div>

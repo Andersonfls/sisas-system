@@ -42,7 +42,7 @@ public class Epas implements Serializable {
     @JoinColumn(name = "id_municipio")
     private Municipio municipio;
 
-    @Size(max = 100)
+    @Size(max = 150)
     @Column(name = "nm_localidade")
     private String nmLocalidade;
 

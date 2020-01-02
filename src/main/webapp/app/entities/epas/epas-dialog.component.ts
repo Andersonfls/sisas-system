@@ -24,6 +24,7 @@ export class EpasDialogComponent implements OnInit {
 
     epas: Epas;
     isSaving: boolean;
+    routeSub: any;
 
     provincias: Provincia[];
     provincia: Provincia;

@@ -20,6 +20,8 @@ import {Municipio, MunicipioService} from '../municipio';
 import {Execucao, ExecucaoService} from '../execucao';
 import {Empreitada, EmpreitadaService} from '../empreitada';
 import {Situacao, SituacaoService} from '../situacao';
+import {Especialidades} from '../especialidades/especialidades.model';
+import {EspecialidadesService} from '../especialidades/especialidades.service';
 
 @Component({
     selector: 'jhi-programas-projectos-dialog',
@@ -37,6 +39,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
     municipio: Municipio;
     comunas: Comuna[];
     comuna: Comuna;
+    especialidadess: Especialidades[];
     dtUltimaAlteracaoDp: any;
     controleSessoes: string;
     private subscription: Subscription;
@@ -74,6 +77,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
         private comunaService: ComunaService,
         private municipioService: MunicipioService,
         private provinciaService: ProvinciaService,
+        private especialidadesService: EspecialidadesService,
         private eventManager: JhiEventManager,
         private route: ActivatedRoute,
         private concepcaoService: ConcepcaoService,
@@ -121,6 +125,12 @@ export class ProgramasProjectosDialogComponent implements OnInit {
         this.provinciaService.query().subscribe(
             (res: HttpResponse<Provincia[]>) => {
                 this.provincias = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message));
+
+        this.especialidadesService.query().subscribe(
+            (res: HttpResponse<Especialidades[]>) => {
+                this.especialidadess = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message));
     }
@@ -485,6 +495,41 @@ export class ProgramasProjectosDialogComponent implements OnInit {
     }
 
     // EMPREITADA
+    validaEmpreitada() {
+        if (this.programasProjectos.id === undefined || this.programasProjectos.id === null) {
+            this.programasProjectosService.create(this.programasProjectos).subscribe( (resp) => {
+                this.programasProjectos = resp.body;
+                console.log(resp);
+                this.empreitada.programasProjectos = new ProgramasProjectos();
+                this.empreitada.programasProjectos.id = this.programasProjectos.id;
+                this.salvarEmpreitada();
+            });
+        } else {
+            this.empreitada.programasProjectos = new ProgramasProjectos();
+            this.empreitada.programasProjectos.id = this.programasProjectos.id;
+            this.salvarEmpreitada();
+        }
+    }
+
+    salvarEmpreitada() {
+
+        if (this.empreitada.id !== undefined && this.empreitada.id !== null) {
+            this.empreitadaService.update(this.empreitada).subscribe( (event) => {
+                alert('Empreitada foi atualizado com sucesso');
+                console.log(event);
+                this.hideModalConcepcao();
+                this.empreitada = event.body;
+            });
+        } else {
+            this.empreitadaService.create(this.empreitada).subscribe( (event) => {
+                alert('Empreitada foi criado com sucesso');
+                console.log(event);
+                this.hideModalConcepcao();
+                this.empreitada = event.body;
+            });
+        }
+    }
+
     loadEmpreitada(id) {
         this.empreitadaService.findByProgramasProjectos(id)
             .subscribe((empreitadaResponse: HttpResponse<Empreitada>) => {

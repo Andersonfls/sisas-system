@@ -7,20 +7,20 @@
                 "createLabel": "Criar nova Comuna",
                 "createOrEditLabel": "Criar ou editar Comuna"
             },
-            "created": "Uma nova Comuna foi criado com o identificador {{ param }}",
-            "updated": "Um Comuna foi atualizado com o identificador {{ param }}",
-            "deleted": "Um Comuna foi deletado com o identificador {{ param }}",
+            "created": "Nova Comuna foi criado com o sucesso",
+            "updated": "Comuna foi atualizado com o sucesso",
+            "deleted": "Comuna foi deletado com o sucesso",
             "delete": {
-                "question": "Tem certeza de que deseja excluir Comuna {{ id }}?"
+                "question": "Tem certeza de que deseja excluir?"
             },
             "detail": {
                 "title": "Comuna"
             },
-            "nmComuna": "Nome Comuna",
-            "idMunicipio": "Municipio"
+            "nmComuna": "Nome",
+            "idMunicipio": "Município"
         },"comunaDTO": {
-            "nmComuna": "Nome Comuna",
-            "idMunicipio": "Municipio"
+            "nmComuna": "Nome",
+            "idMunicipio": "Município"
         }
     }
 }

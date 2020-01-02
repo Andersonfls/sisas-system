@@ -1,10 +1,7 @@
 package com.minea.sisas.service.dto;
 
 
-import com.minea.sisas.domain.Comuna;
-import com.minea.sisas.domain.Municipio;
-import com.minea.sisas.domain.Provincia;
-import com.minea.sisas.domain.User;
+import com.minea.sisas.domain.*;
 
 import java.time.LocalDate;
 import javax.validation.constraints.*;
@@ -39,8 +36,7 @@ public class ProgramasProjectosDTO implements Serializable {
     @Size(max = 150)
     private String tipoFinanciamento;
 
-    @Size(max = 100)
-    private String especialidade;
+    private Especialidades especialidades;
 
     @NotNull
     private Comuna comuna;
@@ -50,6 +46,12 @@ public class ProgramasProjectosDTO implements Serializable {
 
     @NotNull
     private Municipio municipio;
+
+    @Size(max = 150)
+    private String nmLocalidade;
+
+    @Size(max = 150)
+    private String finalidadeProjeto;
 
     public Long getId() {
         return id;
@@ -107,20 +109,20 @@ public class ProgramasProjectosDTO implements Serializable {
         this.tipoFinanciamento = tipoFinanciamento;
     }
 
-    public String getEspecialidade() {
-        return especialidade;
-    }
-
-    public void setEspecialidade(String especialidade) {
-        this.especialidade = especialidade;
-    }
-
     public User getUsuario() {
         return usuario;
     }
 
     public void setUsuario(User usuario) {
         this.usuario = usuario;
+    }
+
+    public Especialidades getEspecialidades() {
+        return especialidades;
+    }
+
+    public void setEspecialidades(Especialidades especialidades) {
+        this.especialidades = especialidades;
     }
 
     public Comuna getComuna() {
@@ -138,6 +140,18 @@ public class ProgramasProjectosDTO implements Serializable {
     public Municipio getMunicipio() { return municipio; }
 
     public void setMunicipio(Municipio municipio) { this.municipio = municipio; }
+
+    public String getNmLocalidade() {
+        return nmLocalidade;
+    }
+
+    public void setNmLocalidade(String nmLocalidade) {
+        this.nmLocalidade = nmLocalidade;
+    }
+
+    public String getFinalidadeProjeto() { return finalidadeProjeto; }
+
+    public void setFinalidadeProjeto(String finalidadeProjeto) { this.finalidadeProjeto = finalidadeProjeto; }
 
     @Override
     public boolean equals(Object o) {
@@ -171,7 +185,7 @@ public class ProgramasProjectosDTO implements Serializable {
             ", nmDescricaoProjeto='" + getNmDescricaoProjeto() + "'" +
             ", idSaaAssociado=" + getIdSaaAssociado() +
             ", tipoFinanciamento='" + getTipoFinanciamento() + "'" +
-            ", especialidade='" + getEspecialidade() + "'" +
+            ", especialidades='" + getEspecialidades() + "'" +
             "}";
     }
 }

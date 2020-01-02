@@ -95,9 +95,6 @@ public class ProgramasProjectosQueryService extends QueryService<ProgramasProjec
             if (criteria.getTipoFinanciamento() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getTipoFinanciamento(), ProgramasProjectos_.tipoFinanciamento));
             }
-            if (criteria.getEspecialidade() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getEspecialidade(), ProgramasProjectos_.especialidade));
-            }
         }
         return specification;
     }

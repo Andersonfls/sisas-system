@@ -1,16 +1,17 @@
 <div>
     <h2>
-        <span jhiTranslate="sisasApp.comuna.home.title">Comunas</span>
+        <span style="margin-left: 5%" jhiTranslate="sisasApp.comuna.home.title">Comunas</span>
+        <button class="btn btn-primary float-left redondo"
+                [routerLink]="['../dashboard']">
+            <span class="fa fa-chevron-left"></span>
+        </button>
         <button class="btn btn-primary float-right jh-create-entity redondo" [routerLink]="['/', { outlets: { popup: ['comuna-new'] } }]">
             <span class="fa fa-plus"></span>
         </button>
     </h2>
+    <br/>
     <jhi-alert></jhi-alert>
-    <br/>
-
     <input type="text" class="form-control pesquisa" name="filtro" [(ngModel)]="nome" (ngModelChange)="onChangeNome()" placeholder="Buscar..." style="font-style:italic"/>
-
-    <br/>
     <div class="row">
     </div>
     <br/>
@@ -18,7 +19,6 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="nmComuna"><span jhiTranslate="sisasApp.comuna.nmComuna">Nome Comuna</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="idMunicipioId"><span jhiTranslate="sisasApp.comuna.idMunicipio">Municipio</span> <span class="fa fa-sort"></span></th>
             <th></th>
@@ -26,7 +26,6 @@
             </thead>
             <tbody>
             <tr *ngFor="let comuna of comunas ;trackBy: trackId">
-                <td><a [routerLink]="['../comuna', comuna.id ]">{{comuna.id}}</a></td>
                 <td>{{comuna.nmComuna}}</td>
                 <td>
                     <div *ngIf="comuna.municipio">
@@ -70,10 +69,5 @@
         <div class="row justify-content-center">
             <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
         </div>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" [routerLink]="['/../../dashboard']"  >
-            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
-        </button>
     </div>
 </div>

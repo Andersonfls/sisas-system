@@ -20,11 +20,11 @@
             "dtLancamento": "Data de Lançamento",
             "dtUltimaAlteracao": "Data última alteração",
             "idUsuario": "Usuário",
-            "nmDesignacaoProjeto": "Designação do projecto",
-            "nmDescricaoProjeto": "Descrição do programa/projecto",
+            "nmDesignacaoProjeto": "Designação",
+            "nmDescricaoProjeto": "Descrição",
             "idSaaAssociado": "SAA associado",
-            "tipoFinanciamento": "Financiamento do projecto/programa",
-            "especialidade": "Especialidade",
+            "tipoFinanciamento": "Financiamento",
+            "especialidades": "Especialidades",
             "idComuna": "Comuna",
             "idMunicipio": "Município",
             "idProvincia": "Província",
@@ -35,7 +35,9 @@
             "empreitada": "Empreitada",
             "execucao": "Execução",
             "programasProjectosLog": "Programas projectos log",
-            "associado-inqu": "Associado a inquérito/inventário"
+            "associado-inqu": "Associado a inquérito/inventário",
+            "Localidade": "Localidade",
+            "finalidadeProjeto": "Finalidade do projeto"
         }
     }
 }

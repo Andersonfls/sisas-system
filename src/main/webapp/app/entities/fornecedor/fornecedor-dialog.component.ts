@@ -35,11 +35,14 @@ export class FornecedorDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
 
-    this.especialidadesService.query()
-        .subscribe((res: HttpResponse<Especialidades[]>) => { this.especialidadess = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
-    console.log(this.fornecedor);
+        this.especialidadesService.query().subscribe(
+                (res: HttpResponse<Especialidades[]>) => {
+                    this.especialidadess = res.body;
+                    },
+            (res: HttpErrorResponse) =>
+                this.onError(res.message));
 
-    this.fornecedor.especialidades = null;
+        console.log(this.fornecedor);
     }
 
     clear() {

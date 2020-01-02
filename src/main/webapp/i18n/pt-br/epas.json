@@ -7,21 +7,21 @@
                 "createLabel": "Criar novo Epas",
                 "createOrEditLabel": "Criar ou editar Epas"
             },
-            "created": "Um novo Epas foi criado com o identificador {{ param }}",
-            "updated": "Um Epas foi atualizado com o identificador {{ param }}",
-            "deleted": "Um Epas foi deletado com o identificador {{ param }}",
+            "created": "Novo Epas foi criado com o sucesso",
+            "updated": "Epas foi atualizado com o sucesso",
+            "deleted": "Epas foi deletado com o sucesso",
             "delete": {
-                "question": "Tem certeza de que deseja excluir Epas {{ id }}?"
+                "question": "Tem certeza de que deseja excluir Epas?"
             },
             "detail": {
                 "title": "Epas"
             },
-            "nmEpas": "Nome Epas",
-            "nrContribuinte": "Nr Contribuinte",
+            "nmEpas": "Nome",
+            "nrContribuinte": "Nº contribuinte",
             "Comuna": "Comuna",
-            "Provincia": "Provincia",
-            "Municipio": "Municipio",
-            "nmLocalidade": "Nome Localidade"
+            "Provincia": "Província",
+            "Municipio": "Município",
+            "nmLocalidade": "Localidade"
         }
     }
 }

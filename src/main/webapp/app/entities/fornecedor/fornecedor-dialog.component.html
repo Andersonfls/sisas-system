@@ -7,11 +7,6 @@
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" [hidden]="!fornecedor.id">
-            <label for="id" jhiTranslate="global.field.id">ID</label>
-            <input type="text" class="form-control" id="id" name="id"
-                   [(ngModel)]="fornecedor.id" readonly />
-        </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="sisasApp.fornecedor.nmFornecedor" for="field_nmFornecedor">Nm Fornecedor</label>
             <input type="text" class="form-control" name="nmFornecedor" id="field_nmFornecedor"

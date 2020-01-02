@@ -17,7 +17,9 @@ export class ProgramasProjectos implements BaseEntity {
         public comuna?: Comuna,
         public provincia?: Provincia,
         public municipio?: Municipio,
-        public associadoInquerito?: boolean
+        public nmLocalidade?: string,
+        public associadoInquerito?: boolean,
+        public finalidadeProjeto?: string
     ) {
         this.id = id ? id : null;
         this.comuna = comuna ? comuna : null;
@@ -25,6 +27,8 @@ export class ProgramasProjectos implements BaseEntity {
         this.comuna = comuna ? comuna : null;
         this.provincia = provincia ? provincia : null;
         this.municipio = municipio ? municipio : null;
+        this.nmLocalidade = nmLocalidade ? nmLocalidade : null;
         this.idSaaAssociado = idSaaAssociado ? idSaaAssociado : null;
+        this.finalidadeProjeto = this.finalidadeProjeto ? finalidadeProjeto : null;
     }
 }

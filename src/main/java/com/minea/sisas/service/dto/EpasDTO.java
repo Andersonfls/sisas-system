@@ -29,7 +29,7 @@ public class EpasDTO implements Serializable {
 
     private Comuna comuna;
 
-    @Size(max = 100)
+    @Size(max = 150)
     private String nmLocalidade;
 
     public Long getId() {

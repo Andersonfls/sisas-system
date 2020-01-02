@@ -14,11 +14,11 @@
         </dd>
         <dt><span jhiTranslate="sisasApp.programasProjectos.dtLancamento">Dt Lancamento</span></dt>
         <dd>
-            <span>{{programasProjectos.dtLancamento | date:'mediumDate'}}</span>
+            <span>{{programasProjectos.dtLancamento | date:'dd/MM/yy'}}</span>
         </dd>
         <dt><span jhiTranslate="sisasApp.programasProjectos.dtUltimaAlteracao">Dt Ultima Alteracao</span></dt>
         <dd>
-            <span>{{programasProjectos.dtUltimaAlteracao | date:'mediumDate'}}</span>
+            <span>{{programasProjectos.dtUltimaAlteracao | date:'dd/MM/yy'}}</span>
         </dd>
         <dt><span jhiTranslate="sisasApp.programasProjectos.idUsuario">Id Usuario</span></dt>
         <dd>
@@ -32,15 +32,37 @@
         <dd>
             <span>{{programasProjectos.tipoFinanciamento}}</span>
         </dd>
-        <dt><span jhiTranslate="sisasApp.programasProjectos.especialidade">Especialidade</span></dt>
+        <dt><span jhiTranslate="sisasApp.programasProjectos.especialidades">Especialidades</span></dt>
         <dd>
-            <span>{{programasProjectos.especialidade}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.programasProjectos.idComuna">Id Comuna</span></dt>
-        <dd>
-            <div *ngIf="programasProjectos.idComunaId">
-                <a [routerLink]="['/comuna', programasProjectos.idComunaId]">{{programasProjectos.idComunaId}}</a>
+            <div *ngIf="programasProjectos.especialidades.nmEspecialidade">
+                <a [routerLink]="['/especialidades', programasProjectos.especialidades.id]">{{programasProjectos.especialidades.nmEspecialidade}}</a>
             </div>
+        </dd>
+
+        <dt><span jhiTranslate="sisasApp.programasProjectos.idProvincia">Provincia</span></dt>
+        <dd>
+            <div *ngIf="programasProjectos.provincia.nmProvincia">
+                <a [routerLink]="['/provincia', programasProjectos.provincia.id]">{{programasProjectos.provincia.nmProvincia}}</a>
+            </div>
+        </dd>
+
+        <dt><span jhiTranslate="sisasApp.programasProjectos.idMunicipio">Municipio</span></dt>
+        <dd>
+            <div *ngIf="programasProjectos.municipio.nmMunicipio">
+                <a [routerLink]="['/municipio', programasProjectos.municipio.id]">{{programasProjectos.municipio.nmMunicipio}}</a>
+            </div>
+        </dd>
+
+        <dt><span jhiTranslate="sisasApp.programasProjectos.idComuna">Comuna</span></dt>
+        <dd>
+            <div *ngIf="programasProjectos.comuna.nmComuna">
+                <a [routerLink]="['/comuna', programasProjectos.comuna.id]">{{programasProjectos.comuna.nmComuna}}</a>
+            </div>
+        </dd>
+
+        <dt><span jhiTranslate="sisasApp.programasProjectos.Localidade">Nm Localidade</span></dt>
+        <dd>
+            <span>{{programasProjectos.nmLocalidade}}</span>
         </dd>
     </dl>
 
