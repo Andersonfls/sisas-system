@@ -495,7 +495,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
     }
 
     // EMPREITADA
-    validaEmpreitada() {
+    /*validaEmpreitada() {
         if (this.programasProjectos.id === undefined || this.programasProjectos.id === null) {
             this.programasProjectosService.create(this.programasProjectos).subscribe( (resp) => {
                 this.programasProjectos = resp.body;
@@ -528,7 +528,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                 this.empreitada = event.body;
             });
         }
-    }
+    }*/
 
     loadEmpreitada(id) {
         this.empreitadaService.findByProgramasProjectos(id)
