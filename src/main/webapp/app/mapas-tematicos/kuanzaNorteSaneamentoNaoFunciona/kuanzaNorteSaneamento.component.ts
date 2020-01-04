@@ -14,7 +14,7 @@ import * as L from 'leaflet';
     ]
 })
 
-export class KuanzaNorteComponent implements OnInit {
+export class KuanzaNorteSaneamentoComponent implements OnInit {
     currentAccount: any;
     routeData: any;
 
@@ -73,11 +73,11 @@ export class KuanzaNorteComponent implements OnInit {
         legend.onAdd = function() {
             const div = L.DomUtil.create('div', 'info legend');
             div.innerHTML += '<i></i> <span style="font-weight:bold"> **Legenda**</span>' + '<br>' ;
-            div.innerHTML += '<i style="background:#FEFE9E"></i>  0 até 21 <br>';
-            div.innerHTML += '<i style="background:#A2D1FB"></i>  22 até 42 <br>';
-            div.innerHTML += '<i style="background:#F693C7"></i>  43 até 63 <br>';
-            div.innerHTML += '<i style="background:#DAA7FE"></i>  64 até 84 <br>';
-            div.innerHTML += '<i style="background:#F6CD9D"></i>  86 até 105 <br>';
+            div.innerHTML += '<i style="background:#FEFE9E"></i>  0 até 20 <br>';
+            div.innerHTML += '<i style="background:#A2D1FB"></i>  21 até 40 <br>';
+            div.innerHTML += '<i style="background:#F693C7"></i>  41 até 60 <br>';
+            div.innerHTML += '<i style="background:#DAA7FE"></i>  61 até 80 <br>';
+            div.innerHTML += '<i style="background:#F6CD9D"></i>  81 até 100 <br>';
             return div;
         };
 
@@ -131,16 +131,16 @@ export class KuanzaNorteComponent implements OnInit {
                     geojson =  L.geoJSON(json, {
                         style: (feature) => {
                             switch (feature.properties.code) {
-                                case 1: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FECB9C', fillOpacity: 0.7};
-                                case 2: return {color: 'white', weight: 2, opacity: 1, fillColor: '#96D1FF', fillOpacity: 0.7};
-                                case 3: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFDA1', fillOpacity: 0.7};
-                                case 4: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FCC9AE', fillOpacity: 0.7};
-                                case 5: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FFCA9C', fillOpacity: 0.7};
-                                case 6: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFDA1', fillOpacity: 0.7};
-                                case 7: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFDA1', fillOpacity: 0.7};
+                                case 1: return {color: 'white', weight: 2, opacity: 1, fillColor: '#F6CD9D', fillOpacity: 0.7};
+                                case 2: return {color: 'white', weight: 2, opacity: 1, fillColor: '#ffffff', fillOpacity: 0.7};
+                                case 3: return {color: 'white', weight: 2, opacity: 1, fillColor: '#ffffff', fillOpacity: 0.7};
+                                case 4: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFDA1', fillOpacity: 0.7};
+                                case 5: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFDA1', fillOpacity: 0.7};
+                                case 6: return {color: 'white', weight: 2, opacity: 1, fillColor: '#DAA7FE', fillOpacity: 0.7};
+                                case 7: return {color: 'white', weight: 2, opacity: 1, fillColor: '#F6CD9D', fillOpacity: 0.7};
                                 case 8: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFDA1', fillOpacity: 0.7};
-                                case 9: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFDA1', fillOpacity: 0.7};
-                                case 10: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFDA1', fillOpacity: 0.7};
+                                case 9: return {color: 'white', weight: 2, opacity: 1, fillColor: '#DAA7FE', fillOpacity: 0.7};
+                                case 10: return {color: 'white', weight: 2, opacity: 1, fillColor: '#ffffff', fillOpacity: 0.7};
                             }
                         },
                         onEachFeature: function onEachFeature(feature, layer) {

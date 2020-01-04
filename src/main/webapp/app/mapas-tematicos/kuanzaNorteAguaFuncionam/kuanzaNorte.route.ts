@@ -22,7 +22,7 @@ export class KuanzaNorteResolvePagingParams implements Resolve<any> {
 
 export const kuanzaNorteRoute: Routes = [
     {
-        path: 'kuanza-norte',
+        path: 'kuanza-norte-agua-funcionam',
         component: KuanzaNorteComponent,
         resolve: {
             'pagingParams': KuanzaNorteResolvePagingParams

@@ -45,10 +45,6 @@ export class SidebarComponent implements OnInit {
         });
     }
 
-    changeLanguage(languageKey: string) {
-        this.languageService.changeLanguage(languageKey);
-    }
-
     collapseNavbar() {
         this.isSidebarCollapsed = true;
     }
@@ -65,13 +61,5 @@ export class SidebarComponent implements OnInit {
         this.collapseNavbar();
         this.loginService.logout();
         this.router.navigate(['']);
-    }
-
-    toggleNavbar() {
-        this.isSidebarCollapsed = !this.isSidebarCollapsed;
-    }
-
-    getImageUrl() {
-        return this.isAuthenticated() ? this.principal.getImageUrl() : null;
     }
 }

@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot, Routes} from '@angular/router';
 import {JhiPaginationUtil} from 'ng-jhipster';
 import {UserRouteAccessService} from '../../shared/index';
-import {KuanzaNorteComponent} from './kuanzaNorte.component';
+import {KuanzaNorteSaneamentoComponent} from './kuanzaNorteSaneamento.component';
 
 @Injectable()
 export class KuanzaNorteResolvePagingParams implements Resolve<any> {
@@ -22,8 +22,8 @@ export class KuanzaNorteResolvePagingParams implements Resolve<any> {
 
 export const kuanzaNorteRoute: Routes = [
     {
-        path: 'kuanza-norte',
-        component: KuanzaNorteComponent,
+        path: 'kuanza-norte-saneamento-nao-funcionam',
+        component: KuanzaNorteSaneamentoComponent,
         resolve: {
             'pagingParams': KuanzaNorteResolvePagingParams
         },

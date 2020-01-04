@@ -4,17 +4,17 @@
         "banner" : {
             "home": {
                 "title": "Banner- Sisas Portal",
-                "createLabel": "Criar novo Banner",
-                "createOrEditLabel": "Criar ou editar Banner"
+                "createLabel": "Criar novo PDF",
+                "createOrEditLabel": "Criar ou editar Arquivo PDF"
             },
-            "created": "Um nov Banner foi criado com o identificador {{ param }}",
-            "updated": "Um Banne foi atualizado com o identificador {{ param }}",
-            "deleted": "Um Banner foi deletado com o identificador {{ param }}",
+            "created": "Um nov Arquivo foi criado com o identificador {{ param }}",
+            "updated": "Um Arquivo foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Arquivo foi deletado com o identificador {{ param }}",
             "delete": {
-                "question": "Tem certeza de que deseja excluir Banner {{ id }}?"
+                "question": "Tem certeza de que deseja excluir Arquivo {{ id }}?"
             },
             "detail": {
-                "title": "Banner"
+                "title": "Arquivo PDF"
             },
             "titulo": "Título do Arquvio",
             "autor": "Autor",
