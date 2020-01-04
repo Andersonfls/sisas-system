@@ -22,7 +22,7 @@ export class HuliaResolvePagingParams implements Resolve<any> {
 
 export const huliaRoute: Routes = [
     {
-        path: 'hulia',
+        path: 'hulia-agua-funcionam',
         component: HuliaComponent,
         resolve: {
             'pagingParams': HuliaResolvePagingParams

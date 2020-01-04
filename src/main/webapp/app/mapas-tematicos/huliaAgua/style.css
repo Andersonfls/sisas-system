@@ -10,12 +10,12 @@
 .map-frame {
     border: 2px solid black;
     height: 80%;
-    margin-top: 12%;
+    margin-top: 6%;
 }
 
 .mapa-padrao {
     height: 700px;
-    margin-top: 15%;
+    margin-top: 8%;
 }
 
 ::ng-deep .info {

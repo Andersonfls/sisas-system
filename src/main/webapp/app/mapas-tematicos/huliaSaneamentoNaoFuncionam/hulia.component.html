@@ -1,0 +1,16 @@
+<div align="center">
+    <h2>
+        <span>Província de Hulia</span>
+    </h2>
+    <h2 style="font-size: 1em; font-weight: bold">
+        <span>Cobertura de Serviços de Saneamento (% Não Funcionam)</span>
+    </h2>
+</div>
+
+<div class="map-container">
+    <div class="mapa-padrao"
+         leaflet
+         [leafletOptions]="options"
+         (leafletMapReady)="onMapReady($event)">
+    </div>
+</div>
