@@ -1,0 +1,18 @@
+<div align="center">
+<h2>
+    <span>Cobertura de Serviços de Água</span>
+</h2>
+    <h2 style="font-size: 1rem; font-weight: bold">
+        <span>(A Nível- Nacional)</span>
+    </h2>
+</div>
+<br> <br>
+
+<div class="map-container">
+    <div class="mapa-padrao"
+        leaflet
+        [leafletOptions]="options"
+        (leafletMapReady)="onMapReady($event)">
+    </div>
+
+</div>

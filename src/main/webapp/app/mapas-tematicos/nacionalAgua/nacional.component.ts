@@ -5,17 +5,16 @@ import {Principal} from '../../shared/auth/principal.service';
 import {ActivatedRoute} from '@angular/router';
 import * as L from 'leaflet';
 import {HttpClient} from '@angular/common/http';
-import {UploadFileService} from './upload-file.service';
 
 @Component({
     selector: 'jhi-map',
-    templateUrl: './map2.component.html',
+    templateUrl: './nacional.component.html',
     styleUrls: [
         'style.css'
     ]
 })
 
-export class Map2Component implements OnInit {
+export class NacionalComponent implements OnInit {
     currentAccount: any;
     routeData: any;
 
@@ -48,8 +47,7 @@ export class Map2Component implements OnInit {
         private userService: UserService,
         private principal: Principal,
         private activatedRoute: ActivatedRoute,
-        private http: HttpClient,
-        private uploadService: UploadFileService
+        private http: HttpClient
     ) {
         this.routeData = this.activatedRoute.data.subscribe((data) => {
             this.page = data.pagingParams.page;
@@ -137,11 +135,24 @@ export class Map2Component implements OnInit {
             geojson =  L.geoJSON(json, {
                 style: (feature) => {
                     switch (feature.properties.code) {
-                        case 1: return {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7};
-                        case 2: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FCCC9E', fillOpacity: 0.7};
-                        case 3: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7};
-                        case 4: return {color: 'white', weight: 2, opacity: 1, fillColor: '#9CCDFE', fillOpacity: 0.7};
-                        case 5: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7};
+                        case 1: return {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7}; // Zaire
+                        case 2: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FCCC9E', fillOpacity: 0.7}; // Uige
+                        case 3: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7}; // Luanda
+                        case 4: return {color: 'white', weight: 2, opacity: 1, fillColor: '#9CCDFE', fillOpacity: 0.7}; // Bengo
+                        case 5: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7}; // Kuanza Norte
+                        case 6: return {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7}; // Malanje
+                        case 7: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FCCC9E', fillOpacity: 0.7}; // Lunda Norte
+                        case 8: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7}; // Luanda Sul
+                        case 9: return {color: 'white', weight: 2, opacity: 1, fillColor: '#9CCDFE', fillOpacity: 0.7}; // Moxico
+                        case 10: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7}; // Bie
+                        case 11: return {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7}; // Huambo
+                        case 12: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FCCC9E', fillOpacity: 0.7}; // Kuanza Sul
+                        case 13: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7}; // Benguela
+                        case 14: return {color: 'white', weight: 2, opacity: 1, fillColor: '#9CCDFE', fillOpacity: 0.7}; // Namide
+                        case 15: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7}; // Hulia
+                        case 16: return {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7}; // Cunene
+                        case 17: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FCCC9E', fillOpacity: 0.7}; // Kuando Kubango
+                        case 18: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7}; // Cabinda
                     }
                 },
                 onEachFeature: function onEachFeature(feature, layer) {
@@ -166,11 +177,5 @@ export class Map2Component implements OnInit {
             dashArray: '3',
             fillOpacity: 0.7
         };
-    }
-
-    private onSuccess(data, headers) {
-        this.links = this.parseLinks.parse(headers.get('link'));
-        this.totalItems = headers.get('X-Total-Count');
-        this.queryCount = this.totalItems;
     }
 }

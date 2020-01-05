@@ -1,5 +1,4 @@
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
-import {SisasMap2Module} from './nacional/map2.module';
 import {SisasHuliaAguaFuncionamModule} from './huliaAguaFuncionam/hulia.module';
 import {SisasKuanzaNorteModule} from './kuanzaNorte/kuanzaNorte.module';
 import {SisasMunicipalModule} from './municipal/municipal.module';
@@ -19,10 +18,15 @@ import {SisasHuamboSaneamentoModule} from './huamboSaneamento/huambo.module';
 import {SisasHuamboAguaNaoFuncionamModule} from './huamboAguaNaoFuncionam/huambo.module';
 import {SisasHuamboAguaFuncionamModule} from './huamboAguaFuncionam/huambo.module';
 import {SisasHuamboAguaModule} from './huamboAgua/huambo.module';
+import {SisasNacionalAguaModule} from './nacionalAgua/nacional.module';
+import {SisasNacionalAguaFuncionamModule} from './nacionalAguaFuncionam/nacional.module';
+import {SisasNacionalAguaNaoFuncionamModule} from './nacionalAguaNaoFuncionam/nacional.module';
+import {SisasNacionalSaneamentoModule} from './nacionalSaneamento/nacional.module';
+import {SisasNacionalSaneamentoFuncionamModule} from './nacionalSaneamentoFuncionam/nacional.module';
+import {SisasNacionalSaneamentoNaoFuncionamModule} from './nacionalSaneamentoNaoFuncionam/nacional.module';
 
 @NgModule({
     imports: [
-        SisasMap2Module,
         SisasKuanzaNorteModule,
         SisasMunicipalModule,
         SisasKuanzaNorteSaneamentoModule,
@@ -41,7 +45,13 @@ import {SisasHuamboAguaModule} from './huamboAgua/huambo.module';
         SisasHuamboSaneamentoModule,
         SisasHuamboAguaNaoFuncionamModule,
         SisasHuamboAguaFuncionamModule,
-        SisasHuamboAguaModule
+        SisasHuamboAguaModule,
+        SisasNacionalAguaModule,
+        SisasNacionalAguaFuncionamModule,
+        SisasNacionalAguaNaoFuncionamModule,
+        SisasNacionalSaneamentoModule,
+        SisasNacionalSaneamentoFuncionamModule,
+        SisasNacionalSaneamentoNaoFuncionamModule
     ],
     declarations: [],
     entryComponents: [],

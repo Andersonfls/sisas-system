@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot, Routes} from '@angular/router';
 import {JhiPaginationUtil} from 'ng-jhipster';
 import {UserRouteAccessService} from '../../shared/index';
-import {Map2Component} from './map2.component';
+import {NacionalComponent} from './nacional.component';
 
 @Injectable()
 export class MapResolvePagingParams implements Resolve<any> {
@@ -20,10 +20,10 @@ export class MapResolvePagingParams implements Resolve<any> {
     }
 }
 
-export const map2Route: Routes = [
+export const nacionalRoute: Routes = [
     {
-        path: 'nacional',
-        component: Map2Component,
+        path: 'nacional-saneamento',
+        component: NacionalComponent,
         resolve: {
             'pagingParams': MapResolvePagingParams
         },

@@ -7,7 +7,7 @@ import { JhiDateUtils } from 'ng-jhipster';
 export type EntityResponseType = HttpResponse<any>;
 
 @Injectable()
-export class MapaService {
+export class NacionalService {
 
     private resourceUrl =  SERVER_API_URL + 'api/contratoes';
 

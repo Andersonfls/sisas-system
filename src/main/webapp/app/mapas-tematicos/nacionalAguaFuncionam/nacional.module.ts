@@ -2,13 +2,12 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SisasSharedModule } from '../../shared/index';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
-import {Map2Component} from './map2.component';
-import {MapResolvePagingParams, map2Route} from './map2.route';
+import {NacionalComponent} from './nacional.component';
+import {MapResolvePagingParams, nacionalRoute} from './nacional.route';
 import {LeafletModule} from '@asymmetrik/ngx-leaflet';
-import {UploadFileService} from './upload-file.service';
 
 const ENTITY_STATES = [
-    ...map2Route
+    ...nacionalRoute
 ];
 
 @NgModule({
@@ -19,15 +18,14 @@ const ENTITY_STATES = [
         RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [
-        Map2Component
+        NacionalComponent
     ],
     entryComponents: [
-        Map2Component
+        NacionalComponent
     ],
     providers: [
-        MapResolvePagingParams,
-        UploadFileService
+        MapResolvePagingParams
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class SisasMap2Module {}
+export class SisasNacionalAguaFuncionamModule {}
