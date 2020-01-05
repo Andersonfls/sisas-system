@@ -6,6 +6,7 @@ export class Municipio implements BaseEntity {
         public id?: number,
         public nmMunicipio?: string,
         public provincia?: Provincia,
+        public valor?: number
     ) {
     }
 }

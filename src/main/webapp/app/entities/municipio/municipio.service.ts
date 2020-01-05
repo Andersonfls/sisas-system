@@ -34,6 +34,10 @@ export class MunicipioService {
             .map((res: EntityResponseType) => this.convertResponse(res));
     }
 
+    findByName(nome: string): Observable<EntityResponseType> {
+        return this.http.get<Municipio>(`${this.resourceUrl}/${nome}`, { observe: 'response'})
+            .map((res: EntityResponseType) => this.convertResponse(res));
+    }
     query(req?: any): Observable<HttpResponse<Municipio[]>> {
         const options = createRequestOption(req);
         return this.http.get<Municipio[]>(this.resourceUrl, { params: options, observe: 'response' })

@@ -1,7 +1,7 @@
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {SisasHuliaAguaFuncionamModule} from './huliaAguaFuncionam/hulia.module';
 import {SisasKuanzaNorteModule} from './kuanzaNorte/kuanzaNorte.module';
-import {SisasMunicipalModule} from './municipal/municipal.module';
+import {SisasMunicipalModule} from './municipalAgua/municipal.module';
 import {SisasKuanzaNorteSaneamentoModule} from './kuanzaNorteSaneamento/kuanzaNorte.module';
 import {SisasKuanzaNorteSaneamentoFuncionamModule} from './kuanzaNorteSaneamentoFunciona/kuanzaNorte.module';
 import {SisasKuanzaNorteSaneamentoNaoFuncionamModule} from './kuanzaNorteSaneamentoNaoFunciona/kuanzaNorte.module';
@@ -24,6 +24,11 @@ import {SisasNacionalAguaNaoFuncionamModule} from './nacionalAguaNaoFuncionam/na
 import {SisasNacionalSaneamentoModule} from './nacionalSaneamento/nacional.module';
 import {SisasNacionalSaneamentoFuncionamModule} from './nacionalSaneamentoFuncionam/nacional.module';
 import {SisasNacionalSaneamentoNaoFuncionamModule} from './nacionalSaneamentoNaoFuncionam/nacional.module';
+import {SisasMunicipalSaneamentoNaoFuncionamModule} from './municipalSaneamentoNaoFuncionam/municipal.module';
+import {SisasMunicipalSaneamentoFuncionamModule} from './municipalSaneamentoFuncionam/municipal.module';
+import {SisasMunicipalSaneamentoModule} from './municipalSaneamento/municipal.module';
+import {SisasMunicipalAguaFuncionamModule} from './municipalAguaFuncionam/municipal.module';
+import {SisasMunicipalAguaNaoFuncionamModule} from './municipalAguaNaoFuncionam/municipal.module';
 
 @NgModule({
     imports: [
@@ -51,7 +56,12 @@ import {SisasNacionalSaneamentoNaoFuncionamModule} from './nacionalSaneamentoNao
         SisasNacionalAguaNaoFuncionamModule,
         SisasNacionalSaneamentoModule,
         SisasNacionalSaneamentoFuncionamModule,
-        SisasNacionalSaneamentoNaoFuncionamModule
+        SisasNacionalSaneamentoNaoFuncionamModule,
+        SisasMunicipalSaneamentoNaoFuncionamModule,
+        SisasMunicipalSaneamentoFuncionamModule,
+        SisasMunicipalSaneamentoModule,
+        SisasMunicipalAguaFuncionamModule,
+        SisasMunicipalAguaNaoFuncionamModule
     ],
     declarations: [],
     entryComponents: [],

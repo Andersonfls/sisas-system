@@ -4,7 +4,8 @@ import {UserService} from '../../shared/user/user.service';
 import {Principal} from '../../shared/auth/principal.service';
 import {ActivatedRoute} from '@angular/router';
 import * as L from 'leaflet';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpResponse} from '@angular/common/http';
+import {Municipio, MunicipioService} from '../../entities/municipio';
 
 @Component({
     selector: 'jhi-map',
@@ -27,6 +28,7 @@ export class MunicipalComponent implements OnInit {
 
     reverse: any;
     predicate: any;
+    municipios: Municipio[];
 
     map: L.Map;
     json;
@@ -47,7 +49,8 @@ export class MunicipalComponent implements OnInit {
         private userService: UserService,
         private principal: Principal,
         private activatedRoute: ActivatedRoute,
-        private http: HttpClient
+        private http: HttpClient,
+        private municipioService: MunicipioService
     ) {
         this.routeData = this.activatedRoute.data.subscribe((data) => {
             this.page = data.pagingParams.page;
@@ -61,9 +64,15 @@ export class MunicipalComponent implements OnInit {
         this.principal.identity().then((account) => {
             this.currentAccount = account;
         });
+
     }
 
     onMapReady(map: L.Map) {
+
+        this.municipioService.query().subscribe(
+            (res: HttpResponse<Municipio[]>) => this.municipios = res.body
+        );
+
         let geojson;
 
         // LEGENDA
@@ -134,13 +143,45 @@ export class MunicipalComponent implements OnInit {
             console.log(json);
             geojson =  L.geoJSON(json, {
                 style: (feature) => {
-                    switch (feature.properties.code) {
-                        case 1: return {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7};
-                        case 2: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FCCC9E', fillOpacity: 0.7};
-                        case 3: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7};
-                        case 4: return {color: 'white', weight: 2, opacity: 1, fillColor: '#9CCDFE', fillOpacity: 0.7};
-                        case 5: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7};
+                    let muni = new Municipio();
+                    // this.municipioService.findByName(feature.properties.nome).subscribe(
+                    //     (res: HttpResponse<Municipio>) => muni = res.body
+                    // );
+
+                    this.municipios.forEach(item => {
+                        if (item.nmMunicipio === feature.properties.nome){
+                            muni = item;
+                            console.log(muni);
+                        }
+                    });
+
+                    if (muni.valor > 0 && muni.valor < 42){
+                        return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7};
+                    } else if (muni.valor > 41 && muni.valor < 83){
+                        return {color: 'white', weight: 2, opacity: 1, fillColor: '#9CCDFE', fillOpacity: 0.7};
+                    } else if (muni.valor > 82 && muni.valor < 124){
+                        return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7};
+                    } else if (muni.valor > 123 && muni.valor < 165){
+                        return {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7};
+                    } else if (muni.valor > 164 && muni.valor < 206){
+                        return {color: 'white', weight: 2, opacity: 1, fillColor: '#FCCC9E', fillOpacity: 0.7};
+                    } else {
+                        return {color: 'white', weight: 2, opacity: 1, fillColor: '', fillOpacity: 0.7};
                     }
+                    // if (feature.properties.value > 0 && feature.properties.code < 42){
+                    //     return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7};
+                    // } else if (feature.properties.value > 41 && feature.properties.code < 83){
+                    //     return {color: 'white', weight: 2, opacity: 1, fillColor: '#9CCDFE', fillOpacity: 0.7};
+                    // } else if (feature.properties.value > 82 && feature.properties.code < 124){
+                    //     return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7};
+                    // } else if (feature.properties.value > 123 && feature.properties.code < 165){
+                    //     return {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7};
+                    // } else if (feature.properties.value > 164 && feature.properties.code < 206){
+                    //     return {color: 'white', weight: 2, opacity: 1, fillColor: '#FCCC9E', fillOpacity: 0.7};
+                    // } else {
+                    //     return {color: 'white', weight: 2, opacity: 1, fillColor: '', fillOpacity: 0.7};
+                    // }
+
                 },
                 onEachFeature: function onEachFeature(feature, layer) {
                     layer.on({

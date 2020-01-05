@@ -5,6 +5,7 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 import {MunicipalComponent} from './municipal.component';
 import {MapResolvePagingParams, municipalRoute} from './municipal.route';
 import {LeafletModule} from '@asymmetrik/ngx-leaflet';
+import {MunicipioService} from '../../entities/municipio';
 
 const ENTITY_STATES = [
     ...municipalRoute
@@ -24,7 +25,8 @@ const ENTITY_STATES = [
         MunicipalComponent
     ],
     providers: [
-        MapResolvePagingParams
+        MapResolvePagingParams,
+        MunicipioService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

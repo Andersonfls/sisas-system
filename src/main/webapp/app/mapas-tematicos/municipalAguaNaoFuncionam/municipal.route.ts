@@ -22,7 +22,7 @@ export class MapResolvePagingParams implements Resolve<any> {
 
 export const municipalRoute: Routes = [
     {
-        path: 'municipal',
+        path: 'municipal-agua-nao-funcionam',
         component: MunicipalComponent,
         resolve: {
             'pagingParams': MapResolvePagingParams
