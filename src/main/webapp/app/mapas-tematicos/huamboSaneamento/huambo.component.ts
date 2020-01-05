@@ -65,22 +65,6 @@ export class HuamboComponent implements OnInit {
         });
     }
 
-    voltarEscolha() {
-        this.tipo = null;
-    }
-
-    validaTipoRelatorio() {
-        if (this.tipo === 'Funcionamento de Sistemas de Saneamento') {
-           this.teste();
-        }
-        if (this.tipo === 'Nível Municipal') {
-           // this.buscaDadosTabela();
-        }
-        if (this.tipo === 'Nível Comunal') {
-           // this.buscaDadosTabela();
-        }
-    }
-
     onMapReady(map: L.Map) {
         let geojson;
 
@@ -90,27 +74,13 @@ export class HuamboComponent implements OnInit {
         }));
 
         legend.onAdd = function() {
-
-            const div = L.DomUtil.create('div', 'info legend'),
-                grades = [ 1, 20, 40, 60, 80];
-
-            div.innerHTML +=
-                '<i></i> <span style="font-weight:bold"> **Legenda**</span>' + '<br>' ;
-            // loop through our density intervals and generate a label with a colored square for each interval
-            for (let i = 0; i < grades.length; i++) {
-                let cor = '';
-                const d = grades[i] + 1;
-
-                cor = d > 80   ? '#bd7019' :
-                    d > 60  ? '#b84ee3' :
-                        d > 40  ? '#fc5794' :
-                            d > 20   ? '#5ce5fe' :
-                                '#feff1c';
-                div.innerHTML +=
-                    '<i style="background:' + cor + '"></i> ' +
-                    grades[i] + (grades[i + 1] ? ' até ' + grades[i + 1] + '<br>' : ' até 100');
-            }
-
+            const div = L.DomUtil.create('div', 'info legend');
+            div.innerHTML += '<i></i> <span style="font-weight:bold"> **Legenda**</span>' + '<br>' ;
+            div.innerHTML += '<i style="background:#FEFE9E"></i>  0 até 20 <br>';
+            div.innerHTML += '<i style="background:#A2D1FB"></i>  21 até 40 <br>';
+            div.innerHTML += '<i style="background:#F693C7"></i>  41 até 60 <br>';
+            div.innerHTML += '<i style="background:#DAA7FE"></i>  61 até 80 <br>';
+            div.innerHTML += '<i style="background:#F6CD9D"></i>  81 até 100 <br>';
             return div;
         };
 
@@ -167,11 +137,17 @@ export class HuamboComponent implements OnInit {
             geojson =  L.geoJSON(json, {
                 style: (feature) => {
                     switch (feature.properties.code) {
-                        case 1: return {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7};
-                        case 2: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FCCC9E', fillOpacity: 0.7};
-                        case 3: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7};
-                        case 4: return {color: 'white', weight: 2, opacity: 1, fillColor: '#9CCDFE', fillOpacity: 0.7};
-                        case 5: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7};
+                        case 1: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7}; // Caála
+                        case 2: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7}; // Longonjo
+                        case 3: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7}; // Tcninjenje
+                        case 4: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7}; // Ukuma
+                        case 5: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7}; // FEFE9E
+                        case 6: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7}; // Ekuma
+                        case 7: return {color: 'white', weight: 2, opacity: 1, fillColor: '#9CCDFE', fillOpacity: 0.7}; // Bailundo
+                        case 8: return {color: 'white', weight: 2, opacity: 1, fillColor: '#F6CD9D', fillOpacity: 0.7}; // Mungo
+                        case 9: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7}; // Kathihungo
+                        case 10: return {color: 'white', weight: 2, opacity: 1, fillColor: '#9CCDFE', fillOpacity: 0.7}; // Huambo
+                        case 11: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7}; // Tchikala- Tcholohanga
                     }
                 },
                 onEachFeature: function onEachFeature(feature, layer) {
@@ -184,26 +160,6 @@ export class HuamboComponent implements OnInit {
             }).addTo(map);
         });
 
-    }
-
-    teste() {
-
-        // INICIALIZAZAO DO MAPA
-        this.http.get('api/downloadFile/huambo.json').subscribe((json: any) => {
-            console.log(json);
-           const geojson =  L.geoJSON(json, {
-                style: (feature) => {
-                    switch (feature.properties.code) {
-                        case 1: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7};
-                        case 2: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7};
-                        case 3: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7};
-                        case 4: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7};
-                        case 5: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7};
-                    }
-                },
-
-            }).addTo(this.map);
-        });
     }
 
     public style() {

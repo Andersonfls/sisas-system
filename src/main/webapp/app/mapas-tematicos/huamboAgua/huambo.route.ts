@@ -22,7 +22,7 @@ export class MapResolvePagingParams implements Resolve<any> {
 
 export const huamboRoute: Routes = [
     {
-        path: 'huambo',
+        path: 'huambo-agua',
         component: HuamboComponent,
         resolve: {
             'pagingParams': MapResolvePagingParams

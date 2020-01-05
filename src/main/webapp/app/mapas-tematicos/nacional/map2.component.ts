@@ -74,27 +74,13 @@ export class Map2Component implements OnInit {
         }));
 
         legend.onAdd = function() {
-
-            const div = L.DomUtil.create('div', 'info legend'),
-                grades = [ 1, 20, 40, 60, 80];
-
-            div.innerHTML +=
-                '<i></i> <span style="font-weight:bold"> **(% Funcionam )**</span>' + '<br>' ;
-            // loop through our density intervals and generate a label with a colored square for each interval
-            for (let i = 0; i < grades.length; i++) {
-                let cor = '';
-                const d = grades[i] + 1;
-
-               cor = d > 80   ? '#bd7019' :
-                        d > 60  ? '#b84ee3' :
-                            d > 40  ? '#fc5794' :
-                                    d > 20   ? '#5ce5fe' :
-                                            '#feff1c';
-                div.innerHTML +=
-                    '<i style="background:' + cor + '"></i> ' +
-                    grades[i] + (grades[i + 1] ? ' até ' + grades[i + 1] + '<br>' : ' até 100');
-            }
-
+            const div = L.DomUtil.create('div', 'info legend');
+            div.innerHTML += '<i></i> <span style="font-weight:bold"> **Legenda**</span>' + '<br>' ;
+            div.innerHTML += '<i style="background:#FEFE9E"></i>  0 até 20 <br>';
+            div.innerHTML += '<i style="background:#A2D1FB"></i>  21 até 40 <br>';
+            div.innerHTML += '<i style="background:#F693C7"></i>  41 até 60 <br>';
+            div.innerHTML += '<i style="background:#DAA7FE"></i>  61 até 80 <br>';
+            div.innerHTML += '<i style="background:#F6CD9D"></i>  81 até 100 <br>';
             return div;
         };
 

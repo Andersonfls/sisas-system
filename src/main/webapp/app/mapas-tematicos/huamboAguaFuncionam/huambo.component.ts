@@ -1,20 +1,20 @@
 import {Component, OnInit} from '@angular/core';
 import {JhiAlertService, JhiParseLinks} from 'ng-jhipster';
 import {UserService} from '../../shared/user/user.service';
+import {HttpClient} from '@angular/common/http';
 import {Principal} from '../../shared/auth/principal.service';
 import {ActivatedRoute} from '@angular/router';
 import * as L from 'leaflet';
-import {HttpClient} from '@angular/common/http';
 
 @Component({
     selector: 'jhi-map',
-    templateUrl: './municipal.component.html',
+    templateUrl: './huambo.component.html',
     styleUrls: [
         'style.css'
     ]
 })
 
-export class MunicipalComponent implements OnInit {
+export class HuamboComponent implements OnInit {
     currentAccount: any;
     routeData: any;
 
@@ -27,6 +27,7 @@ export class MunicipalComponent implements OnInit {
 
     reverse: any;
     predicate: any;
+    tipo: string;
 
     map: L.Map;
     json;
@@ -37,8 +38,8 @@ export class MunicipalComponent implements OnInit {
                 attribution: ''
             })
         ],
-        zoom: 6,
-        center: L.latLng(-11.114, 18.716)
+        zoom: 8,
+        center: L.latLng(-12.614, 16.216)
     };
 
     constructor(
@@ -55,6 +56,7 @@ export class MunicipalComponent implements OnInit {
             this.reverse = data.pagingParams.ascending;
             this.predicate = data.pagingParams.predicate;
         });
+        this.tipo = null;
     }
 
     ngOnInit() {
@@ -130,16 +132,22 @@ export class MunicipalComponent implements OnInit {
         }
 
         // INICIALIZAZAO DO MAPA
-        this.http.get('api/downloadFile/municipal.json').subscribe((json: any) => {
+        this.http.get('api/downloadFile/huambo.json').subscribe((json: any) => {
             console.log(json);
             geojson =  L.geoJSON(json, {
                 style: (feature) => {
                     switch (feature.properties.code) {
-                        case 1: return {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7};
-                        case 2: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FCCC9E', fillOpacity: 0.7};
-                        case 3: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7};
-                        case 4: return {color: 'white', weight: 2, opacity: 1, fillColor: '#9CCDFE', fillOpacity: 0.7};
-                        case 5: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7};
+                        case 1: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7}; // Caála
+                        case 2: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FCCC9E', fillOpacity: 0.7}; // Longonjo
+                        case 3: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7}; // Tcninjenje
+                        case 4: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7}; // Ukuma
+                        case 5: return {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7}; // Libduimbali
+                        case 6: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FCCC9E', fillOpacity: 0.7}; // Ekuma
+                        case 7: return {color: 'white', weight: 2, opacity: 1, fillColor: '#9CCDFE', fillOpacity: 0.7}; // Bailundo
+                        case 8: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FCCC9E', fillOpacity: 0.7}; // Mungo
+                        case 9: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7}; // Kathihungo
+                        case 10: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7}; // Huambo
+                        case 11: return {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7}; // Tchikala- Tcholohanga
                     }
                 },
                 onEachFeature: function onEachFeature(feature, layer) {

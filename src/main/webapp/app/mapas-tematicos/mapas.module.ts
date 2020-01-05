@@ -1,7 +1,6 @@
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {SisasMap2Module} from './nacional/map2.module';
 import {SisasHuliaAguaFuncionamModule} from './huliaAguaFuncionam/hulia.module';
-import {SisasHuamboModule} from './huambo/huambo.module';
 import {SisasKuanzaNorteModule} from './kuanzaNorte/kuanzaNorte.module';
 import {SisasMunicipalModule} from './municipal/municipal.module';
 import {SisasKuanzaNorteSaneamentoModule} from './kuanzaNorteSaneamento/kuanzaNorte.module';
@@ -14,11 +13,16 @@ import {SisasHuliaAguaModule} from './huliaAgua/hulia.module';
 import {SisasHuliaSaneamentoModule} from './huliaSaneamento/hulia.module';
 import {SisasHuliaSaneamentoFuncionamModule} from './huliaSaneamentoFuncionam/hulia.module';
 import {SisasHuliaSaneamentoNaoFuncionamModule} from './huliaSaneamentoNaoFuncionam/hulia.module';
+import {SisasHuamboSaneamentoNaoFuncionamModule} from './huamboSaneamentoNaoFuncionam/huambo.module';
+import {SisasHuamboSaneamentoFuncionamModule} from './huamboSaneamentoFuncionam/huambo.module';
+import {SisasHuamboSaneamentoModule} from './huamboSaneamento/huambo.module';
+import {SisasHuamboAguaNaoFuncionamModule} from './huamboAguaNaoFuncionam/huambo.module';
+import {SisasHuamboAguaFuncionamModule} from './huamboAguaFuncionam/huambo.module';
+import {SisasHuamboAguaModule} from './huamboAgua/huambo.module';
 
 @NgModule({
     imports: [
         SisasMap2Module,
-        SisasHuamboModule,
         SisasKuanzaNorteModule,
         SisasMunicipalModule,
         SisasKuanzaNorteSaneamentoModule,
@@ -31,7 +35,13 @@ import {SisasHuliaSaneamentoNaoFuncionamModule} from './huliaSaneamentoNaoFuncio
         SisasHuliaAguaModule,
         SisasHuliaSaneamentoModule,
         SisasHuliaSaneamentoFuncionamModule,
-        SisasHuliaSaneamentoNaoFuncionamModule
+        SisasHuliaSaneamentoNaoFuncionamModule,
+        SisasHuamboSaneamentoNaoFuncionamModule,
+        SisasHuamboSaneamentoFuncionamModule,
+        SisasHuamboSaneamentoModule,
+        SisasHuamboAguaNaoFuncionamModule,
+        SisasHuamboAguaFuncionamModule,
+        SisasHuamboAguaModule
     ],
     declarations: [],
     entryComponents: [],
