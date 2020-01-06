@@ -48,12 +48,19 @@ currentAccount: any;
             this.reverse = data.pagingParams.ascending;
             this.predicate = data.pagingParams.predicate;
         });
-        this.sobre = new SobreDna();
     }
 
     loadAll() {
-        this.sobreDnaService.find(1).subscribe(
-                (res: HttpResponse<SobreDna>) => this.sobre = res.body
+        this.sobreDnaService.query().subscribe(
+                (res: HttpResponse<SobreDna[]>) => {
+                    this.sobreDnas = res.body;
+                    console.log(res.body);
+                    if (this.sobreDnas) {
+                        this.sobreDnas.forEach((i) => {
+                            this.sobre = i;
+                        });
+                    }
+                }
         );
     }
 
@@ -83,6 +90,7 @@ currentAccount: any;
         this.loadAll();
     }
     ngOnInit() {
+        this.sobre = new SobreDna();
         this.loadAll();
         this.principal.identity().then((account) => {
             this.currentAccount = account;

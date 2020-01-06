@@ -1,6 +1,6 @@
 <div>
     <h2>
-        <span style="margin-left: 5%" jhiTranslate="sisasApp.pdf.home.title">Banner</span>
+        <span style="margin-left: 5%" jhiTranslate="sisasApp.pdf.home.title">Pdf</span>
         <button class="btn btn-primary float-left redondo"
                 [routerLink]="['../dashboard']">
             <span class="fa fa-chevron-left"></span>
@@ -15,10 +15,6 @@
         <br/>
         <div class="col-md-4 col-sm-4" style="margin-bottom: 20px; max-width: 25%; margin-left: 5px" *ngFor="let prod of produtos ;trackBy: trackId">
             <div style="text-align: center">
-                <button type="submit" [routerLink]="['../banner', prod.id ]"
-                        class="btn btn-info btn-sm">
-                    <span class="fa fa-eye"></span>
-                </button>
                 <button type="submit" [routerLink]="['/', { outlets: { popup: 'banner/'+ prod.id + '/edit'} }]"
                         replaceUrl="true" queryParamsHandling="merge"
                         class="btn btn-primary btn-sm">

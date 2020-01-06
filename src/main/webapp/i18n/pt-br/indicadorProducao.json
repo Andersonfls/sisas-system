@@ -102,7 +102,8 @@
             "qtdManuaisRealizados": "Nº Manuais Realizados",
             "idSituacao": "Situacao",
             "idSistemaAgua": "Sistema Agua",
-            "idComuna": "Comuna"
+            "idComuna": "Comuna",
+            "qtdReservatorios": "Qtd Reservatórios"
         }, "indicadorProducaoDTO" : {
             "idIndicadorProducao": "Id Indicador Producao",
             "idUsuario": "Id Usuario",
@@ -189,7 +190,8 @@
             "qtdManuaisRealizados": "Qtd Manuais Realizados",
             "idSituacao": "Situacao",
             "idSistemaAgua": "Sistema Agua",
-            "idComuna": "Comuna"
+            "idComuna": "Comuna",
+            "qtdReservatorios": "Qtd Reservatórios"
         }
     }
 }

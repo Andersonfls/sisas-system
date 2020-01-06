@@ -3,12 +3,11 @@ import { BaseEntity } from './../../shared';
 export class Banner implements BaseEntity {
     constructor(
         public id?: number,
-        public titulo?: string,
+        public nomeArquivo?: string,
         public descricao?: string,
-        public uri?: string,
-        public contentType?: string,
-        public imagemBanner?: any,
-        public status?: boolean
+        public status?: boolean,
+        public dataInclusao?: Date,
+        public dataAlteracao?: Date
     ) {
         this.status = false;
     }

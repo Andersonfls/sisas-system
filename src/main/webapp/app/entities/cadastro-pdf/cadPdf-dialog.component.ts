@@ -45,10 +45,6 @@ export class CadPdfDialogComponent implements OnInit {
 
     setFileData(event, entity, field, isImage) {
         this.dataUtils.setFileData(event, entity, field, isImage);
-
-        if (this.produto.contentType === null || this.produto.contentType === undefined) {
-            this.produto.contentType = 'image/png';
-        }
     }
 
     clearInputImage(field: string, fieldContentType: string, idInput: string) {
@@ -60,10 +56,6 @@ export class CadPdfDialogComponent implements OnInit {
 
     save() {
         this.isSaving = true;
-
-        if (this.produto.contentType === null || this.produto.contentType === undefined) {
-            this.produto.contentType = 'image/png';
-        }
 
         if (this.produto.id !== undefined) {
             this.subscribeToSaveResponse(
@@ -86,13 +78,6 @@ export class CadPdfDialogComponent implements OnInit {
         this.eventManager.broadcast({ name: 'produtoListModification', content: 'OK'});
         this.isSaving = false;
         this.activeModal.dismiss(result);
-    }
-
-    compareItem(item: ItemAssinatura, target?: ItemAssinatura): boolean {
-        if (target) {
-            return item.id === target.id;
-        }
-        return false;
     }
 
     private onSaveError() {
@@ -125,15 +110,12 @@ export class CadPdfDialogComponent implements OnInit {
                     console.log('File is completely uploaded!');
                     const jsonObj: any = JSON.parse(event.body.toString());
                     const file: FileResponseModel = <FileResponseModel>jsonObj;
-
-                    this.produto.uri = file.fileDownloadUri;
                 }
             }, (res: HttpErrorResponse) => this.onError(res.message));
         }
     }
 
     private onError(error: any) {
-        this.produto.uri = null;
     }
 }
 
