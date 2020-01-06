@@ -21,6 +21,8 @@ public class MunicipioDTO implements Serializable {
     @NotNull
     private Provincia provincia;
 
+    private Long valor;
+
     public Long getId() {
         return id;
     }
@@ -43,6 +45,14 @@ public class MunicipioDTO implements Serializable {
 
     public void setProvincia(Provincia provincia) {
         this.provincia = provincia;
+    }
+
+    public Long getValor() {
+        return valor;
+    }
+
+    public void setValor(Long valor) {
+        this.valor = valor;
     }
 
     @Override

@@ -125,9 +125,9 @@
                     <label class="form-control-label negrito" jhiTranslate="sisasApp.programasProjectos.especialidades"
                            for="field_idEspecialidades">Especialidades</label>
                     <select class="form-control" id="field_idEspecialidades" name="especialidades"
-                            [(ngModel)]="programasProjectos.especialidades">
+                            [(ngModel)]="programasProjectos.especialidade">
                         <option *ngIf="!editForm.value.especialidades" [ngValue]="null" selected>Selecione o Especialidades..</option>
-                        <option [ngValue]="especialidadesOption.id === programasProjectos.especialidades?.id ? programasProjectos.especialidades : especialidadesOption"
+                        <option [ngValue]="especialidadesOption.id === programasProjectos.especialidade?.id ? programasProjectos.especialidades : especialidadesOption"
                                 *ngFor="let especialidadesOption of especialidadess">{{especialidadesOption.nmEspecialidade}}</option>
                     </select>
                 </div>
@@ -1146,7 +1146,7 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary" (click)="validaEmpreitada()" >Salvar mudanças</button>
+                    <button type="button" class="btn btn-primary" >Salvar mudanças</button>
                 </div>
             </div>
         </div>

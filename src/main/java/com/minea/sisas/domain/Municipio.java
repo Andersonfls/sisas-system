@@ -29,6 +29,9 @@ public class Municipio implements Serializable {
     @JoinColumn(name = "id_provincia")
     private Provincia provincia;
 
+    @Column(name = "valor")
+    private Long valor;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -66,6 +69,14 @@ public class Municipio implements Serializable {
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
+    public Long getValor() {
+        return valor;
+    }
+
+    public void setValor(Long valor) {
+        this.valor = valor;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -89,8 +100,10 @@ public class Municipio implements Serializable {
     @Override
     public String toString() {
         return "Municipio{" +
-            "id=" + getId() +
-            ", nmMunicipio='" + getNmMunicipio() + "'" +
-            "}";
+            "id=" + id +
+            ", nmMunicipio='" + nmMunicipio + '\'' +
+            ", provincia=" + provincia +
+            ", valor=" + valor +
+            '}';
     }
 }

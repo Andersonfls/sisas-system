@@ -7,6 +7,8 @@ import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
 import { SobreDna } from './sobre-dna.model';
 import { SobreDnaService } from './sobre-dna.service';
 import { ITEMS_PER_PAGE, Principal } from '../../shared';
+import {Observable} from 'rxjs';
+import {Publicacao} from '../publicacao';
 
 @Component({
     selector: 'jhi-sobre-dna',
@@ -50,14 +52,11 @@ currentAccount: any;
     }
 
     loadAll() {
-        this.sobreDnaService.query({
-            page: this.page - 1,
-            size: this.itemsPerPage,
-            sort: this.sort()}).subscribe(
-                (res: HttpResponse<SobreDna[]>) => this.onSuccess(res.body, res.headers),
-                (res: HttpErrorResponse) => this.onError(res.message)
+        this.sobreDnaService.find(1).subscribe(
+                (res: HttpResponse<SobreDna>) => this.sobre = res.body
         );
     }
+
     loadPage(page: number) {
         if (page !== this.previousPage) {
             this.previousPage = page;
@@ -102,6 +101,15 @@ currentAccount: any;
         this.eventSubscriber = this.eventManager.subscribe('sobreDnaListModification', (response) => this.loadAll());
     }
 
+    save() {
+        this.sobre.id = 1;
+        this.sobre.resumoTextoSobreDna = 'sisas';
+        if (this.sobre.id !== undefined) {
+            this.subscribeToSaveResponse(
+                this.sobreDnaService.update(this.sobre));
+        }
+    }
+
     sort() {
         const result = [this.predicate + ',' + (this.reverse ? 'asc' : 'desc')];
         if (this.predicate !== 'id') {
@@ -110,14 +118,17 @@ currentAccount: any;
         return result;
     }
 
-    private onSuccess(data, headers) {
-        this.links = this.parseLinks.parse(headers.get('link'));
-        this.totalItems = headers.get('X-Total-Count');
-        this.queryCount = this.totalItems;
-        // this.page = pagingParams.page;
-        this.sobreDnas = data;
+    private subscribeToSaveResponse(result: Observable<HttpResponse<SobreDna>>) {
+        result.subscribe((res: HttpResponse<SobreDna>) =>
+            this.onSaveSuccess(res.body), (res: HttpErrorResponse) => this.onSaveError());
     }
-    private onError(error) {
-        this.jhiAlertService.error(error.message, null, null);
+
+    private onSaveSuccess(result: SobreDna) {
+        this.eventManager.broadcast({ name: 'sobreListModification', content: 'OK'});
+        alert('Salvo com sucesso!!');
+    }
+
+    private onSaveError() {
+        alert('Erro ao salvar, por favor, tente novamente!!');
     }
 }

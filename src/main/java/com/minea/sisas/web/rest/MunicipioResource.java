@@ -128,6 +128,14 @@ public class MunicipioResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(municipioDTO));
     }
 
+    @GetMapping("/municipios/{nome}")
+    @Timed
+    public ResponseEntity<MunicipioDTO> getMunicipio(@PathVariable String nome) {
+        log.debug("REST request to get Municipio : {}", nome);
+        MunicipioDTO municipioDTO = municipioService.findOneByName(nome);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(municipioDTO));
+    }
+
     @GetMapping("/municipios/municipioByProvincia")
     public List<Municipio> getAllMunicipioByProvincia(Long provinciaId) {
         log.debug("REST request to get all Disciplina");

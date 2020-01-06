@@ -112,11 +112,13 @@ export class IndicadorProducaoDialogComponent implements OnInit {
             });
     }
 
-    // clear() {
-    //     this.activeModal.dismiss('cancel');
-    // }
-
     save() {
+        // TEMPORARIO, APENAS PARA TESTE
+            this.indicadorProducao.qtdAcoesFormacaoRealizadas = 0;
+            this.indicadorProducao.qtdManuaisPrevistos = 0;
+            this.indicadorProducao.vlrCustoTotaisCapexOpex = 0;
+            this.indicadorProducao.situacao = new Situacao();
+            this.indicadorProducao.situacao.id = 1;
         this.isSaving = true;
         if (this.indicadorProducao.id !== undefined) {
             this.subscribeToSaveResponse(
@@ -136,7 +138,7 @@ export class IndicadorProducaoDialogComponent implements OnInit {
     private onSaveSuccess(result: IndicadorProducao) {
         this.eventManager.broadcast({name: 'indicadorProducaoListModification', content: 'OK'});
         this.isSaving = false;
-       // this.activeModal.dismiss(result);
+        this.previousState();
     }
 
     private onSaveError() {

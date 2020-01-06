@@ -9,7 +9,7 @@
     <jhi-alert></jhi-alert>
 </div>
 
-<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+<form name="editForm" role="form" #editForm="ngForm">
 
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
@@ -27,10 +27,10 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+        <button type="button" class="btn btn-secondary" (click)="clear()">
             <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
         </button>
-        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+        <button type="button" class="btn btn-primary" (click)="save()">
             <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
         </button>
     </div>

@@ -183,7 +183,6 @@ public class IndicadorProducaoDTO implements Serializable {
     @NotNull
     private BigDecimal vlrCustoAmortizaAnualInvestOpCapex;
 
-    @NotNull
     private BigDecimal vlrCustoTotaisCapexOpex;
 
     @NotNull
@@ -219,7 +218,6 @@ public class IndicadorProducaoDTO implements Serializable {
     @NotNull
     private Long qtdAcoesFormacaoSoftwareFornecidosPlanejadas;
 
-    @NotNull
     private Long qtdAcoesFormacaoMoRealizadas;
 
     @NotNull
@@ -231,7 +229,6 @@ public class IndicadorProducaoDTO implements Serializable {
     @NotNull
     private Long qtdAcoesFormacaoSoftwareFornecidosRealizadas;
 
-    @NotNull
     private Long qtdAcoesFormacaoRealizadas;
 
     @NotNull
@@ -243,7 +240,6 @@ public class IndicadorProducaoDTO implements Serializable {
     @NotNull
     private Long qtdManuaisCmpPrevistos;
 
-    @NotNull
     private Long qtdManuaisPrevistos;
 
     @NotNull
@@ -262,13 +258,10 @@ public class IndicadorProducaoDTO implements Serializable {
 
     private SistemaAgua sistemaAgua;
 
-    @NotNull
     private Comuna comuna;
 
-    @NotNull
     private Provincia provincia;
 
-    @NotNull
     private Municipio municipio;
 
     public Long getId() {

@@ -251,7 +251,7 @@ public class IndicadorProducao implements Serializable {
     private BigDecimal vlrCustoAmortizaAnualInvestOpCapex;
 
     @NotNull
-    @Column(name = "vlr_custo_totais_capex_opex", precision=10, scale=2, nullable = false)
+    @Column(name = "vlr_custo_totais_capex_opex", precision=10, scale=2)
     private BigDecimal vlrCustoTotaisCapexOpex;
 
     @NotNull
@@ -315,7 +315,7 @@ public class IndicadorProducao implements Serializable {
     private Long qtdAcoesFormacaoSoftwareFornecidosRealizadas;
 
     @NotNull
-    @Column(name = "qtd_acoes_formacao_realizadas", nullable = false)
+    @Column(name = "qtd_acoes_formacao_realizadas")
     private Long qtdAcoesFormacaoRealizadas;
 
     @NotNull
@@ -331,7 +331,7 @@ public class IndicadorProducao implements Serializable {
     private Long qtdManuaisCmpPrevistos;
 
     @NotNull
-    @Column(name = "qtd_manuais_previstos", nullable = false)
+    @Column(name = "qtd_manuais_previstos")
     private Long qtdManuaisPrevistos;
 
     @NotNull

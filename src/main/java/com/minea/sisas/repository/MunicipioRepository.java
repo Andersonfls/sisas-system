@@ -24,4 +24,7 @@ public interface MunicipioRepository extends JpaRepository<Municipio, Long>, Jpa
     List<Municipio> findByProvinciaId(Long disciplinaId);
 
     List<Municipio> findAllByProvinciaId(Long id);
+
+    @Query("select m from Municipio m where m.nmMunicipio like :nome ")
+    Municipio findAllByNome(String nome);
 }

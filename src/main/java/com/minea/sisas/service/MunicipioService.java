@@ -69,6 +69,13 @@ public class MunicipioService {
         return municipioMapper.toDto(municipio);
     }
 
+    @Transactional(readOnly = true)
+    public MunicipioDTO findOneByName(String nome) {
+        log.debug("Request to get Municipio : {}", nome);
+        Municipio municipio = municipioRepository.findAllByNome(nome);
+        return municipioMapper.toDto(municipio);
+    }
+
     /**
      * Delete the municipio by id.
      *

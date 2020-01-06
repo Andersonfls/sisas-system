@@ -14,15 +14,12 @@ public class SobreDnaDTO implements Serializable {
 
     private Long id;
 
-    @NotNull
     @Size(max = 150)
     private String tituloSobreDna;
 
-    @NotNull
     @Size(max = 2500)
     private String textoSobreDna;
 
-    @NotNull
     @Size(max = 100)
     private String resumoTextoSobreDna;
 

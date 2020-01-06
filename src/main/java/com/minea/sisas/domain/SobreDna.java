@@ -1,13 +1,10 @@
 package com.minea.sisas.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -26,17 +23,17 @@ public class SobreDna implements Serializable {
 
     @NotNull
     @Size(max = 150)
-    @Column(name = "titulo_sobre_dna", length = 150, nullable = false)
+    @Column(name = "titulo_sobre_dna", length = 150)
     private String tituloSobreDna;
 
     @NotNull
     @Size(max = 2500)
-    @Column(name = "texto_sobre_dna", length = 2500, nullable = false)
+    @Column(name = "texto_sobre_dna", length = 2500)
     private String textoSobreDna;
 
     @NotNull
     @Size(max = 100)
-    @Column(name = "resumo_texto_sobre_dna", length = 100, nullable = false)
+    @Column(name = "resumo_texto_sobre_dna", length = 100)
     private String resumoTextoSobreDna;
 
     @ManyToOne(optional = false)

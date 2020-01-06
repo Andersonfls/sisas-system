@@ -148,22 +148,22 @@ export class MunicipalComponent implements OnInit {
                     //     (res: HttpResponse<Municipio>) => muni = res.body
                     // );
 
-                    this.municipios.forEach(item => {
-                        if (item.nmMunicipio === feature.properties.nome){
+                    this.municipios.forEach((item) => {
+                        if (item.nmMunicipio === feature.properties.nome) {
                             muni = item;
                             console.log(muni);
                         }
                     });
 
-                    if (muni.valor > 0 && muni.valor < 42){
+                    if (muni.valor > 0 && muni.valor < 42) {
                         return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7};
-                    } else if (muni.valor > 41 && muni.valor < 83){
+                    } else if (muni.valor > 41 && muni.valor < 83) {
                         return {color: 'white', weight: 2, opacity: 1, fillColor: '#9CCDFE', fillOpacity: 0.7};
-                    } else if (muni.valor > 82 && muni.valor < 124){
+                    } else if (muni.valor > 82 && muni.valor < 124) {
                         return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7};
-                    } else if (muni.valor > 123 && muni.valor < 165){
+                    } else if (muni.valor > 123 && muni.valor < 165) {
                         return {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7};
-                    } else if (muni.valor > 164 && muni.valor < 206){
+                    } else if (muni.valor > 164 && muni.valor < 206) {
                         return {color: 'white', weight: 2, opacity: 1, fillColor: '#FCCC9E', fillOpacity: 0.7};
                     } else {
                         return {color: 'white', weight: 2, opacity: 1, fillColor: '', fillOpacity: 0.7};
