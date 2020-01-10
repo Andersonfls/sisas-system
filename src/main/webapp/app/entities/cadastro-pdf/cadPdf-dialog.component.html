@@ -10,25 +10,22 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="sisasApp.cadastroPdf.titulo" for="field_titulo">Titulo</label>
             <input type="text" class="form-control" name="titulo" id="field_titulo"
-                [(ngModel)]="produto.titulo" required/>
+                [(ngModel)]="produto.nomeArquivo" required/>
         </div>
 
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="sisasApp.cadastroPdf.capa" for="field_imagemCapa">Imagem Capa</label>
+            <label class="form-control-label" jhiTranslate="sisasApp.cadastroPdf.capa">Imagem Capa</label>
             <div>
-                <img [src]="'data:' + produto.contentType + ';base64,' + produto.imagemBanner" style="max-height: 100px;" *ngIf="produto.imagemBanner" alt="Banner image"/>
-                <div *ngIf="produto.imagemBanner" class="form-text text-danger clearfix">
-                    <span class="pull-left">{{produto.contentType}}, {{byteSize(produto.imagemBanner)}}</span>
-                    <button type="button" (click)="clearInputImage('imagemBanner', 'contentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
-                        <span class="fa fa-times"></span>
-                    </button>
-                </div>
+                <!--<div *ngIf="produto.imagemBanner" class="form-text text-danger clearfix">-->
+                    <!--<span class="pull-left">{{produto.contentType}}, {{byteSize(produto.imagemBanner)}}</span>-->
+                    <!--<button type="button" (click)="clearInputImage('imagemBanner', 'contentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">-->
+                        <!--<span class="fa fa-times"></span>-->
+                    <!--</button>-->
+                <!--</div>-->
                 <input type="file" id="file_imagemCapa" (change)="setFileData($event, produto, 'imagemBanner', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
             </div>
-            <input type="hidden" class="form-control" name="imagemBanner" id="field_imagemCapa"
-                   [(ngModel)]="produto.imagemBanner" />
-            <input type="hidden" class="form-control" name="contentType" id="field_imagemCapaContentType"
-                   [(ngModel)]="produto.contentType" />
+            <!--<input type="hidden" class="form-control" name="imagemBanner" id="field_imagemCapa"-->
+                   <!--[(ngModel)]="produto.imagemBanner" />-->
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="sisasApp.cadastroPdf.descricao" for="field_descricao">Descricao</label>

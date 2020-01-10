@@ -1,4 +1,5 @@
 import { BaseEntity } from './../../shared';
+import {ProgramasProjectos} from '../programas-projectos';
 
 export class Execucao implements BaseEntity {
     constructor(
@@ -15,7 +16,7 @@ export class Execucao implements BaseEntity {
         public constrangimento?: string,
         public valorPagoPeriodo?: number,
         public idSituacaoId?: number,
-        public idProgramasProjectosId?: number,
+        public idProgramasProjectosId?: ProgramasProjectos,
         public idSistemaAguaId?: number,
         public idContratoId?: number,
     ) {

@@ -52,6 +52,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query("select count(id) from User u where u.activated = '1' ")
     Integer buscarUser();
 
+    @Query("select u.id from User u where u.login = :login ")
+    Long buscarUserIdByUsername(@Param("login") String login);
+
     @Query("select u from User u where LOWER(u.nome) like LOWER(concat('%',:nome,'%'))")
     Page buscarPorNome(@Param("nome") String nome, Pageable pageable);
 

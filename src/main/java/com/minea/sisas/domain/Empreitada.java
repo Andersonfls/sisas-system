@@ -20,11 +20,8 @@ public class Empreitada implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @NotNull
     @Column(name = "id_empreitada", nullable = false)
-    private Long idEmpreitada;
+    private Long id;
 
     @NotNull
     @Size(max = 150)
@@ -101,12 +98,15 @@ public class Empreitada implements Serializable {
 
     @ManyToOne(optional = false)
     @NotNull
+    @JoinColumn(name = "id_programas_projectos")
     private ProgramasProjectos idProgramasProjectos;
 
     @ManyToOne
+    @JoinColumn(name = "id_sistema_agua")
     private SistemaAgua idSistemaAgua;
 
     @ManyToOne
+    @JoinColumn(name = "id_contrato")
     private Contrato idContrato;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
@@ -116,19 +116,6 @@ public class Empreitada implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getIdEmpreitada() {
-        return idEmpreitada;
-    }
-
-    public Empreitada idEmpreitada(Long idEmpreitada) {
-        this.idEmpreitada = idEmpreitada;
-        return this;
-    }
-
-    public void setIdEmpreitada(Long idEmpreitada) {
-        this.idEmpreitada = idEmpreitada;
     }
 
     public String getTipoEmpreitada() {
@@ -429,7 +416,6 @@ public class Empreitada implements Serializable {
     public String toString() {
         return "Empreitada{" +
             "id=" + getId() +
-            ", idEmpreitada=" + getIdEmpreitada() +
             ", tipoEmpreitada='" + getTipoEmpreitada() + "'" +
             ", dtLancamento='" + getDtLancamento() + "'" +
             ", numCapacidadeCaptacao=" + getNumCapacidadeCaptacao() +

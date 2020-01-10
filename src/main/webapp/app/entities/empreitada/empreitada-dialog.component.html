@@ -46,7 +46,7 @@
             <label class="form-control-label" jhiTranslate="sisasApp.empreitada.dtLancamento" for="field_dtLancamento">Dt Lancamento</label>
             <div class="input-group">
                 <input id="field_dtLancamento" type="text" class="form-control" name="dtLancamento" ngbDatepicker  #dtLancamentoDp="ngbDatepicker" [(ngModel)]="empreitada.dtLancamento"
-                required/>
+                       required/>
                 <span class="input-group-append">
                     <button type="button" class="btn btn-secondary" (click)="dtLancamentoDp.toggle()"><i class="fa fa-calendar"></i></button>
                 </span>

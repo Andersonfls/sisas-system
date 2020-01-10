@@ -1,13 +1,21 @@
 package com.minea.sisas.service;
 
 import com.minea.sisas.domain.IndicadorProducao;
+import com.minea.sisas.domain.SistemaAgua;
+import com.minea.sisas.domain.enumeration.TipoAcao;
 import com.minea.sisas.repository.IndicadorProducaoRepository;
+import com.minea.sisas.repository.UserRepository;
 import com.minea.sisas.service.dto.IndicadorProducaoDTO;
+import com.minea.sisas.service.dto.IndicadorProducaoLogDTO;
+import com.minea.sisas.service.dto.SistemaAguaLogDTO;
 import com.minea.sisas.service.mapper.IndicadorProducaoMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +24,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -31,9 +40,17 @@ public class IndicadorProducaoService {
 
     private final IndicadorProducaoMapper indicadorProducaoMapper;
 
-    public IndicadorProducaoService(IndicadorProducaoRepository indicadorProducaoRepository, IndicadorProducaoMapper indicadorProducaoMapper) {
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired IndicadorProducaoLogService indicadorProducaoLogService;
+
+    public IndicadorProducaoService(IndicadorProducaoRepository indicadorProducaoRepository, IndicadorProducaoMapper indicadorProducaoMapper,
+                                    UserRepository userRepository, IndicadorProducaoLogService indicadorProducaoLogService) {
         this.indicadorProducaoRepository = indicadorProducaoRepository;
         this.indicadorProducaoMapper = indicadorProducaoMapper;
+        this.userRepository = userRepository;
+        this.indicadorProducaoLogService = indicadorProducaoLogService;
     }
 
     /**
@@ -46,9 +63,34 @@ public class IndicadorProducaoService {
         log.debug("Request to save IndicadorProducao : {}", indicadorProducaoDTO);
         IndicadorProducao indicadorProducao = indicadorProducaoMapper.toEntity(indicadorProducaoDTO);
         indicadorProducao = indicadorProducaoRepository.save(indicadorProducao);
+        if (Objects.nonNull(indicadorProducaoDTO.getId())) {
+            logSave(TipoAcao.ATUALIZACAO, indicadorProducao);
+        } else {
+            logSave(TipoAcao.INCLUSAO, indicadorProducao);
+        }
+
         return indicadorProducaoMapper.toDto(indicadorProducao);
     }
 
+
+    private void logSave(TipoAcao acao, IndicadorProducao indicadorProducao) {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = null;
+        if (principal instanceof UserDetails) {
+            username = ((UserDetails)principal).getUsername();
+        }
+
+        IndicadorProducaoLogDTO dto = new IndicadorProducaoLogDTO();
+        dto.setAcao(acao.getDescricao());
+        dto.setDtLog(LocalDate.now());
+        dto.setIdIndicadorProducaoId(indicadorProducao);
+        if (Objects.nonNull(username)) {
+            dto.setIdUsuario(this.userRepository.buscarUserIdByUsername(username));
+        }
+        dto.setLog(acao.getLog());
+
+        this.indicadorProducaoLogService.save(dto);
+    }
     /**
      * Get all the indicadorProducaos.
      *
@@ -82,6 +124,7 @@ public class IndicadorProducaoService {
      */
     public void delete(Long id) {
         log.debug("Request to delete IndicadorProducao : {}", id);
+        logSave(TipoAcao.REMOCAO, indicadorProducaoRepository.findOne(id));
         indicadorProducaoRepository.delete(id);
     }
 

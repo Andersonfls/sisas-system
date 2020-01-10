@@ -78,9 +78,6 @@ public class EmpreitadaQueryService extends QueryService<Empreitada> {
             if (criteria.getId() != null) {
                 specification = specification.and(buildSpecification(criteria.getId(), Empreitada_.id));
             }
-            if (criteria.getIdEmpreitada() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getIdEmpreitada(), Empreitada_.idEmpreitada));
-            }
             if (criteria.getTipoEmpreitada() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getTipoEmpreitada(), Empreitada_.tipoEmpreitada));
             }

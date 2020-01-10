@@ -1,10 +1,12 @@
 package com.minea.sisas.service;
 
 import com.minea.sisas.domain.SistemaAgua;
+import com.minea.sisas.domain.enumeration.TipoAcao;
 import com.minea.sisas.repository.SistemaAguaRepository;
 import com.minea.sisas.repository.UserRepository;
 import com.minea.sisas.security.SecurityUtils;
 import com.minea.sisas.service.dto.SistemaAguaDTO;
+import com.minea.sisas.service.dto.SistemaAguaLogDTO;
 import com.minea.sisas.service.mapper.SistemaAguaMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +19,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.security.Principal;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -35,11 +38,16 @@ public class SistemaAguaService {
     private final SistemaAguaMapper sistemaAguaMapper;
 
     @Autowired
+    private SistemaAguaLogService sistemaAguaLogService;
+
+    @Autowired
     private UserRepository userRepository;
 
-    public SistemaAguaService(SistemaAguaRepository sistemaAguaRepository, SistemaAguaMapper sistemaAguaMapper) {
+    public SistemaAguaService(SistemaAguaRepository sistemaAguaRepository, SistemaAguaMapper sistemaAguaMapper, SistemaAguaLogService sistemaAguaLogService, UserRepository userRepository) {
         this.sistemaAguaRepository = sistemaAguaRepository;
         this.sistemaAguaMapper = sistemaAguaMapper;
+        this.sistemaAguaLogService = sistemaAguaLogService;
+        this.userRepository = userRepository;
     }
 
     /**
@@ -55,7 +63,31 @@ public class SistemaAguaService {
             sistemaAgua.setIdUsuario(SecurityUtils.getCurrentUserId());
         sistemaAgua.setDtUltimaAlteracao(LocalDate.now());
         sistemaAgua = sistemaAguaRepository.save(sistemaAgua);
+        if (Objects.nonNull(sistemaAguaDTO.getId())) {
+            logSave(TipoAcao.ATUALIZACAO, sistemaAgua);
+        } else {
+            logSave(TipoAcao.INCLUSAO, sistemaAgua);
+        }
         return sistemaAguaMapper.toDto(sistemaAgua);
+    }
+
+    private void logSave(TipoAcao acao, SistemaAgua agua) {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = null;
+        if (principal instanceof UserDetails) {
+             username = ((UserDetails)principal).getUsername();
+        }
+
+        SistemaAguaLogDTO dto = new SistemaAguaLogDTO();
+        dto.setAcao(acao.getDescricao());
+        dto.setDtLog(LocalDate.now());
+        dto.setIdSistemaAguaId(agua);
+        if (Objects.nonNull(username)) {
+            dto.setIdUsuario(this.userRepository.buscarUserIdByUsername(username));
+        }
+        dto.setLog(acao.getLog());
+
+        this.sistemaAguaLogService.save(dto);
     }
 
     /**
@@ -91,6 +123,7 @@ public class SistemaAguaService {
      */
     public void delete(Long id) {
         log.debug("Request to delete SistemaAgua : {}", id);
+        logSave(TipoAcao.REMOCAO, sistemaAguaRepository.findOne(id));
         sistemaAguaRepository.delete(id);
     }
 }

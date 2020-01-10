@@ -66,16 +66,20 @@ public class Execucao implements Serializable {
 
     @ManyToOne(optional = false)
     @NotNull
+    @JoinColumn(name = "id_situacao")
     private Situacao idSituacao;
 
     @ManyToOne(optional = false)
     @NotNull
+    @JoinColumn(name = "id_programas_projectos")
     private ProgramasProjectos idProgramasProjectos;
 
     @ManyToOne
+    @JoinColumn(name = "id_sistema_agua")
     private SistemaAgua idSistemaAgua;
 
     @ManyToOne
+    @JoinColumn(name = "id_contrato")
     private Contrato idContrato;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

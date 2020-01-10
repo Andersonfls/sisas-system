@@ -742,6 +742,47 @@ export class ProgramasProjectosDialogComponent implements OnInit {
         this.controleSessoes = valor;
     }
 
+    // EXECUCAO
+    validaExecucao() {
+        this.execucao.tipoEmpreitada = this.empreitada.tipoEmpreitada;
+        if (this.programasProjectos.id === undefined || this.programasProjectos.id === null) {
+            this.programasProjectosService.create(this.programasProjectos).subscribe( (resp) => {
+                this.programasProjectos = resp.body;
+                console.log(resp);
+                this.execucao.idProgramasProjectosId = new ProgramasProjectos();
+                this.execucao.idProgramasProjectosId.id = this.programasProjectos.id;
+                this.salvarExecucao();
+            });
+        } else {
+            this.execucao.idProgramasProjectosId = new ProgramasProjectos();
+            this.execucao.idProgramasProjectosId.id = this.programasProjectos.id;
+            this.salvarExecucao();
+        }
+    }
+
+    salvarExecucao() {
+        console.log(this.execucao);
+        if (this.execucao.id !== undefined && this.execucao.id !== null) {
+            this.execucaoService.update(this.execucao).subscribe( (event) => {
+                alert('Execução foi atualizada com sucesso!');
+                console.log(event);
+                this.hideModalExecucao();
+                this.execucao = event.body;
+            });
+        } else {
+            this.execucaoService.create(this.execucao).subscribe( (event) => {
+                alert('Execução foi criada com sucesso!');
+                console.log(event);
+                this.hideModalExecucao();
+                this.execucao = event.body;
+            });
+        }
+    }
+
+    public hideModalExecucao() {
+        this.closeModalExecucao.nativeElement.click();
+    }
+
     private subscribeToSaveResponse(result: Observable<HttpResponse<ProgramasProjectos>>) {
         result.subscribe((res: HttpResponse<ProgramasProjectos>) =>
             this.onSaveSuccess(res.body), (res: HttpErrorResponse) => this.onSaveError());

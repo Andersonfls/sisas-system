@@ -1160,23 +1160,23 @@
                     <h4 [hidden]="empreitada.id" class="modal-title" id="myExecucaoLabelc" jhiTranslate="sisasApp.execucao.home.createLabel">Create or edit a Empreitada</h4>
                     <h4 [hidden]="!empreitada.id" class="modal-title" id="myExecucaoLabele" jhiTranslate="sisasApp.execucao.home.editLabel">Create or edit a Empreitada</h4>
 
-                    <button #closeModal type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                    <button #closeModalExecucao type="button" class="close" data-dismiss="modal" aria-hidden="true"
                             (click)="clear()">&times;</button>
                 </div>
 
                 <div class="modal-body">
                     <div class="form-group">
                         <label class="form-control-label" jhiTranslate="sisasApp.execucao.tipoEmpreitada" for="field_tipoEmpreitada">Tipo Empreitada</label>
-                        <input type="text" class="form-control" name="tipoEmpreitada" id="field_tipoEmpreitada"
+                        <input type="text" class="form-control" name="tipoEmpreitada" id="field_tipoEmpreitadaexec"
                                [(ngModel)]="execucao.tipoEmpreitada" required maxlength="150" disabled/>
                     </div>
                     <div class="form-group">
                         <label class="form-control-label" jhiTranslate="sisasApp.execucao.dtLancamento" for="field_dtLancamentoex">Dt Lancamento</label>
                         <div class="input-group">
-                            <input id="field_dtLancamentoex" type="text" class="form-control" name="dtLancamento" ngbDatepicker  #dtLancamentoDp="ngbDatepicker" [(ngModel)]="execucao.dtLancamento"
+                            <input id="field_dtLancamentoex" type="text" class="form-control" name="dtLancamentoex" ngbDatepicker  #dtLancamentoEx="ngbDatepicker" [(ngModel)]="execucao.dtLancamento"
                                    required placeholder="Data Lançamento"/>
                             <span class="input-group-append">
-                    <button type="button" class="btn btn-secondary" (click)="dtLancamentoDp.toggle()"><i class="fa fa-calendar"></i></button>
+                    <button type="button" class="btn btn-secondary" (click)="dtLancamentoEx.toggle()"><i class="fa fa-calendar"></i></button>
                 </span>
                         </div>
                         <div [hidden]="!(editForm.controls.dtLancamento?.dirty && editForm.controls.dtLancamento?.invalid)">
@@ -1300,7 +1300,7 @@
                         <label class="form-control-label" jhiTranslate="sisasApp.execucao.idSituacao" for="field_idSituacao">Id Situacao</label>
                         <select class="form-control" id="field_idSituacao" name="idSituacao" [(ngModel)]="execucao.idSituacaoId"  required>
                             <option *ngIf="!editForm.value.idSituacao" [ngValue]="null" selected></option>
-                            <option [ngValue]="situacaoOption.id" *ngFor="let situacaoOption of situacaos">{{situacaoOption.id}}</option>
+                            <option [ngValue]="situacaoOption.id" *ngFor="let situacaoOption of situacaos">{{situacaoOption.nmSituacao}}</option>
                         </select>
                     </div>
                     <div [hidden]="!(editForm.controls.idSituacao?.dirty && editForm.controls.idSituacao?.invalid)">
@@ -1313,7 +1313,7 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary" (click)="validaConcepcao()" >Salvar mudanças</button>
+                    <button type="button" class="btn btn-primary" (click)="validaExecucao()" >Salvar mudanças</button>
                 </div>
             </div>
         </div>
