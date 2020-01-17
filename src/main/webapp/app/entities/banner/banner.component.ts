@@ -53,22 +53,6 @@ export class BannerComponent implements OnInit, OnDestroy {
         this.valorAtual = 8;
     }
 
-    getProdutos() {
-        this.bannerService.query(
-            {
-                page: this.page - 1,
-                size: this.itemsPerPage,
-                sort: this.sort(),
-                titulo: this.nomePesquisa
-            }
-        ).subscribe(
-            (retornados: HttpResponse<Banner[]>) => {
-                this.produtosFilt = retornados.body;
-                this.validaResult();
-            }
-        );
-    }
-
     loadAll() {
         this.bannerService.query({
             page: this.page,

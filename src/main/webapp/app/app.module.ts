@@ -52,7 +52,7 @@ import {FormsModule} from '@angular/forms';
         NgbModule.forRoot(),
         LeafletModule.forRoot(),
         CKEditorModule,
-        FormsModule
+        FormsModule,
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [
