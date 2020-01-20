@@ -96,8 +96,30 @@ export class NacionalComponent implements OnInit {
         };
 
         info.update = function(props) {
-            this._div.innerHTML = '<h4>Informações</h4>' +  (props ?   '<b>' + props.nome + '</b><br />'
-                : '');
+            this._div.innerHTML = '<h4>Informações</h4>' +  (props ?   '<b>' + props.nome + '</b><br />' : '');
+            this._div.innerHTML += props ? '<b>Codigo: ' + props.code + '</b><br />' : '';
+            if (props) {
+                switch (props.code) {
+                    case 1: this._div.innerHTML += '<b>Valor: ' + 79 + '</b><br />'; break; // Cabinda
+                    case 2: this._div.innerHTML += '<b>Valor: ' + 31 + '</b><br />'; break; // Zaire
+                    case 3: this._div.innerHTML += '<b>Valor: ' + 6 + '</b><br />'; break; // Uige
+                    case 4: this._div.innerHTML += '<b>Valor: ' + 6 + '</b><br />'; break; // Luanda
+                    case 5: this._div.innerHTML += '<b>Valor: ' + 65 + '</b><br />'; break; // Kuanza Norte
+                    case 6: this._div.innerHTML += '<b>Valor: ' + 83 + '</b><br />'; break; // Kuanza Sul
+                    case 7: this._div.innerHTML += '<b>Valor: ' + 52 + '</b><br />'; break; // Malanje
+                    case 8: this._div.innerHTML += '<b>Valor: ' + 89 + '</b><br />'; break; // Lunda Norte
+                    case 9: this._div.innerHTML += '<b>Valor: ' + 25 + '</b><br />'; break; // Benguela
+                    case 10: this._div.innerHTML += '<b>Valor: ' + 67 + '</b><br />'; break; // Huambo
+                    case 11: this._div.innerHTML += '<b>Valor: ' + 64 + '</b><br />'; break; // Bie
+                    case 12: this._div.innerHTML += '<b>Valor: ' + 10 + '</b><br />'; break; // Moxico
+                    case 13: this._div.innerHTML += '<b>Valor: ' + 8 + '</b><br />'; break; // Kuando Kubango
+                    case 14: this._div.innerHTML += '<b>Valor: ' + 15 + '</b><br />'; break; // Namide
+                    case 15: this._div.innerHTML += '<b>Valor: ' + 25 + '</b><br />'; break; // Hulia
+                    case 16: this._div.innerHTML += '<b>Valor: ' + 88 + '</b><br />'; break; // Cunene
+                    case 17: this._div.innerHTML += '<b>Valor: ' + 0 + '</b><br />'; break; // Luanda Sul
+                    case 18: this._div.innerHTML += '<b>Valor: ' + 16 + '</b><br />'; break; // Bengo
+                }
+            }
         };
 
         info.addTo(map);
@@ -135,24 +157,24 @@ export class NacionalComponent implements OnInit {
             geojson =  L.geoJSON(json, {
                 style: (feature) => {
                     switch (feature.properties.code) {
-                        case 1: return {color: 'white', weight: 2, opacity: 1, fillColor: '#A2D1FB', fillOpacity: 0.7}; // Zaire
-                        case 2: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7}; // Uige
-                        case 3: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7}; // Luanda
-                        case 4: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7}; // Bengo
+                        case 2: return {color: 'white', weight: 2, opacity: 1, fillColor: '#A2D1FB', fillOpacity: 0.7}; // Zaire
+                        case 3: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7}; // Uige
+                        case 4: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7}; // Luanda
+                        case 18: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7}; // Bengo
                         case 5: return {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7}; // Kuanza Norte
-                        case 6: return {color: 'white', weight: 2, opacity: 1, fillColor: '#F693C7', fillOpacity: 0.7}; // Malanje
-                        case 7: return {color: 'white', weight: 2, opacity: 1, fillColor: '#F6CD9D', fillOpacity: 0.7}; // Lunda Norte
-                        case 8: return {color: 'white', weight: 2, opacity: 1, fillColor: '', fillOpacity: 0.7}; // Luanda Sul
-                        case 9: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7}; // Moxico
-                        case 10: return {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7}; // Bie
-                        case 11: return {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7}; // Huambo
-                        case 12: return {color: 'white', weight: 2, opacity: 1, fillColor: '#F6CD9D', fillOpacity: 0.7}; // Kuanza Sul
-                        case 13: return {color: 'white', weight: 2, opacity: 1, fillColor: '#A2D1FB', fillOpacity: 0.7}; // Benguela
+                        case 7: return {color: 'white', weight: 2, opacity: 1, fillColor: '#F693C7', fillOpacity: 0.7}; // Malanje
+                        case 8: return {color: 'white', weight: 2, opacity: 1, fillColor: '#F6CD9D', fillOpacity: 0.7}; // Lunda Norte
+                        case 17: return {color: 'white', weight: 2, opacity: 1, fillColor: '', fillOpacity: 0.7}; // Luanda Sul
+                        case 12: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7}; // Moxico
+                        case 11: return {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7}; // Bie
+                        case 10: return {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7}; // Huambo
+                        case 6: return {color: 'white', weight: 2, opacity: 1, fillColor: '#F6CD9D', fillOpacity: 0.7}; // Kuanza Sul
+                        case 9: return {color: 'white', weight: 2, opacity: 1, fillColor: '#A2D1FB', fillOpacity: 0.7}; // Benguela
                         case 14: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7}; // Namide
                         case 15: return {color: 'white', weight: 2, opacity: 1, fillColor: '#A2D1FB', fillOpacity: 0.7}; // Hulia
                         case 16: return {color: 'white', weight: 2, opacity: 1, fillColor: '#F6CD9D', fillOpacity: 0.7}; // Cunene
-                        case 17: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7}; // Kuando Kubango
-                        case 18: return {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7}; // Cabinda
+                        case 13: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7}; // Kuando Kubango
+                        case 1: return {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7}; // Cabinda
                     }
                 },
                 onEachFeature: function onEachFeature(feature, layer) {

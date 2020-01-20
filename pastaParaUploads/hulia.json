@@ -4,7 +4,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 1,
+                "code": 1513,
                 "nome": "Kuvango"
             },
             "geometry": {
@@ -306,7 +306,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 2,
+                "code": 1523,
                 "nome": "Chipindo"
             },
             "geometry": {
@@ -440,7 +440,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 3,
+                "code": 1521,
                 "nome": "Jamba"
             },
             "geometry": {
@@ -686,7 +686,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 4,
+                "code": 1507,
                 "nome": "Caconda"
             },
             "geometry": {
@@ -856,7 +856,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 5,
+                "code": 1511,
                 "nome": "Quilengues"
             },
             "geometry": {
@@ -1010,7 +1010,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 6,
+                "code": 1509,
                 "nome": "Caluquembe"
             },
             "geometry": {
@@ -1140,7 +1140,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 7,
+                "code": 1519,
                 "nome": "Chicomba"
             },
             "geometry": {
@@ -1274,7 +1274,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 8,
+                "code": 1525,
                 "nome": "Gambos"
             },
             "geometry": {
@@ -1496,7 +1496,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 9,
+                "code": 1517,
                 "nome": "Matala"
             },
             "geometry": {
@@ -1734,7 +1734,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 10,
+                "code": 1515,
                 "nome": "Quipungo"
             },
             "geometry": {
@@ -1928,7 +1928,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 11,
+                "code": 1501,
                 "nome": "Lubango"
             },
             "geometry": {
@@ -2122,7 +2122,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 12,
+                "code": 1505,
                 "nome": "Chibia"
             },
             "geometry": {

@@ -30,7 +30,7 @@ import {EspecialidadesService} from '../especialidades/especialidades.service';
 
 export class ProgramasProjectosDialogComponent implements OnInit {
 
-    programasProjectos: ProgramasProjectos = new ProgramasProjectos();
+    programasProjectos: ProgramasProjectos;
     isSaving: boolean;
 
     provincias: Provincia[];
@@ -47,7 +47,6 @@ export class ProgramasProjectosDialogComponent implements OnInit {
 
     // Concepcao
     concepcao: Concepcao;
-    programasprojectos: ProgramasProjectos[];
     sistemaaguas: SistemaAgua[];
     @ViewChild('closeModal') private closeModal: ElementRef;
 
@@ -93,11 +92,10 @@ export class ProgramasProjectosDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
+        this.programasProjectos = new ProgramasProjectos();
         this.subscription = this.route.params.subscribe((params) => {
             if ( params['id'] ) {
                 this.load(params['id']);
-            } else {
-                this.programasProjectos = new ProgramasProjectos();
             }
         });
         this.situacaoService.query()
@@ -260,6 +258,11 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                 this.contrato.dtRecepcaoComicionamento = null;
             }
         }
+    }
+
+    setarAssociado(valor) {
+        console.log(valor);
+        this.programasProjectos.associadoInquerito = valor;
     }
 
     loadConcepcao(id) {
@@ -791,6 +794,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
     private onSaveSuccess(result: ProgramasProjectos) {
         this.eventManager.broadcast({ name: 'programasProjectosListModification', content: 'OK'});
         this.isSaving = false;
+        this.previousState();
     }
 
     private onSaveError() {

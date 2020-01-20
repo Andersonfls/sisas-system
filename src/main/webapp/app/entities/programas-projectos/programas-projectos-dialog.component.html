@@ -1,4 +1,4 @@
-<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+<form name="editForm" role="form" novalidate #editForm="ngForm">
 
     <div class="modal-header">
         <h4 [hidden]="programasProjectos.id" class="modal-title" id="myProgramasProjectosLabelc" jhiTranslate="sisasApp.programasProjectos.home.createLabel">Create or edit a Programas Projectos</h4>
@@ -10,7 +10,7 @@
             <div class="card-body">
                 <jhi-alert-error></jhi-alert-error>
                 <div class="row">
-                    <div class="form-group col-sm-6">
+                    <div class="form-group col-sm-6" *ngIf="programasProjectos">
                         <div class="form-group">
                             <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.dtLancamento" for="field_dttLancamento">Dt Lancamento</label>
                             <div class="input-group">
@@ -29,13 +29,13 @@
                         </div>
                     </div>
 
-                    <div class="form-group col-sm-6">
+                    <div class="form-group col-sm-6" *ngIf="programasProjectos">
                         <div class="form-group">
-                            <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.associado-inqu" for="field_assin">Associado</label>
-                            <select class="form-control" id="field_assin" name="tipoFinanciamento" [(ngModel)]="programasProjectos.associadoInquerito"  required>
-                                <!--<option [value]="null">Selecione...</option>-->
-                                <option [value]="true">SIM</option>
-                                <option [value]="false">NÃO</option>
+                            <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.associado-inqu" for="associadoInquerito">Associado</label>
+                            <select class="form-control" id="associadoInquerito" name="associadoInquerito" [(ngModel)]="programasProjectos.associadoInquerito"  required>
+                                <option value="null">Selecione uma opcao...</option>
+                                <option value="Sim" label="Sim"></option>
+                                <option value="Não" label="Não"></option>
                             </select>
                         </div>
                     </div>
@@ -90,14 +90,12 @@
                         </small>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" *ngIf="programasProjectos.associadoInquerito ==='Sim'">
                     <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.idSaaAssociado" for="field_idSaaAssociado">Id Saa Associado</label>
                     <select class="form-control" id="field_idSaaAssociado" name="associado" [(ngModel)]="programasProjectos.idSaaAssociado" required>
-                        <option [ngValue]="null">Selecione o Saa..</option>
                         <option [ngValue]="opt.id"
                                 *ngFor="let opt of sistemaaguas">{{opt.id}} - {{opt.nmSistemaAgua}}</option>
                     </select>
-
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="sisasApp.programasProjectos.tipoFinanciamento" for="field_tipoFinanciamento">Tipo Financiamento</label>
@@ -261,11 +259,6 @@
                 </div>
                 <div class="modal-body">
                     <jhi-alert-error></jhi-alert-error>
-                    <!--<div class="form-group" [hidden]="!concepcao.id">-->
-                        <!--<label for="cpid" jhiTranslate="global.field.id">ID</label>-->
-                        <!--<input type="text" class="form-control" id="cpid" name="cpid"-->
-                               <!--[(ngModel)]="concepcao.id" readonly />-->
-                    <!--</div>-->
                     <div class="form-group">
                         <label class="form-control-label" jhiTranslate="sisasApp.concepcao.tipoConcurso" for="field_tipoConcurso">Tipo Concurso</label>
                         <select class="form-control" id="field_tipoConcurso" name="tipoConcurso" [(ngModel)]="concepcao.tipoConcurso"  required>
@@ -286,7 +279,7 @@
                             </small>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" *ngIf="concepcao">
                         <label class="form-control-label" jhiTranslate="sisasApp.concepcao.dtLancamento" for="field_cpdtLancamento">Dt Lancamento</label>
                         <div class="input-group">
                             <input id="field_cpdtLancamento" type="text" class="form-control" name="cpdtLancamento" ngbDatepicker  #cdtLancamentoDp="ngbDatepicker" [(ngModel)]="concepcao.dtLancamento"
@@ -378,7 +371,7 @@
                         <!--</select>-->
                         <input class="form-control" id="field_cctipoConcurso" name="cctipoConcurso" [(ngModel)]="concurso.tipoConcurso" readonly />
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" *ngIf="concurso">
                         <label class="form-control-label" jhiTranslate="sisasApp.concurso.dtLancamento" for="field_ccdtLancamento">Dt Lancamento</label>
                         <div class="input-group">
                             <input id="field_ccdtLancamento" type="text" class="form-control" name="ccdtLancamento" ngbDatepicker  #condtLancamentoDp="ngbDatepicker" [(ngModel)]="concurso.dtLancamento"
@@ -1324,7 +1317,7 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="previousState()">
             <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
         </button>
-        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+        <button type="button" (click)="save()" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
             <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
         </button>
     </div>

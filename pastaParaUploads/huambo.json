@@ -5,7 +5,7 @@
             "type": "Feature",
             "properties": {
                 "nome": "Caála",
-                "code": 1
+                "code": 1009
             },
             "geometry": {
                 "type": "Polygon",
@@ -231,7 +231,7 @@
             "type": "Feature",
             "properties": {
                 "nome": "Longonjo",
-                "code": 2
+                "code": 1015
             },
             "geometry": {
                 "type": "Polygon",
@@ -421,7 +421,7 @@
             "type": "Feature",
             "properties": {
                 "nome": "Tcninjenje",
-                "code": 3
+                "code": 1021
             },
             "geometry": {
                 "type": "Polygon",
@@ -615,7 +615,7 @@
             "type": "Feature",
             "properties": {
                 "nome": "Ukuma",
-                "code": 4
+                "code": 1013
             },
             "geometry": {
                 "type": "Polygon",
@@ -801,7 +801,7 @@
             "type": "Feature",
             "properties": {
                 "nome": "Londuimbali",
-                "code": 5
+                "code": 1019
             },
             "geometry": {
                 "type": "Polygon",
@@ -1023,7 +1023,7 @@
             "type": "Feature",
             "properties": {
                 "nome": "Ekuma",
-                "code": 6
+                "code": 1013
             },
             "geometry": {
                 "type": "Polygon",
@@ -1197,7 +1197,7 @@
             "type": "Feature",
             "properties": {
                 "nome": "Bailundo",
-                "code": 7
+                "code": 1007
             },
             "geometry": {
                 "type": "Polygon",
@@ -1523,7 +1523,7 @@
             "type": "Feature",
             "properties": {
                 "nome": "Mungo",
-                "code": 8
+                "code": 1017
             },
             "geometry": {
                 "type": "Polygon",
@@ -1777,7 +1777,7 @@
             "type": "Feature",
             "properties": {
                 "nome": "Kathihungo",
-                "code": 9
+                "code": 1005
             },
             "geometry": {
                 "type": "Polygon",
@@ -2067,7 +2067,7 @@
             "type": "Feature",
             "properties": {
                 "nome": "Huambo",
-                "code": 10
+                "code": 1001
             },
             "geometry": {
                 "type": "Polygon",
@@ -2301,7 +2301,7 @@
             "type": "Feature",
             "properties": {
                 "nome": "Tchikala-Tcholohanga",
-                "code": 11
+                "code": 1003
             },
             "geometry": {
                 "type": "Polygon",

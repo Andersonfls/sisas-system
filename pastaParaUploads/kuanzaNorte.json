@@ -4,7 +4,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 1,
+                "code": 509,
                 "nome": "Camabatela"
             },
             "geometry": {
@@ -218,7 +218,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 2,
+                "code": 513,
                 "nome": "Bolongongo"
             },
             "geometry": {
@@ -392,7 +392,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 3,
+                "code": 517,
                 "nome": "Samba Caju"
             },
             "geometry": {
@@ -606,7 +606,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 4,
+                "code": 511,
                 "nome": "Quculungo"
             },
             "geometry": {
@@ -728,7 +728,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 5,
+                "code": 507,
                 "nome": "Cambambe"
             },
             "geometry": {
@@ -1034,7 +1034,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 6,
+                "code": 503,
                 "nome": "Lucala"
             },
             "geometry": {
@@ -1220,7 +1220,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 7,
+                "code": 501,
                 "nome": "Ndalatando"
             },
             "geometry": {
@@ -1458,7 +1458,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 8,
+                "code": 505,
                 "nome": "Golungo Alto"
             },
             "geometry": {
@@ -1664,7 +1664,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 9,
+                "code": 515,
                 "nome": "Banga"
             },
             "geometry": {
@@ -1826,7 +1826,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 10,
+                "code": 519,
                 "nome": "Conguembo"
             },
             "geometry": {

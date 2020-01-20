@@ -98,8 +98,22 @@ export class HuamboComponent implements OnInit {
         };
 
         info.update = function(props) {
-            this._div.innerHTML = '<h4>Informações</h4>' +  (props ?   '<b>' + props.nome + '</b><br />'
-                : '');
+            this._div.innerHTML = '<h4>Informações</h4>' +  (props ?   '<b>' + props.nome + '</b><br />' : '');
+            this._div.innerHTML += props ? '<b>Codigo: ' + props.code + '</b><br />' : '';
+            if (props) {
+                switch (props.code) {
+                    case 1009 :  this._div.innerHTML += '<b>Valor: ' + 33 + '</b><br />'; break; // Caála
+                    case 1015 :  this._div.innerHTML += '<b>Valor: ' + 50 + '</b><br />'; break; // Longonjo
+                    case 1021: this._div.innerHTML += '<b>Valor: ' + 100 + '</b><br />'; break; // Tcninjenje
+                    case 1011: this._div.innerHTML += '<b>Valor: ' + 100 + '</b><br />'; break; // Ukuma
+                    case 1019 : this._div.innerHTML += '<b>Valor: ' + 50 + '</b><br />'; break; // Libduimbali
+                    case 1013: this._div.innerHTML += '<b>Valor: ' + 50 + '</b><br />'; break; // Ekuma
+                    case 1007: this._div.innerHTML += '<b>Valor: ' + 100 + '</b><br />'; break; // Mungo
+                    case 1005: this._div.innerHTML += '<b>Valor: ' + 100 + '</b><br />'; break; // Kathihungo
+                    case 1001:  this._div.innerHTML += '<b>Valor: ' + 50 + '</b><br />';  break; // Huambo
+                    case 1003 : this._div.innerHTML += '<b>Valor: ' + 0 + '</b><br />'; break; // Tchikala- Tcholohanga
+                }
+            }
         };
 
         info.addTo(map);
@@ -136,18 +150,18 @@ export class HuamboComponent implements OnInit {
             console.log(json);
             geojson =  L.geoJSON(json, {
                 style: (feature) => {
-                    switch (feature.properties.code) {
-                        case 1: return {color: 'white', weight: 2, opacity: 1, fillColor: '#9CCDFE', fillOpacity: 0.7}; // Caála
-                        case 2: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7}; // Longonjo
-                        case 3: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FCCC9E', fillOpacity: 0.7}; // Tcninjenje
-                        case 4: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7}; // Ukuma
-                        case 5: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FCCC9E', fillOpacity: 0.7}; // Libduimbali
-                        case 6: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FCCC9E', fillOpacity: 0.7}; // Ekuma
-                        case 7: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FCCC9E', fillOpacity: 0.7}; // Bailundo
-                        case 8: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7}; // Mungo
-                        case 9: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FCCC9E', fillOpacity: 0.7}; // Kathihungo
-                        case 10: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7}; // Huambo
-                        case 11: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7}; // Tchikala- Tcholohanga
+                    switch (feature.properties.nome) {
+                        case 'Caála': return {color: 'white', weight: 2, opacity: 1, fillColor: '#9CCDFE', fillOpacity: 0.7}; // Caála
+                        case 'Longonjo': return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7}; // Longonjo
+                        case 'Tcninjenje': return {color: 'white', weight: 2, opacity: 1, fillColor: '#FCCC9E', fillOpacity: 0.7}; // Tcninjenje
+                        case 'Ukuma': return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7}; // Ukuma
+                        case 'Londuimbali': return {color: 'white', weight: 2, opacity: 1, fillColor: '#FCCC9E', fillOpacity: 0.7}; // Libduimbali
+                        case 'Ekuma': return {color: 'white', weight: 2, opacity: 1, fillColor: '#FCCC9E', fillOpacity: 0.7}; // Ekuma
+                        case 'Bailundo': return {color: 'white', weight: 2, opacity: 1, fillColor: '#FCCC9E', fillOpacity: 0.7}; // Bailundo
+                        case 'Mungo': return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7}; // Mungo
+                        case 'Kathihungo': return {color: 'white', weight: 2, opacity: 1, fillColor: '#FCCC9E', fillOpacity: 0.7}; // Kathihungo
+                        case 'Huambo': return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7}; // Huambo
+                        case 'Tchikala-Tcholohanga': return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7}; // Tchikala- Tcholohanga
                     }
                 },
                 onEachFeature: function onEachFeature(feature, layer) {

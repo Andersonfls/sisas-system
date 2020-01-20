@@ -98,8 +98,24 @@ export class HuliaComponent implements OnInit {
         };
 
         info.update = function(props) {
-            this._div.innerHTML = '<h4>Informações</h4>' +  (props ?   '<b>' + props.nome + '</b><br />'
-                : '');
+            this._div.innerHTML = '<h4>Informações</h4>' +  (props ?   '<b>' + props.nome + '</b><br />' : '');
+            this._div.innerHTML += props ? '<b>Codigo: ' + props.code + '</b><br />' : '';
+            if (props) {
+                switch (props.code) {
+                    case 1513: this._div.innerHTML += '<b>Valor: ' + 0 + '</b><br />'; break; // Cabinda
+                    case 1523: this._div.innerHTML += '<b>Valor: ' + 0 + '</b><br />'; break; // Zaire
+                    case 1521: this._div.innerHTML += '<b>Valor: ' + 0 + '</b><br />'; break; // Uige
+                    case 1507: this._div.innerHTML += '<b>Valor: ' + 0 + '</b><br />'; break; // Luanda
+                    case 1511: this._div.innerHTML += '<b>Valor: ' + 50 + '</b><br />'; break; // Kuanza Norte
+                    case 1509: this._div.innerHTML += '<b>Valor: ' + 0 + '</b><br />'; break; // Kuanza Sul
+                    case 1519: this._div.innerHTML += '<b>Valor: ' + 0 + '</b><br />'; break; // Malanje
+                    case 1525: this._div.innerHTML += '<b>Valor: ' + 0 + '</b><br />'; break; // Lunda Norte
+                    case 1517: this._div.innerHTML += '<b>Valor: ' + 50 + '</b><br />'; break; // Benguela
+                    case 1515: this._div.innerHTML += '<b>Valor: ' + 0 + '</b><br />'; break; // Huambo
+                    case 1501: this._div.innerHTML += '<b>Valor: ' + 100 + '</b><br />'; break; // Bie
+                    case 1505: this._div.innerHTML += '<b>Valor: ' + 0 + '</b><br />'; break; // Moxico
+                }
+            }
         };
 
         info.addTo(map);
@@ -137,18 +153,18 @@ export class HuliaComponent implements OnInit {
             geojson =  L.geoJSON(json, {
                 style: (feature) => {
                     switch (feature.properties.code) {
-                        case 1: return {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7}; // Kuvango
-                        case 2: return {color: 'white', weight: 2, opacity: 1, fillColor: '#F6CD9D', fillOpacity: 0.7}; // Chipindo
-                        case 3: return {color: 'white', weight: 2, opacity: 1, fillColor: '#A2D1FB', fillOpacity: 0.7}; // Jamba
-                        case 4: return {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7}; // Caconda
-                        case 5: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7}; // Quilengues
-                        case 6: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7}; // Caluquembe
-                        case 7: return {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7}; // Chicomba
-                        case 8: return {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7}; // Gambos
-                        case 9: return {color: 'white', weight: 2, opacity: 1, fillColor: '#F6CD9D', fillOpacity: 0.7}; // Matala
-                        case 10: return {color: 'white', weight: 2, opacity: 1, fillColor: '#F6CD9D', fillOpacity: 0.7}; // Quipungo
-                        case 11: return {color: 'white', weight: 2, opacity: 1, fillColor: '#F6CD9D', fillOpacity: 0.7}; // lUBANGO
-                        case 12: return {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7}; // Chibia
+                        case 1513: return {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7}; // Kuvango
+                        case 1523: return {color: 'white', weight: 2, opacity: 1, fillColor: '#F6CD9D', fillOpacity: 0.7}; // Chipindo
+                        case 1521: return {color: 'white', weight: 2, opacity: 1, fillColor: '#A2D1FB', fillOpacity: 0.7}; // Jamba
+                        case 1507: return {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7}; // Caconda
+                        case 1511: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7}; // Quilengues
+                        case 1509: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7}; // Caluquembe
+                        case 1519: return {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7}; // Chicomba
+                        case 1525: return {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7}; // Gambos
+                        case 1517: return {color: 'white', weight: 2, opacity: 1, fillColor: '#F6CD9D', fillOpacity: 0.7}; // Matala
+                        case 1515: return {color: 'white', weight: 2, opacity: 1, fillColor: '#F6CD9D', fillOpacity: 0.7}; // Quipungo
+                        case 1501: return {color: 'white', weight: 2, opacity: 1, fillColor: '#F6CD9D', fillOpacity: 0.7}; // lUBANGO
+                        case 1505: return {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7}; // Chibia
                     }
                 },
                 onEachFeature: function onEachFeature(feature, layer) {

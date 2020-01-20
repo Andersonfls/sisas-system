@@ -18,7 +18,7 @@ export class ProgramasProjectos implements BaseEntity {
         public provincia?: Provincia,
         public municipio?: Municipio,
         public nmLocalidade?: string,
-        public associadoInquerito?: boolean,
+        public associadoInquerito?: string,
         public finalidadeProjeto?: string
     ) {
         this.id = id ? id : null;

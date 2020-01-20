@@ -93,8 +93,22 @@ export class KuanzaNorteSaneamentoComponent implements OnInit {
         };
 
         info.update = function(props) {
-            this._div.innerHTML = '<h4>Informações</h4>' +  (props ?   '<b>' + props.nome + '</b><br />'
-                : '');
+            this._div.innerHTML = '<h4>Informações</h4>' +  (props ?   '<b>' + props.nome + '</b><br />' : '');
+            this._div.innerHTML += props ? '<b>Codigo: ' + props.code + '</b><br />' : '';
+            if (props) {
+                switch (props.code) {
+                    case 509: this._div.innerHTML += '<b>Valor: ' + 0 + '</b><br />'; break; // Cabinda
+                    case 513: this._div.innerHTML += '<b>Valor: ' + 0 + '</b><br />'; break; // Zaire
+                    case 517: this._div.innerHTML += '<b>Valor: ' + 0 + '</b><br />'; break; // Uige
+                    case 511: this._div.innerHTML += '<b>Valor: ' + 100 + '</b><br />'; break; // Luanda
+                    case 507: this._div.innerHTML += '<b>Valor: ' + 100 + '</b><br />'; break; // Kuanza Norte
+                    case 503: this._div.innerHTML += '<b>Valor: ' + 33 + '</b><br />'; break; // Kuanza Sul
+                    case 501: this._div.innerHTML += '<b>Valor: ' + 19 + '</b><br />'; break; // Malanje
+                    case 505: this._div.innerHTML += '<b>Valor: ' + 100 + '</b><br />'; break; // Lunda Norte
+                    case 515: this._div.innerHTML += '<b>Valor: ' + 20 + '</b><br />'; break; // Benguela
+                    case 519: this._div.innerHTML += '<b>Valor: ' + 0 + '</b><br />'; break; // Huambo
+                }
+            }
         };
 
         info.addTo(map);
@@ -131,16 +145,16 @@ export class KuanzaNorteSaneamentoComponent implements OnInit {
                     geojson =  L.geoJSON(json, {
                         style: (feature) => {
                             switch (feature.properties.code) {
-                                case 1: return {color: 'white', weight: 2, opacity: 1, fillColor: '#DAA7FE', fillOpacity: 0.7};
-                                case 2: return {color: 'white', weight: 2, opacity: 1, fillColor: '#F6CD9D', fillOpacity: 0.7};
-                                case 3: return {color: 'white', weight: 2, opacity: 1, fillColor: '#A2D1FB', fillOpacity: 0.7};
-                                case 4: return {color: 'white', weight: 2, opacity: 1, fillColor: '#F6CD9D', fillOpacity: 0.7};
-                                case 5: return {color: 'white', weight: 2, opacity: 1, fillColor: '#A2D1FB', fillOpacity: 0.7};
-                                case 6: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7};
-                                case 7: return {color: 'white', weight: 2, opacity: 1, fillColor: '#DAA7FE', fillOpacity: 0.7};
-                                case 8: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7};
-                                case 9: return {color: 'white', weight: 2, opacity: 1, fillColor: '#DAA7FE', fillOpacity: 0.7};
-                                case 10: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7};
+                                case 509: return {color: 'white', weight: 2, opacity: 1, fillColor: '#DAA7FE', fillOpacity: 0.7};
+                                case 513: return {color: 'white', weight: 2, opacity: 1, fillColor: '#F6CD9D', fillOpacity: 0.7};
+                                case 517: return {color: 'white', weight: 2, opacity: 1, fillColor: '#A2D1FB', fillOpacity: 0.7};
+                                case 511: return {color: 'white', weight: 2, opacity: 1, fillColor: '#F6CD9D', fillOpacity: 0.7};
+                                case 507: return {color: 'white', weight: 2, opacity: 1, fillColor: '#A2D1FB', fillOpacity: 0.7};
+                                case 503: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7};
+                                case 501: return {color: 'white', weight: 2, opacity: 1, fillColor: '#DAA7FE', fillOpacity: 0.7};
+                                case 505: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7};
+                                case 515: return {color: 'white', weight: 2, opacity: 1, fillColor: '#DAA7FE', fillOpacity: 0.7};
+                                case 519: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7};
                             }
                         },
                         onEachFeature: function onEachFeature(feature, layer) {

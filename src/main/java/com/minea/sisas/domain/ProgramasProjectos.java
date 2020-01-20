@@ -74,8 +74,8 @@ public class ProgramasProjectos implements Serializable {
     @Column(name = "finalidade_projeto", length = 150)
     private String finalidadeProjeto;
 
-/*    @Column(name = "associado_inquerito")
-    private Boolean associadoInquerito;*/
+    @Column(name = "associado_inquerito")
+    private String associadoInquerito;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -255,7 +255,14 @@ public class ProgramasProjectos implements Serializable {
         this.finalidadeProjeto = finalidadeProjeto;
     }
 
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+    public String getAssociadoInquerito() {
+        return associadoInquerito;
+    }
+
+    public void setAssociadoInquerito(String associadoInquerito) {
+        this.associadoInquerito = associadoInquerito;
+    }
+// jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
     public boolean equals(Object o) {
