@@ -6,38 +6,39 @@ import { SERVER_API_URL } from '../../app.constants';
 import { JhiDateUtils } from 'ng-jhipster';
 
 import { createRequestOption } from '../../shared';
-import {Banner} from './cadPdf.model';
+import {ArquivosPortal} from './cadPdf.model';
 
-export type EntityResponseType = HttpResponse<Banner>;
+export type EntityResponseType = HttpResponse<ArquivosPortal>;
 
 @Injectable()
 export class CadPdfService {
 
-    private resourceUrl =  SERVER_API_URL + 'api/banners';
+    // private resourceUrl =  SERVER_API_URL + 'api/banners';
+     private resourceUrl =  SERVER_API_URL + 'api/arquivos-portals';
 
     constructor(private http: HttpClient, private dateUtils: JhiDateUtils) { }
 
-    create(banner: Banner): Observable<EntityResponseType> {
+    create(banner: ArquivosPortal): Observable<EntityResponseType> {
         const copy = this.convert(banner);
-        return this.http.post<Banner>(this.resourceUrl, copy, { observe: 'response' })
+        return this.http.post<ArquivosPortal>(this.resourceUrl, copy, { observe: 'response' })
             .map((res: EntityResponseType) => this.convertResponse(res));
     }
 
-    update(banner: Banner): Observable<EntityResponseType> {
+    update(banner: ArquivosPortal): Observable<EntityResponseType> {
         const copy = this.convert(banner);
-        return this.http.put<Banner>(this.resourceUrl, copy, { observe: 'response' })
+        return this.http.put<ArquivosPortal>(this.resourceUrl, copy, { observe: 'response' })
             .map((res: EntityResponseType) => this.convertResponse(res));
     }
 
     find(id: number): Observable<EntityResponseType> {
-        return this.http.get<Banner>(`${this.resourceUrl}/${id}`, { observe: 'response'})
+        return this.http.get<ArquivosPortal>(`${this.resourceUrl}/${id}`, { observe: 'response'})
             .map((res: EntityResponseType) => this.convertResponse(res));
     }
 
-    query(req?: any): Observable<HttpResponse<Banner[]>> {
+    query(req?: any): Observable<HttpResponse<ArquivosPortal[]>> {
         const options = createRequestOption(req);
-        return this.http.get<Banner[]>(this.resourceUrl, { params: options, observe: 'response' })
-            .map((res: HttpResponse<Banner[]>) => this.convertArrayResponse(res));
+        return this.http.get<ArquivosPortal[]>(this.resourceUrl, { params: options, observe: 'response' })
+            .map((res: HttpResponse<ArquivosPortal[]>) => this.convertArrayResponse(res));
     }
 
     delete(id: number): Observable<HttpResponse<any>> {
@@ -45,13 +46,13 @@ export class CadPdfService {
     }
 
     private convertResponse(res: EntityResponseType): EntityResponseType {
-        const body: Banner = this.convertItemFromServer(res.body);
+        const body: ArquivosPortal = this.convertItemFromServer(res.body);
         return res.clone({body});
     }
 
-    private convertArrayResponse(res: HttpResponse<Banner[]>): HttpResponse<Banner[]> {
-        const jsonResponse: Banner[] = res.body;
-        const body: Banner[] = [];
+    private convertArrayResponse(res: HttpResponse<ArquivosPortal[]>): HttpResponse<ArquivosPortal[]> {
+        const jsonResponse: ArquivosPortal[] = res.body;
+        const body: ArquivosPortal[] = [];
         for (let i = 0; i < jsonResponse.length; i++) {
             body.push(this.convertItemFromServer(jsonResponse[i]));
         }
@@ -61,16 +62,16 @@ export class CadPdfService {
     /**
      * Convert a returned JSON object to NoticiasPortal.
      */
-    private convertItemFromServer(banner: Banner): Banner {
-        const copy: Banner = Object.assign({}, banner);
+    private convertItemFromServer(banner: ArquivosPortal): ArquivosPortal {
+        const copy: ArquivosPortal = Object.assign({}, banner);
         return copy;
     }
 
     /**
      * Convert a NoticiasPortal to a JSON which can be sent to the server.
      */
-    private convert(banner: Banner): Banner {
-        const copy: Banner = Object.assign({}, banner);
+    private convert(banner: ArquivosPortal): ArquivosPortal {
+        const copy: ArquivosPortal = Object.assign({}, banner);
         return copy;
     }
 }

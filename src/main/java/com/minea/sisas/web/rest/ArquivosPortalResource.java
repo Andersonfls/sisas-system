@@ -1,8 +1,9 @@
 package com.minea.sisas.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import com.minea.sisas.domain.Banner;
-import com.minea.sisas.service.BannerService;
+import com.minea.sisas.domain.ArquivosPortal;
+import com.minea.sisas.service.ArquivosPortalService;
+import com.minea.sisas.service.dto.ArquivosPortalDTO;
 import com.minea.sisas.web.rest.errors.BadRequestAlertException;
 import com.minea.sisas.web.rest.util.HeaderUtil;
 import com.minea.sisas.web.rest.util.PaginationUtil;
@@ -18,42 +19,44 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
 /**
- * REST controller for managing Banner.
+ * REST controller for managing ArquivosPortal.
  */
 @RestController
 @RequestMapping("/api")
-public class BannerResource {
+public class ArquivosPortalResource {
 
-    private final Logger log = LoggerFactory.getLogger(BannerResource.class);
+    private final Logger log = LoggerFactory.getLogger(ArquivosPortalResource.class);
 
-    private static final String ENTITY_NAME = "banner";
+    private static final String ENTITY_NAME = "arquivosPortal";
 
-    private final BannerService bannerService;
+    private final ArquivosPortalService arquivosPortalService;
 
-    public BannerResource(BannerService bannerService) {
-        this.bannerService = bannerService;
+    public ArquivosPortalResource(ArquivosPortalService arquivosPortalService) {
+        this.arquivosPortalService = arquivosPortalService;
     }
 
     /**
-     * POST  /banners : Create a new banner.
+     * POST  /arquivosPortal : Create a new arquivosPortal.
      *
-     * @param banner the banner to create
+     * @param arquivosPortal the banner to create
      * @return the ResponseEntity with status 201 (Created) and with body the new banner, or with status 400 (Bad Request) if the banner has already an ID
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
-    @PostMapping("/banners")
+    @PostMapping("/arquivos-portals")
     @Timed
-    public ResponseEntity<Banner> createBanner(@RequestBody Banner banner) throws URISyntaxException {
-        log.debug("REST request to save Banner : {}", banner);
-        if (banner.getId() != null) {
-            throw new BadRequestAlertException("A new Banner cannot already have an ID", ENTITY_NAME, "idexists");
+    public ResponseEntity<ArquivosPortal> createBanner(@RequestBody ArquivosPortalDTO arquivosPortal) throws URISyntaxException {
+        log.debug("REST request to save ArquivosPortal : {}", arquivosPortal);
+        if (arquivosPortal.getId() != null) {
+            throw new BadRequestAlertException("A new ArquivosPortal cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        Banner result = bannerService.save(banner);
-        return ResponseEntity.created(new URI("/api/banners/" + result.getId()))
+        arquivosPortal.setDataInclusao(LocalDate.now());
+        ArquivosPortal result = arquivosPortalService.save(arquivosPortal);
+        return ResponseEntity.created(new URI("/api/arquivosPortals/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
@@ -61,22 +64,23 @@ public class BannerResource {
     /**
      * PUT  /banners : Updates an existing Banner.
      *
-     * @param banner the Banner to update
+     * @param arquivosPortal the Banner to update
      * @return the ResponseEntity with status 200 (OK) and with body the updated Banner,
      * or with status 400 (Bad Request) if the Banner is not valid,
      * or with status 500 (Internal Server Error) if the Banner couldn't be updated
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
-    @PutMapping("/banners")
+    @PutMapping("/arquivos-portals")
     @Timed
-    public ResponseEntity<Banner> updateBanner(@RequestBody Banner banner) throws URISyntaxException {
-        log.debug("REST request to update Banner : {}", banner);
-        if (banner.getId() == null) {
-            return createBanner(banner);
+    public ResponseEntity<ArquivosPortal> updateBanner(@RequestBody ArquivosPortalDTO arquivosPortal) throws URISyntaxException {
+        log.debug("REST request to update Banner : {}", arquivosPortal);
+        if (arquivosPortal.getId() == null) {
+            return createBanner(arquivosPortal);
         }
-        Banner result = bannerService.save(banner);
+        arquivosPortal.setDataAlteracao(LocalDate.now());
+        ArquivosPortal result = arquivosPortalService.save(arquivosPortal);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, banner.getId().toString()))
+            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, arquivosPortal.getId().toString()))
             .body(result);
     }
 
@@ -86,40 +90,40 @@ public class BannerResource {
      * @param pageable the pagination information
      * @return the ResponseEntity with status 200 (OK) and the list of Banners in body
      */
-    @GetMapping("/banners")
+    @GetMapping("/arquivos-portals")
     @Timed
-    public ResponseEntity<List<Banner>> getAllBanners(Pageable pageable) {
-        log.debug("REST request to get a page of Banners");
-        Page<Banner> page = bannerService.findAll(pageable);
+    public ResponseEntity<List<ArquivosPortal>> getAllBanners(Pageable pageable) {
+        log.debug("REST request to get a page of ArquivosPortals");
+        Page<ArquivosPortal> page = arquivosPortalService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/banners");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
     /**
-     * GET  /banners/:id : get the "id" Banner.
+     * GET  /arquivosPortals/:id : get the "id" Banner.
      *
      * @param id the id of the Banner to retrieve
      * @return the ResponseEntity with status 200 (OK) and with body the Banner, or with status 404 (Not Found)
      */
-    @GetMapping("/banners/{id}")
+    @GetMapping("/arquivos-portals/{id}")
     @Timed
-    public ResponseEntity<Banner> getBanner(@PathVariable Long id) {
+    public ResponseEntity<ArquivosPortalDTO> getBanner(@PathVariable Long id) {
         log.debug("REST request to get Banner : {}", id);
-        Banner banner = bannerService.findOne(id);
+        ArquivosPortalDTO banner = arquivosPortalService.findOne(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(banner));
     }
 
     /**
-     * DELETE  /banners/:id : delete the "id" Banner.
+     * DELETE  /arquivosPortals/:id : delete the "id" Banner.
      *
      * @param id the id of the Banner to delete
      * @return the ResponseEntity with status 200 (OK)
      */
-    @DeleteMapping("/banners/{id}")
+    @DeleteMapping("/arquivos-portals/{id}")
     @Timed
     public ResponseEntity<Void> deleteBanner(@PathVariable Long id) {
         log.debug("REST request to delete Banner : {}", id);
-        bannerService.delete(id);
+        arquivosPortalService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 }

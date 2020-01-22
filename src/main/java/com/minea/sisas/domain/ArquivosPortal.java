@@ -7,11 +7,11 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 /**
- * A Arquivo Portal.
+ * A Banner.
  */
 @Entity
 @Table(name = "arquivos_portal")
-public class ArquivoPortal implements Serializable {
+public class ArquivosPortal implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -20,16 +20,16 @@ public class ArquivoPortal implements Serializable {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "nomeArquivo")
+    @Column(name = "nome_arquivo")
     private String nomeArquivo;
 
     @Column(name = "descricao")
     private String descricao;
 
-    @Column(name = "dataInclusao")
+    @Column(name = "data_inclusao")
     private LocalDate dataInclusao;
 
-    @Column(name = "dataAlteracao")
+    @Column(name = "data_alteracao")
     private LocalDate dataAlteracao;
 
     @Column(name = "status")
@@ -42,6 +42,27 @@ public class ArquivoPortal implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Boolean isStatus() {
+        return status;
+    }
+
+    public ArquivosPortal status(Boolean status) {
+        this.status = status;
+        return this;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public String getNomeArquivo() {
@@ -68,28 +89,22 @@ public class ArquivoPortal implements Serializable {
         this.dataAlteracao = dataAlteracao;
     }
 
-    public Boolean isStatus() {
+    public Boolean getStatus() {
         return status;
     }
+// jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
-    public ArquivoPortal status(Boolean status) {
-        this.status = status;
-        return this;
+    @Override
+    public String toString() {
+        return "ArquivosPortal{" +
+            "id=" + id +
+            ", nomeArquivo='" + nomeArquivo + '\'' +
+            ", descricao='" + descricao + '\'' +
+            ", dataInclusao=" + dataInclusao +
+            ", dataAlteracao=" + dataAlteracao +
+            ", status=" + status +
+            '}';
     }
-
-    public void setStatus(Boolean status) {
-        this.status = status;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
     public boolean equals(Object o) {
@@ -99,7 +114,7 @@ public class ArquivoPortal implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        ArquivoPortal noticiasPortal = (ArquivoPortal) o;
+        ArquivosPortal noticiasPortal = (ArquivosPortal) o;
         if (noticiasPortal.getId() == null || getId() == null) {
             return false;
         }
@@ -111,11 +126,4 @@ public class ArquivoPortal implements Serializable {
         return Objects.hashCode(getId());
     }
 
-    @Override
-    public String toString() {
-        return "NoticiasPortal{" +
-            "id=" + getId() +
-            ", status='" + isStatus() + "'" +
-            "}";
-    }
 }

@@ -4,7 +4,7 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { HttpResponse } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { CadPdfService } from './cadPdf.service';
-import {Banner} from './cadPdf.model';
+import {ArquivosPortal} from './cadPdf.model';
 
 @Injectable()
 export class CadPdfPopupService {
@@ -29,25 +29,26 @@ export class CadPdfPopupService {
 
             if (id) {
                 this.produtoService.find(id)
-                    .subscribe((produtoResponse: HttpResponse<Banner>) => {
+                    .subscribe((produtoResponse: HttpResponse<ArquivosPortal>) => {
+                        console.log('ENTROU METODO FIND PRODUFOT SERVICE');
                         console.log(produtoResponse.body);
-                        const produto: Banner = produtoResponse.body;
+                        const produto: ArquivosPortal = produtoResponse.body;
                         this.ngbModalRef = this.produtoModalRef(component, produto);
                         resolve(this.ngbModalRef);
                     });
             } else {
                 // setTimeout used as a workaround for getting ExpressionChangedAfterItHasBeenCheckedError
                 setTimeout(() => {
-                    this.ngbModalRef = this.produtoModalRef(component, new Banner());
+                    this.ngbModalRef = this.produtoModalRef(component, new ArquivosPortal());
                     resolve(this.ngbModalRef);
                 }, 0);
             }
         });
     }
 
-    produtoModalRef(component: Component, produto: Banner): NgbModalRef {
+    produtoModalRef(component: Component, arquivo: ArquivosPortal): NgbModalRef {
         const modalRef = this.modalService.open(component, { size: 'lg', backdrop: 'static'});
-        modalRef.componentInstance.produto = produto;
+        modalRef.componentInstance.arquivo = arquivo;
         modalRef.result.then((result) => {
             this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true, queryParamsHandling: 'merge' });
             this.ngbModalRef = null;

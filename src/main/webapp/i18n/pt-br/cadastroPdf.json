@@ -1,7 +1,7 @@
 
 {
     "sisasApp": {
-        "banner" : {
+        "cadastroPdf" : {
             "home": {
                 "title": "Banner- Sisas Portal",
                 "createLabel": "Criar novo PDF",

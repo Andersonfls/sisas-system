@@ -6,7 +6,7 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { CadPdfService } from './cadPdf.service';
 import {ITEMS_PER_PAGE, Principal} from '../../shared';
 import {ItemAssinatura} from './item-assinatura.model';
-import {Banner} from './cadPdf.model';
+import {ArquivosPortal} from './cadPdf.model';
 
 @Component({
     selector: 'jhi-produto',
@@ -15,8 +15,8 @@ import {Banner} from './cadPdf.model';
 })
 export class CadPdfComponent implements OnInit, OnDestroy {
 
-    produtos: Banner[];
-    produtosFilt: Banner[];
+    produtos: ArquivosPortal[];
+    produtosFilt: ArquivosPortal[];
     currentAccount: any;
     eventSubscriber: Subscription;
     itemsPerPage: number;
@@ -27,8 +27,6 @@ export class CadPdfComponent implements OnInit, OnDestroy {
     totalItems: number;
     esconderFiltros: boolean;
     nomePesquisa: string;
-    itensAssinatura: ItemAssinatura[];
-    itemPesquisa: number;
 
     valorInicial: number;
     valorAtualiza: number;
@@ -62,7 +60,7 @@ export class CadPdfComponent implements OnInit, OnDestroy {
                 titulo: this.nomePesquisa
             }
         ).subscribe(
-            (retornados: HttpResponse<Banner[]>) => {
+            (retornados: HttpResponse<ArquivosPortal[]>) => {
                 this.produtosFilt = retornados.body;
                 this.validaResult();
             }
@@ -75,7 +73,7 @@ export class CadPdfComponent implements OnInit, OnDestroy {
             size: this.itemsPerPage,
             sort: this.sort()
         }).subscribe(
-            (res: HttpResponse<Banner[]>) => {
+            (res: HttpResponse<ArquivosPortal[]>) => {
                 console.log(res.body);
                 this.produtosFilt = res.body;
                 this.validaResult();
@@ -84,7 +82,7 @@ export class CadPdfComponent implements OnInit, OnDestroy {
         );
 
         this.produtos = new Array();
-        const prod = new Banner();
+        const prod = new ArquivosPortal();
         prod.descricao = 'Produto Teste';
         this.produtos.push(prod);
     }
@@ -128,7 +126,7 @@ export class CadPdfComponent implements OnInit, OnDestroy {
         this.eventManager.destroy(this.eventSubscriber);
     }
 
-    trackId(index: number, item: Banner) {
+    trackId(index: number, item: ArquivosPortal) {
         return item.id;
     }
 

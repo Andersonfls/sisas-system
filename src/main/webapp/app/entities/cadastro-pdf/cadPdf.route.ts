@@ -26,7 +26,7 @@ export const cadPdfRoute: Routes = [
     }
 ];
 
-export const produtoPopupRoute: Routes = [
+export const cadPdfPopupRoute: Routes = [
     {
         path: 'pdf-new',
         component: ProdutoPopupComponent,

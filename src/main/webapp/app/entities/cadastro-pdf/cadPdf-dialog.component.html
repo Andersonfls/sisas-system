@@ -10,26 +10,23 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="sisasApp.cadastroPdf.titulo" for="field_titulo">Titulo</label>
             <input type="text" class="form-control" name="titulo" id="field_titulo"
-                [(ngModel)]="produto.nomeArquivo" required/>
+                [(ngModel)]="arquivo.nomeArquivo" required/>
         </div>
 
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="sisasApp.cadastroPdf.capa">Imagem Capa</label>
-            <div>
-                <!--<div *ngIf="produto.imagemBanner" class="form-text text-danger clearfix">-->
-                    <!--<span class="pull-left">{{produto.contentType}}, {{byteSize(produto.imagemBanner)}}</span>-->
-                    <!--<button type="button" (click)="clearInputImage('imagemBanner', 'contentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">-->
-                        <!--<span class="fa fa-times"></span>-->
-                    <!--</button>-->
-                <!--</div>-->
-                <input type="file" id="file_imagemCapa" (change)="setFileData($event, produto, 'imagemBanner', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+            <label class="form-control-label" jhiTranslate="sisasApp.cadastroPdf.capa" for="produto_arquivo_field"> Arquivo </label>
+            <div class="d-flex" >
+                <input #inputFile type="file" (change)="selectFile($event)" id="produto_arquivo_field" *ngIf="!arquivo.id" >
             </div>
-            <!--<input type="hidden" class="form-control" name="imagemBanner" id="field_imagemCapa"-->
-                   <!--[(ngModel)]="produto.imagemBanner" />-->
+            <a class="btn btn-sm" *ngIf="arquivo.id && arquivo.uri">
+                <i class="fa fa-archive" aria-hidden="true"></i>
+                <a href="{{arquivo.uri}}" target='_blank'>Download do Arquivo</a>
+            </a>
         </div>
+
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="sisasApp.cadastroPdf.descricao" for="field_descricao">Descricao</label>
-            <input type="text" class="form-control" name="descricao" id="field_descricao" [(ngModel)]="produto.descricao" required/>
+            <input type="text" class="form-control" name="descricao" id="field_descricao" [(ngModel)]="arquivo.descricao" required/>
         </div>
 
     </div>

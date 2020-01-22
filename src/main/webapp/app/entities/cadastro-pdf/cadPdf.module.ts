@@ -9,14 +9,14 @@ import {
     ProdutoPopupComponent,
     ProdutoDeletePopupComponent,
     cadPdfRoute,
-    produtoPopupRoute, CadPdfDialogComponent, CadPdfDeleteDialogComponent, CadPdfPopupService,
+    CadPdfDialogComponent, CadPdfDeleteDialogComponent, CadPdfPopupService, cadPdfPopupRoute,
 } from './';
 import { UploadFileService } from './upload-file.service';
 import {HttpClientModule} from '@angular/common/http';
 
 const ENTITY_STATES = [
     ...cadPdfRoute,
-    ...produtoPopupRoute,
+    ...cadPdfPopupRoute,
 ];
 
 @NgModule({

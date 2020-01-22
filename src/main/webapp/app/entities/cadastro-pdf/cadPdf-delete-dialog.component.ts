@@ -6,7 +6,7 @@ import { JhiEventManager } from 'ng-jhipster';
 
 import { CadPdfPopupService } from './cadPdf-popup.service';
 import { CadPdfService } from './cadPdf.service';
-import {Banner} from './cadPdf.model';
+import {ArquivosPortal} from './cadPdf.model';
 
 @Component({
     selector: 'jhi-produto-delete-dialog',
@@ -14,7 +14,7 @@ import {Banner} from './cadPdf.model';
 })
 export class CadPdfDeleteDialogComponent {
 
-    produto: Banner;
+    produto: ArquivosPortal;
 
     constructor(
         private bannerService: CadPdfService,

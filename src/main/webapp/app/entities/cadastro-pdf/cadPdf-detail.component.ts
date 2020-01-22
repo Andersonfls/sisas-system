@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { JhiEventManager, JhiDataUtils } from 'ng-jhipster';
 
 import { CadPdfService } from './cadPdf.service';
-import {Banner} from './cadPdf.model';
+import {ArquivosPortal} from './cadPdf.model';
 
 @Component({
     selector: 'jhi-produto-detail',
@@ -13,7 +13,7 @@ import {Banner} from './cadPdf.model';
 })
 export class CadPdfDetailComponent implements OnInit, OnDestroy {
 
-    produto: Banner;
+    produto: ArquivosPortal;
     private subscription: Subscription;
     private eventSubscriber: Subscription;
 
@@ -34,7 +34,7 @@ export class CadPdfDetailComponent implements OnInit, OnDestroy {
 
     load(id) {
         this.produtoService.find(id)
-            .subscribe((produtoResponse: HttpResponse<Banner>) => {
+            .subscribe((produtoResponse: HttpResponse<ArquivosPortal>) => {
                 this.produto = produtoResponse.body;
             });
     }

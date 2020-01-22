@@ -9,8 +9,7 @@ import { JhiEventManager, JhiDataUtils } from 'ng-jhipster';
 import { CadPdfService } from './cadPdf.service';
 import {UploadFileService} from './upload-file.service';
 import {FileResponseModel} from './uploadFileResponse.model';
-import {ItemAssinatura} from './item-assinatura.model';
-import {Banner} from './cadPdf.model';
+import {ArquivosPortal} from './cadPdf.model';
 import {CadPdfPopupService} from './cadPdf-popup.service';
 
 @Component({
@@ -19,7 +18,7 @@ import {CadPdfPopupService} from './cadPdf-popup.service';
 })
 export class CadPdfDialogComponent implements OnInit {
 
-    produto: Banner;
+    arquivo: ArquivosPortal;
     isSaving: boolean;
     selectedFile: File;
     @ViewChild('inputFile')
@@ -28,7 +27,7 @@ export class CadPdfDialogComponent implements OnInit {
     constructor(
         public activeModal: NgbActiveModal,
         private dataUtils: JhiDataUtils,
-        private bannerService: CadPdfService,
+        private cadPdfService: CadPdfService,
         private elementRef: ElementRef,
         private uploadService: UploadFileService,
         private eventManager: JhiEventManager
@@ -48,7 +47,7 @@ export class CadPdfDialogComponent implements OnInit {
     }
 
     clearInputImage(field: string, fieldContentType: string, idInput: string) {
-        this.dataUtils.clearInputImage(this.produto, this.elementRef, field, fieldContentType, idInput);
+        this.dataUtils.clearInputImage(this.arquivo, this.elementRef, field, fieldContentType, idInput);
     }
     clear() {
         this.activeModal.dismiss('cancel');
@@ -56,25 +55,27 @@ export class CadPdfDialogComponent implements OnInit {
 
     save() {
         this.isSaving = true;
-
-        if (this.produto.id !== undefined) {
+        console.log(this.arquivo);
+        if (this.arquivo.id !== undefined) {
+            console.log('UPDATE');
             this.subscribeToSaveResponse(
-                this.bannerService.update(this.produto));
+                this.cadPdfService.update(this.arquivo));
         } else {
+            console.log('CREATE');
             this.subscribeToSaveResponse(
-                this.bannerService.create(this.produto));
+                this.cadPdfService.create(this.arquivo));
         }
     }
 
-    private subscribeToSaveResponse(result: Observable<HttpResponse<Banner>>) {
-        result.subscribe((res: HttpResponse<Banner>) => {
+    private subscribeToSaveResponse(result: Observable<HttpResponse<ArquivosPortal>>) {
+        result.subscribe((res: HttpResponse<ArquivosPortal>) => {
                 this.onSaveSuccess(res.body);
                 this.upload(res.body.id);
             }
             , (res: HttpErrorResponse) => this.onSaveError());
     }
 
-    private onSaveSuccess(result: Banner) {
+    private onSaveSuccess(result: ArquivosPortal) {
         this.eventManager.broadcast({ name: 'produtoListModification', content: 'OK'});
         this.isSaving = false;
         this.activeModal.dismiss(result);
