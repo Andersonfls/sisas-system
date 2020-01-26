@@ -4,18 +4,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
 
-import { Contactos } from './contactos.model';
-import { ContactosService } from './contactos.service';
 import { ITEMS_PER_PAGE, Principal } from '../../shared';
+import {Observable} from 'rxjs';
+import {SobreDna, SobreDnaService} from '../sobre-dna';
 
 @Component({
-    selector: 'jhi-contactos',
-    templateUrl: './contactos.component.html'
+    selector: 'jhi-sobre-dna',
+    templateUrl: './contacto.component.html'
 })
-export class ContactosComponent implements OnInit, OnDestroy {
+export class ContactoComponent implements OnInit, OnDestroy {
 
 currentAccount: any;
-    contactos: Contactos[];
+    sobreDnas: SobreDna[];
     error: any;
     success: any;
     eventSubscriber: Subscription;
@@ -28,9 +28,10 @@ currentAccount: any;
     predicate: any;
     previousPage: any;
     reverse: any;
+    sobre: SobreDna;
 
     constructor(
-        private contactosService: ContactosService,
+        private sobreDnaService: SobreDnaService,
         private parseLinks: JhiParseLinks,
         private jhiAlertService: JhiAlertService,
         private principal: Principal,
@@ -48,14 +49,21 @@ currentAccount: any;
     }
 
     loadAll() {
-        this.contactosService.query({
-            page: this.page - 1,
-            size: this.itemsPerPage,
-            sort: this.sort()}).subscribe(
-                (res: HttpResponse<Contactos[]>) => this.onSuccess(res.body, res.headers),
-                (res: HttpErrorResponse) => this.onError(res.message)
+        this.sobreDnaService.query().subscribe(
+                (res: HttpResponse<SobreDna[]>) => {
+                    this.sobreDnas = res.body;
+                    console.log(res.body);
+                    if (this.sobreDnas) {
+                        this.sobreDnas.forEach((i) => {
+                            if (i.tipoPagina === 2) { // CONTACTOS
+                                this.sobre = i;
+                            }
+                        });
+                    }
+                }
         );
     }
+
     loadPage(page: number) {
         if (page !== this.previousPage) {
             this.previousPage = page;
@@ -63,7 +71,7 @@ currentAccount: any;
         }
     }
     transition() {
-        this.router.navigate(['/contactos'], {queryParams:
+        this.router.navigate(['/sobre-dna'], {queryParams:
             {
                 page: this.page,
                 size: this.itemsPerPage,
@@ -75,29 +83,40 @@ currentAccount: any;
 
     clear() {
         this.page = 0;
-        this.router.navigate(['/contactos', {
+        this.router.navigate(['/sobre-dna', {
             page: this.page,
             sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
         }]);
         this.loadAll();
     }
     ngOnInit() {
+        this.sobre = new SobreDna();
         this.loadAll();
         this.principal.identity().then((account) => {
             this.currentAccount = account;
         });
-        this.registerChangeInContactos();
+        this.registerChangeInSobreDnas();
     }
 
     ngOnDestroy() {
         this.eventManager.destroy(this.eventSubscriber);
     }
 
-    trackId(index: number, item: Contactos) {
+    trackId(index: number, item: SobreDna) {
         return item.id;
     }
-    registerChangeInContactos() {
-        this.eventSubscriber = this.eventManager.subscribe('contactosListModification', (response) => this.loadAll());
+    registerChangeInSobreDnas() {
+        this.eventSubscriber = this.eventManager.subscribe('sobreDnaListModification', (response) => this.loadAll());
+    }
+
+    save() {
+        this.sobre.id = 2;
+        this.sobre.tipoPagina = 2;
+        this.sobre.resumoTextoSobreDna = 'sisas';
+        if (this.sobre.id !== undefined) {
+            this.subscribeToSaveResponse(
+                this.sobreDnaService.update(this.sobre));
+        }
     }
 
     sort() {
@@ -108,14 +127,17 @@ currentAccount: any;
         return result;
     }
 
-    private onSuccess(data, headers) {
-        this.links = this.parseLinks.parse(headers.get('link'));
-        this.totalItems = headers.get('X-Total-Count');
-        this.queryCount = this.totalItems;
-        // this.page = pagingParams.page;
-        this.contactos = data;
+    private subscribeToSaveResponse(result: Observable<HttpResponse<SobreDna>>) {
+        result.subscribe((res: HttpResponse<SobreDna>) =>
+            this.onSaveSuccess(res.body), (res: HttpErrorResponse) => this.onSaveError());
     }
-    private onError(error) {
-        this.jhiAlertService.error(error.message, null, null);
+
+    private onSaveSuccess(result: SobreDna) {
+        this.eventManager.broadcast({ name: 'sobreListModification', content: 'OK'});
+        alert('Salvo com sucesso!!');
+    }
+
+    private onSaveError() {
+        alert('Erro ao salvar, por favor, tente novamente!!');
     }
 }

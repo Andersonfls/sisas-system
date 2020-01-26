@@ -16,7 +16,7 @@
             "detail": {
                 "title": "Contactos"
             },
-            "idContactos": "Id Contactos",
+            "titulo": "Título",
             "nmContactos": "Nm Contactos",
             "textoContactos": "Texto Contactos",
             "resumoTextoContactos": "Resumo Texto Contactos",

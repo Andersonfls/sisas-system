@@ -168,19 +168,6 @@
                 This field is required.
             </small>
         </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="sisasApp.inicio.idContactos" for="field_idContactos">Id Contactos</label>
-            <select class="form-control" id="field_idContactos" name="idContactos" [(ngModel)]="inicio.idContactosId"  required>
-                <option *ngIf="!editForm.value.idContactos" [ngValue]="null" selected></option>
-                <option [ngValue]="contactosOption.id" *ngFor="let contactosOption of contactos; trackBy: trackContactosById">{{contactosOption.id}}</option>
-            </select>
-        </div>
-        <div [hidden]="!(editForm.controls.idContactos?.dirty && editForm.controls.idContactos?.invalid)">
-            <small class="form-text text-danger"
-                [hidden]="!editForm.controls.idContactos?.errors?.required" jhiTranslate="entity.validation.required">
-                This field is required.
-            </small>
-        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">

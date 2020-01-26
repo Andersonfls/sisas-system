@@ -57,7 +57,9 @@ currentAccount: any;
                     console.log(res.body);
                     if (this.sobreDnas) {
                         this.sobreDnas.forEach((i) => {
-                            this.sobre = i;
+                            if (i.tipoPagina === 1) { // CONTACTOS
+                                this.sobre = i;
+                            }
                         });
                     }
                 }
@@ -111,6 +113,7 @@ currentAccount: any;
 
     save() {
         this.sobre.id = 1;
+        this.sobre.tipoPagina = 1;
         this.sobre.resumoTextoSobreDna = 'sisas';
         if (this.sobre.id !== undefined) {
             this.subscribeToSaveResponse(

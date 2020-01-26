@@ -1,8 +1,6 @@
 package com.minea.sisas.service.dto;
 
 
-import com.minea.sisas.domain.Situacao;
-
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -23,7 +21,7 @@ public class SobreDnaDTO implements Serializable {
     @Size(max = 100)
     private String resumoTextoSobreDna;
 
-    private Situacao situacao;
+    private Long tipoPagina;
 
     public Long getId() {
         return id;
@@ -57,12 +55,12 @@ public class SobreDnaDTO implements Serializable {
         this.resumoTextoSobreDna = resumoTextoSobreDna;
     }
 
-    public Situacao getSituacao() {
-        return situacao;
+    public Long getTipoPagina() {
+        return tipoPagina;
     }
 
-    public void setSituacao(Situacao situacao) {
-        this.situacao = situacao;
+    public void setTipoPagina(Long tipoPagina) {
+        this.tipoPagina = tipoPagina;
     }
 
     @Override

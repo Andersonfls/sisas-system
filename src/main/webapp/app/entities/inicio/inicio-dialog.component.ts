@@ -14,7 +14,6 @@ import { SobreDna, SobreDnaService } from '../sobre-dna';
 import { Noticias, NoticiasService } from '../noticias';
 import { Projectos, ProjectosService } from '../projectos';
 import { Publicacao, PublicacaoService } from '../publicacao';
-import { Contactos, ContactosService } from '../contactos';
 
 @Component({
     selector: 'jhi-inicio-dialog',
@@ -35,8 +34,6 @@ export class InicioDialogComponent implements OnInit {
 
     publicacaos: Publicacao[];
 
-    contactos: Contactos[];
-
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
@@ -46,7 +43,6 @@ export class InicioDialogComponent implements OnInit {
         private noticiasService: NoticiasService,
         private projectosService: ProjectosService,
         private publicacaoService: PublicacaoService,
-        private contactosService: ContactosService,
         private eventManager: JhiEventManager
     ) {
     }
@@ -63,8 +59,6 @@ export class InicioDialogComponent implements OnInit {
             .subscribe((res: HttpResponse<Projectos[]>) => { this.projectos = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
         this.publicacaoService.query()
             .subscribe((res: HttpResponse<Publicacao[]>) => { this.publicacaos = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
-        this.contactosService.query()
-            .subscribe((res: HttpResponse<Contactos[]>) => { this.contactos = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
     }
 
     clear() {
@@ -118,10 +112,6 @@ export class InicioDialogComponent implements OnInit {
     }
 
     trackPublicacaoById(index: number, item: Publicacao) {
-        return item.id;
-    }
-
-    trackContactosById(index: number, item: Contactos) {
         return item.id;
     }
 }

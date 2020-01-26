@@ -7,7 +7,7 @@ export class SobreDna implements BaseEntity {
         public tituloSobreDna?: string,
         public textoSobreDna?: string,
         public resumoTextoSobreDna?: string,
-        public idSituacaoId?: number,
+        public tipoPagina?: number,
         public inicios?: BaseEntity[],
     ) {
     }

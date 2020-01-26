@@ -36,9 +36,8 @@ public class SobreDna implements Serializable {
     @Column(name = "resumo_texto_sobre_dna", length = 100)
     private String resumoTextoSobreDna;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "id_situacao")
-    private Situacao situacao;
+    @Column(name = "id_tipo_pagina")
+    private Long tipoPagina;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -88,12 +87,12 @@ public class SobreDna implements Serializable {
         this.resumoTextoSobreDna = resumoTextoSobreDna;
     }
 
-    public Situacao getSituacao() {
-        return situacao;
+    public Long getTipoPagina() {
+        return tipoPagina;
     }
 
-    public void setSituacao(Situacao situacao) {
-        this.situacao = situacao;
+    public void setTipoPagina(Long tipoPagina) {
+        this.tipoPagina = tipoPagina;
     }
 
 // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
