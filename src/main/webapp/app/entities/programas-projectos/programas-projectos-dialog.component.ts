@@ -586,6 +586,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                     console.log(event);
                     this.hideModalConcepcao();
                     this.concepcao = event.body;
+                    this.concurso.tipoConcurso = this.concepcao.tipoConcurso;
                 });
         } else {
             this.concepcaoService.create(this.concepcao).subscribe( (event) => {
@@ -593,6 +594,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                 console.log(event);
                 this.hideModalConcepcao();
                 this.concepcao = event.body;
+                this.concurso.tipoConcurso = this.concepcao.tipoConcurso;
             });
         }
     }
@@ -625,6 +627,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                 console.log(event);
                 this.hideModalConcurso();
                 this.concurso = event.body;
+                this.adjudicacao.tipoConcurso = this.concepcao.tipoConcurso;
             });
         } else {
             this.concursoService.create(this.concurso).subscribe( (event) => {
@@ -632,6 +635,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                 console.log(event);
                 this.hideModalConcurso();
                 this.concurso = event.body;
+                this.adjudicacao.tipoConcurso = this.concepcao.tipoConcurso;
             });
         }
     }
