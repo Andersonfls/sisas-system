@@ -128,9 +128,9 @@ public class MunicipioResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(municipioDTO));
     }
 
-    @GetMapping("/municipios/{nome}")
+    @GetMapping("/municipios-nome/{nome}")
     @Timed
-    public ResponseEntity<MunicipioDTO> getMunicipio(@PathVariable String nome) {
+    public ResponseEntity<MunicipioDTO> getMunicipioByName(@PathVariable String nome) {
         log.debug("REST request to get Municipio : {}", nome);
         MunicipioDTO municipioDTO = municipioService.findOneByName(nome);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(municipioDTO));

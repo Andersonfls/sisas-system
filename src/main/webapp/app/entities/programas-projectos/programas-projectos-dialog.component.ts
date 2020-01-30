@@ -570,11 +570,13 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                 this.concepcao.programasProjectos = new ProgramasProjectos();
                 this.concepcao.programasProjectos.id = this.programasProjectos.id;
                 this.salvarConcepcao();
+                this.loadConcepcao(this.concepcao.id); // ADICIONADO TEMPORARIAMENTE
             });
         } else {
             this.concepcao.programasProjectos = new ProgramasProjectos();
             this.concepcao.programasProjectos.id = this.programasProjectos.id;
             this.salvarConcepcao();
+            this.loadConcepcao(this.concepcao.id); // ADICIONADO TEMPORARIAMENTE
         }
     }
 
@@ -627,6 +629,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                 console.log(event);
                 this.hideModalConcurso();
                 this.concurso = event.body;
+                this.loadConcurso(this.concurso.id); // ADICIONADO TEMPORARIAMENTE
                 this.adjudicacao.tipoConcurso = this.concepcao.tipoConcurso;
             });
         } else {
@@ -635,6 +638,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                 console.log(event);
                 this.hideModalConcurso();
                 this.concurso = event.body;
+                this.loadConcurso(this.concurso.id); // ADICIONADO TEMPORARIAMENTE
                 this.adjudicacao.tipoConcurso = this.concepcao.tipoConcurso;
             });
         }
@@ -668,6 +672,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                 console.log(event);
                 this.hideModalAdj();
                 this.adjudicacao = event.body;
+                this.loadAdjudicacao(this.adjudicacao.id); // ADICIONADO TEMPORARIAMENTE
             });
         } else {
             this.adjService.create(this.adjudicacao).subscribe( (event) => {
@@ -675,6 +680,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                 console.log(event);
                 this.hideModalAdj();
                 this.adjudicacao = event.body;
+                this.loadAdjudicacao(this.adjudicacao.id); // ADICIONADO TEMPORARIAMENTE
             });
         }
     }
@@ -707,6 +713,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                 console.log(event);
                 this.hideModalContrato();
                 this.contrato = event.body;
+                this.loadContrato(this.contrato.id); // ADICIONADO TEMPORARIAMENTE
             });
         } else {
             this.contratoService.create(this.contrato).subscribe( (event) => {
@@ -714,6 +721,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                 console.log(event);
                 this.hideModalContrato();
                 this.contrato = event.body;
+                this.loadContrato(this.contrato.id); // ADICIONADO TEMPORARIAMENTE
             });
         }
     }

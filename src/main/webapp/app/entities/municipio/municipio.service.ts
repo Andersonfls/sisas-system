@@ -14,6 +14,7 @@ export class MunicipioService {
 
     private resourceUrl =  SERVER_API_URL + 'api/municipios';
     public resourceUrl2 = SERVER_API_URL + 'api/municipios/municipioByProvincia';
+    public resourceUrl3 = SERVER_API_URL + 'api/municipios-nome';
 
     constructor(private http: HttpClient) { }
 
@@ -35,7 +36,7 @@ export class MunicipioService {
     }
 
     findByName(nome: string): Observable<EntityResponseType> {
-        return this.http.get<Municipio>(`${this.resourceUrl}/${nome}`, { observe: 'response'})
+        return this.http.get<Municipio>(`${this.resourceUrl3}/${nome}`, { observe: 'response'})
             .map((res: EntityResponseType) => this.convertResponse(res));
     }
     query(req?: any): Observable<HttpResponse<Municipio[]>> {
