@@ -173,32 +173,113 @@
                         <span class="d-md-inline">Func. Sistemas Saneamento(%Não Funcionam)</span>
                     </a>
                 </div>
-
             </div>
 
             <a href="#menu3x"  class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false">
                 <i class="fa fa-archive" ngbTooltip="Inventário de Inquérito" title="Inventário de Inquérito"></i>
-                <span class="d-none d-md-inline" jhiTranslate="sidebar.item3.title">Inventário de Inquérito</span>
+                <span class="d-none d-md-inline" jhiTranslate="sidebar.item3.title">Módulo de Inventário/Inquéritos</span>
             </a>
 
             <div class="collapse" id="menu3x" data-parent="#sidebar" routerLinkActive="false">
+                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="" routerLinkActive="active">
+                    <i class="fa fa-hashtag" style="size: 10px !important;"> </i>
+                    <span class="d-md-inline" jhiTranslate="sidebar.item3.subItem5">Dashboard</span>
+                </a>
                 <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="sistema-agua" routerLinkActive="active">
                     <i class="fa fa-tint" style="size: 10px !important;"> </i>
                     <span class="d-md-inline" jhiTranslate="sidebar.item3.subItem1">Sistema de Águas</span>
                 </a>
+
+                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="" routerLinkActive="active">
+                    <i class="fa fa-hashtag" style="size: 10px !important;"> </i>
+                    <span class="d-md-inline" jhiTranslate="sidebar.item3.subItem6">Relatórios</span>
+                </a>
+
+                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="" routerLinkActive="active">
+                    <i class="fa fa-hashtag" style="size: 10px !important;"> </i>
+                    <span class="d-md-inline" jhiTranslate="sidebar.item3.subItem7">Tabelas e Gráficos</span>
+                </a>
+
+                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="" routerLinkActive="active">
+                    <i class="fa fa-hashtag" style="size: 10px !important;"> </i>
+                    <span class="d-md-inline" jhiTranslate="sidebar.item3.subItem8">Mapas</span>
+                </a>
+
                 <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="sistema-agua-log" routerLinkActive="active" *jhiHasAnyAuthority="['ROLE_ADMIN']">
                     <i class="fa fa-address-card-o" style="size: 10px !important;"> </i>
                     <span class="d-md-inline" jhiTranslate="sidebar.item3.subItem2">Log Sistema de Águas</span>
                 </a>
 
+                <!--<a href="#" class="list-group-item" data-parent="#menu1x" routerLink="indicador-producao" routerLinkActive="active">-->
+                    <!--<i class="fa fa-compress" style="size: 10px !important;"> </i>-->
+                    <!--<span class="d-md-inline" jhiTranslate="sidebar.item3.subItem3">Indicador de Produção</span>-->
+                <!--</a>-->
+
+                <!--<a href="#" class="list-group-item" data-parent="#menu1x" routerLink="indicador-producao-log" routerLinkActive="active" *jhiHasAnyAuthority="['ROLE_ADMIN']">-->
+                    <!--<i class="fa fa-address-card-o" style="size: 10px !important;"> </i>-->
+                    <!--<span class="d-md-inline" jhiTranslate="sidebar.item3.subItem4">Log Indicador de Produção</span>-->
+                <!--</a>-->
+            </div>
+
+            <a href="#menu8x"  class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false">
+                <i class="fa fa-compress" ngbTooltip="Inventário de Inquérito" title="Inventário de Inquérito"></i>
+                <span class="d-none d-md-inline" jhiTranslate="sidebar.item8.title">Módulo de Indicadores de producao</span>
+            </a>
+
+            <div class="collapse" id="menu8x" data-parent="#sidebar" routerLinkActive="false">
+                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="" routerLinkActive="active">
+                    <i class="fa fa-hashtag" style="size: 10px !important;"> </i>
+                    <span class="d-md-inline" jhiTranslate="sidebar.item8.subItem1">Dashboard</span>
+                </a>
                 <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="indicador-producao" routerLinkActive="active">
                     <i class="fa fa-compress" style="size: 10px !important;"> </i>
-                    <span class="d-md-inline" jhiTranslate="sidebar.item3.subItem3">Indicador de Produção</span>
+                    <span class="d-md-inline" jhiTranslate="sidebar.item8.subItem2">Gerir Indicadores de Produção</span>
                 </a>
 
-                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="indicador-producao-log" routerLinkActive="active" *jhiHasAnyAuthority="['ROLE_ADMIN']">
+                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="" routerLinkActive="active">
+                    <i class="fa fa-hashtag" style="size: 10px !important;"> </i>
+                    <span class="d-md-inline" jhiTranslate="sidebar.item8.subItem3">Relatórios</span>
+                </a>
+
+                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="" routerLinkActive="active">
                     <i class="fa fa-address-card-o" style="size: 10px !important;"> </i>
-                    <span class="d-md-inline" jhiTranslate="sidebar.item3.subItem4">Log Indicador de Produção</span>
+                    <span class="d-md-inline" jhiTranslate="sidebar.item8.subItem4">Log Indicadores de Produção</span>
+                </a>
+            </div>
+
+            <a href="#menu5x"  class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false" *jhiHasAnyAuthority="['ROLE_ADMIN']">
+                <i class="fab fa-leanpub" ngbTooltip="Publicações" title="Publicações"></i>
+                <span class="d-none d-md-inline" jhiTranslate="sidebar.item5.title">Publicações</span>
+            </a>
+
+            <div class="collapse" id="menu5x" data-parent="#sidebar" routerLinkActive="false">
+                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="banner" routerLinkActive="active">
+                    <i class="fa fa-users" style="size: 10px !important;"> </i>
+                    <span class="d-md-inline" jhiTranslate="sidebar.item5.subItem1">Banner</span>
+                </a>
+
+                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="noticias-portal" routerLinkActive="active">
+                    <i class="fa fa-address-card-o" style="size: 10px !important;"> </i>
+                    <span class="d-md-inline" jhiTranslate="sidebar.item5.subItem2">Destaques</span>
+                </a>
+
+                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="pdf" routerLinkActive="active">
+                    <i class="fa fa-th-large" style="size: 10px !important;"> </i>
+                    <span class="d-md-inline" jhiTranslate="sidebar.item5.subItem4">Início Publicacao PDF</span>
+                </a>
+
+                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="sobre-dna" routerLinkActive="active">
+                    <i class="fa fa-bars" style="size: 10px !important;"> </i>
+                    <span class="d-md-inline" jhiTranslate="sidebar.item5.subItem6">Sobre DNA</span>
+                </a>
+
+                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="contactos" routerLinkActive="active">
+                    <i class="fa fa-bars" style="size: 10px !important;"> </i>
+                    <span class="d-md-inline" jhiTranslate="sidebar.item5.subItem7">Contactos</span>
+                </a>
+                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="contactos" routerLinkActive="active">
+                    <i class="fa fa-hashtag" style="size: 10px !important;"> </i>
+                    <span class="d-md-inline" jhiTranslate="sidebar.item5.subItem8">Rodape</span>
                 </a>
             </div>
 
@@ -219,37 +300,6 @@
                 </a>
             </div>
 
-            <a href="#menu5x"  class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false" *jhiHasAnyAuthority="['ROLE_ADMIN']">
-                <i class="fab fa-leanpub" ngbTooltip="Publicações" title="Publicações"></i>
-                <span class="d-none d-md-inline" jhiTranslate="sidebar.item5.title">Publicações</span>
-            </a>
-
-            <div class="collapse" id="menu5x" data-parent="#sidebar" routerLinkActive="false">
-                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="banner" routerLinkActive="active">
-                    <i class="fa fa-users" style="size: 10px !important;"> </i>
-                    <span class="d-md-inline" jhiTranslate="sidebar.item5.subItem1">Início Banner</span>
-                </a>
-
-                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="noticias-portal" routerLinkActive="active">
-                    <i class="fa fa-address-card-o" style="size: 10px !important;"> </i>
-                    <span class="d-md-inline" jhiTranslate="sidebar.item5.subItem2">Início Destaques</span>
-                </a>
-
-                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="pdf" routerLinkActive="active">
-                    <i class="fa fa-th-large" style="size: 10px !important;"> </i>
-                    <span class="d-md-inline" jhiTranslate="sidebar.item5.subItem4">Início Publicacao PDF</span>
-                </a>
-
-                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="sobre-dna" routerLinkActive="active">
-                    <i class="fa fa-bars" style="size: 10px !important;"> </i>
-                    <span class="d-md-inline" jhiTranslate="sidebar.item5.subItem6">Sobre DNA</span>
-                </a>
-
-                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="contactos" routerLinkActive="active">
-                    <i class="fa fa-bars" style="size: 10px !important;"> </i>
-                    <span class="d-md-inline" jhiTranslate="sidebar.item5.subItem7">Contactos</span>
-                </a>
-            </div>
 
             <a href="#menu6x"  class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false" *jhiHasAnyAuthority="['ROLE_ADMIN']">
                 <i class="fas fa-clipboard-list" ngbTooltip="Relatórios" title="Relatórios"></i>
@@ -345,14 +395,9 @@
             </a>
             <div class="collapse" id="menu1x" data-parent="#sidebar" routerLinkActive="false">
 
-                <!--<a href="#" class="list-group-item" data-parent="#menu1x" routerLink="authority" routerLinkActive="active">-->
-                    <!--<i class="fa fa-address-card-o" style="size: 10px !important;"> </i>-->
-                    <!--<span class="d-md-inline" jhiTranslate="sidebar.item2.subItem2">Perfil</span>-->
-                <!--</a>-->
-
                 <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="epas" routerLinkActive="active">
                     <i class="fas fa-sitemap" style="size: 10px !important;"> </i>
-                    <span class="d-md-inline" jhiTranslate="sidebar.item2.subItem8">Epas</span>
+                    <span class="d-md-inline" jhiTranslate="sidebar.item2.subItem8">EPAS</span>
                 </a>
 
                 <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="fornecedor" routerLinkActive="active">
@@ -383,15 +428,34 @@
                     <i class="fa fa-toggle-on" style="size: 10px !important;"> </i>
                     <span class="d-md-inline" jhiTranslate="sidebar.item2.subItem3">Tipo Situacao</span>
                 </a>
+            </div>
 
-<!--                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="finalidade-projeto" routerLinkActive="active">
-                    <i class="fa fa-truck" style="size: 10px !important;"> </i>
-                    <span class="d-md-inline" jhiTranslate="sidebar.item2.subItem9">Finalidade do Projeto</span>
-                </a>-->
+            <a href="#menu9x"  class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false" *jhiHasAnyAuthority="['ROLE_ADMIN']">
+                <i class="fas fa-user-circle" ngbTooltip="Configuração" title="Configuração"></i>
+                <span class="d-none d-md-inline" jhiTranslate="sidebar.item9.title">Seguranca</span>
+            </a>
+
+            <div class="collapse" id="menu9x" data-parent="#sidebar" routerLinkActive="false">
+
+                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="" routerLinkActive="active">
+                    <i class="fa fa-toggle-on" style="size: 10px !important;"> </i>
+                    <span class="d-md-inline" jhiTranslate="sidebar.item9.subItem1">Tipos Acesso</span>
+                </a>
+
+                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="authority" routerLinkActive="active">
+                    <i class="fa fa-address-card-o" style="size: 10px !important;"> </i>
+                    <span class="d-md-inline" jhiTranslate="sidebar.item9.subItem2">Perfil</span>
+                </a>
+
 
                 <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="user-management" routerLinkActive="active">
                     <i class="fas fa-users" style="size: 10px !important;"> </i>
-                    <span class="d-md-inline" jhiTranslate="sidebar.item2.subItem1">Controle de Acesso</span>
+                    <span class="d-md-inline" jhiTranslate="sidebar.item9.subItem3">Controle de Acesso</span>
+                </a>
+
+                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="" routerLinkActive="active">
+                    <i class="fa fa-hashtag" style="size: 10px !important;"> </i>
+                    <span class="d-md-inline" jhiTranslate="sidebar.item9.subItem4">Log Segurança</span>
                 </a>
             </div>
 

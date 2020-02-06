@@ -12,10 +12,10 @@ body, h1, h2, h3, h4 {
 }
 
 body {
-    background-color: #ccd5de;
+    background-color: #576C87;
     background-attachment: fixed;
     background-size: cover;
-    background-image: url("../../content/images/Frost.jpg") ;
+    /*background-image: url("../../content/images/Frost.jpg") ;*/
 }
 
 a {
@@ -302,4 +302,11 @@ tr:nth-child(odd) {
     background: #ffce0f;
     color: #865a39;
     border-color: transparent;
+}
+
+.export-container {
+    text-align: right;
+    margin-bottom: 1%;
+    margin-top: 1%;
+    margin-right: 1%;
 }

@@ -3,7 +3,7 @@
     "sisasApp": {
         "epas" : {
             "home": {
-                "title": "Epas",
+                "title": "EPAS",
                 "createLabel": "Criar novo Epas",
                 "createOrEditLabel": "Criar ou editar Epas"
             },
@@ -14,7 +14,7 @@
                 "question": "Tem certeza de que deseja excluir Epas?"
             },
             "detail": {
-                "title": "Epas"
+                "title": "EPAS"
             },
             "nmEpas": "Nome",
             "nrContribuinte": "Nº contribuinte",

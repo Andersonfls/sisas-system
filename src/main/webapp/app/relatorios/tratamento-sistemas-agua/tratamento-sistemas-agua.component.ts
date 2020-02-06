@@ -8,6 +8,9 @@ import * as CanvasJS from '../../../content/js/canvasjs.min.js';
 import {TratamentoSistemaAguaDados} from './tratamentoSistemasAguaDados.model';
 import {DadosRelatorio} from '../cobertura-sector-agua/dadosRelatorio.model';
 import {RelatoriosService} from '../relatorios.service';
+import * as jsPDF from 'jspdf';
+import {TableUtil} from '../../shared/util/tableUtil';
+import * as html2canvas from 'html2canvas';
 
 @Component({
     selector: 'jhi-trat-sist-agua',
@@ -46,6 +49,27 @@ export class TratamentoSistemasAguaComponent implements OnInit {
             this.user = userIdentity;
         });
         this.buscaDadosTabela();
+    }
+
+    public captureScreen(elementId) {
+        const data = document.getElementById(elementId);
+        (html2canvas as any)(data).then(canvas => {
+            const imgWidth = 208;
+            const pageHeight = 295;
+            const imgHeight = canvas.height * imgWidth / canvas.width;
+            const heightLeft = imgHeight;
+            const contentDataURL = canvas.toDataURL('image/png');
+            const pdf = new jsPDF('p', 'mm', 'a4');
+            const position = 0;
+            pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
+            pdf.save('relatorio-sisas.pdf');
+        }).catch(function(error) {
+            // Error Handling
+        });
+    }
+
+    exportTable(tabeId) {
+        TableUtil.exportToExcel(tabeId);
     }
 
     buscaDadosTabela() {

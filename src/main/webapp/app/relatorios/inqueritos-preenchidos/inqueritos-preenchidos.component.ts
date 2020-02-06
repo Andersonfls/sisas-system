@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { JhiAlertService } from 'ng-jhipster';
 import { UserService } from '../../shared/user/user.service';
 import { HttpResponse } from '@angular/common/http';
@@ -9,6 +9,9 @@ import {Provincia, ProvinciaService} from '../../entities/provincia';
 import {InqueritosPreenchidosDados} from './InqueritosPreenchidosDados.model';
 import {DadosRelatorio} from '../cobertura-sector-agua/dadosRelatorio.model';
 import {RelatoriosService} from '../relatorios.service';
+import * as jsPDF from 'jspdf';
+import {TableUtil} from '../../shared/util/tableUtil';
+import * as html2canvas from 'html2canvas';
 
 @Component({
     selector: 'jhi-sector-agua',
@@ -49,6 +52,9 @@ export class InqueritosPreenchidosComponent implements OnInit {
     totalFamilias = 0;
     totalGeral = 0;
 
+    name = 'Angular Html To Pdf ';
+    @ViewChild('pdfTable') pdfTable: ElementRef;
+
     constructor(
         private jhiAlertService: JhiAlertService,
         private userService: UserService,
@@ -73,6 +79,92 @@ export class InqueritosPreenchidosComponent implements OnInit {
             this.buscaDadosTabelaModelo2();
         }
     }
+
+    public captureScreen(elementId) {
+        const data = document.getElementById(elementId);
+        (html2canvas as any)(data).then(canvas => {
+            const imgWidth = 208;
+            const pageHeight = 295;
+            const imgHeight = canvas.height * imgWidth / canvas.width;
+            const heightLeft = imgHeight;
+            const contentDataURL = canvas.toDataURL('image/png');
+            const pdf = new jsPDF('p', 'mm', 'a4');
+            const position = 0;
+            pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
+            pdf.save('relatorio-sisas.pdf');
+        }).catch(function(error) {
+            // Error Handling
+        });
+    }
+
+    exportTable(tabeId) {
+        TableUtil.exportToExcel(tabeId);
+    }
+
+    // downloadPDF() {
+    //     const node = document.getElementById('contentToConvert');
+    //     let img;
+    //     let filename;
+    //     let newImage;
+    //
+    //     domtoimage.toPng(node, { bgcolor: '#fff' })
+    //
+    //         .then(function(dataUrl) {
+    //
+    //             img = new Image();
+    //             img.src = dataUrl;
+    //             newImage = img.src;
+    //
+    //             img.onload = function(){
+    //
+    //                 var pdfWidth = img.width;
+    //                 var pdfHeight = img.height;
+    //
+    //                 // FileSaver.saveAs(dataUrl, 'my-pdfimage.png'); // Save as Image
+    //
+    //                 var doc;
+    //
+    //                 if(pdfWidth > pdfHeight)
+    //                 {
+    //                     doc = new jsPDF('l', 'px', [pdfWidth , pdfHeight]);
+    //                 }
+    //                 else
+    //                 {
+    //                     doc = new jsPDF('p', 'px', [pdfWidth , pdfHeight]);
+    //                 }
+    //
+    //                 var width = doc.internal.pageSize.getWidth();
+    //                 var height = doc.internal.pageSize.getHeight();
+    //
+    //                 doc.addImage(newImage, 'PNG',  10, 10, width, height);
+    //                 filename = 'mypdf54_' + '.pdf';
+    //                 doc.save(filename);
+    //
+    //             };
+    //         })
+    //         .catch(function(error) {
+    //
+    //             // Error Handling
+    //
+    //         });
+    // }
+
+    // public downloadAsPDF() {
+    //     const doc = new jsPDF();
+    //     const specialElementHandlers = {
+    //         '#editor': function(element, renderer){
+    //             return true;
+    //         }
+    //     };
+    //
+    //     const pdfTable = this.pdfTable.nativeElement;
+    //
+    //     doc.fromHTML(pdfTable.innerHTML, 15, 15, {
+    //         width: 690,
+    //         'elementHandlers': specialElementHandlers
+    //     });
+    //     doc.save('tableToPdf.pdf');
+    // }
 
     buscaDadosTabelaModelo1() {
         this.relatorioService.buscaDadosInqueritosPreenchidos().subscribe(

@@ -37,55 +37,83 @@
     </div>
     <br>
 
-    <div class="card" *ngIf="tipoRelatorio==='Nível Provincial'">
-        <div class="table-responsive" *ngIf="listaTabela">
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th colspan="4"><span style="margin-left: 10%">Funcionamento de Sistemas de Água</span></th>
-                </tr>
-                <tr>
-                    <th><span>Províncias</span></th>
-                    <th><span>Populacão Benef.Água</span></th>
-                    <th><span>N° Sistemas Água</span></th>
-                    <th><span>N° Funcionam</span></th>
-                    <th><span>N° não Funcionam</span></th>
-                    <th><span>(%) Funcionam</span></th>
-                    <th><span>(%) Não Funcionam</span></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr *ngFor="let provincia of listaTabela">
-                    <td>{{provincia.nomeProvincia}}</td>
-                    <td>{{provincia.beneficiariosAgua | number}}</td>
-                    <td>{{provincia.numeroSistemas | number}}</td>
-                    <td>{{provincia.funcionamAgua}}</td>
-                    <td>{{provincia.naoFuncionamAgua}}</td>
-                    <td>{{provincia.funcionamAguaPerc}}%</td>
-                    <td>{{provincia.naoFuncionamAguaPerc}}%</td>
-                </tr>
-                </tbody>
-                <tfoot>
-                <tr>
-                    <td> <span style="font-weight: bold">Total: </span></td>
-                    <td> <span style="font-weight: bold">{{totalBeneficiarios | number }} </span></td>
-                    <td> <span style="font-weight: bold">{{totalnumeroSistemas | number }} </span></td>
-                    <td> <span style="font-weight: bold">{{totalfuncionamAgua | number}} </span></td>
-                    <td> <span style="font-weight: bold">{{totalnaoFuncionamAgua | number}} </span></td>
-                    <td> <span style="font-weight: bold">{{totalfuncionamAguaPerc }}% </span></td>
-                    <td> <span style="font-weight: bold">{{totalnaoFuncionamAguaPerc}}% </span></td>
-                </tr>
-                </tfoot>
-            </table>
+    <div id="conteinerPron">
+        <div  class="card" *ngIf="tipoRelatorio==='Nível Provincial'">
+            <div class="export-container">
+                <button type="button" (click)="exportTable('tableprovin')" class="btn btn-primary btn-sm">
+                    <span class="fa fa-file-excel-o"></span>
+                    <span class="d-none d-md-inline">Excel</span>
+                </button>
+                <button type="button" (click)="captureScreen('conteinerPron')" class="btn btn-primary btn-sm">
+                    <span class="fas fa-file-pdf"></span>
+                    <span class="d-none d-md-inline">PDF</span>
+                </button>
+            </div>
+            <div class="table-responsive" *ngIf="listaTabela">
+                <table id="tableprovin" class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th colspan="4"><span style="margin-left: 10%">Funcionamento de Sistemas de Água</span></th>
+                    </tr>
+                    <tr>
+                        <th><span>Províncias</span></th>
+                        <th><span>Populacão Benef.Água</span></th>
+                        <th><span>N° Sistemas Água</span></th>
+                        <th><span>N° Funcionam</span></th>
+                        <th><span>N° não Funcionam</span></th>
+                        <th><span>(%) Funcionam</span></th>
+                        <th><span>(%) Não Funcionam</span></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let provincia of listaTabela">
+                        <td>{{provincia.nomeProvincia}}</td>
+                        <td>{{provincia.beneficiariosAgua | number}}</td>
+                        <td>{{provincia.numeroSistemas | number}}</td>
+                        <td>{{provincia.funcionamAgua}}</td>
+                        <td>{{provincia.naoFuncionamAgua}}</td>
+                        <td>{{provincia.funcionamAguaPerc}}%</td>
+                        <td>{{provincia.naoFuncionamAguaPerc}}%</td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td> <span style="font-weight: bold">Total: </span></td>
+                        <td> <span style="font-weight: bold">{{totalBeneficiarios | number }} </span></td>
+                        <td> <span style="font-weight: bold">{{totalnumeroSistemas | number }} </span></td>
+                        <td> <span style="font-weight: bold">{{totalfuncionamAgua | number}} </span></td>
+                        <td> <span style="font-weight: bold">{{totalnaoFuncionamAgua | number}} </span></td>
+                        <td> <span style="font-weight: bold">{{totalfuncionamAguaPerc }}% </span></td>
+                        <td> <span style="font-weight: bold">{{totalnaoFuncionamAguaPerc}}% </span></td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+        </div>
+        <br>
+        <div class="card" *ngIf="tipoRelatorio==='Nível Provincial'">
+            <div id="chartProvincial" style="height: 400px; width: 97%; margin-left: 3%"></div>
         </div>
     </div>
 
-    <div class="card" *ngIf="tipoRelatorio==='Nível Municipal'">
+
+    <div id="conteinerMunic" class="card" *ngIf="tipoRelatorio==='Nível Municipal'">
+        <div class="export-container">
+            <button type="button" (click)="exportTable('tablemuni')" class="btn btn-primary btn-sm">
+                <span class="fa fa-file-excel-o"></span>
+                <span class="d-none d-md-inline">Excel</span>
+            </button>
+            <button type="button" (click)="captureScreen('conteinerMunic')" class="btn btn-primary btn-sm">
+                <span class="fas fa-file-pdf"></span>
+                <span class="d-none d-md-inline">PDF</span>
+            </button>
+        </div>
         <div class="table-responsive" *ngIf="listaTabela">
-            <table class="table table-striped">
+            <table id="tablemuni" class="table table-striped">
                 <thead>
                 <tr>
                     <th></th>
@@ -134,9 +162,19 @@
         </div>
     </div>
 
-    <div class="card" *ngIf="tipoRelatorio==='Nível Comunal'">
+    <div id="contentcomun" class="card" *ngIf="tipoRelatorio==='Nível Comunal'">
+        <div class="export-container">
+            <button type="button" (click)="exportTable('tablecomun')" class="btn btn-primary btn-sm">
+                <span class="fa fa-file-excel-o"></span>
+                <span class="d-none d-md-inline">Excel</span>
+            </button>
+            <button type="button" (click)="captureScreen('contentcomun')" class="btn btn-primary btn-sm">
+                <span class="fas fa-file-pdf"></span>
+                <span class="d-none d-md-inline">PDF</span>
+            </button>
+        </div>
         <div class="table-responsive" *ngIf="listaTabela">
-            <table class="table table-striped">
+            <table id="tablecomun" class="table table-striped">
                 <thead>
                 <tr>
                     <th></th>
@@ -188,10 +226,6 @@
         </div>
     </div>
     <br>
-
-    <div class="card" *ngIf="tipoRelatorio==='Nível Provincial'">
-        <div id="chartProvincial" style="height: 400px; width: 97%; margin-left: 3%"></div>
-    </div>
 
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" [routerLink]="['/../../dashboard']"  >

@@ -37,9 +37,19 @@
     </div>
     <br>
 
-    <div class="card" *ngIf="tipoRelatorio==='Nível Provincial'">
+    <div  id="crf" class="card" *ngIf="tipoRelatorio==='Nível Provincial'">
+        <div class="export-container">
+            <button type="button" (click)="exportTable('table')" class="btn btn-primary btn-sm">
+                <span class="fa fa-file-excel-o"></span>
+                <span class="d-none d-md-inline">Excel</span>
+            </button>
+            <button type="button" (click)="captureScreen('crf')" class="btn btn-primary btn-sm">
+                <span class="fas fa-file-pdf"></span>
+                <span class="d-none d-md-inline">PDF</span>
+            </button>
+        </div>
         <div class="table-responsive" *ngIf="listaTabela">
-            <table class="table table-striped">
+            <table id="table" class="table table-striped">
                 <thead>
                 <tr>
                     <th></th>
@@ -93,9 +103,20 @@
         </div>
     </div>
 
-    <div class="card" *ngIf="tipoRelatorio==='Nível Municipal'">
+    <div id="municppp" class="card" *ngIf="tipoRelatorio==='Nível Municipal'">
+        <div class="export-container">
+            <button type="button" (click)="exportTable('munexcel')" class="btn btn-primary btn-sm">
+                <span class="fa fa-file-excel-o"></span>
+                <span class="d-none d-md-inline">Excel</span>
+            </button>
+            <button type="button" (click)="captureScreen('municppp')" class="btn btn-primary btn-sm">
+                <span class="fas fa-file-pdf"></span>
+                <span class="d-none d-md-inline">PDF</span>
+            </button>
+        </div>
+
         <div class="table-responsive" *ngIf="listaTabela">
-            <table class="table table-striped">
+            <table id="munexcel" class="table table-striped">
                 <thead>
                 <tr>
                     <th></th>
@@ -153,9 +174,19 @@
         </div>
     </div>
 
-    <div class="card" *ngIf="tipoRelatorio==='Nível Comunal'">
+    <div id="comun" class="card" *ngIf="tipoRelatorio==='Nível Comunal'">
+        <div class="export-container">
+            <button type="button" (click)="exportTable('tabcomu')" class="btn btn-primary btn-sm">
+                <span class="fa fa-file-excel-o"></span>
+                <span class="d-none d-md-inline">Excel</span>
+            </button>
+            <button type="button" (click)="captureScreen('comun')" class="btn btn-primary btn-sm">
+                <span class="fas fa-file-pdf"></span>
+                <span class="d-none d-md-inline">PDF</span>
+            </button>
+        </div>
         <div class="table-responsive" *ngIf="listaTabela">
-            <table class="table table-striped">
+            <table id="tabcomu" class="table table-striped">
                 <thead>
                 <tr>
                     <th></th>

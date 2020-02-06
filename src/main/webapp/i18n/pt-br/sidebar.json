@@ -6,35 +6,40 @@
             "subItem1": "Controle de Acesso",
             "subItem2": "Perfil",
             "subItem3": "Tipo Situação",
-            "subItem4": "Província",
-            "subItem5": "Município",
-            "subItem6": "Comuna",
+            "subItem4": "Províncias",
+            "subItem5": "Municípios",
+            "subItem6": "Comunas",
             "subItem7": "Fornecedores",
-            "subItem8": "Epas",
+            "subItem8": "EPAS",
             "subItem9": "Finalidade do Projeto",
             "subItem10": "Especialidades"
         },
         "item3": {
-            "title": "Inventário de Inquérito",
-            "subItem1": "Sistema de Águas",
-            "subItem2": "Log Sistema de Águas",
+            "title": "Inquérito/Inventário",
+            "subItem1": "Gerir Sistema de Águas",
+            "subItem2": "Log Sistemas de Água",
             "subItem3": "Indicadores de Produção",
-            "subItem4": "Log Indicadores de Produção"
+            "subItem4": "Log Indicadores de Produção",
+            "subItem5": "Dashboard",
+            "subItem6": "Relatórios",
+            "subItem7": "Tabelas e Gráficos",
+            "subItem8": "Mapas"
         },
         "item4": {
-            "title": "Programas e Projectos",
+            "title": "Programas/Projectos",
             "subItem1": "Programas e Projectos",
             "subItem2": "Log Programas e Projectos"
         },
         "item5": {
-            "title": "Publicações",
-            "subItem1": "Início Banner",
-            "subItem2": "Início Destaques",
+            "title": "Gestão do Portal",
+            "subItem1": "Banner",
+            "subItem2": "Destaques",
             "subItem3": "Início Últimas Notícias",
-            "subItem4": "Início Publicação PDF",
+            "subItem4": "Publicações",
             "subItem5": "Sobre DNA Banner",
-            "subItem6": "Sobre DNA",
-            "subItem7": "Contactos"
+            "subItem6": "Sobre o SISAS",
+            "subItem7": "Contactos",
+            "subItem8": "Rodapé"
         },
         "item6": {
             "title": "Relatórios",
@@ -55,7 +60,21 @@
             "subItem15": "Benef. Água por fonte Subt. e Tipo de Bomba ",
             "subItem16": "Trat. Sistemas de Água"
         },
-        "item7": "Mapas Temáticos"
+        "item7": "Mapas Temáticos",
+        "item8": {
+            "title": "Indicadores de Produção",
+            "subItem1": "Dashboard",
+            "subItem2": "Gerir Indicadores de Produção",
+            "subItem3": "Relatórios",
+            "subItem4": "Log Indicadores de Produção"
+        },
+        "item9": {
+            "title": "Segurança",
+            "subItem1": "Tipos de Acesso",
+            "subItem2": "Perfis",
+            "subItem3": "Utilizadores",
+            "subItem4": "Log Segurança"
+        }
 
     }
 }
