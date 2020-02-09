@@ -117,7 +117,9 @@ public class ProvinciaResource {
         log.debug("REST request to get Provincias by criteria: {}", criteria);
         Page<ProvinciaDTO> page = provinciaQueryService.findByCriteria(criteria, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/provincias");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+        List<ProvinciaDTO> content = page.getContent();
+        content = content.stream().sorted(Comparator.comparing(ProvinciaDTO::getNmProvincia)).collect(Collectors.toList());
+        return new ResponseEntity<>(content, headers, HttpStatus.OK);
     }
 
 //    @GetMapping("/provincias/relatorio")

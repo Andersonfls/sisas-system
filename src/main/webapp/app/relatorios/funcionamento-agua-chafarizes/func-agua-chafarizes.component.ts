@@ -54,7 +54,7 @@ export class FuncAguaChafarizesComponent implements OnInit {
 
     public captureScreen(elementId) {
         const data = document.getElementById(elementId);
-        (html2canvas as any)(data).then(canvas => {
+        (html2canvas as any)(data).then((canvas) => {
             const imgWidth = 208;
             const pageHeight = 295;
             const imgHeight = canvas.height * imgWidth / canvas.width;
@@ -68,11 +68,9 @@ export class FuncAguaChafarizesComponent implements OnInit {
             // Error Handling
         });
     }
-
     exportTable(tabeId) {
         TableUtil.exportToExcel(tabeId);
     }
-    
     validaTipoRelatorio() {
         if (this.tipoRelatorio === 'Nível Provincial') {
             this.buscaDadosTabela();

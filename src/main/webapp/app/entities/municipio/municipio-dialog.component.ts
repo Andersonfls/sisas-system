@@ -37,8 +37,6 @@ export class MunicipioDialogComponent implements OnInit {
             .subscribe((res: HttpResponse<Provincia[]>) => {
                 this.provincias = res.body;
             }, (res: HttpErrorResponse) => this.onError(res.message));
-
-        this.municipio.provincia = null;
     }
 
     clear() {

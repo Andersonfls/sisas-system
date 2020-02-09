@@ -8,7 +8,7 @@ import java.util.Objects;
 /**
  * A DTO for the Provincia entity.
  */
-public class ProvinciaDTO implements Serializable {
+public class ProvinciaDTO implements Comparable<ProvinciaDTO> {
 
     private Long id;
 
@@ -59,5 +59,10 @@ public class ProvinciaDTO implements Serializable {
             "id=" + getId() +
             ", nmProvincia='" + getNmProvincia() + "'" +
             "}";
+    }
+
+    @Override
+    public int compareTo(ProvinciaDTO ob) {
+        return nmProvincia.compareTo(ob.getNmProvincia());
     }
 }

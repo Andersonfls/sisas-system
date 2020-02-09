@@ -22,18 +22,13 @@ import {Municipio, MunicipioService} from '../municipio';
 export class IndicadorProducaoDialogComponent implements OnInit {
 
     indicadorProducao: IndicadorProducao;
-
     isSaving: boolean;
-
     situacaos: Situacao[];
-
     sistemaaguas: SistemaAgua[];
-
     comunas: Comuna[];
     provincias: Provincia[];
     municipios: Municipio[];
     dtLancamentoDp: any;
-    dtUltimaAlteracaoDp: any;
     routeSub: any;
 
     constructor(
@@ -109,21 +104,18 @@ export class IndicadorProducaoDialogComponent implements OnInit {
                     };
                 }
                 this.indicadorProducao = indicadorProducao;
+                console.log(this.indicadorProducao);
             });
     }
 
     save() {
-        // TEMPORARIO, APENAS PARA TESTE
-            this.indicadorProducao.qtdAcoesFormacaoRealizadas = 0;
-            this.indicadorProducao.qtdManuaisPrevistos = 0;
-            this.indicadorProducao.vlrCustoTotaisCapexOpex = 0;
-            this.indicadorProducao.situacao = new Situacao();
-            this.indicadorProducao.situacao.id = 1;
         this.isSaving = true;
         if (this.indicadorProducao.id !== undefined) {
             this.subscribeToSaveResponse(
                 this.indicadorProducaoService.update(this.indicadorProducao));
         } else {
+            this.indicadorProducao.situacao = new Situacao();
+            this.indicadorProducao.situacao.id = 1;
             this.subscribeToSaveResponse(
                 this.indicadorProducaoService.create(this.indicadorProducao));
         }
@@ -157,10 +149,6 @@ export class IndicadorProducaoDialogComponent implements OnInit {
         return item.id;
     }
 
-    trackComunaById(index: number, item: Comuna) {
-        return item.id;
-    }
-
     // VERDE = Recebe o resultado do último mês(Mês Anterior):
     // V1, V2, V22 AO V25,V32,V33, V56 AO V62, V73, V74, V77 AO 79
     findLastIndicador() {
@@ -168,18 +156,18 @@ export class IndicadorProducaoDialogComponent implements OnInit {
             (res: HttpResponse<IndicadorProducao>) => {
                 const indicadorMesAnterior = res.body;
                 if (indicadorMesAnterior) {
-                    this.indicadorProducao.qtdCaptacoes = indicadorMesAnterior.qtdCaptacoes;  // 56
-                    this.indicadorProducao.qtdEtas = indicadorMesAnterior.qtdEtas; // 57
-                    this.indicadorProducao.qtdReservatorios = indicadorMesAnterior.qtdReservatorios; // 58
-                    this.indicadorProducao.qtdEstacoesElevatorias = indicadorMesAnterior.qtdEstacoesElevatorias; // 59
-                    this.indicadorProducao.qtdComprimentoAdutoras = indicadorMesAnterior.qtdComprimentoAdutoras; // 60
-                    this.indicadorProducao.qtdComprimentoRedes = indicadorMesAnterior.qtdComprimentoRedes; // 61
-                    this.indicadorProducao.qtdComprimentoRamais = indicadorMesAnterior.qtdComprimentoRamais; // 62
-                    this.indicadorProducao.qtdManuaisMoPrevistos = indicadorMesAnterior.qtdManuaisMoPrevistos; // 73
-                    this.indicadorProducao.qtdManuaisMmsPrevistos = indicadorMesAnterior.qtdManuaisMmsPrevistos; // 74
-                    this.indicadorProducao.qtdAcoesManuaisMoRealizadas = indicadorMesAnterior.qtdAcoesManuaisMoRealizadas; // 77
-                    this.indicadorProducao.qtdManuaisMmsRealizadas = indicadorMesAnterior.qtdManuaisMmsRealizadas; // 78
-                    this.indicadorProducao.qtdManuaisCmpRealizadas = indicadorMesAnterior.qtdManuaisCmpRealizadas; // 79
+                    this.indicadorProducao.qtdCaptacoes = indicadorMesAnterior.qtdCaptacoes ? indicadorMesAnterior.qtdCaptacoes : 0;  // 56
+                    this.indicadorProducao.qtdEtas = indicadorMesAnterior.qtdEtas ? indicadorMesAnterior.qtdEtas : 0; // 57
+                    this.indicadorProducao.qtdReservatorios = indicadorMesAnterior.qtdReservatorios ? indicadorMesAnterior.qtdReservatorios : 0; // 58
+                    this.indicadorProducao.qtdEstacoesElevatorias = indicadorMesAnterior.qtdEstacoesElevatorias ? indicadorMesAnterior.qtdEstacoesElevatorias : 0; // 59
+                    this.indicadorProducao.qtdComprimentoAdutoras = indicadorMesAnterior.qtdComprimentoAdutoras ? indicadorMesAnterior.qtdComprimentoAdutoras : 0; // 60
+                    this.indicadorProducao.qtdComprimentoRedes = indicadorMesAnterior.qtdComprimentoRedes ? indicadorMesAnterior.qtdComprimentoRedes : 0; // 61
+                    this.indicadorProducao.qtdComprimentoRamais = indicadorMesAnterior.qtdComprimentoRamais ? indicadorMesAnterior.qtdComprimentoRamais : 0; // 62
+                    this.indicadorProducao.qtdManuaisMoPrevistos = indicadorMesAnterior.qtdManuaisMoPrevistos ? indicadorMesAnterior.qtdManuaisMoPrevistos : 0; // 73
+                    this.indicadorProducao.qtdManuaisMmsPrevistos = indicadorMesAnterior.qtdManuaisMmsPrevistos ? indicadorMesAnterior.qtdManuaisMmsPrevistos : 0;  // 74
+                    this.indicadorProducao.qtdAcoesManuaisMoRealizadas = indicadorMesAnterior.qtdAcoesManuaisMoRealizadas ? indicadorMesAnterior.qtdAcoesManuaisMoRealizadas : 0; // 77
+                    this.indicadorProducao.qtdManuaisMmsRealizadas = indicadorMesAnterior.qtdManuaisMmsRealizadas ? indicadorMesAnterior.qtdManuaisMmsRealizadas : 0;  // 78
+                    this.indicadorProducao.qtdManuaisCmpRealizadas = indicadorMesAnterior.qtdManuaisCmpRealizadas ? indicadorMesAnterior.qtdManuaisCmpRealizadas : 0; // 79
                 }
                 this.somaCampos();
             },

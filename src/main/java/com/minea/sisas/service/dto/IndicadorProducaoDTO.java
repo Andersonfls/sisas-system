@@ -16,7 +16,6 @@ public class IndicadorProducaoDTO implements Serializable {
 
     private Long id;
 
-    @NotNull
     private Long idUsuario;
 
     @NotNull

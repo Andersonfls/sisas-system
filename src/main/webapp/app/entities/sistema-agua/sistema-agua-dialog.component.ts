@@ -33,7 +33,6 @@ export class SistemaAguaDialogComponent implements OnInit {
     comunas: Comuna[];
     comuna: Comuna;
     dtLancamentoDp: any;
-    dtUltimaAlteracaoDp: any;
     public tipoComunaAldeias: Array<any> = ['Concentrada', 'Dispersa', 'Semi-Dispersa'];
     routeSub: any;
     listaAnos: number[];
@@ -89,6 +88,22 @@ export class SistemaAguaDialogComponent implements OnInit {
 
         const now = new Date();
         this.sistemaAgua.dtLancamento = {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()};
+    }
+
+    // O número de casas ligadas não deverá  ser superior ao número de casas existentes na localidade
+    verificaCasasLigadas() {
+        if (this.sistemaAgua.qtdCasasAguaLigada > this.sistemaAgua.qtdCasasLocalidade) {
+            alert('A quantidade de casas ligadas é maior que casas existentes!!!');
+            this.sistemaAgua.qtdCasasAguaLigada = null;
+        }
+    }
+
+    //  O número de contadores não deve ser superior ao número de casa ligadas
+    verificaContadoresCasasLigadas() {
+        if (this.sistemaAgua.qtdContadoresLigados > this.sistemaAgua.qtdCasasAguaLigada) {
+            alert('A quantidade de contadores ligados é maior que o número de casas ligadas!!!');
+            this.sistemaAgua.qtdContadoresLigados = null;
+        }
     }
 
     verificaChafariz() {
@@ -203,6 +218,7 @@ export class SistemaAguaDialogComponent implements OnInit {
     }
     previousState() {
         this.router.navigate(['sistema-agua']);
+        window.scrollTo(0, 0);
     }
 
     onChangeMunicipios() {

@@ -62,6 +62,15 @@ public class IndicadorProducaoService {
     public IndicadorProducaoDTO save(IndicadorProducaoDTO indicadorProducaoDTO) {
         log.debug("Request to save IndicadorProducao : {}", indicadorProducaoDTO);
         IndicadorProducao indicadorProducao = indicadorProducaoMapper.toEntity(indicadorProducaoDTO);
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username;
+        if (principal instanceof UserDetails) {
+            username = ((UserDetails)principal).getUsername();
+            if (Objects.nonNull(username)) {
+                indicadorProducao.setIdUsuario(this.userRepository.buscarUserIdByUsername(username));
+            }
+        }
+
         indicadorProducao = indicadorProducaoRepository.save(indicadorProducao);
         if (Objects.nonNull(indicadorProducaoDTO.getId())) {
             logSave(TipoAcao.ATUALIZACAO, indicadorProducao);

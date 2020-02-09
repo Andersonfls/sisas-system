@@ -242,6 +242,14 @@
                     <dd>
                         <span>{{sistemaAgua.nmEquipamentosComAvaria}}</span>
                     </dd>
+
+                    <dt><span
+                        jhiTranslate="sisasApp.sistemaAgua.nmEquipamentosComAvariaObs">Outras avarias nos equipamentos</span>
+                    </dt>
+                    <dd>
+                        <span>{{sistemaAgua.nmEquipamentosComAvariaObs}}</span>
+                    </dd>
+
                     <dt><span jhiTranslate="sisasApp.sistemaAgua.caudalDoSistema">Caudal Do Sistema</span></dt>
                     <dd>
                         <span>{{sistemaAgua.caudalDoSistema}}</span>
@@ -297,7 +305,7 @@
     </button>
 
     <button type="button"
-            [routerLink]="['../sistema-agua/'+ sistemaAgua.id + '/edit']"
+            [routerLink]="['../../sistema-agua/'+ sistemaAgua.id + '/edit']"
             replaceUrl="true"
             queryParamsHandling="merge"
             class="btn btn-primary">
