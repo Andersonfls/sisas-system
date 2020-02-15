@@ -8,7 +8,6 @@ import { SobreDna } from './sobre-dna.model';
 import { SobreDnaService } from './sobre-dna.service';
 import { ITEMS_PER_PAGE, Principal } from '../../shared';
 import {Observable} from 'rxjs';
-import {Publicacao} from '../publicacao';
 
 @Component({
     selector: 'jhi-sobre-dna',
@@ -17,7 +16,6 @@ import {Publicacao} from '../publicacao';
 export class SobreDnaComponent implements OnInit, OnDestroy {
 
 currentAccount: any;
-    sobreDnas: SobreDna[];
     error: any;
     success: any;
     eventSubscriber: Subscription;
@@ -51,17 +49,10 @@ currentAccount: any;
     }
 
     loadAll() {
-        this.sobreDnaService.query().subscribe(
-                (res: HttpResponse<SobreDna[]>) => {
-                    this.sobreDnas = res.body;
-                    console.log(res.body);
-                    if (this.sobreDnas) {
-                        this.sobreDnas.forEach((i) => {
-                            if (i.tipoPagina === 1) { // CONTACTOS
-                                this.sobre = i;
-                            }
-                        });
-                    }
+        this.sobreDnaService.find(1).subscribe(
+                (res: HttpResponse<SobreDna>) => {
+                    this.sobre = res.body;
+                    console.log(this.sobre);
                 }
         );
     }
@@ -69,28 +60,9 @@ currentAccount: any;
     loadPage(page: number) {
         if (page !== this.previousPage) {
             this.previousPage = page;
-            this.transition();
         }
     }
-    transition() {
-        this.router.navigate(['/sobre-dna'], {queryParams:
-            {
-                page: this.page,
-                size: this.itemsPerPage,
-                sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
-            }
-        });
-        this.loadAll();
-    }
 
-    clear() {
-        this.page = 0;
-        this.router.navigate(['/sobre-dna', {
-            page: this.page,
-            sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
-        }]);
-        this.loadAll();
-    }
     ngOnInit() {
         this.sobre = new SobreDna();
         this.loadAll();
@@ -104,9 +76,6 @@ currentAccount: any;
         this.eventManager.destroy(this.eventSubscriber);
     }
 
-    trackId(index: number, item: SobreDna) {
-        return item.id;
-    }
     registerChangeInSobreDnas() {
         this.eventSubscriber = this.eventManager.subscribe('sobreDnaListModification', (response) => this.loadAll());
     }
@@ -121,14 +90,6 @@ currentAccount: any;
         }
     }
 
-    sort() {
-        const result = [this.predicate + ',' + (this.reverse ? 'asc' : 'desc')];
-        if (this.predicate !== 'id') {
-            result.push('id');
-        }
-        return result;
-    }
-
     private subscribeToSaveResponse(result: Observable<HttpResponse<SobreDna>>) {
         result.subscribe((res: HttpResponse<SobreDna>) =>
             this.onSaveSuccess(res.body), (res: HttpErrorResponse) => this.onSaveError());
@@ -141,5 +102,9 @@ currentAccount: any;
 
     private onSaveError() {
         alert('Erro ao salvar, por favor, tente novamente!!');
+    }
+
+    previousState() {
+        window.history.back();
     }
 }

@@ -23,7 +23,11 @@
             "dtLancamento": "Dt Lancamento",
             "dtUltimaAlteracao": "Dt Ultima Alteração",
             "idSituacao": "Id Situação",
-            "inicio": "Inicio"
+            "inicio": "Inicio",
+            "telemovel": "Telemóvel",
+            "descricao": "Descrição",
+            "email": "Email",
+            "localizacao": "Endereço"
         }
     }
 }

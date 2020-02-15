@@ -2,8 +2,6 @@ package com.minea.sisas.service;
 
 import com.minea.sisas.domain.SobreDna;
 import com.minea.sisas.repository.SobreDnaRepository;
-import com.minea.sisas.service.dto.SobreDnaDTO;
-import com.minea.sisas.service.mapper.SobreDnaMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -23,24 +21,19 @@ public class SobreDnaService {
 
     private final SobreDnaRepository sobreDnaRepository;
 
-    private final SobreDnaMapper sobreDnaMapper;
-
-    public SobreDnaService(SobreDnaRepository sobreDnaRepository, SobreDnaMapper sobreDnaMapper) {
+    public SobreDnaService(SobreDnaRepository sobreDnaRepository) {
         this.sobreDnaRepository = sobreDnaRepository;
-        this.sobreDnaMapper = sobreDnaMapper;
     }
 
     /**
      * Save a sobreDna.
      *
-     * @param sobreDnaDTO the entity to save
+     * @param sobreDna the entity to save
      * @return the persisted entity
      */
-    public SobreDnaDTO save(SobreDnaDTO sobreDnaDTO) {
-        log.debug("Request to save SobreDna : {}", sobreDnaDTO);
-        SobreDna sobreDna = sobreDnaMapper.toEntity(sobreDnaDTO);
-        sobreDna = sobreDnaRepository.save(sobreDna);
-        return sobreDnaMapper.toDto(sobreDna);
+    public SobreDna save(SobreDna sobreDna) {
+        log.debug("Request to save SobreDna : {}", sobreDna);
+        return sobreDnaRepository.save(sobreDna);
     }
 
     /**
@@ -50,10 +43,9 @@ public class SobreDnaService {
      * @return the list of entities
      */
     @Transactional(readOnly = true)
-    public Page<SobreDnaDTO> findAll(Pageable pageable) {
+    public Page<SobreDna> findAll(Pageable pageable) {
         log.debug("Request to get all SobreDnas");
-        return sobreDnaRepository.findAll(pageable)
-            .map(sobreDnaMapper::toDto);
+        return sobreDnaRepository.findAll(pageable);
     }
 
     /**
@@ -63,10 +55,9 @@ public class SobreDnaService {
      * @return the entity
      */
     @Transactional(readOnly = true)
-    public SobreDnaDTO findOne(Long id) {
+    public SobreDna findOne(Long id) {
         log.debug("Request to get SobreDna : {}", id);
-        SobreDna sobreDna = sobreDnaRepository.findOne(id);
-        return sobreDnaMapper.toDto(sobreDna);
+        return sobreDnaRepository.findOne(id);
     }
 
     /**

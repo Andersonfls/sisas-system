@@ -52,16 +52,16 @@ public class SobreDna implements Serializable {
     private String descricao;
 
     @Column(name = "primeiro_paragrafo")
-    private String primeiro_paragrafo;
+    private String primeiroParagrafo;
 
     @Column(name = "segundo_paragrafo")
-    private String segundo_paragrafo;
+    private String segundoParagrafo;
 
     @Column(name = "terceiro_paragrafo")
-    private String terceiro_paragrafo;
+    private String terceiroParagrafo;
 
     @Column(name = "quarto_paragrafo")
-    private String quarto_paragrafo;
+    private String quartoParagrafo;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -151,36 +151,36 @@ public class SobreDna implements Serializable {
         this.descricao = descricao;
     }
 
-    public String getPrimeiro_paragrafo() {
-        return primeiro_paragrafo;
+    public String getPrimeiroParagrafo() {
+        return primeiroParagrafo;
     }
 
-    public void setPrimeiro_paragrafo(String primeiro_paragrafo) {
-        this.primeiro_paragrafo = primeiro_paragrafo;
+    public void setPrimeiroParagrafo(String primeiroParagrafo) {
+        this.primeiroParagrafo = primeiroParagrafo;
     }
 
-    public String getSegundo_paragrafo() {
-        return segundo_paragrafo;
+    public String getSegundoParagrafo() {
+        return segundoParagrafo;
     }
 
-    public void setSegundo_paragrafo(String segundo_paragrafo) {
-        this.segundo_paragrafo = segundo_paragrafo;
+    public void setSegundoParagrafo(String segundoParagrafo) {
+        this.segundoParagrafo = segundoParagrafo;
     }
 
-    public String getTerceiro_paragrafo() {
-        return terceiro_paragrafo;
+    public String getTerceiroParagrafo() {
+        return terceiroParagrafo;
     }
 
-    public void setTerceiro_paragrafo(String terceiro_paragrafo) {
-        this.terceiro_paragrafo = terceiro_paragrafo;
+    public void setTerceiroParagrafo(String terceiroParagrafo) {
+        this.terceiroParagrafo = terceiroParagrafo;
     }
 
-    public String getQuarto_paragrafo() {
-        return quarto_paragrafo;
+    public String getQuartoParagrafo() {
+        return quartoParagrafo;
     }
 
-    public void setQuarto_paragrafo(String quarto_paragrafo) {
-        this.quarto_paragrafo = quarto_paragrafo;
+    public void setQuartoParagrafo(String quartoParagrafo) {
+        this.quartoParagrafo = quartoParagrafo;
     }
 // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -207,10 +207,19 @@ public class SobreDna implements Serializable {
     @Override
     public String toString() {
         return "SobreDna{" +
-            "id=" + getId() +
-            ", tituloSobreDna='" + getTituloSobreDna() + "'" +
-            ", textoSobreDna='" + getTextoSobreDna() + "'" +
-            ", resumoTextoSobreDna='" + getResumoTextoSobreDna() + "'" +
-            "}";
+            "id=" + id +
+            ", tituloSobreDna='" + tituloSobreDna + '\'' +
+            ", textoSobreDna='" + textoSobreDna + '\'' +
+            ", resumoTextoSobreDna='" + resumoTextoSobreDna + '\'' +
+            ", tipoPagina=" + tipoPagina +
+            ", email='" + email + '\'' +
+            ", telemovel='" + telemovel + '\'' +
+            ", endereco='" + endereco + '\'' +
+            ", descricao='" + descricao + '\'' +
+            ", primeiroParagrafo='" + primeiroParagrafo + '\'' +
+            ", segundoParagrafo='" + segundoParagrafo + '\'' +
+            ", terceiroParagrafo='" + terceiroParagrafo + '\'' +
+            ", quartoParagrafo='" + quartoParagrafo + '\'' +
+            '}';
     }
 }

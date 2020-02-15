@@ -15,7 +15,6 @@ import {SobreDna, SobreDnaService} from '../sobre-dna';
 export class ContactoComponent implements OnInit, OnDestroy {
 
 currentAccount: any;
-    sobreDnas: SobreDna[];
     error: any;
     success: any;
     eventSubscriber: Subscription;
@@ -28,7 +27,7 @@ currentAccount: any;
     predicate: any;
     previousPage: any;
     reverse: any;
-    sobre: SobreDna;
+    contacto: SobreDna;
 
     constructor(
         private sobreDnaService: SobreDnaService,
@@ -48,49 +47,7 @@ currentAccount: any;
         });
     }
 
-    loadAll() {
-        this.sobreDnaService.query().subscribe(
-                (res: HttpResponse<SobreDna[]>) => {
-                    this.sobreDnas = res.body;
-                    console.log(res.body);
-                    if (this.sobreDnas) {
-                        this.sobreDnas.forEach((i) => {
-                            if (i.tipoPagina === 2) { // CONTACTOS
-                                this.sobre = i;
-                            }
-                        });
-                    }
-                }
-        );
-    }
-
-    loadPage(page: number) {
-        if (page !== this.previousPage) {
-            this.previousPage = page;
-            this.transition();
-        }
-    }
-    transition() {
-        this.router.navigate(['/sobre-dna'], {queryParams:
-            {
-                page: this.page,
-                size: this.itemsPerPage,
-                sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
-            }
-        });
-        this.loadAll();
-    }
-
-    clear() {
-        this.page = 0;
-        this.router.navigate(['/sobre-dna', {
-            page: this.page,
-            sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
-        }]);
-        this.loadAll();
-    }
     ngOnInit() {
-        this.sobre = new SobreDna();
         this.loadAll();
         this.principal.identity().then((account) => {
             this.currentAccount = account;
@@ -98,33 +55,36 @@ currentAccount: any;
         this.registerChangeInSobreDnas();
     }
 
+    loadAll() {
+        this.sobreDnaService.find(2).subscribe(
+                (res: HttpResponse<SobreDna>) => {
+                    this.contacto = res.body;
+                    console.log(this.contacto);
+                }
+        );
+    }
+
+    loadPage(page: number) {
+        if (page !== this.previousPage) {
+            this.previousPage = page;
+        }
+    }
+
     ngOnDestroy() {
         this.eventManager.destroy(this.eventSubscriber);
     }
 
-    trackId(index: number, item: SobreDna) {
-        return item.id;
-    }
     registerChangeInSobreDnas() {
         this.eventSubscriber = this.eventManager.subscribe('sobreDnaListModification', (response) => this.loadAll());
     }
 
     save() {
-        this.sobre.id = 2;
-        this.sobre.tipoPagina = 2;
-        this.sobre.resumoTextoSobreDna = 'sisas';
-        if (this.sobre.id !== undefined) {
+        this.contacto.id = 2;
+        this.contacto.tipoPagina = 2;
+        if (this.contacto.id !== undefined) {
             this.subscribeToSaveResponse(
-                this.sobreDnaService.update(this.sobre));
+                this.sobreDnaService.update(this.contacto));
         }
-    }
-
-    sort() {
-        const result = [this.predicate + ',' + (this.reverse ? 'asc' : 'desc')];
-        if (this.predicate !== 'id') {
-            result.push('id');
-        }
-        return result;
     }
 
     private subscribeToSaveResponse(result: Observable<HttpResponse<SobreDna>>) {
@@ -139,5 +99,9 @@ currentAccount: any;
 
     private onSaveError() {
         alert('Erro ao salvar, por favor, tente novamente!!');
+    }
+
+    previousState() {
+        window.history.back();
     }
 }

@@ -14,20 +14,43 @@
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
         <div class="form-group">
-            <label style="font-weight: bold" class="form-control-label" jhiTranslate="sisasApp.noticiasPortal.titulo" for="field_titulo">Titulo</label>
-            <input type="text" class="form-control" name="titulo" id="field_titulo"
-                   [(ngModel)]="sobre.tituloSobreDna"/>
+            <label style="font-weight: bold" class="form-control-label" jhiTranslate="sisasApp.contactos.descricao" for="field_descricao">Descricao</label>
+            <textarea class="form-control" name="descricao" id="field_descricao" rows="6" cols="50"
+                      [(ngModel)]="sobre.descricao"
+                      placeholder="Descreva a Descricao da página contactos"></textarea>
         </div>
+
         <div class="form-group">
-            <ckeditor name="texto"
-                      [(ngModel)]="sobre.textoSobreDna"
-                      [readonly]="false"
-                      debounce="500">
-            </ckeditor>
+            <label style="font-weight: bold" class="form-control-label" jhiTranslate="sisasApp.sobreDna.primeiro" for="field_primeiro">Primeiro</label>
+            <textarea class="form-control" name="primeiro" id="field_primeiro" rows="6" cols="50"
+                      [(ngModel)]="sobre.primeiroParagrafo"
+                      placeholder="Descreva o Primeiro parágrafo"></textarea>
         </div>
+
+        <div class="form-group">
+            <label style="font-weight: bold" class="form-control-label" jhiTranslate="sisasApp.sobreDna.segundo" for="field_primeiro">Segundo</label>
+            <textarea class="form-control" name="segundo" id="field_segundo" rows="6" cols="50"
+                      [(ngModel)]="sobre.segundoParagrafo"
+                      placeholder="Descreva o Segundo parágrafo"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label style="font-weight: bold" class="form-control-label" jhiTranslate="sisasApp.sobreDna.terceiro" for="field_primeiro">Terceiro</label>
+            <textarea class="form-control" name="terc" id="field_terceiro" rows="6" cols="50"
+                      [(ngModel)]="sobre.terceiroParagrafo"
+                      placeholder="Descreva o Terceiro parágrafo"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label style="font-weight: bold" class="form-control-label" jhiTranslate="sisasApp.sobreDna.quarto" for="field_primeiro">Quarto</label>
+            <textarea class="form-control" name="quart" id="field_quarto" rows="6" cols="50"
+                      [(ngModel)]="sobre.quartoParagrafo"
+                      placeholder="Descreva o Quarto parágrafo"></textarea>
+        </div>
+
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="clear()">
+        <button type="button" class="btn btn-secondary" (click)="previousState()">
             <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
         </button>
         <button type="button" class="btn btn-primary" (click)="save()">

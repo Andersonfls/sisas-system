@@ -100,24 +100,24 @@ export class NacionalComponent implements OnInit {
             this._div.innerHTML += props ? '<b>Codigo: ' + props.code + '</b><br />' : '';
             if (props) {
                 switch (props.code) {
-                    case 1: this._div.innerHTML += '<b>Valor: ' + 21 + '</b><br />'; break; // Cabinda
-                    case 2: this._div.innerHTML += '<b>Valor: ' + 69 + '</b><br />'; break; // Zaire
-                    case 3: this._div.innerHTML += '<b>Valor: ' + 94 + '</b><br />'; break; // Uige
-                    case 4: this._div.innerHTML += '<b>Valor: ' + 94 + '</b><br />'; break; // Luanda
-                    case 5: this._div.innerHTML += '<b>Valor: ' + 35 + '</b><br />'; break; // Kuanza Norte
-                    case 6: this._div.innerHTML += '<b>Valor: ' + 17 + '</b><br />'; break; // Kuanza Sul
-                    case 7: this._div.innerHTML += '<b>Valor: ' + 48 + '</b><br />'; break; // Malanje
-                    case 8: this._div.innerHTML += '<b>Valor: ' + 11 + '</b><br />'; break; // Lunda Norte
-                    case 9: this._div.innerHTML += '<b>Valor: ' + 75 + '</b><br />'; break; // Benguela
-                    case 10: this._div.innerHTML += '<b>Valor: ' + 33 + '</b><br />'; break; // Huambo
-                    case 11: this._div.innerHTML += '<b>Valor: ' + 36 + '</b><br />'; break; // Bie
-                    case 12: this._div.innerHTML += '<b>Valor: ' + 90 + '</b><br />'; break; // Moxico
-                    case 13: this._div.innerHTML += '<b>Valor: ' + 92 + '</b><br />'; break; // Kuando Kubango
-                    case 14: this._div.innerHTML += '<b>Valor: ' + 85 + '</b><br />'; break; // Namide
-                    case 15: this._div.innerHTML += '<b>Valor: ' + 75 + '</b><br />'; break; // Hulia
-                    case 16: this._div.innerHTML += '<b>Valor: ' + 12 + '</b><br />'; break; // Cunene
-                    case 17: this._div.innerHTML += '<b>Valor: ' + 100 + '</b><br />'; break; // Luanda Sul
-                    case 18: this._div.innerHTML += '<b>Valor: ' + 84 + '</b><br />'; break; // Bengo
+                    case 1: this._div.innerHTML += '<b>Valor: ' + 21 + '% </b><br />'; break; // Cabinda
+                    case 2: this._div.innerHTML += '<b>Valor: ' + 69 + '% </b><br />'; break; // Zaire
+                    case 3: this._div.innerHTML += '<b>Valor: ' + 94 + '% </b><br />'; break; // Uige
+                    case 4: this._div.innerHTML += '<b>Valor: ' + 94 + '% </b><br />'; break; // Luanda
+                    case 5: this._div.innerHTML += '<b>Valor: ' + 35 + '% </b><br />'; break; // Kuanza Norte
+                    case 6: this._div.innerHTML += '<b>Valor: ' + 17 + '% </b><br />'; break; // Kuanza Sul
+                    case 7: this._div.innerHTML += '<b>Valor: ' + 48 + '% </b><br />'; break; // Malanje
+                    case 8: this._div.innerHTML += '<b>Valor: ' + 11 + '% </b><br />'; break; // Lunda Norte
+                    case 9: this._div.innerHTML += '<b>Valor: ' + 75 + '% </b><br />'; break; // Benguela
+                    case 10: this._div.innerHTML += '<b>Valor: ' + 33 + '% </b><br />'; break; // Huambo
+                    case 11: this._div.innerHTML += '<b>Valor: ' + 36 + '% </b><br />'; break; // Bie
+                    case 12: this._div.innerHTML += '<b>Valor: ' + 90 + '% </b><br />'; break; // Moxico
+                    case 13: this._div.innerHTML += '<b>Valor: ' + 92 + '% </b><br />'; break; // Kuando Kubango
+                    case 14: this._div.innerHTML += '<b>Valor: ' + 85 + '% </b><br />'; break; // Namide
+                    case 15: this._div.innerHTML += '<b>Valor: ' + 75 + '% </b><br />'; break; // Hulia
+                    case 16: this._div.innerHTML += '<b>Valor: ' + 12 + '% </b><br />'; break; // Cunene
+                    case 17: this._div.innerHTML += '<b>Valor: ' + 100 + '% </b><br />'; break; // Luanda Sul
+                    case 18: this._div.innerHTML += '<b>Valor: ' + 84 + '% </b><br />'; break; // Bengo
                 }
             }
         };

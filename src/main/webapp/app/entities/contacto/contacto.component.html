@@ -14,20 +14,37 @@
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
         <div class="form-group">
-            <label style="font-weight: bold" class="form-control-label" jhiTranslate="sisasApp.contactos.titulo" for="field_titulo">Titulo</label>
-            <input type="text" class="form-control" name="titulo" id="field_titulo"
-                   [(ngModel)]="sobre.tituloSobreDna"/>
+            <label style="font-weight: bold" class="form-control-label" jhiTranslate="sisasApp.contactos.descricao" for="field_descricao">Descricao</label>
+            <textarea class="form-control" name="descricao" id="field_descricao" rows="6" cols="50"
+                      [(ngModel)]="contacto.descricao"
+                      placeholder="Descreva a Descricao da página contactos"></textarea>
         </div>
+
+        <div class="row">
+            <div class="form-group col-sm-6">
+                <div class="form-group">
+                    <label style="font-weight: bold" class="form-control-label" jhiTranslate="sisasApp.contactos.email" for="field_email">Email</label>
+                    <input type="text" class="form-control" name="email" id="field_email"
+                           [(ngModel)]="contacto.email"/>
+                </div>
+            </div>
+            <div class="form-group col-sm-6">
+                <div class="form-group">
+                    <label style="font-weight: bold" class="form-control-label" jhiTranslate="sisasApp.contactos.telemovel" for="field_telemovel">Telemóvel</label>
+                    <input type="text" class="form-control" name="telemovel" id="field_telemovel"
+                           [(ngModel)]="contacto.telemovel"/>
+                </div>
+            </div>
+        </div>
+
         <div class="form-group">
-            <ckeditor name="texto"
-                      [(ngModel)]="sobre.textoSobreDna"
-                      [readonly]="false"
-                      debounce="500">
-            </ckeditor>
+            <label style="font-weight: bold" class="form-control-label" jhiTranslate="sisasApp.contactos.localizacao" for="field_localizacao">Localizacao</label>
+            <input type="text" class="form-control" name="endereco" id="field_localizacao"
+                   [(ngModel)]="contacto.endereco"/>
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="clear()">
+        <button type="button" class="btn btn-secondary" (click)="previousState()">
             <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
         </button>
         <button type="button" class="btn btn-primary" (click)="save()">

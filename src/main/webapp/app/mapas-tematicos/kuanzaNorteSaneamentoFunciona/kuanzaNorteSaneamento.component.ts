@@ -97,16 +97,16 @@ export class KuanzaNorteSaneamentoComponent implements OnInit {
             this._div.innerHTML += props ? '<b>Codigo: ' + props.code + '</b><br />' : '';
             if (props) {
                 switch (props.code) {
-                    case 509: this._div.innerHTML += '<b>Valor: ' + 0 + '</b><br />'; break; // Cabinda
-                    case 513: this._div.innerHTML += '<b>Valor: ' + 0 + '</b><br />'; break; // Zaire
-                    case 517: this._div.innerHTML += '<b>Valor: ' + 0 + '</b><br />'; break; // Uige
-                    case 511: this._div.innerHTML += '<b>Valor: ' + 100 + '</b><br />'; break; // Luanda
-                    case 507: this._div.innerHTML += '<b>Valor: ' + 100 + '</b><br />'; break; // Kuanza Norte
-                    case 503: this._div.innerHTML += '<b>Valor: ' + 33 + '</b><br />'; break; // Kuanza Sul
-                    case 501: this._div.innerHTML += '<b>Valor: ' + 19 + '</b><br />'; break; // Malanje
-                    case 505: this._div.innerHTML += '<b>Valor: ' + 100 + '</b><br />'; break; // Lunda Norte
-                    case 515: this._div.innerHTML += '<b>Valor: ' + 20 + '</b><br />'; break; // Benguela
-                    case 519: this._div.innerHTML += '<b>Valor: ' + 0 + '</b><br />'; break; // Huambo
+                    case 509: this._div.innerHTML += '<b>Valor: ' + 0 + '% </b><br />'; break; // Cabinda
+                    case 513: this._div.innerHTML += '<b>Valor: ' + 0 + '% </b><br />'; break; // Zaire
+                    case 517: this._div.innerHTML += '<b>Valor: ' + 0 + '% </b><br />'; break; // Uige
+                    case 511: this._div.innerHTML += '<b>Valor: ' + 100 + '% </b><br />'; break; // Luanda
+                    case 507: this._div.innerHTML += '<b>Valor: ' + 100 + '% </b><br />'; break; // Kuanza Norte
+                    case 503: this._div.innerHTML += '<b>Valor: ' + 33 + '% </b><br />'; break; // Kuanza Sul
+                    case 501: this._div.innerHTML += '<b>Valor: ' + 19 + '% </b><br />'; break; // Malanje
+                    case 505: this._div.innerHTML += '<b>Valor: ' + 100 + '% </b><br />'; break; // Lunda Norte
+                    case 515: this._div.innerHTML += '<b>Valor: ' + 20 + '% </b><br />'; break; // Benguela
+                    case 519: this._div.innerHTML += '<b>Valor: ' + 0 + '% </b><br />'; break; // Huambo
                 }
             }
         };

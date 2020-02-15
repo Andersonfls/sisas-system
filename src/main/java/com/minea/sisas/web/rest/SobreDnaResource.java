@@ -1,13 +1,12 @@
 package com.minea.sisas.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.minea.sisas.domain.SobreDna;
 import com.minea.sisas.service.SobreDnaService;
 import com.minea.sisas.web.rest.errors.BadRequestAlertException;
 import com.minea.sisas.web.rest.util.HeaderUtil;
 import com.minea.sisas.web.rest.util.PaginationUtil;
-import com.minea.sisas.service.dto.SobreDnaDTO;
 import com.minea.sisas.service.dto.SobreDnaCriteria;
-import com.minea.sisas.service.SobreDnaQueryService;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,28 +37,25 @@ public class SobreDnaResource {
 
     private final SobreDnaService sobreDnaService;
 
-    private final SobreDnaQueryService sobreDnaQueryService;
-
-    public SobreDnaResource(SobreDnaService sobreDnaService, SobreDnaQueryService sobreDnaQueryService) {
+    public SobreDnaResource(SobreDnaService sobreDnaService) {
         this.sobreDnaService = sobreDnaService;
-        this.sobreDnaQueryService = sobreDnaQueryService;
     }
 
     /**
      * POST  /sobre-dnas : Create a new sobreDna.
      *
-     * @param sobreDnaDTO the sobreDnaDTO to create
+     * @param sobreDna the sobreDnaDTO to create
      * @return the ResponseEntity with status 201 (Created) and with body the new sobreDnaDTO, or with status 400 (Bad Request) if the sobreDna has already an ID
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PostMapping("/sobre-dnas")
     @Timed
-    public ResponseEntity<SobreDnaDTO> createSobreDna(@Valid @RequestBody SobreDnaDTO sobreDnaDTO) throws URISyntaxException {
-        log.debug("REST request to save SobreDna : {}", sobreDnaDTO);
-        if (sobreDnaDTO.getId() != null) {
+    public ResponseEntity<SobreDna> createSobreDna(@Valid @RequestBody SobreDna sobreDna) throws URISyntaxException {
+        log.debug("REST request to save SobreDna : {}", sobreDna);
+        if (sobreDna.getId() != null) {
             throw new BadRequestAlertException("A new sobreDna cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        SobreDnaDTO result = sobreDnaService.save(sobreDnaDTO);
+        SobreDna result = sobreDnaService.save(sobreDna);
         return ResponseEntity.created(new URI("/api/sobre-dnas/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -68,7 +64,7 @@ public class SobreDnaResource {
     /**
      * PUT  /sobre-dnas : Updates an existing sobreDna.
      *
-     * @param sobreDnaDTO the sobreDnaDTO to update
+     * @param sobreDna the sobreDnaDTO to update
      * @return the ResponseEntity with status 200 (OK) and with body the updated sobreDnaDTO,
      * or with status 400 (Bad Request) if the sobreDnaDTO is not valid,
      * or with status 500 (Internal Server Error) if the sobreDnaDTO couldn't be updated
@@ -76,14 +72,14 @@ public class SobreDnaResource {
      */
     @PutMapping("/sobre-dnas")
     @Timed
-    public ResponseEntity<SobreDnaDTO> updateSobreDna(@Valid @RequestBody SobreDnaDTO sobreDnaDTO) throws URISyntaxException {
-        log.debug("REST request to update SobreDna : {}", sobreDnaDTO);
-        if (sobreDnaDTO.getId() == null) {
-            return createSobreDna(sobreDnaDTO);
+    public ResponseEntity<SobreDna> updateSobreDna(@Valid @RequestBody SobreDna sobreDna) throws URISyntaxException {
+        log.debug("REST request to update SobreDna : {}", sobreDna);
+        if (sobreDna.getId() == null) {
+            return createSobreDna(sobreDna);
         }
-        SobreDnaDTO result = sobreDnaService.save(sobreDnaDTO);
+        SobreDna result = sobreDnaService.save(sobreDna);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, sobreDnaDTO.getId().toString()))
+            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, sobreDna.getId().toString()))
             .body(result);
     }
 
@@ -96,9 +92,9 @@ public class SobreDnaResource {
      */
     @GetMapping("/sobre-dnas")
     @Timed
-    public ResponseEntity<List<SobreDnaDTO>> getAllSobreDnas(SobreDnaCriteria criteria, Pageable pageable) {
+    public ResponseEntity<List<SobreDna>> getAllSobreDnas(SobreDnaCriteria criteria, Pageable pageable) {
         log.debug("REST request to get SobreDnas by criteria: {}", criteria);
-        Page<SobreDnaDTO> page = sobreDnaQueryService.findByCriteria(criteria, pageable);
+        Page<SobreDna> page = sobreDnaService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/sobre-dnas");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
@@ -111,10 +107,10 @@ public class SobreDnaResource {
      */
     @GetMapping("/sobre-dnas/{id}")
     @Timed
-    public ResponseEntity<SobreDnaDTO> getSobreDna(@PathVariable Long id) {
+    public ResponseEntity<SobreDna> getSobreDna(@PathVariable Long id) {
         log.debug("REST request to get SobreDna : {}", id);
-        SobreDnaDTO sobreDnaDTO = sobreDnaService.findOne(id);
-        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(sobreDnaDTO));
+        SobreDna sobreDna = sobreDnaService.findOne(id);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(sobreDna));
     }
 
     /**

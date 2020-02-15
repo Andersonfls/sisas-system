@@ -103,16 +103,16 @@ export class HuamboComponent implements OnInit {
 
             if (props) {
                 switch (props.code) {
-                    case 1009 :  this._div.innerHTML += '<b>Valor: ' + 0 + '</b><br />'; break; // Caála
-                    case 1015 :  this._div.innerHTML += '<b>Valor: ' + 29 + '</b><br />'; break; // Longonjo
-                    case 1021: this._div.innerHTML += '<b>Valor: ' + 7 + '</b><br />'; break; // Tcninjenje
-                    case 1011: this._div.innerHTML += '<b>Valor: ' + 19 + '</b><br />'; break; // Ukuma
-                    case 1019 : this._div.innerHTML += '<b>Valor: ' + 21 + '</b><br />'; break; // Libduimbali
-                    case 1013: this._div.innerHTML += '<b>Valor: ' + 8 + '</b><br />'; break; // Ekuma
-                    case 1007: this._div.innerHTML += '<b>Valor: ' + 20 + '</b><br />'; break; // Mungo
-                    case 1005: this._div.innerHTML += '<b>Valor: ' + 18 + '</b><br />'; break; // Kathihungo
-                    case 1001:  this._div.innerHTML += '<b>Valor: ' + 0 + '</b><br />';  break; // Huambo
-                    case 1003 : this._div.innerHTML += '<b>Valor: ' + 72 + '</b><br />'; break; // Tchikala- Tcholohanga
+                    case 1009 :  this._div.innerHTML += '<b>Valor: ' + 0 + '% </b><br />'; break; // Caála
+                    case 1015 :  this._div.innerHTML += '<b>Valor: ' + 29 + '% </b><br />'; break; // Longonjo
+                    case 1021: this._div.innerHTML += '<b>Valor: ' + 7 + '% </b><br />'; break; // Tcninjenje
+                    case 1011: this._div.innerHTML += '<b>Valor: ' + 19 + '% </b><br />'; break; // Ukuma
+                    case 1019 : this._div.innerHTML += '<b>Valor: ' + 21 + '% </b><br />'; break; // Libduimbali
+                    case 1013: this._div.innerHTML += '<b>Valor: ' + 8 + '% </b><br />'; break; // Ekuma
+                    case 1007: this._div.innerHTML += '<b>Valor: ' + 20 + '% </b><br />'; break; // Mungo
+                    case 1005: this._div.innerHTML += '<b>Valor: ' + 18 + '% </b><br />'; break; // Kathihungo
+                    case 1001:  this._div.innerHTML += '<b>Valor: ' + 0 + '% </b><br />';  break; // Huambo
+                    case 1003 : this._div.innerHTML += '<b>Valor: ' + 72 + '% </b><br />'; break; // Tchikala- Tcholohanga
                 }
             }
         };

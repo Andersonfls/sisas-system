@@ -21,7 +21,11 @@
             "textoSobreDna": "Texto Sobre Dna",
             "resumoTextoSobreDna": "Resumo Texto Sobre Dna",
             "idSituacao": "Id Situacao",
-            "inicio": "Inicio"
+            "inicio": "Inicio",
+            "primeiro": "Primeiro Parágrafo",
+            "segundo": "Segundo Parágrafo",
+            "terceiro": "Terceiro Parágrafo",
+            "quarto": "Quarto Parágrafo"
         }
     }
 }

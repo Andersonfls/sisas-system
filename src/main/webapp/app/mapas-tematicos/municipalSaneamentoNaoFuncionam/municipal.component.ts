@@ -4,7 +4,7 @@ import {UserService} from '../../shared/user/user.service';
 import {Principal} from '../../shared/auth/principal.service';
 import {ActivatedRoute} from '@angular/router';
 import * as L from 'leaflet';
-import {HttpClient, HttpErrorResponse, HttpResponse} from '@angular/common/http';
+import {HttpClient, HttpResponse} from '@angular/common/http';
 import {Municipio, MunicipioService} from '../../entities/municipio';
 
 @Component({
