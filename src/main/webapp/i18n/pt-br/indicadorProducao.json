@@ -19,7 +19,7 @@
             },
             "idIndicadorProducao": "Id Indicador Producao",
             "idUsuario": "Id Usuário",
-            "dtLancamento": "Data de lançamento",
+            "dtLancamento": "Lançamento",
             "dtUltimaAlteracao": "Data última alteração",
             "qtdPopulacaoCobertaInfraestrutura": "Qtd População Coberta Infraestrutura",
             "qtdFontanariosChafarisesOperacionais": "Qtd Fontanarios Chafarizes Operacionais",
@@ -100,9 +100,9 @@
             "qtdManuaisMmsRealizadas": "Nº Manuais Mms Realizadas",
             "qtdManuaisCmpRealizadas": "Nº Manuais Cmp Realizadas",
             "qtdManuaisRealizados": "Nº Manuais Realizados",
-            "idSituacao": "Situacao",
-            "idSistemaAgua": "Sistema Água",
-            "idComuna": "Comuna",
+            "idSituacao": "Situação",
+            "provincia": "Província",
+            "comuna": "Comuna",
             "qtdReservatorios": "Qtd Reservatórios"
         }, "indicadorProducaoDTO" : {
             "idIndicadorProducao": "Id Indicador Produção",
@@ -188,9 +188,10 @@
             "qtdManuaisMmsRealizadas": "Qtd Manuais Mms Realizadas",
             "qtdManuaisCmpRealizadas": "Qtd Manuais Cmp Realizadas",
             "qtdManuaisRealizados": "Qtd Manuais Realizados",
-            "idSituacao": "Situacao",
-            "idSistemaAgua": "Sistema Água",
-            "idComuna": "Comuna",
+            "idSituacao": "Situação",
+            "idSistemaAgua": "Sistema de Água",
+            "comuna": "Comuna",
+            "provincia": "Província",
             "qtdReservatorios": "Qtd Reservatórios"
         }
     }

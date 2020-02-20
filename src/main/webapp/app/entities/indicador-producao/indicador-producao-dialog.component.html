@@ -30,11 +30,11 @@
             <div class="tab-pane fade show active" id="nav-part1" role="tabpanel" aria-labelledby="nav-part1-tab">
                 <div class="row">
                     <div class="col">
-                        <div class="form-group" [hidden]="!indicadorProducao?.id">
+<!--                        <div class="form-group" [hidden]="!indicadorProducao?.id">
                             <label for="id" jhiTranslate="global.field.id">ID</label>
                             <input type="text" class="form-control" id="id" name="id"
                                    [(ngModel)]="indicadorProducao.id" readonly/>
-                        </div>
+                        </div>-->
                         <!--<div class="form-group">-->
                             <!--<label class="form-control-label" jhiTranslate="sisasApp.indicadorProducao.idUsuario"-->
                                    <!--for="field_idUsuario">Id-->
@@ -56,6 +56,15 @@
                                 <!--</small>-->
                             <!--</div>-->
                         <!--</div>-->
+                        <div class="form-group">
+                            <label class="form-control-label negrito"
+                                   for="field_idProvincia">Provincia</label>
+                            <select class="form-control" id="field_idProvincia" name="provincia" [(ngModel)]="indicadorProducao.provincia">
+                                <option *ngIf="!editForm.value.provincia" [ngValue]="null" selected>Selecione a Província..</option>
+                                <option [ngValue]="provinciaOption.id === indicadorProducao.provincia?.id ? indicadorProducao.provincia : provinciaOption"
+                                        *ngFor="let provinciaOption of provincias">{{provinciaOption.nmProvincia}}</option>
+                            </select>
+                        </div>
                         <div class="form-group">
                             <label class="form-control-label" jhiTranslate="sisasApp.indicadorProducao.dtLancamento"
                                    for="field_dtLancamento">Dt Lancamento</label>

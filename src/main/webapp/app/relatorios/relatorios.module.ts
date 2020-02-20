@@ -9,12 +9,14 @@ import {SisasFuncAguaModule} from './funcionamento-agua/func-agua.module';
 import {SisasBenefOptTecnicaModule} from './beneficiarios-agua-ft-super-opt-tecnica/beneficiarios-opt-tecnica.module';
 import {SisasBenefBmbMecanicaModule} from './beneficiarios-agua-ft-subt-bomb-mecanica/beneficiarios-bmb-mecanica.module';
 import {SisasBeneficiariosTpBombaModule} from './beneficiarios-agua-ft-subt-bomba/beneficiarios-tp-bmb.module';
+import {SisasIndicadorProducaoProvinciaModule} from './indicador-producao/indicador-producao-provincia.module';
 
 @NgModule({
     imports: [
         SisasSectorAguaModule,
         SisasSectorAguaSaneamentoModule,
         SisasFuncAguaChafarizesModule,
+        SisasIndicadorProducaoProvinciaModule,
         SisasInqueritosPreenchidosModule,
         SisasTratamentoSistemasAguaModule,
         SisasFuncAguaModule,

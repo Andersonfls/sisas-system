@@ -42,6 +42,11 @@ export class ProvinciaService {
             .map((res: HttpResponse<Provincia[]>) => this.convertArrayResponse(res));
     }
 
+    buscaProvinciaDoUsuario(req?: any): Observable<HttpResponse<Provincia[]>> {
+        const options = createRequestOption(req);
+        return this.http.get<Provincia[]>(this.resourceUrl + '/provincia-usuario', {params: options, observe: 'response'});
+    }
+
     buscaDadosSectorAgua(req?: any): Observable<HttpResponse<SectorAguaDados[]>> {
         const options = createRequestOption(req);
         return this.http.get<SectorAguaDados[]>(this.resourceUrl + '/relatorio', {params: options, observe: 'response'});

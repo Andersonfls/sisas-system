@@ -10,10 +10,11 @@ import {IndicadorProducao} from './indicador-producao.model';
 import {IndicadorProducaoPopupService} from './indicador-producao-popup.service';
 import {IndicadorProducaoService} from './indicador-producao.service';
 import {Situacao, SituacaoService} from '../situacao';
-import {SistemaAgua, SistemaAguaService} from '../sistema-agua';
-import {Comuna, ComunaService} from '../comuna';
+import { UserService } from '../../shared/user/user.service';
+import { User } from '../../shared/user/user.model';
+import { Principal } from '../../shared/auth/principal.service';
+
 import {Provincia, ProvinciaService} from '../provincia';
-import {Municipio, MunicipioService} from '../municipio';
 
 @Component({
     selector: 'jhi-indicador-producao-dialog',
@@ -24,23 +25,20 @@ export class IndicadorProducaoDialogComponent implements OnInit {
     indicadorProducao: IndicadorProducao;
     isSaving: boolean;
     situacaos: Situacao[];
-    sistemaaguas: SistemaAgua[];
-    comunas: Comuna[];
     provincias: Provincia[];
-    municipios: Municipio[];
     dtLancamentoDp: any;
     routeSub: any;
+    user: User;
 
     constructor(
         private jhiAlertService: JhiAlertService,
         private indicadorProducaoService: IndicadorProducaoService,
         private situacaoService: SituacaoService,
-        private sistemaAguaService: SistemaAguaService,
-        private comunaService: ComunaService,
-        private municipioService: MunicipioService,
         private provinciaService: ProvinciaService,
         private eventManager: JhiEventManager,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private userService: UserService,
+        private principal: Principal
     ) {
     }
 
@@ -55,31 +53,14 @@ export class IndicadorProducaoDialogComponent implements OnInit {
             }
         });
 
+        this.principal.identity().then((userIdentity) => {
+            this.user = userIdentity;
+        });
+
         this.situacaoService.query()
             .subscribe((res: HttpResponse<Situacao[]>) => {
                 this.situacaos = res.body;
             }, (res: HttpErrorResponse) => this.onError(res.message));
-        this.sistemaAguaService.query()
-            .subscribe((res: HttpResponse<SistemaAgua[]>) => {
-                this.sistemaaguas = res.body;
-            }, (res: HttpErrorResponse) => this.onError(res.message));
-
-        this.comunaService.query()
-            .subscribe((res: HttpResponse<Comuna[]>) => {
-                this.comunas = res.body;
-            }, (res: HttpErrorResponse) => this.onError(res.message));
-
-        this.municipioService.query().subscribe(
-            (res: HttpResponse<Municipio[]>) => {
-                this.municipios = res.body;
-            },
-            (res: HttpErrorResponse) => this.onError(res.message));
-
-        this.provinciaService.query().subscribe(
-            (res: HttpResponse<Provincia[]>) => {
-                this.provincias = res.body;
-            },
-            (res: HttpErrorResponse) => this.onError(res.message));
 
          this.findLastIndicador();
 
@@ -142,10 +123,6 @@ export class IndicadorProducaoDialogComponent implements OnInit {
     }
 
     trackSituacaoById(index: number, item: Situacao) {
-        return item.id;
-    }
-
-    trackSistemaAguaById(index: number, item: SistemaAgua) {
         return item.id;
     }
 

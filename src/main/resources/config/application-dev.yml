@@ -33,8 +33,8 @@ spring:
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
         url: jdbc:mysql://localhost:3306/sistema_sisas?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
-        username: root
-        password: CP1227@.
+        username: sisas
+        password: sisas
     jpa:
         database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
         database: mysql

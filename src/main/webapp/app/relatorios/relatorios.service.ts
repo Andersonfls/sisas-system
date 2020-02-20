@@ -10,6 +10,7 @@ import {FuncAguaChafarizes} from './funcionamento-agua-chafarizes/FuncAguaChafar
 import {Provincia} from '../entities/provincia';
 import {createRequestOption} from '../shared';
 import {TratamentoSistemaAguaDados} from './tratamento-sistemas-agua/tratamentoSistemasAguaDados.model';
+import {IndicadorProducaoProvincia} from './indicador-producao/IndicadorProducaoProvincia.model';
 
 export type EntityResponseType = HttpResponse<Provincia>;
 
@@ -34,6 +35,11 @@ export class RelatoriosService {
     buscaDadosFuncAguaChafariz(req?: any): Observable<HttpResponse<FuncAguaChafarizes[]>> {
         const options = createRequestOption(req);
         return this.http.get<FuncAguaChafarizes[]>(this.resourceUrl + '/provincias/relatorio-agua-chafarizes', {params: options, observe: 'response'});
+    }
+
+    buscaDadosIndicadorProducaoProvincia(req?: any): Observable<HttpResponse<IndicadorProducaoProvincia[]>> {
+        const options = createRequestOption(req);
+        return this.http.get<IndicadorProducaoProvincia[]>(this.resourceUrl + '/provincias/relatorio-indicador-producao', {params: options, observe: 'response'});
     }
 
     buscaDadosInqueritosPreenchidos(req?: any): Observable<HttpResponse<InqueritosPreenchidosDados[]>> {

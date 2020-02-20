@@ -1,0 +1,103 @@
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<div>
+    <div class="row">
+        <h2 style="margin-left: 20%">
+            <span>Relatório dos Indicadores de Produção</span>
+        </h2>
+    </div>
+
+    <jhi-alert></jhi-alert>
+    <div class="row">
+
+        <div class="form-group">
+            <select class="form-control" id="field_idProvincia" name="provincia" [(ngModel)]="indicadorProducaoProvincia.provincia">
+                <option [ngValue]="null" selected>Selecione a Província..</option>
+                <option [ngValue]="provinciaOption.id === indicadorProducaoProvincia.provincia?.id ? indicadorProducaoProvincia.provincia : provinciaOption"
+                        *ngFor="let provinciaOption of provincias">{{provinciaOption.nmProvincia}}</option>
+            </select>
+        </div>
+
+        <div class="input-group" style="max-width: 97%; margin-bottom: 1%">
+            <label class="form-control-label" style="margin-right: 1%">Período:</label>
+            <input type="date" class="form-control" name="filtro" [(ngModel)]="dataInicialBusca" (ngModelChange)="onChangeNome()"
+                   placeholder="Periodo Inicial dd/mm/yyyy" style="margin-right: 5%;"/>
+            <input type="date" class="form-control" name="filtro" [(ngModel)]="dataFinalBusca" (ngModelChange)="onChangeNome()"
+                   placeholder="Periodo Final dd/mm/yyyy" />
+            <span class="input-group-btn">
+                            <button class="btn btn-search" type="button" (click)="buscaPorPeriodo()" ><i class="fa fa-search fa-fw"></i></button>
+                    </span>
+        </div>
+
+    </div>
+    <br>
+
+    <div  id="crf" class="card">
+        <div class="export-container">
+            <button type="button" (click)="exportTable('table')" class="btn btn-primary btn-sm">
+                <span class="fa fa-file-excel-o"></span>
+                <span class="d-none d-md-inline">Excel</span>
+            </button>
+            <button type="button" (click)="captureScreen('crf')" class="btn btn-primary btn-sm">
+                <span class="fas fa-file-pdf"></span>
+                <span class="d-none d-md-inline">PDF</span>
+            </button>
+        </div>
+        <div class="table-responsive" *ngIf="listaTabela">
+            <table id="table" class="table table-striped">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th colspan="4"><span style="margin-left: 10%;float: right">Funcionamento de Sistemas de Água</span></th>
+                    <th></th>
+                    <th colspan="3"><span style="margin-left: 10%;">Funcionamento Chafarizes</span></th>
+                </tr>
+                <tr>
+                    <th><span>Variaveis</span></th>
+                    <th><span>Unidades</span></th>
+                    <th><span>Janeiro</span></th>
+                    <th><span>Fevereiro</span></th>
+                    <th><span>Março</span></th>
+                    <th><span>Abril</span></th>
+                    <th><span>Maio</span></th>
+                    <th><span>Junho</span></th>
+                    <th><span>Julho</span></th>
+                    <th><span>Agosto</span></th>
+                    <th><span>Setembro</span></th>
+                    <th><span>Outubro</span></th>
+                    <th><span>Novembro</span></th>
+                    <th><span>Dezembro</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let provincia of listaTabela ;trackBy: trackId">
+                    <td>{{provincia.nomeProvincia}}</td>
+                    <td>{{provincia.numeroSistemas | number}}</td>
+                    <td>{{provincia.funcionamAgua | number}}</td>
+                    <td>{{provincia.naoFuncionamAgua | number}}</td>
+                    <td>{{provincia.funcionamAguaPerc}}%</td>
+                    <td>{{provincia.naoFuncionamAguaPerc}}%</td>
+                    <td>{{provincia.numeroChafarizes | number}}</td>
+                    <td>{{provincia.funcionamChafariz | number}}</td>
+                    <td>{{provincia.naoFuncionamChafariz}}</td>
+                    <td>{{provincia.naoFuncionamChafarizPerc}}%</td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td> <span style="font-weight: bold">Total: </span></td>
+                    <td> <span style="font-weight: bold">{{totalnumeroSistemas | number }} </span></td>
+                    <td> <span style="font-weight: bold">{{totalfuncionamAgua | number }} </span></td>
+                    <td> <span style="font-weight: bold">{{totalnaoFuncionamAgua | number}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalfuncionamAguaPerc }}% </span></td>
+                    <td> <span style="font-weight: bold">{{totalnaoFuncionamAguaPerc}}% </span></td>
+                    <td> <span style="font-weight: bold">{{totalnumeroChafarizes | number}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalfuncionamChafariz | number}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalnaoFuncionamChafariz | number}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalnaoFuncionamChafarizPerc}}% </span></td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>

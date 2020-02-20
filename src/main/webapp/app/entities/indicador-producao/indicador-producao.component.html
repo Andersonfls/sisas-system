@@ -20,9 +20,10 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="dtLancamento"><span jhiTranslate="sisasApp.indicadorProducao.dtLancamento">Dt Lancamento</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="provincia"><span jhiTranslate="sisasApp.indicadorProducao.provincia">Província</span> <span class="fa fa-sort"></span></th>
             <!--<th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>-->
             <!--<th jhiSortBy="idUsuario"><span jhiTranslate="sisasApp.indicadorProducao.idUsuario">Id Usuario</span> <span class="fa fa-sort"></span></th>-->
-            <th jhiSortBy="dtLancamento"><span jhiTranslate="sisasApp.indicadorProducao.dtLancamento">Dt Lancamento</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="dtUltimaAlteracao"><span jhiTranslate="sisasApp.indicadorProducao.dtUltimaAlteracao">Dt Ultima Alteracao</span> <span class="fa fa-sort"></span></th>
             <!--<th jhiSortBy="qtdPopulacaoCobertaInfraestrutura"><span jhiTranslate="sisasApp.indicadorProducao.qtdPopulacaoCobertaInfraestrutura">Qtd Populacao Coberta Infraestrutura</span> <span class="fa fa-sort"></span></th>-->
             <!--<th jhiSortBy="qtdFontanariosChafarisesOperacionais"><span jhiTranslate="sisasApp.indicadorProducao.qtdFontanariosChafarisesOperacionais">Qtd Fontanarios Chafarises Operacionais</span> <span class="fa fa-sort"></span></th>-->
@@ -104,16 +105,19 @@
             <!--<th jhiSortBy="qtdManuaisCmpRealizadas"><span jhiTranslate="sisasApp.indicadorProducao.qtdManuaisCmpRealizadas">Qtd Manuais Cmp Realizadas</span> <span class="fa fa-sort"></span></th>-->
             <!--<th jhiSortBy="qtdManuaisRealizados"><span jhiTranslate="sisasApp.indicadorProducao.qtdManuaisRealizados">Qtd Manuais Realizados</span> <span class="fa fa-sort"></span></th>-->
             <th jhiSortBy="idSituacaoId"><span jhiTranslate="sisasApp.indicadorProducao.idSituacao">Id Situacao</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="idSistemaAguaId"><span jhiTranslate="sisasApp.indicadorProducao.idSistemaAgua">Id Sistema Agua</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="idComunaId"><span jhiTranslate="sisasApp.indicadorProducao.idComuna">Id Comuna</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let indicadorProducao of indicadorProducaos ;trackBy: trackId">
+                <td>{{indicadorProducao.dtLancamento | date:'MM/yy'}}</td>
+                <td>
+                    <div *ngIf="indicadorProducao.provincia">
+                        <a [routerLink]="['../provincia', indicadorProducao.provincia  ]" >{{indicadorProducao.provincia.nmProvincia}}</a>
+                    </div>
+                </td>
                 <!--<td><a [routerLink]="['../indicador-producao', indicadorProducao.id ]">{{indicadorProducao.id}}</a></td>-->
                 <!--<td>{{indicadorProducao.idUsuario}}</td>-->
-                <td>{{indicadorProducao.dtLancamento | date:'dd/MM/yy'}}</td>
                 <td>{{indicadorProducao.dtUltimaAlteracao | date:'dd/MM/yy'}}</td>
                 <!--<td>{{indicadorProducao.qtdPopulacaoCobertaInfraestrutura}}</td>-->
                 <!--<td>{{indicadorProducao.qtdFontanariosChafarisesOperacionais}}</td>-->
@@ -197,16 +201,6 @@
                 <td>
                     <div *ngIf="indicadorProducao.situacao">
                         <a [routerLink]="['../situacao', indicadorProducao.situacao]" >{{indicadorProducao.situacao.nmSituacao}}</a>
-                    </div>
-                </td>
-                <td>
-                    <div *ngIf="indicadorProducao.sistemaAgua">
-                        <a [routerLink]="['../sistema-agua', indicadorProducao.sistemaAgua]" >{{indicadorProducao.sistemaAgua.nmSistemaAgua}}</a>
-                    </div>
-                </td>
-                <td>
-                    <div *ngIf="indicadorProducao.comuna">
-                        <a [routerLink]="['../comuna', indicadorProducao.comuna  ]" >{{indicadorProducao.comuna.nmComuna}}</a>
                     </div>
                 </td>
                 <td class="text-right">
