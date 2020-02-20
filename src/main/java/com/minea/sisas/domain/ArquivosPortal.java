@@ -35,6 +35,9 @@ public class ArquivosPortal implements Serializable {
     @Column(name = "status")
     private Boolean status;
 
+    @Column(name = "tipo_arquivo")
+    private Integer tipoArquivo;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -92,7 +95,15 @@ public class ArquivosPortal implements Serializable {
     public Boolean getStatus() {
         return status;
     }
-// jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+
+    public Integer getTipoArquivo() {
+        return tipoArquivo;
+    }
+
+    public void setTipoArquivo(Integer tipoArquivo) {
+        this.tipoArquivo = tipoArquivo;
+    }
+    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
     public String toString() {

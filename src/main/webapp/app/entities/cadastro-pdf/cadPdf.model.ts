@@ -8,7 +8,8 @@ export class ArquivosPortal implements BaseEntity {
         public status?: boolean,
         public dataInclusao?: Date,
         public dataAlteracao?: Date,
-        public uri?: string
+        public uri?: string,
+        public tipoArquivo?: number
     ) {
         this.status = false;
     }

@@ -20,7 +20,8 @@
             "autor": "Autor",
             "paginas": "Páginas",
             "descricao": "Descricao",
-            "capa": "Arquivo PDF"
+            "capa": "Arquivo PDF",
+            "tipo":"Tipo Arquivo"
         },"comunaDTO": {
             "nmComuna": "Nome Comuna",
             "idMunicipio": "Municipio"

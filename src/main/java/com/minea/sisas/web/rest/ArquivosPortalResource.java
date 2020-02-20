@@ -7,6 +7,7 @@ import com.minea.sisas.service.dto.ArquivosPortalDTO;
 import com.minea.sisas.web.rest.errors.BadRequestAlertException;
 import com.minea.sisas.web.rest.util.HeaderUtil;
 import com.minea.sisas.web.rest.util.PaginationUtil;
+import com.minea.sisas.web.rest.util.TipoArquivoEnum;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,7 +50,7 @@ public class ArquivosPortalResource {
      */
     @PostMapping("/arquivos-portals")
     @Timed
-    public ResponseEntity<ArquivosPortal> createBanner(@RequestBody ArquivosPortalDTO arquivosPortal) throws URISyntaxException {
+    public ResponseEntity<ArquivosPortal> createArquivo(@RequestBody ArquivosPortalDTO arquivosPortal) throws URISyntaxException {
         log.debug("REST request to save ArquivosPortal : {}", arquivosPortal);
         if (arquivosPortal.getId() != null) {
             throw new BadRequestAlertException("A new ArquivosPortal cannot already have an ID", ENTITY_NAME, "idexists");
@@ -72,10 +73,10 @@ public class ArquivosPortalResource {
      */
     @PutMapping("/arquivos-portals")
     @Timed
-    public ResponseEntity<ArquivosPortal> updateBanner(@RequestBody ArquivosPortalDTO arquivosPortal) throws URISyntaxException {
+    public ResponseEntity<ArquivosPortal> updateArquivo(@RequestBody ArquivosPortalDTO arquivosPortal) throws URISyntaxException {
         log.debug("REST request to update Banner : {}", arquivosPortal);
         if (arquivosPortal.getId() == null) {
-            return createBanner(arquivosPortal);
+            return createArquivo(arquivosPortal);
         }
         arquivosPortal.setDataAlteracao(LocalDate.now());
         ArquivosPortal result = arquivosPortalService.save(arquivosPortal);
@@ -92,13 +93,31 @@ public class ArquivosPortalResource {
      */
     @GetMapping("/arquivos-portals")
     @Timed
-    public ResponseEntity<List<ArquivosPortal>> getAllBanners(Pageable pageable) {
+    public ResponseEntity<List<ArquivosPortal>> getAllArquivos(Pageable pageable) {
         log.debug("REST request to get a page of ArquivosPortals");
-        Page<ArquivosPortal> page = arquivosPortalService.findAll(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/banners");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+        return new ResponseEntity<>(this.arquivosPortalService.findAll(pageable), null, HttpStatus.OK);
     }
 
+    @GetMapping("/arquivos-portals/publicacoes")
+    @Timed
+    public ResponseEntity<List<ArquivosPortalDTO>> getAllArquivosPublicacoes() {
+        log.debug("REST request to get a page of ArquivosPortals");
+        return new ResponseEntity<>(this.arquivosPortalService.findAllDto(TipoArquivoEnum.PUBLICACAO.getCodigo()), null, HttpStatus.OK);
+    }
+
+    @GetMapping("/arquivos-portals/publicacoes-inicial")
+    @Timed
+    public ResponseEntity<List<ArquivosPortalDTO>> getAllArquivosPublicacoesInicial() {
+        log.debug("REST request to get a page of ArquivosPortals");
+        return new ResponseEntity<>(this.arquivosPortalService.findAllDto(TipoArquivoEnum.PUBLICACAO_INICIAL.getCodigo()), null, HttpStatus.OK);
+    }
+
+    @GetMapping("/arquivos-portals/projectos")
+    @Timed
+    public ResponseEntity<List<ArquivosPortalDTO>> getAllArquivosProjectos() {
+        log.debug("REST request to get a page of ArquivosPortals");
+        return new ResponseEntity<>(this.arquivosPortalService.findAllDto(TipoArquivoEnum.PROJECTOS.getCodigo()), null, HttpStatus.OK);
+    }
     /**
      * GET  /arquivosPortals/:id : get the "id" Banner.
      *
@@ -107,7 +126,7 @@ public class ArquivosPortalResource {
      */
     @GetMapping("/arquivos-portals/{id}")
     @Timed
-    public ResponseEntity<ArquivosPortalDTO> getBanner(@PathVariable Long id) {
+    public ResponseEntity<ArquivosPortalDTO> getArquivo(@PathVariable Long id) {
         log.debug("REST request to get Banner : {}", id);
         ArquivosPortalDTO banner = arquivosPortalService.findOne(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(banner));
@@ -121,7 +140,7 @@ public class ArquivosPortalResource {
      */
     @DeleteMapping("/arquivos-portals/{id}")
     @Timed
-    public ResponseEntity<Void> deleteBanner(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteArquivo(@PathVariable Long id) {
         log.debug("REST request to delete Banner : {}", id);
         arquivosPortalService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();

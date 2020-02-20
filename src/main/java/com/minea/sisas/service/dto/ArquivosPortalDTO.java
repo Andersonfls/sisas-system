@@ -24,6 +24,8 @@ public class ArquivosPortalDTO implements Serializable {
 
     private String uri;
 
+    private Integer tipoArquivo;
+
     public Long getId() {
         return id;
     }
@@ -78,6 +80,14 @@ public class ArquivosPortalDTO implements Serializable {
 
     public void setUri(String uri) {
         this.uri = uri;
+    }
+
+    public Integer getTipoArquivo() {
+        return tipoArquivo;
+    }
+
+    public void setTipoArquivo(Integer tipoArquivo) {
+        this.tipoArquivo = tipoArquivo;
     }
 
     @Override

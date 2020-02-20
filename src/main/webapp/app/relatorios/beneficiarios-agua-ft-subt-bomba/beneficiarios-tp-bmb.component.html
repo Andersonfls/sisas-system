@@ -51,76 +51,76 @@
                 <tr>
                     <th></th>
                     <th></th>
+                    <!--<th></th>-->
                     <th></th>
                     <th></th>
                     <th></th>
-                    <th></th>
-                    <th colspan="10"><span style="margin-left: 30%">N° de Sistemas por Tipo de Bomba Manual</span></th>
+                    <th colspan="5"><span style="margin-left: 30%">N° de Sistemas por Tipo de Bomba Manual</span></th>
                 </tr>
                 <tr>
                     <th><span>Província</span></th>
                     <th><span>Municipal</span></th>
-                    <th><span>Populacao</span></th>
+                    <!--<th><span>Populacao</span></th>-->
                     <th><span>Poco Melhorado</span></th>
                     <th><span>Furo</span></th>
                     <th><span>Nascente</span></th>
 
                     <th><span>Afridev</span></th>
-                    <th><span>Populacao</span></th>
+                    <!--<th><span>Populacao</span></th>-->
                     <th><span>Vernet</span></th>
-                    <th><span>Populacao</span></th>
+                    <!--<th><span>Populacao</span></th>-->
                     <th><span>Volanta</span></th>
-                    <th><span>Populacao</span></th>
+                    <!--<th><span>Populacao</span></th>-->
                     <th><span>India Marck II</span></th>
-                    <th><span>Populacao</span></th>
+                    <!--<th><span>Populacao</span></th>-->
                     <th><span>Outro</span></th>
-                    <th><span>Populacao</span></th>
+                    <!--<th><span>Populacao</span></th>-->
                 </tr>
                 </thead>
                 <tbody>
                 <tr *ngFor="let provincia of listaTabela">
                     <td>{{provincia.nomeProvincia}}</td>
                     <td>{{provincia.nomeMunicipio}}</td>
-                    <td>{{provincia.populacao | number}}</td>
+                    <!--<td>{{provincia.populacao | number}}</td>-->
                     <td>{{provincia.pocoMelhorado}}</td>
                     <td>{{provincia.furo}}</td>
                     <td>{{provincia.nascente}}</td>
                     <td>{{provincia.afridev}}</td>
-                    <td>{{provincia.afridevPopulacao}}</td>
+                    <!--<td>{{provincia.afridevPopulacao}}</td>-->
                     <td>{{provincia.vergnet}}</td>
-                    <td>{{provincia.vergnetPopulacao}}</td>
+                    <!--<td>{{provincia.vergnetPopulacao}}</td>-->
 
                     <td>{{provincia.volanta}}</td>
-                    <td>{{provincia.volantaPopulacao}}</td>
+                    <!--<td>{{provincia.volantaPopulacao}}</td>-->
                     <td>{{provincia.indiaMarck}}</td>
-                    <td>{{provincia.indiaMarckPopulacao}}</td>
+                    <!--<td>{{provincia.indiaMarckPopulacao}}</td>-->
                     <td>{{provincia.outro}}</td>
-                    <td>{{provincia.outroPopulacao}}</td>
+                    <!--<td>{{provincia.outroPopulacao}}</td>-->
                 </tr>
                 </tbody>
                 <tfoot>
                 <tr>
                     <td> <span style="font-weight: bold"></span></td>
                     <td> <span style="font-weight: bold">Total Municipal: </span></td>
-                    <td> <span style="font-weight: bold">{{totalPopulacao | number }}</span></td>
+                    <!--<td> <span style="font-weight: bold">{{totalPopulacao | number }}</span></td>-->
                     <td> <span style="font-weight: bold">{{totalPocoMelhorado | number }}</span></td>
                     <td> <span style="font-weight: bold">{{totalFuro | number}}</span></td>
                     <td> <span style="font-weight: bold">{{totalNascente | number}}</span></td>
 
                     <td> <span style="font-weight: bold">{{totalAfridev | number }} </span></td>
-                    <td> <span style="font-weight: bold">{{totalAfridevPopulacao | number}} </span></td>
+                    <!--<td> <span style="font-weight: bold">{{totalAfridevPopulacao | number}} </span></td>-->
 
                     <td> <span style="font-weight: bold">{{totalVergnet | number }}</span></td>
-                    <td> <span style="font-weight: bold">{{totalVergnetPopulacao | number}}</span></td>
+                    <!--<td> <span style="font-weight: bold">{{totalVergnetPopulacao | number}}</span></td>-->
 
                     <td> <span style="font-weight: bold">{{totalVolanta | number }}</span></td>
-                    <td> <span style="font-weight: bold">{{totalVolantaPopulacao | number}}</span></td>
+                    <!--<td> <span style="font-weight: bold">{{totalVolantaPopulacao | number}}</span></td>-->
 
                     <td> <span style="font-weight: bold">{{totalIndia | number }}</span></td>
-                    <td> <span style="font-weight: bold">{{totalIndiaPopulacao | number}}</span></td>
+                    <!--<td> <span style="font-weight: bold">{{totalIndiaPopulacao | number}}</span></td>-->
 
                     <td> <span style="font-weight: bold">{{totalOutro | number }}</span></td>
-                    <td> <span style="font-weight: bold">{{totalOutroPopulacao | number}}</span></td>
+                    <!--<td> <span style="font-weight: bold">{{totalOutroPopulacao | number}}</span></td>-->
                 </tr>
                 </tfoot>
             </table>
@@ -148,7 +148,7 @@
                     <th></th>
                     <th></th>
                     <th></th>
-                    <th colspan="4"><span style=" font-size: 0.8em;">N° de Sistemas por Tipo de Bomba Gravidade e Outros</span></th>
+                    <th colspan="2"><span style=" font-size: 0.8em;">N° de Sistemas por Tipo de Bomba Gravidade e Outros</span></th>
                 </tr>
                 <tr>
                     <th><span>Província</span></th>
@@ -158,9 +158,9 @@
                     <th><span>Furo</span></th>
                     <th><span>Nascente</span></th>
                     <th><span>Gravidade</span></th>
-                    <th><span>Populacao</span></th>
+                    <!--<th><span>Populacao</span></th>-->
                     <th><span>Outro</span></th>
-                    <th><span>Populacao</span></th>
+                    <!--<th><span>Populacao</span></th>-->
                 </tr>
                 </thead>
                 <tbody>
@@ -172,9 +172,9 @@
                     <td>{{provincia.furo}}</td>
                     <td>{{provincia.nascente}}</td>
                     <td>{{provincia.gravidade}}</td>
-                    <td>{{provincia.gravidadePopulacao}}</td>
+                    <!--<td>{{provincia.gravidadePopulacao}}</td>-->
                     <td>{{provincia.outro}}</td>
-                    <td>{{provincia.outroPopulacao}}</td>
+                    <!--<td>{{provincia.outroPopulacao}}</td>-->
                 </tr>
                 </tbody>
                 <tfoot>
@@ -186,9 +186,9 @@
                     <td> <span style="font-weight: bold">{{totalFuro | number}}</span></td>
                     <td> <span style="font-weight: bold">{{totalNascente | number}}</span></td>
                     <td> <span style="font-weight: bold">{{totalGravidade | number }} </span></td>
-                    <td> <span style="font-weight: bold">{{totalGravidadePopulacao | number}} </span></td>
+                    <!--<td> <span style="font-weight: bold">{{totalGravidadePopulacao | number}} </span></td>-->
                     <td> <span style="font-weight: bold">{{totalOutro | number }}</span></td>
-                    <td> <span style="font-weight: bold">{{totalOutroPopulacao | number}}</span></td>
+                    <!--<td> <span style="font-weight: bold">{{totalOutroPopulacao | number}}</span></td>-->
                 </tr>
                 </tfoot>
             </table>

@@ -23,6 +23,7 @@ export class CadPdfDialogComponent implements OnInit {
     selectedFile: File;
     @ViewChild('inputFile')
     inputFile: any;
+    tipos: string[];
 
     constructor(
         public activeModal: NgbActiveModal,
@@ -36,6 +37,15 @@ export class CadPdfDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
+        this.montarListaTipos();
+    }
+
+    montarListaTipos() {
+        this.tipos = new Array();
+        this.tipos.push('PUBLICACÕES PÁGINA INICIAL');
+        this.tipos.push('PUBLICACÕES');
+        this.tipos.push('PROJECTOS');
+        this.tipos.push('OUTROS');
     }
 
     byteSize(field) {

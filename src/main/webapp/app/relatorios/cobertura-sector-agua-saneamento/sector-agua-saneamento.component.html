@@ -2,19 +2,19 @@
 <div>
     <div class="row">
         <h2 style="margin-left: 20%" *ngIf="tipoRelatorio == null">
-            <span>Cobertura no sector de Água e Saneamento</span>
+            <span>Cobertura no sector de Água</span>
         </h2>
         <h2 *ngIf="tipoRelatorio ==='Nível Nacional'">
-            <span>Cobertura no sector de Água e Saneamento (Nível nacional)</span>
+            <span>Cobertura no sector de Água (Nível nacional)</span>
         </h2>
         <h2 *ngIf="tipoRelatorio==='Nível Provincial'">
-            <span>Cobertura no sector de Água e Saneamento (Nível Provincial)</span>
+            <span>Cobertura no sector de Água (Nível Provincial)</span>
         </h2>
         <h2 *ngIf="tipoRelatorio==='Nível Municipal'">
-            <span>Cobertura no sector de Água e Saneamento (Nível Municipal)</span>
+            <span>Cobertura no sector de Água (Nível Municipal)</span>
         </h2>
         <h2 *ngIf="tipoRelatorio==='Nível Comunal'">
-            <span>Cobertura no sector de Água e Saneamento (Nível Comunal)</span>
+            <span>Cobertura no sector de Água (Nível Comunal)</span>
         </h2>
 
         <button *ngIf="tipoRelatorio !== null" type="button" style="margin-left: auto" class="btn btn-secondary" data-dismiss="modal" (click)="voltarEscolha()">
@@ -61,9 +61,9 @@
                         <th><span>Populacao</span></th>
                         <th><span>%</span></th>
                         <th><span>N de Habitantes</span></th>
-                        <th><span>%</span></th>
-                        <th><span>N de Habitantes</span></th>
-                        <th><span>%</span></th>
+                        <!--<th><span>%</span></th>-->
+                        <!--<th><span>N de Habitantes</span></th>-->
+                        <!--<th><span>%</span></th>-->
                     </tr>
                     </thead>
                     <tbody>
@@ -72,38 +72,39 @@
                         <td>{{provincia.populacao | number }}</td>
                         <td>{{provincia.populacaoPercentage}}%</td>
                         <td>{{provincia.habitantes | number }}</td>
-                        <td>{{provincia.habitantesPercent}}%</td>
-                        <td>{{provincia.habitantesSaneamento  | number }}</td>
-                        <td>{{provincia.habitantesSaneamentoPer}}%</td>
+                        <!--<td>{{provincia.habitantesPercent}}%</td>-->
+                        <!--<td>{{provincia.habitantesSaneamento  | number }}</td>-->
+                        <!--<td>{{provincia.habitantesSaneamentoPer}}%</td>-->
                     </tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
-        <div class="card" *ngIf="tipoRelatorio==='Nível Nacional'">
+        <div *ngIf="tipoRelatorio==='Nível Nacional'">
+            <br>
             <div class="row">
-                <div class="col-md-6 teste-acima">
+                <div class="col-md-12">
                     <div class="card card-dash">
                         <div id="chartContainer" style="height: 370px; width: 98%; margin-left: 3%"></div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="card card-dash">
-                        <div id="chartContainerSan" style="height: 370px; width: 98%; margin-left: 3%"></div>
-                    </div>
-                </div>
+                <!--<div class="col-md-6">-->
+                    <!--<div class="card card-dash">-->
+                        <!--<div id="chartContainerSan" style="height: 370px; width: 98%; margin-left: 3%"></div>-->
+                    <!--</div>-->
+                <!--</div>-->
             </div>
 
-            <br>
+            <!--<br>-->
 
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card card-dash">
-                        <div id="chartAguaSaneamento" style="height: 370px; width: 98%; margin-left: 3%"></div>
-                    </div>
-                </div>
-            </div>
+            <!--<div class="row">-->
+                <!--<div class="col-md-12">-->
+                    <!--<div class="card card-dash">-->
+                        <!--<div id="chartAguaSaneamento" style="height: 370px; width: 98%; margin-left: 3%"></div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
         </div>
     </div>
 
@@ -128,9 +129,9 @@
                         <th><span>N° de Comunas</span></th>
                         <th><span>Populacao Total</span></th>
                         <th><span>Água</span></th>
-                        <th><span>Saneamento</span></th>
+                        <!--<th><span>Saneamento</span></th>-->
                         <th><span>Águas%</span></th>
-                        <th><span>Saneamento%</span></th>
+                        <!--<th><span>Saneamento%</span></th>-->
                     </tr>
                     </thead>
                     <tbody>
@@ -140,9 +141,9 @@
                         <td>{{provincia.comunas}}%</td>
                         <td>{{provincia.populacaoTotal | number }}</td>
                         <td>{{provincia.populacaoBeneficiadaAgua}}%</td>
-                        <td>{{provincia.populacaoBeneficiadaSaneamento  | number }}</td>
+                        <!--<td>{{provincia.populacaoBeneficiadaSaneamento  | number }}</td>-->
                         <td>{{provincia.coberturaAgua}}%</td>
-                        <td>{{provincia.coberturaSaneamento}}%</td>
+                        <!--<td>{{provincia.coberturaSaneamento}}%</td>-->
                     </tr>
                     </tbody>
                     <tfoot>
@@ -152,9 +153,9 @@
                         <td> <span style="font-weight: bold">{{totalComunas}} </span></td>
                         <td> <span style="font-weight: bold">{{totalPopulacao}} </span></td>
                         <td> <span style="font-weight: bold">{{totalBenefAgua | number }} </span></td>
-                        <td> <span style="font-weight: bold">{{totalBenefSaneamento | number }} </span></td>
+                        <!--<td> <span style="font-weight: bold">{{totalBenefSaneamento | number }} </span></td>-->
                         <td> <span style="font-weight: bold">{{totalCobertAgua}} </span></td>
-                        <td> <span style="font-weight: bold">{{totalCobertSaneamento}} </span></td>
+                        <!--<td> <span style="font-weight: bold">{{totalCobertSaneamento}} </span></td>-->
                     </tr>
                     </tfoot>
                 </table>
@@ -185,8 +186,8 @@
                         <th></th>
                         <th></th>
                         <th></th>
-                        <th colspan="2"><span style="float: right">Populacão Beneficiária</span></th>
-                        <th colspan="2"><span style="margin-left: 20%;">COBERTURA %</span></th>
+                        <th colspan="1"><span style="float: right">Populacão Beneficiária</span></th>
+                        <th colspan="1"><span style="margin-left: 20%;">COBERTURA %</span></th>
                     </tr>
                     <tr>
                         <th><span>Províncias</span></th>
@@ -194,9 +195,9 @@
                         <th><span>N° de Comunas</span></th>
                         <th><span>Populacão Total</span></th>
                         <th><span>Água</span></th>
-                        <th><span>Saneamento</span></th>
+                        <!--<th><span>Saneamento</span></th>-->
                         <th><span>Água</span></th>
-                        <th><span>Saneamento</span></th>
+                        <!--<th><span>Saneamento</span></th>-->
                     </tr>
                     </thead>
                     <tbody>
@@ -206,9 +207,9 @@
                         <td>{{provincia.comunas}}%</td>
                         <td>{{provincia.populacaoTotal | number }}</td>
                         <td>{{provincia.populacaoBeneficiadaAgua}}%</td>
-                        <td>{{provincia.populacaoBeneficiadaSaneamento  | number }}</td>
+                        <!--<td>{{provincia.populacaoBeneficiadaSaneamento  | number }}</td>-->
                         <td>{{provincia.coberturaAgua}}%</td>
-                        <td>{{provincia.coberturaSaneamento}}%</td>
+                        <!--<td>{{provincia.coberturaSaneamento}}%</td>-->
                     </tr>
                     </tbody>
                     <tfoot>
@@ -218,9 +219,9 @@
                         <td> <span style="font-weight: bold">{{totalComunas}} </span></td>
                         <td> <span style="font-weight: bold">{{totalPopulacao}} </span></td>
                         <td> <span style="font-weight: bold">{{totalBenefAgua | number }} </span></td>
-                        <td> <span style="font-weight: bold">{{totalBenefSaneamento | number }} </span></td>
+                        <!--<td> <span style="font-weight: bold">{{totalBenefSaneamento | number }} </span></td>-->
                         <td> <span style="font-weight: bold">{{totalCobertAgua}} </span></td>
-                        <td> <span style="font-weight: bold">{{totalCobertSaneamento}} </span></td>
+                        <!--<td> <span style="font-weight: bold">{{totalCobertSaneamento}} </span></td>-->
                     </tr>
                     </tfoot>
                 </table>
@@ -248,8 +249,8 @@
                         <th></th>
                         <th></th>
                         <th></th>
-                        <th colspan="2"><span style="float: right">Populacão Beneficiária</span></th>
-                        <th colspan="2"><span style="margin-left: 20%;">COBERTURA %</span></th>
+                        <th colspan="1"><span style="float: right">Populacão Beneficiária</span></th>
+                        <th colspan="1"><span style="margin-left: 20%;">COBERTURA %</span></th>
                     </tr>
                     <tr>
                         <th><span>Províncias</span></th>
@@ -257,9 +258,9 @@
                         <th><span>Comuna</span></th>
                         <th><span>Populacão Total</span></th>
                         <th><span>Água</span></th>
-                        <th><span>Saneamento</span></th>
+                        <!--<th><span>Saneamento</span></th>-->
                         <th><span>Água</span></th>
-                        <th><span>Saneamento</span></th>
+                        <!--<th><span>Saneamento</span></th>-->
                     </tr>
                     </thead>
                     <tbody>
@@ -269,9 +270,9 @@
                         <td>{{provincia.nomeComuna}}%</td>
                         <td>{{provincia.populacaoTotal | number }}</td>
                         <td>{{provincia.populacaoBeneficiadaAgua}}%</td>
-                        <td>{{provincia.populacaoBeneficiadaSaneamento  | number }}</td>
+                        <!--<td>{{// provincia.populacaoBeneficiadaSaneamento  | number }}</td>-->
                         <td>{{provincia.coberturaAgua}}%</td>
-                        <td>{{provincia.coberturaSaneamento}}%</td>
+                        <!--<td>{{provincia.coberturaSaneamento}}%</td>-->
                     </tr>
                     </tbody>
                     <tfoot>
@@ -281,9 +282,9 @@
                         <td> <span style="font-weight: bold">Total Comunal: </span></td>
                         <td> <span style="font-weight: bold">{{totalPopulacao}} </span></td>
                         <td> <span style="font-weight: bold">{{totalBenefAgua | number }} </span></td>
-                        <td> <span style="font-weight: bold">{{totalBenefSaneamento | number }} </span></td>
+                        <!--<td> <span style="font-weight: bold">{{totalBenefSaneamento | number }} </span></td>-->
                         <td> <span style="font-weight: bold">{{totalCobertAgua}} </span></td>
-                        <td> <span style="font-weight: bold">{{totalCobertSaneamento}} </span></td>
+                        <!--<td> <span style="font-weight: bold">{{totalCobertSaneamento}} </span></td>-->
                     </tr>
                     </tfoot>
                 </table>

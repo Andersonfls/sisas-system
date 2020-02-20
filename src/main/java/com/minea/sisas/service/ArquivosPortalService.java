@@ -3,6 +3,7 @@ package com.minea.sisas.service;
 import com.minea.sisas.domain.ArquivosPortal;
 import com.minea.sisas.repository.ArquivosPortalRepository;
 import com.minea.sisas.service.dto.ArquivosPortalDTO;
+import com.minea.sisas.web.rest.util.TipoArquivoEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -45,6 +48,7 @@ public class ArquivosPortalService {
         ap.setDescricao(arquivoPortal.getDescricao());
         ap.setNomeArquivo(arquivoPortal.getNomeArquivo());
         ap.setStatus(arquivoPortal.getStatus());
+        ap.setTipoArquivo(arquivoPortal.getTipoArquivo());
 
         return arquivoPortalRepository.save(ap);
     }
@@ -58,6 +62,7 @@ public class ArquivosPortalService {
             dto.setDescricao(arquivoPortal.getDescricao());
             dto.setNomeArquivo(arquivoPortal.getNomeArquivo());
             dto.setStatus(arquivoPortal.getStatus());
+            dto.setTipoArquivo(arquivoPortal.getTipoArquivo());
 
             String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/api/downloadFile/").path(arquivoPortal.getId().toString()+".pdf").toUriString();
@@ -72,11 +77,23 @@ public class ArquivosPortalService {
      * @return the list of entities
      */
     @Transactional(readOnly = true)
-    public Page<ArquivosPortal> findAll(Pageable pageable) {
+    public List<ArquivosPortal> findAll(Pageable pageable) {
         log.debug("Request to get all ArquivoPortals");
-        return arquivoPortalRepository.findAll(pageable);
+        return arquivoPortalRepository.findAll();
     }
 
+    @Transactional(readOnly = true)
+    public List<ArquivosPortalDTO> findAllDto(Integer codigo) {
+        log.debug("Request to get all ArquivoPortals");
+        List<ArquivosPortalDTO> dtos = new ArrayList<>();
+        List<ArquivosPortal> arquivosPortal = arquivoPortalRepository.findAllByTipoArquivo(codigo);
+       if (Objects.nonNull(arquivosPortal)){
+           arquivosPortal.stream().forEach(i ->{
+               dtos.add(arquivosPortalParaDto(i));
+           });
+       }
+        return dtos;
+    }
     /**
      * Get one banner by id.
      *

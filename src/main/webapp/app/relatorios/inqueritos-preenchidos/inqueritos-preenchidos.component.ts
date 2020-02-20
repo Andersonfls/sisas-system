@@ -47,9 +47,6 @@ export class InqueritosPreenchidosComponent implements OnInit {
     totalSaneamento = 0;
     totalInqueritosSector = 0;
     total = 0;
-    totalEscola = 0;
-    totalHospitais = 0;
-    totalFamilias = 0;
     totalGeral = 0;
 
     name = 'Angular Html To Pdf ';
@@ -100,71 +97,6 @@ export class InqueritosPreenchidosComponent implements OnInit {
     exportTable(tabeId) {
         TableUtil.exportToExcel(tabeId);
     }
-
-    // downloadPDF() {
-    //     const node = document.getElementById('contentToConvert');
-    //     let img;
-    //     let filename;
-    //     let newImage;
-    //
-    //     domtoimage.toPng(node, { bgcolor: '#fff' })
-    //
-    //         .then(function(dataUrl) {
-    //
-    //             img = new Image();
-    //             img.src = dataUrl;
-    //             newImage = img.src;
-    //
-    //             img.onload = function(){
-    //
-    //                 var pdfWidth = img.width;
-    //                 var pdfHeight = img.height;
-    //
-    //                 // FileSaver.saveAs(dataUrl, 'my-pdfimage.png'); // Save as Image
-    //
-    //                 var doc;
-    //
-    //                 if(pdfWidth > pdfHeight)
-    //                 {
-    //                     doc = new jsPDF('l', 'px', [pdfWidth , pdfHeight]);
-    //                 }
-    //                 else
-    //                 {
-    //                     doc = new jsPDF('p', 'px', [pdfWidth , pdfHeight]);
-    //                 }
-    //
-    //                 var width = doc.internal.pageSize.getWidth();
-    //                 var height = doc.internal.pageSize.getHeight();
-    //
-    //                 doc.addImage(newImage, 'PNG',  10, 10, width, height);
-    //                 filename = 'mypdf54_' + '.pdf';
-    //                 doc.save(filename);
-    //
-    //             };
-    //         })
-    //         .catch(function(error) {
-    //
-    //             // Error Handling
-    //
-    //         });
-    // }
-
-    // public downloadAsPDF() {
-    //     const doc = new jsPDF();
-    //     const specialElementHandlers = {
-    //         '#editor': function(element, renderer){
-    //             return true;
-    //         }
-    //     };
-    //
-    //     const pdfTable = this.pdfTable.nativeElement;
-    //
-    //     doc.fromHTML(pdfTable.innerHTML, 15, 15, {
-    //         width: 690,
-    //         'elementHandlers': specialElementHandlers
-    //     });
-    //     doc.save('tableToPdf.pdf');
-    // }
 
     buscaDadosTabelaModelo1() {
         this.relatorioService.buscaDadosInqueritosPreenchidos().subscribe(
@@ -247,29 +179,29 @@ export class InqueritosPreenchidosComponent implements OnInit {
                 item.y = 13127;
                 this.listaTotalInqueritos.push(item);
 
-                item = new DadosRelatorio();
-                item.label = 'Saneamento';
-                // item.y = this.totalSaneamento;
-                item.y = 844;
-                this.listaTotalInqueritos.push(item);
+               //  item = new DadosRelatorio();
+               //  item.label = 'Saneamento';
+               //  // item.y = this.totalSaneamento;
+               //  item.y = 844;
+               //  this.listaTotalInqueritos.push(item);
+               //
+               //  item = new DadosRelatorio();
+               //  item.label = 'Escolas';
+               //  // item.y = this.totalEscola;
+               //  item.y = 3275;
+               //  this.listaTotalInqueritos.push(item);
+               //
+               //  item = new DadosRelatorio();
+               //  item.label = 'Hospitais';
+               // // item.y = this.totalHospitais;
+               //  item.y = 1457;
+               //  this.listaTotalInqueritos.push(item);
 
-                item = new DadosRelatorio();
-                item.label = 'Escolas';
-                // item.y = this.totalEscola;
-                item.y = 3275;
-                this.listaTotalInqueritos.push(item);
-
-                item = new DadosRelatorio();
-                item.label = 'Hospitais';
-               // item.y = this.totalHospitais;
-                item.y = 1457;
-                this.listaTotalInqueritos.push(item);
-
-                item = new DadosRelatorio();
-                item.label = 'Famílias';
-                // item.y = this.totalFamilias;
-                item.y = 9197;
-                this.listaTotalInqueritos.push(item);
+                // item = new DadosRelatorio();
+                // item.label = 'Famílias';
+                // // item.y = this.totalFamilias;
+                // item.y = 9197;
+                // this.listaTotalInqueritos.push(item);
 
                 this.iniciarChartTotalInqueritos();
             });

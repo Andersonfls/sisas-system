@@ -30,6 +30,9 @@ public class StorageService {
 
     private final Path fileStorageLocation;
 
+    @Autowired
+    ArquivosPortalService arquivosPortalService;
+
     public StorageService(FileStorageProperties fileStorageProperties) {
         this.fileStorageLocation = Paths.get(fileStorageProperties.getUploadDir()).toAbsolutePath().normalize();
 
