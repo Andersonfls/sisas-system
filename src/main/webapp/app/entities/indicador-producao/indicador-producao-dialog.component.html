@@ -1314,7 +1314,7 @@
                             <label class="form-control-label" jhiTranslate="sisasApp.indicadorProducao.qtdCaptacoes"
                                    for="field_qtdCaptacoes">Qtd Captacoes</label>
                             <input type="number" class="form-control" name="qtdCaptacoes" id="field_qtdCaptacoes"
-                                   [(ngModel)]="indicadorProducao.qtdCaptacoes" required placeholder="Valor do custo" min="0"/>
+                                   [(ngModel)]="indicadorProducao.qtdCaptacoes" required placeholder="Valor do custo" min="0" readonly/>
                             <div
                                 [hidden]="!(editForm.controls.qtdCaptacoes?.dirty && editForm.controls.qtdCaptacoes?.invalid)">
                                 <small class="form-text text-danger"
@@ -1334,7 +1334,7 @@
                                    for="field_qtdEtas">Qtd
                                 Etas</label>
                             <input type="number" class="form-control" name="qtdEtas" id="field_qtdEtas"
-                                   [(ngModel)]="indicadorProducao.qtdEtas" required placeholder="Valor do custo"/>
+                                   [(ngModel)]="indicadorProducao.qtdEtas" required placeholder="Valor do custo" readonly/>
                             <div [hidden]="!(editForm.controls.qtdEtas?.dirty && editForm.controls.qtdEtas?.invalid)" min="0">
                                 <small class="form-text text-danger"
                                        [hidden]="!editForm.controls.qtdEtas?.errors?.required"
@@ -1354,7 +1354,7 @@
                             <input type="number" class="form-control" name="qtdReservatorios"
                                    id="field_qtdReservatorios"
                                    [(ngModel)]="indicadorProducao.qtdReservatorios" required
-                                   placeholder="Quantidade de reservatórios" min="0"/>
+                                   placeholder="Quantidade de reservatórios" min="0" readonly/>
                             <div
                                 [hidden]="!(editForm.controls.qtdReservatorios?.dirty && editForm.controls.qtdReservatorios?.invalid)">
                                 <small class="form-text text-danger"
@@ -1382,7 +1382,7 @@
                             <input type="number" class="form-control" name="qtdEstacoesElevatorias"
                                    id="field_qtdEstacoesElevatorias"
                                    [(ngModel)]="indicadorProducao.qtdEstacoesElevatorias" required
-                                   placeholder="Quantidade estações" min="0"/>
+                                   placeholder="Quantidade estações" min="0" readonly/>
                             <div
                                 [hidden]="!(editForm.controls.qtdEstacoesElevatorias?.dirty && editForm.controls.qtdEstacoesElevatorias?.invalid)">
                                 <small class="form-text text-danger"
@@ -1404,7 +1404,7 @@
                             <input type="number" class="form-control" name="qtdComprimentoAdutoras"
                                    id="field_qtdComprimentoAdutoras"
                                    [(ngModel)]="indicadorProducao.qtdComprimentoAdutoras" required
-                                   placeholder="Numero do comprimento" min="0"/>
+                                   placeholder="Numero do comprimento" min="0" readonly/>
                             <div
                                 [hidden]="!(editForm.controls.qtdComprimentoAdutoras?.dirty && editForm.controls.qtdComprimentoAdutoras?.invalid)">
                                 <small class="form-text text-danger"
@@ -1426,7 +1426,7 @@
                             <input type="number" class="form-control" name="qtdComprimentoRedes"
                                    id="field_qtdComprimentoRedes"
                                    [(ngModel)]="indicadorProducao.qtdComprimentoRedes" required
-                                   placeholder="Numero do comprimento" min="0"/>
+                                   placeholder="Numero do comprimento" min="0" readonly/>
                             <div
                                 [hidden]="!(editForm.controls.qtdComprimentoRedes?.dirty && editForm.controls.qtdComprimentoRedes?.invalid)">
                                 <small class="form-text text-danger"
@@ -1448,7 +1448,7 @@
                             <input type="number" class="form-control" name="qtdComprimentoRamais"
                                    id="field_qtdComprimentoRamais"
                                    [(ngModel)]="indicadorProducao.qtdComprimentoRamais" required
-                                   placeholder="Numero do comprimento" min="0"/>
+                                   placeholder="Numero do comprimento" min="0" readonly/>
                             <div
                                 [hidden]="!(editForm.controls.qtdComprimentoRamais?.dirty && editForm.controls.qtdComprimentoRamais?.invalid)">
                                 <small class="form-text text-danger"
@@ -1678,7 +1678,7 @@
                             <input type="number" class="form-control" name="qtdManuaisMoPrevistos"
                                    id="field_qtdManuaisMoPrevistos"
                                    [(ngModel)]="indicadorProducao.qtdManuaisMoPrevistos" required
-                                   placeholder="Quantidade de manuais" min="0"/>
+                                   placeholder="Quantidade de manuais" min="0" readonly/>
                             <div
                                 [hidden]="!(editForm.controls.qtdManuaisMoPrevistos?.dirty && editForm.controls.qtdManuaisMoPrevistos?.invalid)">
                                 <small class="form-text text-danger"
@@ -1700,7 +1700,7 @@
                             <input type="number" class="form-control" name="qtdManuaisMmsPrevistos"
                                    id="field_qtdManuaisMmsPrevistos"
                                    [(ngModel)]="indicadorProducao.qtdManuaisMmsPrevistos" required
-                                   placeholder="Quantidade de manuais" min="0"/>
+                                   placeholder="Quantidade de manuais" min="0" readonly/>
                             <div
                                 [hidden]="!(editForm.controls.qtdManuaisMmsPrevistos?.dirty && editForm.controls.qtdManuaisMmsPrevistos?.invalid)">
                                 <small class="form-text text-danger"
@@ -1766,7 +1766,7 @@
                             <input type="number" class="form-control" name="qtdAcoesManuaisMoRealizadas"
                                    id="field_qtdAcoesManuaisMoRealizadas"
                                    [(ngModel)]="indicadorProducao.qtdAcoesManuaisMoRealizadas" required
-                                   placeholder="Quantidade de ações" min="0"/>
+                                   placeholder="Quantidade de ações" min="0" readonly/>
                             <div
                                 [hidden]="!(editForm.controls.qtdAcoesManuaisMoRealizadas?.dirty && editForm.controls.qtdAcoesManuaisMoRealizadas?.invalid)">
                                 <small class="form-text text-danger"
@@ -1788,7 +1788,7 @@
                             <input type="number" class="form-control" name="qtdManuaisMmsRealizadas"
                                    id="field_qtdManuaisMmsRealizadas"
                                    [(ngModel)]="indicadorProducao.qtdManuaisMmsRealizadas" required
-                                   placeholder="Quantidade de manuais" min="0"/>
+                                   placeholder="Quantidade de manuais" min="0" readonly/>
                             <div
                                 [hidden]="!(editForm.controls.qtdManuaisMmsRealizadas?.dirty && editForm.controls.qtdManuaisMmsRealizadas?.invalid)">
                                 <small class="form-text text-danger"
@@ -1810,7 +1810,7 @@
                             <input type="number" class="form-control" name="qtdManuaisCmpRealizadas"
                                    id="field_qtdManuaisCmpRealizadas"
                                    [(ngModel)]="indicadorProducao.qtdManuaisCmpRealizadas" required
-                                   placeholder="Quantidade de manuais" min="0"/>
+                                   placeholder="Quantidade de manuais" min="0" readonly/>
                             <div
                                 [hidden]="!(editForm.controls.qtdManuaisCmpRealizadas?.dirty && editForm.controls.qtdManuaisCmpRealizadas?.invalid)">
                                 <small class="form-text text-danger"
