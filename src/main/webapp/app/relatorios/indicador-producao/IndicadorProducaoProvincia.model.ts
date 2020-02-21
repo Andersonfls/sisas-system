@@ -1,17 +1,24 @@
 
+import {Provincia} from '../../entities/provincia/provincia.model';
+
 export class IndicadorProducaoProvincia {
     constructor(
-        public nomeProvincia?: string,
-        public numeroSistemas?: number,
-        public funcionamAgua?: number,
-        public naoFuncionamAgua?: number,
-        public funcionamAguaPerc?: number,
-        public naoFuncionamAguaPerc?: number,
-        public numeroChafarizes?: number,
-        public funcionamChafariz?: number,
-        public naoFuncionamChafariz?: number,
-        public funcionamChafarizPerc?: number,
-        public naoFuncionamChafarizPerc?: number
+        public provincia?: Provincia,
+        public ano?: string,
+        public nomeCampo ?: string,
+        public unidade ?: string,
+        public janeiro ?: number,
+        public fevereiro ?: number,
+        public marco ?: number,
+        public abril ?: number,
+        public maio ?: number,
+        public junho ?: number,
+        public julho ?: number,
+        public agosto ?: number,
+        public setembro ?: number,
+        public outubro ?: number,
+        public novembro ?: number,
+        public dezembro ?: number,
     ) {
     }
 }

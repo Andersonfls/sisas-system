@@ -37,7 +37,7 @@ export class RelatoriosService {
         return this.http.get<FuncAguaChafarizes[]>(this.resourceUrl + '/provincias/relatorio-agua-chafarizes', {params: options, observe: 'response'});
     }
 
-    buscaDadosIndicadorProducaoProvincia(req?: any): Observable<HttpResponse<IndicadorProducaoProvincia[]>> {
+    buscaNomeCampos(req?: any): Observable<HttpResponse<IndicadorProducaoProvincia[]>> {
         const options = createRequestOption(req);
         return this.http.get<IndicadorProducaoProvincia[]>(this.resourceUrl + '/provincias/relatorio-indicador-producao', {params: options, observe: 'response'});
     }

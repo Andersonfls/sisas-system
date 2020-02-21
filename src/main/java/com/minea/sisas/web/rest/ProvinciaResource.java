@@ -15,6 +15,7 @@ import com.minea.sisas.web.rest.util.HeaderUtil;
 import com.minea.sisas.web.rest.util.PaginationUtil;
 import com.minea.sisas.service.ProvinciaQueryService;
 import io.github.jhipster.web.util.ResponseUtil;
+import org.checkerframework.checker.units.qual.Time;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -50,7 +51,7 @@ public class ProvinciaResource {
     private final ProvinciaRepository provinciaRepository;
 
     private final MunicipioRepository municipioRepository;
-    
+
     private final ComunaRepository comunaRepository;
 
     public ProvinciaResource(ProvinciaService provinciaService, ProvinciaQueryService provinciaQueryService, ProvinciaRepository provinciaRepository,
@@ -237,6 +238,14 @@ public class ProvinciaResource {
         log.debug("REST request to get Provincia : {}", id);
         ProvinciaDTO provinciaDTO = provinciaService.findOne(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(provinciaDTO));
+    }
+
+    @GetMapping("/provincias/relatorio-indicador-producao/{ano}")
+    @Timed
+    public ResponseEntity<List <IndicadorProducaoProvinciaDTO>> getNomeCampos(@PathVariable String ano) {
+        log.debug("REST request to get Ano : {}", ano);
+        List<IndicadorProducaoProvinciaDTO> indicadorProducaoProvinciaDTO = provinciaService.getNomeCampo(ano);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(IndicadorProducaoProvinciaDTO));
     }
 
     /**

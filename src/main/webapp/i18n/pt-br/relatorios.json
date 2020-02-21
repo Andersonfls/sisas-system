@@ -9,13 +9,16 @@
             "tratamento-sistemas-agua":"Tratamento de Sistemas de Água",
             "benef-agua-fonte-superficial-tecnica":"Beneficiários de Água por Fonte Superficial e Opcao Técnica",
             "benef-agua-fonte-subterranea-mecanica":"Beneficiários de Água por Fonte Subterranea e Bomba Mecanica",
-            "benef-agua-subterranea-tp-bomba":"Beneficiários de Água por Fonte Subterranea e Tipo Bomba"
+            "benef-agua-subterranea-tp-bomba":"Beneficiários de Água por Fonte Subterranea e Tipo Bomba",
+            "indicador-producao-provincia":"Indicador de Produção"
         },
         "home": {
             "obras": "Obras",
             "reservas": "Reservas",
             "emprestimos": "Emprétimos",
-            "users": "Usuários"
+            "users": "Usuários",
+            "ano": "Ano",
+            "provincia": "Província"
         }
     }
 }

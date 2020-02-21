@@ -13,13 +13,9 @@ import org.mapstruct.*;
 public interface IndicadorProducaoMapper extends EntityMapper<IndicadorProducaoDTO, IndicadorProducao> {
 
     @Mapping(source = "situacao", target = "situacao")
-    @Mapping(source = "sistemaAgua", target = "sistemaAgua")
-    @Mapping(source = "comuna", target = "comuna")
     IndicadorProducaoDTO toDto(IndicadorProducao indicadorProducao);
 
     @Mapping(source = "situacao", target = "situacao")
-    @Mapping(source = "sistemaAgua", target = "sistemaAgua")
-    @Mapping(source = "comuna", target = "comuna")
     IndicadorProducao toEntity(IndicadorProducaoDTO indicadorProducaoDTO);
 
     default IndicadorProducao fromId(Long id) {

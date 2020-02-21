@@ -1,7 +1,9 @@
 package com.minea.sisas.service;
 
+import com.minea.sisas.domain.IndicadorProducaoProvincia;
 import com.minea.sisas.domain.Provincia;
 import com.minea.sisas.repository.ProvinciaRepository;
+import com.minea.sisas.service.dto.IndicadorProducaoProvinciaDTO;
 import com.minea.sisas.service.dto.ProvinciaDTO;
 import com.minea.sisas.service.mapper.ProvinciaMapper;
 import org.slf4j.Logger;
@@ -10,6 +12,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Objects;
 
 
 /**
@@ -67,6 +71,15 @@ public class ProvinciaService {
         log.debug("Request to get Provincia : {}", id);
         Provincia provincia = provinciaRepository.findOne(id);
         return provinciaMapper.toDto(provincia);
+    }
+
+    @Transactional(readOnly = true)
+    public IndicadorProducaoProvinciaDTO getNomeCampo(String ano) {
+        log.debug("Request to get Ano : {}", ano);
+        IndicadorProducaoProvinciaDTO indicadorProducaoProvinciaDTO = provinciaRepository.getNomeCampo(ano);
+        if(Objects.nonNull(ano)) {
+            indicadorProducaoProvinciaDTO.setNomeCampo();
+        }
     }
 
     /**
