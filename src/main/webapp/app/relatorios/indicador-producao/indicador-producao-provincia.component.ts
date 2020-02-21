@@ -58,9 +58,8 @@ export class IndicadorProducaoProvinciaComponent implements OnInit {
         this.relatorioService.buscaNomeCampos().subscribe(
             (res: HttpResponse<IndicadorProducaoProvincia[]>) => {
                 this.indicadorProducaoProvincias = res.body;
-            }
-        )
-
+            },
+            (res: HttpErrorResponse) => this.onError(res.message));
     }
 
     public captureScreen(elementId) {
