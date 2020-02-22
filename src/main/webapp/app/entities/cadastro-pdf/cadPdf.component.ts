@@ -5,7 +5,6 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 
 import { CadPdfService } from './cadPdf.service';
 import {ITEMS_PER_PAGE, Principal} from '../../shared';
-import {ItemAssinatura} from './item-assinatura.model';
 import {ArquivosPortal} from './cadPdf.model';
 
 @Component({
@@ -26,7 +25,6 @@ export class CadPdfComponent implements OnInit, OnDestroy {
     reverse: any;
     totalItems: number;
     esconderFiltros: boolean;
-    nomePesquisa: string;
 
     valorInicial: number;
     valorAtualiza: number;
@@ -51,22 +49,6 @@ export class CadPdfComponent implements OnInit, OnDestroy {
         this.valorAtual = 8;
     }
 
-    getProdutos() {
-        this.bannerService.query(
-            {
-                page: this.page - 1,
-                size: this.itemsPerPage,
-                sort: this.sort(),
-                titulo: this.nomePesquisa
-            }
-        ).subscribe(
-            (retornados: HttpResponse<ArquivosPortal[]>) => {
-                this.produtosFilt = retornados.body;
-                this.validaResult();
-            }
-        );
-    }
-
     loadAll() {
         this.bannerService.query({
             page: this.page,
@@ -80,11 +62,6 @@ export class CadPdfComponent implements OnInit, OnDestroy {
 
             }, (res: HttpErrorResponse) => this.onError(res.message)
         );
-
-        this.produtos = new Array();
-        const prod = new ArquivosPortal();
-        prod.descricao = 'Produto Teste';
-        this.produtos.push(prod);
     }
 
     validaResult() {

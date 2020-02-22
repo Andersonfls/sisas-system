@@ -13,6 +13,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -74,12 +76,14 @@ public class ProvinciaService {
     }
 
     @Transactional(readOnly = true)
-    public IndicadorProducaoProvinciaDTO getNomeCampo(String ano) {
+    public List<IndicadorProducaoProvinciaDTO> getNomeCampo(String ano) {
         log.debug("Request to get Ano : {}", ano);
-        IndicadorProducaoProvinciaDTO indicadorProducaoProvinciaDTO = provinciaRepository.getNomeCampo(ano);
-        if(Objects.nonNull(ano)) {
-            indicadorProducaoProvinciaDTO.setNomeCampo();
-        }
+//        IndicadorProducaoProvinciaDTO indicadorProducaoProvinciaDTO = provinciaRepository.getNomeCampo(ano);
+//        if(Objects.nonNull(ano)) {
+//            indicadorProducaoProvinciaDTO.setNomeCampo();
+//        }
+
+        return new ArrayList<>();
     }
 
     /**

@@ -77,6 +77,9 @@ public class ProgramasProjectos implements Serializable {
     @Column(name = "associado_inquerito")
     private String associadoInquerito;
 
+    @Column(name = "status")
+    private Boolean status;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -262,7 +265,19 @@ public class ProgramasProjectos implements Serializable {
     public void setAssociadoInquerito(String associadoInquerito) {
         this.associadoInquerito = associadoInquerito;
     }
-// jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+
+    public void setMunicipio(Municipio municipio) {
+        this.municipio = municipio;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
     public boolean equals(Object o) {

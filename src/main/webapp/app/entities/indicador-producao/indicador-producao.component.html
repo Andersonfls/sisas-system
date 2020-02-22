@@ -22,88 +22,7 @@
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="dtLancamento"><span jhiTranslate="sisasApp.indicadorProducao.dtLancamento">Dt Lancamento</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="provincia"><span jhiTranslate="sisasApp.indicadorProducao.provincia">Província</span> <span class="fa fa-sort"></span></th>
-            <!--<th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="idUsuario"><span jhiTranslate="sisasApp.indicadorProducao.idUsuario">Id Usuario</span> <span class="fa fa-sort"></span></th>-->
             <th jhiSortBy="dtUltimaAlteracao"><span jhiTranslate="sisasApp.indicadorProducao.dtUltimaAlteracao">Dt Ultima Alteracao</span> <span class="fa fa-sort"></span></th>
-            <!--<th jhiSortBy="qtdPopulacaoCobertaInfraestrutura"><span jhiTranslate="sisasApp.indicadorProducao.qtdPopulacaoCobertaInfraestrutura">Qtd Populacao Coberta Infraestrutura</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdFontanariosChafarisesOperacionais"><span jhiTranslate="sisasApp.indicadorProducao.qtdFontanariosChafarisesOperacionais">Qtd Fontanarios Chafarises Operacionais</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdMediaHorasDistribuicaoDiaria"><span jhiTranslate="sisasApp.indicadorProducao.qtdMediaHorasDistribuicaoDiaria">Qtd Media Horas Distribuicao Diaria</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdMediaHorasParagem"><span jhiTranslate="sisasApp.indicadorProducao.qtdMediaHorasParagem">Qtd Media Horas Paragem</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdMediaHorasInterrupcaoFaltaEnergia"><span jhiTranslate="sisasApp.indicadorProducao.qtdMediaHorasInterrupcaoFaltaEnergia">Qtd Media Horas Interrupcao Falta Energia</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdVolumeAguaCaptada"><span jhiTranslate="sisasApp.indicadorProducao.qtdVolumeAguaCaptada">Qtd Volume Agua Captada</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdVolumeAguaTratada"><span jhiTranslate="sisasApp.indicadorProducao.qtdVolumeAguaTratada">Qtd Volume Agua Tratada</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdVolumeAguaDistribuida"><span jhiTranslate="sisasApp.indicadorProducao.qtdVolumeAguaDistribuida">Qtd Volume Agua Distribuida</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdConsumoEnergia"><span jhiTranslate="sisasApp.indicadorProducao.qtdConsumoEnergia">Qtd Consumo Energia</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdConsumoCombustivel"><span jhiTranslate="sisasApp.indicadorProducao.qtdConsumoCombustivel">Qtd Consumo Combustivel</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdConsumoHipocloritroCalcio"><span jhiTranslate="sisasApp.indicadorProducao.qtdConsumoHipocloritroCalcio">Qtd Consumo Hipocloritro Calcio</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdConsumoSulfatoAluminio"><span jhiTranslate="sisasApp.indicadorProducao.qtdConsumoSulfatoAluminio">Qtd Consumo Sulfato Aluminio</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdConsumoHidroxidoCalcio"><span jhiTranslate="sisasApp.indicadorProducao.qtdConsumoHidroxidoCalcio">Qtd Consumo Hidroxido Calcio</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdReparoCaptacaoEtas"><span jhiTranslate="sisasApp.indicadorProducao.qtdReparoCaptacaoEtas">Qtd Reparo Captacao Etas</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdReparoAdutoras"><span jhiTranslate="sisasApp.indicadorProducao.qtdReparoAdutoras">Qtd Reparo Adutoras</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdReparoRedeDistribuicao"><span jhiTranslate="sisasApp.indicadorProducao.qtdReparoRedeDistribuicao">Qtd Reparo Rede Distribuicao</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdReparoRamais"><span jhiTranslate="sisasApp.indicadorProducao.qtdReparoRamais">Qtd Reparo Ramais</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdManutencaoCurativa"><span jhiTranslate="sisasApp.indicadorProducao.qtdManutencaoCurativa">Qtd Manutencao Curativa</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdManutencaoPreventiva"><span jhiTranslate="sisasApp.indicadorProducao.qtdManutencaoPreventiva">Qtd Manutencao Preventiva</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdManutencaoVerificadoSolicitado"><span jhiTranslate="sisasApp.indicadorProducao.qtdManutencaoVerificadoSolicitado">Qtd Manutencao Verificado Solicitado</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdReservatorioLavado"><span jhiTranslate="sisasApp.indicadorProducao.qtdReservatorioLavado">Qtd Reservatorio Lavado</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdFuncionarios"><span jhiTranslate="sisasApp.indicadorProducao.qtdFuncionarios">Qtd Funcionarios</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdFuncionariosEfectivos"><span jhiTranslate="sisasApp.indicadorProducao.qtdFuncionariosEfectivos">Qtd Funcionarios Efectivos</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdFuncionariosContratados"><span jhiTranslate="sisasApp.indicadorProducao.qtdFuncionariosContratados">Qtd Funcionarios Contratados</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdFuncionariosOutrasEntidades"><span jhiTranslate="sisasApp.indicadorProducao.qtdFuncionariosOutrasEntidades">Qtd Funcionarios Outras Entidades</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdNovasLigacoesNovosContratos"><span jhiTranslate="sisasApp.indicadorProducao.qtdNovasLigacoesNovosContratos">Qtd Novas Ligacoes Novos Contratos</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdNovasLigacoesDomesticasNovosContratos"><span jhiTranslate="sisasApp.indicadorProducao.qtdNovasLigacoesDomesticasNovosContratos">Qtd Novas Ligacoes Domesticas Novos Contratos</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdLigacoesIlegaisRegularizadas"><span jhiTranslate="sisasApp.indicadorProducao.qtdLigacoesIlegaisRegularizadas">Qtd Ligacoes Ilegais Regularizadas</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdLigacoesFechadas"><span jhiTranslate="sisasApp.indicadorProducao.qtdLigacoesFechadas">Qtd Ligacoes Fechadas</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdCortes"><span jhiTranslate="sisasApp.indicadorProducao.qtdCortes">Qtd Cortes</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdReligacoes"><span jhiTranslate="sisasApp.indicadorProducao.qtdReligacoes">Qtd Religacoes</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdLigacoesActivas"><span jhiTranslate="sisasApp.indicadorProducao.qtdLigacoesActivas">Qtd Ligacoes Activas</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdLigacoesDomesticasActivas"><span jhiTranslate="sisasApp.indicadorProducao.qtdLigacoesDomesticasActivas">Qtd Ligacoes Domesticas Activas</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdLigacoesFacturadasBaseLeiturasReais"><span jhiTranslate="sisasApp.indicadorProducao.qtdLigacoesFacturadasBaseLeiturasReais">Qtd Ligacoes Facturadas Base Leituras Reais</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdLigacoesFacturadasBaseEstimativasAvenca"><span jhiTranslate="sisasApp.indicadorProducao.qtdLigacoesFacturadasBaseEstimativasAvenca">Qtd Ligacoes Facturadas Base Estimativas Avenca</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdVolumeAguaFacturada"><span jhiTranslate="sisasApp.indicadorProducao.qtdVolumeAguaFacturada">Qtd Volume Agua Facturada</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdVolumeTotalFacturadaLigacoesDomesticas"><span jhiTranslate="sisasApp.indicadorProducao.qtdVolumeTotalFacturadaLigacoesDomesticas">Qtd Volume Total Facturada Ligacoes Domesticas</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdVolumeFacturadoBaseLeituraReais"><span jhiTranslate="sisasApp.indicadorProducao.qtdVolumeFacturadoBaseLeituraReais">Qtd Volume Facturado Base Leitura Reais</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="vlrTotalFacturado"><span jhiTranslate="sisasApp.indicadorProducao.vlrTotalFacturado">Vlr Total Facturado</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="vlrFacturasCanceladasNotasCreditos"><span jhiTranslate="sisasApp.indicadorProducao.vlrFacturasCanceladasNotasCreditos">Vlr Facturas Canceladas Notas Creditos</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="vlrRealFacturado"><span jhiTranslate="sisasApp.indicadorProducao.vlrRealFacturado">Vlr Real Facturado</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="vlrTotalCobrado"><span jhiTranslate="sisasApp.indicadorProducao.vlrTotalCobrado">Vlr Total Cobrado</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdReclamacoes"><span jhiTranslate="sisasApp.indicadorProducao.qtdReclamacoes">Qtd Reclamacoes</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdReclamacoesRespondidasMenorIgualCincoDias"><span jhiTranslate="sisasApp.indicadorProducao.qtdReclamacoesRespondidasMenorIgualCincoDias">Qtd Reclamacoes Respondidas Menor Igual Cinco Dias</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdReclamacoesRespondidasMaisCincoMenosVinteDias"><span jhiTranslate="sisasApp.indicadorProducao.qtdReclamacoesRespondidasMaisCincoMenosVinteDias">Qtd Reclamacoes Respondidas Mais Cinco Menos Vinte Dias</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdReclamacoesRespondidasMaiorIgualVinteDias"><span jhiTranslate="sisasApp.indicadorProducao.qtdReclamacoesRespondidasMaiorIgualVinteDias">Qtd Reclamacoes Respondidas Maior Igual Vinte Dias</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="vlrCustoPessoal"><span jhiTranslate="sisasApp.indicadorProducao.vlrCustoPessoal">Vlr Custo Pessoal</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="vlrCustoFse"><span jhiTranslate="sisasApp.indicadorProducao.vlrCustoFse">Vlr Custo Fse</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="vlrCustoEnergia"><span jhiTranslate="sisasApp.indicadorProducao.vlrCustoEnergia">Vlr Custo Energia</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="vlrCustoManutencao"><span jhiTranslate="sisasApp.indicadorProducao.vlrCustoManutencao">Vlr Custo Manutencao</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="vlrCustoReagentes"><span jhiTranslate="sisasApp.indicadorProducao.vlrCustoReagentes">Vlr Custo Reagentes</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="vlrCustoDestinoFinalLamas"><span jhiTranslate="sisasApp.indicadorProducao.vlrCustoDestinoFinalLamas">Vlr Custo Destino Final Lamas</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="vlrCustoOperacionaisOpex"><span jhiTranslate="sisasApp.indicadorProducao.vlrCustoOperacionaisOpex">Vlr Custo Operacionais Opex</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="vlrCustoAmortizaAnualInvestOpCapex"><span jhiTranslate="sisasApp.indicadorProducao.vlrCustoAmortizaAnualInvestOpCapex">Vlr Custo Amortiza Anual Invest Op Capex</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="vlrCustoTotaisCapexOpex"><span jhiTranslate="sisasApp.indicadorProducao.vlrCustoTotaisCapexOpex">Vlr Custo Totais Capex Opex</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdCaptacoes"><span jhiTranslate="sisasApp.indicadorProducao.qtdCaptacoes">Qtd Captacoes</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdEtas"><span jhiTranslate="sisasApp.indicadorProducao.qtdEtas">Qtd Etas</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdReservatorios"><span jhiTranslate="sisasApp.indicadorProducao.qtdReservatorios">Qtd Reservatorios</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdEstacoesElevatorias"><span jhiTranslate="sisasApp.indicadorProducao.qtdEstacoesElevatorias">Qtd Estacoes Elevatorias</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdComprimentoAdutoras"><span jhiTranslate="sisasApp.indicadorProducao.qtdComprimentoAdutoras">Qtd Comprimento Adutoras</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdComprimentoRedes"><span jhiTranslate="sisasApp.indicadorProducao.qtdComprimentoRedes">Qtd Comprimento Redes</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdComprimentoRamais"><span jhiTranslate="sisasApp.indicadorProducao.qtdComprimentoRamais">Qtd Comprimento Ramais</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdAcoesFormacaoMoPlaneadas"><span jhiTranslate="sisasApp.indicadorProducao.qtdAcoesFormacaoMoPlaneadas">Qtd Acoes Formacao Mo Planeadas</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdAcoesFormacaoMmsPlaneadas"><span jhiTranslate="sisasApp.indicadorProducao.qtdAcoesFormacaoMmsPlaneadas">Qtd Acoes Formacao Mms Planeadas</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdAcoesFormacaoCmpPlaneadas"><span jhiTranslate="sisasApp.indicadorProducao.qtdAcoesFormacaoCmpPlaneadas">Qtd Acoes Formacao Cmp Planeadas</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdAcoesFormacaoSoftwareFornecidosPlanejadas"><span jhiTranslate="sisasApp.indicadorProducao.qtdAcoesFormacaoSoftwareFornecidosPlanejadas">Qtd Acoes Formacao Software Fornecidos Planejadas</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdAcoesFormacaoMoRealizadas"><span jhiTranslate="sisasApp.indicadorProducao.qtdAcoesFormacaoMoRealizadas">Qtd Acoes Formacao Mo Realizadas</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdAcoesFormacaoMmsRealizadas"><span jhiTranslate="sisasApp.indicadorProducao.qtdAcoesFormacaoMmsRealizadas">Qtd Acoes Formacao Mms Realizadas</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdAcoesFormacaoCmpRealizadas"><span jhiTranslate="sisasApp.indicadorProducao.qtdAcoesFormacaoCmpRealizadas">Qtd Acoes Formacao Cmp Realizadas</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdAcoesFormacaoSoftwareFornecidosRealizadas"><span jhiTranslate="sisasApp.indicadorProducao.qtdAcoesFormacaoSoftwareFornecidosRealizadas">Qtd Acoes Formacao Software Fornecidos Realizadas</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdAcoesFormacaoRealizadas"><span jhiTranslate="sisasApp.indicadorProducao.qtdAcoesFormacaoRealizadas">Qtd Acoes Formacao Realizadas</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdManuaisMoPrevistos"><span jhiTranslate="sisasApp.indicadorProducao.qtdManuaisMoPrevistos">Qtd Manuais Mo Previstos</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdManuaisMmsPrevistos"><span jhiTranslate="sisasApp.indicadorProducao.qtdManuaisMmsPrevistos">Qtd Manuais Mms Previstos</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdManuaisCmpPrevistos"><span jhiTranslate="sisasApp.indicadorProducao.qtdManuaisCmpPrevistos">Qtd Manuais Cmp Previstos</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdManuaisPrevistos"><span jhiTranslate="sisasApp.indicadorProducao.qtdManuaisPrevistos">Qtd Manuais Previstos</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdAcoesManuaisMoRealizadas"><span jhiTranslate="sisasApp.indicadorProducao.qtdAcoesManuaisMoRealizadas">Qtd Acoes Manuais Mo Realizadas</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdManuaisMmsRealizadas"><span jhiTranslate="sisasApp.indicadorProducao.qtdManuaisMmsRealizadas">Qtd Manuais Mms Realizadas</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdManuaisCmpRealizadas"><span jhiTranslate="sisasApp.indicadorProducao.qtdManuaisCmpRealizadas">Qtd Manuais Cmp Realizadas</span> <span class="fa fa-sort"></span></th>-->
-            <!--<th jhiSortBy="qtdManuaisRealizados"><span jhiTranslate="sisasApp.indicadorProducao.qtdManuaisRealizados">Qtd Manuais Realizados</span> <span class="fa fa-sort"></span></th>-->
             <th jhiSortBy="idSituacaoId"><span jhiTranslate="sisasApp.indicadorProducao.idSituacao">Id Situacao</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
@@ -116,88 +35,7 @@
                         <a [routerLink]="['../provincia', indicadorProducao.provincia  ]" >{{indicadorProducao.provincia.nmProvincia}}</a>
                     </div>
                 </td>
-                <!--<td><a [routerLink]="['../indicador-producao', indicadorProducao.id ]">{{indicadorProducao.id}}</a></td>-->
-                <!--<td>{{indicadorProducao.idUsuario}}</td>-->
                 <td>{{indicadorProducao.dtUltimaAlteracao | date:'dd/MM/yy'}}</td>
-                <!--<td>{{indicadorProducao.qtdPopulacaoCobertaInfraestrutura}}</td>-->
-                <!--<td>{{indicadorProducao.qtdFontanariosChafarisesOperacionais}}</td>-->
-                <!--<td>{{indicadorProducao.qtdMediaHorasDistribuicaoDiaria}}</td>-->
-                <!--<td>{{indicadorProducao.qtdMediaHorasParagem}}</td>-->
-                <!--<td>{{indicadorProducao.qtdMediaHorasInterrupcaoFaltaEnergia}}</td>-->
-                <!--<td>{{indicadorProducao.qtdVolumeAguaCaptada}}</td>-->
-                <!--<td>{{indicadorProducao.qtdVolumeAguaTratada}}</td>-->
-                <!--<td>{{indicadorProducao.qtdVolumeAguaDistribuida}}</td>-->
-                <!--<td>{{indicadorProducao.qtdConsumoEnergia}}</td>-->
-                <!--<td>{{indicadorProducao.qtdConsumoCombustivel}}</td>-->
-                <!--<td>{{indicadorProducao.qtdConsumoHipocloritroCalcio}}</td>-->
-                <!--<td>{{indicadorProducao.qtdConsumoSulfatoAluminio}}</td>-->
-                <!--<td>{{indicadorProducao.qtdConsumoHidroxidoCalcio}}</td>-->
-                <!--<td>{{indicadorProducao.qtdReparoCaptacaoEtas}}</td>-->
-                <!--<td>{{indicadorProducao.qtdReparoAdutoras}}</td>-->
-                <!--<td>{{indicadorProducao.qtdReparoRedeDistribuicao}}</td>-->
-                <!--<td>{{indicadorProducao.qtdReparoRamais}}</td>-->
-                <!--<td>{{indicadorProducao.qtdManutencaoCurativa}}</td>-->
-                <!--<td>{{indicadorProducao.qtdManutencaoPreventiva}}</td>-->
-                <!--<td>{{indicadorProducao.qtdManutencaoVerificadoSolicitado}}</td>-->
-                <!--<td>{{indicadorProducao.qtdReservatorioLavado}}</td>-->
-                <!--<td>{{indicadorProducao.qtdFuncionarios}}</td>-->
-                <!--<td>{{indicadorProducao.qtdFuncionariosEfectivos}}</td>-->
-                <!--<td>{{indicadorProducao.qtdFuncionariosContratados}}</td>-->
-                <!--<td>{{indicadorProducao.qtdFuncionariosOutrasEntidades}}</td>-->
-                <!--<td>{{indicadorProducao.qtdNovasLigacoesNovosContratos}}</td>-->
-                <!--<td>{{indicadorProducao.qtdNovasLigacoesDomesticasNovosContratos}}</td>-->
-                <!--<td>{{indicadorProducao.qtdLigacoesIlegaisRegularizadas}}</td>-->
-                <!--<td>{{indicadorProducao.qtdLigacoesFechadas}}</td>-->
-                <!--<td>{{indicadorProducao.qtdCortes}}</td>-->
-                <!--<td>{{indicadorProducao.qtdReligacoes}}</td>-->
-                <!--<td>{{indicadorProducao.qtdLigacoesActivas}}</td>-->
-                <!--<td>{{indicadorProducao.qtdLigacoesDomesticasActivas}}</td>-->
-                <!--<td>{{indicadorProducao.qtdLigacoesFacturadasBaseLeiturasReais}}</td>-->
-                <!--<td>{{indicadorProducao.qtdLigacoesFacturadasBaseEstimativasAvenca}}</td>-->
-                <!--<td>{{indicadorProducao.qtdVolumeAguaFacturada}}</td>-->
-                <!--<td>{{indicadorProducao.qtdVolumeTotalFacturadaLigacoesDomesticas}}</td>-->
-                <!--<td>{{indicadorProducao.qtdVolumeFacturadoBaseLeituraReais}}</td>-->
-                <!--<td>{{indicadorProducao.vlrTotalFacturado}}</td>-->
-                <!--<td>{{indicadorProducao.vlrFacturasCanceladasNotasCreditos}}</td>-->
-                <!--<td>{{indicadorProducao.vlrRealFacturado}}</td>-->
-                <!--<td>{{indicadorProducao.vlrTotalCobrado}}</td>-->
-                <!--<td>{{indicadorProducao.qtdReclamacoes}}</td>-->
-                <!--<td>{{indicadorProducao.qtdReclamacoesRespondidasMenorIgualCincoDias}}</td>-->
-                <!--<td>{{indicadorProducao.qtdReclamacoesRespondidasMaisCincoMenosVinteDias}}</td>-->
-                <!--<td>{{indicadorProducao.qtdReclamacoesRespondidasMaiorIgualVinteDias}}</td>-->
-                <!--<td>{{indicadorProducao.vlrCustoPessoal}}</td>-->
-                <!--<td>{{indicadorProducao.vlrCustoFse}}</td>-->
-                <!--<td>{{indicadorProducao.vlrCustoEnergia}}</td>-->
-                <!--<td>{{indicadorProducao.vlrCustoManutencao}}</td>-->
-                <!--<td>{{indicadorProducao.vlrCustoReagentes}}</td>-->
-                <!--<td>{{indicadorProducao.vlrCustoDestinoFinalLamas}}</td>-->
-                <!--<td>{{indicadorProducao.vlrCustoOperacionaisOpex}}</td>-->
-                <!--<td>{{indicadorProducao.vlrCustoAmortizaAnualInvestOpCapex}}</td>-->
-                <!--<td>{{indicadorProducao.vlrCustoTotaisCapexOpex}}</td>-->
-                <!--<td>{{indicadorProducao.qtdCaptacoes}}</td>-->
-                <!--<td>{{indicadorProducao.qtdEtas}}</td>-->
-                <!--<td>{{indicadorProducao.qtdReservatorios}}</td>-->
-                <!--<td>{{indicadorProducao.qtdEstacoesElevatorias}}</td>-->
-                <!--<td>{{indicadorProducao.qtdComprimentoAdutoras}}</td>-->
-                <!--<td>{{indicadorProducao.qtdComprimentoRedes}}</td>-->
-                <!--<td>{{indicadorProducao.qtdComprimentoRamais}}</td>-->
-                <!--<td>{{indicadorProducao.qtdAcoesFormacaoMoPlaneadas}}</td>-->
-                <!--<td>{{indicadorProducao.qtdAcoesFormacaoMmsPlaneadas}}</td>-->
-                <!--<td>{{indicadorProducao.qtdAcoesFormacaoCmpPlaneadas}}</td>-->
-                <!--<td>{{indicadorProducao.qtdAcoesFormacaoSoftwareFornecidosPlanejadas}}</td>-->
-                <!--<td>{{indicadorProducao.qtdAcoesFormacaoMoRealizadas}}</td>-->
-                <!--<td>{{indicadorProducao.qtdAcoesFormacaoMmsRealizadas}}</td>-->
-                <!--<td>{{indicadorProducao.qtdAcoesFormacaoCmpRealizadas}}</td>-->
-                <!--<td>{{indicadorProducao.qtdAcoesFormacaoSoftwareFornecidosRealizadas}}</td>-->
-                <!--<td>{{indicadorProducao.qtdAcoesFormacaoRealizadas}}</td>-->
-                <!--<td>{{indicadorProducao.qtdManuaisMoPrevistos}}</td>-->
-                <!--<td>{{indicadorProducao.qtdManuaisMmsPrevistos}}</td>-->
-                <!--<td>{{indicadorProducao.qtdManuaisCmpPrevistos}}</td>-->
-                <!--<td>{{indicadorProducao.qtdManuaisPrevistos}}</td>-->
-                <!--<td>{{indicadorProducao.qtdAcoesManuaisMoRealizadas}}</td>-->
-                <!--<td>{{indicadorProducao.qtdManuaisMmsRealizadas}}</td>-->
-                <!--<td>{{indicadorProducao.qtdManuaisCmpRealizadas}}</td>-->
-                <!--<td>{{indicadorProducao.qtdManuaisRealizados}}</td>-->
                 <td>
                     <div *ngIf="indicadorProducao.situacao">
                         <a [routerLink]="['../situacao', indicadorProducao.situacao]" >{{indicadorProducao.situacao.nmSituacao}}</a>
@@ -210,14 +48,6 @@
                                 class="btn btn-info btn-sm">
                             <span class="fa fa-eye"></span>
                         </button>
-                        <!--<button type="submit"-->
-                                <!--[routerLink]="['/', { outlets: { popup: 'indicador-producao/'+ indicadorProducao.id + '/edit'} }]"-->
-                                <!--replaceUrl="true"-->
-                                <!--queryParamsHandling="merge"-->
-                                <!--class="btn btn-primary btn-sm">-->
-                            <!--<span class="fa fa-pencil"></span>-->
-                        <!--</button>-->
-
                         <button type="submit"
                                 [routerLink]="['../indicador-producao-edit', indicadorProducao.id ]"
                                 class="btn btn-primary btn-sm">

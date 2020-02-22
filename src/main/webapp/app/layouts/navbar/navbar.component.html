@@ -25,6 +25,10 @@
                     <i class="fa fa-cog fa-lg"></i> Configurações
                 </a>
 
+                <a href="{{manual.uri}}" target='_blank' *ngIf="manual" class="dropdown-item" routerLinkActive="active" style="color: #f2f4f7">
+                    <i class="fa fa-book fa-lg"></i> Manual do Usuário
+                </a>
+
                 <a class="dropdown-item" routerLink="password" routerLinkActive="active" style="color: #f2f4f7">
                     <i class="fa fa-user fa-lg"></i> Alterar senha
                 </a>

@@ -5,7 +5,6 @@ import { SisasSharedModule } from '../../shared';
 import {
     CadPdfService,
     CadPdfComponent,
-    CadPdfDetailComponent,
     ProdutoPopupComponent,
     ProdutoDeletePopupComponent,
     cadPdfRoute,
@@ -27,7 +26,6 @@ const ENTITY_STATES = [
     ],
     declarations: [
         CadPdfComponent,
-        CadPdfDetailComponent,
         CadPdfDialogComponent,
         CadPdfDeleteDialogComponent,
         ProdutoPopupComponent,

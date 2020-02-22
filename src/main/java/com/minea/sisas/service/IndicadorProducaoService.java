@@ -7,6 +7,7 @@ import com.minea.sisas.repository.IndicadorProducaoRepository;
 import com.minea.sisas.repository.UserRepository;
 import com.minea.sisas.service.dto.IndicadorProducaoDTO;
 import com.minea.sisas.service.dto.IndicadorProducaoLogDTO;
+import com.minea.sisas.service.dto.ProgramasProjectosDTO;
 import com.minea.sisas.service.dto.SistemaAguaLogDTO;
 import com.minea.sisas.service.mapper.IndicadorProducaoMapper;
 import org.slf4j.Logger;
@@ -107,9 +108,15 @@ public class IndicadorProducaoService {
      * @return the list of entities
      */
     @Transactional(readOnly = true)
-    public Page<IndicadorProducaoDTO> findAll(Pageable pageable) {
-        log.debug("Request to get all IndicadorProducaos");
-        return indicadorProducaoRepository.findAll(pageable)
+//    public Page<IndicadorProducaoDTO> findAll(Pageable pageable) {
+//        log.debug("Request to get all IndicadorProducaos");
+//        return indicadorProducaoRepository.findAll(pageable)
+//            .map(indicadorProducaoMapper::toDto);
+//    }
+
+    public Page<IndicadorProducaoDTO> findAllStatusTrue(Pageable pageable) {
+        log.debug("Request to get all ProgramasProjectos");
+        return indicadorProducaoRepository.findAllByStatusIsTrue(pageable)
             .map(indicadorProducaoMapper::toDto);
     }
 
@@ -122,7 +129,7 @@ public class IndicadorProducaoService {
     @Transactional(readOnly = true)
     public IndicadorProducaoDTO findOne(Long id) {
         log.debug("Request to get IndicadorProducao : {}", id);
-        IndicadorProducao indicadorProducao = indicadorProducaoRepository.findOne(id);
+        IndicadorProducao indicadorProducao = indicadorProducaoRepository.findByIdAndStatusIsTrue(id);
         return indicadorProducaoMapper.toDto(indicadorProducao);
     }
 

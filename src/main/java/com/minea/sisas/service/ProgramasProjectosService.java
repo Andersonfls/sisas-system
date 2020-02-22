@@ -22,6 +22,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -109,6 +110,11 @@ public class ProgramasProjectosService {
             .map(programasProjectosMapper::toDto);
     }
 
+    public Page<ProgramasProjectosDTO> findAllStatusTrue(Pageable pageable) {
+        log.debug("Request to get all ProgramasProjectos");
+        return programasProjectosRepository.findAllByStatusIsTrue(pageable)
+            .map(programasProjectosMapper::toDto);
+    }
     /**
      * Get one programasProjectos by id.
      *

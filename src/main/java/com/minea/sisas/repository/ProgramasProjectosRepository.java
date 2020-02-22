@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import org.springframework.data.jpa.repository.*;
 
+import java.util.List;
+
 
 /**
  * Spring Data JPA repository for the ProgramasProjectos entity.
@@ -15,7 +17,7 @@ import org.springframework.data.jpa.repository.*;
 @SuppressWarnings("unused")
 @Repository
 public interface ProgramasProjectosRepository extends JpaRepository<ProgramasProjectos, Long>, JpaSpecificationExecutor<ProgramasProjectos> {
-    @Query("select p from ProgramasProjectos p where LOWER(p.nmDescricaoProjeto) like LOWER(concat(:nome,'%'))" +
+    @Query("select p from ProgramasProjectos p where p.status = true AND LOWER(p.nmDescricaoProjeto) like LOWER(concat(:nome,'%'))" +
         "or LOWER(p.nmDesignacaoProjeto) like LOWER(CONCAT(:nome,'%'))" +
         "or LOWER(p.usuario) like LOWER(CONCAT(:nome,'%'))"+
         "or LOWER(p.idSaaAssociado) like LOWER(CONCAT(:nome,'%'))"+
@@ -23,4 +25,6 @@ public interface ProgramasProjectosRepository extends JpaRepository<ProgramasPro
         "or LOWER(p.especialidades) like LOWER(CONCAT(:nome,'%'))"+
         "or LOWER(p.comuna) like LOWER(CONCAT(:nome,'%'))")
     Page buscarPorNome(@Param("nome") String nome, Pageable pageable);
+
+    Page<ProgramasProjectos> findAllByStatusIsTrue(Pageable pageable);
 }

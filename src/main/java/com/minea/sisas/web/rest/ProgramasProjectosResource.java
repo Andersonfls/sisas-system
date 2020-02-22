@@ -5,6 +5,7 @@ import com.minea.sisas.domain.ProgramasProjectos;
 import com.minea.sisas.repository.ProgramasProjectosRepository;
 import com.minea.sisas.service.ProgramasProjectosService;
 import com.minea.sisas.service.dto.ComunaDTO;
+import com.minea.sisas.service.dto.ProgramasProjectosLogDTO;
 import com.minea.sisas.web.rest.errors.BadRequestAlertException;
 import com.minea.sisas.web.rest.util.HeaderUtil;
 import com.minea.sisas.web.rest.util.PaginationUtil;
@@ -26,6 +27,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -65,6 +67,7 @@ public class ProgramasProjectosResource {
         if (programasProjectos.getId() != null) {
             throw new BadRequestAlertException("A new programasProjectos cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        programasProjectos.setStatus(true);
         ProgramasProjectos result = programasProjectosService.save(programasProjectos);
         return ResponseEntity.created(new URI("/api/programas-projectos/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
@@ -87,6 +90,7 @@ public class ProgramasProjectosResource {
         if (programasProjectos.getId() == null) {
             return createProgramasProjectos(programasProjectos);
         }
+        programasProjectos.setStatus(true);
         ProgramasProjectos result = programasProjectosService.save(programasProjectos);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, programasProjectos.getId().toString()))
@@ -102,9 +106,15 @@ public class ProgramasProjectosResource {
      */
     @GetMapping("/programas-projectos")
     @Timed
-    public ResponseEntity<List<ProgramasProjectos>> getAllProgramasProjectos(ProgramasProjectosCriteria criteria, Pageable pageable) {
-        log.debug("REST request to get ProgramasProjectos by criteria: {}", criteria);
-        Page<ProgramasProjectos> page = programasProjectosQueryService.findByCriteria(criteria, pageable);
+//    public ResponseEntity<List<ProgramasProjectos>> getAllProgramasProjectos(ProgramasProjectosCriteria criteria, Pageable pageable) {
+//        log.debug("REST request to get ProgramasProjectos by criteria: {}", criteria);
+//        Page<ProgramasProjectos> page = programasProjectosQueryService.findByCriteria(criteria, pageable);
+//        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/programas-projectos");
+//        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+//    }
+    public ResponseEntity<List<ProgramasProjectosDTO>> getAllProgramasProjectos(Pageable pageable) {
+        log.debug("REST request to get ProgramasProjectos by criteria: {}");
+        Page<ProgramasProjectosDTO> page = programasProjectosService.findAllStatusTrue(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/programas-projectos");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
@@ -143,7 +153,12 @@ public class ProgramasProjectosResource {
     @Timed
     public ResponseEntity<Void> deleteProgramasProjectos(@PathVariable Long id) {
         log.debug("REST request to delete ProgramasProjectos : {}", id);
-        programasProjectosService.delete(id);
+        ProgramasProjectos programasProjectos = this.programasProjectosRepository.findOne(id);
+        if(Objects.nonNull(programasProjectos)) {
+            programasProjectos.setStatus(false);
+            this.programasProjectosRepository.save(programasProjectos);
+        }
+        // programasProjectosService.delete(id); regra mudada para exlusao lógica
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 }

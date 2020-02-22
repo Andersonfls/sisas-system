@@ -30,8 +30,6 @@ export class CadPdfPopupService {
             if (id) {
                 this.produtoService.find(id)
                     .subscribe((produtoResponse: HttpResponse<ArquivosPortal>) => {
-                        console.log('ENTROU METODO FIND PRODUFOT SERVICE');
-                        console.log(produtoResponse.body);
                         const produto: ArquivosPortal = produtoResponse.body;
                         this.ngbModalRef = this.produtoModalRef(component, produto);
                         resolve(this.ngbModalRef);

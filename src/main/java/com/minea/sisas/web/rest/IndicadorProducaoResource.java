@@ -27,6 +27,7 @@ import java.net.URISyntaxException;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -66,6 +67,7 @@ public class IndicadorProducaoResource {
         if (indicadorProducaoDTO.getId() != null) {
             throw new BadRequestAlertException("A new indicadorProducao cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        indicadorProducaoDTO.setStatus(true);
         indicadorProducaoDTO.setDtUltimaAlteracao(LocalDate.now());
         IndicadorProducaoDTO result = indicadorProducaoService.save(indicadorProducaoDTO);
         return ResponseEntity.created(new URI("/api/indicador-producaos/" + result.getId()))
@@ -89,6 +91,7 @@ public class IndicadorProducaoResource {
         if (indicadorProducaoDTO.getId() == null) {
             return createIndicadorProducao(indicadorProducaoDTO);
         }
+        indicadorProducaoDTO.setStatus(true);
         IndicadorProducaoDTO result = indicadorProducaoService.save(indicadorProducaoDTO);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, indicadorProducaoDTO.getId().toString()))
@@ -104,9 +107,9 @@ public class IndicadorProducaoResource {
      */
     @GetMapping("/indicador-producaos")
     @Timed
-    public ResponseEntity<List<IndicadorProducao>> getAllIndicadorProducaos(IndicadorProducaoCriteria criteria, Pageable pageable) {
+    public ResponseEntity<List<IndicadorProducaoDTO>> getAllIndicadorProducaos(IndicadorProducaoCriteria criteria, Pageable pageable) {
         log.debug("REST request to get IndicadorProducaos by criteria: {}", criteria);
-        Page<IndicadorProducao> page = indicadorProducaoQueryService.findAll(pageable);
+        Page<IndicadorProducaoDTO> page = indicadorProducaoService.findAllStatusTrue(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/indicador-producaos");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
@@ -152,7 +155,12 @@ public class IndicadorProducaoResource {
     @Timed
     public ResponseEntity<Void> deleteIndicadorProducao(@PathVariable Long id) {
         log.debug("REST request to delete IndicadorProducao : {}", id);
-        indicadorProducaoService.delete(id);
+        IndicadorProducao indicadorProducao = this.indicadorProducaoRepository.findByIdAndStatusIsTrue(id);
+        if (Objects.nonNull(indicadorProducao)) {
+            indicadorProducao.setStatus(false);
+            this.indicadorProducaoRepository.save(indicadorProducao);
+        }
+        // indicadorProducaoService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 }

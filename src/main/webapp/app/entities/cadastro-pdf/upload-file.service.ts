@@ -4,10 +4,14 @@ import {Observable} from 'rxjs/Observable';
 import { SERVER_API_URL } from '../../app.constants';
 import {createRequestOption} from '../../shared';
 import {FileResponseModel} from './uploadFileResponse.model';
+import {EntityResponseType} from './cadPdf.service';
+import {ArquivosPortal} from './cadPdf.model';
+import {Banner} from '../banner';
 
 @Injectable()
 export class UploadFileService {
      private resourceUrl =  SERVER_API_URL + 'api/arquivos';
+    private resourceUrl2 =  SERVER_API_URL + 'api/arquivos-portals/projectos';
 
     constructor(private http: HttpClient) {}
 
@@ -24,6 +28,10 @@ export class UploadFileService {
         return this.http.request(req);
     }
 
+    getArquivoPortalFromId(id: number): Observable<EntityResponseType> {
+        return this.http.get<ArquivosPortal>(`${this.resourceUrl2}/${id}`, { observe: 'response'});
+    }
+
     getFiles(): Observable<any> {
         return this.http.get(this.resourceUrl + '/getallfiles');
     }
@@ -31,11 +39,6 @@ export class UploadFileService {
     query(req?: any): Observable<HttpResponse<FileResponseModel[]>> {
         const options = createRequestOption(req);
         return this.http.get<FileResponseModel[]>(this.resourceUrl + '/getallfiles', { params: options, observe: 'response' })
-            .map((res: HttpResponse<FileResponseModel[]>) => this.convertArrayResponse(res));
-    }
-
-    findAllFilesByProceesId(id: number): Observable<HttpResponse<FileResponseModel[]>> {
-        return this.http.get<FileResponseModel[]>(`${this.resourceUrl + '/getallfiles'}/${id}`, { observe: 'response'})
             .map((res: HttpResponse<FileResponseModel[]>) => this.convertArrayResponse(res));
     }
 
@@ -59,4 +62,5 @@ export class UploadFileService {
         const copy: FileResponseModel = Object.assign({}, file);
         return copy;
     }
+
 }

@@ -370,6 +370,9 @@ public class IndicadorProducao implements Serializable {
     @JoinColumn(name = "id_municipio")
     private Municipio municipio;
 
+    @Column(name = "status")
+    private Boolean status;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -1494,6 +1497,14 @@ public class IndicadorProducao implements Serializable {
 
     public Municipio getMunicipio() {
         return municipio;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 
     public void setMunicipio(Municipio municipio) {

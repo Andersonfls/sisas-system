@@ -6,6 +6,10 @@ import { ProfileService } from '../profiles/profile.service';
 import { JhiLanguageHelper, Principal, LoginModalService, LoginService } from '../../shared';
 import { VERSION } from '../../app.constants';
 import { User } from '../../shared/user/user.model';
+import {ArquivosPortal, CadPdfService} from '../../entities/cadastro-pdf';
+import {UploadFileService} from '../../entities/cadastro-pdf/upload-file.service';
+import {HttpResponse} from '@angular/common/http';
+import {SobreDna} from '../../entities/sobre-dna';
 
 @Component({
     selector: 'jhi-navbar',
@@ -23,6 +27,7 @@ export class NavbarComponent implements OnInit {
     modalRef: NgbModalRef;
     version: string;
     user: User;
+    manual: ArquivosPortal;
 
     constructor(
         private loginService: LoginService,
@@ -31,7 +36,8 @@ export class NavbarComponent implements OnInit {
         private principal: Principal,
         private loginModalService: LoginModalService,
         private profileService: ProfileService,
-        private router: Router
+        private router: Router,
+        private arquivosService: CadPdfService,
     ) {
         this.version = VERSION ? 'v' + VERSION : '';
         this.isNavbarCollapsed = true;
@@ -50,7 +56,14 @@ export class NavbarComponent implements OnInit {
             this.inProduction = profileInfo.inProduction;
             this.swaggerEnabled = profileInfo.swaggerEnabled;
         });
+
+        this.arquivosService.find(1).subscribe(
+            (res: HttpResponse<ArquivosPortal>) => {
+                this.manual = res.body;
+            }
+        );
     }
+
     changeLanguage(languageKey: string) {
       this.languageService.changeLanguage(languageKey);
     }

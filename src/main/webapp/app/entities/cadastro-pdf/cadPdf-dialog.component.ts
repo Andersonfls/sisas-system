@@ -23,7 +23,6 @@ export class CadPdfDialogComponent implements OnInit {
     selectedFile: File;
     @ViewChild('inputFile')
     inputFile: any;
-    tipos: string[];
 
     constructor(
         public activeModal: NgbActiveModal,
@@ -37,28 +36,12 @@ export class CadPdfDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
-        this.montarListaTipos();
-    }
-
-    montarListaTipos() {
-        this.tipos = new Array();
-        this.tipos.push('PUBLICACÕES PÁGINA INICIAL');
-        this.tipos.push('PUBLICACÕES');
-        this.tipos.push('PROJECTOS');
-        this.tipos.push('OUTROS');
     }
 
     byteSize(field) {
         return this.dataUtils.byteSize(field);
     }
 
-    setFileData(event, entity, field, isImage) {
-        this.dataUtils.setFileData(event, entity, field, isImage);
-    }
-
-    clearInputImage(field: string, fieldContentType: string, idInput: string) {
-        this.dataUtils.clearInputImage(this.arquivo, this.elementRef, field, fieldContentType, idInput);
-    }
     clear() {
         this.activeModal.dismiss('cancel');
     }
@@ -66,6 +49,12 @@ export class CadPdfDialogComponent implements OnInit {
     save() {
         this.isSaving = true;
         console.log(this.arquivo);
+
+        if (this.arquivo.tipoArquivo === 4) { // MANUAL DO SISTEMA
+            this.arquivo.id = 1;
+            console.log('Entrou no metodo de manual');
+            console.log(this.arquivo);
+        }
         if (this.arquivo.id !== undefined) {
             console.log('UPDATE');
             this.subscribeToSaveResponse(
@@ -80,7 +69,8 @@ export class CadPdfDialogComponent implements OnInit {
     private subscribeToSaveResponse(result: Observable<HttpResponse<ArquivosPortal>>) {
         result.subscribe((res: HttpResponse<ArquivosPortal>) => {
                 this.onSaveSuccess(res.body);
-                this.upload(res.body.id);
+                console.log('Resultado da Inclusao/Atualizacao');
+                console.log(this.arquivo);
             }
             , (res: HttpErrorResponse) => this.onSaveError());
     }

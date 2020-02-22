@@ -3,7 +3,6 @@ import {ActivatedRoute} from '@angular/router';
 import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
 
 import {Observable} from 'rxjs/Observable';
-import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {JhiAlertService, JhiEventManager} from 'ng-jhipster';
 
 import {IndicadorProducao} from './indicador-producao.model';
@@ -60,6 +59,11 @@ export class IndicadorProducaoDialogComponent implements OnInit {
         this.situacaoService.query()
             .subscribe((res: HttpResponse<Situacao[]>) => {
                 this.situacaos = res.body;
+            }, (res: HttpErrorResponse) => this.onError(res.message));
+
+        this.provinciaService.query().subscribe(
+            (res: HttpResponse<Provincia[]>) => {
+                this.provincias = res.body;
             }, (res: HttpErrorResponse) => this.onError(res.message));
 
          this.findLastIndicador();

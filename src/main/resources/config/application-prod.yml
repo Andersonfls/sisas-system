@@ -126,7 +126,7 @@ jhipster:
                 token-validity-in-seconds-for-remember-me: 2592000
     mail: # specific JHipster mail property, for standard properties see MailProperties
         from: Sisas@localhost
-        base-url: http://127.0.0.1:8080 # Modify according to your server's URL
+        base-url: http://www.dna.minea.gov.ao:8080 # Modify according to your server's URL
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
         jmx.enabled: true
         graphite:

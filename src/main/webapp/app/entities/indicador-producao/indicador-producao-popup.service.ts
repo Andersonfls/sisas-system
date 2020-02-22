@@ -29,21 +29,9 @@ export class IndicadorProducaoPopupService {
                 this.indicadorProducaoService.find(id)
                     .subscribe((indicadorProducaoResponse: HttpResponse<IndicadorProducao>) => {
                         const indicadorProducao: IndicadorProducao = indicadorProducaoResponse.body;
-                        if (indicadorProducao.dtLancamento) {
-                            indicadorProducao.dtLancamento = {
-                                year: indicadorProducao.dtLancamento.getFullYear(),
-                                month: indicadorProducao.dtLancamento.getMonth() + 1,
-                                day: indicadorProducao.dtLancamento.getDate()
-                            };
-                        }
-                        if (indicadorProducao.dtUltimaAlteracao) {
-                            indicadorProducao.dtUltimaAlteracao = {
-                                year: indicadorProducao.dtUltimaAlteracao.getFullYear(),
-                                month: indicadorProducao.dtUltimaAlteracao.getMonth() + 1,
-                                day: indicadorProducao.dtUltimaAlteracao.getDate()
-                            };
-                        }
                         this.ngbModalRef = this.indicadorProducaoModalRef(component, indicadorProducao);
+                        console.log('ENTROU SERVIDO POP UP PARA BUSCA DE INDICADO');
+                        console.log(indicadorProducao);
                         resolve(this.ngbModalRef);
                     });
             } else {

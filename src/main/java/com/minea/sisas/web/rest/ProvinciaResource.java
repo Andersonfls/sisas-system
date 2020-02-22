@@ -244,8 +244,8 @@ public class ProvinciaResource {
     @Timed
     public ResponseEntity<List <IndicadorProducaoProvinciaDTO>> getNomeCampos(@PathVariable String ano) {
         log.debug("REST request to get Ano : {}", ano);
-        List<IndicadorProducaoProvinciaDTO> indicadorProducaoProvinciaDTO = provinciaService.getNomeCampo(ano);
-        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(IndicadorProducaoProvinciaDTO));
+        List<IndicadorProducaoProvinciaDTO> listaDto = provinciaService.getNomeCampo(ano);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(listaDto));
     }
 
     /**

@@ -6,6 +6,7 @@ import com.minea.sisas.service.dto.ArquivosPortalDTO;
 import com.minea.sisas.web.rest.util.TipoArquivoEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,9 @@ public class ArquivosPortalService {
     private final Logger log = LoggerFactory.getLogger(ArquivosPortalService.class);
 
     private final ArquivosPortalRepository arquivoPortalRepository;
+
+    @Autowired
+    StorageService  storageService;
 
     public ArquivosPortalService(ArquivosPortalRepository arquivoPortalRepository) {
         this.arquivoPortalRepository = arquivoPortalRepository;
@@ -114,5 +118,6 @@ public class ArquivosPortalService {
     public void delete(Long id) {
         log.debug("Request to delete ArquivoPortal : {}", id);
         arquivoPortalRepository.delete(id);
+        this.storageService.deleteFile(String.valueOf(id)+".pdf");
     }
 }
