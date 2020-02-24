@@ -14,7 +14,7 @@ import {ArquivosPortal} from './cadPdf.model';
 })
 export class CadPdfDeleteDialogComponent {
 
-    produto: ArquivosPortal;
+    arquivo: ArquivosPortal;
 
     constructor(
         private bannerService: CadPdfService,

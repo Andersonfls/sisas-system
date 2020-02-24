@@ -16,12 +16,12 @@ public class SectorAguaDadosDTO implements Serializable {
     private Integer sistemasFuncionam;
     private Long populacaoTotal;
     private Long beneficiarios;
-    private Integer cobertura;
+    private Float cobertura;
 
     public SectorAguaDadosDTO() {
     }
 
-    public SectorAguaDadosDTO(String nomeProvincia, Integer municipios, Integer comunas, Integer sistemasFuncionam, Long populacaoTotal, Long beneficiarios, Integer cobertura) {
+    public SectorAguaDadosDTO(String nomeProvincia, Integer municipios, Integer comunas, Integer sistemasFuncionam, Long populacaoTotal, Long beneficiarios, Float cobertura) {
         this.nomeProvincia = nomeProvincia;
         this.municipios = municipios;
         this.comunas = comunas;
@@ -79,11 +79,11 @@ public class SectorAguaDadosDTO implements Serializable {
         this.beneficiarios = beneficiarios;
     }
 
-    public Integer getCobertura() {
+    public Float getCobertura() {
         return cobertura;
     }
 
-    public void setCobertura(Integer cobertura) {
+    public void setCobertura(Float cobertura) {
         this.cobertura = cobertura;
     }
 

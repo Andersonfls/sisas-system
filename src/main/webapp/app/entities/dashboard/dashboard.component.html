@@ -1,9 +1,6 @@
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <h2>
     <span class="fa fa-bar-chart" style="margin-left: 5%"></span><span style="margin-left: 1%">Dashboard</span>
-    <!--<button class="btn btn-primary float-right jh-create-entity redondo" [routerLink]="['/', { outlets: { popup: ['provincia-new'] } }]">-->
-        <!--<span class="fa fa-plus"></span>-->
-    <!--</button>-->
 </h2>
 <br/>
 <jhi-alert></jhi-alert>
@@ -17,40 +14,35 @@
                 <th><span>%</span></th>
                 <th><span>Nº de Habitantes</span></th>
                 <th><span>%</span></th>
-                <th><span>Nº de Habitantes</span></th>
-                <th><span>%</span></th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let provincia of listaTabela ;trackBy: trackId">
+            <tr *ngFor="let provincia of listaTabela">
                 <td>{{provincia.ambito}}</td>
-                <td>{{provincia.populacao | number }}</td>
-                <td>{{provincia.populacaoPercentage}}%</td>
-                <td>{{provincia.habitantes | number }}</td>
-                <td>{{provincia.habitantesPercent}}%</td>
-                <td>{{provincia.habitantesSaneamento  | number }}</td>
-                <td>{{provincia.habitantesSaneamentoPer}}%</td>
+                <td>{{provincia.populacao}}</td>
+                <td>{{provincia.populacaoPercentage | number:'1.2-2'}}%</td>
+                <td>{{provincia.habitantes  }}</td>
+                <td>{{provincia.habitantesPercent | number:'1.2-2'}}%</td>
             </tr>
             </tbody>
         </table>
     </div>
     <br/>
     <div class="row">
-        <div class="col-md-6 teste-acima">
-            <div class="card card-dash">
+        <div class="card col-md-12 teste-acima">
+            <div class="card-body">
                 <div id="chartContainer" style="height: 370px; width: 98%; margin-left: 3%"></div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="card card-dash">
-                <div id="chartContainerSan" style="height: 370px; width: 98%; margin-left: 3%"></div>
-            </div>
-        </div>
+        <!--<div class="col-md-6">-->
+            <!--<div class="card card-dash">-->
+                <!--<div id="chartContainerSan" style="height: 370px; width: 98%; margin-left: 3%"></div>-->
+            <!--</div>-->
+        <!--</div>-->
     </div>
-    <br/>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card card-dash">
+    <div class="row" style="margin-top: 2%">
+        <div class="card col-md-12">
+            <div class="card-body">
                 <div id="chartAguaSaneamento" style="height: 370px; width: 98%; margin-left: 3%"></div>
             </div>
         </div>
@@ -74,7 +66,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let provincia of listaTabela ;trackBy: trackId">
+            <tr *ngFor="let provincia of listaTabela ">
                 <td>{{provincia.provincia}}</td>
                 <td>{{provincia.municipios | number }}</td>
                 <td>{{provincia.comunas}}%</td>

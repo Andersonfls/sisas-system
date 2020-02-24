@@ -66,7 +66,8 @@
             "subItem1": "Dashboard",
             "subItem2": "Gerir Indicadores de Produção",
             "subItem3": "Relatórios",
-            "subItem4": "Log Indicadores de Produção"
+            "subItem4": "Log Indicadores de Produção",
+            "subItem5": "Inserir por Arquivo"
         },
         "item9": {
             "title": "Segurança",

@@ -12,19 +12,19 @@ public class FuncAguaChafarizesDadosDTO implements Serializable {
     private Integer numeroSistemas;
     private Integer funcionamAgua;
     private Integer naoFuncionamAgua;
-    private Integer funcionamAguaPerc;
-    private Integer naoFuncionamAguaPerc;
+    private Float funcionamAguaPerc;
+    private Float naoFuncionamAguaPerc;
     private Integer numeroChafarizes;
 
     private Integer funcionamChafariz;
     private Integer naoFuncionamChafariz;
-    private Integer funcionamChafarizPerc;
-    private Integer naoFuncionamChafarizPerc;
+    private Float funcionamChafarizPerc;
+    private Float naoFuncionamChafarizPerc;
 
     public FuncAguaChafarizesDadosDTO() {
     }
 
-    public FuncAguaChafarizesDadosDTO(String nomeProvincia, Integer numeroSistemas, Integer funcionamAgua, Integer naoFuncionamAgua, Integer funcionamAguaPerc, Integer naoFuncionamAguaPerc, Integer numeroChafarizes, Integer funcionamChafariz, Integer naoFuncionamChafariz, Integer funcionamChafarizPerc, Integer naoFuncionamChafarizPerc) {
+    public FuncAguaChafarizesDadosDTO(String nomeProvincia, Integer numeroSistemas, Integer funcionamAgua, Integer naoFuncionamAgua, Float funcionamAguaPerc, Float naoFuncionamAguaPerc, Integer numeroChafarizes, Integer funcionamChafariz, Integer naoFuncionamChafariz, Float funcionamChafarizPerc, Float naoFuncionamChafarizPerc) {
         this.nomeProvincia = nomeProvincia;
         this.numeroSistemas = numeroSistemas;
         this.funcionamAgua = funcionamAgua;
@@ -70,19 +70,19 @@ public class FuncAguaChafarizesDadosDTO implements Serializable {
         this.naoFuncionamAgua = naoFuncionamAgua;
     }
 
-    public Integer getFuncionamAguaPerc() {
+    public Float getFuncionamAguaPerc() {
         return funcionamAguaPerc;
     }
 
-    public void setFuncionamAguaPerc(Integer funcionamAguaPerc) {
+    public void setFuncionamAguaPerc(Float funcionamAguaPerc) {
         this.funcionamAguaPerc = funcionamAguaPerc;
     }
 
-    public Integer getNaoFuncionamAguaPerc() {
+    public Float getNaoFuncionamAguaPerc() {
         return naoFuncionamAguaPerc;
     }
 
-    public void setNaoFuncionamAguaPerc(Integer naoFuncionamAguaPerc) {
+    public void setNaoFuncionamAguaPerc(Float naoFuncionamAguaPerc) {
         this.naoFuncionamAguaPerc = naoFuncionamAguaPerc;
     }
 
@@ -110,19 +110,19 @@ public class FuncAguaChafarizesDadosDTO implements Serializable {
         this.naoFuncionamChafariz = naoFuncionamChafariz;
     }
 
-    public Integer getFuncionamChafarizPerc() {
+    public Float getFuncionamChafarizPerc() {
         return funcionamChafarizPerc;
     }
 
-    public void setFuncionamChafarizPerc(Integer funcionamChafarizPerc) {
+    public void setFuncionamChafarizPerc(Float funcionamChafarizPerc) {
         this.funcionamChafarizPerc = funcionamChafarizPerc;
     }
 
-    public Integer getNaoFuncionamChafarizPerc() {
+    public Float getNaoFuncionamChafarizPerc() {
         return naoFuncionamChafarizPerc;
     }
 
-    public void setNaoFuncionamChafarizPerc(Integer naoFuncionamChafarizPerc) {
+    public void setNaoFuncionamChafarizPerc(Float naoFuncionamChafarizPerc) {
         this.naoFuncionamChafarizPerc = naoFuncionamChafarizPerc;
     }
 }

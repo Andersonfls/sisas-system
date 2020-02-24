@@ -13,14 +13,14 @@
 
     <div class="row" style="margin-left: 5px">
         <br/>
-        <div class="col-md-4 col-sm-4" style="margin-bottom: 20px; max-width: 25%; margin-left: 5px" *ngFor="let prod of produtos ;trackBy: trackId">
+        <div class="col-md-4 col-sm-4" style="margin-bottom: 20px; max-width: 25%; margin-left: 5px" *ngFor="let p of produtos ">
             <div style="text-align: center">
-                <button type="submit" [routerLink]="['/', { outlets: { popup: 'pdf/'+ prod.id + '/edit'} }]"
+                <button type="submit" [routerLink]="['/', { outlets: { popup: 'pdf/'+ p.id + '/edit'} }]"
                         replaceUrl="true" queryParamsHandling="merge"
                         class="btn btn-primary btn-sm">
                     <span class="fa fa-pencil"></span>
                 </button>
-                <button type="submit" [routerLink]="['/', { outlets: { popup: 'pdf/'+ prod.id + '/delete'} }]"
+                <button type="submit" [routerLink]="['/', { outlets: { popup: 'pdf/'+ p.id + '/delete'} }]"
                         replaceUrl="true" queryParamsHandling="merge"
                         class="btn btn-danger btn-sm">
                     <span class="fa fa-remove"></span>
@@ -31,7 +31,7 @@
                 <img src="pdf-icon.png" style="height: 200px; width: 200px" class="thumbnail" alt="capa"/>
             </div>
 
-            <h4 class="title" style="height: 35px; font-weight: 200; text-align: center">{{ prod.descricao }}</h4>
+            <h4 class="title" style="height: 35px; font-weight: 200; text-align: center">{{ p.descricao }}</h4>
         </div>
     </div>
     <div *ngIf="valorAtual < produtosFilt?.length">

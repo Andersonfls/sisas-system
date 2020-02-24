@@ -95,19 +95,19 @@
                     <td>{{provincia.nascente}}</td>
                     <td>{{provincia.dieselSistemas}}</td>
                     <td>{{provincia.dieselPopulacao}}</td>
-                    <td>{{provincia.dieselPerc}}%</td>
+                    <td>{{provincia.dieselPerc | number:'1.2-2'}}%</td>
                     <td>{{provincia.solarSistemas}}</td>
                     <td>{{provincia.solarPopulacao}}</td>
-                    <td>{{provincia.solarPerc}}%</td>
+                    <td>{{provincia.solarPerc | number:'1.2-2'}}%</td>
                     <td>{{provincia.eolicaSistemas}}</td>
                     <td>{{provincia.eolicaPopulacao}}</td>
-                    <td>{{provincia.eolicaPerc}}%</td>
+                    <td>{{provincia.eolicaPerc | number:'1.2-2'}}%</td>
                     <td>{{provincia.electricaSistemas}}</td>
                     <td>{{provincia.electricaPopulacao}}</td>
-                    <td>{{provincia.electricaPerc}}%</td>
+                    <td>{{provincia.electricaPerc | number:'1.2-2'}}%</td>
                     <td>{{provincia.outroSistemas}}</td>
                     <td>{{provincia.outroPopulacao}}</td>
-                    <td>{{provincia.outroPerc}}%</td>
+                    <td>{{provincia.outroPerc | number:'1.2-2'}}%</td>
                 </tr>
                 </tbody>
                 <tfoot>
@@ -121,23 +121,23 @@
 
                     <td> <span style="font-weight: bold">{{totalDieselSistemas | number }} </span></td>
                     <td> <span style="font-weight: bold">{{totalDieselPopulacao | number}} </span></td>
-                    <td> <span style="font-weight: bold">{{totalDieselPerc | number}}%</span></td>
+                    <td> <span style="font-weight: bold">{{totalDieselPerc | number:'1.2-2'}}%</span></td>
 
                     <td> <span style="font-weight: bold">{{totalSolarSistemas | number }}</span></td>
                     <td> <span style="font-weight: bold">{{totalSolarPopulacao | number}}</span></td>
-                    <td> <span style="font-weight: bold">{{totalSolarPerc | number}}%</span></td>
+                    <td> <span style="font-weight: bold">{{totalSolarPerc | number:'1.2-2'}}%</span></td>
 
                     <td> <span style="font-weight: bold">{{totalEolicaSistemas | number }}</span></td>
                     <td> <span style="font-weight: bold">{{totalEolicaPopulacao | number}}</span></td>
-                    <td> <span style="font-weight: bold">{{totalEolicaPerc | number}}%</span></td>
+                    <td> <span style="font-weight: bold">{{totalEolicaPerc | number:'1.2-2'}}%</span></td>
 
                     <td> <span style="font-weight: bold">{{totalElectraSistemas | number }} </span></td>
                     <td> <span style="font-weight: bold">{{totalElectraPopulacao | number}} </span></td>
-                    <td> <span style="font-weight: bold">{{totalElectraPerc | number}}%</span></td>
+                    <td> <span style="font-weight: bold">{{totalElectraPerc | number:'1.2-2'}}%</span></td>
 
                     <td> <span style="font-weight: bold">{{totalOutroSistemas | number }}</span></td>
                     <td> <span style="font-weight: bold">{{totalOutroPopulacao | number}}</span></td>
-                    <td> <span style="font-weight: bold">{{totalOutroPerc | number}}%</span></td>
+                    <td> <span style="font-weight: bold">{{totalOutroPerc | number:'1.2-2'}}%</span></td>
                 </tr>
                 </tfoot>
             </table>

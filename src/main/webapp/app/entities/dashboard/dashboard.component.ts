@@ -88,7 +88,7 @@ export class DashboardComponent implements OnInit {
                 });
 
                 this.iniciarChart();
-                this.iniciarChartSaneamento();
+               // this.iniciarChartSaneamento();
                 this.iniciarChartAguaSaneamento();
             });
     }

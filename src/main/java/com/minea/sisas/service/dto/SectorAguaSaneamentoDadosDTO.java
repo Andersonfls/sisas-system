@@ -11,15 +11,15 @@ public class SectorAguaSaneamentoDadosDTO implements Serializable {
     private String ambito;
     private Long populacao;
     private Long habitantes;
-    private Integer habitantesPercent;
+    private Float habitantesPercent;
     private Long habitantesSaneamento;
-    private Integer habitantesSaneamentoPer;
-    private Integer populacaoPercentage;
+    private Float habitantesSaneamentoPer;
+    private Float populacaoPercentage;
 
     public SectorAguaSaneamentoDadosDTO() {
     }
 
-    public SectorAguaSaneamentoDadosDTO(String ambito, Long populacao, Long habitantes, Integer habitantesPercent, Long habitantesSaneamento, Integer habitantesSaneamentoPer, Integer populacaoPercentage) {
+    public SectorAguaSaneamentoDadosDTO(String ambito, Long populacao, Long habitantes, Float habitantesPercent, Long habitantesSaneamento, Float habitantesSaneamentoPer, Float populacaoPercentage) {
         this.ambito = ambito;
         this.populacao = populacao;
         this.habitantes = habitantes;
@@ -53,11 +53,11 @@ public class SectorAguaSaneamentoDadosDTO implements Serializable {
         this.habitantes = habitantes;
     }
 
-    public Integer getHabitantesPercent() {
+    public Float getHabitantesPercent() {
         return habitantesPercent;
     }
 
-    public void setHabitantesPercent(Integer habitantesPercent) {
+    public void setHabitantesPercent(Float habitantesPercent) {
         this.habitantesPercent = habitantesPercent;
     }
 
@@ -69,19 +69,19 @@ public class SectorAguaSaneamentoDadosDTO implements Serializable {
         this.habitantesSaneamento = habitantesSaneamento;
     }
 
-    public Integer getHabitantesSaneamentoPer() {
+    public Float getHabitantesSaneamentoPer() {
         return habitantesSaneamentoPer;
     }
 
-    public void setHabitantesSaneamentoPer(Integer habitantesSaneamentoPer) {
+    public void setHabitantesSaneamentoPer(Float habitantesSaneamentoPer) {
         this.habitantesSaneamentoPer = habitantesSaneamentoPer;
     }
 
-    public Integer getPopulacaoPercentage() {
+    public Float getPopulacaoPercentage() {
         return populacaoPercentage;
     }
 
-    public void setPopulacaoPercentage(Integer populacaoPercentage) {
+    public void setPopulacaoPercentage(Float populacaoPercentage) {
         this.populacaoPercentage = populacaoPercentage;
     }
 }

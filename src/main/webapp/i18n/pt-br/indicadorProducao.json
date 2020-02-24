@@ -6,7 +6,8 @@
                 "title": "Indicadores de Produção",
                 "createLabel": "Criar novo Indicadores de Produção",
                 "createOrEditLabel": "Criar ou editar Indicadores de Produção",
-                "editLabel": "Editar Indicadores de Produção"
+                "editLabel": "Editar Indicadores de Produção",
+                "arq": "Indicadores de Produção"
             },
             "created": "Novo Indicador de Producao foi criado com sucesso",
             "updated": "Indicador de Producao foi atualizado com sucesso",
@@ -103,7 +104,8 @@
             "idSituacao": "Situação",
             "provincia": "Província",
             "comuna": "Comuna",
-            "qtdReservatorios": "Qtd Reservatórios"
+            "qtdReservatorios": "Qtd Reservatórios",
+            "arquivo": "Arquivo"
         }, "indicadorProducaoDTO" : {
             "idIndicadorProducao": "Id Indicador Produção",
             "idUsuario": "Id Usuário",

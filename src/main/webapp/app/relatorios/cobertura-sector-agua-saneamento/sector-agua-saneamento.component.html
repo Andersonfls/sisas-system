@@ -70,7 +70,7 @@
                     <tr *ngFor="let provincia of listaTabela ;trackBy: trackId">
                         <td>{{provincia.ambito}}</td>
                         <td>{{provincia.populacao | number }}</td>
-                        <td>{{provincia.populacaoPercentage}}%</td>
+                        <td>{{provincia.populacaoPercentage | number:'1.2-2'}}%</td>
                         <td>{{provincia.habitantes | number }}</td>
                         <!--<td>{{provincia.habitantesPercent}}%</td>-->
                         <!--<td>{{provincia.habitantesSaneamento  | number }}</td>-->
@@ -138,11 +138,11 @@
                     <tr *ngFor="let provincia of listaTabela ;trackBy: trackId">
                         <td>{{provincia.provincia}}</td>
                         <td>{{provincia.municipios | number }}</td>
-                        <td>{{provincia.comunas}}%</td>
+                        <td>{{provincia.comunas | number:'1.2-2'}}%</td>
                         <td>{{provincia.populacaoTotal | number }}</td>
                         <td>{{provincia.populacaoBeneficiadaAgua}}%</td>
                         <!--<td>{{provincia.populacaoBeneficiadaSaneamento  | number }}</td>-->
-                        <td>{{provincia.coberturaAgua}}%</td>
+                        <td>{{provincia.coberturaAgua | number:'1.2-2'}}%</td>
                         <!--<td>{{provincia.coberturaSaneamento}}%</td>-->
                     </tr>
                     </tbody>
@@ -208,7 +208,7 @@
                         <td>{{provincia.populacaoTotal | number }}</td>
                         <td>{{provincia.populacaoBeneficiadaAgua}}%</td>
                         <!--<td>{{provincia.populacaoBeneficiadaSaneamento  | number }}</td>-->
-                        <td>{{provincia.coberturaAgua}}%</td>
+                        <td>{{provincia.coberturaAgua | number:'1.2-2'}}%</td>
                         <!--<td>{{provincia.coberturaSaneamento}}%</td>-->
                     </tr>
                     </tbody>
@@ -267,11 +267,11 @@
                     <tr *ngFor="let provincia of listaTabela ;trackBy: trackId">
                         <td>{{provincia.provincia}}</td>
                         <td>{{provincia.nomeMunicipio | number }}</td>
-                        <td>{{provincia.nomeComuna}}%</td>
+                        <td>{{provincia.nomeComuna | number:'1.2-2'}}%</td>
                         <td>{{provincia.populacaoTotal | number }}</td>
                         <td>{{provincia.populacaoBeneficiadaAgua}}%</td>
                         <!--<td>{{// provincia.populacaoBeneficiadaSaneamento  | number }}</td>-->
-                        <td>{{provincia.coberturaAgua}}%</td>
+                        <td>{{provincia.coberturaAgua | number:'1.2-2'}}%</td>
                         <!--<td>{{provincia.coberturaSaneamento}}%</td>-->
                     </tr>
                     </tbody>
