@@ -18,7 +18,13 @@ export class SectorAguaSaneamentoDados {
         public populacaoBeneficiadaAgua?: number,
         public populacaoBeneficiadaSaneamento?: number,
         public coberturaAgua?: number,
-        public coberturaSaneamento?: number
+        public coberturaSaneamento?: number,
+
+        public municipio?: string,
+        public comuna?: string,
+        public numeroMunicipios?: number,
+        public numeroComunas?: number,
+        public numeroProvincias?: number
     ) {
     }
 }

@@ -23,7 +23,8 @@
             "subItem5": "Dashboard",
             "subItem6": "Relatórios",
             "subItem7": "Tabelas e Gráficos",
-            "subItem8": "Mapas"
+            "subItem8": "Mapas",
+            "subItem9": "Inserir por Arquivo"
         },
         "item4": {
             "title": "Programas/Projectos",

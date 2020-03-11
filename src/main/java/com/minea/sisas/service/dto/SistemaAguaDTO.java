@@ -118,13 +118,10 @@ public class SistemaAguaDTO implements Serializable {
     @Size(max = 50)
     private String nmTpTratamentoAgua;
 
-    @Size(max = 50)
     private String nmTpTratamentoPadraoUtilizado;
 
-    @Size(max = 50)
     private String nmTpTratamentoBasicoUtilizado;
 
-    @Size(max = 50)
     private String existeAvariaSistemaTratamento;
 
     @Size(max = 50)
@@ -171,6 +168,8 @@ public class SistemaAguaDTO implements Serializable {
     private String nmEquipamentosComAvariaObs;
     private String nmModeloBombaManualUtilizadaObs;
     private String motivoAvariaSistema;
+
+    private Boolean status;
 
     public String getMotivoAvariaSistema() {
         return motivoAvariaSistema;
@@ -706,6 +705,14 @@ public class SistemaAguaDTO implements Serializable {
             return false;
         }
         return Objects.equals(getId(), sistemaAguaDTO.getId());
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 
     @Override

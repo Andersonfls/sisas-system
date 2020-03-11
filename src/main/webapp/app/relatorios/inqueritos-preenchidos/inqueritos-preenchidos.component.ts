@@ -32,8 +32,6 @@ export class InqueritosPreenchidosComponent implements OnInit {
     chart: any;
     listaAguas: DadosRelatorio[];
     listaAguasNao: DadosRelatorio[];
-    listaSaneamentoSim: DadosRelatorio[];
-    listaSaneamentoNao: DadosRelatorio[];
     listaTotalInqueritos: DadosRelatorio[];
     tipoRelatorio: string;
 
@@ -42,9 +40,6 @@ export class InqueritosPreenchidosComponent implements OnInit {
     totalAguasSim = 0;
     totalAguasNao = 0;
     totalAguas = 0;
-    totalSaneamentoSim = 0;
-    totalSaneamentoNao = 0;
-    totalSaneamento = 0;
     totalInqueritosSector = 0;
     total = 0;
     totalGeral = 0;
@@ -64,16 +59,12 @@ export class InqueritosPreenchidosComponent implements OnInit {
         this.principal.identity().then((userIdentity) => {
             this.user = userIdentity;
         });
-        this.tipoRelatorio = null;
+        this.buscaDadosTabelaModelo();
     }
 
     validaTipoRelatorio() {
-        if (this.tipoRelatorio === 'Modelo 1') {
-            this.buscaDadosTabelaModelo1();
-        }
-
         if (this.tipoRelatorio === 'Modelo 2') {
-            this.buscaDadosTabelaModelo2();
+            this.buscaDadosTabelaModelo();
         }
     }
 
@@ -98,112 +89,50 @@ export class InqueritosPreenchidosComponent implements OnInit {
         TableUtil.exportToExcel(tabeId);
     }
 
-    buscaDadosTabelaModelo1() {
+    buscaDadosTabelaModelo() {
         this.relatorioService.buscaDadosInqueritosPreenchidos().subscribe(
-            (res: HttpResponse<InqueritosPreenchidosDados[]>) => {
-                this.listaTabela = res.body;
-                this.listaAguas = Array<any>();
-                this.listaAguasNao = Array<any>();
-                this.listaSaneamentoSim = Array<any>();
-                this.listaSaneamentoNao = Array<any>();
-
-                this.listaTabela.forEach((p) => {
-                    let item: DadosRelatorio = new DadosRelatorio();
-                    item.label = p.nomeProvincia;
-                    item.y = p.aguasSim;
-                    this.listaAguas.push(item);
-
-                    item = new DadosRelatorio();
-                    item.label = p.nomeProvincia;
-                    item.y = p.saneamentoSim;
-                    this.listaSaneamentoSim.push(item);
-
-                    this.totalMunicipios += p.municipios;
-                    this.totalComuna += p.comunas;
-                    this.totalAguas += p.totalAguas;
-                    this.totalAguasSim += p.aguasSim;
-                    this.totalAguasNao += p.aguasNao;
-                    this.totalSaneamento += p.totalSaneamento;
-                    this.totalSaneamentoSim += p.saneamentoSim;
-                    this.totalSaneamentoNao += p.saneamentoNao;
-                    this.totalInqueritosSector += p.totalInqueritoSector;
-                });
-
-                this.listaTabela.forEach((p) => {
-                    let item: DadosRelatorio = new DadosRelatorio();
-                    item.label = p.nomeProvincia;
-                    item.y = p.aguasNao;
-                    this.listaAguasNao.push(item);
-
-                    item = new DadosRelatorio();
-                    item.label = p.nomeProvincia;
-                    item.y = p.saneamentoNao;
-
-                    this.listaSaneamentoNao.push(item);
-                });
-                console.log(this.listaSaneamentoSim);
-                console.log(this.listaSaneamentoNao);
-
-                this.iniciarChartAgua();
-                this.iniciarChartSaneamento();
-            });
-    }
-
-    buscaDadosTabelaModelo2() {
-        this.relatorioService.buscaDadosInqueritosPreenchidos2().subscribe(
             (res: HttpResponse<InqueritosPreenchidosDados[]>) => {
                 this.listaTabela = res.body;
                 this.listaTotalInqueritos = Array<any>();
 
+                this.listaAguas = Array<any>();
+                this.listaAguasNao = Array<any>();
+
+                this.listaTabela.forEach((p) => {
+                    const item: DadosRelatorio = new DadosRelatorio();
+                    item.label = p.nomeProvincia;
+                    item.y = p.aguasSim;
+                    this.listaAguas.push(item);
+                });
+
+                this.listaTabela.forEach((p) => {
+                    const item: DadosRelatorio = new DadosRelatorio();
+                    item.label = p.nomeProvincia;
+                    item.y = p.aguasNao;
+                    this.listaAguasNao.push(item);
+                });
+
                 this.listaTabela.forEach((p) => {
                     this.totalMunicipios += p.municipios;
                     this.totalComuna += p.comunas;
                     this.totalAguas += p.totalAguas;
                     this.totalAguasSim += p.aguasSim;
                     this.totalAguasNao += p.aguasNao;
-                    this.totalSaneamento += p.totalSaneamento;
-                    this.totalSaneamentoSim += p.saneamentoSim;
-                    this.totalSaneamentoNao += p.saneamentoNao;
                     this.totalInqueritosSector += p.totalInqueritoSector;
                 });
 
                 let item: DadosRelatorio = new DadosRelatorio();
                 item.label = 'Águas SIM';
-               // item.y = this.totalAguasSim;
-                item.y = 4186;
+                item.y = this.totalAguasSim;
                 this.listaTotalInqueritos.push(item);
 
                 item = new DadosRelatorio();
                 item.label = 'Águas NAO';
-                // item.y = this.totalAguasNao;
-                item.y = 13127;
+                item.y = this.totalAguasNao;
                 this.listaTotalInqueritos.push(item);
 
-               //  item = new DadosRelatorio();
-               //  item.label = 'Saneamento';
-               //  // item.y = this.totalSaneamento;
-               //  item.y = 844;
-               //  this.listaTotalInqueritos.push(item);
-               //
-               //  item = new DadosRelatorio();
-               //  item.label = 'Escolas';
-               //  // item.y = this.totalEscola;
-               //  item.y = 3275;
-               //  this.listaTotalInqueritos.push(item);
-               //
-               //  item = new DadosRelatorio();
-               //  item.label = 'Hospitais';
-               // // item.y = this.totalHospitais;
-               //  item.y = 1457;
-               //  this.listaTotalInqueritos.push(item);
-
-                // item = new DadosRelatorio();
-                // item.label = 'Famílias';
-                // // item.y = this.totalFamilias;
-                // item.y = 9197;
-                // this.listaTotalInqueritos.push(item);
-
                 this.iniciarChartTotalInqueritos();
+                this.iniciarChartAgua();
             });
     }
 
@@ -254,46 +183,6 @@ export class InqueritosPreenchidosComponent implements OnInit {
                     xValueFormatString: 'string',
                     yValueFormatString: '#',
                     dataPoints: this.listaAguasNao
-                }]
-        });
-        this.chart.render();
-    }
-
-    iniciarChartSaneamento() {
-        this.chart = new CanvasJS.Chart('chartSaneamento', {
-            animationEnabled: true,
-            theme: 'light2',
-            title: {
-                text: 'Inquéritos Preenchidos - Saneamento'
-            },
-            axisX: {
-                valueFormatString: 'string'
-            },
-            axisY: {
-                suffix: ''
-            },
-            toolTip: {
-                shared: true
-            },
-            legend: {
-                cursor: 'pointer'
-            },
-            data: [
-                {
-                    type: 'column',
-                    name: 'Saneamento (SIM)',
-                    showInLegend: true,
-                    xValueFormatString: 'string',
-                    yValueFormatString: '#',
-                    dataPoints: this.listaSaneamentoSim
-                },
-                {
-                    type: 'column',
-                    name: 'Saneamento (NÃO)',
-                    showInLegend: true,
-                    xValueFormatString: 'string',
-                    yValueFormatString: '#',
-                    dataPoints: this.listaSaneamentoNao
                 }]
         });
         this.chart.render();

@@ -95,6 +95,7 @@ export class IndicadorProducaoDialogComponent implements OnInit {
 
     save() {
         this.isSaving = true;
+        console.log(this.indicadorProducao);
         if (this.indicadorProducao.id !== undefined) {
             this.subscribeToSaveResponse(
                 this.indicadorProducaoService.update(this.indicadorProducao));

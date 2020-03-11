@@ -1,13 +1,7 @@
 package com.minea.sisas.service.dto;
 
 
-import com.minea.sisas.domain.*;
-
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.Objects;
 
 /**
  * A DTO for the IndicadorProducao entity.
@@ -41,6 +35,23 @@ public class IndicadorProducaoProvinciaDTO implements Serializable {
     private Integer novembro;
 
     private Integer dezembro;
+
+    public IndicadorProducaoProvinciaDTO(String nomeCampo, String unidade, Integer janeiro, Integer fevereiro, Integer marco, Integer abril, Integer maio, Integer junho, Integer julho, Integer agosto, Integer setembro, Integer outubro, Integer novembro, Integer dezembro) {
+        this.nomeCampo = nomeCampo;
+        this.unidade = unidade;
+        this.janeiro = janeiro;
+        this.fevereiro = fevereiro;
+        this.marco = marco;
+        this.abril = abril;
+        this.maio = maio;
+        this.junho = junho;
+        this.julho = julho;
+        this.agosto = agosto;
+        this.setembro = setembro;
+        this.outubro = outubro;
+        this.novembro = novembro;
+        this.dezembro = dezembro;
+    }
 
     public String getNomeCampo() {
         return nomeCampo;

@@ -78,13 +78,13 @@ export class CoberturaSectorAguaComponent implements OnInit {
 
     validaTipoRelatorio() {
         if (this.tipoRelatorio === 'Nível Provincial') {
-            this.buscaDadosTabela();
+            this.buscaDadosTabelaProvincia();
         }
         if (this.tipoRelatorio === 'Nível Municipal') {
-            this.buscaDadosTabela();
+            this.buscaDadosTabelaMunicipio();
         }
         if (this.tipoRelatorio === 'Nível Comunal') {
-            this.buscaDadosTabela();
+            this.buscaDadosTabelaComuna();
         }
     }
 
@@ -92,12 +92,111 @@ export class CoberturaSectorAguaComponent implements OnInit {
         this.tipoRelatorio = null;
     }
 
-    buscaDadosTabela() {
-        this.relatorioService.buscaDadosSectorAgua().subscribe(
+    buscaDadosTabelaAmbito() {
+        this.relatorioService.buscaDadosSectorAguaAmbito().subscribe(
             (res: HttpResponse<SectorAguaDados[]>) => {
                 this.listaTabela = res.body;
                 console.log(this.listaTabela);
 
+                this.listaMedia = Array<any>();
+                this.listaCobertura = Array<any>();
+                let media = 0;
+
+                this.listaTabela.forEach((p) => {
+                    const item: DadosRelatorio = new DadosRelatorio();
+                    item.label = p.nomeProvincia;
+                    item.y = p.cobertura;
+
+                    this.listaCobertura.push(item);
+                    media += p.cobertura;
+                    this.totalMunicipios += p.municipios;
+                    this.totalComuna += p.comunas;
+                    this.totalSistemas += p.sistemasFuncionam;
+                    this.totalPopulacao += p.populacaoTotal;
+                    this.totalBeneficiarios += p.beneficiarios;
+                });
+
+                this.listaTabela.forEach((p) => {
+                    const item: DadosRelatorio = new DadosRelatorio();
+                    item.label = p.nomeProvincia;
+                    item.y = media / this.listaTabela.length;
+                    this.listaMedia.push(item);
+                });
+
+                this.iniciarChart();
+            });
+    }
+
+    buscaDadosTabelaProvincia() {
+        this.relatorioService.buscaDadosSectorAguaProvincia().subscribe(
+            (res: HttpResponse<SectorAguaDados[]>) => {
+                this.listaTabela = res.body;
+                this.listaMedia = Array<any>();
+                this.listaCobertura = Array<any>();
+                let media = 0;
+
+                this.listaTabela.forEach((p) => {
+                    const item: DadosRelatorio = new DadosRelatorio();
+                    item.label = p.nomeProvincia;
+                    item.y = p.cobertura;
+
+                    this.listaCobertura.push(item);
+                    media += p.cobertura;
+                    this.totalMunicipios += p.municipios;
+                    this.totalComuna += p.comunas;
+                    this.totalSistemas += p.sistemasFuncionam;
+                    this.totalPopulacao += p.populacaoTotal;
+                    this.totalBeneficiarios += p.beneficiarios;
+                });
+
+                this.listaTabela.forEach((p) => {
+                    const item: DadosRelatorio = new DadosRelatorio();
+                    item.label = p.nomeProvincia;
+                    item.y = media / this.listaTabela.length;
+                    this.listaMedia.push(item);
+                });
+
+                this.iniciarChart();
+            });
+    }
+
+    buscaDadosTabelaMunicipio() {
+        this.relatorioService.buscaDadosSectorAguaMunicipio().subscribe(
+            (res: HttpResponse<SectorAguaDados[]>) => {
+                this.listaTabela = res.body;
+                this.listaMedia = Array<any>();
+                this.listaCobertura = Array<any>();
+                let media = 0;
+
+                this.listaTabela.forEach((p) => {
+                    const item: DadosRelatorio = new DadosRelatorio();
+                    item.label = p.nomeProvincia;
+                    item.y = p.cobertura;
+
+                    this.listaCobertura.push(item);
+                    media += p.cobertura;
+                    this.totalMunicipios += p.municipios;
+                    this.totalComuna += p.comunas;
+                    this.totalSistemas += p.sistemasFuncionam;
+                    this.totalPopulacao += p.populacaoTotal;
+                    this.totalBeneficiarios += p.beneficiarios;
+                });
+
+                this.listaTabela.forEach((p) => {
+                    const item: DadosRelatorio = new DadosRelatorio();
+                    item.label = p.nomeProvincia;
+                    item.y = media / this.listaTabela.length;
+                    this.listaMedia.push(item);
+                });
+
+                this.iniciarChart();
+            });
+    }
+
+    buscaDadosTabelaComuna() {
+        this.relatorioService.buscaDadosSectorAguaComuna().subscribe(
+            (res: HttpResponse<SectorAguaDados[]>) => {
+                this.listaTabela = res.body;
                 this.listaMedia = Array<any>();
                 this.listaCobertura = Array<any>();
                 let media = 0;

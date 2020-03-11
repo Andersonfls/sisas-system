@@ -5,11 +5,9 @@ import com.minea.sisas.domain.SistemaAgua;
 import com.minea.sisas.domain.enumeration.TipoAcao;
 import com.minea.sisas.repository.IndicadorProducaoRepository;
 import com.minea.sisas.repository.UserRepository;
-import com.minea.sisas.service.dto.IndicadorProducaoDTO;
-import com.minea.sisas.service.dto.IndicadorProducaoLogDTO;
-import com.minea.sisas.service.dto.ProgramasProjectosDTO;
-import com.minea.sisas.service.dto.SistemaAguaLogDTO;
+import com.minea.sisas.service.dto.*;
 import com.minea.sisas.service.mapper.IndicadorProducaoMapper;
+import com.minea.sisas.service.util.PermissoesEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,12 +44,16 @@ public class IndicadorProducaoService {
 
     @Autowired IndicadorProducaoLogService indicadorProducaoLogService;
 
+    @Autowired
+    private UserService userService;
+
     public IndicadorProducaoService(IndicadorProducaoRepository indicadorProducaoRepository, IndicadorProducaoMapper indicadorProducaoMapper,
-                                    UserRepository userRepository, IndicadorProducaoLogService indicadorProducaoLogService) {
+                                    UserRepository userRepository, IndicadorProducaoLogService indicadorProducaoLogService,  UserService userService) {
         this.indicadorProducaoRepository = indicadorProducaoRepository;
         this.indicadorProducaoMapper = indicadorProducaoMapper;
         this.userRepository = userRepository;
         this.indicadorProducaoLogService = indicadorProducaoLogService;
+        this.userService = userService;
     }
 
     /**
@@ -116,8 +118,38 @@ public class IndicadorProducaoService {
 
     public Page<IndicadorProducaoDTO> findAllStatusTrue(Pageable pageable) {
         log.debug("Request to get all ProgramasProjectos");
-        return indicadorProducaoRepository.findAllByStatusIsTrue(pageable)
-            .map(indicadorProducaoMapper::toDto);
+        Page<IndicadorProducaoDTO> retorno = null;
+        UserDTO userDTO = this.userService.getUserWithAuthorities().map(UserDTO::new).orElse(null);
+
+        if (Objects.nonNull(userDTO) ) {
+            for (String permisao: userDTO.getAuthorities()) {
+                if (permisao.equals("ROLE_ADMIN")){
+                    retorno = indicadorProducaoRepository.findAllByStatusIsTrue(pageable)
+                        .map(indicadorProducaoMapper::toDto);
+                }
+
+                if (permisao.equals("ADM_HUAMBO")){
+                    retorno = indicadorProducaoRepository.findAllByStatusIsTrueAndProvinciaId(10l,pageable)
+                        .map(indicadorProducaoMapper::toDto);
+                }
+
+                if (permisao.equals("ADM_HUILA")){
+                    retorno = indicadorProducaoRepository.findAllByStatusIsTrueAndProvinciaId(15l,pageable)
+                        .map(indicadorProducaoMapper::toDto);
+                }
+
+                if (permisao.equals("ADM_CUANZA_NORTE")){
+                    retorno = indicadorProducaoRepository.findAllByStatusIsTrueAndProvinciaId(5l,pageable)
+                        .map(indicadorProducaoMapper::toDto);
+                }
+
+            }
+        } else {
+            retorno = indicadorProducaoRepository.findAllByStatusIsTrue(pageable)
+                .map(indicadorProducaoMapper::toDto);
+        }
+
+        return retorno;
     }
 
     /**

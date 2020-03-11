@@ -16,6 +16,17 @@ public class SectorAguaSaneamentoDadosDTO implements Serializable {
     private Float habitantesSaneamentoPer;
     private Float populacaoPercentage;
 
+    private String provincia;
+    private String municipio;
+    private String comuna;
+    private Long numeroMunicipios;
+    private Long numeroComunas;
+    private Long numeroProvincias;
+
+    private Long aguasSim;
+    private Long totalSector;
+    private Long numeroFuncionam;
+
     public SectorAguaSaneamentoDadosDTO() {
     }
 
@@ -27,6 +38,54 @@ public class SectorAguaSaneamentoDadosDTO implements Serializable {
         this.habitantesSaneamento = habitantesSaneamento;
         this.habitantesSaneamentoPer = habitantesSaneamentoPer;
         this.populacaoPercentage = populacaoPercentage;
+    }
+
+    public Long getNumeroMunicipios() {
+        return numeroMunicipios;
+    }
+
+    public void setNumeroMunicipios(Long numeroMunicipios) {
+        this.numeroMunicipios = numeroMunicipios;
+    }
+
+    public Long getNumeroComunas() {
+        return numeroComunas;
+    }
+
+    public void setNumeroComunas(Long numeroComunas) {
+        this.numeroComunas = numeroComunas;
+    }
+
+    public Long getNumeroProvincias() {
+        return numeroProvincias;
+    }
+
+    public void setNumeroProvincias(Long numeroProvincias) {
+        this.numeroProvincias = numeroProvincias;
+    }
+
+    public String getProvincia() {
+        return provincia;
+    }
+
+    public void setProvincia(String provincia) {
+        this.provincia = provincia;
+    }
+
+    public String getMunicipio() {
+        return municipio;
+    }
+
+    public void setMunicipio(String municipio) {
+        this.municipio = municipio;
+    }
+
+    public String getComuna() {
+        return comuna;
+    }
+
+    public void setComuna(String comuna) {
+        this.comuna = comuna;
     }
 
     public String getAmbito() {
@@ -83,5 +142,29 @@ public class SectorAguaSaneamentoDadosDTO implements Serializable {
 
     public void setPopulacaoPercentage(Float populacaoPercentage) {
         this.populacaoPercentage = populacaoPercentage;
+    }
+
+    public Long getAguasSim() {
+        return aguasSim;
+    }
+
+    public void setAguasSim(Long aguasSim) {
+        this.aguasSim = aguasSim;
+    }
+
+    public Long getTotalSector() {
+        return totalSector;
+    }
+
+    public void setTotalSector(Long totalSector) {
+        this.totalSector = totalSector;
+    }
+
+    public Long getNumeroFuncionam() {
+        return numeroFuncionam;
+    }
+
+    public void setNumeroFuncionam(Long numeroFuncionam) {
+        this.numeroFuncionam = numeroFuncionam;
     }
 }

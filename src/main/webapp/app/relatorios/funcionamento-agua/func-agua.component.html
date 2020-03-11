@@ -44,11 +44,12 @@
                     <span class="fa fa-file-excel-o"></span>
                     <span class="d-none d-md-inline">Excel</span>
                 </button>
-                <button type="button" (click)="captureScreen('conteinerPron')" class="btn btn-primary btn-sm">
+                <button type="button" (click)="captureScreen('tes')" class="btn btn-primary btn-sm">
                     <span class="fas fa-file-pdf"></span>
                     <span class="d-none d-md-inline">PDF</span>
                 </button>
             </div>
+            <div id="tes">
             <div class="table-responsive" *ngIf="listaTabela">
                 <table id="tableprovin" class="table table-striped">
                     <thead>
@@ -92,7 +93,7 @@
                     </tfoot>
                 </table>
             </div>
-
+            </div>
         </div>
         <br>
         <div class="card" *ngIf="tipoRelatorio==='Nível Provincial'">
@@ -107,11 +108,12 @@
                 <span class="fa fa-file-excel-o"></span>
                 <span class="d-none d-md-inline">Excel</span>
             </button>
-            <button type="button" (click)="captureScreen('conteinerMunic')" class="btn btn-primary btn-sm">
+            <button type="button" (click)="captureScreen('munnn')" class="btn btn-primary btn-sm">
                 <span class="fas fa-file-pdf"></span>
                 <span class="d-none d-md-inline">PDF</span>
             </button>
         </div>
+        <div id="munnn">
         <div class="table-responsive" *ngIf="listaTabela">
             <table id="tablemuni" class="table table-striped">
                 <thead>
@@ -160,6 +162,7 @@
                 </tfoot>
             </table>
         </div>
+        </div>
     </div>
 
     <div id="contentcomun" class="card" *ngIf="tipoRelatorio==='Nível Comunal'">
@@ -168,11 +171,12 @@
                 <span class="fa fa-file-excel-o"></span>
                 <span class="d-none d-md-inline">Excel</span>
             </button>
-            <button type="button" (click)="captureScreen('contentcomun')" class="btn btn-primary btn-sm">
+            <button type="button" (click)="captureScreen('connnn')" class="btn btn-primary btn-sm">
                 <span class="fas fa-file-pdf"></span>
                 <span class="d-none d-md-inline">PDF</span>
             </button>
         </div>
+        <div id="connnn">
         <div class="table-responsive" *ngIf="listaTabela">
             <table id="tablecomun" class="table table-striped">
                 <thead>
@@ -223,6 +227,7 @@
                 </tr>
                 </tfoot>
             </table>
+        </div>
         </div>
     </div>
     <br>

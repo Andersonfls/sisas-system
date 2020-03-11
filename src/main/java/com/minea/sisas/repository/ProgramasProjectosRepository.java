@@ -27,4 +27,7 @@ public interface ProgramasProjectosRepository extends JpaRepository<ProgramasPro
     Page buscarPorNome(@Param("nome") String nome, Pageable pageable);
 
     Page<ProgramasProjectos> findAllByStatusIsTrue(Pageable pageable);
+
+    @Query("select p from ProgramasProjectos p where ipstatus =1 and p.provincia.id = :provinciaId")
+    Page<ProgramasProjectos> findAllByStatusIsTrueAndProvinciaId(@Param("provinciaId") Long provinciaId, Pageable pageable);
 }

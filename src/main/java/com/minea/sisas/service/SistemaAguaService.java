@@ -7,6 +7,7 @@ import com.minea.sisas.repository.UserRepository;
 import com.minea.sisas.security.SecurityUtils;
 import com.minea.sisas.service.dto.SistemaAguaDTO;
 import com.minea.sisas.service.dto.SistemaAguaLogDTO;
+import com.minea.sisas.service.dto.UserDTO;
 import com.minea.sisas.service.mapper.SistemaAguaMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,11 +44,15 @@ public class SistemaAguaService {
     @Autowired
     private UserRepository userRepository;
 
-    public SistemaAguaService(SistemaAguaRepository sistemaAguaRepository, SistemaAguaMapper sistemaAguaMapper, SistemaAguaLogService sistemaAguaLogService, UserRepository userRepository) {
+    @Autowired
+    private UserService userService;
+
+    public SistemaAguaService(SistemaAguaRepository sistemaAguaRepository, SistemaAguaMapper sistemaAguaMapper, SistemaAguaLogService sistemaAguaLogService, UserRepository userRepository, UserService userService) {
         this.sistemaAguaRepository = sistemaAguaRepository;
         this.sistemaAguaMapper = sistemaAguaMapper;
         this.sistemaAguaLogService = sistemaAguaLogService;
         this.userRepository = userRepository;
+        this.userService = userService;
     }
 
     /**
@@ -62,6 +67,7 @@ public class SistemaAguaService {
         if(Objects.isNull(sistemaAgua.getIdUsuario()))
             sistemaAgua.setIdUsuario(SecurityUtils.getCurrentUserId());
         sistemaAgua.setDtUltimaAlteracao(LocalDate.now());
+        sistemaAgua.setStatus(true);
         sistemaAgua = sistemaAguaRepository.save(sistemaAgua);
         if (Objects.nonNull(sistemaAguaDTO.getId())) {
             logSave(TipoAcao.ATUALIZACAO, sistemaAgua);
@@ -99,8 +105,38 @@ public class SistemaAguaService {
     @Transactional(readOnly = true)
     public Page<SistemaAguaDTO> findAll(Pageable pageable) {
         log.debug("Request to get all SistemaAguas");
-        return sistemaAguaRepository.findAll(pageable)
-            .map(sistemaAguaMapper::toDto);
+        Page<SistemaAguaDTO> retorno = null;
+        UserDTO userDTO = this.userService.getUserWithAuthorities().map(UserDTO::new).orElse(null);
+
+        if (Objects.nonNull(userDTO) ) {
+            for (String permisao: userDTO.getAuthorities()) {
+                if (permisao.equals("ROLE_ADMIN")){
+                    retorno = sistemaAguaRepository.findAllByStatusIsTrue(pageable)
+                        .map(sistemaAguaMapper::toDto);
+                }
+
+                if (permisao.equals("ADM_HUAMBO")){
+                    retorno = sistemaAguaRepository.findAllByStatusIsTrueAndProvinciaId(10l,pageable)
+                        .map(sistemaAguaMapper::toDto);
+                }
+
+                if (permisao.equals("ADM_HUILA")){
+                    retorno = sistemaAguaRepository.findAllByStatusIsTrueAndProvinciaId(15l,pageable)
+                        .map(sistemaAguaMapper::toDto);
+                }
+
+                if (permisao.equals("ADM_CUANZA_NORTE")){
+                    retorno = sistemaAguaRepository.findAllByStatusIsTrueAndProvinciaId(5l,pageable)
+                        .map(sistemaAguaMapper::toDto);
+                }
+
+            }
+        } else {
+            retorno = sistemaAguaRepository.findAllByStatusIsTrue(pageable)
+                .map(sistemaAguaMapper::toDto);
+        }
+        
+        return retorno;
     }
 
     /**

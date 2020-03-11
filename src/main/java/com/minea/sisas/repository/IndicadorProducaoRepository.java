@@ -24,4 +24,7 @@ public interface IndicadorProducaoRepository extends JpaRepository<IndicadorProd
     IndicadorProducao findByIdAndStatusIsTrue(Long id);
 
     Page<IndicadorProducao> findAllByStatusIsTrue(Pageable pageable);
+
+    @Query("select i from IndicadorProducao i where i.status =1 and i.provincia.id = :provinciaId")
+    Page<IndicadorProducao> findAllByStatusIsTrueAndProvinciaId(@Param("provinciaId") Long provinciaId, Pageable pageable);
 }

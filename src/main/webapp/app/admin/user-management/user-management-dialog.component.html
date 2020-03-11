@@ -97,25 +97,15 @@
                     <input type="text" class="form-control" name="celular" id="celular"
                            #celularInput="ngModel"
                            [(ngModel)]="user.celular"
-                           maxlength="11"
-                    >
+                           maxlength="11">
                 </div>
             </div>
 
-            <!--<div class="col-md-6">-->
-                <!--<div class="form-group">-->
-                    <!--<label class="form-control-label" for="telefone">Telefone</label>-->
-                    <!--<input type="text" class="form-control" name="telefone" id="telefone"-->
-                           <!--#telefoneInput="ngModel" [(ngModel)]="user.telefone"-->
-                           <!--maxlength="11"-->
-                    <!--&gt;-->
-                <!--</div>-->
-            <!--</div>-->
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="form-control-label negrito"
                            for="field_idProvincia">Provincia</label>
-                    <select class="form-control" id="field_idProvincia" name="provincia" [(ngModel)]="user.provincia" (change)="onChangeMunicipios()">
+                    <select class="form-control" id="field_idProvincia" name="provincia" [(ngModel)]="user.provincia" (ngModelChange)="onChangeMunicipios()" required>
                         <option *ngIf="!editForm.value.provincia" [ngValue]="null" selected>Selecione a Província..</option>
                         <option [ngValue]="provinciaOption.id === user.provincia?.id ? user.provincia : provinciaOption"
                                 *ngFor="let provinciaOption of provincias">{{provinciaOption.nmProvincia}}</option>
@@ -136,7 +126,7 @@
                 <div class="form-group">
                     <label class="form-control-label negrito"
                            for="field_idMunicipio">Municipio</label>
-                    <select class="form-control" id="field_idMunicipio" name="municipio" [(ngModel)]="user.municipio" (change)="onChangeComunas()">
+                    <select class="form-control" id="field_idMunicipio" name="municipio" [(ngModel)]="user.municipio" (ngModelChange)="onChangeComunas()" required>
                         <option *ngIf="!editForm.value.municipio" [ngValue]="null" selected>Selecione o Municipio..</option>
                         <option [ngValue]="municipioOption.id === user.municipio?.id ? user.municipio : municipioOption"
                                 *ngFor="let municipioOption of municipios">{{municipioOption.nmMunicipio}}</option>
@@ -154,7 +144,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="form-control-label negrito" for="field_idComuna">Comuna</label>
-                    <select class="form-control" id="field_idComuna" name="comuna" [(ngModel)]="user.comuna">
+                    <select class="form-control" id="field_idComuna" name="comuna" [(ngModel)]="user.comuna" required>
                         <option *ngIf="!editForm.value.comuna" [ngValue]="null" selected>Selecione a Comuna...</option>
                         <option [ngValue]="comunaOption.id === user.comuna?.id ? user.comuna :comunaOption "
                                 *ngFor="let comunaOption of comunas">{{comunaOption.nmComuna}}</option>
@@ -169,54 +159,6 @@
                 </div>
             </div>
         </div>
-
-        <!--<div class="row">-->
-            <!--<div class="col-md-9">-->
-                <!--<div class="form-group">-->
-                    <!--<label class="form-control-label" for="enderecoLogadouro">Logradouro</label>-->
-                    <!--<input type="text"-->
-                           <!--class="form-control"-->
-                           <!--name="enderecoLogadouro" id="enderecoLogadouro"-->
-                           <!--[(ngModel)]="user.enderecoLogadouro"-->
-                           <!--maxlength="150"-->
-                    <!--&gt;-->
-                <!--</div>-->
-            <!--</div>-->
-
-            <!--<div class="col-md-3">-->
-                <!--<div class="form-group">-->
-                    <!--<label class="form-control-label" for="enderecoLote">Número</label>-->
-                    <!--<input type="text"-->
-                           <!--class="form-control" name="enderecoLote" id="enderecoLote"-->
-                           <!--[(ngModel)]="user.enderecoLote"-->
-                           <!--maxlength="10"-->
-                    <!--&gt;-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-
-        <!--<div class="row">-->
-            <!--<div class="col-md-6">-->
-                <!--<div class="form-group">-->
-                    <!--<label class="form-control-label" for="enderecoBairro">Bairro</label>-->
-                    <!--<input type="text" class="form-control"-->
-                           <!--name="enderecoBairro" id="enderecoBairro"-->
-                           <!--[(ngModel)]="user.enderecoBairro"-->
-                           <!--maxlength="75"-->
-                    <!--&gt;-->
-                <!--</div>-->
-            <!--</div>-->
-
-            <!--<div class="col-md-6">-->
-                <!--<div class="form-group">-->
-                    <!--<label class="form-control-label" for="enderecoComplemento">Complemento</label>-->
-                    <!--<input type="text" class="form-control"-->
-                           <!--name="enderecoComplemento" id="enderecoComplemento"-->
-                           <!--[(ngModel)]="user.enderecoComplemento"-->
-                    <!--&gt;-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
 
         <br/>
         <div class="collapse" id="collapseExample">
@@ -270,50 +212,6 @@
                 <option *ngFor="let authority of authorities" [value]="authority">{{authority}}</option>
             </select>
         </div>
-
-        <!--
-        <div class="row">
-            <ul class="form-group col-md-3">
-                <li class="list-group-item">
-                    Perfil ADM
-                    <div class="check-box-scged">
-                        <input id="admPerfil" type="checkbox" name="admPerfil" [(ngModel)]="user.perfilAdm"/>
-                        <label for="admPerfil" class="label-success"></label>
-                    </div>
-                </li>
-            </ul>
-
-            <ul class="form-group col-md-3">
-                <li class="list-group-item">
-                    MOD CONFIG
-                    <div class="check-box-scged">
-                        <input id="modConfig" type="checkbox" name="modConfig" [(ngModel)]="user.modConfig"/>
-                        <label for="modConfig" class="label-success"></label>
-                    </div>
-                </li>
-            </ul>
-
-            <ul class="form-group col-md-3">
-                <li class="list-group-item">
-                    MOD BALCÃO
-                    <div class="check-box-scged">
-                        <input id="modBalcao" type="checkbox" name="modBalcao" [(ngModel)]="user.modBalcao"/>
-                        <label for="modBalcao" class="label-success"></label>
-                    </div>
-                </li>
-            </ul>
-
-            <ul class="form-group col-md-3">
-                <li class="list-group-item">
-                    MOD TOTEN
-                    <div class="check-box-scged">
-                        <input id="modToten" type="checkbox" name="modToten" [(ngModel)]="user.modToten"/>
-                        <label for="modToten" class="label-success"></label>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        -->
     </div>
 
     <div class="modal-footer">

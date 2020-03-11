@@ -3,13 +3,20 @@ package com.minea.sisas.service;
 import com.minea.sisas.domain.Comuna;
 import com.minea.sisas.repository.ComunaRepository;
 import com.minea.sisas.service.dto.ComunaDTO;
+import com.minea.sisas.service.dto.UserDTO;
 import com.minea.sisas.service.mapper.ComunaMapper;
+import com.minea.sisas.service.util.PermissoesEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 
 
 /**
@@ -25,9 +32,13 @@ public class ComunaService {
 
     private final ComunaMapper comunaMapper;
 
-    public ComunaService(ComunaRepository comunaRepository, ComunaMapper comunaMapper) {
+    @Autowired
+    private UserService userService;
+
+    public ComunaService(ComunaRepository comunaRepository, ComunaMapper comunaMapper, UserService userService) {
         this.comunaRepository = comunaRepository;
         this.comunaMapper = comunaMapper;
+        this.userService = userService;
     }
 
     /**
@@ -52,8 +63,51 @@ public class ComunaService {
     @Transactional(readOnly = true)
     public Page<ComunaDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Comunas");
-        return comunaRepository.findAll(pageable)
-            .map(comunaMapper::toDto);
+        Page<ComunaDTO> retorno = null;
+        UserDTO userDTO = this.userService.getUserWithAuthorities().map(UserDTO::new).orElse(null);
+
+        if (Objects.nonNull(userDTO) ) {
+            for (String permisao: userDTO.getAuthorities()) {
+
+                if (isAdministrador(userDTO.getAuthorities())){
+                    retorno = comunaRepository.findAll(pageable)
+                        .map(comunaMapper::toDto);
+                } else if (Objects.nonNull(userDTO.getProvincia()) && Objects.nonNull(userDTO.getMunicipio())){
+                    retorno = comunaRepository.findAllByMunicipioIdPg(userDTO.getMunicipio().getId(),pageable)
+                        .map(comunaMapper::toDto);
+                } else {
+                    retorno = comunaRepository.findAll(pageable)
+                        .map(comunaMapper::toDto);
+                }
+            }
+        } else {
+            retorno = comunaRepository.findAll(pageable)
+                .map(comunaMapper::toDto);
+        }
+
+        return retorno;
+    }
+
+    public boolean isAdministrador(Set<String> itens) {
+        if (Objects.nonNull(itens)) {
+            for (String i: itens) {
+                if (i.equals(PermissoesEnum.ADMINISTRADOR_GERAL.getNomePermissao())) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public PermissoesEnum getPermissao(String item){
+        PermissoesEnum[] permissoes = PermissoesEnum.values();
+
+        for (PermissoesEnum permissao : permissoes){
+            if (permissao.getNomePermissao().equals(item)) {
+                return permissao;
+            }
+        }
+        return null;
     }
 
     /**

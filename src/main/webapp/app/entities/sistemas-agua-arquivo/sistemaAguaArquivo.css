@@ -1,0 +1,17 @@
+.price {
+	text-align: center;
+	font-size: 16px;
+	padding: 5px;
+}
+
+.loadMore {
+    background: #898c90;
+    margin: 0 auto;
+    width: 50%;
+    margin-top: 40px;
+    margin-left: 25%;
+}
+img {
+	width: 100%;
+}
+

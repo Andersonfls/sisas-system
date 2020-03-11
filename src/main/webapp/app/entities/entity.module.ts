@@ -21,6 +21,7 @@ import {SisasPdfModule} from './cadastro-pdf/cadPdf.module';
 import {SisasSobreDnaModule} from './sobre-dna/sobre-dna.module';
 import {SisasContactoDnaModule} from './contacto/contacto.module';
 import {SisasIndicadorArquivoModule} from './indicador-prod-arquivo/indicadorArquivo.module';
+import {SisasSistemasArquivoModule} from './sistemas-agua-arquivo/sistemaAguaArquivo.module';
 
 @NgModule({
     imports: [
@@ -45,7 +46,8 @@ import {SisasIndicadorArquivoModule} from './indicador-prod-arquivo/indicadorArq
         SisasPdfModule,
         SisasSobreDnaModule,
         SisasContactoDnaModule,
-        SisasIndicadorArquivoModule
+        SisasIndicadorArquivoModule,
+        SisasSistemasArquivoModule
     ],
     declarations: [],
     entryComponents: [],

@@ -62,7 +62,7 @@
                         <div class="form-group">
                             <label class="form-control-label negrito" jhiTranslate="sisasApp.sistemaAgua.idProvincia"
                                    for="field_idProvincia">idProvíncia</label>
-                            <select class="form-control" id="field_idProvincia" name="provincia" [(ngModel)]="sistemaAgua.provincia" (click)="onChangeMunicipios()" required>
+                            <select class="form-control" id="field_idProvincia" name="provincia" [(ngModel)]="sistemaAgua.provincia" (ngModelChange)="onChangeMunicipios()" required>
                                 <option *ngIf="!editForm.value.provincia" [ngValue]="null" selected>Selecione a província..</option>
                                 <option [ngValue]="provinciaOption.id === sistemaAgua.provincia?.id ? sistemaAgua.provincia : provinciaOption"
                                         *ngFor="let provinciaOption of provincias">{{provinciaOption.nmProvincia}}</option>
@@ -84,7 +84,7 @@
                                    for="field_idMunicipio">id
                                 Municipio</label>
                             <select class="form-control" id="field_idMunicipio" name="municipio"
-                                    [(ngModel)]="sistemaAgua.municipio" (click)="onChangeComunas()" required>
+                                    [(ngModel)]="sistemaAgua.municipio" (ngModelChange)="onChangeComunas()" required>
                                 <option *ngIf="!editForm.value.municipio" [ngValue]="null" selected>Selecione o municipio..</option>
                                 <option [ngValue]="municipioOption.id === sistemaAgua.municipio?.id ? sistemaAgua.municipio : municipioOption"
                                         *ngFor="let municipioOption of municipios">{{municipioOption.nmMunicipio}}</option>
@@ -325,7 +325,7 @@
                                        for="field_nmTipoBomba">Nm Tipo Bomba</label>
                                 <select class="form-control" id="field_nmTipoBomba" name="nmTipoBomba"  [(ngModel)]="sistemaAgua.nmTipoBomba">
                                     <option *ngIf="!editForm.value.nmTipoBomba" [ngValue]="null" selected>Selecione o tipo da bomba...</option>
-                                    <option label="Bomba elétrica">Bomba elétrica</option>
+                                    <option label="Bomba eléctrica">Bomba eléctrica</option>
                                     <option label="Bomba a diesel">Bomba a diesel</option>
                                     <option label="Bomba por gravidade">Bomba por gravidade</option>
                                 </select>
@@ -348,14 +348,14 @@
                     </div>
 
                     <div class="row">
-                        <div class="form-group col-sm-12" *ngIf="editForm.controls.nmTpFonte.value==='Subterrânea'">
+                        <div class="form-group col-sm-12" *ngIf="sistemaAgua.nmTpFonte==='Subterrânea'">
                             <div *ngIf="sistemaAgua.nmTipoBomba==='Bomba de energia'">
                                 <div class="form-group">
                                     <label class="form-control-label negrito" jhiTranslate="sisasApp.sistemaAgua.nmTpBombaEnergia"
                                            for="field_nmTpBombaEnergia">Nm Tp Bomba Energia</label>
                                     <select class="form-control" id="field_nmTpBombaEnergia" name="nmTpBombaEnergia" [(ngModel)]="sistemaAgua.nmTpBombaEnergia">
                                         <option *ngIf="!editForm.value.nmTpBombaEnergia" [ngValue]="null" selected>Selecione Tipo Bomba Energia...</option>
-                                        <option label="Elétrica">Elétrica</option>
+                                        <option label="Eléctrica">Eléctrica</option>
                                         <option label="Diesel/Motobomba">Diesel/Motobomba</option>
                                         <option label="Solar">Solar</option>
                                         <option label="Eólica">Eólica</option>
@@ -372,9 +372,9 @@
                                             [(ngModel)]="sistemaAgua.nmModeloBombaManualUtilizada">
                                         <option *ngIf="!editForm.value.nmModeloBombaManualUtilizada" [ngValue]="null" selected>Selecione a Bomba Manual...</option>
                                         <option label="Afridev">Afridev</option>
-                                        <option label="Volanta">Volanta</option>
-                                        <option label="India">India</option>
-                                        <option label="Mark II">Mark II</option>
+                                        <option label="Vergnet">Vergnet</option>
+                                        <option label="Volanta">Volante</option>
+                                        <option label="India Mark II">India Mark II</option>
                                         <option label="Outros">Outros</option>
                                     </select>
                                 </div>
@@ -576,7 +576,7 @@
                                 <label class="form-control-label negrito" jhiTranslate="sisasApp.sistemaAgua.nmTpAvariaSistema"
                                        for="field_nmTpAvariaSistema">Nm Tp Avaria Sistema</label>
                                 <select class="form-control" id="field_nmTpAvariaSistema" name="nmTpAvariaSistema"
-                                        [(ngModel)]="sistemaAgua.nmTpAvariaSistema" multiple>
+                                        [(ngModel)]="sistemaAgua.nmTpAvariaSistema">
                                     <option [ngValue]="null" selected>Selecione a avaria no sistema...</option>
                                     <option label="Avaria mecânica">Avaria mecânica</option>
                                     <option label="Avaria nas estruturas(Roturas, entupimento)">
@@ -820,7 +820,7 @@
                                        jhiTranslate="sisasApp.sistemaAgua.nmTpTratamentoPadraoUtilizado"
                                        for="field_nmTpTratamentoPadraoUtilizado">Nm Tp Tratamento Padrao Utilizado</label>
                                 <select class="form-control" id="field_nmTpTratamentoPadraoUtilizado" name="nmTpTratamentoPadraoUtilizado"
-                                        [(ngModel)]="sistemaAgua.nmTpTratamentoPadraoUtilizado" multiple>
+                                        [(ngModel)]="sistemaAgua.nmTpTratamentoPadraoUtilizado" (ngModelChange)="concluiQuestionario()">
                                     <option *ngIf="!editForm.value.nmTpTratamentoPadraoUtilizado" [ngValue]="null" selected>Selecione o Tratemnto Padrao...</option>
                                     <option label="Pré-tratamento">Pré-tratamento</option>
                                     <option label="Coagulação, floculação, decantação, filtração">Coagulação, floculação,
@@ -857,7 +857,7 @@
                                        jhiTranslate="sisasApp.sistemaAgua.nmTpTratamentoBasicoUtilizado"
                                        for="field_nmTpTratamentoBasicoUtilizado">Nm Tp Tratamento Basico Utilizado</label>
                                 <select class="form-control" id="field_nmTpTratamentoBasicoUtilizado" name="nmTpTratamentoBasicoUtilizado"
-                                        [(ngModel)]="sistemaAgua.nmTpTratamentoBasicoUtilizado" >
+                                        (ngModelChange)="concluiQuestionario()" [(ngModel)]="sistemaAgua.nmTpTratamentoBasicoUtilizado" >
                                     <option *ngIf="!editForm.value.nmTpTratamentoBasicoUtilizado" [ngValue]="null" selected>Selecione o tratamento básico...</option>
                                     <option label="Cloro gasoso">Cloro gasoso</option>
                                     <option label="Cloro líquido">Cloro líquido</option>
@@ -918,7 +918,8 @@
                             <div class="form-group">
                                 <label class="form-control-label negrito" jhiTranslate="sisasApp.sistemaAgua.nmEquipamentosComAvaria"
                                        for="field_nmEquipamentosComAvaria">Nm Equipamentos Com Avaria</label>
-                                <select class="form-control" id="field_nmEquipamentosComAvaria" name="nmEquipamentosComAvaria" [(ngModel)]="sistemaAgua.nmEquipamentosComAvaria">
+                                <select class="form-control" id="field_nmEquipamentosComAvaria" name="nmEquipamentosComAvaria"
+                                        (ngModelChange)="concluiQuestionario()" [(ngModel)]="sistemaAgua.nmEquipamentosComAvaria">
                                     <option *ngIf="!editForm.value.nmEquipamentosComAvaria" [ngValue]="null" selected>Selecione o equipamento com avaria...</option>
                                     <option label="Equipamento de dosagem">Equipamento de dosagem</option>
                                     <option label="Electroagitadores">Electroagitadores</option>
@@ -960,6 +961,18 @@
                     </div>
                 </div>
             </div>
+
+            <div *ngIf="isConcluido">
+                <div class="card border-success text-center">
+                    <div class="card-body text-success">
+                        <h5 class="card-title">QUESTIONÁRIO CONCLUÍDO</h5>
+                        <p class="card-text">Por favor clique em SALVAR, para o questionário verificar se existe algum erro.
+                            Uma vez que tenha salvo o questionário, terá a oportunidade de corrigi-lo ou de criar um novo
+                            questionário.</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
     <div class="modal-footer">

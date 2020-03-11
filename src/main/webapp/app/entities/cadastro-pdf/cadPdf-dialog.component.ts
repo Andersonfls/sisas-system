@@ -69,8 +69,7 @@ export class CadPdfDialogComponent implements OnInit {
     private subscribeToSaveResponse(result: Observable<HttpResponse<ArquivosPortal>>) {
         result.subscribe((res: HttpResponse<ArquivosPortal>) => {
                 this.onSaveSuccess(res.body);
-                console.log('Resultado da Inclusao/Atualizacao');
-                console.log(this.arquivo);
+                this.upload(res.body.id);
             }
             , (res: HttpErrorResponse) => this.onSaveError());
     }

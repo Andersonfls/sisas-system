@@ -1,6 +1,7 @@
 package com.minea.sisas.repository;
 
 import com.minea.sisas.domain.Comuna;
+import com.minea.sisas.domain.IndicadorProducao;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
@@ -27,5 +28,8 @@ public interface ComunaRepository extends JpaRepository<Comuna, Long>, JpaSpecif
 
     @Query("select c from Comuna c where c.municipio.id in (?1) order by c.nmComuna")
     List<Comuna> findByMunicipioId(Long municipioId);
+
+    @Query("select c from Comuna c where c.municipio.id = :municipioId")
+    Page<Comuna> findAllByMunicipioIdPg(@Param("municipioId") Long municipioId, Pageable pageable);
 
 }

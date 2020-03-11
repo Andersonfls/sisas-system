@@ -38,7 +38,6 @@ public class AccountResource {
     private final MailService mailService;
 
     public AccountResource(UserRepository userRepository, UserService userService, MailService mailService) {
-
         this.userRepository = userRepository;
         this.userService = userService;
         this.mailService = mailService;

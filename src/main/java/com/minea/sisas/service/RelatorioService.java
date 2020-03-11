@@ -4,6 +4,7 @@ import com.minea.sisas.service.dto.*;
 import com.minea.sisas.service.mapper.ProvinciaMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -44,9 +45,10 @@ public class RelatorioService {
                 dto.setNomeProvincia((String) i[0]);
                 dto.setMunicipios(((BigInteger) i[1]).intValue());
                 dto.setComunas(((BigInteger) i[2]).intValue());
-                dto.setSistemasFuncionam(((BigInteger) i[3]).intValue());
-                dto.setPopulacaoTotal(((BigInteger) i[4]).longValue());
-                dto.setBeneficiarios(((BigInteger) i[6]).longValue());
+                dto.setSistemasFuncionam(((BigDecimal) i[3]).intValue());
+                dto.setPopulacaoTotal(((BigDecimal) i[4]).longValue());
+               // dto.setBeneficiarios(((BigDecimal) i[5]).longValue());
+                dto.setBeneficiarios(0l);
 
                 dto.setCobertura((float) (dto.getBeneficiarios()*100)/dto.getPopulacaoTotal());
 
@@ -83,36 +85,109 @@ public class RelatorioService {
         return retorno;
     }
 
+    public List<SectorAguaSaneamentoDadosDTO> montaListaDadosPorProvincia(){
+        List<SectorAguaSaneamentoDadosDTO> retorno = new ArrayList<>();
+        List<Object[]> list = this.provinciaRepository.buscaDadosInqueritoPorProvincia();
+        if (Objects.nonNull(list)) {
+            for (Object[] i : list) {
+                SectorAguaSaneamentoDadosDTO dto = new SectorAguaSaneamentoDadosDTO();
+                dto.setProvincia((String) i[0]);
+                dto.setNumeroMunicipios(((BigInteger) i[1]).longValue());
+                dto.setNumeroComunas(((BigInteger) i[2]).longValue());
+                dto.setAguasSim(((BigInteger) i[3]).longValue());
+                dto.setTotalSector(((BigInteger) i[4]).longValue());
+                if (Objects.nonNull(i[5])) {
+                    dto.setNumeroFuncionam(((BigDecimal) i[5]).longValue());
+                }
+
+                retorno.add(dto);
+            }
+        }
+        return retorno;
+    }
+
+    //COBERTURA SERVICOS DE AGUA POR MUNICIPIO
+    public List<SectorAguaSaneamentoDadosDTO> montaListaDadosPorMunicipio(){
+        List<SectorAguaSaneamentoDadosDTO> retorno = new ArrayList<>();
+        Long populacaoTotal = 0l;
+
+        List<Object[]> list = this.provinciaRepository.buscaDadosInqueritoPorMunicipio();
+        if (Objects.nonNull(list)) {
+            for (Object[] i : list) {
+                populacaoTotal += ((BigDecimal) i[2]).longValue();
+                SectorAguaSaneamentoDadosDTO dto = new SectorAguaSaneamentoDadosDTO();
+                dto.setMunicipio((String) i[0]);
+                dto.setNumeroComunas(((BigInteger) i[1]).longValue());
+                dto.setPopulacao(((BigDecimal) i[2]).longValue());
+                if(Objects.nonNull(((BigDecimal) i[3]))) {
+                    dto.setHabitantes(((BigDecimal) i[3]).longValue());
+                }
+                retorno.add(dto);
+            }
+        }
+
+        if (Objects.nonNull(retorno)) {
+            for (SectorAguaSaneamentoDadosDTO item: retorno) {
+                item.setPopulacaoPercentage((float) (item.getPopulacao()*100)/populacaoTotal);
+                if (Objects.nonNull(item.getHabitantes())){
+                    item.setHabitantesPercent((float) (item.getHabitantes()*100)/item.getPopulacao());
+                }
+            }
+        }
+        return retorno;
+    }
+
+    //COBERTURA SERVICOS DE AGUA POR COMUNA
+    public List<SectorAguaSaneamentoDadosDTO> montaListaDadosPorComuna(){
+        List<SectorAguaSaneamentoDadosDTO> retorno = new ArrayList<>();
+        Long populacaoTotal = 0l;
+
+        List<Object[]> list = this.provinciaRepository.buscaDadosInqueritoPorComuna();
+        if (Objects.nonNull(list)) {
+            for (Object[] i : list) {
+                populacaoTotal += ((BigDecimal) i[1]).longValue();
+                SectorAguaSaneamentoDadosDTO dto = new SectorAguaSaneamentoDadosDTO();
+                dto.setComuna((String) i[0]);
+                dto.setPopulacao(((BigDecimal) i[1]).longValue());
+                if(Objects.nonNull(((BigDecimal) i[2]))) {
+                    dto.setHabitantes(((BigDecimal) i[2]).longValue());
+                }
+                retorno.add(dto);
+            }
+        }
+
+        if (Objects.nonNull(retorno)) {
+            for (SectorAguaSaneamentoDadosDTO item: retorno) {
+                item.setPopulacaoPercentage((float) (item.getPopulacao()*100)/populacaoTotal);
+                if (Objects.nonNull(item.getHabitantes())){
+                    item.setHabitantesPercent((float) (item.getHabitantes()*100)/item.getPopulacao());
+                }
+            }
+        }
+        return retorno;
+    }
 
     public List<FuncAguaChafarizesDadosDTO> montaListaEstáticaParaTesteAguaChafarizes(){
         List<FuncAguaChafarizesDadosDTO> retorno = new ArrayList<>();
        // retorno.add(new FuncAguaChafarizesDadosDTO("Bengo", 140, 98, 42, 100, 0, 226, 188, 38, 0, 0));
 
-
-//        SELECT p.NM_PROVINCIA as provincia,
-//            COUNT(sa.ID_SISTEMA_AGUA) as numero_sistemas,
-//        SUM(CASE WHEN sa.estado_funcionamento_sistema = 'Está em funcionamento (Bom)' THEN 1 ELSE 0 END) as funcionam,
-//        SUM(CASE WHEN sa.estado_funcionamento_sistema = 'Não está em funcionamento' THEN 1 ELSE 0 END) as nao_funcionam,
-//        SUM(sa.qtd_chafarises_existentes ) as numero_chafariz,
-//        SUM(sa.QTD_CHAFARISES_FUNCIONANDO) as chafariz_funcionam,
-//        SUM(sa.qtd_chafarises_existentes - sa.QTD_CHAFARISES_FUNCIONANDO) as chafariz_nao_funcionam
-
-        List<Object[]> list = this.provinciaRepository.buscaDadosSectorAguaChafarizes();
+        List<Object[]> list = this.provinciaRepository.buscaDadosFonteSubterraneaBombaMecanica();
         if (Objects.nonNull(list)) {
             list.stream().forEach(i -> {
                 FuncAguaChafarizesDadosDTO dto = new FuncAguaChafarizesDadosDTO();
                 dto.setNomeProvincia((String) i[0]);
-                dto.setNumeroSistemas(((BigInteger) i[1]).intValue());
-                dto.setFuncionamAgua(((BigInteger) i[2]).intValue());
-                dto.setNaoFuncionamAgua(((BigInteger) i[2]).intValue());
-                dto.setNumeroChafarizes(((BigInteger) i[2]).intValue());
-                dto.setFuncionamChafariz(((BigInteger) i[2]).intValue());
-                dto.setNaoFuncionamChafariz(((BigInteger) i[2]).intValue());
-                dto.setFuncionamAguaPerc((float) (dto.getFuncionamAgua()*100)/dto.getNumeroSistemas());
-                dto.setNaoFuncionamAguaPerc((float) (dto.getNaoFuncionamAgua()*100)/dto.getNumeroSistemas());
-                dto.setFuncionamChafarizPerc((float) (dto.getFuncionamChafariz()*100)/dto.getNumeroChafarizes());
-                dto.setNaoFuncionamChafarizPerc((float) (dto.getNaoFuncionamChafariz()*100)/dto.getNumeroChafarizes());
-
+                dto.setNomeMunicipio((String) i[1]);
+                dto.setNomeComuna((String) i[2]);
+                dto.setTotalSistemas(((BigInteger) i[3]).intValue());
+                dto.setElectricaSistemas(((BigInteger) i[4]).intValue());
+                dto.setElectricaFuncionam(((BigInteger) i[5]).intValue());
+                dto.setElectricaNaoFuncionam(((BigInteger) i[6]).intValue());
+                dto.setDieselSistemas(((BigInteger) i[7]).intValue());
+                dto.setDieselFuncionam(((BigInteger) i[8]).intValue());
+                dto.setDieselNaoFuncionam(((BigInteger) i[9]).intValue());
+                dto.setGravidadeSistemas(((BigInteger) i[10]).intValue());
+                dto.setGravidadeFuncionam(((BigInteger) i[11]).intValue());
+                dto.setGravidadeNaoFuncionam(((BigInteger) i[12]).intValue());
                 retorno.add(dto);
             });
         }
@@ -121,14 +196,19 @@ public class RelatorioService {
     }
 
 
-    public List<InqueritosPreenchidosDadosDTO> montaListaEstáticaParaTesteInqueritoAguas(){
+    public List<InqueritosPreenchidosDadosDTO> montaListaInqueritoAguas(){
         List<InqueritosPreenchidosDadosDTO> retorno = new ArrayList<>();
-       // retorno.add(new InqueritosPreenchidosDadosDTO("Huambo", 11, 36, 551, 1266, 1817, 23, 0, 23, 1840,0, 0, 0, 0, 0));
-
         List<Object[]> list = this.provinciaRepository.buscaDadosInqueritoAguas();
         if (Objects.nonNull(list)) {
             list.stream().forEach(i -> {
-                retorno.add(new InqueritosPreenchidosDadosDTO((String) i[0], ((BigInteger) i[1]).intValue(), ((BigInteger) i[2]).intValue(), ((BigInteger) i[3]).intValue(), ((BigInteger) i[4]).intValue(), ((BigInteger) i[5]).intValue(), 0, 0, 0, ((BigInteger) i[5]).intValue(),0, 0, 0, 0, 0));
+                retorno.add(new InqueritosPreenchidosDadosDTO((String) i[0],
+                    ((BigInteger) i[1]).intValue(),
+                    ((BigInteger) i[2]).intValue(),
+                    ((BigInteger) i[3]).intValue(),
+                    ((BigInteger) i[4]).intValue(),
+                    ((BigInteger) i[5]).intValue(),
+                    0, 0, 0,
+                    ((BigInteger) i[5]).intValue(),0, 0, 0, 0, 0));
             });
         }
         return retorno;
@@ -142,7 +222,15 @@ public class RelatorioService {
         List<Object[]> list = this.provinciaRepository.buscaDadosTratamentoSistemasAgua();
         if (Objects.nonNull(list)) {
             list.stream().forEach(i -> {
-                retorno.add(new TratamentoSistemasAguaDadosDTO((String) i[0], ((BigInteger) i[1]).intValue(), ((BigInteger) i[2]).intValue(), ((BigInteger) i[3]).intValue(), ((BigInteger) i[4]).intValue(), ((BigInteger) i[5]).intValue()));
+                TratamentoSistemasAguaDadosDTO dto = new TratamentoSistemasAguaDadosDTO();
+                    dto.setSistemasAgua(((BigInteger) i[1]).intValue());
+                    dto.setNomeProvincia((String) i[0]);
+                    dto.setPadrao(((BigDecimal) i[2]).intValue());
+                    dto.setBasico(((BigDecimal) i[3]).intValue());
+                    dto.setNaoRealiza(((BigDecimal) i[4]).intValue());
+                    dto.setOutros(((BigDecimal) i[5]).intValue());
+
+                    retorno.add(dto);
             });
         }
         return retorno;

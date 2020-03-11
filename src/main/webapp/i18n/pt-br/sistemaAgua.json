@@ -5,7 +5,8 @@
                 "title": "Sistema de Águas",
                 "createLabel": "Criar novo Sistema de Água",
                 "createOrEditLabel": "Criar ou editar",
-                "editLabel": "Editar Sistema de Água"
+                "editLabel": "Editar Sistema de Água",
+                "arq": "Sistema de Águas"
             },
             "created": "Novo Sistema de Água foi criado sucesso",
             "updated": "Sistema de Água foi atualizado com sucesso",

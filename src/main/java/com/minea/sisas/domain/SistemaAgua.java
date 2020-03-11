@@ -264,6 +264,9 @@ public class SistemaAgua implements Serializable {
     @Column(name = "motivo_avaria_sistema")
     private String motivoAvariaSistema;
 
+    @Column(name = "status")
+    private Boolean status;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -1075,6 +1078,14 @@ public class SistemaAgua implements Serializable {
             return false;
         }
         return Objects.equals(getId(), sistemaAgua.getId());
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 
     @Override

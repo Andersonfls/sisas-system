@@ -34,7 +34,7 @@
     </div>
     <br>
 
-    <div id="munic" class="card" *ngIf="tipoRelatorio==='Nível Municipal'">
+    <div class="card" *ngIf="tipoRelatorio==='Nível Municipal'">
         <div class="export-container">
             <button type="button" (click)="exportTable('munitb')" class="btn btn-primary btn-sm">
                 <span class="fa fa-file-excel-o"></span>
@@ -45,6 +45,7 @@
                 <span class="d-none d-md-inline">PDF</span>
             </button>
         </div>
+        <div id="munic">
         <div class="table-responsive" *ngIf="listaTabela">
             <table id="munitb" class="table table-striped">
                 <thead>
@@ -142,9 +143,10 @@
                 </tfoot>
             </table>
         </div>
+        </div>
     </div>
 
-    <div  id="comun" class="card" *ngIf="tipoRelatorio==='Nível Comunal'">
+    <div class="card" *ngIf="tipoRelatorio==='Nível Comunal'">
         <div class="export-container">
             <button type="button" (click)="exportTable('comuntb')" class="btn btn-primary btn-sm">
                 <span class="fa fa-file-excel-o"></span>
@@ -155,6 +157,7 @@
                 <span class="d-none d-md-inline">PDF</span>
             </button>
         </div>
+        <div id="comun">
         <div class="table-responsive" *ngIf="listaTabela">
             <table id="comuntb" class="table table-striped">
                 <thead>
@@ -255,6 +258,7 @@
                 </tr>
                 </tfoot>
             </table>
+        </div>
         </div>
     </div>
     <br>

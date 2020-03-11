@@ -27,32 +27,15 @@ export class BeneficiariosTpBombaComponent implements OnInit {
     predicate: any;
     reverse: any;
     chart: any;
-    listaFuncionam: DadosRelatorio[];
-    listaNaoFuncionam: DadosRelatorio[];
-    listaNumSistemas: DadosRelatorio[];
-
     totalPopulacao = 0;
     totalPocoMelhorado = 0;
     totalFuro = 0;
     totalNascente = 0;
-
-    totalAfridevPopulacao = 0;
     totalAfridev= 0;
-
-    totalVergnetPopulacao = 0;
     totalVergnet = 0;
-
-    totalVolantaPopulacao = 0;
     totalVolanta = 0;
-
-    totalIndiaPopulacao = 0;
     totalIndia = 0;
-
     totalOutro = 0;
-    totalOutroPopulacao = 0;
-
-    totalGravidade = 0;
-    totalGravidadePopulacao = 0;
 
     constructor(
         private jhiAlertService: JhiAlertService,
@@ -65,7 +48,8 @@ export class BeneficiariosTpBombaComponent implements OnInit {
         this.principal.identity().then((userIdentity) => {
             this.user = userIdentity;
         });
-        this.tipoRelatorio = null;
+
+        this.buscaDadosTabela();
     }
 
     public captureScreen(elementId) {
@@ -107,14 +91,6 @@ export class BeneficiariosTpBombaComponent implements OnInit {
             (res: HttpResponse<BeneficiariosBmbMecanica[]>) => {
                 this.listaTabela = res.body;
                 console.log(this.listaTabela);
-
-                this.listaNaoFuncionam = new Array();
-                this.listaFuncionam = new Array();
-                this.listaNumSistemas = new Array();
-
-                this.listaTabela.forEach( (i) => {
-                    const item: DadosRelatorio = new DadosRelatorio();
-                });
             });
     }
 

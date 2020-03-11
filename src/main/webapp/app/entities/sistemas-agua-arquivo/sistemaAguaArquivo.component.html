@@ -1,0 +1,33 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myProdutoLabel" jhiTranslate="sisasApp.sistemaAgua.home.arq">Create or edit a Produto</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div>
+            <div class="card border-success text-center">
+                <div class="card-body text-success">
+                    <h5 class="card-title">INSTRUÇÕES PARA INSERÇÃO DE DADOS POR ARQUIVO</h5>
+                    <p class="card-text">Por favor clique em Inserir, o aquivo deverá adicionado em formato JSON.
+                        Uma vez que dados forem salvos, será apresentado uma mensagem informando o resultado da Inserção</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top: 1%">
+            <label class="form-control-label" jhiTranslate="sisasApp.indicadorProducao.arquivo" for="produto_arquivo_field"> Arquivo </label>
+            <div class="d-flex" >
+                <input #inputFile type="file" accept="*.json" (change)="selectFile($event)" id="produto_arquivo_field" *ngIf="!arquivo.id" >
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="previousState()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Inserir</span>
+        </button>
+    </div>
+</form>

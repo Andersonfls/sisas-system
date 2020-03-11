@@ -21,6 +21,11 @@ import java.util.List;
 @Repository
 public interface SistemaAguaRepository extends JpaRepository<SistemaAgua, Long>, JpaSpecificationExecutor<SistemaAgua> {
 
+    Page<SistemaAgua> findAllByStatusIsTrue(Pageable pageable);
+
+    @Query("select s from SistemaAgua s where s.status =1 and s.provincia.id = :provinciaId")
+    Page<SistemaAgua> findAllByStatusIsTrueAndProvinciaId(@Param("provinciaId") Long provinciaId, Pageable pageable);
+
     @Query("select s from SistemaAgua s where LOWER(s.nmSistemaAgua) like LOWER(concat(:nome,'%')) " +
         "or LOWER(s.nmFonteAgua) like LOWER(concat(:nome,'%'))" +
         "or LOWER(s.nmLocalidade) like LOWER(concat(:nome,'%'))" +

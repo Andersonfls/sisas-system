@@ -1,9 +1,11 @@
 import {Component, OnInit, OnDestroy, ViewChild} from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
+import {JhiEventManager, JhiAlertService, JhiDateUtils} from 'ng-jhipster';
 
 import {ITEMS_PER_PAGE, Principal} from '../../shared';
 import {ArquivosPortal} from '../cadastro-pdf';
+import {IndicadorProducao, IndicadorProducaoService} from '../indicador-producao';
+import {DatePipe} from '@angular/common';
 
 @Component({
     selector: 'jhi-produto',
@@ -22,17 +24,21 @@ export class IndicadorArquivoComponent implements OnInit, OnDestroy {
     predicate: any;
     reverse: any;
     totalItems: number;
+    indicador: IndicadorProducao;
 
     arquivo: ArquivosPortal;
     isSaving: boolean;
     selectedFile: File;
     @ViewChild('inputFile')
     inputFile: any;
+    datepipe = new DatePipe('en-US');
 
     constructor(
         private jhiAlertService: JhiAlertService,
+        private indicadorProducaoService: IndicadorProducaoService,
         private eventManager: JhiEventManager,
         private principal: Principal,
+        private dateUtils: JhiDateUtils
     ) {
         this.produtos = [];
         this.produtosFilt = [];
@@ -85,6 +91,13 @@ export class IndicadorArquivoComponent implements OnInit, OnDestroy {
         const reader = new FileReader();
         reader.onload = (e) => {
             console.log(reader.result);
+            const data = JSON.parse(reader.result);
+            this.indicador = Object.assign({}, data);
+            this.indicador.dtLancamento = new Date();
+            this.indicador.dtUltimaAlteracao = new Date();
+            console.log(this.indicador);
+            this.indicador.id = null;
+            this.indicadorProducaoService.createFromArquivo(this.indicador);
         };
         reader.readAsText(this.selectedFile, 'UTF-8');
 

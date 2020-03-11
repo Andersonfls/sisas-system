@@ -38,7 +38,7 @@
     </div>
     <br/>
 
-    <div id="provinc" class="card" *ngIf="tipoRelatorio==='Nível Provincial'">
+    <div class="card" *ngIf="tipoRelatorio==='Nível Provincial'">
         <div class="export-container">
             <button type="button" (click)="exportTable('tbprovin')" class="btn btn-primary btn-sm">
                 <span class="fa fa-file-excel-o"></span>
@@ -49,6 +49,7 @@
                 <span class="d-none d-md-inline">PDF</span>
             </button>
         </div>
+        <div id="provinc">
         <div class="table-responsive" *ngIf="listaTabela">
             <table id="tbprovin" class="table table-striped">
                 <thead>
@@ -86,16 +87,14 @@
                 </tfoot>
             </table>
         </div>
+        </div>
         <br>
         <div class="card">
             <div id="chartContainer" style="height: 400px; width: 97%; margin-left: 3%"></div>
         </div>
     </div>
 
-
-
-
-    <div id="muni" class="card" *ngIf="tipoRelatorio==='Nível Municipal'">
+    <div class="card" *ngIf="tipoRelatorio==='Nível Municipal'">
         <div class="export-container">
             <button type="button" (click)="exportTable('tbuni')" class="btn btn-primary btn-sm">
                 <span class="fa fa-file-excel-o"></span>
@@ -106,6 +105,7 @@
                 <span class="d-none d-md-inline">PDF</span>
             </button>
         </div>
+        <div id="muni">
         <div class="table-responsive" *ngIf="listaTabela">
             <table id="tbuni" class="table table-striped">
                 <thead>
@@ -143,9 +143,10 @@
                 </tfoot>
             </table>
         </div>
+        </div>
     </div>
 
-    <div id="ctcomu" class="card" *ngIf="tipoRelatorio==='Nível Comunal'">
+    <div class="card" *ngIf="tipoRelatorio==='Nível Comunal'">
         <div class="export-container">
             <button type="button" (click)="exportTable('tbcomu')" class="btn btn-primary btn-sm">
                 <span class="fa fa-file-excel-o"></span>
@@ -156,6 +157,7 @@
                 <span class="d-none d-md-inline">PDF</span>
             </button>
         </div>
+        <div id="ctcomu">
         <div class="table-responsive" *ngIf="listaTabela">
             <table id="tbcomu" class="table table-striped">
                 <thead>
@@ -192,6 +194,7 @@
                 </tr>
                 </tfoot>
             </table>
+        </div>
         </div>
     </div>
 

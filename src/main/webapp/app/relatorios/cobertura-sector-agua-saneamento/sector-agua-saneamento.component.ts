@@ -12,6 +12,7 @@ import {RelatoriosService} from '../relatorios.service';
 import * as jsPDF from 'jspdf';
 import {TableUtil} from '../../shared/util/tableUtil';
 import * as html2canvas from 'html2canvas';
+import {SectorAguaDados} from '../cobertura-sector-agua/SectorAguaDados.model';
 
 @Component({
     selector: 'jhi-sector-agua',
@@ -82,14 +83,14 @@ export class CoberturaSectorAguaSaneamentoComponent implements OnInit {
 
     validaTipoRelatorio() {
         if (this.tipoRelatorio === 'Nível Provincial') {
-            this.buscaDadosTabela();
+            this.buscaDadosTabelaProvincia();
             this.iniciarChartProvincial();
         }
         if (this.tipoRelatorio === 'Nível Municipal') {
-            this.buscaDadosTabela();
+            this.buscaDadosTabelaMunicipio();
         }
         if (this.tipoRelatorio === 'Nível Comunal') {
-            this.buscaDadosTabela();
+            this.buscaDadosTabelaComuna();
         }
         if (this.tipoRelatorio === 'Nível Nacional') {
             this.buscaDadosTabela();
@@ -126,7 +127,97 @@ export class CoberturaSectorAguaSaneamentoComponent implements OnInit {
                 });
 
                 this.iniciarChart();
-                this.iniciarChartSaneamento();
+                // this.iniciarChartSaneamento();
+                this.iniciarChartAguaSaneamento();
+            });
+    }
+
+    buscaDadosTabelaProvincia() {
+        this.relatorioService.buscaDadosSectorAguaProvincia().subscribe(
+            (res: HttpResponse<SectorAguaDados[]>) => {
+                this.listaTabela = res.body;
+                console.log(this.listaTabela);
+
+                this.listaCobertura = Array<any>();
+                this.listaSaneamento = Array<any>();
+
+                this.listaTabela.forEach((p) => {
+                    const item: DadosRelatorio = new DadosRelatorio();
+                    item.label = p.ambito;
+                    item.y = p.habitantesPercent;
+
+                    this.listaCobertura.push(item);
+                });
+
+                this.listaTabela.forEach((p) => {
+                    const item: DadosRelatorio = new DadosRelatorio();
+                    item.label = p.ambito;
+                    item.y = p.habitantesSaneamentoPer;
+
+                    this.listaSaneamento.push(item);
+                });
+
+                this.iniciarChart();
+                this.iniciarChartAguaSaneamento();
+            });
+    }
+
+    buscaDadosTabelaMunicipio() {
+        this.relatorioService.buscaDadosSectorAguaMunicipio().subscribe(
+            (res: HttpResponse<SectorAguaDados[]>) => {
+                this.listaTabela = res.body;
+                console.log(this.listaTabela);
+
+                this.listaCobertura = Array<any>();
+                this.listaSaneamento = Array<any>();
+
+                this.listaTabela.forEach((p) => {
+                    const item: DadosRelatorio = new DadosRelatorio();
+                    item.label = p.ambito;
+                    item.y = p.habitantesPercent;
+
+                    this.listaCobertura.push(item);
+                });
+
+                this.listaTabela.forEach((p) => {
+                    const item: DadosRelatorio = new DadosRelatorio();
+                    item.label = p.ambito;
+                    item.y = p.habitantesSaneamentoPer;
+
+                    this.listaSaneamento.push(item);
+                });
+
+                this.iniciarChart();
+                this.iniciarChartAguaSaneamento();
+            });
+    }
+
+    buscaDadosTabelaComuna() {
+        this.relatorioService.buscaDadosSectorAguaComuna().subscribe(
+            (res: HttpResponse<SectorAguaDados[]>) => {
+                this.listaTabela = res.body;
+                console.log(this.listaTabela);
+
+                this.listaCobertura = Array<any>();
+                this.listaSaneamento = Array<any>();
+
+                this.listaTabela.forEach((p) => {
+                    const item: DadosRelatorio = new DadosRelatorio();
+                    item.label = p.ambito;
+                    item.y = p.habitantesPercent;
+
+                    this.listaCobertura.push(item);
+                });
+
+                this.listaTabela.forEach((p) => {
+                    const item: DadosRelatorio = new DadosRelatorio();
+                    item.label = p.ambito;
+                    item.y = p.habitantesSaneamentoPer;
+
+                    this.listaSaneamento.push(item);
+                });
+
+                this.iniciarChart();
                 this.iniciarChartAguaSaneamento();
             });
     }

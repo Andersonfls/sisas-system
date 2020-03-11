@@ -19,7 +19,20 @@ export class BeneficiariosBmbMecanica {
         public outro?: number,
         public outroPopulacao?: number,
         public gravidade ?: number,
-        public gravidadePopulacao?: number
+        public gravidadePopulacao?: number,
+
+        public totalSistemas?: number,
+        public electricaSistemas?: number,
+        public electricaFuncionam?: number,
+        public electricaNaoFuncionam?: number,
+
+        public dieselSistemas?: number,
+        public dieselFuncionam?: number,
+        public dieselNaoFuncionam?: number,
+
+        public gravidadeSistemas?: number,
+        public gravidadeFuncionam?: number,
+        public gravidadeNaoFuncionam?: number,
     ) {
     }
 }

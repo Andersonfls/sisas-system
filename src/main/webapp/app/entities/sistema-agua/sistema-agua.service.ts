@@ -7,6 +7,7 @@ import {JhiDateUtils} from 'ng-jhipster';
 
 import {SistemaAgua} from './sistema-agua.model';
 import {createRequestOption} from '../../shared';
+import {IndicadorProducao} from '../indicador-producao';
 
 export type EntityResponseType = HttpResponse<SistemaAgua>;
 
@@ -20,6 +21,11 @@ export class SistemaAguaService {
     create(sistemaAgua: SistemaAgua): Observable<EntityResponseType> {
         const copy = this.convert(sistemaAgua);
         return this.http.post<SistemaAgua>(this.resourceUrl, copy, { observe: 'response' })
+            .map((res: EntityResponseType) => this.convertResponse(res));
+    }
+
+    createFromArquivo(sistemaAgua: SistemaAgua): Observable<EntityResponseType> {
+        return this.http.post<SistemaAgua>(this.resourceUrl, sistemaAgua, { observe: 'response' })
             .map((res: EntityResponseType) => this.convertResponse(res));
     }
 

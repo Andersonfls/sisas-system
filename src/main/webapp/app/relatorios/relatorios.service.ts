@@ -22,9 +22,21 @@ export class RelatoriosService {
     constructor(private http: HttpClient) {
     }
 
-    buscaDadosSectorAgua(req?: any): Observable<HttpResponse<SectorAguaDados[]>> {
+    buscaDadosSectorAguaAmbito(req?: any): Observable<HttpResponse<SectorAguaDados[]>> {
         const options = createRequestOption(req);
-        return this.http.get<SectorAguaDados[]>(this.resourceUrl + '/provincias/relatorio', {params: options, observe: 'response'});
+        return this.http.get<SectorAguaDados[]>(this.resourceUrl + '/provincias/relatorio-saneamento', {params: options, observe: 'response'});
+    }
+    buscaDadosSectorAguaProvincia(req?: any): Observable<HttpResponse<SectorAguaDados[]>> {
+        const options = createRequestOption(req);
+        return this.http.get<SectorAguaDados[]>(this.resourceUrl + '/provincias/relatorio-saneamento-provincia', {params: options, observe: 'response'});
+    }
+    buscaDadosSectorAguaMunicipio(req?: any): Observable<HttpResponse<SectorAguaDados[]>> {
+        const options = createRequestOption(req);
+        return this.http.get<SectorAguaDados[]>(this.resourceUrl + '/provincias/relatorio-saneamento-municipio', {params: options, observe: 'response'});
+    }
+    buscaDadosSectorAguaComuna(req?: any): Observable<HttpResponse<SectorAguaDados[]>> {
+        const options = createRequestOption(req);
+        return this.http.get<SectorAguaDados[]>(this.resourceUrl + '/provincias/relatorio-saneamento-comuna', {params: options, observe: 'response'});
     }
 
     buscaDadosSectorAguaSaneamento(req?: any): Observable<HttpResponse<SectorAguaSaneamentoDados[]>> {
@@ -45,11 +57,6 @@ export class RelatoriosService {
     buscaDadosInqueritosPreenchidos(req?: any): Observable<HttpResponse<InqueritosPreenchidosDados[]>> {
         const options = createRequestOption(req);
         return this.http.get<InqueritosPreenchidosDados[]>(this.resourceUrl + '/inqueritos-preenchidos', {params: options, observe: 'response'});
-    }
-
-    buscaDadosInqueritosPreenchidos2(req?: any): Observable<HttpResponse<InqueritosPreenchidosDados[]>> {
-        const options = createRequestOption(req);
-        return this.http.get<InqueritosPreenchidosDados[]>(this.resourceUrl + '/inqueritos-preenchidos2', {params: options, observe: 'response'});
     }
 
     buscaDadosTratamentoSistemasAgua(req?: any): Observable<HttpResponse<TratamentoSistemaAguaDados[]>> {

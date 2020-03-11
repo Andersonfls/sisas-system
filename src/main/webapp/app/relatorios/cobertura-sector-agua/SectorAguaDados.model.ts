@@ -9,7 +9,13 @@ export class SectorAguaDados {
         public sistemasFuncionam?: number,
         public populacaoTotal?: number,
         public beneficiarios?: number,
-        public cobertura?: number
+        public cobertura?: number,
+        public provincia?: string,
+        public municipio?: string,
+        public comuna?: string,
+        public numeroMunicipios?: number,
+        public numeroComunas?: number,
+        public numeroProvincias?: number
     ) {
     }
 }

@@ -1,6 +1,5 @@
 package com.minea.sisas.service;
 
-import com.minea.sisas.domain.IndicadorProducaoProvincia;
 import com.minea.sisas.domain.Provincia;
 import com.minea.sisas.repository.ProvinciaRepository;
 import com.minea.sisas.service.dto.IndicadorProducaoProvinciaDTO;

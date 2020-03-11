@@ -36,6 +36,7 @@ export class SistemaAguaDialogComponent implements OnInit {
     public tipoComunaAldeias: Array<any> = ['Concentrada', 'Dispersa', 'Semi-Dispersa'];
     routeSub: any;
     listaAnos: number[];
+    isConcluido: boolean;
 
     constructor(
         private jhiAlertService: JhiAlertService,
@@ -52,6 +53,7 @@ export class SistemaAguaDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
+        this.isConcluido = false;
         this.sistemaAgua = new SistemaAgua();
 
         this.routeSub = this.route.params.subscribe((params) => {
@@ -59,6 +61,7 @@ export class SistemaAguaDialogComponent implements OnInit {
                 this.load(params['id']);
             } else {
                 this.sistemaAgua = new SistemaAgua();
+                this.montaListaInicio();
             }
         });
 
@@ -67,6 +70,16 @@ export class SistemaAguaDialogComponent implements OnInit {
                 this.situacaos = res.body;
             }, (res: HttpErrorResponse) => this.onError(res.message));
 
+        this.montaListaAnos();
+
+        const now = new Date();
+        this.sistemaAgua.dtLancamento = {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()};
+    }
+
+    concluiQuestionario() {
+        this.isConcluido = true;
+    }
+    montaListaInicio() {
         this.provinciaService.query().subscribe(
             (res: HttpResponse<Provincia[]>) => {
                 this.provincias = res.body;
@@ -83,11 +96,6 @@ export class SistemaAguaDialogComponent implements OnInit {
             (res: HttpResponse<Comuna[]>) => {
                 this.comunas = res.body;
             }, (res: HttpErrorResponse) => this.onError(res.message));
-
-        this.montaListaAnos();
-
-        const now = new Date();
-        this.sistemaAgua.dtLancamento = {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()};
     }
 
     // O número de casas ligadas não deverá  ser superior ao número de casas existentes na localidade
@@ -163,6 +171,21 @@ export class SistemaAguaDialogComponent implements OnInit {
                     };
                 }
                 this.sistemaAgua = sistemaAgua;
+
+                if (this.sistemaAgua.possuiSistemaAgua === 1) {
+                    this.concluiQuestionario();
+                }
+
+                this.montaListaInicio();
+                console.log(this.sistemaAgua.provincia);
+                if (this.sistemaAgua.provincia) {
+                    this.onChangeMunicipios();
+                }
+                console.log(this.sistemaAgua.municipio);
+                if (this.sistemaAgua.municipio) {
+                    this.onChangeComunas();
+                }
+                console.log(this.sistemaAgua);
             });
     }
 
@@ -181,6 +204,7 @@ export class SistemaAguaDialogComponent implements OnInit {
 
     save() {
         this.isSaving = true;
+        console.log(this.sistemaAgua);
         if (this.sistemaAgua.id !== undefined) {
             this.subscribeToSaveResponse(
                 this.sistemaAguaService.update(this.sistemaAgua));
@@ -227,8 +251,7 @@ export class SistemaAguaDialogComponent implements OnInit {
 
         this.municipioService.queryMunicipioByProvinciaId({
             provinciaId: this.sistemaAgua.provincia.id
-        })
-            .subscribe((res) => {
+        }).subscribe((res) => {
                 this.municipios = res.body;
             });
     }

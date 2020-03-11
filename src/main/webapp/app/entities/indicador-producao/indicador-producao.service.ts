@@ -23,6 +23,11 @@ export class IndicadorProducaoService {
             .map((res: EntityResponseType) => this.convertResponse(res));
     }
 
+    createFromArquivo(indicadorProducao: IndicadorProducao): Observable<EntityResponseType> {
+        return this.http.post<IndicadorProducao>(this.resourceUrl, indicadorProducao, { observe: 'response' })
+            .map((res: EntityResponseType) => this.convertResponse(res));
+    }
+
     update(indicadorProducao: IndicadorProducao): Observable<EntityResponseType> {
         const copy = this.convert(indicadorProducao);
         return this.http.put<IndicadorProducao>(this.resourceUrl, copy, { observe: 'response' })

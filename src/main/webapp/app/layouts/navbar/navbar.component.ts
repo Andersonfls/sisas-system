@@ -60,6 +60,7 @@ export class NavbarComponent implements OnInit {
         this.arquivosService.find(1).subscribe(
             (res: HttpResponse<ArquivosPortal>) => {
                 this.manual = res.body;
+                console.log(this.manual);
             }
         );
     }

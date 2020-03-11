@@ -10,6 +10,7 @@ import {SisasBenefOptTecnicaModule} from './beneficiarios-agua-ft-super-opt-tecn
 import {SisasBenefBmbMecanicaModule} from './beneficiarios-agua-ft-subt-bomb-mecanica/beneficiarios-bmb-mecanica.module';
 import {SisasBeneficiariosTpBombaModule} from './beneficiarios-agua-ft-subt-bomba/beneficiarios-tp-bmb.module';
 import {SisasIndicadorProducaoProvinciaModule} from './indicador-producao/indicador-producao-provincia.module';
+import {SisasSectorAguaProvincialModule} from './cobertura-sector-agua-provincial/sector-agua.module';
 
 @NgModule({
     imports: [
@@ -22,7 +23,8 @@ import {SisasIndicadorProducaoProvinciaModule} from './indicador-producao/indica
         SisasFuncAguaModule,
         SisasBenefOptTecnicaModule,
         SisasBenefBmbMecanicaModule,
-        SisasBeneficiariosTpBombaModule
+        SisasBeneficiariosTpBombaModule,
+        SisasSectorAguaProvincialModule
     ],
     declarations: [],
     entryComponents: [],

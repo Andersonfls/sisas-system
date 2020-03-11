@@ -2,14 +2,19 @@ package com.minea.sisas.service;
 
 import com.minea.sisas.domain.Municipio;
 import com.minea.sisas.repository.MunicipioRepository;
+import com.minea.sisas.service.dto.ComunaDTO;
 import com.minea.sisas.service.dto.MunicipioDTO;
+import com.minea.sisas.service.dto.UserDTO;
 import com.minea.sisas.service.mapper.MunicipioMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Objects;
 
 
 /**
@@ -25,9 +30,13 @@ public class MunicipioService {
 
     private final MunicipioMapper municipioMapper;
 
-    public MunicipioService(MunicipioRepository municipioRepository, MunicipioMapper municipioMapper) {
+    @Autowired
+    private UserService userService;
+
+    public MunicipioService(MunicipioRepository municipioRepository, MunicipioMapper municipioMapper, UserService userService) {
         this.municipioRepository = municipioRepository;
         this.municipioMapper = municipioMapper;
+        this.userService = userService;
     }
 
     /**
@@ -52,8 +61,28 @@ public class MunicipioService {
     @Transactional(readOnly = true)
     public Page<MunicipioDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Municipios");
-        return municipioRepository.findAll(pageable)
-            .map(municipioMapper::toDto);
+        Page<MunicipioDTO> retorno = null;
+        UserDTO userDTO = this.userService.getUserWithAuthorities().map(UserDTO::new).orElse(null);
+
+        if (Objects.nonNull(userDTO) ) {
+            for (String permisao: userDTO.getAuthorities()) {
+                if (permisao.equals("ROLE_ADMIN")){
+                    retorno = municipioRepository.findAll(pageable)
+                        .map(municipioMapper::toDto);
+                } else if (Objects.nonNull(userDTO.getProvincia()) && Objects.nonNull(userDTO.getMunicipio())){
+                    retorno = municipioRepository.findAllByProvinciaIdpg(userDTO.getProvincia().getId(),pageable)
+                        .map(municipioMapper::toDto);
+                } else {
+                    retorno = municipioRepository.findAll(pageable)
+                        .map(municipioMapper::toDto);
+                }
+            }
+        } else {
+            retorno = municipioRepository.findAll(pageable)
+                .map(municipioMapper::toDto);
+        }
+
+        return retorno;
     }
 
     /**

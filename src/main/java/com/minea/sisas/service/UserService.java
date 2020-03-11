@@ -125,6 +125,9 @@ public class UserService {
         newUser.setActivationKey(RandomUtil.generateActivationKey());
         authorities.add(authority);
         newUser.setAuthorities(authorities);
+        newUser.setProvincia(userDTO.getProvincia());
+        newUser.setMunicipio(userDTO.getMunicipio());
+        newUser.setComuna(userDTO.getComuna());
         userRepository.save(newUser);
         cacheManager.getCache(UserRepository.USERS_BY_LOGIN_CACHE).evict(newUser.getLogin());
         cacheManager.getCache(UserRepository.USERS_BY_EMAIL_CACHE).evict(newUser.getEmail());
@@ -172,6 +175,9 @@ public class UserService {
         user.setResetKey(RandomUtil.generateResetKey());
         user.setResetDate(Instant.now());
         user.setActivated(true);
+        user.setProvincia(userDTO.getProvincia());
+        user.setMunicipio(userDTO.getMunicipio());
+        user.setComuna(userDTO.getComuna());
         userRepository.save(user);
         cacheManager.getCache(UserRepository.USERS_BY_LOGIN_CACHE).evict(user.getLogin());
         cacheManager.getCache(UserRepository.USERS_BY_EMAIL_CACHE).evict(user.getEmail());
@@ -275,6 +281,9 @@ public class UserService {
                 user.setImageUrl(userDTO.getImageUrl());
                 user.setActivated(userDTO.isActivated());
                 user.setLangKey(userDTO.getLangKey());
+                user.setProvincia(userDTO.getProvincia());
+                user.setMunicipio(userDTO.getMunicipio());
+                user.setComuna(userDTO.getComuna());
                 Set<Authority> managedAuthorities = user.getAuthorities();
                 managedAuthorities.clear();
                 userDTO.getAuthorities().stream()

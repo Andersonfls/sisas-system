@@ -31,6 +31,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -71,6 +72,7 @@ public class SistemaAguaResource {
             throw new BadRequestAlertException("A new sistemaAgua cannot already have an ID", ENTITY_NAME, "idexists");
         }
         //sistemaAguaDTO.setDtLancamento(LocalDate.now()); //SETANDO DATA DE LANCAMENTO DEFAUT
+        sistemaAguaDTO.setStatus(true);
         SistemaAguaDTO result = sistemaAguaService.save(sistemaAguaDTO);
         return ResponseEntity.created(new URI("/api/sistema-aguas/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
@@ -94,6 +96,7 @@ public class SistemaAguaResource {
             return createSistemaAgua(sistemaAguaDTO);
         }
         sistemaAguaDTO.setDtUltimaAlteracao(LocalDate.now());
+        sistemaAguaDTO.setStatus(false);
         SistemaAguaDTO result = sistemaAguaService.save(sistemaAguaDTO);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, sistemaAguaDTO.getId().toString()))
@@ -110,8 +113,8 @@ public class SistemaAguaResource {
     @GetMapping("/sistema-aguas")
     @Timed
     public ResponseEntity<List<SistemaAguaDTO>> getAllSistemaAguas(SistemaAguaCriteria criteria, Pageable pageable) {
-        log.debug("REST request to get SistemaAguas by criteria: {}", criteria);
-        Page<SistemaAguaDTO> page = sistemaAguaQueryService.findByCriteria(criteria, pageable);
+        log.debug("REST request to get SistemaAguas by criteria: {}");
+        Page<SistemaAguaDTO> page = sistemaAguaService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/sistema-aguas");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
@@ -171,7 +174,12 @@ public class SistemaAguaResource {
     @Timed
     public ResponseEntity<Void> deleteSistemaAgua(@PathVariable Long id) {
         log.debug("REST request to delete SistemaAgua : {}", id);
-        sistemaAguaService.delete(id);
+        SistemaAgua sistemaAgua = this.sistemaAguaRepository.findOne(id);
+        if (Objects.nonNull(sistemaAgua)) {
+            sistemaAgua.setStatus(false);
+            this.sistemaAguaRepository.save(sistemaAgua);
+        }
+        //sistemaAguaService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 }

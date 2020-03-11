@@ -40,8 +40,6 @@ export class IndicadorProducaoProvinciaComponent implements OnInit {
 
     ngOnInit() {
         this.indicadorProducaoProvincia = new IndicadorProducaoProvincia();
-        this.indicadorProducaoProvincias = new Array();
-
         this.indicadorProducaoProvincia.ano = null;
         this.indicadorProducaoProvincia.provincia = null;
 
@@ -58,6 +56,7 @@ export class IndicadorProducaoProvinciaComponent implements OnInit {
         this.relatorioService.buscaNomeCampos().subscribe(
             (res: HttpResponse<IndicadorProducaoProvincia[]>) => {
                 this.indicadorProducaoProvincias = res.body;
+                console.log(this.indicadorProducaoProvincias);
             },
             (res: HttpErrorResponse) => this.onError(res.message));
     }
@@ -81,27 +80,6 @@ export class IndicadorProducaoProvinciaComponent implements OnInit {
     exportTable(tabeId) {
         TableUtil.exportToExcel(tabeId);
     }
-
-/*    buscaDadosTabela() {
-        this.relatorioService.buscaDadosIndicadorProducaoProvincia().subscribe(
-            (res: HttpResponse<IndicadorProducaoProvincia[]>) => {
-                this.indicadorProducaoProvincias = res.body;
-                console.log(this.indicadorProducaoProvincia);
-
-                this.indicadorProducaoProvincias.forEach( (i) => {
-                    this.totalnumeroSistemas += i.numeroSistemas;
-                    this.totalfuncionamAgua += i.funcionamAgua;
-                    this.totalnaoFuncionamAgua += i.naoFuncionamAgua;
-                    this.totalfuncionamAguaPerc = 76;
-                    this.totalnaoFuncionamAguaPerc = 24;
-                    this.totalnumeroChafarizes += i.numeroChafarizes;
-                    this.totalfuncionamChafariz += i.funcionamChafariz;
-                    this.totalnaoFuncionamChafariz += i.naoFuncionamChafariz;
-                    this.totalfuncionamChafarizPerc += i.funcionamChafarizPerc;
-                    this.totalnaoFuncionamChafarizPerc = 25;
-                });
-            });
-    }*/
 
     sort() {
         const result = [this.predicate + ',' + (this.reverse ? 'asc' : 'desc')];
