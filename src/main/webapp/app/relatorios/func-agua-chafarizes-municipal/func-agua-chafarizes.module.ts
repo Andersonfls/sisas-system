@@ -28,4 +28,4 @@ const ENTITY_STATES = [
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class SisasFuncAguaChafarizesModule {}
+export class SisasFuncAguaChafarizesMunicipalModule {}

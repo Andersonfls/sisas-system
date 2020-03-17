@@ -23,7 +23,6 @@ export class FuncAguaChafarizesComponent implements OnInit {
 
     user: User;
     listaTabela: FuncAguaChafarizes[];
-    tipoRelatorio: string;
     predicate: any;
     reverse: any;
 
@@ -49,7 +48,7 @@ export class FuncAguaChafarizesComponent implements OnInit {
         this.principal.identity().then((userIdentity) => {
             this.user = userIdentity;
         });
-        this.tipoRelatorio = null;
+        this.buscaDadosTabela();
     }
 
     public captureScreen(elementId) {
@@ -63,7 +62,7 @@ export class FuncAguaChafarizesComponent implements OnInit {
             const pdf = new jsPDF('p', 'mm', 'a4');
             const position = 0;
             pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
-            pdf.save('relatorio-sisas.pdf');
+            pdf.save('funcionamento-aguas-chafarizes.pdf');
         }).catch(function(error) {
             // Error Handling
         });
@@ -71,24 +70,9 @@ export class FuncAguaChafarizesComponent implements OnInit {
     exportTable(tabeId) {
         TableUtil.exportToExcel(tabeId);
     }
-    validaTipoRelatorio() {
-        if (this.tipoRelatorio === 'Nível Provincial') {
-            this.buscaDadosTabela();
-        }
-        if (this.tipoRelatorio === 'Nível Municipal') {
-            this.buscaDadosTabela();
-        }
-        if (this.tipoRelatorio === 'Nível Comunal') {
-            this.buscaDadosTabela();
-        }
-    }
-
-    voltarEscolha() {
-        this.tipoRelatorio = null;
-    }
 
     buscaDadosTabela() {
-        this.relatorioService.buscaDadosFuncAguaChafariz().subscribe(
+        this.relatorioService.buscaDadosFuncAguaChafarizMunicipal().subscribe(
             (res: HttpResponse<FuncAguaChafarizes[]>) => {
                 this.listaTabela = res.body;
                 console.log(this.listaTabela);
@@ -97,13 +81,13 @@ export class FuncAguaChafarizesComponent implements OnInit {
                     this.totalnumeroSistemas += i.numeroSistemas;
                     this.totalfuncionamAgua += i.funcionamAgua;
                     this.totalnaoFuncionamAgua += i.naoFuncionamAgua;
-                    this.totalfuncionamAguaPerc = 76;
-                    this.totalnaoFuncionamAguaPerc = 24;
+                    this.totalfuncionamAguaPerc += i.funcionamAguaPerc;
+                    this.totalnaoFuncionamAguaPerc += i.naoFuncionamAguaPerc;
                     this.totalnumeroChafarizes += i.numeroChafarizes;
                     this.totalfuncionamChafariz += i.funcionamChafariz;
                     this.totalnaoFuncionamChafariz += i.naoFuncionamChafariz;
                     this.totalfuncionamChafarizPerc += i.funcionamChafarizPerc;
-                    this.totalnaoFuncionamChafarizPerc = 25;
+                    this.totalnaoFuncionamChafarizPerc += i.naoFuncionamChafarizPerc;
                 });
             });
     }
