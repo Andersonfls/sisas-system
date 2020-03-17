@@ -66,26 +66,25 @@ public class ComunaService {
         Page<ComunaDTO> retorno = null;
         UserDTO userDTO = this.userService.getUserWithAuthorities().map(UserDTO::new).orElse(null);
 
-        if (Objects.nonNull(userDTO) ) {
-            for (String permisao: userDTO.getAuthorities()) {
-
-                if (isAdministrador(userDTO.getAuthorities())){
-                    retorno = comunaRepository.findAll(pageable)
-                        .map(comunaMapper::toDto);
-                } else if (Objects.nonNull(userDTO.getProvincia()) && Objects.nonNull(userDTO.getMunicipio())){
-                    retorno = comunaRepository.findAllByMunicipioIdPg(userDTO.getMunicipio().getId(),pageable)
-                        .map(comunaMapper::toDto);
-                } else {
-                    retorno = comunaRepository.findAll(pageable)
-                        .map(comunaMapper::toDto);
-                }
+        if (Objects.nonNull(userDTO)) {
+            if (isAdministradorOrUsuserProvincial(userDTO.getAuthorities())) {
+                retorno =comunaRepository.findAllByMunicipioIdPg(userDTO.getMunicipio().getId(),pageable)
+                    .map(comunaMapper::toDto);
+            } else {
+                retorno = comunaRepository.findAll(pageable)
+                    .map(comunaMapper::toDto);
             }
-        } else {
-            retorno = comunaRepository.findAll(pageable)
-                .map(comunaMapper::toDto);
         }
-
         return retorno;
+    }
+
+    private boolean isAdministradorOrUsuserProvincial(Set<String> permissoes ){
+        for (String permisao: permissoes) {
+            if (permisao.equals("ADMIN_PROVINCIAL") || permisao.equals("USUARIO_PROVINCIAL")) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public boolean isAdministrador(Set<String> itens) {

@@ -28,6 +28,6 @@ public interface ProgramasProjectosRepository extends JpaRepository<ProgramasPro
 
     Page<ProgramasProjectos> findAllByStatusIsTrue(Pageable pageable);
 
-    @Query("select p from ProgramasProjectos p where ipstatus =1 and p.provincia.id = :provinciaId")
+    @Query("select p from ProgramasProjectos p where p.status =1 and p.provincia.id = :provinciaId")
     Page<ProgramasProjectos> findAllByStatusIsTrueAndProvinciaId(@Param("provinciaId") Long provinciaId, Pageable pageable);
 }

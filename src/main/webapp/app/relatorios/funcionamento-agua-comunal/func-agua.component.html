@@ -1,0 +1,71 @@
+<div>
+    <jhi-alert></jhi-alert>
+    <div id="conteinerPron">
+        <div class="export-container">
+            <button type="button" (click)="exportTable('tableprovin')" class="btn btn-primary btn-sm">
+                <span class="fa fa-file-excel-o"></span>
+                <span class="d-none d-md-inline">Excel</span>
+            </button>
+            <button type="button" (click)="captureScreen('tes')" class="btn btn-primary btn-sm">
+                <span class="fas fa-file-pdf"></span>
+                <span class="d-none d-md-inline">PDF</span>
+            </button>
+        </div>
+        <div id="tes">
+            <h2 class="text-centro">
+                <span>Funcionamento de Sistemas de Água (Nível Comunal)</span>
+            </h2>
+            <div class="table-responsive" *ngIf="listaTabela">
+                <table id="tableprovin" class="table table-striped">
+                    <thead>
+                    <tr style="background-color: #1f749c; text-align: center;">
+                        <th class="borda-th" colspan="5"></th>
+                        <th class="borda-th" colspan="4"><span style="margin-left: 10%">Funcionamento Sistemas Água</span></th>
+                    </tr>
+                    <tr style="background-color: #1f749c">
+                        <th class="borda-th"><span>Província</span></th>
+                        <th class="borda-th"><span>Município</span></th>
+                        <th class="borda-th"><span>Comuna</span></th>
+                        <th class="borda-th"><span>Populacão Benef.Água</span></th>
+                        <th class="borda-th"><span>N° Sistemas Água</span></th>
+                        <th class="borda-th"><span>N° Funcionam</span></th>
+                        <th class="borda-th"><span>N° Não Funcionam</span></th>
+                        <th class="borda-th"><span>(%) Funcionam</span></th>
+                        <th class="borda-th"><span>(%) Não Funcionam</span></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let provincia of listaTabela">
+                        <td class="borda-th text-centro">{{provincia.nomeProvincia}}</td>
+                        <td class="borda-th text-centro">{{provincia.nomeMunicipio}}</td>
+                        <td class="borda-th text-centro">{{provincia.nomeComuna}}</td>
+                        <td class="borda-th text-centro">{{provincia.beneficiariosAgua | number}}</td>
+                        <td class="borda-th text-centro">{{provincia.numeroSistemas | number}}</td>
+                        <td class="borda-th text-centro">{{provincia.funcionamAgua}}</td>
+                        <td class="borda-th text-centro">{{provincia.naoFuncionamAgua}}</td>
+                        <td class="borda-th text-centro">{{provincia.funcionamAguaPerc | number:'1.2-2'}}%</td>
+                        <td class="borda-th text-centro">{{provincia.naoFuncionamAguaPerc | number:'1.2-2'}}%</td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr style="background-color: #1f749c">
+                        <td colspan="3" style="text-align: center;"> <span style="font-weight: bold">Total Nacional: </span></td>
+                        <td style="text-align: center;"> <span style="font-weight: bold">{{totalBeneficiarios | number }} </span></td>
+                        <td style="text-align: center;"> <span style="font-weight: bold">{{totalnumeroSistemas | number }} </span></td>
+                        <td style="text-align: center;"> <span style="font-weight: bold">{{totalfuncionamAgua | number}} </span></td>
+                        <td style="text-align: center;"> <span style="font-weight: bold">{{totalnaoFuncionamAgua | number}} </span></td>
+                        <td style="text-align: center;"> <span style="font-weight: bold">{{totalfuncionamAguaPerc | number:'1.2-2'}}% </span></td>
+                        <td style="text-align: center;"> <span style="font-weight: bold">{{totalnaoFuncionamAguaPerc | number:'1.2-2'}}% </span></td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <br>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" [routerLink]="['/../../dashboard']"  >
+                <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+            </button>
+        </div>
+    </div>

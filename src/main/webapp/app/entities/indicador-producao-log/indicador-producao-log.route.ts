@@ -32,7 +32,7 @@ export const indicadorProducaoLogRoute: Routes = [
             'pagingParams': IndicadorProducaoLogResolvePagingParams
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
             pageTitle: 'sisasApp.indicadorProducaoLog.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -40,7 +40,7 @@ export const indicadorProducaoLogRoute: Routes = [
         path: 'indicador-producao-log/:id',
         component: IndicadorProducaoLogDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
             pageTitle: 'sisasApp.indicadorProducaoLog.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -52,7 +52,7 @@ export const indicadorProducaoLogPopupRoute: Routes = [
         path: 'indicador-producao-log-new',
         component: IndicadorProducaoLogPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
             pageTitle: 'sisasApp.indicadorProducaoLog.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -62,7 +62,7 @@ export const indicadorProducaoLogPopupRoute: Routes = [
         path: 'indicador-producao-log/:id/edit',
         component: IndicadorProducaoLogPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
             pageTitle: 'sisasApp.indicadorProducaoLog.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -72,7 +72,7 @@ export const indicadorProducaoLogPopupRoute: Routes = [
         path: 'indicador-producao-log/:id/delete',
         component: IndicadorProducaoLogDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
             pageTitle: 'sisasApp.indicadorProducaoLog.home.title'
         },
         canActivate: [UserRouteAccessService],

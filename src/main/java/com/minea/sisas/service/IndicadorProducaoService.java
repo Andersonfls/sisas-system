@@ -24,6 +24,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 
 /**
@@ -122,34 +123,25 @@ public class IndicadorProducaoService {
         UserDTO userDTO = this.userService.getUserWithAuthorities().map(UserDTO::new).orElse(null);
 
         if (Objects.nonNull(userDTO) ) {
-            for (String permisao: userDTO.getAuthorities()) {
-                if (permisao.equals("ROLE_ADMIN")){
-                    retorno = indicadorProducaoRepository.findAllByStatusIsTrue(pageable)
-                        .map(indicadorProducaoMapper::toDto);
-                }
-
-                if (permisao.equals("ADM_HUAMBO")){
-                    retorno = indicadorProducaoRepository.findAllByStatusIsTrueAndProvinciaId(10l,pageable)
-                        .map(indicadorProducaoMapper::toDto);
-                }
-
-                if (permisao.equals("ADM_HUILA")){
-                    retorno = indicadorProducaoRepository.findAllByStatusIsTrueAndProvinciaId(15l,pageable)
-                        .map(indicadorProducaoMapper::toDto);
-                }
-
-                if (permisao.equals("ADM_CUANZA_NORTE")){
-                    retorno = indicadorProducaoRepository.findAllByStatusIsTrueAndProvinciaId(5l,pageable)
-                        .map(indicadorProducaoMapper::toDto);
-                }
-
+            if (isAdministradorOrUsuserProvincial(userDTO.getAuthorities())) {
+                retorno = indicadorProducaoRepository.findAllByStatusIsTrueAndProvinciaId(userDTO.getProvincia().getId(),pageable)
+                    .map(indicadorProducaoMapper::toDto);
+            } else {
+                retorno = indicadorProducaoRepository.findAllByStatusIsTrue(pageable)
+                    .map(indicadorProducaoMapper::toDto);
             }
-        } else {
-            retorno = indicadorProducaoRepository.findAllByStatusIsTrue(pageable)
-                .map(indicadorProducaoMapper::toDto);
         }
 
         return retorno;
+    }
+
+    private boolean isAdministradorOrUsuserProvincial(Set<String> permissoes ){
+        for (String permisao: permissoes) {
+            if (permisao.equals("ADMIN_PROVINCIAL") || permisao.equals("USUARIO_PROVINCIAL")) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

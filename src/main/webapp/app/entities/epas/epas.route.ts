@@ -32,7 +32,7 @@ export const epasRoute: Routes = [
             'pagingParams': EpasResolvePagingParams
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ADMIN_PROVINCIAL'],
             pageTitle: 'sisasApp.epas.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -40,7 +40,7 @@ export const epasRoute: Routes = [
         path: 'epas/:id',
         component: EpasDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ADMIN_PROVINCIAL'],
             pageTitle: 'sisasApp.epas.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -52,7 +52,7 @@ export const epasPopupRoute: Routes = [
         path: 'epas-new',
         component: EpasPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ADMIN_PROVINCIAL'],
             pageTitle: 'sisasApp.epas.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -62,7 +62,7 @@ export const epasPopupRoute: Routes = [
         path: 'epas/:id/edit',
         component: EpasPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ADMIN_PROVINCIAL'],
             pageTitle: 'sisasApp.epas.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -72,7 +72,7 @@ export const epasPopupRoute: Routes = [
         path: 'epas/:id/delete',
         component: EpasDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ADMIN_PROVINCIAL'],
             pageTitle: 'sisasApp.epas.home.title'
         },
         canActivate: [UserRouteAccessService],

@@ -32,7 +32,7 @@ export const programasProjectosLogRoute: Routes = [
             'pagingParams': ProgramasProjectosLogResolvePagingParams
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
             pageTitle: 'sisasApp.programasProjectosLog.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -40,7 +40,7 @@ export const programasProjectosLogRoute: Routes = [
         path: 'programas-projectos-log/:id',
         component: ProgramasProjectosLogDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
             pageTitle: 'sisasApp.programasProjectosLog.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -52,7 +52,7 @@ export const programasProjectosLogPopupRoute: Routes = [
         path: 'programas-projectos-log-new',
         component: ProgramasProjectosLogPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
             pageTitle: 'sisasApp.programasProjectosLog.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -62,7 +62,7 @@ export const programasProjectosLogPopupRoute: Routes = [
         path: 'programas-projectos-log/:id/edit',
         component: ProgramasProjectosLogPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
             pageTitle: 'sisasApp.programasProjectosLog.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -72,7 +72,7 @@ export const programasProjectosLogPopupRoute: Routes = [
         path: 'programas-projectos-log/:id/delete',
         component: ProgramasProjectosLogDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
             pageTitle: 'sisasApp.programasProjectosLog.home.title'
         },
         canActivate: [UserRouteAccessService],

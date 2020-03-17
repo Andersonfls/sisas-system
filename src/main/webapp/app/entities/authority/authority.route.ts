@@ -31,7 +31,7 @@ export const authorityRoute: Routes = [
             'pagingParams': AuthorityResolvePagingParams
         },
         data: {
-            authorities: ['ROLE_ADMIN', 'ROLE_USER', 'ROLE_ADMIN_LOCAL'],
+            authorities: ['ROLE_ADMIN', 'ROLE_USER', 'ADMIN_PROVINCIAL'],
             pageTitle: 'perfil.title.home'
         },
         canActivate: [UserRouteAccessService]
@@ -39,7 +39,7 @@ export const authorityRoute: Routes = [
         path: 'authority/:name',
         component: AuthorityDetailComponent,
         data: {
-            authorities: ['ROLE_ADMIN', 'ROLE_USER', 'ROLE_ADMIN_LOCAL'],
+            authorities: ['ROLE_ADMIN', 'ROLE_USER', 'ADMIN_PROVINCIAL'],
             pageTitle: 'perfil.title.detail'
         },
         canActivate: [UserRouteAccessService]
@@ -51,7 +51,7 @@ export const authorityPopupRoute: Routes = [
         path: 'authority-new',
         component: AuthorityPopupComponent,
         data: {
-            authorities: ['ROLE_ADMIN', 'ROLE_USER', 'ROLE_ADMIN_LOCAL'],
+            authorities: ['ROLE_ADMIN', 'ROLE_USER', 'ADMIN_PROVINCIAL'],
             pageTitle: 'perfil.title.dialog'
         },
         canActivate: [UserRouteAccessService],
@@ -61,7 +61,7 @@ export const authorityPopupRoute: Routes = [
         path: 'authority/:name/edit',
         component: AuthorityPopupComponent,
         data: {
-            authorities: ['ROLE_ADMIN', 'ROLE_USER', 'ROLE_ADMIN_LOCAL'],
+            authorities: ['ROLE_ADMIN', 'ROLE_USER', 'ADMIN_PROVINCIAL'],
             pageTitle: 'perfil.title.dialog'
         },
         canActivate: [UserRouteAccessService],
@@ -71,7 +71,7 @@ export const authorityPopupRoute: Routes = [
         path: 'authority/:name/delete',
         component: AuthorityDeletePopupComponent,
         data: {
-            authorities: ['ROLE_ADMIN', 'ROLE_USER', 'ROLE_ADMIN_LOCAL'],
+            authorities: ['ROLE_ADMIN', 'ROLE_USER', 'ADMIN_PROVINCIAL'],
             pageTitle: 'perfil.title.dialog'
         },
         canActivate: [UserRouteAccessService],

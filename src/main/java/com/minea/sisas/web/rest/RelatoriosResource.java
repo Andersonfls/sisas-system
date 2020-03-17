@@ -3,6 +3,7 @@ package com.minea.sisas.web.rest;
 import com.minea.sisas.repository.ComunaRepository;
 import com.minea.sisas.repository.MunicipioRepository;
 import com.minea.sisas.repository.ProvinciaRepository;
+import com.minea.sisas.repository.RelatorioRepository;
 import com.minea.sisas.service.ProvinciaQueryService;
 import com.minea.sisas.service.RelatorioService;
 import com.minea.sisas.service.dto.*;
@@ -28,13 +29,16 @@ public class RelatoriosResource {
 
     private final ComunaRepository comunaRepository;
 
+    private final RelatorioRepository relatorioRepository;
+
     public RelatoriosResource(RelatorioService relatorioService, ProvinciaQueryService provinciaQueryService, ProvinciaRepository provinciaRepository,
-                              MunicipioRepository municipioRepository, ComunaRepository comunaRepository) {
+                              MunicipioRepository municipioRepository, ComunaRepository comunaRepository, RelatorioRepository relatorioRepository) {
         this.provinciaQueryService = provinciaQueryService;
         this.provinciaRepository = provinciaRepository;
         this.municipioRepository = municipioRepository;
         this.comunaRepository = comunaRepository;
         this.relatorioService = relatorioService;
+        this.relatorioRepository = relatorioRepository;
     }
 
     @GetMapping("relatorios/provincias/relatorio")
@@ -155,8 +159,9 @@ public class RelatoriosResource {
 
     @GetMapping("relatorios/provincias/relatorio-agua-chafarizes")
     public List<FuncAguaChafarizesDadosDTO> getAllDadosAguaChafarizes() {
-        return this.relatorioService.montaListaEstáticaParaTesteAguaChafarizes();
+        return this.relatorioService.funcionamentoServicosAguaChafarizesMunicipal();
     }
+
 
     //CONCLUIDO
     // ESTATÍSTICA DE INQUÉRITOS PREENCHIDOS
@@ -165,15 +170,48 @@ public class RelatoriosResource {
         return this.relatorioService.montaListaInqueritoAguas();
     }
 
-//    // ESTATÍSTICA DE INQUÉRITOS PREENCHIDOS2
-//    @GetMapping("/relatorios/inqueritos-preenchidos2")
-//    public List<InqueritosPreenchidosDadosDTO> getAllDadosInqueritosPreenchidos2() {
-//        return this.relatorioService.montaListaEstáticaParaTesteInqueritoAguas();
-//    }
+    //NOVOS RELATORIOS PARA VERSAO FINAL
+    // COBERTURA SECTOR DE AGUAS (Nivel Provincial)
+    @GetMapping("/relatorios/cobertura-sector-agua-provincial")
+    public List<CoberturaSectorAguaDTO> getDadosCoberturaSectorAguaProvincial() {
+        return this.relatorioService.coberturaSectorAguasProvincial();
+    }
+    @GetMapping("/relatorios/cobertura-sector-agua-municipal")
+    public List<CoberturaSectorAguaDTO> getDadosCoberturaSectorAguaMunicipal() {
+        return this.relatorioService.coberturaSectorAguasMunicipal();
+    }
+    @GetMapping("/relatorios/cobertura-sector-agua-comunal")
+    public List<CoberturaSectorAguaDTO> getDadosCoberturaSectorAguaComunal() {
+        return this.relatorioService.coberturaSectorAguasComunal();
+    }
+
+    // FUNCIONAMENTO SISTEMA DE AGUA E CHAFARIZES
+    @GetMapping("/relatorios/func-agua-chaf-municipal")
+    public List<FuncAguaChafarizesDadosDTO> getDadosFuncAguaChafarizesMunicipal() {
+        return this.relatorioService.funcionamentoServicosAguaChafarizesMunicipal();
+    }
+
+    // DASHBOARD
+    @GetMapping("/relatorios/dashboard-principal")
+    public List<DashboardDTO> getDadosDashboardPrincipal() {
+        return this.relatorioService.dashboard();
+    }
 
     // TRATAMENTO DE SISTEMAS DE ÁGUA
     @GetMapping("/relatorios/trat-sistemas-agua")
-    public List<TratamentoSistemasAguaDadosDTO> getAllDadosInqueritosSistemasAgua() {
-        return this.relatorioService.montaListaTratamentoSistemasAguas();
+    public List<TratamentoSistemasAguaDadosDTO> getDadosTratamentoSistemasAguaProvincial() {
+        return this.relatorioService.tratamentoSistemasAguasProvincial();
+    }
+
+    // TRATAMENTO DE SISTEMAS DE ÁGUA MUNICIPAL
+    @GetMapping("/relatorios/trat-sistemas-agua-municipal")
+    public List<TratamentoSistemasAguaDadosDTO> getDadosTratamentoSistemasAguaMunicipal() {
+        return this.relatorioService.tratamentoSistemasAguasMunicipal();
+    }
+
+    // TRATAMENTO DE SISTEMAS DE ÁGUA COMUNAL
+    @GetMapping("/relatorios/trat-sistemas-agua-comunal")
+    public List<TratamentoSistemasAguaDadosDTO> getDadosTratamentoSistemasAguaComunal() {
+        return this.relatorioService.tratamentoSistemasAguasComunal();
     }
 }

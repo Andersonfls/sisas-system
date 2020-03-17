@@ -32,7 +32,7 @@ export const execucaoRoute: Routes = [
             'pagingParams': ExecucaoResolvePagingParams
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
             pageTitle: 'sisasApp.execucao.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -40,7 +40,7 @@ export const execucaoRoute: Routes = [
         path: 'execucao/:id',
         component: ExecucaoDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
             pageTitle: 'sisasApp.execucao.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -52,7 +52,7 @@ export const execucaoPopupRoute: Routes = [
         path: 'execucao-new',
         component: ExecucaoPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
             pageTitle: 'sisasApp.execucao.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -62,7 +62,7 @@ export const execucaoPopupRoute: Routes = [
         path: 'execucao/:id/edit',
         component: ExecucaoPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
             pageTitle: 'sisasApp.execucao.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -72,7 +72,7 @@ export const execucaoPopupRoute: Routes = [
         path: 'execucao/:id/delete',
         component: ExecucaoDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
             pageTitle: 'sisasApp.execucao.home.title'
         },
         canActivate: [UserRouteAccessService],

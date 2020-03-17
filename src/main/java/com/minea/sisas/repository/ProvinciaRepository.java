@@ -21,12 +21,11 @@ public interface ProvinciaRepository extends JpaRepository<Provincia, Long>, Jpa
     Page buscarPorNome(@Param("nome") String nome, Pageable pageable);
 
     @Query(value = "SELECT v.NM_PROVINCIA as Provincia, " +
-        " (SELECT count(m.ID_MUNICIPIO) from yar.municipio m where m.ID_PROVINCIA  = v.ID_PROVINCIA  group  by  v.NM_PROVINCIA) as NumeroMunicipios, " +
+        " (SELECT count(m.ID_MUNICIPIO) from sisas.municipio m where m.ID_PROVINCIA  = v.ID_PROVINCIA  group  by  v.NM_PROVINCIA) as NumeroMunicipios, " +
         " (SELECT DISTINCT count(c.ID_COMUNA ) from sisas.comuna c inner join sisas.municipio mm on mm.ID_MUNICIPIO = c.ID_MUNICIPIO  where mm.ID_PROVINCIA = v.ID_PROVINCIA  group  by  v.NM_PROVINCIA) as NumeroComunas, " +
         "            ( SELECT count( a1.POSSUI_SISTEMA_AGUA ) from sisas.sistema_agua a1 where a1.ID_PROVINCIA = v.ID_PROVINCIA and POSSUI_SISTEMA_AGUA = 1 ) as AguasSIM, " +
         " ( SELECT count( a2.POSSUI_SISTEMA_AGUA ) from sisas.sistema_agua a2 where a2.ID_PROVINCIA = v.ID_PROVINCIA and POSSUI_SISTEMA_AGUA = 0 ) as AguasNAO, " +
-        " (( SELECT count( a1.POSSUI_SISTEMA_AGUA ) from sisas.sistema_agua a1 where a1.ID_PROVINCIA = v.ID_PROVINCIA and POSSUI_SISTEMA_AGUA = 1 )+ " +
-        "            ( SELECT count( a2.POSSUI_SISTEMA_AGUA ) from sisas.sistema_agua a2 where a2.ID_PROVINCIA = v.ID_PROVINCIA and POSSUI_SISTEMA_AGUA = 0 )) TotalSector " +
+        " ( SELECT count( a1.POSSUI_SISTEMA_AGUA ) from sisas.sistema_agua a1 where a1.ID_PROVINCIA = v.ID_PROVINCIA and POSSUI_SISTEMA_AGUA = 0 or POSSUI_SISTEMA_AGUA = 1 ) as TotalSector " +
         " FROM sisas.provincia v " +
         " ORDER BY v.NM_PROVINCIA ", nativeQuery = true)
     List<Object[]> buscaDadosInqueritoAguas();
@@ -73,23 +72,6 @@ public interface ProvinciaRepository extends JpaRepository<Provincia, Long>, Jpa
         " INNER JOIN sisas.comuna c on c.ID_MUNICIPIO = m.ID_MUNICIPIO " +
         " group by c.NM_COMUNA ", nativeQuery = true)
     List<Object[]> buscaDadosInqueritoPorComuna();
-
-
-
-    @Query(value = "SELECT p.NM_PROVINCIA as provincia," +
-        "    count(CASE WHEN sa.POSSUI_SISTEMA_AGUA THEN 1 ELSE 1 END) as total_aguas," +
-        "    sum(CASE WHEN sa.NM_TP_TRATAMENTO_PADRAO_UTILIZADO IS NOT NULL THEN 1 ELSE 0 END) as padrao," +
-        "    sum(CASE WHEN sa.NM_TP_TRATAMENTO_BASICO_UTILIZADO IS NOT NULL THEN 1 ELSE 0 END) as basico," +
-        "    sum(CASE WHEN sa.NM_TP_TRATAMENTO_AGUA = 'Não realiza' THEN 1 ELSE 0 END) as nao_realiza," +
-        "    sum(CASE WHEN sa.existe_motivo_ausencia_tratamento_obs IS NOT NULL THEN 1 ELSE 0 END) as outros" +
-        "    FROM sisas.sistema_agua sa" +
-        "    INNER JOIN sisas.provincia p on p.ID_PROVINCIA  = sa.ID_PROVINCIA" +
-        "    INNER JOIN sisas.municipio m on m.ID_MUNICIPIO = sa.ID_MUNICIPIO" +
-        "    INNER JOIN sisas.comuna c on c.ID_MUNICIPIO = m.ID_MUNICIPIO" +
-        "    where sa.ID_SISTEMA_AGUA IS NOT NULL" +
-        "    group by p.NM_PROVINCIA ", nativeQuery = true)
-    List<Object[]> buscaDadosTratamentoSistemasAgua();
-
 
     @Query(value = "SELECT p.NM_PROVINCIA as provincia," +
         "    COUNT(m.ID_MUNICIPIO ) as municipios," +

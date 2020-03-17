@@ -5,7 +5,6 @@ import { HttpResponse } from '@angular/common/http';
 import { User } from '../../shared/user/user.model';
 import { Principal } from '../../shared/auth/principal.service';
 import {RelatoriosService} from '../relatorios.service';
-import {DadosRelatorio} from '../cobertura-sector-agua/dadosRelatorio.model';
 import {BeneficiariosBmbMecanica} from './beneficiarios-tp-bmb.model';
 import * as jsPDF from 'jspdf';
 import {TableUtil} from '../../shared/util/tableUtil';
@@ -28,14 +27,6 @@ export class BeneficiariosTpBombaComponent implements OnInit {
     reverse: any;
     chart: any;
     totalPopulacao = 0;
-    totalPocoMelhorado = 0;
-    totalFuro = 0;
-    totalNascente = 0;
-    totalAfridev= 0;
-    totalVergnet = 0;
-    totalVolanta = 0;
-    totalIndia = 0;
-    totalOutro = 0;
 
     constructor(
         private jhiAlertService: JhiAlertService,
@@ -87,7 +78,7 @@ export class BeneficiariosTpBombaComponent implements OnInit {
     }
 
     buscaDadosTabela() {
-        this.relatorioService.buscaDadosFuncAguaChafariz().subscribe(
+        this.relatorioService.buscaDadosFuncAguaChafarizMunicipal().subscribe(
             (res: HttpResponse<BeneficiariosBmbMecanica[]>) => {
                 this.listaTabela = res.body;
                 console.log(this.listaTabela);

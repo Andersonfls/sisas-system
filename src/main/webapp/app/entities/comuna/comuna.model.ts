@@ -6,6 +6,7 @@ export class Comuna implements BaseEntity {
         public id?: number,
         public nmComuna?: string,
         public municipio?: Municipio,
+        public populacao?: number
     ) {
     }
 }

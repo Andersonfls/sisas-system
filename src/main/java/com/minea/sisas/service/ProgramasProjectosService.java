@@ -1,17 +1,14 @@
 package com.minea.sisas.service;
 
-import com.minea.sisas.domain.IndicadorProducao;
 import com.minea.sisas.domain.ProgramasProjectos;
 import com.minea.sisas.domain.enumeration.TipoAcao;
 import com.minea.sisas.repository.ProgramasProjectosRepository;
 import com.minea.sisas.repository.UserRepository;
 import com.minea.sisas.security.SecurityUtils;
-import com.minea.sisas.service.dto.IndicadorProducaoLogDTO;
 import com.minea.sisas.service.dto.ProgramasProjectosDTO;
 import com.minea.sisas.service.dto.ProgramasProjectosLogDTO;
 import com.minea.sisas.service.dto.UserDTO;
 import com.minea.sisas.service.mapper.ProgramasProjectosMapper;
-import org.checkerframework.checker.units.qual.A;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +20,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 
 /**
@@ -121,35 +118,24 @@ public class ProgramasProjectosService {
         UserDTO userDTO = this.userService.getUserWithAuthorities().map(UserDTO::new).orElse(null);
 
         if (Objects.nonNull(userDTO) ) {
-            for (String permisao: userDTO.getAuthorities()) {
-                if (permisao.equals("ROLE_ADMIN")){
-                    programasProjectosRepository.findAllByStatusIsTrue(pageable)
-                        .map(programasProjectosMapper::toDto);
-                }
-
-                if (permisao.equals("ADM_HUAMBO")){
-                    retorno = programasProjectosRepository.findAllByStatusIsTrueAndProvinciaId(10l,pageable)
-                        .map(programasProjectosMapper::toDto);
-                }
-
-                if (permisao.equals("ADM_HUILA")){
-                    retorno = programasProjectosRepository.findAllByStatusIsTrueAndProvinciaId(15l,pageable)
-                        .map(programasProjectosMapper::toDto);
-                }
-
-                if (permisao.equals("ADM_CUANZA_NORTE")){
-                    retorno = programasProjectosRepository.findAllByStatusIsTrueAndProvinciaId(5l,pageable)
-                        .map(programasProjectosMapper::toDto);
-                }
-
+            if (isAdministradorOrUsuserProvincial(userDTO.getAuthorities())) {
+                retorno = programasProjectosRepository.findAllByStatusIsTrueAndProvinciaId(userDTO.getProvincia().getId(), pageable)
+                    .map(programasProjectosMapper::toDto);
+            } else {
+                retorno = programasProjectosRepository.findAllByStatusIsTrue(pageable)
+                    .map(programasProjectosMapper::toDto);
             }
-        } else {
-            retorno = programasProjectosRepository.findAllByStatusIsTrue(pageable)
-                .map(programasProjectosMapper::toDto);
         }
-
-
         return retorno;
+    }
+
+    private boolean isAdministradorOrUsuserProvincial(Set<String> permissoes ){
+        for (String permisao: permissoes) {
+            if (permisao.equals("ADMIN_PROVINCIAL") || permisao.equals("USUARIO_PROVINCIAL")) {
+                return true;
+            }
+        }
+        return false;
     }
     /**
      * Get one programasProjectos by id.

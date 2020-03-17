@@ -1,0 +1,248 @@
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<div>
+    <div class="row">
+        <h2 *ngIf="tipoRelatorio==='Nível Provincial'">
+            <span>Funcionamento de Sistemas de Água e Chafarizes (Nível Provincial)</span>
+        </h2>
+
+        <button *ngIf="tipoRelatorio !== null" type="button" style="margin-left: auto" class="btn btn-secondary" data-dismiss="modal" (click)="voltarEscolha()">
+            <span class="fa fa-bars"></span>&nbsp;<span>Tipo Relatorio</span>
+        </button>
+    </div>
+
+    <jhi-alert></jhi-alert>
+    <div class="row" *ngIf="tipoRelatorio == null">
+        <div class="form-group col-sm-12">
+            <div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_tipo_relatorio" style="font-weight: bold">Escolha o tipo de Relatório</label>
+                    <select class="form-control" id="field_tipo_relatorio" name="tprelatorio" [(ngModel)]="tipoRelatorio" (change)="validaTipoRelatorio()">
+                        <option [ngValue]="null" selected>Selecione o Modelo de Relatório...</option>
+                        <option label="Nível Provincial">Nível Provincial</option>
+                        <option label="Nível Municipal">Nível Municipal</option>
+                        <option label="Nível Comunal">Nível Comunal</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div  id="crf" class="card" *ngIf="tipoRelatorio==='Nível Provincial'">
+        <div class="export-container">
+            <button type="button" (click)="exportTable('table')" class="btn btn-primary btn-sm">
+                <span class="fa fa-file-excel-o"></span>
+                <span class="d-none d-md-inline">Excel</span>
+            </button>
+            <button type="button" (click)="captureScreen('crf')" class="btn btn-primary btn-sm">
+                <span class="fas fa-file-pdf"></span>
+                <span class="d-none d-md-inline">PDF</span>
+            </button>
+        </div>
+        <div class="table-responsive" *ngIf="listaTabela">
+            <table id="table" class="table table-striped">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th colspan="4"><span style="margin-left: 10%;float: right">Funcionamento de Sistemas de Água</span></th>
+                    <th></th>
+                    <th colspan="3"><span style="margin-left: 10%;">Funcionamento Chafarizes</span></th>
+                </tr>
+                <tr>
+                    <th><span>Provincia</span></th>
+                    <th><span>N° de Sistemas</span></th>
+                    <th><span>N° Funcionam</span></th>
+                    <th><span>N° não Funcionam</span></th>
+                    <th><span>(%) Funciona</span></th>
+                    <th><span>(%) Não Funciona</span></th>
+                    <th><span>N° Chafarizes</span></th>
+                    <th><span>N° Funcionam</span></th>
+                    <th><span>N° não Funcionam</span></th>
+                    <th><span>(%) Não Funciona</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let provincia of listaTabela ;trackBy: trackId">
+                    <td>{{provincia.nomeProvincia}}</td>
+                    <td>{{provincia.numeroSistemas | number}}</td>
+                    <td>{{provincia.funcionamAgua | number}}</td>
+                    <td>{{provincia.naoFuncionamAgua | number}}</td>
+                    <td>{{provincia.funcionamAguaPerc | number:'1.2-2'}}%</td>
+                    <td>{{provincia.naoFuncionamAguaPerc | number:'1.2-2'}}%</td>
+                    <td>{{provincia.numeroChafarizes | number}}</td>
+                    <td>{{provincia.funcionamChafariz | number}}</td>
+                    <td>{{provincia.naoFuncionamChafariz}}</td>
+                    <td>{{provincia.naoFuncionamChafarizPerc | number:'1.2-2'}}%</td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td> <span style="font-weight: bold">Total: </span></td>
+                    <td> <span style="font-weight: bold">{{totalnumeroSistemas | number }} </span></td>
+                    <td> <span style="font-weight: bold">{{totalfuncionamAgua | number }} </span></td>
+                    <td> <span style="font-weight: bold">{{totalnaoFuncionamAgua | number}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalfuncionamAguaPerc | number:'1.2-2'}}% </span></td>
+                    <td> <span style="font-weight: bold">{{totalnaoFuncionamAguaPerc | number:'1.2-2'}}% </span></td>
+                    <td> <span style="font-weight: bold">{{totalnumeroChafarizes | number}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalfuncionamChafariz | number}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalnaoFuncionamChafariz | number}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalnaoFuncionamChafarizPerc | number:'1.2-2'}}% </span></td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+    <div id="municppp" class="card" *ngIf="tipoRelatorio==='Nível Municipal'">
+        <div class="export-container">
+            <button type="button" (click)="exportTable('munexcel')" class="btn btn-primary btn-sm">
+                <span class="fa fa-file-excel-o"></span>
+                <span class="d-none d-md-inline">Excel</span>
+            </button>
+            <button type="button" (click)="captureScreen('municppp')" class="btn btn-primary btn-sm">
+                <span class="fas fa-file-pdf"></span>
+                <span class="d-none d-md-inline">PDF</span>
+            </button>
+        </div>
+
+        <div class="table-responsive" *ngIf="listaTabela">
+            <table id="munexcel" class="table table-striped">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th colspan="4"><span style="float: right">Funcionamento de Sistemas de Água</span></th>
+                    <th></th>
+                    <th colspan="3"><span style="margin-left: 10%;">Funcionamento Chafarizes</span></th>
+                </tr>
+                <tr>
+                    <th><span>Províncias</span></th>
+                    <th><span>Município</span></th>
+                    <th><span>N° de Sistemas</span></th>
+                    <th><span>N° Funcionam</span></th>
+                    <th><span>N° nao Funcionam</span></th>
+                    <th><span>(%) Funciona</span></th>
+                    <th><span>(%) Nao Funciona</span></th>
+                    <th><span>N° Chafarizes</span></th>
+                    <th><span>N° Funcionam</span></th>
+                    <th><span>N° nao Funcionam</span></th>
+                    <th><span>(%) Nao Funciona</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let provincia of listaTabela ;trackBy: trackId">
+                    <td>{{provincia.nomeProvincia}}</td>
+                    <td>{{provincia.nomeMunicipio}}</td>
+                    <td>{{provincia.numeroSistemas | number}}</td>
+                    <td>{{provincia.funcionamAgua | number}}</td>
+                    <td>{{provincia.naoFuncionamAgua | number}}</td>
+                    <td>{{provincia.funcionamAguaPerc | number:'1.2-2'}}%</td>
+                    <td>{{provincia.naoFuncionamAguaPerc | number:'1.2-2'}}%</td>
+                    <td>{{provincia.numeroChafarizes | number}}</td>
+                    <td>{{provincia.funcionamChafariz | number}}</td>
+                    <td>{{provincia.naoFuncionamChafariz}}</td>
+                    <td>{{provincia.naoFuncionamChafarizPerc | number:'1.2-2'}}%</td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td> <span style="font-weight: bold"></span></td>
+                    <td> <span style="font-weight: bold">Total: </span></td>
+                    <td> <span style="font-weight: bold">{{totalnumeroSistemas | number }} </span></td>
+                    <td> <span style="font-weight: bold">{{totalfuncionamAgua | number }} </span></td>
+                    <td> <span style="font-weight: bold">{{totalnaoFuncionamAgua | number}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalfuncionamAguaPerc | number:'1.2-2'}}% </span></td>
+                    <td> <span style="font-weight: bold">{{totalnaoFuncionamAguaPerc | number:'1.2-2'}}% </span></td>
+                    <td> <span style="font-weight: bold">{{totalnumeroChafarizes | number}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalfuncionamChafariz | number}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalnaoFuncionamChafariz | number}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalnaoFuncionamChafarizPerc | number:'1.2-2'}}% </span></td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+    <div id="comun" class="card" *ngIf="tipoRelatorio==='Nível Comunal'">
+        <div class="export-container">
+            <button type="button" (click)="exportTable('tabcomu')" class="btn btn-primary btn-sm">
+                <span class="fa fa-file-excel-o"></span>
+                <span class="d-none d-md-inline">Excel</span>
+            </button>
+            <button type="button" (click)="captureScreen('comun')" class="btn btn-primary btn-sm">
+                <span class="fas fa-file-pdf"></span>
+                <span class="d-none d-md-inline">PDF</span>
+            </button>
+        </div>
+        <div class="table-responsive" *ngIf="listaTabela">
+            <table id="tabcomu" class="table table-striped">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th colspan="4"><span style="margin-left: 30%;">Funcionamento Água</span></th>
+                    <th></th>
+                    <th colspan="3"><span style="margin-left: 10%;">Funcionamento Chafarizes</span></th>
+                </tr>
+                <tr>
+                    <th><span>Províncias</span></th>
+                    <th><span>Município</span></th>
+                    <th><span>Comunas</span></th>
+                    <th><span>N° de Sistemas</span></th>
+                    <th><span>N° Funcionam</span></th>
+                    <th><span>N° nao Funcionam</span></th>
+                    <th><span>(%) Funciona</span></th>
+                    <th><span>(%) Nao Funciona</span></th>
+                    <th><span>N° Chafarizes</span></th>
+                    <th><span>N° Funcionam</span></th>
+                    <th><span>N° nao Funcionam</span></th>
+                    <th><span>(%) Nao Funciona</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let provincia of listaTabela ;trackBy: trackId">
+                    <td>{{provincia.nomeProvincia}}</td>
+                    <td>{{provincia.nomeMunicipio}}</td>
+                    <td>{{provincia.nomeComuna}}</td>
+                    <td>{{provincia.numeroSistemas | number}}</td>
+                    <td>{{provincia.funcionamAgua | number}}</td>
+                    <td>{{provincia.naoFuncionamAgua | number}}</td>
+                    <td>{{provincia.funcionamAguaPerc | number:'1.2-2'}}%</td>
+                    <td>{{provincia.naoFuncionamAguaPerc | number:'1.2-2'}}%</td>
+                    <td>{{provincia.numeroChafarizes | number}}</td>
+                    <td>{{provincia.funcionamChafariz | number}}</td>
+                    <td>{{provincia.naoFuncionamChafariz}}</td>
+                    <td>{{provincia.naoFuncionamChafarizPerc | number:'1.2-2'}}%</td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td> <span style="font-weight: bold"></span></td>
+                    <td> <span style="font-weight: bold"></span></td>
+                    <td> <span style="font-weight: bold">Total: </span></td>
+                    <td> <span style="font-weight: bold">{{totalnumeroSistemas | number }} </span></td>
+                    <td> <span style="font-weight: bold">{{totalfuncionamAgua | number }} </span></td>
+                    <td> <span style="font-weight: bold">{{totalnaoFuncionamAgua | number}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalfuncionamAguaPerc | number:'1.2-2'}}% </span></td>
+                    <td> <span style="font-weight: bold">{{totalnaoFuncionamAguaPerc | number:'1.2-2'}}% </span></td>
+                    <td> <span style="font-weight: bold">{{totalnumeroChafarizes | number}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalfuncionamChafariz | number}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalnaoFuncionamChafariz | number}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalnaoFuncionamChafarizPerc | number:'1.2-2'}}% </span></td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    <br>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" [routerLink]="['/../../dashboard']"  >
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+    </div>
+</div>

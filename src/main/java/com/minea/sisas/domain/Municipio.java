@@ -32,6 +32,9 @@ public class Municipio implements Serializable {
     @Column(name = "valor")
     private Long valor;
 
+    @Column(name = "populacao", nullable = false)
+    private Long populacao;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -75,6 +78,14 @@ public class Municipio implements Serializable {
 
     public void setValor(Long valor) {
         this.valor = valor;
+    }
+
+    public Long getPopulacao() {
+        return populacao;
+    }
+
+    public void setPopulacao(Long populacao) {
+        this.populacao = populacao;
     }
 
     @Override

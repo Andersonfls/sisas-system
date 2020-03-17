@@ -22,22 +22,24 @@
             <table id="tbprovin" class="table table-striped">
                 <thead>
                 <tr>
-                    <th><span>Provincia</span></th>
+                    <th><span>Provincias</span></th>
                     <th><span>N° de Municípios</span></th>
                     <th><span>N° de Comunas</span></th>
                     <th><span>N° Sistemas que Funcionam</span></th>
+                    <th><span>População Total</span></th>
                     <th><span>Beneficiários Sevicos de Água</span></th>
                     <th><span>Cobertura (%)</span></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr *ngFor="let provincia of listaTabela ">
-                    <td>{{provincia.provincia}}</td>
+                    <td>{{provincia.nomeProvincia}}</td>
                     <td>{{provincia.numeroMunicipios}}</td>
                     <td>{{provincia.numeroComunas}}</td>
-                    <td>{{provincia.numeroFuncionam}}</td>
-                    <td>{{provincia.aguasSim | number }}</td>
-                    <td>{{provincia.totalSector | number:'1.2-2'}}%</td>
+                    <td>{{provincia.numeroSistemasFuncionam}}</td>
+                    <td>{{provincia.populacao | number }}</td>
+                    <td>{{provincia.beneficiarios | number }}</td>
+                    <td>{{provincia.coberturaPercent | number:'1.2-2'}}%</td>
                 </tr>
                 </tbody>
                 <tfoot>
@@ -46,6 +48,7 @@
                     <td> <span style="font-weight: bold">{{totalMunicipios}} </span></td>
                     <td> <span style="font-weight: bold">{{totalComuna}} </span></td>
                     <td> <span style="font-weight: bold">{{totalSistemas}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalPopulacao | number }} </span></td>
                     <td> <span style="font-weight: bold">{{totalBeneficiarios | number }} </span></td>
                     <td> <span style="font-weight: bold">{{totalCobertura | number:'1.2-2'}}% </span></td>
                 </tr>

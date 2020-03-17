@@ -23,6 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.security.Principal;
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.Set;
 
 
 /**
@@ -109,36 +110,26 @@ public class SistemaAguaService {
         UserDTO userDTO = this.userService.getUserWithAuthorities().map(UserDTO::new).orElse(null);
 
         if (Objects.nonNull(userDTO) ) {
-            for (String permisao: userDTO.getAuthorities()) {
-                if (permisao.equals("ROLE_ADMIN")){
-                    retorno = sistemaAguaRepository.findAllByStatusIsTrue(pageable)
-                        .map(sistemaAguaMapper::toDto);
-                }
-
-                if (permisao.equals("ADM_HUAMBO")){
-                    retorno = sistemaAguaRepository.findAllByStatusIsTrueAndProvinciaId(10l,pageable)
-                        .map(sistemaAguaMapper::toDto);
-                }
-
-                if (permisao.equals("ADM_HUILA")){
-                    retorno = sistemaAguaRepository.findAllByStatusIsTrueAndProvinciaId(15l,pageable)
-                        .map(sistemaAguaMapper::toDto);
-                }
-
-                if (permisao.equals("ADM_CUANZA_NORTE")){
-                    retorno = sistemaAguaRepository.findAllByStatusIsTrueAndProvinciaId(5l,pageable)
-                        .map(sistemaAguaMapper::toDto);
-                }
-
+            if (isAdministradorOrUsuserProvincial(userDTO.getAuthorities())) {
+                retorno = sistemaAguaRepository.findAllByStatusIsTrueAndProvinciaId(userDTO.getProvincia().getId(), pageable)
+                    .map(sistemaAguaMapper::toDto);
+            } else {
+                retorno = sistemaAguaRepository.findAllByStatusIsTrue(pageable)
+                    .map(sistemaAguaMapper::toDto);
             }
-        } else {
-            retorno = sistemaAguaRepository.findAllByStatusIsTrue(pageable)
-                .map(sistemaAguaMapper::toDto);
         }
-        
+
         return retorno;
     }
 
+    private boolean isAdministradorOrUsuserProvincial(Set<String> permissoes ){
+        for (String permisao: permissoes) {
+            if (permisao.equals("ADMIN_PROVINCIAL") || permisao.equals("USUARIO_PROVINCIAL")) {
+                return true;
+            }
+        }
+        return false;
+    }
     /**
      * Get one sistemaAgua by id.
      *

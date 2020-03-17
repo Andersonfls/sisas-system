@@ -5,11 +5,11 @@ import { HttpResponse } from '@angular/common/http';
 import { User } from '../../shared/user/user.model';
 import { Principal } from '../../shared/auth/principal.service';
 import {RelatoriosService} from '../relatorios.service';
-import {DadosRelatorio} from '../cobertura-sector-agua/dadosRelatorio.model';
 import {BeneficiariosBmbMecanica} from './beneficiarios-bmb-mecanica.model';
 import * as jsPDF from 'jspdf';
 import {TableUtil} from '../../shared/util/tableUtil';
 import * as html2canvas from 'html2canvas';
+import {DadosRelatorio} from '../cobertura-sector-agua-provincial/dadosRelatorio.model';
 
 @Component({
     selector: 'jhi-benef-opt-tecnica',
@@ -105,7 +105,7 @@ export class BeneficiariosBombMecanicaComponent implements OnInit {
     }
 
     buscaDadosTabela() {
-        this.relatorioService.buscaDadosFuncAguaChafariz().subscribe(
+        this.relatorioService.buscaDadosFuncAguaChafarizMunicipal().subscribe(
             (res: HttpResponse<BeneficiariosBmbMecanica[]>) => {
                 this.listaTabela = res.body;
                 console.log(this.listaTabela);

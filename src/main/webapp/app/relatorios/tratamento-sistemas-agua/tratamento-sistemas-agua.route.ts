@@ -22,7 +22,7 @@ export class TratamentoSistemasAguaResolvePagingParams implements Resolve<any> {
 
 export const tratamentoSistemasAguaRoute: Routes = [
     {
-        path: 'tratamento-sistemas-agua',
+        path: 'trat-sist-agua-provincial',
         component: TratamentoSistemasAguaComponent,
         resolve: {
             'pagingParams': TratamentoSistemasAguaResolvePagingParams

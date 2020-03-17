@@ -16,6 +16,8 @@ public class ProvinciaDTO implements Comparable<ProvinciaDTO> {
     @Size(max = 30)
     private String nmProvincia;
 
+    private Long populacao;
+
     public Long getId() {
         return id;
     }
@@ -30,6 +32,14 @@ public class ProvinciaDTO implements Comparable<ProvinciaDTO> {
 
     public void setNmProvincia(String nmProvincia) {
         this.nmProvincia = nmProvincia;
+    }
+
+    public Long getPopulacao() {
+        return populacao;
+    }
+
+    public void setPopulacao(Long populacao) {
+        this.populacao = populacao;
     }
 
     @Override

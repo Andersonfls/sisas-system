@@ -32,7 +32,7 @@ export const noticiasPortalRoute: Routes = [
             'pagingParams': NoticiasPortalResolvePagingParams
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
             pageTitle: 'sisasApp.noticiasPortal.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -40,7 +40,7 @@ export const noticiasPortalRoute: Routes = [
         path: 'noticias-portal/:id',
         component: NoticiasPortalDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
             pageTitle: 'sisasApp.noticiasPortal.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -52,7 +52,7 @@ export const noticiasPortalPopupRoute: Routes = [
         path: 'noticias-portal-new',
         component: NoticiasPortalPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
             pageTitle: 'sisasApp.noticiasPortal.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -62,7 +62,7 @@ export const noticiasPortalPopupRoute: Routes = [
         path: 'noticias-portal/:id/edit',
         component: NoticiasPortalPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
             pageTitle: 'sisasApp.noticiasPortal.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -72,7 +72,7 @@ export const noticiasPortalPopupRoute: Routes = [
         path: 'noticias-portal/:id/delete',
         component: NoticiasPortalDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
             pageTitle: 'sisasApp.noticiasPortal.home.title'
         },
         canActivate: [UserRouteAccessService],

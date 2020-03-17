@@ -28,6 +28,25 @@
             </div>
         </div>
 
+        <div class="form-group">
+            <label class="form-control-label">População </label>
+            <input type="number" class="form-control" name="populacao" id="field_populacao"
+                   [(ngModel)]="provincia.populacao" required placeholder="População" min="0"/>
+            <div
+                [hidden]="!(editForm.controls.populacao?.dirty && editForm.controls.populacao?.invalid)">
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.populacao?.errors?.required"
+                       jhiTranslate="entity.validation.required">
+                    This field is required.
+                </small>
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.populacao?.errors?.number"
+                       jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">

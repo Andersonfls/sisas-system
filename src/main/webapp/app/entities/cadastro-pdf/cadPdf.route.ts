@@ -10,7 +10,7 @@ export const cadPdfRoute: Routes = [
         path: 'pdf',
         component: CadPdfComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
             pageTitle: 'sisasApp.pdf.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -22,7 +22,7 @@ export const cadPdfPopupRoute: Routes = [
         path: 'pdf-new',
         component: ProdutoPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
             pageTitle: 'sisasApp.pdf.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -32,7 +32,7 @@ export const cadPdfPopupRoute: Routes = [
         path: 'pdf/:id/edit',
         component: ProdutoPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
             pageTitle: 'sisasApp.pdf.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -42,7 +42,7 @@ export const cadPdfPopupRoute: Routes = [
         path: 'pdf/:id/delete',
         component: ProdutoDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
             pageTitle: 'sisasApp.pdf.home.title'
         },
         canActivate: [UserRouteAccessService],

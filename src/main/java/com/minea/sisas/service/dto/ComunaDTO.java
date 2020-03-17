@@ -20,6 +20,8 @@ public class ComunaDTO implements Serializable {
 
     private Municipio municipio;
 
+    private Long populacao;
+
     public Long getId() {
         return id;
     }
@@ -42,6 +44,14 @@ public class ComunaDTO implements Serializable {
 
     public void setMunicipio(Municipio municipio) {
         this.municipio = municipio;
+    }
+
+    public Long getPopulacao() {
+        return populacao;
+    }
+
+    public void setPopulacao(Long populacao) {
+        this.populacao = populacao;
     }
 
     @Override

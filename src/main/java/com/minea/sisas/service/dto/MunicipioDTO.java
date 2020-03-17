@@ -23,6 +23,8 @@ public class MunicipioDTO implements Serializable {
 
     private Long valor;
 
+    private Long populacao;
+
     public Long getId() {
         return id;
     }
@@ -53,6 +55,14 @@ public class MunicipioDTO implements Serializable {
 
     public void setValor(Long valor) {
         this.valor = valor;
+    }
+
+    public Long getPopulacao() {
+        return populacao;
+    }
+
+    public void setPopulacao(Long populacao) {
+        this.populacao = populacao;
     }
 
     @Override

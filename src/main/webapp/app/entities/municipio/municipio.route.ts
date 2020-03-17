@@ -32,7 +32,7 @@ export const municipioRoute: Routes = [
             'pagingParams': MunicipioResolvePagingParams
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ADMIN_PROVINCIAL'],
             pageTitle: 'sisasApp.municipio.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -40,7 +40,7 @@ export const municipioRoute: Routes = [
         path: 'municipio/:id',
         component: MunicipioDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ADMIN_PROVINCIAL'],
             pageTitle: 'sisasApp.municipio.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -52,7 +52,7 @@ export const municipioPopupRoute: Routes = [
         path: 'municipio-new',
         component: MunicipioPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ADMIN_PROVINCIAL'],
             pageTitle: 'sisasApp.municipio.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -62,7 +62,7 @@ export const municipioPopupRoute: Routes = [
         path: 'municipio/:id/edit',
         component: MunicipioPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ADMIN_PROVINCIAL'],
             pageTitle: 'sisasApp.municipio.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -72,7 +72,7 @@ export const municipioPopupRoute: Routes = [
         path: 'municipio/:id/delete',
         component: MunicipioDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ADMIN_PROVINCIAL'],
             pageTitle: 'sisasApp.municipio.home.title'
         },
         canActivate: [UserRouteAccessService],

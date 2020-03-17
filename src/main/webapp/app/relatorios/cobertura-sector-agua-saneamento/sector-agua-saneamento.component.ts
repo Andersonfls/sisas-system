@@ -7,12 +7,12 @@ import { Principal } from '../../shared/auth/principal.service';
 import * as CanvasJS from '../../../content/js/canvasjs.min.js';
 import {Provincia} from '../../entities/provincia';
 import {SectorAguaSaneamentoDados} from './SectorAguaSaneamentoDados.model';
-import {DadosRelatorio} from '../cobertura-sector-agua/dadosRelatorio.model';
 import {RelatoriosService} from '../relatorios.service';
 import * as jsPDF from 'jspdf';
 import {TableUtil} from '../../shared/util/tableUtil';
 import * as html2canvas from 'html2canvas';
-import {SectorAguaDados} from '../cobertura-sector-agua/SectorAguaDados.model';
+import {DadosRelatorio} from '../cobertura-sector-agua-provincial/dadosRelatorio.model';
+import {SectorAguaDados} from '../cobertura-sector-agua-excluir/SectorAguaDados.model';
 
 @Component({
     selector: 'jhi-sector-agua',
@@ -42,9 +42,7 @@ export class CoberturaSectorAguaSaneamentoComponent implements OnInit {
     totalComunas = 0;
     totalPopulacao = 0;
     totalBenefAgua = 0;
-    totalBenefSaneamento = 0;
     totalCobertAgua = 0;
-    totalCobertSaneamento = 0;
 
     constructor(
         private jhiAlertService: JhiAlertService,

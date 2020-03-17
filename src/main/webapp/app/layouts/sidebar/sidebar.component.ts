@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { JhiLanguageService } from 'ng-jhipster';
 import { ProfileService } from '../profiles/profile.service';
-import { JhiLanguageHelper, Principal, LoginModalService, LoginService } from '../../shared';
+import {JhiLanguageHelper, Principal, LoginModalService, LoginService, User} from '../../shared';
 import { VERSION } from '../../app.constants';
 
 @Component({
@@ -20,6 +20,7 @@ export class SidebarComponent implements OnInit {
     swaggerEnabled: boolean;
     modalRef: NgbModalRef;
     version: string;
+    user: User;
 
     constructor(
         private loginService: LoginService,
@@ -42,6 +43,10 @@ export class SidebarComponent implements OnInit {
         this.profileService.getProfileInfo().then((profileInfo) => {
             this.inProduction = profileInfo.inProduction;
             this.swaggerEnabled = profileInfo.swaggerEnabled;
+        });
+
+        this.principal.identity().then((userIdentity) => {
+            this.user = userIdentity;
         });
     }
 

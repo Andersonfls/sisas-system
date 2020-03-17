@@ -32,7 +32,7 @@ export const municipiosAtendidosRoute: Routes = [
             'pagingParams': MunicipiosAtendidosResolvePagingParams
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
             pageTitle: 'sisasApp.municipiosAtendidos.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -40,7 +40,7 @@ export const municipiosAtendidosRoute: Routes = [
         path: 'municipios-atendidos/:id',
         component: MunicipiosAtendidosDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
             pageTitle: 'sisasApp.municipiosAtendidos.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -52,7 +52,7 @@ export const municipiosAtendidosPopupRoute: Routes = [
         path: 'municipios-atendidos-new',
         component: MunicipiosAtendidosPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
             pageTitle: 'sisasApp.municipiosAtendidos.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -62,7 +62,7 @@ export const municipiosAtendidosPopupRoute: Routes = [
         path: 'municipios-atendidos/:id/edit',
         component: MunicipiosAtendidosPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
             pageTitle: 'sisasApp.municipiosAtendidos.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -72,7 +72,7 @@ export const municipiosAtendidosPopupRoute: Routes = [
         path: 'municipios-atendidos/:id/delete',
         component: MunicipiosAtendidosDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
             pageTitle: 'sisasApp.municipiosAtendidos.home.title'
         },
         canActivate: [UserRouteAccessService],

@@ -32,7 +32,7 @@ export const origemFinanciamentoRoute: Routes = [
             'pagingParams': OrigemFinanciamentoResolvePagingParams
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
             pageTitle: 'sisasApp.origemFinanciamento.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -40,7 +40,7 @@ export const origemFinanciamentoRoute: Routes = [
         path: 'origem-financiamento/:id',
         component: OrigemFinanciamentoDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
             pageTitle: 'sisasApp.origemFinanciamento.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -52,7 +52,7 @@ export const origemFinanciamentoPopupRoute: Routes = [
         path: 'origem-financiamento-new',
         component: OrigemFinanciamentoPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
             pageTitle: 'sisasApp.origemFinanciamento.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -62,7 +62,7 @@ export const origemFinanciamentoPopupRoute: Routes = [
         path: 'origem-financiamento/:id/edit',
         component: OrigemFinanciamentoPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
             pageTitle: 'sisasApp.origemFinanciamento.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -72,7 +72,7 @@ export const origemFinanciamentoPopupRoute: Routes = [
         path: 'origem-financiamento/:id/delete',
         component: OrigemFinanciamentoDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
             pageTitle: 'sisasApp.origemFinanciamento.home.title'
         },
         canActivate: [UserRouteAccessService],

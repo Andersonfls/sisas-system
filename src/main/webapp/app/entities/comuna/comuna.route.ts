@@ -32,7 +32,7 @@ export const comunaRoute: Routes = [
             'pagingParams': ComunaResolvePagingParams
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ADMIN_PROVINCIAL'],
             pageTitle: 'sisasApp.comuna.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -40,7 +40,7 @@ export const comunaRoute: Routes = [
         path: 'comuna/:id',
         component: ComunaDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ADMIN_PROVINCIAL'],
             pageTitle: 'sisasApp.comuna.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -52,7 +52,7 @@ export const comunaPopupRoute: Routes = [
         path: 'comuna-new',
         component: ComunaPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ADMIN_PROVINCIAL'],
             pageTitle: 'sisasApp.comuna.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -62,7 +62,7 @@ export const comunaPopupRoute: Routes = [
         path: 'comuna/:id/edit',
         component: ComunaPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ADMIN_PROVINCIAL'],
             pageTitle: 'sisasApp.comuna.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -72,7 +72,7 @@ export const comunaPopupRoute: Routes = [
         path: 'comuna/:id/delete',
         component: ComunaDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ADMIN_PROVINCIAL'],
             pageTitle: 'sisasApp.comuna.home.title'
         },
         canActivate: [UserRouteAccessService],

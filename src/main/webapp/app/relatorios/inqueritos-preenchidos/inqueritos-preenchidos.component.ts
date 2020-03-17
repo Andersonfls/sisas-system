@@ -7,11 +7,11 @@ import { Principal } from '../../shared/auth/principal.service';
 import * as CanvasJS from '../../../content/js/canvasjs.min.js';
 import {Provincia, ProvinciaService} from '../../entities/provincia';
 import {InqueritosPreenchidosDados} from './InqueritosPreenchidosDados.model';
-import {DadosRelatorio} from '../cobertura-sector-agua/dadosRelatorio.model';
 import {RelatoriosService} from '../relatorios.service';
 import * as jsPDF from 'jspdf';
 import {TableUtil} from '../../shared/util/tableUtil';
 import * as html2canvas from 'html2canvas';
+import {DadosRelatorio} from '../cobertura-sector-agua-provincial/dadosRelatorio.model';
 
 @Component({
     selector: 'jhi-sector-agua',
@@ -99,17 +99,17 @@ export class InqueritosPreenchidosComponent implements OnInit {
                 this.listaAguasNao = Array<any>();
 
                 this.listaTabela.forEach((p) => {
-                    const item: DadosRelatorio = new DadosRelatorio();
-                    item.label = p.nomeProvincia;
-                    item.y = p.aguasSim;
-                    this.listaAguas.push(item);
+                    const i: DadosRelatorio = new DadosRelatorio();
+                    i.label = p.nomeProvincia;
+                    i.y = p.aguasSim;
+                    this.listaAguas.push(i);
                 });
 
                 this.listaTabela.forEach((p) => {
-                    const item: DadosRelatorio = new DadosRelatorio();
-                    item.label = p.nomeProvincia;
-                    item.y = p.aguasNao;
-                    this.listaAguasNao.push(item);
+                    const it: DadosRelatorio = new DadosRelatorio();
+                    it.label = p.nomeProvincia;
+                    it.y = p.aguasNao;
+                    this.listaAguasNao.push(it);
                 });
 
                 this.listaTabela.forEach((p) => {

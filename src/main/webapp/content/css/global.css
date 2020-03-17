@@ -310,3 +310,12 @@ tr:nth-child(odd) {
     margin-top: 1%;
     margin-right: 1%;
 }
+
+.borda-th {
+    border-left: 2px solid #dee2e6;
+    border-right: 2px solid #dee2e6;
+}
+
+.text-centro {
+    text-align: center;
+}

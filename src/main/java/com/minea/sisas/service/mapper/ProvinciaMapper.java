@@ -1,6 +1,5 @@
 package com.minea.sisas.service.mapper;
 
-import com.minea.sisas.service.mapper.EntityMapper;
 import com.minea.sisas.service.dto.ProvinciaDTO;
 
 import com.minea.sisas.domain.Provincia;

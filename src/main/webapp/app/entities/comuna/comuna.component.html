@@ -21,6 +21,7 @@
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="nmComuna"><span jhiTranslate="sisasApp.comuna.nmComuna">Nome Comuna</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="idMunicipioId"><span jhiTranslate="sisasApp.comuna.idMunicipio">Municipio</span> <span class="fa fa-sort"></span></th>
+                <th><span>População</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -32,6 +33,7 @@
                         <a [routerLink]="['../municipio', comuna.municipio.id  ]" >{{comuna.municipio.nmMunicipio}}</a>
                     </div>
                 </td>
+                <td>{{comuna.populacao | number}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

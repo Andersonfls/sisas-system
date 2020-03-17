@@ -7,10 +7,10 @@ import { Principal } from '../../shared/auth/principal.service';
 import {RelatoriosService} from '../relatorios.service';
 import * as CanvasJS from '../../../content/js/canvasjs.min.js';
 import {FuncAgua} from './FuncAgua.model';
-import {DadosRelatorio} from '../cobertura-sector-agua/dadosRelatorio.model';
 import * as jsPDF from 'jspdf';
 import {TableUtil} from '../../shared/util/tableUtil';
 import * as html2canvas from 'html2canvas';
+import {DadosRelatorio} from '../cobertura-sector-agua-provincial/dadosRelatorio.model';
 
 @Component({
     selector: 'jhi-func-sist-agua',
@@ -50,7 +50,7 @@ export class FuncAguaComponent implements OnInit {
         this.principal.identity().then((userIdentity) => {
             this.user = userIdentity;
         });
-        this.tipoRelatorio = null;
+        this.buscaDadosTabela();
     }
 
     public captureScreen(elementId) {
@@ -74,24 +74,8 @@ export class FuncAguaComponent implements OnInit {
         TableUtil.exportToExcel(tabeId);
     }
 
-    validaTipoRelatorio() {
-        if (this.tipoRelatorio === 'Nível Provincial') {
-            this.buscaDadosTabela();
-        }
-        if (this.tipoRelatorio === 'Nível Municipal') {
-            this.buscaDadosTabela();
-        }
-        if (this.tipoRelatorio === 'Nível Comunal') {
-            this.buscaDadosTabela();
-        }
-    }
-
-    voltarEscolha() {
-        this.tipoRelatorio = null;
-    }
-
     buscaDadosTabela() {
-        this.relatorioService.buscaDadosFuncAguaChafariz().subscribe(
+        this.relatorioService.buscaDadosFuncAguaChafarizMunicipal().subscribe(
             (res: HttpResponse<FuncAgua[]>) => {
                 this.listaTabela = res.body;
                 console.log(this.listaTabela);
@@ -123,9 +107,7 @@ export class FuncAguaComponent implements OnInit {
                     this.listaNumSistemas.push(item);
                 });
 
-                if (this.tipoRelatorio === 'Nível Provincial') {
-                    this.iniciarChartProvincial();
-                }
+                this.iniciarChartProvincial();
             });
     }
 

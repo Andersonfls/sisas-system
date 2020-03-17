@@ -4,93 +4,49 @@
 </h2>
 <br/>
 <jhi-alert></jhi-alert>
-<div *jhiHasAnyAuthority="['ROLE_ADMIN']">
+
+<div>
     <div class="table-responsive" *ngIf="listaTabela">
         <table class="table table-striped">
             <thead>
-            <tr>
-                <th><span>Âmbito</span></th>
-                <th><span>População</span></th>
-                <th><span>%</span></th>
-                <th><span>Nº de Habitantes</span></th>
-                <th><span>%</span></th>
+            <tr style="text-align: center; background-color: #1f749c" >
+                <th class="borda-th" colspan="6"><span>Nº Sistamas de Água</span></th>
+            </tr>
+            <tr style="background-color: #1f749c">
+                <th class="borda-th" ></th>
+                <th class="borda-th"></th>
+                <th class="borda-th" colspan="2"><span style="margin-left: 30%">A Funcionar</span></th>
+                <th class="borda-th" colspan="2"><span style="margin-left: 30%">A Não Funcionar</span></th>
+            </tr>
+            <tr class="borda-th">
+                <th class="borda-th"><span>Províncias</span></th>
+                <th class="borda-th"><span>Unidades</span></th>
+                <th class="borda-th"><span>Unidades</span></th>
+                <th class="borda-th"><span>(%)</span></th>
+                <th class="borda-th"><span>Unidades</span></th>
+                <th class="borda-th"><span>(%)</span></th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let provincia of listaTabela">
-                <td>{{provincia.ambito}}</td>
-                <td>{{provincia.populacao}}</td>
-                <td>{{provincia.populacaoPercentage | number:'1.2-2'}}%</td>
-                <td>{{provincia.habitantes  }}</td>
-                <td>{{provincia.habitantesPercent | number:'1.2-2'}}%</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <br/>
-    <div class="row">
-        <div class="card col-md-12 teste-acima">
-            <div class="card-body">
-                <div id="chartContainer" style="height: 370px; width: 98%; margin-left: 3%"></div>
-            </div>
-        </div>
-        <!--<div class="col-md-6">-->
-            <!--<div class="card card-dash">-->
-                <!--<div id="chartContainerSan" style="height: 370px; width: 98%; margin-left: 3%"></div>-->
-            <!--</div>-->
-        <!--</div>-->
-    </div>
-    <div class="row" style="margin-top: 2%">
-        <div class="card col-md-12">
-            <div class="card-body">
-                <div id="chartAguaSaneamento" style="height: 370px; width: 98%; margin-left: 3%"></div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div *jhiHasAnyAuthority="['ROLE_ADMIN_LOCAL']">
-    <div class="table-responsive" *ngIf="listaTabela">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th><span>Províncias</span></th>
-                <th><span>N° de Municípios</span></th>
-                <th><span>N° de Comunas</span></th>
-                <th><span>População Total</span></th>
-                <th><span>Água</span></th>
-                <th><span>Saneamento</span></th>
-                <th><span>Águas%</span></th>
-                <th><span>Saneamento%</span></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let provincia of listaTabela ">
-                <td>{{provincia.provincia}}</td>
-                <td>{{provincia.municipios | number }}</td>
-                <td>{{provincia.comunas}}%</td>
-                <td>{{provincia.populacaoTotal | number }}</td>
-                <td>{{provincia.populacaoBeneficiadaAgua}}%</td>
-                <td>{{provincia.populacaoBeneficiadaSaneamento  | number }}</td>
-                <td>{{provincia.coberturaAgua}}%</td>
-                <td>{{provincia.coberturaSaneamento}}%</td>
+            <tr *ngFor="let provincia of listaTabela" class="borda-th">
+                <td>{{provincia.nomeProvincia}}</td>
+                <td>{{provincia.numeroSistemas | number }}</td>
+                <td>{{provincia.numeroSistemasFuncionam}}</td>
+                <td>{{provincia.sistemasFuncionamPerc | number:'1.2-2' }}%</td>
+                <td>{{provincia.numeroSistemasNaoFuncionam}}</td>
+                <td>{{provincia.sistemasNaoFuncionamPerc  | number:'1.2-2' }}%</td>
             </tr>
             </tbody>
             <tfoot>
-            <tr>
-                <td> <span style="font-weight: bold">Total Provincial: </span></td>
-                <td> <span style="font-weight: bold">{{totalMunicipios}} </span></td>
-                <td> <span style="font-weight: bold">{{totalComunas}} </span></td>
-                <td> <span style="font-weight: bold">{{totalPopulacao}} </span></td>
-                <td> <span style="font-weight: bold">{{totalBenefAgua | number }} </span></td>
-                <td> <span style="font-weight: bold">{{totalBenefSaneamento | number }} </span></td>
-                <td> <span style="font-weight: bold">{{totalCobertAgua}} </span></td>
-                <td> <span style="font-weight: bold">{{totalCobertSaneamento}} </span></td>
+            <tr class="borda-th" style="border-top: 2px solid #dee2e6; border-bottom: 2px solid #dee2e6">
+                <td> <span style="font-weight: bold">Total: </span></td>
+                <td> <span style="font-weight: bold">{{totalSistemas}} </span></td>
+                <td> <span style="font-weight: bold">{{totalFuncionam}} </span></td>
+                <td> <span style="font-weight: bold">{{totalFuncionamPerc | number:'1.2-2'}}% </span></td>
+                <td> <span style="font-weight: bold">{{totalNaoFuncionam}} </span></td>
+                <td> <span style="font-weight: bold">{{totalNaoFuncionamPerc | number:'1.2-2'}}% </span></td>
             </tr>
             </tfoot>
         </table>
     </div>
-    <br/>
-    <div id="chartProvincial" style="height: 400px; width: 97%; margin-left: 3%"></div>
 </div>

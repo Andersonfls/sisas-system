@@ -6,6 +6,7 @@ export class Provincia implements BaseEntity {
         public idProvincia?: number,
         public nmProvincia?: string,
         public municipios?: BaseEntity[],
+        public populacao?: number
     ) {
     }
 }

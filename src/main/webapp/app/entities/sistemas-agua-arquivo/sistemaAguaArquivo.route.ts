@@ -8,7 +8,7 @@ export const sistemaAguaArquivoRoute: Routes = [
         path: 'sistema-arquivo',
         component: SistemaAguaArquivoComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
             pageTitle: 'sisasApp.pdf.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -20,7 +20,7 @@ export const cadPdfPopupRoute: Routes = [
         path: 'sist-agua-arquivo',
         component: SistemaAguaArquivoComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
             pageTitle: 'sisasApp.pdf.home.title'
         },
         canActivate: [UserRouteAccessService],

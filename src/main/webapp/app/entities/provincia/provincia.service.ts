@@ -5,7 +5,6 @@ import {SERVER_API_URL} from '../../app.constants';
 
 import {Provincia} from './provincia.model';
 import {createRequestOption} from '../../shared';
-import {SectorAguaDados} from '../../Relatorios/cobertura-sector-agua/SectorAguaDados.model';
 import {SectorAguaSaneamentoDados} from '../../Relatorios/cobertura-sector-agua-saneamento/SectorAguaSaneamentoDados.model';
 import {FuncAguaChafarizes} from '../../Relatorios/funcionamento-agua-chafarizes/FuncAguaChafarizes.model';
 
@@ -47,10 +46,10 @@ export class ProvinciaService {
         return this.http.get<Provincia[]>(this.resourceUrl + '/provincia-usuario', {params: options, observe: 'response'});
     }
 
-    buscaDadosSectorAgua(req?: any): Observable<HttpResponse<SectorAguaDados[]>> {
-        const options = createRequestOption(req);
-        return this.http.get<SectorAguaDados[]>(this.resourceUrl + '/relatorio', {params: options, observe: 'response'});
-    }
+    // buscaDadosSectorAgua(req?: any): Observable<HttpResponse<SectorAguaDados[]>> {
+    //     const options = createRequestOption(req);
+    //     return this.http.get<SectorAguaDados[]>(this.resourceUrl + '/relatorio', {params: options, observe: 'response'});
+    // }
 
     buscaDadosSectorAguaSaneamento(req?: any): Observable<HttpResponse<SectorAguaSaneamentoDados[]>> {
         const options = createRequestOption(req);

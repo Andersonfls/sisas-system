@@ -6,11 +6,11 @@ import { User } from '../../shared/user/user.model';
 import { Principal } from '../../shared/auth/principal.service';
 import * as CanvasJS from '../../../content/js/canvasjs.min.js';
 import {TratamentoSistemaAguaDados} from './tratamentoSistemasAguaDados.model';
-import {DadosRelatorio} from '../cobertura-sector-agua/dadosRelatorio.model';
 import {RelatoriosService} from '../relatorios.service';
 import * as jsPDF from 'jspdf';
 import {TableUtil} from '../../shared/util/tableUtil';
 import * as html2canvas from 'html2canvas';
+import {DadosRelatorio} from '../cobertura-sector-agua-provincial/dadosRelatorio.model';
 
 @Component({
     selector: 'jhi-trat-sist-agua',
@@ -62,7 +62,7 @@ export class TratamentoSistemasAguaComponent implements OnInit {
             const pdf = new jsPDF('p', 'mm', 'a4');
             const position = 0;
             pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
-            pdf.save('relatorio-sisas.pdf');
+            pdf.save('tratamentoSistemasAguas.pdf');
         }).catch(function(error) {
             // Error Handling
         });
@@ -76,35 +76,13 @@ export class TratamentoSistemasAguaComponent implements OnInit {
         this.relatorioService.buscaDadosTratamentoSistemasAgua().subscribe(
             (res: HttpResponse<TratamentoSistemaAguaDados[]>) => {
                 this.listaTabela = res.body;
-
-                this.listaPadrao = Array<any>();
-                this.listaBasico = Array<any>();
-                this.listaNaoRealiza = Array<any>();
-
                 this.listaTabela.forEach((p) => {
-                    let item: DadosRelatorio = new DadosRelatorio();
-                    item.label = p.nomeProvincia;
-                    item.y = p.padrao;
-                    this.listaPadrao.push(item);
-
-                    item = new DadosRelatorio();
-                    item.label = p.nomeProvincia;
-                    item.y = p.basico;
-                    this.listaBasico.push(item);
-
-                    item = new DadosRelatorio();
-                    item.label = p.nomeProvincia;
-                    item.y = p.naoRealiza;
-                    this.listaNaoRealiza.push(item);
-
                     this.totalSistemas += p.sistemasAgua;
                     this.totalPadrao += p.padrao;
                     this.totalBasico += p.basico;
                     this.totalNaoRealiza += p.naoRealiza;
                     this.totalOutros += p.outros;
                 });
-
-                this.iniciarChart();
             });
     }
 

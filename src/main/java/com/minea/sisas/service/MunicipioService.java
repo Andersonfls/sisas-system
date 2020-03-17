@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Objects;
+import java.util.Set;
 
 
 /**
@@ -65,26 +66,26 @@ public class MunicipioService {
         UserDTO userDTO = this.userService.getUserWithAuthorities().map(UserDTO::new).orElse(null);
 
         if (Objects.nonNull(userDTO) ) {
-            for (String permisao: userDTO.getAuthorities()) {
-                if (permisao.equals("ROLE_ADMIN")){
-                    retorno = municipioRepository.findAll(pageable)
-                        .map(municipioMapper::toDto);
-                } else if (Objects.nonNull(userDTO.getProvincia()) && Objects.nonNull(userDTO.getMunicipio())){
-                    retorno = municipioRepository.findAllByProvinciaIdpg(userDTO.getProvincia().getId(),pageable)
-                        .map(municipioMapper::toDto);
-                } else {
-                    retorno = municipioRepository.findAll(pageable)
-                        .map(municipioMapper::toDto);
-                }
+            if (isAdministradorOrUsuserProvincial(userDTO.getAuthorities())) {
+                retorno = municipioRepository.findAllByProvinciaIdpg(userDTO.getProvincia().getId(), pageable)
+                    .map(municipioMapper::toDto);
+            } else {
+                retorno = municipioRepository.findAll(pageable)
+                    .map(municipioMapper::toDto);
             }
-        } else {
-            retorno = municipioRepository.findAll(pageable)
-                .map(municipioMapper::toDto);
         }
 
         return retorno;
     }
 
+    private boolean isAdministradorOrUsuserProvincial(Set<String> permissoes ){
+        for (String permisao: permissoes) {
+            if (permisao.equals("ADMIN_PROVINCIAL") || permisao.equals("USUARIO_PROVINCIAL")) {
+                return true;
+            }
+        }
+        return false;
+    }
     /**
      * Get one municipio by id.
      *

@@ -9,6 +9,8 @@ import java.io.Serializable;
 public class TratamentoSistemasAguaDadosDTO implements Serializable {
 
     private String nomeProvincia;
+    private String nomeMunicipio;
+    private String nomeComuna;
     private Integer sistemasAgua;
     private Integer padrao;
     private Integer basico;
@@ -73,5 +75,21 @@ public class TratamentoSistemasAguaDadosDTO implements Serializable {
 
     public void setOutros(Integer outros) {
         this.outros = outros;
+    }
+
+    public String getNomeMunicipio() {
+        return nomeMunicipio;
+    }
+
+    public void setNomeMunicipio(String nomeMunicipio) {
+        this.nomeMunicipio = nomeMunicipio;
+    }
+
+    public String getNomeComuna() {
+        return nomeComuna;
+    }
+
+    public void setNomeComuna(String nomeComuna) {
+        this.nomeComuna = nomeComuna;
     }
 }

@@ -9,6 +9,7 @@ import {SectorAguaSaneamentoDados} from '../../relatorios/cobertura-sector-agua-
 import {Provincia} from '../provincia/provincia.model';
 import {DashboardService} from './dashboard.service';
 import {DadosDashboardModel} from './dadosDashboard.model';
+import {DashboardModel} from './dashboard.model';
 
 @Component({
     selector: 'jhi-dashboard',
@@ -22,25 +23,20 @@ export class DashboardComponent implements OnInit {
 
     user: User;
 
-    provincias: Provincia[];
-    listaTabela: SectorAguaSaneamentoDados[];
+    listaTabela: DashboardModel[];
     predicate: any;
     reverse: any;
     chart: any;
     listaCobertura: DadosDashboardModel[];
     listaSaneamento: DadosDashboardModel[];
-    tipoRelatorio: string;
-
     listaAgua: DadosDashboardModel[];
     listaMedia: DadosDashboardModel[];
 
-    totalMunicipios = 0;
-    totalComunas = 0;
-    totalPopulacao = 0;
-    totalBenefAgua = 0;
-    totalBenefSaneamento = 0;
-    totalCobertAgua = 0;
-    totalCobertSaneamento = 0;
+    totalSistemas = 0;
+    totalFuncionam = 0;
+    totalFuncionamPerc = 0;
+    totalNaoFuncionam = 0;
+    totalNaoFuncionamPerc = 0;
 
     constructor(
         private jhiAlertService: JhiAlertService,
@@ -52,19 +48,14 @@ export class DashboardComponent implements OnInit {
     ngOnInit() {
         this.principal.identity().then((userIdentity) => {
             this.user = userIdentity;
-
-            if (this.user.authorities[0] === 'ROLE_ADMIN_LOCAL') {
-                this.buscaDadosTabela();
-                this.iniciarChartProvincial();
-            } else {
-                this.buscaDadosTabela();
-            }
+            this.buscaDadosTabela();
+            this.iniciarChartProvincial();
         });
     }
 
     buscaDadosTabela() {
-        this.relatorioService.buscaDadosSectorAguaSaneamento().subscribe(
-            (res: HttpResponse<SectorAguaSaneamentoDados[]>) => {
+        this.relatorioService.buscaDadosDashboard().subscribe(
+            (res: HttpResponse<DashboardModel[]>) => {
                 this.listaTabela = res.body;
                 console.log(this.listaTabela);
 
@@ -73,23 +64,20 @@ export class DashboardComponent implements OnInit {
 
                 this.listaTabela.forEach((p) => {
                     const item: DadosDashboardModel = new DadosDashboardModel();
-                    item.label = p.ambito;
-                    item.y = p.habitantesPercent;
+                    item.label = p.nomeProvincia;
+                    item.y = p.numeroSistemas;
+
+                    this.totalSistemas += p.numeroSistemas;
+                    this.totalFuncionam += p.numeroSistemasFuncionam;
+                    this.totalFuncionamPerc += p.sistemasFuncionamPerc;
+                    this.totalNaoFuncionam += p.numeroSistemasNaoFuncionam;
+                    this.totalNaoFuncionamPerc += p.sistemasNaoFuncionamPerc;
 
                     this.listaCobertura.push(item);
                 });
 
-                this.listaTabela.forEach((p) => {
-                    const item: DadosDashboardModel = new DadosDashboardModel();
-                    item.label = p.ambito;
-                    item.y = p.habitantesSaneamentoPer;
-
-                    this.listaSaneamento.push(item);
-                });
-
-                this.iniciarChart();
-               // this.iniciarChartSaneamento();
-                this.iniciarChartAguaSaneamento();
+                // this.iniciarChart();
+                // this.iniciarChartAguaSaneamento();
             });
     }
 
@@ -132,38 +120,6 @@ export class DashboardComponent implements OnInit {
                     xValueFormatString: 'string',
                     yValueFormatString: '#%',
                     dataPoints: this.listaCobertura
-                }]
-        });
-        this.chart.render();
-    }
-
-    iniciarChartSaneamento() {
-        this.chart = new CanvasJS.Chart('chartContainerSan', {
-            animationEnabled: true,
-            theme: 'light2',
-            title: {
-                text: 'Cobertura Serviços Saneamento'
-            },
-            axisX: {
-                valueFormatString: 'string'
-            },
-            axisY: {
-                suffix: '%'
-            },
-            toolTip: {
-                shared: true
-            },
-            legend: {
-                cursor: 'pointer'
-            },
-            data: [
-                {
-                    type: 'column',
-                    name: 'Cobertura',
-                    showInLegend: true,
-                    xValueFormatString: 'string',
-                    yValueFormatString: '#%',
-                    dataPoints: this.listaSaneamento
                 }]
         });
         this.chart.render();

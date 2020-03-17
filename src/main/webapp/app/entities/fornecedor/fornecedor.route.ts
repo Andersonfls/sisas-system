@@ -32,7 +32,7 @@ export const fornecedorRoute: Routes = [
             'pagingParams': FornecedorResolvePagingParams
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ADMIN_PROVINCIAL'],
             pageTitle: 'sisasApp.fornecedor.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -40,7 +40,7 @@ export const fornecedorRoute: Routes = [
         path: 'fornecedor/:id',
         component: FornecedorDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ADMIN_PROVINCIAL'],
             pageTitle: 'sisasApp.fornecedor.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -52,7 +52,7 @@ export const fornecedorPopupRoute: Routes = [
         path: 'fornecedor-new',
         component: FornecedorPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ADMIN_PROVINCIAL'],
             pageTitle: 'sisasApp.fornecedor.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -62,7 +62,7 @@ export const fornecedorPopupRoute: Routes = [
         path: 'fornecedor/:id/edit',
         component: FornecedorPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ADMIN_PROVINCIAL'],
             pageTitle: 'sisasApp.fornecedor.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -72,7 +72,7 @@ export const fornecedorPopupRoute: Routes = [
         path: 'fornecedor/:id/delete',
         component: FornecedorDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ADMIN_PROVINCIAL'],
             pageTitle: 'sisasApp.fornecedor.home.title'
         },
         canActivate: [UserRouteAccessService],

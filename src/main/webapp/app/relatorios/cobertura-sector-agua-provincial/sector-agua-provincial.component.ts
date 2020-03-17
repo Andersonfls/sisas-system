@@ -7,11 +7,11 @@ import { Principal } from '../../shared/auth/principal.service';
 import * as CanvasJS from '../../../content/js/canvasjs.min.js';
 import {Provincia} from '../../entities/provincia';
 import {DadosRelatorio} from './dadosRelatorio.model';
-import {SectorAguaDados} from './SectorAguaDados.model';
 import {RelatoriosService} from '../relatorios.service';
 import * as jsPDF from 'jspdf';
 import {TableUtil} from '../../shared/util/tableUtil';
 import * as html2canvas from 'html2canvas';
+import {CoberturaSectorAguaModel} from './coberturaSectorAgua.model';
 
 @Component({
     selector: 'jhi-sector-agua',
@@ -25,16 +25,17 @@ export class CoberturaSectorAguaProvincialComponent implements OnInit {
     user: User;
 
     provincias: Provincia[];
-    listaTabela: SectorAguaDados[];
+    listaTabela: CoberturaSectorAguaModel[];
     predicate: any;
     reverse: any;
     chart: any;
     listaMedia: DadosRelatorio[];
     listaCobertura: DadosRelatorio[];
-    tipoRelatorio: string;
+
     totalMunicipios = 0;
     totalComuna = 0;
     totalSistemas = 0;
+    totalPopulacao= 0;
     totalBeneficiarios = 0;
     totalCobertura = 0;
 
@@ -63,7 +64,7 @@ export class CoberturaSectorAguaProvincialComponent implements OnInit {
             const pdf = new jsPDF('p', 'mm', 'a4');
             const position = 0;
             pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
-            pdf.save('relatorio-sisas.pdf');
+            pdf.save('relatorio-sector-aguas.pdf');
         }).catch(function(error) {
             // Error Handling
         });
@@ -74,31 +75,29 @@ export class CoberturaSectorAguaProvincialComponent implements OnInit {
     }
 
     buscaDadosTabelaProvincia() {
-        this.relatorioService.buscaDadosSectorAguaProvincia().subscribe(
-            (res: HttpResponse<SectorAguaDados[]>) => {
+        this.relatorioService.buscaDadosCoberturaSectorAguaProvincial().subscribe(
+            (res: HttpResponse<CoberturaSectorAguaModel[]>) => {
                 this.listaTabela = res.body;
-                console.log(this.listaTabela);
                 this.listaMedia = Array<any>();
                 this.listaCobertura = Array<any>();
-                let media = 0;
 
                 this.listaTabela.forEach((p) => {
                     const item: DadosRelatorio = new DadosRelatorio();
                     item.label = p.nomeProvincia;
-                    item.y = p.cobertura;
+                    item.y = p.coberturaPercent;
 
                     this.listaCobertura.push(item);
-                    media += p.cobertura;
-                    this.totalMunicipios += p.municipios;
-                    this.totalComuna += p.comunas;
-                    this.totalSistemas += p.sistemasFuncionam;
-                    this.totalBeneficiarios += p.beneficiarios;
+                    this.totalMunicipios += p.numeroMunicipios;
+                    this.totalComuna += p.numeroComunas;
+                    this.totalSistemas += p.numeroSistemasFuncionam;
+                    this.totalPopulacao += p.populacao;
+                    this.totalCobertura += p.coberturaPercent;
                 });
 
                 this.listaTabela.forEach((p) => {
                     const item: DadosRelatorio = new DadosRelatorio();
-                    item.label = p.provincia;
-                    item.y = p.numeroFuncionam;
+                    item.label = p.nomeProvincia;
+                    item.y = p.numeroSistemasFuncionam;
                     this.listaMedia.push(item);
                 });
 

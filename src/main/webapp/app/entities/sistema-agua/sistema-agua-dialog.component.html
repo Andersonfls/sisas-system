@@ -503,19 +503,19 @@
                         </div>
                     </div>
 
-                    <div class="row" *ngIf="sistemaAgua.estadoFuncionamentoSistema==='Não está em funcionamento'">
-                        <div class="form-group col-sm-8 subte" >
-                            <div class="form-group">
-                                <label class="form-control-label negrito"
-                                       jhiTranslate="sisasApp.sistemaAgua.motivoAvariaSistema"
-                                       for="motivoavaria">Existe Motivo Ausencia Tratament Obs</label>
+                    <!--<div class="row" *ngIf="sistemaAgua.estadoFuncionamentoSistema==='Não está em funcionamento'">-->
+                        <!--<div class="form-group col-sm-8 subte" >-->
+                            <!--<div class="form-group">-->
+                                <!--<label class="form-control-label negrito"-->
+                                       <!--jhiTranslate="sisasApp.sistemaAgua.motivoAvariaSistema"-->
+                                       <!--for="motivoavaria">Existe Motivo Ausencia Tratament Obs</label>-->
 
-                                <textarea class="form-control" name="motivoavaria" id="motivoavaria" rows="6" cols="50"
-                                          [(ngModel)]="sistemaAgua.motivoAvariaSistema"
-                                          placeholder="Descreva os motivos para o não funcionamento do sistema"></textarea>
-                            </div>
-                        </div>
-                    </div>
+                                <!--<textarea class="form-control" name="motivoavaria" id="motivoavaria" rows="6" cols="50"-->
+                                          <!--[(ngModel)]="sistemaAgua.motivoAvariaSistema"-->
+                                          <!--placeholder="Descreva os motivos para o não funcionamento do sistema"></textarea>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
 
                     <div class="row" *ngIf="sistemaAgua.estadoFuncionamentoSistema==='Está em funcionamento (Bom)'">
                         <div class="form-group col-sm-6">
@@ -565,7 +565,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card" style="margin-bottom: 1%">
+            <div class="card" style="margin-bottom: 1%" *ngIf="sistemaAgua.nmTipoBomba !== 'Bombagem manual'">
                 <div class="card-header text-center">
                     <label *ngIf="sistemaAgua.estadoFuncionamentoSistema!=='Está em funcionamento (Bom)'" class="form-control-label negrito">Avaria no sistema</label>
                 </div>

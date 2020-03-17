@@ -33,6 +33,9 @@ public class Provincia implements Serializable {
     @JsonIgnore
     private Set<Municipio> municipios = new HashSet<>();
 
+    @Column(name = "populacao", nullable = false)
+    private Long populacao;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -80,6 +83,14 @@ public class Provincia implements Serializable {
         this.municipios = municipios;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+
+    public Long getPopulacao() {
+        return populacao;
+    }
+
+    public void setPopulacao(Long populacao) {
+        this.populacao = populacao;
+    }
 
     @Override
     public boolean equals(Object o) {
