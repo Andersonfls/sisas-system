@@ -38,13 +38,13 @@
             </tr>
             </tbody>
             <tfoot>
-            <tr class="borda-th" style="border-top: 2px solid #dee2e6; border-bottom: 2px solid #dee2e6">
+            <tr class="borda-th" style="background-color: #1f749c; border-top: 2px solid #dee2e6; border-bottom: 2px solid #dee2e6">
                 <td> <span style="font-weight: bold">Total: </span></td>
                 <td> <span style="font-weight: bold">{{totalSistemas}} </span></td>
                 <td> <span style="font-weight: bold">{{totalFuncionam}} </span></td>
-                <td> <span style="font-weight: bold">{{totalFuncionamPerc | number:'1.2-2'}}% </span></td>
+                <td> <span style="font-weight: bold">{{((totalFuncionam *100) / totalSistemas) | number:'1.2-2'}}% </span></td>
                 <td> <span style="font-weight: bold">{{totalNaoFuncionam}} </span></td>
-                <td> <span style="font-weight: bold">{{totalNaoFuncionamPerc | number:'1.2-2'}}% </span></td>
+                <td> <span style="font-weight: bold">{{((totalNaoFuncionam *100) / totalSistemas) | number:'1.2-2'}}% </span></td>
             </tr>
             </tfoot>
         </table>

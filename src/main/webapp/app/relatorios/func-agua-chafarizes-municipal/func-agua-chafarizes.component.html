@@ -1,7 +1,7 @@
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <div>
     <jhi-alert></jhi-alert>
-    <div id="municppp" class="card">
+    <div id="municppp">
         <div class="export-container">
             <button type="button" (click)="exportTable('munexcel')" class="btn btn-primary btn-sm">
                 <span class="fa fa-file-excel-o"> </span>
@@ -12,66 +12,61 @@
                 <span class="d-none d-md-inline">PDF</span>
             </button>
         </div>
-
-        <div class="row">
-            <h2>
-                <span>Funcionamento de Sistemas de Água e Chafarizes (Nível Municipal)</span>
-            </h2>
-        </div>
-
+        <h2 class="text-centro" style="font-size: 1.8rem;">
+            <span>Funcionamento de Sistemas de Água e Chafarizes (Nível Municipal)</span>
+        </h2>
         <div class="table-responsive" *ngIf="listaTabela">
             <table id="munexcel" class="table table-striped">
                 <thead>
-                <tr>
+                <tr style="background-color: #1f749c; text-align: center;">
                     <th></th>
                     <th></th>
                     <th></th>
-                    <th colspan="4"><span style="float: right">Funcionamento de Sistemas de Água</span></th>
+                    <th class="borda-th text-centro" colspan="4"><span>Funcionamento de Sistemas de Água</span></th>
                     <th></th>
-                    <th colspan="3"><span style="margin-left: 10%;">Funcionamento Chafarizes</span></th>
+                    <th class="borda-th text-centro" colspan="3"><span>Funcionamento Chafarizes</span></th>
                 </tr>
-                <tr>
-                    <th><span>Províncias</span></th>
-                    <th><span>Município</span></th>
-                    <th><span>N° de Sistemas</span></th>
-                    <th><span>N° Funcionam</span></th>
-                    <th><span>N° nao Funcionam</span></th>
-                    <th><span>(%) Funciona</span></th>
-                    <th><span>(%) Nao Funciona</span></th>
-                    <th><span>N° Chafarizes</span></th>
-                    <th><span>N° Funcionam</span></th>
-                    <th><span>N° nao Funcionam</span></th>
-                    <th><span>(%) Nao Funciona</span></th>
+                <tr style="background-color: #1f749c">
+                    <th class="borda-th"><span>Províncias</span></th>
+                    <th class="borda-th"><span>Município</span></th>
+                    <th class="borda-th"><span>N° de Sistemas</span></th>
+                    <th class="borda-th"><span>N° Funcionam</span></th>
+                    <th class="borda-th"><span>N° nao Funcionam</span></th>
+                    <th class="borda-th"><span>(%) Funciona</span></th>
+                    <th class="borda-th"><span>(%) Nao Funciona</span></th>
+                    <th class="borda-th"><span>N° Chafarizes</span></th>
+                    <th class="borda-th"><span>N° Funcionam</span></th>
+                    <th class="borda-th"><span>N° nao Funcionam</span></th>
+                    <th class="borda-th"><span>(%) Nao Funciona</span></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let provincia of listaTabela ;trackBy: trackId">
-                    <td>{{provincia.nomeProvincia}}</td>
-                    <td>{{provincia.nomeMunicipio}}</td>
-                    <td>{{provincia.numeroSistemas | number}}</td>
-                    <td>{{provincia.funcionamAgua | number}}</td>
-                    <td>{{provincia.naoFuncionamAgua | number}}</td>
-                    <td>{{provincia.funcionamAguaPerc | number:'1.2-2'}}%</td>
-                    <td>{{provincia.naoFuncionamAguaPerc | number:'1.2-2'}}%</td>
-                    <td>{{provincia.numeroChafarizes | number}}</td>
-                    <td>{{provincia.funcionamChafariz | number}}</td>
-                    <td>{{provincia.naoFuncionamChafariz}}</td>
-                    <td>{{provincia.naoFuncionamChafarizPerc | number:'1.2-2'}}%</td>
+                <tr class="borda-th" *ngFor="let provincia of listaTabela ;trackBy: trackId">
+                    <td class="borda-th">{{provincia.nomeProvincia}}</td>
+                    <td class="borda-th">{{provincia.nomeMunicipio}}</td>
+                    <td class="borda-th">{{provincia.numeroSistemas | number}}</td>
+                    <td class="borda-th">{{provincia.funcionamAgua | number}}</td>
+                    <td class="borda-th">{{provincia.naoFuncionamAgua | number}}</td>
+                    <td class="borda-th">{{provincia.funcionamAguaPerc | number:'1.2-2'}}%</td>
+                    <td class="borda-th">{{provincia.naoFuncionamAguaPerc | number:'1.2-2'}}%</td>
+                    <td class="borda-th">{{provincia.numeroChafarizes | number}}</td>
+                    <td class="borda-th">{{provincia.funcionamChafariz | number}}</td>
+                    <td class="borda-th">{{provincia.naoFuncionamChafariz}}</td>
+                    <td class="borda-th">{{provincia.naoFuncionamChafarizPerc | number:'1.2-2'}}%</td>
                 </tr>
                 </tbody>
                 <tfoot>
-                <tr>
-                    <td> <span style="font-weight: bold"></span></td>
-                    <td> <span style="font-weight: bold">Total: </span></td>
+                <tr style="background-color: #1f749c">
+                    <td colspan="2"> <span style="font-weight: bold">Total Municipal: </span></td>
                     <td> <span style="font-weight: bold">{{totalnumeroSistemas | number }} </span></td>
                     <td> <span style="font-weight: bold">{{totalfuncionamAgua | number }} </span></td>
                     <td> <span style="font-weight: bold">{{totalnaoFuncionamAgua | number}} </span></td>
-                    <td> <span style="font-weight: bold">{{totalfuncionamAguaPerc | number:'1.2-2'}}% </span></td>
-                    <td> <span style="font-weight: bold">{{totalnaoFuncionamAguaPerc | number:'1.2-2'}}% </span></td>
+                    <td> <span style="font-weight: bold">{{((totalfuncionamAgua *100) / totalnumeroSistemas) | number:'1.2-2'}}% </span></td>
+                    <td> <span style="font-weight: bold">{{((totalnaoFuncionamAgua *100) / totalnumeroSistemas) | number:'1.2-2'}}% </span></td>
                     <td> <span style="font-weight: bold">{{totalnumeroChafarizes | number}} </span></td>
                     <td> <span style="font-weight: bold">{{totalfuncionamChafariz | number}} </span></td>
                     <td> <span style="font-weight: bold">{{totalnaoFuncionamChafariz | number}} </span></td>
-                    <td> <span style="font-weight: bold">{{totalnaoFuncionamChafarizPerc | number:'1.2-2'}}% </span></td>
+                    <td> <span style="font-weight: bold">{{((totalfuncionamChafariz *100) / totalnumeroChafarizes) | number:'1.2-2'}}% </span></td>
                 </tr>
                 </tfoot>
             </table>

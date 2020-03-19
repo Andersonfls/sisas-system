@@ -28,7 +28,7 @@ export const sectorAguaSaneamentoRoute: Routes = [
             'pagingParams': SectorAguaSaneamentoResolvePagingParams
         },
         data: {
-            authorities: ['ROLE_USER', 'ROLE_ADMIN'],
+            authorities: ['ROLE_USER', 'ROLE_ADMIN', 'ADMIN_PROVINCIAL'],
             pageTitle: 'relatorios.title.sector-agua-saneamento'
         },
         canActivate: [UserRouteAccessService]

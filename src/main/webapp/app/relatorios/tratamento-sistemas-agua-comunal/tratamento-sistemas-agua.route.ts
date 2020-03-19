@@ -28,7 +28,7 @@ export const tratamentoSistemasAguaRoute: Routes = [
             'pagingParams': TratamentoSistemasAguaResolvePagingParams
         },
         data: {
-            authorities: ['ROLE_USER', 'ROLE_ADMIN'],
+            authorities: ['ROLE_USER', 'ROLE_ADMIN', 'ADMIN_PROVINCIAL'],
             pageTitle: 'relatorios.title.tratamento-sistemas-agua'
         },
         canActivate: [UserRouteAccessService]

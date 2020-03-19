@@ -24,7 +24,6 @@ public class FuncAguaChafarizesDadosDTO implements Serializable {
     private Float funcionamChafarizPerc;
     private Float naoFuncionamChafarizPerc;
 
-
     private Integer totalSistemas;
     private Integer electricaSistemas;
     private Integer electricaFuncionam;

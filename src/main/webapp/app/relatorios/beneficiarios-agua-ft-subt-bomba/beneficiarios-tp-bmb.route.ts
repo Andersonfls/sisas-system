@@ -28,7 +28,7 @@ export const beneficiariosTpBombaRoute: Routes = [
             'pagingParams': BeneficiariosTpBombaResolvePagingParams
         },
         data: {
-            authorities: ['ROLE_USER', 'ROLE_ADMIN'],
+            authorities: ['ROLE_USER', 'ROLE_ADMIN', 'ADMIN_PROVINCIAL'],
             pageTitle: 'relatorios.title.benef-agua-subterranea-tp-bomba'
         },
         canActivate: [UserRouteAccessService]

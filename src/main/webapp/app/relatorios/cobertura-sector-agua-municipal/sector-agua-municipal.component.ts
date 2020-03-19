@@ -4,14 +4,12 @@ import { UserService } from '../../shared/user/user.service';
 import { HttpResponse } from '@angular/common/http';
 import { User } from '../../shared/user/user.model';
 import { Principal } from '../../shared/auth/principal.service';
-import * as CanvasJS from '../../../content/js/canvasjs.min.js';
 import {Provincia} from '../../entities/provincia';
 import {RelatoriosService} from '../relatorios.service';
 import * as jsPDF from 'jspdf';
 import {TableUtil} from '../../shared/util/tableUtil';
 import * as html2canvas from 'html2canvas';
 import {CoberturaSectorAguaModel} from '../cobertura-sector-agua-provincial/coberturaSectorAgua.model';
-import {DadosRelatorio} from '../cobertura-sector-agua-provincial/dadosRelatorio.model';
 
 @Component({
     selector: 'jhi-sector-agua',
@@ -23,7 +21,6 @@ import {DadosRelatorio} from '../cobertura-sector-agua-provincial/dadosRelatorio
 
 export class CoberturaSectorAguaProvincialComponent implements OnInit {
     user: User;
-
     provincias: Provincia[];
     listaTabela: CoberturaSectorAguaModel[];
     predicate: any;
@@ -80,7 +77,7 @@ export class CoberturaSectorAguaProvincialComponent implements OnInit {
                     this.totalComuna += p.numeroComunas;
                     this.totalSistemas += p.numeroSistemasFuncionam;
                     this.totalPopulacao += p.populacao;
-                    this.totalCobertura += p.coberturaPercent;
+                    this.totalBeneficiarios += p.beneficiarios;
                 });
             });
     }

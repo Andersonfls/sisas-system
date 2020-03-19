@@ -80,7 +80,7 @@ export class CoberturaSectorAguaProvincialComponent implements OnInit {
                     this.totalComuna += p.numeroComunas;
                     this.totalSistemas += p.numeroSistemasFuncionam;
                     this.totalPopulacao += p.populacao;
-                    this.totalCobertura += p.coberturaPercent;
+                    this.totalBeneficiarios += p.beneficiarios;
                 });
             });
     }

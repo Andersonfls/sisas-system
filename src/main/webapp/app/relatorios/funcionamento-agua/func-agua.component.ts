@@ -75,7 +75,7 @@ export class FuncAguaComponent implements OnInit {
     }
 
     buscaDadosTabela() {
-        this.relatorioService.buscaDadosFuncAguaChafarizMunicipal().subscribe(
+        this.relatorioService.buscaDadosFuncSistAguaProvincial().subscribe(
             (res: HttpResponse<FuncAgua[]>) => {
                 this.listaTabela = res.body;
                 console.log(this.listaTabela);

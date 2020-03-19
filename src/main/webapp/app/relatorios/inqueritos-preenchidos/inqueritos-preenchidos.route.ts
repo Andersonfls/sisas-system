@@ -28,7 +28,7 @@ export const inqueritosPreenchidosRoute: Routes = [
             'pagingParams': InqueritosPreenchidosResolvePagingParams
         },
         data: {
-            authorities: ['ROLE_USER', 'ROLE_ADMIN'],
+            authorities: ['ROLE_USER', 'ROLE_ADMIN', 'ADMIN_PROVINCIAL'],
             pageTitle: 'relatorios.title.inqueritos-preenchidos'
         },
         canActivate: [UserRouteAccessService]

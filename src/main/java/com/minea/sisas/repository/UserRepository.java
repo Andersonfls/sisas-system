@@ -63,4 +63,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     User findByIdEquals(Long id);
 
+    User findByLoginEquals(String username);
+
 }
