@@ -12,7 +12,6 @@ import {TratamentoSistemaAguaDados} from './tratamento-sistemas-agua/tratamentoS
 import {IndicadorProducaoProvincia} from './indicador-producao/IndicadorProducaoProvincia.model';
 import {CoberturaSectorAguaModel} from './cobertura-sector-agua-provincial/coberturaSectorAgua.model';
 import {FuncAgua} from './funcionamento-agua/FuncAgua.model';
-import {SectorAguaDados} from './cobertura-sector-agua-excluir/SectorAguaDados.model';
 import {BeneficiariosBmbMecanica} from './beneficiarios-agua-ft-subt-bomb-mecanica/beneficiarios-bmb-mecanica.model';
 
 export type EntityResponseType = HttpResponse<Provincia>;
