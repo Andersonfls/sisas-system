@@ -28,16 +28,17 @@
                     <span class="d-md-inline" jhiTranslate="sidebar.item3.subItem1">Sistema de Águas</span>
                 </a>
 
-                <a href="#menu-rela" style="background-color: #2d596f; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#menu-rela" data-toggle="collapse" aria-expanded="false" *jhiHasAnyAuthority="['ROLE_ADMIN', 'ADMIN_PROVINCIAL']">
-                    <i class="fas fa-burn" style="size: 10px !important;"> </i>
+                <a href="#menu-rela" style="background-color: #2d596f; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#menu-rela" data-toggle="collapse" aria-expanded="false" *jhiHasAnyAuthority="['ROLE_ADMIN']">
+                    <i class="fas fa-clipboard-list" style="size: 10px !important;"> </i>
                     <span class="d-md-inline" jhiTranslate="sidebar.item3.subItem6">Relatórios</span>
                 </a>
 
                 <div class="collapse" id="menu-rela" data-parent="#sidebar" routerLinkActive="false">
-                    <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="benef-agua-subterranea-tp-bomba" routerLinkActive="active">
-                        <i class="fas fa-burn" style="size: 10px !important;"> </i>
-                        <span class="d-md-inline">Ft. Subterrânea e Bomba Energia</span>
-                    </a>
+                    <!--A SER FEITO PELO ANDRE-->
+                    <!--<a href="#" class="list-group-item" data-parent="#menu7x" routerLink="benef-agua-subterranea-tp-bomba" routerLinkActive="active">-->
+                        <!--<i class="fas fa-burn" style="size: 10px !important;"> </i>-->
+                        <!--<span class="d-md-inline">Ft. Subterrânea e Bomba Energia</span>-->
+                    <!--</a>-->
 
                     <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="inqueritos-preenchidos" routerLinkActive="active">
                         <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
@@ -71,18 +72,18 @@
                     </a>
 
                     <div class="collapse" id="func-agua-chaf" data-parent="#menu-rela" routerLinkActive="false">
-                        <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="func-agua-chafariz-provincial" routerLinkActive="active">
-                            <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
-                            <span class="d-md-inline">Provincial</span>
-                        </a>
+                        <!--<a href="#" class="list-group-item" data-parent="#menu7x" routerLink="func-agua-chafariz-provincial" routerLinkActive="active">-->
+                            <!--<i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>-->
+                            <!--<span class="d-md-inline">Provincial</span>-->
+                        <!--</a>-->
                         <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="func-agua-chafariz-municipal" routerLinkActive="active">
                             <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                             <span class="d-md-inline">Municipal</span>
                         </a>
-                        <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="func-agua-chafariz-comunal" routerLinkActive="active">
-                            <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
-                            <span class="d-md-inline">Comunal</span>
-                        </a>
+                        <!--<a href="#" class="list-group-item" data-parent="#menu7x" routerLink="func-agua-chafariz-comunal" routerLinkActive="active">-->
+                            <!--<i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>-->
+                            <!--<span class="d-md-inline">Comunal</span>-->
+                        <!--</a>-->
                     </div>
 
                     <a href="#trat-sis-agua" style="background-color: #2d596f; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#trat-sis-agua" data-toggle="collapse" aria-expanded="false">
@@ -411,7 +412,7 @@
             </div>
 
 
-            <a href="#menu6x"  class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false">
+            <a href="#menu6x"  class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false" *jhiHasAnyAuthority="['RELATORIOS_MENU_TEMP']">
                 <i class="fas fa-clipboard-list" ngbTooltip="Relatórios" title="Relatórios"></i>
                 <span class="d-none d-md-inline" jhiTranslate="sidebar.item6.title">Relatórios</span>
             </a>
@@ -438,15 +439,15 @@
                     <!--<span class="d-md-inline" jhiTranslate="sidebar.item6.subItem5"></span>-->
                 <!--</a>-->
 
-                <a href="#" class="list-group-item" data-parent="#menu6x" routerLink="sector-agua-saneamento" routerLinkActive="active">
-                    <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
-                    <span class="d-md-inline" jhiTranslate="sidebar.item6.subItem6"></span>
-                </a>
+                <!--<a href="#" class="list-group-item" data-parent="#menu6x" routerLink="sector-agua-saneamento" routerLinkActive="active">-->
+                    <!--<i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>-->
+                    <!--<span class="d-md-inline" jhiTranslate="sidebar.item6.subItem6"></span>-->
+                <!--</a>-->
 
-                <a href="#" class="list-group-item" data-parent="#menu6x" routerLink="sector-agua" routerLinkActive="active">
-                    <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
-                    <span class="d-md-inline" jhiTranslate="sidebar.item6.subItem7"></span>
-                </a>
+                <!--<a href="#" class="list-group-item" data-parent="#menu6x" routerLink="sector-agua" routerLinkActive="active">-->
+                    <!--<i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>-->
+                    <!--<span class="d-md-inline" jhiTranslate="sidebar.item6.subItem7"></span>-->
+                <!--</a>-->
 
                 <!--<a href="#" class="list-group-item" data-parent="#menu6x" routerLink="" routerLinkActive="active">-->
                     <!--<i class="fa fa-stack-exchange" style="size: 10px !important;"> </i>-->
@@ -478,10 +479,11 @@
                     <!--<span class="d-md-inline" jhiTranslate="sidebar.item6.subItem14"></span>-->
                 <!--</a>-->
 
-                <a href="#" class="list-group-item" data-parent="#menu6x" routerLink="benef-agua-subterranea-tp-bomba" routerLinkActive="active">
-                    <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
-                    <span class="d-md-inline" jhiTranslate="sidebar.item6.subItem15"></span>
-                </a>
+                <!--RELATORIO QUE SERÁ FEITO PELO ANDRE-->
+                <!--<a href="#" class="list-group-item" data-parent="#menu6x" routerLink="benef-agua-subterranea-tp-bomba" routerLinkActive="active">-->
+                    <!--<i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>-->
+                    <!--<span class="d-md-inline" jhiTranslate="sidebar.item6.subItem15"></span>-->
+                <!--</a>-->
 
             </div>
 

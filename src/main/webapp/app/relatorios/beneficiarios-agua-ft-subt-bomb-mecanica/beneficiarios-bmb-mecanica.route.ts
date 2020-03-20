@@ -28,7 +28,7 @@ export const beneficiariosTpBombaMecanicaRoute: Routes = [
             'pagingParams': BeneficiariosBombMecanicaResolvePagingParams
         },
         data: {
-            authorities: ['ROLE_USER', 'ROLE_ADMIN'],
+            authorities: ['ROLE_USER', 'ROLE_ADMIN', 'ADMIN_PROVINCIAL'],
             pageTitle: 'relatorios.title.benef-agua-fonte-subterranea-mecanica'
         },
         canActivate: [UserRouteAccessService]

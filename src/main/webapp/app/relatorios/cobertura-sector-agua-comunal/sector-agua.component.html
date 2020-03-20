@@ -1,7 +1,5 @@
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <jhi-alert></jhi-alert>
-
-    <div class="card">
+    <div>
         <div class="export-container">
             <button type="button" (click)="exportTable('tbprovin')" class="btn btn-primary btn-sm">
                 <span class="fa fa-file-excel-o"></span>
@@ -13,43 +11,40 @@
             </button>
         </div>
         <div id="provinc">
-            <div class="row">
-                <h2 style="margin-left: 17%">
-                    <span>Cobertura no sector de Água (Nível Comunal)</span>
-                </h2>
-            </div>
+            <h2 class="text-centro">
+                <span>Cobertura no sector de Água (Nível Comunal)</span>
+            </h2>
         <div class="table-responsive" *ngIf="listaTabela">
             <table id="tbprovin" class="table table-striped">
                 <thead>
-                <tr>
-                    <th><span>Provincias</span></th>
-                    <th><span>Municipio</span></th>
-                    <th><span>Comuna</span></th>
-                    <th><span>N° Sistemas</span></th>
-                    <th><span>População Total</span></th>
-                    <th><span>Beneficiários</span></th>
-                    <th><span>Cobertura (%)</span></th>
+                <tr class="borda-th" style="background-color: #1f749c">
+                    <th class="borda-th"><span>Provincias</span></th>
+                    <th class="borda-th"><span>Municipio</span></th>
+                    <th class="borda-th"><span>Comuna</span></th>
+                    <th class="borda-th"><span>N° Sistemas</span></th>
+                    <th class="borda-th"><span>População Total</span></th>
+                    <th class="borda-th"><span>Beneficiários</span></th>
+                    <th class="borda-th"><span>Cobertura (%)</span></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr *ngFor="let provincia of listaTabela ">
-                    <td>{{provincia.nomeProvincia}}</td>
-                    <td>{{provincia.nomeMunicipio}}</td>
-                    <td>{{provincia.nomeComuna}}</td>
-                    <td>{{provincia.numeroSistemasFuncionam}}</td>
-                    <td>{{provincia.populacao | number }}</td>
-                    <td>{{provincia.beneficiarios | number }}</td>
-                    <td>{{provincia.coberturaPercent | number:'1.2-2'}}%</td>
+                    <td class="text-centro">{{provincia.nomeProvincia}}</td>
+                    <td class="text-centro">{{provincia.nomeMunicipio}}</td>
+                    <td class="text-centro">{{provincia.nomeComuna}}</td>
+                    <td class="text-centro">{{provincia.numeroSistemasFuncionam}}</td>
+                    <td class="text-centro">{{provincia.populacao | number }}</td>
+                    <td class="text-centro">{{provincia.beneficiarios | number }}</td>
+                    <td class="text-centro">{{provincia.coberturaPercent | number:'1.2-2'}}%</td>
                 </tr>
                 </tbody>
                 <tfoot>
-                <tr>
-                    <td> <span style="font-weight: bold"> </span></td>
-                    <td colspan="2"> <span style="font-weight: bold">Total Comunal: </span></td>
-                    <td> <span style="font-weight: bold">{{totalSistemas}} </span></td>
-                    <td> <span style="font-weight: bold">{{totalPopulacao | number }} </span></td>
-                    <td> <span style="font-weight: bold">{{totalBeneficiarios | number }} </span></td>
-                    <td> <span style="font-weight: bold">{{totalCobertura | number:'1.2-2'}}% </span></td>
+                <tr class="borda-th" style="background-color: #1f749c">
+                    <td colspan="3"> <span style="font-weight: bold">Total Comunal: </span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{totalSistemas}} </span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{totalPopulacao | number }} </span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{totalBeneficiarios | number }} </span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{((totalBeneficiarios *100) / totalPopulacao) | number:'1.2-2'}}% </span></td>
                 </tr>
                 </tfoot>
             </table>

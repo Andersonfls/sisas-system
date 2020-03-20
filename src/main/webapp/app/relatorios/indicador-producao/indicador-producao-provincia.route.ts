@@ -28,7 +28,7 @@ export const indicadorProducaoProvinciaRoute: Routes = [
             'pagingParams': IndicadorProducaoProvinciaResolvePagingParams
         },
         data: {
-            authorities: ['ROLE_USER', 'ROLE_ADMIN'],
+            authorities: ['ROLE_USER', 'ROLE_ADMIN', 'ADMIN_PROVINCIAL'],
             pageTitle: 'relatorios.title.indicador-producao-provincia'
         },
         canActivate: [UserRouteAccessService]

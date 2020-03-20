@@ -12,7 +12,6 @@ import * as jsPDF from 'jspdf';
 import {TableUtil} from '../../shared/util/tableUtil';
 import * as html2canvas from 'html2canvas';
 import {DadosRelatorio} from '../cobertura-sector-agua-provincial/dadosRelatorio.model';
-import {SectorAguaDados} from '../cobertura-sector-agua-excluir/SectorAguaDados.model';
 
 @Component({
     selector: 'jhi-sector-agua',
@@ -132,7 +131,7 @@ export class CoberturaSectorAguaSaneamentoComponent implements OnInit {
 
     buscaDadosTabelaProvincia() {
         this.relatorioService.buscaDadosSectorAguaProvincia().subscribe(
-            (res: HttpResponse<SectorAguaDados[]>) => {
+            (res: HttpResponse<SectorAguaSaneamentoDados[]>) => {
                 this.listaTabela = res.body;
                 console.log(this.listaTabela);
 
@@ -162,7 +161,7 @@ export class CoberturaSectorAguaSaneamentoComponent implements OnInit {
 
     buscaDadosTabelaMunicipio() {
         this.relatorioService.buscaDadosSectorAguaMunicipio().subscribe(
-            (res: HttpResponse<SectorAguaDados[]>) => {
+            (res: HttpResponse<SectorAguaSaneamentoDados[]>) => {
                 this.listaTabela = res.body;
                 console.log(this.listaTabela);
 
@@ -192,7 +191,7 @@ export class CoberturaSectorAguaSaneamentoComponent implements OnInit {
 
     buscaDadosTabelaComuna() {
         this.relatorioService.buscaDadosSectorAguaComuna().subscribe(
-            (res: HttpResponse<SectorAguaDados[]>) => {
+            (res: HttpResponse<SectorAguaSaneamentoDados[]>) => {
                 this.listaTabela = res.body;
                 console.log(this.listaTabela);
 

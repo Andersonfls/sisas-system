@@ -220,4 +220,18 @@ public class RelatoriosResource {
     public List<TratamentoSistemasAguaDadosDTO> getDadosTratamentoSistemasAguaComunal() {
         return this.relatorioService.tratamentoSistemasAguasComunal();
     }
+
+    // FUNCIONAMENTO SISTEMA DE AGUA
+    @GetMapping("/relatorios/func-sis-agua-provincial")
+    public List<FuncSistemasAguaDTO> getDadosFuncAguaProvincial() {
+        return this.relatorioService.funcionamentoServicosAguaProvincial();
+    }
+    @GetMapping("/relatorios/func-sis-agua-municipal")
+    public List<FuncSistemasAguaDTO> getDadosFuncAguaMunicipal() {
+        return this.relatorioService.funcionamentoServicosAguaMunicipal();
+    }
+    @GetMapping("/relatorios/func-sis-agua-comunal")
+    public List<FuncSistemasAguaDTO> getDadosFuncAguaComunal() {
+        return this.relatorioService.funcionamentoServicosAguaComunal();
+    }
 }

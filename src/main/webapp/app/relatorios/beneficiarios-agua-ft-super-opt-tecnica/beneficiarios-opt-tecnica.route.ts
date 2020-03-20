@@ -28,7 +28,7 @@ export const beneficiariosOptTecnicaRoute: Routes = [
             'pagingParams': BeneficiariosOptTecnicaResolvePagingParams
         },
         data: {
-            authorities: ['ROLE_USER', 'ROLE_ADMIN'],
+            authorities: ['ROLE_USER', 'ROLE_ADMIN', 'ADMIN_PROVINCIAL'],
             pageTitle: 'relatorios.title.benef-agua-fonte-superficial-tecnica'
         },
         canActivate: [UserRouteAccessService]

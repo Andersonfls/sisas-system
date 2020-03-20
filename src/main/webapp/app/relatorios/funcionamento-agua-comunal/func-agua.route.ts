@@ -28,7 +28,7 @@ export const funcAguaRoute: Routes = [
             'pagingParams': FuncAguaResolvePagingParams
         },
         data: {
-            authorities: ['ROLE_USER', 'ROLE_ADMIN'],
+            authorities: ['ROLE_USER', 'ROLE_ADMIN', 'ADMIN_PROVINCIAL'],
             pageTitle: 'relatorios.title.func-agua'
         },
         canActivate: [UserRouteAccessService]

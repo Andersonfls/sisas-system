@@ -5,56 +5,58 @@
     <br/>
 
     <div id="model2">
-        <div class="card">
-            <div class="export-container">
-                <button type="button" (click)="exportTable('tbnn')" class="btn btn-primary btn-sm">
-                    <span class="fa fa-file-excel-o"></span>
-                    <span class="d-none d-md-inline">Excel</span>
-                </button>
-                <button type="button" (click)="captureScreen('mod2')" class="btn btn-primary btn-sm">
-                    <span class="fas fa-file-pdf"></span>
-                    <span class="d-none d-md-inline">PDF</span>
-                </button>
-            </div>
-            <div id="mod2" class="table-responsive">
+        <div class="export-container">
+            <button type="button" (click)="exportTable('tbnn')" class="btn btn-primary btn-sm">
+                <span class="fa fa-file-excel-o"></span>
+                <span class="d-none d-md-inline">Excel</span>
+            </button>
+            <button type="button" (click)="captureScreen('mod2')" class="btn btn-primary btn-sm">
+                <span class="fas fa-file-pdf"></span>
+                <span class="d-none d-md-inline">PDF</span>
+            </button>
+        </div>
+        <div id="mod2" class="table-responsive">
+            <h2 class="text-centro">
+                <span>Estatística de Inquéritos Preenchidos</span>
+            </h2>
 
-                <h2 style="margin-left: 17%">
-                    <span>Estatística de Inquéritos Preenchidos (Nível Nacional)</span>
-                </h2>
-
-                <table *ngIf="listaTabela" id="tbnn" class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th><span>Província</span></th>
-                        <th><span>N° de Municípios</span></th>
-                        <th><span>N° de Comunas</span></th>
-                        <th><span>Águas(SIM)</span></th>
-                        <th><span>Águas(NAO)</span></th>
-                        <th><span>Total</span></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr *ngFor="let provincia of listaTabela">
-                        <td>{{provincia.nomeProvincia}}</td>
-                        <td>{{provincia.municipios}}</td>
-                        <td>{{provincia.comunas}}</td>
-                        <td>{{provincia.aguasSim}}</td>
-                        <td>{{provincia.aguasNao | number }}</td>
-                        <td>{{provincia.totalGeral}}</td>
-                    </tr>
-                    </tbody>
-                    <tfoot>
-                    <tr>
-                        <td> <span style="font-weight: bold">Total: </span></td>
-                        <td> <span style="font-weight: bold">{{totalMunicipios}} </span></td>
-                        <td> <span style="font-weight: bold">{{totalComuna}} </span></td>
-                        <td> <span style="font-weight: bold">{{totalAguasSim}} </span></td>
-                        <td> <span style="font-weight: bold">{{totalAguasNao | number }} </span></td>
-                        <td> <span style="font-weight: bold">{{totalGeral}} </span></td>
-                    </tr>
-                    </tfoot>
-                </table>
-            </div>
+            <table *ngIf="listaTabela" id="tbnn" class="table table-striped">
+                <thead>
+                <tr style="background-color: #1f749c">
+                    <th colspan="3" class="borda-th"></th>
+                    <th colspan="2" class="borda-th text-centro"><span>Sector</span></th>
+                    <th class="borda-th"></th>
+                </tr>
+                <tr style="background-color: #1f749c">
+                    <th class="borda-th text-centro"><span>Província</span></th>
+                    <th class="borda-th text-centro"><span>N° de Municípios</span></th>
+                    <th class="borda-th text-centro"><span>N° de Comunas</span></th>
+                    <th class="borda-th text-centro"><span>Águas(SIM)</span></th>
+                    <th class="borda-th text-centro"><span>Águas(NAO)</span></th>
+                    <th class="borda-th text-centro"><span>Total</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="borda-th" *ngFor="let provincia of listaTabela">
+                    <td class="text-centro">{{provincia.nomeProvincia}}</td>
+                    <td class="text-centro">{{provincia.municipios}}</td>
+                    <td class="text-centro">{{provincia.comunas}}</td>
+                    <td class="text-centro">{{provincia.aguasSim}}</td>
+                    <td class="text-centro">{{provincia.aguasNao | number }}</td>
+                    <td class="text-centro">{{provincia.totalGeral}}</td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr style="background-color: #1f749c">
+                    <td style="text-align: center;"> <span style="font-weight: bold">Total: </span></td>
+                    <td style="text-align: center;"> <span style="font-weight: bold">{{totalMunicipios}} </span></td>
+                    <td style="text-align: center;"> <span style="font-weight: bold">{{totalComuna}} </span></td>
+                    <td style="text-align: center;"> <span style="font-weight: bold">{{totalAguasSim}} </span></td>
+                    <td style="text-align: center;"> <span style="font-weight: bold">{{totalAguasNao | number }} </span></td>
+                    <td style="text-align: center;"> <span style="font-weight: bold">{{totalGeral}} </span></td>
+                </tr>
+                </tfoot>
+            </table>
         </div>
         <br>
         <div class="card">
