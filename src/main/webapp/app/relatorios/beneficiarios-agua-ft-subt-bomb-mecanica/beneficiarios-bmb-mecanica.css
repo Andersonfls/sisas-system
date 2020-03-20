@@ -76,8 +76,8 @@ Dashboard page styles
 }
 
 .borda-th {
-    border-left: 2px solid #08080b;
-    border-right: 2px solid #08080b;
+    border-left: 2px solid #dee2e6;
+    border-right: 2px solid #dee2e6;
 }
 
 @media screen and (max-width: 600px) {
