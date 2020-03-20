@@ -573,6 +573,56 @@ public class RelatorioService {
         return retorno;
     }
 
+
+    // BENEFICIARIOS DE AGUA POR FONTE SUBTERRANEA E POR TIPO DE BOMBA
+    public List<BeneAguaFtSubterraneaTpBomba> beneficiariosFtSubtTpBombaComunal() {
+        User userDTO = buscaUsuarioLogado();
+        List<BeneAguaFtSubterraneaTpBomba> retorno = new ArrayList<>();
+        List<Object[]> list = this.relatorioRepository.buscaDadosBenefAguaFonteSubterraneaTipoBombaComunal();
+        if (Objects.nonNull(list)) {
+            list.stream().forEach(i -> {
+                BeneAguaFtSubterraneaTpBomba dto = new BeneAguaFtSubterraneaTpBomba();
+                dto.setNomeProvincia((String) i[0]);
+                dto.setNomeMunicipio((String) i[1]);
+                dto.setNomeComuna((String) i[2]);
+                dto.setNumeroPocoMelhorado(((BigInteger) i[3]).intValue());
+                dto.setFuro(((BigInteger) i[4]).intValue());
+                dto.setNascente(((BigInteger) i[5]).intValue());
+                dto.setTotalBombaGravidade(((BigInteger) i[6]).intValue());
+                dto.setPopulacaoBeneficiadaGravidade(((BigDecimal) i[7]).intValue());
+                dto.setTotalTipoBombaOutros(((BigInteger) i[8]).intValue());
+                dto.setQtdPopulacaoOutros(((BigDecimal) i[9]).intValue());
+                retorno.add(dto);
+            });
+        }
+        return retorno;
+    }
+
+    public List<BeneAguaFtSubterraneaTpBomba> beneficiariosFtSubtTpBombaMunicipal() {
+        User userDTO = buscaUsuarioLogado();
+        List<BeneAguaFtSubterraneaTpBomba> retorno = new ArrayList<>();
+        List<Object[]> list = this.relatorioRepository.buscaDadosBenefAguaFonteSubterraneaTipoBombaMunicipal(userDTO.getProvincia().getId());
+        if (Objects.nonNull(list)) {
+            list.stream().forEach(i -> {
+                BeneAguaFtSubterraneaTpBomba dto = new BeneAguaFtSubterraneaTpBomba();
+                dto.setNascente(0);
+                dto.setNomeProvincia((String) i[0]);
+                dto.setNomeMunicipio((String) i[1]);
+                dto.setNumeroPocoMelhorado(((BigInteger) i[2]).intValue());
+                dto.setFuro(((BigInteger) i[3]).intValue());
+                if (Objects.nonNull(i[4])) {
+                    dto.setNascente(((BigInteger) i[4]).intValue());
+                }
+                dto.setTotalBombaGravidade(((BigInteger) i[5]).intValue());
+                dto.setPopulacaoBeneficiadaGravidade(((BigInteger) i[6]).intValue());
+                dto.setTotalTipoBombaOutros(((BigDecimal) i[7]).intValue());
+                dto.setQtdPopulacaoOutros(((BigInteger) i[8]).intValue());
+                retorno.add(dto);
+            });
+        }
+        return retorno;
+    }
+
     private User buscaUsuarioLogado() {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = null;

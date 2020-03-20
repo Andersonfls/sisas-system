@@ -234,4 +234,15 @@ public class RelatoriosResource {
     public List<FuncSistemasAguaDTO> getDadosFuncAguaComunal() {
         return this.relatorioService.funcionamentoServicosAguaComunal();
     }
+
+    // BENEFICIARIOS DE AGUA POR FONTE SUBTERRANEA E POR TIPO DE BOMBA
+    @GetMapping("/relatorios/ben-agua-ft-subt-tp-bmb-comunal")
+    public List<BeneAguaFtSubterraneaTpBomba> getDadosBenefAguaSubtTpBombaComunal() {
+        return this.relatorioService.beneficiariosFtSubtTpBombaComunal();
+    }
+
+    @GetMapping("/relatorios/ben-agua-ft-subt-tp-bmb-municipal")
+    public List<BeneAguaFtSubterraneaTpBomba> getDadosBenefAguaSubtTpBombaMunicipal() {
+        return this.relatorioService.beneficiariosFtSubtTpBombaMunicipal();
+    }
 }

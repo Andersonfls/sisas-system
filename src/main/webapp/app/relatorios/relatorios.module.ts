@@ -7,7 +7,6 @@ import {SisasTratamentoSistemasAguaModule} from './tratamento-sistemas-agua/trat
 import {SisasFuncAguaModule} from './funcionamento-agua/func-agua.module';
 import {SisasBenefOptTecnicaModule} from './beneficiarios-agua-ft-super-opt-tecnica/beneficiarios-opt-tecnica.module';
 import {SisasBenefBmbMecanicaModule} from './beneficiarios-agua-ft-subt-bomb-mecanica/beneficiarios-bmb-mecanica.module';
-import {SisasBeneficiariosTpBombaModule} from './beneficiarios-agua-ft-subt-bomba/beneficiarios-tp-bmb.module';
 import {SisasIndicadorProducaoProvinciaModule} from './indicador-producao/indicador-producao-provincia.module';
 import {SisasSectorAguaProvincialModule} from './cobertura-sector-agua-provincial/sector-agua.module';
 import {SisasSectorAguaComunalModule} from './cobertura-sector-agua-comunal/sector-agua.module';
@@ -17,6 +16,8 @@ import { SisasTratamentoSistemasAguaComunaModule} from './tratamento-sistemas-ag
 import {SisasTratamentoSistemasAguaMunicipioModule} from './tratamento-sistemas-agua-comunal/tratamento-sistemas-agua.module';
 import {SisasFuncAguaComunalModule} from './funcionamento-agua-comunal/func-agua.module';
 import {SisasFuncAguaMunicipalModule} from './funcionamento-agua-municipal/func-agua.module';
+import {SisasBenefAguaTpBombaModule} from './beneficiarios-agua-ft-subt-tp-bmb/tratamento-sistemas-agua.module';
+import {SisasBenefAguaTpBombaMuniModule} from './beneficiarios-agua-ft-subt-tp-bmb-muni/tratamento-sistemas-agua.module';
 
 @NgModule({
     imports: [
@@ -28,7 +29,6 @@ import {SisasFuncAguaMunicipalModule} from './funcionamento-agua-municipal/func-
         SisasFuncAguaModule,
         SisasBenefOptTecnicaModule,
         SisasBenefBmbMecanicaModule,
-        SisasBeneficiariosTpBombaModule,
         SisasSectorAguaProvincialModule,
         SisasSectorAguaComunalModule,
         SisasSectorAguaMunicipioModule,
@@ -36,7 +36,9 @@ import {SisasFuncAguaMunicipalModule} from './funcionamento-agua-municipal/func-
         SisasTratamentoSistemasAguaMunicipioModule,
         SisasTratamentoSistemasAguaComunaModule,
         SisasFuncAguaComunalModule,
-        SisasFuncAguaMunicipalModule
+        SisasFuncAguaMunicipalModule,
+        SisasBenefAguaTpBombaModule,
+        SisasBenefAguaTpBombaMuniModule
     ],
     declarations: [],
     entryComponents: [],
