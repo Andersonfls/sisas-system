@@ -185,6 +185,12 @@ public class RelatoriosResource {
         return this.relatorioService.coberturaSectorAguasComunal();
     }
 
+    // BENEFICIARIOS BOMBA MECANICA (Nivel Provincial)
+    @GetMapping("/relatorios/benef-bomba-mecanica-provincial")
+    public List<BeneficiariosBmbMecanicaDTO> getDadosBeneficiariosBmbMecanicaProvincial() {
+        return this.relatorioService.beneficiariosAguaBmbMecanicaProvincial();
+    }
+
     // FUNCIONAMENTO SISTEMA DE AGUA E CHAFARIZES
     @GetMapping("/relatorios/func-agua-chaf-municipal")
     public List<FuncAguaChafarizesDadosDTO> getDadosFuncAguaChafarizesMunicipal() {

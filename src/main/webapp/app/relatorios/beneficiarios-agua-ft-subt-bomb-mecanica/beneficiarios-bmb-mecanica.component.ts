@@ -92,11 +92,14 @@ export class BeneficiariosBombMecanicaComponent implements OnInit {
     }
 
     validaTipoRelatorio() {
+        if (this.tipoRelatorio === 'Nível Provincial') {
+            this.buscaDadosTabelaProvincial();
+        }
         if (this.tipoRelatorio === 'Nível Municipal') {
-            this.buscaDadosTabela();
+            this.buscaDadosTabelaMunicipal();
         }
         if (this.tipoRelatorio === 'Nível Comunal') {
-            this.buscaDadosTabela();
+            /*this.buscaDadosTabela();*/
         }
     }
 
@@ -104,7 +107,23 @@ export class BeneficiariosBombMecanicaComponent implements OnInit {
         this.tipoRelatorio = null;
     }
 
-    buscaDadosTabela() {
+    buscaDadosTabelaProvincial() {
+        this.relatorioService.buscaDadosBeneficiariosBmbMecanicaProvincial().subscribe(
+            (res: HttpResponse<BeneficiariosBmbMecanica[]>) => {
+                this.listaTabela = res.body;
+                console.log(this.listaTabela);
+
+                this.listaNaoFuncionam = new Array();
+                this.listaFuncionam = new Array();
+                this.listaNumSistemas = new Array();
+
+                this.listaTabela.forEach( (i) => {
+                    const item: DadosRelatorio = new DadosRelatorio();
+                });
+            });
+    }
+
+    buscaDadosTabelaMunicipal() {
         this.relatorioService.buscaDadosFuncAguaChafarizMunicipal().subscribe(
             (res: HttpResponse<BeneficiariosBmbMecanica[]>) => {
                 this.listaTabela = res.body;

@@ -4,7 +4,7 @@ export class BeneficiariosBmbMecanica {
         public nomeProvincia?: string,
         public nomeMunicipio?: string,
         public nomeComuna?: string,
-        public populacao?: string,
+        public populacao?: number,
         public pocoMelhorado?: number,
         public furo?: number,
         public nascente?: number,

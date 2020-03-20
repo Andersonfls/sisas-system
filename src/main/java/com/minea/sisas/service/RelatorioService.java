@@ -295,7 +295,57 @@ public class RelatorioService {
         return retorno;
     }
 
-    //FUNCIONAMENTO SERVICOS DE AGUA E CHAFARIZES
+    //BENEFICIARIOS BOMBA MECANICA - PROVINCIAL
+    public List<BeneficiariosBmbMecanicaDTO> beneficiariosAguaBmbMecanicaProvincial() {
+        List<BeneficiariosBmbMecanicaDTO> retorno = new ArrayList<>();
+        List<Object[]> list = this.relatorioRepository.beneficiariosAguaBmbMecanicaProvincialQuery();
+        if (Objects.nonNull(list)) {
+            list.stream().forEach(i -> {
+                BeneficiariosBmbMecanicaDTO dto = new BeneficiariosBmbMecanicaDTO();
+
+
+                dto.setNomeProvincia((String) i[0]);
+                if (Objects.nonNull(i[1])) {
+                    dto.setPopulacao(((BigInteger) i[1]).intValue());
+                }
+                if (Objects.nonNull(i[2])) {
+                    dto.setPocoMelhorado(((BigInteger) i[2]).intValue());
+                }
+                if (Objects.nonNull(i[3])) {
+                    dto.setFuro(((BigInteger) i[3]).intValue());
+                }
+                if (Objects.nonNull(i[4])) {
+                    dto.setNascente(((BigInteger) i[4]).intValue());
+                }
+                if (Objects.nonNull(i[5])) {
+                    dto.setDieselSistemas(((BigInteger) i[5]).intValue());
+                }
+                if (Objects.nonNull(i[6])) {
+                    dto.setDieselPopulacao(((BigInteger) i[6]).intValue());
+                }
+                if (Objects.nonNull(i[7])) {
+                    dto.setDieselPerc(((BigInteger) i[7]).intValue());
+                }
+                if (Objects.nonNull(i[8])) {
+                    dto.setSolarSistemas(((BigInteger) i[8]).intValue());
+                }
+                if (Objects.nonNull(i[9])) {
+                    dto.setSolarPopulacao(((BigInteger) i[9]).intValue());
+                }
+                if (Objects.nonNull(i[10])) {
+                    dto.setSolarPerc(((BigInteger) i[10]).intValue());
+                }
+                if (Objects.nonNull(i[11])) {
+                    dto.setEolicaSistemas(((BigInteger) i[11]).intValue());
+                }
+
+                retorno.add(dto);
+            });
+        }
+        return retorno;
+    }
+
+    //FUNCIONAMENTO SERVICOS DE AGUA E CHAFARIZES - MUNICIPAL
     public List<FuncAguaChafarizesDadosDTO> funcionamentoServicosAguaChafarizesMunicipal() {
         List<FuncAguaChafarizesDadosDTO> retorno = new ArrayList<>();
         List<Object[]> list = this.relatorioRepository.funcionamentoAguaChafarizesMunicipal();

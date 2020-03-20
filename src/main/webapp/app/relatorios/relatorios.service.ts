@@ -12,6 +12,7 @@ import {TratamentoSistemaAguaDados} from './tratamento-sistemas-agua/tratamentoS
 import {IndicadorProducaoProvincia} from './indicador-producao/IndicadorProducaoProvincia.model';
 import {CoberturaSectorAguaModel} from './cobertura-sector-agua-provincial/coberturaSectorAgua.model';
 import {SectorAguaDados} from './cobertura-sector-agua-excluir/SectorAguaDados.model';
+import {BeneficiariosBmbMecanica} from './beneficiarios-agua-ft-subt-bomb-mecanica/beneficiarios-bmb-mecanica.model';
 
 export type EntityResponseType = HttpResponse<Provincia>;
 
@@ -72,6 +73,11 @@ export class RelatoriosService {
     buscaDadosCoberturaSectorAguaComunal(req?: any): Observable<HttpResponse<CoberturaSectorAguaModel[]>> {
         const options = createRequestOption(req);
         return this.http.get<CoberturaSectorAguaModel[]>(this.resourceUrl + '/cobertura-sector-agua-comunal', {params: options, observe: 'response'});
+    }
+
+    buscaDadosBeneficiariosBmbMecanicaProvincial(req?: any): Observable<HttpResponse<FuncAguaChafarizes[]>> {
+        const options = createRequestOption(req);
+        return this.http.get<BeneficiariosBmbMecanica[]>(this.resourceUrl + '/benef-bomba-mecanica-provincial', {params: options, observe: 'response'});
     }
 
     buscaDadosFuncAguaChafarizMunicipal(req?: any): Observable<HttpResponse<FuncAguaChafarizes[]>> {
