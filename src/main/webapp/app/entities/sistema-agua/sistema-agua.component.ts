@@ -61,6 +61,36 @@ currentAccount: any;
         });
     }
 
+    ngOnInit() {
+        this.loadAll();
+        this.principal.identity().then((account) => {
+            this.currentAccount = account;
+        });
+        this.registerChangeInSistemaAguas();
+        this.esconderFiltros = true;
+        this.sistemaAgua = new SistemaAgua();
+        this.sistemaAgua.comuna = null;
+        this.sistemaAgua.provincia = null;
+        this.sistemaAgua.municipio = null;
+
+        this.comunaService.query()
+            .subscribe((res: HttpResponse<Comuna[]>) => {
+                this.comunas = res.body;
+            }, (res: HttpErrorResponse) => this.onError(res.message));
+
+        this.municipioService.query().subscribe(
+            (res: HttpResponse<Municipio[]>) => {
+                this.municipios = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message));
+
+        this.provinciaService.query().subscribe(
+            (res: HttpResponse<Provincia[]>) => {
+                this.provincias = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message));
+    }
+
     loadAll() {
         this.sistemaAguaService.query({
             page: this.page - 1,
@@ -191,36 +221,6 @@ currentAccount: any;
         if (this.esconderFiltros) {
             this.loadAll();
         }
-    }
-
-    ngOnInit() {
-        this.loadAll();
-        this.principal.identity().then((account) => {
-            this.currentAccount = account;
-        });
-        this.registerChangeInSistemaAguas();
-        this.esconderFiltros = true;
-        this.sistemaAgua = new SistemaAgua();
-        this.sistemaAgua.comuna = null;
-        this.sistemaAgua.provincia = null;
-        this.sistemaAgua.municipio = null;
-
-        this.comunaService.query()
-            .subscribe((res: HttpResponse<Comuna[]>) => {
-                this.comunas = res.body;
-            }, (res: HttpErrorResponse) => this.onError(res.message));
-
-        this.municipioService.query().subscribe(
-            (res: HttpResponse<Municipio[]>) => {
-                this.municipios = res.body;
-            },
-            (res: HttpErrorResponse) => this.onError(res.message));
-
-        this.provinciaService.query().subscribe(
-            (res: HttpResponse<Provincia[]>) => {
-                this.provincias = res.body;
-            },
-            (res: HttpErrorResponse) => this.onError(res.message));
     }
 
     ngOnDestroy() {
