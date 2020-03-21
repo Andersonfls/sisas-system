@@ -245,4 +245,9 @@ public class RelatoriosResource {
     public List<BeneAguaFtSubterraneaTpBomba> getDadosBenefAguaSubtTpBombaMunicipal() {
         return this.relatorioService.beneficiariosFtSubtTpBombaMunicipal();
     }
+
+    @GetMapping("/relatorios/ben-agua-ft-subt-tp-bmb-man-provincial")
+    public List<BeneAguaFtSubterraneaTpBombaManual> getDadosBenefAguaSubtTpBombaManualProvincial() {
+        return this.relatorioService.beneficiariosFtSubtTpBombaManualProvincial();
+    }
 }

@@ -18,6 +18,7 @@ import {SisasFuncAguaComunalModule} from './funcionamento-agua-comunal/func-agua
 import {SisasFuncAguaMunicipalModule} from './funcionamento-agua-municipal/func-agua.module';
 import {SisasBenefAguaTpBombaModule} from './beneficiarios-agua-ft-subt-tp-bmb/tratamento-sistemas-agua.module';
 import {SisasBenefAguaTpBombaMuniModule} from './beneficiarios-agua-ft-subt-tp-bmb-muni/tratamento-sistemas-agua.module';
+import {SisasBenefAguaTpBombaManualProModule} from './beneficiarios-agua-ft-subt-tp-bmb-manual-pro/tratamento-sistemas-agua.module';
 
 @NgModule({
     imports: [
@@ -38,7 +39,8 @@ import {SisasBenefAguaTpBombaMuniModule} from './beneficiarios-agua-ft-subt-tp-b
         SisasFuncAguaComunalModule,
         SisasFuncAguaMunicipalModule,
         SisasBenefAguaTpBombaModule,
-        SisasBenefAguaTpBombaMuniModule
+        SisasBenefAguaTpBombaMuniModule,
+        SisasBenefAguaTpBombaManualProModule
     ],
     declarations: [],
     entryComponents: [],

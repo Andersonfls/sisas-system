@@ -601,7 +601,7 @@ public class RelatorioService {
     public List<BeneAguaFtSubterraneaTpBomba> beneficiariosFtSubtTpBombaMunicipal() {
         User userDTO = buscaUsuarioLogado();
         List<BeneAguaFtSubterraneaTpBomba> retorno = new ArrayList<>();
-        List<Object[]> list = this.relatorioRepository.buscaDadosBenefAguaFonteSubterraneaTipoBombaMunicipal(userDTO.getProvincia().getId());
+        List<Object[]> list = this.relatorioRepository.buscaDadosBenefAguaFonteSubterraneaTipoBombaMunicipal();
         if (Objects.nonNull(list)) {
             list.stream().forEach(i -> {
                 BeneAguaFtSubterraneaTpBomba dto = new BeneAguaFtSubterraneaTpBomba();
@@ -617,6 +617,34 @@ public class RelatorioService {
                 dto.setPopulacaoBeneficiadaGravidade(((BigInteger) i[6]).intValue());
                 dto.setTotalTipoBombaOutros(((BigDecimal) i[7]).intValue());
                 dto.setQtdPopulacaoOutros(((BigInteger) i[8]).intValue());
+                retorno.add(dto);
+            });
+        }
+        return retorno;
+    }
+
+    public List<BeneAguaFtSubterraneaTpBombaManual> beneficiariosFtSubtTpBombaManualProvincial() {
+        User userDTO = buscaUsuarioLogado();
+        List<BeneAguaFtSubterraneaTpBombaManual> retorno = new ArrayList<>();
+        List<Object[]> list = this.relatorioRepository.buscaDadosBenefAguaFonteSubterraneaTipoBombaManualProvincial();
+        if (Objects.nonNull(list)) {
+            list.stream().forEach(i -> {
+                BeneAguaFtSubterraneaTpBombaManual dto = new BeneAguaFtSubterraneaTpBombaManual();
+                dto.setNomeProvincia((String) i[0]);
+                dto.setPopulacao(((BigInteger) i[1]).intValue());
+                dto.setNumeroPocoMelhorado(((BigInteger) i[2]).intValue());
+                dto.setFuro(((BigInteger) i[3]).intValue());
+                dto.setNascente(((BigInteger) i[4]).intValue());
+                dto.setAfridev(((BigInteger) i[5]).intValue());
+                dto.setAfridevPopulacao(((BigDecimal) i[6]).intValue());
+                dto.setVergnet(((BigInteger) i[7]).intValue());
+                dto.setVergnetPopulacao(((BigDecimal) i[8]).intValue());
+                dto.setVolanta(((BigInteger) i[9]).intValue());
+                dto.setVolantaPopulacao(((BigDecimal) i[10]).intValue());
+                dto.setIndiaMarc(((BigInteger) i[11]).intValue());
+                dto.setIndiaMarcPopulacao(((BigDecimal) i[12]).intValue());
+                dto.setOutro(((BigInteger) i[13]).intValue());
+                dto.setOutroPopulacao(((BigDecimal) i[14]).intValue());
                 retorno.add(dto);
             });
         }

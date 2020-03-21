@@ -14,6 +14,7 @@ import {CoberturaSectorAguaModel} from './cobertura-sector-agua-provincial/cober
 import {FuncAgua} from './funcionamento-agua/FuncAgua.model';
 import {BeneficiariosBmbMecanica} from './beneficiarios-agua-ft-subt-bomb-mecanica/beneficiarios-bmb-mecanica.model';
 import {BeneAguaFtSubterraneaTpBomba} from './beneficiarios-agua-ft-subt-tp-bmb/beneAguaFtSubterraneaTpBomba.model';
+import {BeneAguaFtSubterraneaTpBombaManual} from './beneficiarios-agua-ft-subt-tp-bmb-manual-pro/beneAguaFtSubterraneaTpBomba.model';
 
 export type EntityResponseType = HttpResponse<Provincia>;
 
@@ -116,4 +117,8 @@ export class RelatoriosService {
         return this.http.get<BeneAguaFtSubterraneaTpBomba[]>(this.resourceUrl + '/ben-agua-ft-subt-tp-bmb-municipal', {params: options, observe: 'response'});
     }
 
+    buscaDadosBenfAguaSubtTipoBombaManualPro(req?: any): Observable<HttpResponse<BeneAguaFtSubterraneaTpBombaManual[]>> {
+        const options = createRequestOption(req);
+        return this.http.get<BeneAguaFtSubterraneaTpBombaManual[]>(this.resourceUrl + '/ben-agua-ft-subt-tp-bmb-man-provincial', {params: options, observe: 'response'});
+    }
 }

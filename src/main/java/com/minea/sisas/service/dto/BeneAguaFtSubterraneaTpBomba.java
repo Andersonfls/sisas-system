@@ -11,7 +11,6 @@ public class BeneAguaFtSubterraneaTpBomba implements Serializable {
     private String nomeProvincia;
     private String nomeMunicipio;
     private String nomeComuna;
-
     private Integer numeroPocoMelhorado;
     private Integer furo;
     private Integer nascente;

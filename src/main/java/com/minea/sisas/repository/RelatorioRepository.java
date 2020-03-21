@@ -841,12 +841,12 @@ public interface RelatorioRepository extends JpaRepository<Provincia, Long>, Jpa
         "     s.ID_PROVINCIA = p.ID_PROVINCIA            " +
         "     inner join sisas.municipio m on            " +
         "     p.ID_PROVINCIA = m.ID_PROVINCIA             " +
-        "     where  s.POSSUI_SISTEMA_AGUA = 1  AND s.ID_PROVINCIA = :provinciaId          " +
+        "     where  s.POSSUI_SISTEMA_AGUA = 1           " +
         "GROUP BY             " +
         "       p.NM_PROVINCIA, p.ID_PROVINCIA,             " +
         "       m.ID_MUNICIPIO, s.ID_MUNICIPIO,            " +
         "       s.NM_TP_FONTE, s.ESQUEMA", nativeQuery = true)
-    List<Object[]> buscaDadosBenefAguaFonteSubterraneaTipoBombaMunicipal(@Param("provinciaId") Long provinciaId);
+    List<Object[]> buscaDadosBenefAguaFonteSubterraneaTipoBombaMunicipal();
 
 
     // BENEFICIARIOS DE AGUA POR FONTE SUBTERRANEA E POR TIPO DE BOMBA MANUAL (Nivel Provincial)
@@ -948,5 +948,5 @@ public interface RelatorioRepository extends JpaRepository<Provincia, Long>, Jpa
         "     WHERE  s.POSSUI_SISTEMA_AGUA = 1  " +
         " GROUP BY          " +
         "       p.NM_PROVINCIA, p.ID_PROVINCIA ", nativeQuery = true)
-    List<Object[]> buscaDadosBenefAguaFonteSubterraneaTipoBombaManualProvincial(@Param("provinciaId") Long provinciaId);
+    List<Object[]> buscaDadosBenefAguaFonteSubterraneaTipoBombaManualProvincial();
 }
