@@ -1,28 +1,23 @@
 package com.minea.sisas.service;
-import com.minea.sisas.domain.SistemaAgua;
+import com.minea.sisas.domain.Authority;
 import com.minea.sisas.domain.User;
-import com.minea.sisas.domain.enumeration.TipoAcao;
 import com.minea.sisas.repository.ProvinciaRepository;
+import com.minea.sisas.repository.RelatorioAdminRepository;
 import com.minea.sisas.repository.RelatorioRepository;
 import com.minea.sisas.repository.UserRepository;
 import com.minea.sisas.service.dto.*;
-import com.minea.sisas.service.mapper.ProvinciaMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
 
 /**
  * Service Implementation for managing Provincia.
@@ -35,54 +30,65 @@ public class RelatorioService {
 
     private final ProvinciaRepository provinciaRepository;
 
-    private final ProvinciaMapper provinciaMapper;
-
+    @Autowired
     private final RelatorioRepository relatorioRepository;
 
     @Autowired
-    private UserService userService;
+    private final RelatorioAdminRepository relatorioAdminRepository;
 
     @Autowired
     private UserRepository userRepository;
 
-    public RelatorioService(ProvinciaRepository provinciaRepository, ProvinciaMapper provinciaMapper, RelatorioRepository relatorioRepository, UserService userService) {
+    public RelatorioService(ProvinciaRepository provinciaRepository, RelatorioRepository relatorioRepository, RelatorioAdminRepository relatorioAdminRepository) {
         this.provinciaRepository = provinciaRepository;
-        this.provinciaMapper = provinciaMapper;
         this.relatorioRepository = relatorioRepository;
-        this.userService = userService;
+        this.relatorioAdminRepository = relatorioAdminRepository;
     }
 
-    public List<SectorAguaDadosDTO> montaListaEstáticaParaTeste(){
-        List<SectorAguaDadosDTO> retorno = new ArrayList<>();
-
-      //  retorno.add(new SectorAguaDadosDTO("Bengo", 8, 20, 140, 271942l, 104045l, 38f));
-
-        List<Object[]> list = this.provinciaRepository.buscaDadosSectorAgua();
-        if (Objects.nonNull(list)) {
-            list.stream().forEach(i -> {
-                SectorAguaDadosDTO dto = new SectorAguaDadosDTO();
-                dto.setNomeProvincia((String) i[0]);
-                dto.setMunicipios(((BigInteger) i[1]).intValue());
-                dto.setComunas(((BigInteger) i[2]).intValue());
-                dto.setSistemasFuncionam(((BigDecimal) i[3]).intValue());
-                dto.setPopulacaoTotal(((BigDecimal) i[4]).longValue());
-               // dto.setBeneficiarios(((BigDecimal) i[5]).longValue());
-                dto.setBeneficiarios(0l);
-
-                dto.setCobertura((float) (dto.getBeneficiarios()*100)/dto.getPopulacaoTotal());
-
-                retorno.add(dto);
-            });
+    private User buscaUsuarioLogado() {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = null;
+        String username = null;
+        if (principal instanceof UserDetails) {
+            username = ((UserDetails)principal).getUsername();
         }
 
-        return retorno;
+        if (Objects.nonNull(username)) {
+            user = this.userRepository.findByLoginEquals(username);
+        }
+
+        return user;
+    }
+
+    private String setWhereClausule(User user){
+        StringBuffer sb = new StringBuffer();
+        boolean isAdminGeral = false;
+        sb.append(" WHERE s.POSSUI_SISTEMA_AGUA = 1");
+
+        for (Authority permissao: user.getAuthorities() ) {
+            if (permissao.getName().equals("ROLE_ADMIN")) {
+                isAdminGeral = true;
+            }
+        }
+        if (!isAdminGeral) {
+            sb.append(" AND s.ID_PROVINCIA = ").append(user.getProvincia().getId());
+        }
+
+        return sb.toString();
+    }
+
+    private boolean isAdminGeral(User user){
+        for (Authority permissao: user.getAuthorities() ) {
+            if (permissao.getName().equals("ROLE_ADMIN")) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public List<SectorAguaSaneamentoDadosDTO> montaListaDadosPorAmbito(){
         List<SectorAguaSaneamentoDadosDTO> retorno = new ArrayList<>();
         Long populacaoTotal = 0l;
-        // retorno.add(new SectorAguaSaneamentoDadosDTO("NACIONAL", 16367878l, 6033618l, 37, 3791035l, 23, 100));
-
         List<Object[]> list = this.provinciaRepository.buscaDadosInqueritoPorAmbito();
         if (Objects.nonNull(list)) {
             for (Object[] i : list) {
@@ -186,33 +192,31 @@ public class RelatorioService {
         return retorno;
     }
 
-    public List<FuncAguaChafarizesDadosDTO> montaListaEstáticaParaTesteAguaChafarizes(){
-        List<FuncAguaChafarizesDadosDTO> retorno = new ArrayList<>();
-       // retorno.add(new FuncAguaChafarizesDadosDTO("Bengo", 140, 98, 42, 100, 0, 226, 188, 38, 0, 0));
-
-        List<Object[]> list = this.provinciaRepository.buscaDadosFonteSubterraneaBombaMecanica();
-        if (Objects.nonNull(list)) {
-            list.stream().forEach(i -> {
-                FuncAguaChafarizesDadosDTO dto = new FuncAguaChafarizesDadosDTO();
-                dto.setNomeProvincia((String) i[0]);
-                dto.setNomeMunicipio((String) i[1]);
-                dto.setNomeComuna((String) i[2]);
-                dto.setTotalSistemas(((BigInteger) i[3]).intValue());
-                dto.setElectricaSistemas(((BigInteger) i[4]).intValue());
-                dto.setElectricaFuncionam(((BigInteger) i[5]).intValue());
-                dto.setElectricaNaoFuncionam(((BigInteger) i[6]).intValue());
-                dto.setDieselSistemas(((BigInteger) i[7]).intValue());
-                dto.setDieselFuncionam(((BigInteger) i[8]).intValue());
-                dto.setDieselNaoFuncionam(((BigInteger) i[9]).intValue());
-                dto.setGravidadeSistemas(((BigInteger) i[10]).intValue());
-                dto.setGravidadeFuncionam(((BigInteger) i[11]).intValue());
-                dto.setGravidadeNaoFuncionam(((BigInteger) i[12]).intValue());
-                retorno.add(dto);
-            });
-        }
-
-        return retorno;
-    }
+//    public List<FuncAguaChafarizesDadosDTO> montaListaEstáticaParaTesteAguaChafarizes(){
+//        List<FuncAguaChafarizesDadosDTO> retorno = new ArrayList<>();
+//        List<Object[]> list = this.provinciaRepository.buscaDadosFonteSubterraneaBombaMecanica();
+//        if (Objects.nonNull(list)) {
+//            list.stream().forEach(i -> {
+//                FuncAguaChafarizesDadosDTO dto = new FuncAguaChafarizesDadosDTO();
+//                dto.setNomeProvincia((String) i[0]);
+//                dto.setNomeMunicipio((String) i[1]);
+//                dto.setNomeComuna((String) i[2]);
+//                dto.setTotalSistemas(((BigInteger) i[3]).intValue());
+//                dto.setElectricaSistemas(((BigInteger) i[4]).intValue());
+//                dto.setElectricaFuncionam(((BigInteger) i[5]).intValue());
+//                dto.setElectricaNaoFuncionam(((BigInteger) i[6]).intValue());
+//                dto.setDieselSistemas(((BigInteger) i[7]).intValue());
+//                dto.setDieselFuncionam(((BigInteger) i[8]).intValue());
+//                dto.setDieselNaoFuncionam(((BigInteger) i[9]).intValue());
+//                dto.setGravidadeSistemas(((BigInteger) i[10]).intValue());
+//                dto.setGravidadeFuncionam(((BigInteger) i[11]).intValue());
+//                dto.setGravidadeNaoFuncionam(((BigInteger) i[12]).intValue());
+//                retorno.add(dto);
+//            });
+//        }
+//
+//        return retorno;
+//    }
 
     public List<InqueritosPreenchidosDadosDTO> montaListaInqueritoAguas(){
         List<InqueritosPreenchidosDadosDTO> retorno = new ArrayList<>();
@@ -234,8 +238,14 @@ public class RelatorioService {
 
     //NOVOS RELATORIOS 16/03
     public List<CoberturaSectorAguaDTO> coberturaSectorAguasProvincial(){
+        User user = buscaUsuarioLogado();
         List<CoberturaSectorAguaDTO> retorno = new ArrayList<>();
-        List<Object[]> list = this.relatorioRepository.coberturaServicosAguaProvincial();
+        List<Object[]> list;
+        if (isAdminGeral(user)) {
+            list = this.relatorioAdminRepository.coberturaServicosAguaProvincial();
+        } else {
+            list = this.relatorioRepository.coberturaServicosAguaProvincial(user.getProvincia().getId());
+        }
         if (Objects.nonNull(list)) {
             list.stream().forEach(i -> {
                 CoberturaSectorAguaDTO dto = new CoberturaSectorAguaDTO();
@@ -254,9 +264,14 @@ public class RelatorioService {
     }
 
     public List<CoberturaSectorAguaDTO> coberturaSectorAguasMunicipal(){
-        User userDTO = buscaUsuarioLogado();
+        User user = buscaUsuarioLogado();
+        List<Object[]> list;
         List<CoberturaSectorAguaDTO> retorno = new ArrayList<>();
-        List<Object[]> list = this.relatorioRepository.coberturaServicosAguaMunicipal(userDTO.getProvincia().getId());
+        if (isAdminGeral(user)){
+            list = this.relatorioAdminRepository.coberturaServicosAguaMunicipal();
+        } else {
+            list = this.relatorioRepository.coberturaServicosAguaMunicipal(user.getProvincia().getId());
+        }
         if (Objects.nonNull(list)) {
             list.stream().forEach(i -> {
                 CoberturaSectorAguaDTO dto = new CoberturaSectorAguaDTO();
@@ -274,10 +289,12 @@ public class RelatorioService {
 
     public List<CoberturaSectorAguaDTO> coberturaSectorAguasComunal(){
         User userDTO = buscaUsuarioLogado();
-        List<Object[]> list = null;
+        List<Object[]> list;
         List<CoberturaSectorAguaDTO> retorno = new ArrayList<>();
-        if (Objects.nonNull(userDTO)) {
-           list = this.relatorioRepository.coberturaServicosAguaComunal(userDTO.getProvincia().getId());
+        if (isAdminGeral(userDTO)) {
+           list = this.relatorioAdminRepository.coberturaServicosAguaComunal();
+        } else {
+            list = this.relatorioRepository.coberturaServicosAguaComunal(userDTO.getProvincia().getId());
         }
         if (Objects.nonNull(list)) {
             list.stream().forEach(i -> {
@@ -295,15 +312,19 @@ public class RelatorioService {
         return retorno;
     }
 
-    //BENEFICIARIOS BOMBA ENERGIA - PROVINCIAL
-    public List<BeneficiariosBmbEnergiaDTO> beneficiariosAguaBmbEnergiaProvincial() {
-        List<BeneficiariosBmbEnergiaDTO> retorno = new ArrayList<>();
-        List<Object[]> list = this.relatorioRepository.beneficiariosAguaBmbEnergiaProvincialQuery();
+    //BENEFICIARIOS BOMBA MECANICA - PROVINCIAL
+    public List<BeneficiariosBmbMecanicaDTO> beneficiariosAguaBmbMecanicaProvincial() {
+        User user = buscaUsuarioLogado();
+        List<Object[]> list;
+        List<BeneficiariosBmbMecanicaDTO> retorno = new ArrayList<>();
+        if (isAdminGeral(user)) {
+            list = this.relatorioAdminRepository.beneficiariosAguaBmbMecanicaProvincialQuery();
+        } else {
+            list = this.relatorioRepository.beneficiariosAguaBmbMecanicaProvincialQuery(user.getProvincia().getId());
+        }
         if (Objects.nonNull(list)) {
             list.stream().forEach(i -> {
-                BeneficiariosBmbEnergiaDTO dto = new BeneficiariosBmbEnergiaDTO();
-
-
+                BeneficiariosBmbMecanicaDTO dto = new BeneficiariosBmbMecanicaDTO();
                 dto.setNomeProvincia((String) i[0]);
                 if (Objects.nonNull(i[1])) {
                     dto.setPopulacao(((BigInteger) i[1]).intValue());
@@ -528,23 +549,62 @@ public class RelatorioService {
         return retorno;
     }
 
-
-    //FUNCIONAMENTO SERVICOS DE AGUA E CHAFARIZES - MUNICIPAL
-    public List<FuncAguaChafarizesDadosDTO> funcionamentoServicosAguaChafarizesMunicipal() {
-        User userDTO = buscaUsuarioLogado();
+    //FUNCIONAMENTO SERVICOS DE AGUA E CHAFARIZES
+    public List<FuncAguaChafarizesDadosDTO> funcionamentoServicosAguaChafarizesProvincial() {
+        User user = buscaUsuarioLogado();
+        List<Object[]> list;
         List<FuncAguaChafarizesDadosDTO> retorno = new ArrayList<>();
-        List<Object[]> list = this.relatorioRepository.funcionamentoAguaChafarizesMunicipal(userDTO.getProvincia().getId());
+        if (isAdminGeral(user)) {
+            list = this.relatorioAdminRepository.funcionamentoAguaChafarizesProvincial();
+        } else {
+            list = this.relatorioRepository.funcionamentoAguaChafarizesProvincial(user.getProvincia().getId());
+        }
         if (Objects.nonNull(list)) {
             list.stream().forEach(i -> {
                 FuncAguaChafarizesDadosDTO dto = new FuncAguaChafarizesDadosDTO();
+                dto.setNomeProvincia((String) i[0]);
+                if (Objects.nonNull(i[1])) {
+                    dto.setNumeroSistemas(((BigInteger) i[1]).intValue());
+                }
+                if (Objects.nonNull(i[2])) {
+                    dto.setFuncionamAgua(((BigInteger) i[2]).intValue());
+                }
+                if (Objects.nonNull(i[3])) {
+                    dto.setNaoFuncionamAgua(((BigInteger) i[3]).intValue());
+                }
+                if (Objects.nonNull(i[4])) {
+                    dto.setFuncionamAguaPerc(((BigDecimal) i[4]).floatValue());
+                }
+                if (Objects.nonNull(i[5])) {
+                    dto.setNumeroChafarizes(((BigDecimal) i[5]).intValue());
+                }
+                if (Objects.nonNull(i[6])) {
+                    dto.setFuncionamChafariz(((BigDecimal) i[6]).intValue());
+                }
+                if (Objects.nonNull(i[7])) {
+                    dto.setNaoFuncionamChafariz(((BigDecimal) i[7]).intValue());
+                }
+                if (Objects.nonNull(i[8])) {
+                    dto.setNaoFuncionamChafarizPerc(((BigDecimal) i[8]).floatValue());
+                }
+                retorno.add(dto);
+            });
+        }
+        return retorno;
+    }
 
-                dto.setNumeroSistemas(0);
-                dto.setFuncionamAgua(0);
-                dto.setNaoFuncionamAgua(0);
-                dto.setFuncionamChafariz(0);
-                dto.setNaoFuncionamChafariz(0);
-                dto.setNumeroChafarizes(0);
-
+    public List<FuncAguaChafarizesDadosDTO> funcionamentoServicosAguaChafarizesMunicipal() {
+        User user = buscaUsuarioLogado();
+        List<Object[]> list;
+        List<FuncAguaChafarizesDadosDTO> retorno = new ArrayList<>();
+        if (isAdminGeral(user)) {
+            list = this.relatorioAdminRepository.funcionamentoAguaChafarizesMunicipal();
+        } else {
+            list = this.relatorioRepository.funcionamentoAguaChafarizesMunicipal(user.getProvincia().getId());
+        }
+        if (Objects.nonNull(list)) {
+            list.stream().forEach(i -> {
+                FuncAguaChafarizesDadosDTO dto = new FuncAguaChafarizesDadosDTO();
                 dto.setNomeProvincia((String) i[0]);
                 dto.setNomeMunicipio((String) i[1]);
                 if (Objects.nonNull(i[2])) {
@@ -557,48 +617,65 @@ public class RelatorioService {
                     dto.setNaoFuncionamAgua(((BigInteger) i[4]).intValue());
                 }
                 if (Objects.nonNull(i[5])) {
-                    dto.setNumeroChafarizes(((BigDecimal) i[5]).intValue());
+                    dto.setFuncionamAguaPerc(((BigDecimal) i[5]).floatValue());
                 }
                 if (Objects.nonNull(i[6])) {
-                    dto.setFuncionamChafariz(((BigDecimal) i[6]).intValue());
+                    dto.setNumeroChafarizes(((BigDecimal) i[6]).intValue());
                 }
                 if (Objects.nonNull(i[7])) {
-                    dto.setNaoFuncionamChafariz(((BigDecimal) i[7]).intValue());
+                    dto.setFuncionamChafariz(((BigDecimal) i[7]).intValue());
                 }
-
-                dto.setFuncionamAguaPerc(0f);
-                dto.setNaoFuncionamAguaPerc(0f);
-                dto.setFuncionamChafarizPerc(0f);
-                dto.setNaoFuncionamChafarizPerc(0f);
-
-                //PERCENTAGEM Agua funcionam
-                if (Objects.nonNull(dto.getFuncionamAgua()) && Objects.nonNull(dto.getNumeroSistemas())) {
-                    if (dto.getFuncionamAgua() != 0 && dto.getNumeroSistemas() != 0) {
-                        dto.setFuncionamAguaPerc((float) (dto.getFuncionamAgua()*100)/dto.getNumeroSistemas());
-                    }
+                if (Objects.nonNull(i[8])) {
+                    dto.setNaoFuncionamChafariz(((BigDecimal) i[8]).intValue());
                 }
-
-                //PERCENTAGEM Agua nao funcionam
-                if (Objects.nonNull(dto.getNaoFuncionamAgua()) && Objects.nonNull(dto.getNumeroSistemas())) {
-                    if (dto.getNaoFuncionamAgua() != 0 && dto.getNumeroSistemas() != 0) {
-                        dto.setFuncionamAguaPerc((float) (dto.getNaoFuncionamAgua()*100)/dto.getNumeroSistemas());
-                    }
+                if (Objects.nonNull(i[9])) {
+                    dto.setNaoFuncionamChafarizPerc(((BigDecimal) i[9]).floatValue());
                 }
+                retorno.add(dto);
+            });
+        }
+        return retorno;
+    }
 
-                //PERCENTAGEM Chafariz funcionam
-                if (Objects.nonNull(dto.getFuncionamChafariz()) && Objects.nonNull(dto.getNumeroChafarizes())) {
-                    if (dto.getFuncionamChafariz() != 0 && dto.getNumeroChafarizes() != 0) {
-                        dto.setFuncionamAguaPerc((float) (dto.getFuncionamChafariz()*100)/dto.getNumeroChafarizes());
-                    }
+    public List<FuncAguaChafarizesDadosDTO> funcionamentoServicosAguaChafarizesComunal() {
+        User user = buscaUsuarioLogado();
+        List<Object[]> list;
+        List<FuncAguaChafarizesDadosDTO> retorno = new ArrayList<>();
+        if (isAdminGeral(user)) {
+            list = this.relatorioAdminRepository.funcionamentoAguaChafarizesComunal();
+        } else {
+            list = this.relatorioRepository.funcionamentoAguaChafarizesComunal(user.getProvincia().getId());
+        }
+        if (Objects.nonNull(list)) {
+            list.stream().forEach(i -> {
+                FuncAguaChafarizesDadosDTO dto = new FuncAguaChafarizesDadosDTO();
+                dto.setNomeProvincia((String) i[0]);
+                dto.setNomeMunicipio((String) i[1]);
+                dto.setNomeComuna((String) i[2]);
+                if (Objects.nonNull(i[3])) {
+                    dto.setNumeroSistemas(((BigInteger) i[3]).intValue());
                 }
-
-                //PERCENTAGEM Chafariz nao funcionam
-                if (Objects.nonNull(dto.getNaoFuncionamChafariz()) && Objects.nonNull(dto.getNumeroChafarizes())) {
-                    if (dto.getNaoFuncionamChafariz() != 0 && dto.getNumeroChafarizes() != 0) {
-                        dto.setFuncionamAguaPerc((float) (dto.getNaoFuncionamChafariz()*100)/dto.getNumeroChafarizes());
-                    }
+                if (Objects.nonNull(i[4])) {
+                    dto.setFuncionamAgua(((BigInteger) i[4]).intValue());
                 }
-
+                if (Objects.nonNull(i[5])) {
+                    dto.setNaoFuncionamAgua(((BigInteger) i[5]).intValue());
+                }
+                if (Objects.nonNull(i[6])) {
+                    dto.setFuncionamAguaPerc(((BigDecimal) i[6]).floatValue());
+                }
+                if (Objects.nonNull(i[7])) {
+                    dto.setNumeroChafarizes(((BigDecimal) i[7]).intValue());
+                }
+                if (Objects.nonNull(i[8])) {
+                    dto.setFuncionamChafariz(((BigDecimal) i[8]).intValue());
+                }
+                if (Objects.nonNull(i[9])) {
+                    dto.setNaoFuncionamChafariz(((BigDecimal) i[9]).intValue());
+                }
+                if (Objects.nonNull(i[10])) {
+                    dto.setNaoFuncionamChafarizPerc(((BigDecimal) i[10]).floatValue());
+                }
                 retorno.add(dto);
             });
         }
@@ -607,10 +684,14 @@ public class RelatorioService {
 
     //DASHBOARD
     public List<DashboardDTO> dashboard(){
-        User userDTO = buscaUsuarioLogado();
+        User user = buscaUsuarioLogado();
         List<DashboardDTO> retorno = new ArrayList<>();
-        List<Object[]> list = this.relatorioRepository.dadosDashboard(userDTO.getProvincia().getId());
-
+        List<Object[]> list;
+        if (isAdminGeral(user)) {
+            list = this.relatorioAdminRepository.dadosDashboard();
+        } else {
+            list = this.relatorioRepository.dadosDashboard(user.getProvincia().getId());
+        }
         if (Objects.nonNull(list)) {
             list.stream().forEach(i -> {
                 DashboardDTO dto = new DashboardDTO();
@@ -633,9 +714,15 @@ public class RelatorioService {
 
     //TRATAMENTO SISTEMAS DE AGUA PROVINCIAL
     public List<TratamentoSistemasAguaDadosDTO> tratamentoSistemasAguasProvincial(){
+        User user = buscaUsuarioLogado();
+        List<Object[]> list;
         List<TratamentoSistemasAguaDadosDTO> retorno = new ArrayList<>();
 
-        List<Object[]> list = this.relatorioRepository.buscaDadosTratamentoSistemasAguaProvincial();
+        if (isAdminGeral(user)) {
+            list = this.relatorioAdminRepository.buscaDadosTratamentoSistemasAguaProvincial();
+        } else {
+            list = this.relatorioRepository.buscaDadosTratamentoSistemasAguaProvincial(user.getProvincia().getId());
+        }
         if (Objects.nonNull(list)) {
             list.stream().forEach(i -> {
                 TratamentoSistemasAguaDadosDTO dto = new TratamentoSistemasAguaDadosDTO();
@@ -650,11 +737,17 @@ public class RelatorioService {
         }
         return retorno;
     }
+
     //MUNICIPAL
     public List<TratamentoSistemasAguaDadosDTO> tratamentoSistemasAguasMunicipal(){
-        User userDTO = buscaUsuarioLogado();
+        User user = buscaUsuarioLogado();
+        List<Object[]> list;
         List<TratamentoSistemasAguaDadosDTO> retorno = new ArrayList<>();
-        List<Object[]> list = this.relatorioRepository.buscaDadosTratamentoSistemasAguaMunicipal(userDTO.getProvincia().getId());
+        if (isAdminGeral(user)) {
+            list = this.relatorioAdminRepository.buscaDadosTratamentoSistemasAguaMunicipal();
+        } else {
+            list = this.relatorioRepository.buscaDadosTratamentoSistemasAguaMunicipal(user.getProvincia().getId());
+        }
         if (Objects.nonNull(list)) {
             list.stream().forEach(i -> {
                 TratamentoSistemasAguaDadosDTO dto = new TratamentoSistemasAguaDadosDTO();
@@ -673,9 +766,14 @@ public class RelatorioService {
 
     //COMUNAL
     public List<TratamentoSistemasAguaDadosDTO> tratamentoSistemasAguasComunal(){
-        User userDTO = buscaUsuarioLogado();
+        User user = buscaUsuarioLogado();
+        List<Object[]> list;
         List<TratamentoSistemasAguaDadosDTO> retorno = new ArrayList<>();
-        List<Object[]> list = this.relatorioRepository.buscaDadosTratamentoSistemasAguaComunal(userDTO.getProvincia().getId());
+        if (isAdminGeral(user)) {
+            list = this.relatorioAdminRepository.buscaDadosTratamentoSistemasAguaComunal();
+        } else {
+            list = this.relatorioRepository.buscaDadosTratamentoSistemasAguaComunal(user.getProvincia().getId());
+        }
         if (Objects.nonNull(list)) {
             list.stream().forEach(i -> {
                 TratamentoSistemasAguaDadosDTO dto = new TratamentoSistemasAguaDadosDTO();
@@ -695,8 +793,14 @@ public class RelatorioService {
 
     //FUNCIONAMENTO DE SISTEMAS DE AGUA
     public List<FuncSistemasAguaDTO> funcionamentoServicosAguaProvincial() {
+        User user = buscaUsuarioLogado();
+        List<Object[]> list;
         List<FuncSistemasAguaDTO> retorno = new ArrayList<>();
-        List<Object[]> list = this.relatorioRepository.buscaDadosFuncionamentoSistemasAguaProvincial();
+        if (isAdminGeral(user)) {
+            list = this.relatorioAdminRepository.buscaDadosFuncionamentoSistemasAguaProvincial();
+        } else {
+            list = this.relatorioRepository.buscaDadosFuncionamentoSistemasAguaProvincial(user.getProvincia().getId());
+        }
         if (Objects.nonNull(list)) {
             list.stream().forEach(i -> {
                 FuncSistemasAguaDTO dto = new FuncSistemasAguaDTO();
@@ -715,9 +819,14 @@ public class RelatorioService {
 
     //MUNICIPAL
     public List<FuncSistemasAguaDTO> funcionamentoServicosAguaMunicipal() {
-        User userDTO = buscaUsuarioLogado();
+        User user = buscaUsuarioLogado();
+        List<Object[]> list;
         List<FuncSistemasAguaDTO> retorno = new ArrayList<>();
-        List<Object[]> list = this.relatorioRepository.buscaDadosFuncionamentoSistemasAguaMunicipal(userDTO.getProvincia().getId());
+        if (isAdminGeral(user)) {
+            list = this.relatorioAdminRepository.buscaDadosFuncionamentoSistemasAguaMunicipal();
+        } else {
+            list = this.relatorioRepository.buscaDadosFuncionamentoSistemasAguaMunicipal(user.getProvincia().getId());
+        }
         if (Objects.nonNull(list)) {
             list.stream().forEach(i -> {
                 FuncSistemasAguaDTO dto = new FuncSistemasAguaDTO();
@@ -734,11 +843,17 @@ public class RelatorioService {
         }
         return retorno;
     }
+
     //COMUNAL
     public List<FuncSistemasAguaDTO> funcionamentoServicosAguaComunal() {
-        User userDTO = buscaUsuarioLogado();
+        User user = buscaUsuarioLogado();
+        List<Object[]> list;
         List<FuncSistemasAguaDTO> retorno = new ArrayList<>();
-        List<Object[]> list = this.relatorioRepository.buscaDadosFuncionamentoSistemasAguaComunal(userDTO.getProvincia().getId());
+        if (isAdminGeral(user)) {
+            list = this.relatorioAdminRepository.buscaDadosFuncionamentoSistemasAguaComunal();
+        } else {
+            list = this.relatorioRepository.buscaDadosFuncionamentoSistemasAguaComunal(user.getProvincia().getId());
+        }
         if (Objects.nonNull(list)) {
             list.stream().forEach(i -> {
                 FuncSistemasAguaDTO dto = new FuncSistemasAguaDTO();
@@ -757,23 +872,97 @@ public class RelatorioService {
         return retorno;
     }
 
-    private User buscaUsuarioLogado() {
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User user = null;
-        String username = null;
-        if (principal instanceof UserDetails) {
-            username = ((UserDetails)principal).getUsername();
-        }
 
-        if (Objects.nonNull(username)) {
-            user = this.userRepository.findByLoginEquals(username);
+    // BENEFICIARIOS DE AGUA POR FONTE SUBTERRANEA E POR TIPO DE BOMBA
+    public List<BeneAguaFtSubterraneaTpBomba> beneficiariosFtSubtTpBombaComunal() {
+        User user = buscaUsuarioLogado();
+        List<Object[]> list;
+        List<BeneAguaFtSubterraneaTpBomba> retorno = new ArrayList<>();
+        if (isAdminGeral(user)) {
+            list = this.relatorioAdminRepository.buscaDadosBenefAguaFonteSubterraneaTipoBombaComunal();
+        } else {
+            list = this.relatorioRepository.buscaDadosBenefAguaFonteSubterraneaTipoBombaComunal(user.getProvincia().getId());
         }
-
-        return user;
+        if (Objects.nonNull(list)) {
+            list.stream().forEach(i -> {
+                BeneAguaFtSubterraneaTpBomba dto = new BeneAguaFtSubterraneaTpBomba();
+                dto.setNomeProvincia((String) i[0]);
+                dto.setNomeMunicipio((String) i[1]);
+                dto.setNomeComuna((String) i[2]);
+                dto.setNumeroPocoMelhorado(((BigInteger) i[3]).intValue());
+                dto.setFuro(((BigInteger) i[4]).intValue());
+                dto.setNascente(((BigInteger) i[5]).intValue());
+                dto.setTotalBombaGravidade(((BigInteger) i[6]).intValue());
+                dto.setPopulacaoBeneficiadaGravidade(((BigDecimal) i[7]).intValue());
+                dto.setTotalTipoBombaOutros(((BigInteger) i[8]).intValue());
+                dto.setQtdPopulacaoOutros(((BigDecimal) i[9]).intValue());
+                retorno.add(dto);
+            });
+        }
+        return retorno;
     }
 
+    public List<BeneAguaFtSubterraneaTpBomba> beneficiariosFtSubtTpBombaMunicipal() {
+        User user = buscaUsuarioLogado();
+        List<Object[]> list;
+        List<BeneAguaFtSubterraneaTpBomba> retorno = new ArrayList<>();
+        if (isAdminGeral(user)) {
+           list = this.relatorioAdminRepository.buscaDadosBenefAguaFonteSubterraneaTipoBombaMunicipal();
+        } else {
+           list = this.relatorioRepository.buscaDadosBenefAguaFonteSubterraneaTipoBombaMunicipal(user.getProvincia().getId());
+        }
+        if (Objects.nonNull(list)) {
+            list.stream().forEach(i -> {
+                BeneAguaFtSubterraneaTpBomba dto = new BeneAguaFtSubterraneaTpBomba();
+                dto.setNascente(0);
+                dto.setNomeProvincia((String) i[0]);
+                dto.setNomeMunicipio((String) i[1]);
+                dto.setNumeroPocoMelhorado(((BigInteger) i[2]).intValue());
+                dto.setFuro(((BigInteger) i[3]).intValue());
+                if (Objects.nonNull(i[4])) {
+                    dto.setNascente(((BigInteger) i[4]).intValue());
+                }
+                dto.setTotalBombaGravidade(((BigInteger) i[5]).intValue());
+                dto.setPopulacaoBeneficiadaGravidade(((BigInteger) i[6]).intValue());
+                dto.setTotalTipoBombaOutros(((BigDecimal) i[7]).intValue());
+                dto.setQtdPopulacaoOutros(((BigInteger) i[8]).intValue());
+                retorno.add(dto);
+            });
+        }
+        return retorno;
+    }
 
-
-
+    public List<BeneAguaFtSubterraneaTpBombaManual> beneficiariosFtSubtTpBombaManualProvincial() {
+        User user = buscaUsuarioLogado();
+        List<Object[]> list;
+        List<BeneAguaFtSubterraneaTpBombaManual> retorno = new ArrayList<>();
+        if (isAdminGeral(user)) {
+            list = this.relatorioAdminRepository.buscaDadosBenefAguaFonteSubterraneaTipoBombaManualProvincial();
+        } else {
+            list = this.relatorioRepository.buscaDadosBenefAguaFonteSubterraneaTipoBombaManualProvincial(user.getProvincia().getId());
+        }
+        if (Objects.nonNull(list)) {
+            list.stream().forEach(i -> {
+                BeneAguaFtSubterraneaTpBombaManual dto = new BeneAguaFtSubterraneaTpBombaManual();
+                dto.setNomeProvincia((String) i[0]);
+                dto.setPopulacao(((BigInteger) i[1]).intValue());
+                dto.setNumeroPocoMelhorado(((BigInteger) i[2]).intValue());
+                dto.setFuro(((BigInteger) i[3]).intValue());
+                dto.setNascente(((BigInteger) i[4]).intValue());
+                dto.setAfridev(((BigInteger) i[5]).intValue());
+                dto.setAfridevPopulacao(((BigDecimal) i[6]).intValue());
+                dto.setVergnet(((BigInteger) i[7]).intValue());
+                dto.setVergnetPopulacao(((BigDecimal) i[8]).intValue());
+                dto.setVolanta(((BigInteger) i[9]).intValue());
+                dto.setVolantaPopulacao(((BigDecimal) i[10]).intValue());
+                dto.setIndiaMarc(((BigInteger) i[11]).intValue());
+                dto.setIndiaMarcPopulacao(((BigDecimal) i[12]).intValue());
+                dto.setOutro(((BigInteger) i[13]).intValue());
+                dto.setOutroPopulacao(((BigDecimal) i[14]).intValue());
+                retorno.add(dto);
+            });
+        }
+        return retorno;
+    }
 
 }

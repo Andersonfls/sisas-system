@@ -20,9 +20,7 @@ import {DashboardModel} from './dashboard.model';
 })
 
 export class DashboardComponent implements OnInit {
-
     user: User;
-
     listaTabela: DashboardModel[];
     predicate: any;
     reverse: any;
@@ -75,9 +73,6 @@ export class DashboardComponent implements OnInit {
 
                     this.listaCobertura.push(item);
                 });
-
-                // this.iniciarChart();
-                // this.iniciarChartAguaSaneamento();
             });
     }
 

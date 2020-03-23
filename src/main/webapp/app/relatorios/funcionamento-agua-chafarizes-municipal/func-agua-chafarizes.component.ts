@@ -5,11 +5,11 @@ import { HttpResponse } from '@angular/common/http';
 import { User } from '../../shared/user/user.model';
 import { Principal } from '../../shared/auth/principal.service';
 import {Provincia} from '../../entities/provincia';
-import {FuncAguaChafarizes} from './FuncAguaChafarizes.model';
 import {RelatoriosService} from '../relatorios.service';
 import * as jsPDF from 'jspdf';
 import {TableUtil} from '../../shared/util/tableUtil';
 import * as html2canvas from 'html2canvas';
+import {FuncAguaChafarizes} from '../funcionamento-agua-chafarizes-comunal/FuncAguaChafarizes.model';
 
 @Component({
     selector: 'jhi-func-sist-agua-chafariz',

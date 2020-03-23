@@ -2,12 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {SERVER_API_URL} from '../../app.constants';
-
 import {Provincia} from './provincia.model';
 import {createRequestOption} from '../../shared';
-import {SectorAguaSaneamentoDados} from '../../Relatorios/cobertura-sector-agua-saneamento/SectorAguaSaneamentoDados.model';
-import {FuncAguaChafarizes} from '../../Relatorios/funcionamento-agua-chafarizes/FuncAguaChafarizes.model';
-
 export type EntityResponseType = HttpResponse<Provincia>;
 
 @Injectable()
@@ -44,21 +40,6 @@ export class ProvinciaService {
     buscaProvinciaDoUsuario(req?: any): Observable<HttpResponse<Provincia[]>> {
         const options = createRequestOption(req);
         return this.http.get<Provincia[]>(this.resourceUrl + '/provincia-usuario', {params: options, observe: 'response'});
-    }
-
-    // buscaDadosSectorAgua(req?: any): Observable<HttpResponse<SectorAguaDados[]>> {
-    //     const options = createRequestOption(req);
-    //     return this.http.get<SectorAguaDados[]>(this.resourceUrl + '/relatorio', {params: options, observe: 'response'});
-    // }
-
-    buscaDadosSectorAguaSaneamento(req?: any): Observable<HttpResponse<SectorAguaSaneamentoDados[]>> {
-        const options = createRequestOption(req);
-        return this.http.get<SectorAguaSaneamentoDados[]>(this.resourceUrl + '/relatorio-saneamento', {params: options, observe: 'response'});
-    }
-
-    buscaDadosFuncAguaChafariz(req?: any): Observable<HttpResponse<FuncAguaChafarizes[]>> {
-        const options = createRequestOption(req);
-        return this.http.get<FuncAguaChafarizes[]>(this.resourceUrl + '/relatorio-agua-chafarizes', {params: options, observe: 'response'});
     }
 
     queryUserNome(req: any): Observable<HttpResponse<Provincia[]>> {

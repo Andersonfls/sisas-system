@@ -41,11 +41,11 @@ public class RelatoriosResource {
         this.relatorioRepository = relatorioRepository;
     }
 
-    @GetMapping("relatorios/provincias/relatorio")
-    public List<SectorAguaDadosDTO> getAllDadosProvincias() {
-
-        return this.relatorioService.montaListaEstáticaParaTeste();
-    }
+//    @GetMapping("relatorios/provincias/relatorio")
+//    public List<SectorAguaDadosDTO> getAllDadosProvincias() {
+//
+//        return this.relatorioService.montaListaEstáticaParaTeste();
+//    }
 
     //RELATORIO COBERTURA DE SERVICOS DE AGUA
     @GetMapping("relatorios/provincias/relatorio-saneamento")
@@ -203,12 +203,6 @@ public class RelatoriosResource {
         return this.relatorioService.beneficiariosAguaBmbManualComunal();
     }
 
-    // FUNCIONAMENTO SISTEMA DE AGUA E CHAFARIZES
-    @GetMapping("/relatorios/func-agua-chaf-municipal")
-    public List<FuncAguaChafarizesDadosDTO> getDadosFuncAguaChafarizesMunicipal() {
-        return this.relatorioService.funcionamentoServicosAguaChafarizesMunicipal();
-    }
-
     // DASHBOARD
     @GetMapping("/relatorios/dashboard-principal")
     public List<DashboardDTO> getDadosDashboardPrincipal() {
@@ -245,5 +239,37 @@ public class RelatoriosResource {
     @GetMapping("/relatorios/func-sis-agua-comunal")
     public List<FuncSistemasAguaDTO> getDadosFuncAguaComunal() {
         return this.relatorioService.funcionamentoServicosAguaComunal();
+    }
+
+    // BENEFICIARIOS DE AGUA POR FONTE SUBTERRANEA E POR TIPO DE BOMBA
+    @GetMapping("/relatorios/ben-agua-ft-subt-tp-bmb-comunal")
+    public List<BeneAguaFtSubterraneaTpBomba> getDadosBenefAguaSubtTpBombaComunal() {
+        return this.relatorioService.beneficiariosFtSubtTpBombaComunal();
+    }
+
+    @GetMapping("/relatorios/ben-agua-ft-subt-tp-bmb-municipal")
+    public List<BeneAguaFtSubterraneaTpBomba> getDadosBenefAguaSubtTpBombaMunicipal() {
+        return this.relatorioService.beneficiariosFtSubtTpBombaMunicipal();
+    }
+
+    @GetMapping("/relatorios/ben-agua-ft-subt-tp-bmb-man-provincial")
+    public List<BeneAguaFtSubterraneaTpBombaManual> getDadosBenefAguaSubtTpBombaManualProvincial() {
+        return this.relatorioService.beneficiariosFtSubtTpBombaManualProvincial();
+    }
+
+    // FUNCIONAMENTO SISTEMA DE AGUA E CHAFARIZES
+    @GetMapping("/relatorios/func-agua-chaf-provincial")
+    public List<FuncAguaChafarizesDadosDTO> getDadosFuncAguaChafarizesProvincial() {
+        return this.relatorioService.funcionamentoServicosAguaChafarizesProvincial();
+    }
+
+    @GetMapping("/relatorios/func-agua-chaf-municipal")
+    public List<FuncAguaChafarizesDadosDTO> getDadosFuncAguaChafarizesMunicipal() {
+        return this.relatorioService.funcionamentoServicosAguaChafarizesMunicipal();
+    }
+
+    @GetMapping("/relatorios/func-agua-chaf-comunal")
+    public List<FuncAguaChafarizesDadosDTO> getDadosFuncAguaChafarizesComunal() {
+        return this.relatorioService.funcionamentoServicosAguaChafarizesComunal();
     }
 }

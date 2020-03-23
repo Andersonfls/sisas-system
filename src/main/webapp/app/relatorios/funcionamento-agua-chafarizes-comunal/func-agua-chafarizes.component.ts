@@ -23,7 +23,6 @@ export class FuncAguaChafarizesComponent implements OnInit {
 
     user: User;
     listaTabela: FuncAguaChafarizes[];
-    tipoRelatorio: string;
     predicate: any;
     reverse: any;
 
@@ -49,7 +48,7 @@ export class FuncAguaChafarizesComponent implements OnInit {
         this.principal.identity().then((userIdentity) => {
             this.user = userIdentity;
         });
-        this.tipoRelatorio = null;
+        this.buscaDadosTabela();
     }
 
     public captureScreen(elementId) {
@@ -71,24 +70,9 @@ export class FuncAguaChafarizesComponent implements OnInit {
     exportTable(tabeId) {
         TableUtil.exportToExcel(tabeId);
     }
-    validaTipoRelatorio() {
-        if (this.tipoRelatorio === 'Nível Provincial') {
-            this.buscaDadosTabela();
-        }
-        if (this.tipoRelatorio === 'Nível Municipal') {
-            this.buscaDadosTabela();
-        }
-        if (this.tipoRelatorio === 'Nível Comunal') {
-            this.buscaDadosTabela();
-        }
-    }
-
-    voltarEscolha() {
-        this.tipoRelatorio = null;
-    }
 
     buscaDadosTabela() {
-        this.relatorioService.buscaDadosFuncAguaChafarizMunicipal().subscribe(
+        this.relatorioService.buscaDadosFuncAguaChafarizComunal().subscribe(
             (res: HttpResponse<FuncAguaChafarizes[]>) => {
                 this.listaTabela = res.body;
                 console.log(this.listaTabela);
@@ -97,13 +81,10 @@ export class FuncAguaChafarizesComponent implements OnInit {
                     this.totalnumeroSistemas += i.numeroSistemas;
                     this.totalfuncionamAgua += i.funcionamAgua;
                     this.totalnaoFuncionamAgua += i.naoFuncionamAgua;
-                    this.totalfuncionamAguaPerc = 76;
-                    this.totalnaoFuncionamAguaPerc = 24;
                     this.totalnumeroChafarizes += i.numeroChafarizes;
                     this.totalfuncionamChafariz += i.funcionamChafariz;
                     this.totalnaoFuncionamChafariz += i.naoFuncionamChafariz;
                     this.totalfuncionamChafarizPerc += i.funcionamChafarizPerc;
-                    this.totalnaoFuncionamChafarizPerc = 25;
                 });
             });
     }

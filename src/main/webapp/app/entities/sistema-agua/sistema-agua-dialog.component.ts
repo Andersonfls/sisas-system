@@ -3,7 +3,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {HttpResponse, HttpErrorResponse} from '@angular/common/http';
 
 import {Observable} from 'rxjs/Observable';
-import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {JhiEventManager, JhiAlertService} from 'ng-jhipster';
 
 import {SistemaAgua} from './sistema-agua.model';
@@ -214,6 +213,15 @@ export class SistemaAguaDialogComponent implements OnInit {
         }
     }
 
+    isNumeroChafarizesMenorNumeroFuncionam() {
+        if (this.sistemaAgua.possuiSistemaAgua) {
+            if (this.sistemaAgua.qtdChafarisesExistentes < this.sistemaAgua.qtdChafarisesFuncionando) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private subscribeToSaveResponse(result: Observable<HttpResponse<SistemaAgua>>) {
         result.subscribe((res: HttpResponse<SistemaAgua>) =>
             this.onSaveSuccess(res.body), (res: HttpErrorResponse) => this.onSaveError());
@@ -237,9 +245,6 @@ export class SistemaAguaDialogComponent implements OnInit {
         return item.id;
     }
 
-    trackComunaById(index: number, item: Comuna) {
-        return item.id;
-    }
     previousState() {
         this.router.navigate(['sistema-agua']);
         window.scrollTo(0, 0);

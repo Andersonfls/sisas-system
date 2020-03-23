@@ -2,12 +2,14 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SisasSharedModule } from '../../shared';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
-import {ProvinciaService} from '../../entities/provincia';
-import {FuncAguaChafarizesComponent} from './func-agua-chafarizes.component';
-import {FuncAguaChafarizesResolvePagingParams, funcAguaChafarizesRoute} from './func-agua-chafarizes.route';
+import {
+     TratamentoSistemasAguaResolvePagingParams,
+    tratamentoSistemasAguaRoute,
+} from './tratamento-sistemas-agua.route';
+import { TratamentoSistemasAguaComponent} from './tratamento-sistemas-agua.component';
 
 const ENTITY_STATES = [
-    ...funcAguaChafarizesRoute
+    ...tratamentoSistemasAguaRoute
 ];
 
 @NgModule({
@@ -17,15 +19,14 @@ const ENTITY_STATES = [
         RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [
-        FuncAguaChafarizesComponent
+        TratamentoSistemasAguaComponent
     ],
     entryComponents: [
-        FuncAguaChafarizesComponent
+        TratamentoSistemasAguaComponent
     ],
     providers: [
-        FuncAguaChafarizesResolvePagingParams,
-        ProvinciaService
+        TratamentoSistemasAguaResolvePagingParams,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class SisasFuncAguaChafarizesModule {}
+export class SisasBenefAguaTpBombaModule {}

@@ -18,7 +18,7 @@
         <div class="table-responsive" *ngIf="listaTabela">
             <table id="munexcel" class="table table-striped">
                 <thead>
-                <tr style="background-color: #1f749c; text-align: center;">
+                <tr style="background-color: #1f749c">
                     <th></th>
                     <th></th>
                     <th></th>
@@ -27,46 +27,46 @@
                     <th class="borda-th text-centro" colspan="3"><span>Funcionamento Chafarizes</span></th>
                 </tr>
                 <tr style="background-color: #1f749c">
-                    <th class="borda-th"><span>Províncias</span></th>
+                    <th class="borda-th"><span>Província</span></th>
                     <th class="borda-th"><span>Município</span></th>
                     <th class="borda-th"><span>N° de Sistemas</span></th>
                     <th class="borda-th"><span>N° Funcionam</span></th>
-                    <th class="borda-th"><span>N° nao Funcionam</span></th>
+                    <th class="borda-th"><span>N° Não Funcionam</span></th>
                     <th class="borda-th"><span>(%) Funciona</span></th>
-                    <th class="borda-th"><span>(%) Nao Funciona</span></th>
+                    <th class="borda-th"><span>(%) Não Funciona</span></th>
                     <th class="borda-th"><span>N° Chafarizes</span></th>
                     <th class="borda-th"><span>N° Funcionam</span></th>
-                    <th class="borda-th"><span>N° nao Funcionam</span></th>
-                    <th class="borda-th"><span>(%) Nao Funciona</span></th>
+                    <th class="borda-th"><span>N° Não Funcionam</span></th>
+                    <th class="borda-th"><span>(%) Não Funciona</span></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr class="borda-th" *ngFor="let provincia of listaTabela ;trackBy: trackId">
                     <td class="borda-th">{{provincia.nomeProvincia}}</td>
                     <td class="borda-th">{{provincia.nomeMunicipio}}</td>
-                    <td class="borda-th">{{provincia.numeroSistemas | number}}</td>
-                    <td class="borda-th">{{provincia.funcionamAgua | number}}</td>
-                    <td class="borda-th">{{provincia.naoFuncionamAgua | number}}</td>
-                    <td class="borda-th">{{provincia.funcionamAguaPerc | number:'1.2-2'}}%</td>
-                    <td class="borda-th">{{provincia.naoFuncionamAguaPerc | number:'1.2-2'}}%</td>
-                    <td class="borda-th">{{provincia.numeroChafarizes | number}}</td>
-                    <td class="borda-th">{{provincia.funcionamChafariz | number}}</td>
-                    <td class="borda-th">{{provincia.naoFuncionamChafariz}}</td>
-                    <td class="borda-th">{{provincia.naoFuncionamChafarizPerc | number:'1.2-2'}}%</td>
+                    <td class="borda-th text-centro">{{provincia.numeroSistemas | number}}</td>
+                    <td class="borda-th text-centro">{{provincia.funcionamAgua | number}}</td>
+                    <td class="borda-th text-centro">{{provincia.naoFuncionamAgua | number}}</td>
+                    <td class="borda-th text-centro">{{provincia.funcionamAguaPerc | number:'1.2-2'}}%</td>
+                    <td class="borda-th text-centro">{{provincia.naoFuncionamAguaPerc | number:'1.2-2'}}%</td>
+                    <td class="borda-th text-centro">{{provincia.numeroChafarizes | number}}</td>
+                    <td class="borda-th text-centro">{{provincia.funcionamChafariz | number}}</td>
+                    <td class="borda-th text-centro">{{provincia.naoFuncionamChafariz}}</td>
+                    <td class="borda-th text-centro">{{provincia.naoFuncionamChafarizPerc | number:'1.2-2'}}%</td>
                 </tr>
                 </tbody>
                 <tfoot>
                 <tr style="background-color: #1f749c">
                     <td colspan="2"> <span style="font-weight: bold">Total Municipal: </span></td>
-                    <td> <span style="font-weight: bold">{{totalnumeroSistemas | number }} </span></td>
-                    <td> <span style="font-weight: bold">{{totalfuncionamAgua | number }} </span></td>
-                    <td> <span style="font-weight: bold">{{totalnaoFuncionamAgua | number}} </span></td>
-                    <td> <span style="font-weight: bold">{{((totalfuncionamAgua *100) / totalnumeroSistemas) | number:'1.2-2'}}% </span></td>
-                    <td> <span style="font-weight: bold">{{((totalnaoFuncionamAgua *100) / totalnumeroSistemas) | number:'1.2-2'}}% </span></td>
-                    <td> <span style="font-weight: bold">{{totalnumeroChafarizes | number}} </span></td>
-                    <td> <span style="font-weight: bold">{{totalfuncionamChafariz | number}} </span></td>
-                    <td> <span style="font-weight: bold">{{totalnaoFuncionamChafariz | number}} </span></td>
-                    <td> <span style="font-weight: bold">{{((totalfuncionamChafariz *100) / totalnumeroChafarizes) | number:'1.2-2'}}% </span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{totalnumeroSistemas | number }} </span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{totalfuncionamAgua | number }} </span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{totalnaoFuncionamAgua | number}} </span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{((totalfuncionamAgua *100) / totalnumeroSistemas) | number:'1.2-2'}}% </span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{((totalnaoFuncionamAgua *100) / totalnumeroSistemas) | number:'1.2-2'}}% </span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{totalnumeroChafarizes | number}} </span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{totalfuncionamChafariz | number}} </span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{totalnaoFuncionamChafariz | number}} </span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{((totalfuncionamChafariz *100) / totalnumeroChafarizes) | number:'1.2-2'}}% </span></td>
                 </tr>
                 </tfoot>
             </table>

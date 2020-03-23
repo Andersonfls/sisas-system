@@ -1,0 +1,78 @@
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<div>
+    <jhi-alert></jhi-alert>
+    <div id="comun">
+        <div class="export-container">
+            <button type="button" (click)="exportTable('tabcomu')" class="btn btn-primary btn-sm">
+                <span class="fa fa-file-excel-o"></span>
+                <span class="d-none d-md-inline">Excel</span>
+            </button>
+            <button type="button" (click)="captureScreen('comun')" class="btn btn-primary btn-sm">
+                <span class="fas fa-file-pdf"></span>
+                <span class="d-none d-md-inline">PDF</span>
+            </button>
+        </div>
+        <div class="table-responsive" >
+            <h2 class="text-centro" style="font-size: 1.8em">
+                <span>Funcionamento de Sistemas de Água e Chafarizes (Nível Provincial)</span>
+            </h2>
+            <table id="tabcomu" class="table table-striped" *ngIf="listaTabela">
+                <thead>
+                <tr style="background-color: #1f749c">
+                    <th class="borda-th text-centro" colspan="2"></th>
+                    <th class="borda-th text-centro" colspan="4"><span style="margin-left: 30%;">Funcionamento Sistemas Água</span></th>
+                    <th class="borda-th text-centro"></th>
+                    <th class="borda-th text-centro" colspan="3"><span style="margin-left: 10%;">Funcionamento Chafarizes</span></th>
+                </tr>
+                <tr style="background-color: #1f749c">
+                    <th class="borda-th"><span>Província</span></th>
+                    <th class="borda-th"><span>N° de Sistemas</span></th>
+                    <th class="borda-th"><span>N° Funcionam</span></th>
+                    <th class="borda-th"><span>N° Não Funcionam</span></th>
+                    <th class="borda-th"><span>(%) Funciona</span></th>
+                    <th class="borda-th"><span>(%) Não Funciona</span></th>
+                    <th class="borda-th"><span>N° Chafarizes</span></th>
+                    <th class="borda-th"><span>N° Funcionam</span></th>
+                    <th class="borda-th"><span>N° Não Funcionam</span></th>
+                    <th class="borda-th"><span>(%) Não Funciona</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="borda-th" *ngFor="let provincia of listaTabela ;trackBy: trackId">
+                    <td class="borda-th text-centro">{{provincia.nomeProvincia}}</td>
+                    <td class="borda-th text-centro">{{provincia.numeroSistemas | number}}</td>
+                    <td class="borda-th text-centro">{{provincia.funcionamAgua | number}}</td>
+                    <td class="borda-th text-centro">{{provincia.naoFuncionamAgua | number}}</td>
+                    <td class="borda-th text-centro">{{provincia.funcionamAguaPerc | number:'1.2-2'}}%</td>
+                    <td class="borda-th text-centro">{{provincia.naoFuncionamAguaPerc | number:'1.2-2'}}%</td>
+                    <td class="borda-th text-centro">{{provincia.numeroChafarizes | number}}</td>
+                    <td class="borda-th text-centro">{{provincia.funcionamChafariz | number}}</td>
+                    <td class="borda-th text-centro">{{provincia.naoFuncionamChafariz}}</td>
+                    <td class="borda-th text-centro">{{provincia.naoFuncionamChafarizPerc | number:'1.2-2'}}%</td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr style="background-color: #1f749c">
+                    <td class="text-centro"> <span style="font-weight: bold">Total: </span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{totalnumeroSistemas | number }} </span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{totalfuncionamAgua | number }} </span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{totalnaoFuncionamAgua | number}} </span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{((totalfuncionamAgua *100) / totalnumeroSistemas) | number:'1.2-2'}}% </span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{((totalnaoFuncionamAgua *100) / totalnumeroSistemas) | number:'1.2-2'}}% </span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{totalnumeroChafarizes | number}} </span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{totalfuncionamChafariz | number}} </span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{totalnaoFuncionamChafariz | number}} </span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{((totalnaoFuncionamChafariz *100) / totalnumeroChafarizes) | number:'1.2-2'}}% </span></td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    <br>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" [routerLink]="['/../../dashboard']"  >
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+    </div>
+</div>

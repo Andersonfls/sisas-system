@@ -5,15 +5,16 @@ import {Observable} from 'rxjs/Observable';
 import {InqueritosPreenchidosDados} from './inqueritos-preenchidos/InqueritosPreenchidosDados.model';
 import {SERVER_API_URL} from '../app.constants';
 import {SectorAguaSaneamentoDados} from './cobertura-sector-agua-saneamento/SectorAguaSaneamentoDados.model';
-import {FuncAguaChafarizes} from './funcionamento-agua-chafarizes/FuncAguaChafarizes.model';
 import {Provincia} from '../entities/provincia';
 import {createRequestOption} from '../shared';
 import {TratamentoSistemaAguaDados} from './tratamento-sistemas-agua/tratamentoSistemasAguaDados.model';
 import {IndicadorProducaoProvincia} from './indicador-producao/IndicadorProducaoProvincia.model';
 import {CoberturaSectorAguaModel} from './cobertura-sector-agua-provincial/coberturaSectorAgua.model';
 import {FuncAgua} from './funcionamento-agua/FuncAgua.model';
-import {BeneficiariosBmbEnergia} from './beneficiarios-agua-ft-subt-bomb-energia/beneficiarios-bmb-energia.model';
-import {BeneficiariosBmbManual} from './beneficiarios-agua-ft-subt-bomb-manual/beneficiarios-bmb-manual.model';
+import {BeneficiariosBmbMecanica} from './beneficiarios-agua-ft-subt-bomb-mecanica/beneficiarios-bmb-mecanica.model';
+import {BeneAguaFtSubterraneaTpBomba} from './beneficiarios-agua-ft-subt-tp-bmb/beneAguaFtSubterraneaTpBomba.model';
+import {BeneAguaFtSubterraneaTpBombaManual} from './beneficiarios-agua-ft-subt-tp-bmb-manual-pro/beneAguaFtSubterraneaTpBomba.model';
+import {FuncAguaChafarizes} from './funcionamento-agua-chafarizes-comunal/FuncAguaChafarizes.model';
 
 export type EntityResponseType = HttpResponse<Provincia>;
 
@@ -68,11 +69,6 @@ export class RelatoriosService {
         return this.http.get<BeneficiariosBmbManual[]>(this.resourceUrl + '/benef-bomba-manual-comunal', {params: options, observe: 'response'});
     }
 
-    buscaDadosFuncAguaChafarizMunicipal(req?: any): Observable<HttpResponse<FuncAguaChafarizes[]>> {
-        const options = createRequestOption(req);
-        return this.http.get<FuncAguaChafarizes[]>(this.resourceUrl + '/func-agua-chaf-municipal', {params: options, observe: 'response'});
-    }
-
     buscaDadosTratamentoSistemasAgua(req?: any): Observable<HttpResponse<TratamentoSistemaAguaDados[]>> {
         const options = createRequestOption(req);
         return this.http.get<TratamentoSistemaAguaDados[]>(this.resourceUrl + '/trat-sistemas-agua', {params: options, observe: 'response'});
@@ -116,4 +112,33 @@ export class RelatoriosService {
         return this.http.get<CoberturaSectorAguaModel[]>(this.resourceUrl + '/provincias/relatorio-saneamento-comuna', {params: options, observe: 'response'});
     }
 
+    buscaDadosBenfAguaSubtTipoBomba(req?: any): Observable<HttpResponse<BeneAguaFtSubterraneaTpBomba[]>> {
+        const options = createRequestOption(req);
+        return this.http.get<BeneAguaFtSubterraneaTpBomba[]>(this.resourceUrl + '/ben-agua-ft-subt-tp-bmb-comunal', {params: options, observe: 'response'});
+    }
+
+    buscaDadosBenfAguaSubtTipoBombaMunicipal(req?: any): Observable<HttpResponse<BeneAguaFtSubterraneaTpBomba[]>> {
+        const options = createRequestOption(req);
+        return this.http.get<BeneAguaFtSubterraneaTpBomba[]>(this.resourceUrl + '/ben-agua-ft-subt-tp-bmb-municipal', {params: options, observe: 'response'});
+    }
+
+    buscaDadosBenfAguaSubtTipoBombaManualPro(req?: any): Observable<HttpResponse<BeneAguaFtSubterraneaTpBombaManual[]>> {
+        const options = createRequestOption(req);
+        return this.http.get<BeneAguaFtSubterraneaTpBombaManual[]>(this.resourceUrl + '/ben-agua-ft-subt-tp-bmb-man-provincial', {params: options, observe: 'response'});
+    }
+
+    buscaDadosFuncAguaChafarizProvincial(req?: any): Observable<HttpResponse<FuncAguaChafarizes[]>> {
+        const options = createRequestOption(req);
+        return this.http.get<FuncAguaChafarizes[]>(this.resourceUrl + '/func-agua-chaf-provincial', {params: options, observe: 'response'});
+    }
+
+    buscaDadosFuncAguaChafarizMunicipal(req?: any): Observable<HttpResponse<FuncAguaChafarizes[]>> {
+        const options = createRequestOption(req);
+        return this.http.get<FuncAguaChafarizes[]>(this.resourceUrl + '/func-agua-chaf-municipal', {params: options, observe: 'response'});
+    }
+
+    buscaDadosFuncAguaChafarizComunal(req?: any): Observable<HttpResponse<FuncAguaChafarizes[]>> {
+        const options = createRequestOption(req);
+        return this.http.get<FuncAguaChafarizes[]>(this.resourceUrl + '/func-agua-chaf-comunal', {params: options, observe: 'response'});
+    }
 }
