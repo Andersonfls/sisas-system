@@ -1,0 +1,25 @@
+{
+    "sisasApp": {
+        "segurancasLog" : {
+            "home": {
+                "title": "Seguranca Logs",
+                "createLabel": "Criar novo Seguranca Log",
+                "createOrEditLabel": "Criar ou editar Seguranca Log"
+            },
+            "created": "Um novo Seguranca Log foi criado com o identificador {{ param }}",
+            "updated": "Um Seguranca Log foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Seguranca Log foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Seguranca Log {{ id }}?"
+            },
+            "detail": {
+                "title": "Seguranca Log"
+            },
+            "idSegurancasLog": "Id Seguranca Log",
+            "acao": "Ação",
+            "idUsuario": "Usuario",
+            "log": "Log",
+            "dtLog": "Data Log"
+        }
+    }
+}

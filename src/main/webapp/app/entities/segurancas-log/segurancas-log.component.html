@@ -1,0 +1,58 @@
+<div>
+    <h2>
+        <span style="margin-left: 5%" jhiTranslate="sisasApp.segurancasLog.home.title">Segurancas Logs</span>
+        <button class="btn btn-primary float-left redondo"
+                [routerLink]="['../dashboard']">
+            <span class="fa fa-chevron-left"></span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <input type="text" class="form-control pesquisa" name="filtro" [(ngModel)]="nome" (ngModelChange)="onChangeNome()"
+           placeholder="Buscar..." style="font-style:italic"/>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="segurancasLogs">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="acao"><span jhiTranslate="sisasApp.segurancasLog.acao">Acao</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idUsuario"><span jhiTranslate="sisasApp.segurancasLog.idUsuario">Id Usuario</span> <span class="fa fa-sort"></span></th>
+                <th><span>Usuario Alterado</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="log"><span jhiTranslate="sisasApp.segurancasLog.log">Log</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dtLog"><span jhiTranslate="sisasApp.segurancasLog.dtLog">Dt Log</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let segurancasLog of segurancasLogs ;trackBy: trackId">
+                <td><a [routerLink]="['../relatorios-log', segurancasLog.id ]">{{segurancasLog.id}}</a></td>
+                <td>{{segurancasLog.acao}}</td>
+                <td>{{segurancasLog.idUsuario}}</td>
+                <td>{{segurancasLog.idUsuarioAlterado}}</td>
+                <td>{{segurancasLog.log}}</td>
+                <td>{{segurancasLog.dtLog | date:'mediumDate'}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../relatorios-log', segurancasLog.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="segurancasLogs && segurancasLogs.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

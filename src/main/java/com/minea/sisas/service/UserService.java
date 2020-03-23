@@ -1,24 +1,32 @@
 package com.minea.sisas.service;
 
 import com.minea.sisas.domain.Authority;
+import com.minea.sisas.domain.SistemaAgua;
 import com.minea.sisas.domain.User;
+import com.minea.sisas.domain.enumeration.TipoAcao;
 import com.minea.sisas.repository.AuthorityRepository;
 import com.minea.sisas.config.Constants;
 import com.minea.sisas.repository.UserRepository;
 import com.minea.sisas.security.AuthoritiesConstants;
 import com.minea.sisas.security.SecurityUtils;
+import com.minea.sisas.service.dto.SegurancaLogDTO;
+import com.minea.sisas.service.dto.SistemaAguaLogDTO;
 import com.minea.sisas.service.util.RandomUtil;
 import com.minea.sisas.service.dto.UserDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -40,11 +48,16 @@ public class UserService {
 
     private final CacheManager cacheManager;
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, AuthorityRepository authorityRepository, CacheManager cacheManager) {
+    @Autowired
+    private final SegurancaLogService segurancaLogService;
+
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, AuthorityRepository authorityRepository,
+                       CacheManager cacheManager, SegurancaLogService segurancaLogService) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.authorityRepository = authorityRepository;
         this.cacheManager = cacheManager;
+        this.segurancaLogService = segurancaLogService;
     }
 
     public Optional<User> activateRegistration(String key) {
@@ -129,6 +142,11 @@ public class UserService {
         newUser.setMunicipio(userDTO.getMunicipio());
         newUser.setComuna(userDTO.getComuna());
         userRepository.save(newUser);
+        if (Objects.nonNull(userDTO.getId())) {
+            logSave(TipoAcao.ATUALIZACAO, newUser);
+        } else {
+            logSave(TipoAcao.INCLUSAO, newUser);
+        }
         cacheManager.getCache(UserRepository.USERS_BY_LOGIN_CACHE).evict(newUser.getLogin());
         cacheManager.getCache(UserRepository.USERS_BY_EMAIL_CACHE).evict(newUser.getEmail());
         log.debug("Created Information for User: {}", newUser);
@@ -179,6 +197,7 @@ public class UserService {
         user.setMunicipio(userDTO.getMunicipio());
         user.setComuna(userDTO.getComuna());
         userRepository.save(user);
+        logSave(TipoAcao.INCLUSAO, user);
         cacheManager.getCache(UserRepository.USERS_BY_LOGIN_CACHE).evict(user.getLogin());
         cacheManager.getCache(UserRepository.USERS_BY_EMAIL_CACHE).evict(user.getEmail());
         log.debug("Created Information for User: {}", user);
@@ -253,6 +272,7 @@ public class UserService {
      * @return updated user
      */
     public Optional<UserDTO> updateUser(UserDTO userDTO) {
+        logSave(TipoAcao.ATUALIZACAO, userRepository.findOne(userDTO.getId()));
         return Optional.of(userRepository
             .findOne(userDTO.getId()))
             .map(user -> {
@@ -300,6 +320,7 @@ public class UserService {
     public void deleteUser(String login) {
         userRepository.findOneByLogin(login).ifPresent(user -> {
             userRepository.delete(user);
+            logSave(TipoAcao.REMOCAO, user);
             cacheManager.getCache(UserRepository.USERS_BY_LOGIN_CACHE).evict(user.getLogin());
             cacheManager.getCache(UserRepository.USERS_BY_EMAIL_CACHE).evict(user.getEmail());
             log.debug("Deleted User: {}", user);
@@ -359,6 +380,25 @@ public class UserService {
      */
     public List<String> getAuthorities() {
         return authorityRepository.findAll().stream().map(Authority::getName).collect(Collectors.toList());
+    }
+
+    private void logSave(TipoAcao acao, User user) {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = null;
+        if (principal instanceof UserDetails) {
+            username = ((UserDetails)principal).getUsername();
+        }
+
+        SegurancaLogDTO dto = new SegurancaLogDTO();
+        dto.setAcao(acao.getDescricao());
+        dto.setDtLog(LocalDate.now());
+        dto.setIdUsuarioAlterado(user.getId());
+        if (Objects.nonNull(username)) {
+            dto.setIdUsuario(this.userRepository.buscarUserIdByUsername(username));
+        }
+        dto.setLog(acao.getLog());
+
+        this.segurancaLogService.save(dto);
     }
 
 }

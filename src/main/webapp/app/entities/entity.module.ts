@@ -22,6 +22,7 @@ import {SisasSobreDnaModule} from './sobre-dna/sobre-dna.module';
 import {SisasContactoDnaModule} from './contacto/contacto.module';
 import {SisasIndicadorArquivoModule} from './indicador-prod-arquivo/indicadorArquivo.module';
 import {SisasSistemasArquivoModule} from './sistemas-agua-arquivo/sistemaAguaArquivo.module';
+import {SisasSegurancasLogModule} from './segurancas-log/segurancas-log.module';
 
 @NgModule({
     imports: [
@@ -47,7 +48,8 @@ import {SisasSistemasArquivoModule} from './sistemas-agua-arquivo/sistemaAguaArq
         SisasSobreDnaModule,
         SisasContactoDnaModule,
         SisasIndicadorArquivoModule,
-        SisasSistemasArquivoModule
+        SisasSistemasArquivoModule,
+        SisasSegurancasLogModule
     ],
     declarations: [],
     entryComponents: [],
