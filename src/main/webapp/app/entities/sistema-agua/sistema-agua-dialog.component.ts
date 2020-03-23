@@ -214,7 +214,7 @@ export class SistemaAguaDialogComponent implements OnInit {
     }
 
     isNumeroChafarizesMenorNumeroFuncionam() {
-        if (this.sistemaAgua.possuiSistemaAgua){
+        if (this.sistemaAgua.possuiSistemaAgua) {
             if (this.sistemaAgua.qtdChafarisesExistentes < this.sistemaAgua.qtdChafarisesFuncionando) {
                 return true;
             }

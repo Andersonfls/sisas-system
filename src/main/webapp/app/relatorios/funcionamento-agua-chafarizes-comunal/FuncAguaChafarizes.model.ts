@@ -2,6 +2,8 @@
 export class FuncAguaChafarizes {
     constructor(
         public nomeProvincia?: string,
+        public nomeMunicipio?: string,
+        public nomeComuna?: string,
         public numeroSistemas?: number,
         public funcionamAgua?: number,
         public naoFuncionamAgua?: number,
