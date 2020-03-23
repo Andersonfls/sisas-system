@@ -22,7 +22,7 @@ export class FuncAguaChafarizesResolvePagingParams implements Resolve<any> {
 
 export const funcAguaChafarizesRoute: Routes = [
     {
-        path: 'func-agua-chafariz',
+        path: 'func-agua-chafariz-comunal',
         component: FuncAguaChafarizesComponent,
         resolve: {
             'pagingParams': FuncAguaChafarizesResolvePagingParams
