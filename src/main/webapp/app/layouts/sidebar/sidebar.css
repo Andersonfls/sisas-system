@@ -24,7 +24,7 @@
     border-left: 0;
     border-right: 0;
     border-color: #262e35;
-    white-space: nowrap;
+    /*white-space: nowrap;*/
     min-width: 80%;
 }
 
