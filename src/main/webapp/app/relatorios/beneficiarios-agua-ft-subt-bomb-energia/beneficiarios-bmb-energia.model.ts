@@ -1,5 +1,5 @@
 
-export class BeneficiariosBmbMecanica {
+export class BeneficiariosBmbEnergia {
     constructor(
         public nomeProvincia?: string,
         public nomeMunicipio?: string,

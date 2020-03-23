@@ -295,13 +295,13 @@ public class RelatorioService {
         return retorno;
     }
 
-    //BENEFICIARIOS BOMBA MECANICA - PROVINCIAL
-    public List<BeneficiariosBmbMecanicaDTO> beneficiariosAguaBmbMecanicaProvincial() {
-        List<BeneficiariosBmbMecanicaDTO> retorno = new ArrayList<>();
-        List<Object[]> list = this.relatorioRepository.beneficiariosAguaBmbMecanicaProvincialQuery();
+    //BENEFICIARIOS BOMBA ENERGIA - PROVINCIAL
+    public List<BeneficiariosBmbEnergiaDTO> beneficiariosAguaBmbEnergiaProvincial() {
+        List<BeneficiariosBmbEnergiaDTO> retorno = new ArrayList<>();
+        List<Object[]> list = this.relatorioRepository.beneficiariosAguaBmbEnergiaProvincialQuery();
         if (Objects.nonNull(list)) {
             list.stream().forEach(i -> {
-                BeneficiariosBmbMecanicaDTO dto = new BeneficiariosBmbMecanicaDTO();
+                BeneficiariosBmbEnergiaDTO dto = new BeneficiariosBmbEnergiaDTO();
 
 
                 dto.setNomeProvincia((String) i[0]);
@@ -324,7 +324,7 @@ public class RelatorioService {
                     dto.setDieselPopulacao(((BigInteger) i[6]).intValue());
                 }
                 if (Objects.nonNull(i[7])) {
-                    dto.setDieselPerc(((BigInteger) i[7]).intValue());
+                    dto.setDieselPerc(((BigDecimal) i[7]).intValue());
                 }
                 if (Objects.nonNull(i[8])) {
                     dto.setSolarSistemas(((BigInteger) i[8]).intValue());
@@ -333,10 +333,34 @@ public class RelatorioService {
                     dto.setSolarPopulacao(((BigInteger) i[9]).intValue());
                 }
                 if (Objects.nonNull(i[10])) {
-                    dto.setSolarPerc(((BigInteger) i[10]).intValue());
+                    dto.setSolarPerc(((BigDecimal) i[10]).intValue());
                 }
                 if (Objects.nonNull(i[11])) {
                     dto.setEolicaSistemas(((BigInteger) i[11]).intValue());
+                }
+                if (Objects.nonNull(i[12])) {
+                    dto.setEolicaPopulacao(((BigInteger) i[12]).intValue());
+                }
+                if (Objects.nonNull(i[13])) {
+                    dto.setEolicaPerc(((BigDecimal) i[13]).intValue());
+                }
+                if (Objects.nonNull(i[14])) {
+                    dto.setElectricaSistemas(((BigInteger) i[14]).intValue());
+                }
+                if (Objects.nonNull(i[15])) {
+                    dto.setElectricaPopulacao(((BigInteger) i[15]).intValue());
+                }
+                if (Objects.nonNull(i[16])) {
+                    dto.setElectricaPerc(((BigDecimal) i[16]).intValue());
+                }
+                if (Objects.nonNull(i[17])) {
+                    dto.setOutroSistemas(((BigInteger) i[17]).intValue());
+                }
+                if (Objects.nonNull(i[18])) {
+                    dto.setOutroPopulacao(((BigInteger) i[18]).intValue());
+                }
+                if (Objects.nonNull(i[19])) {
+                    dto.setOutroPerc(((BigDecimal) i[19]).intValue());
                 }
 
                 retorno.add(dto);
@@ -344,6 +368,166 @@ public class RelatorioService {
         }
         return retorno;
     }
+
+    //BENEFICIARIOS BOMBA ENERGIA - Municipal
+    public List<BeneficiariosBmbEnergiaDTO> beneficiariosAguaBmbEnergiaComunal() {
+        List<BeneficiariosBmbEnergiaDTO> retorno = new ArrayList<>();
+        List<Object[]> list = this.relatorioRepository.beneficiariosAguaBmbEnergiaComunalQuery();
+        if (Objects.nonNull(list)) {
+            list.stream().forEach(i -> {
+                BeneficiariosBmbEnergiaDTO dto = new BeneficiariosBmbEnergiaDTO();
+
+
+                dto.setNomeProvincia((String) i[0]);
+                dto.setNomeMunicipio((String) i[1]);
+                dto.setNomeComuna((String) i[2]);
+
+                if (Objects.nonNull(i[3])) {
+                    dto.setPopulacao(((BigInteger) i[3]).intValue());
+                }
+                if (Objects.nonNull(i[4])) {
+                    dto.setPocoMelhorado(((BigInteger) i[4]).intValue());
+                }
+                if (Objects.nonNull(i[5])) {
+                    dto.setFuro(((BigInteger) i[5]).intValue());
+                }
+                if (Objects.nonNull(i[6])) {
+                    dto.setNascente(((BigInteger) i[6]).intValue());
+                }
+                if (Objects.nonNull(i[7])) {
+                    dto.setDieselSistemas(((BigInteger) i[7]).intValue());
+                }
+                if (Objects.nonNull(i[8])) {
+                    dto.setDieselPopulacao(((BigInteger) i[8]).intValue());
+                }
+                if (Objects.nonNull(i[9])) {
+                    dto.setDieselPerc(((BigDecimal) i[9]).intValue());
+                }
+                if (Objects.nonNull(i[10])) {
+                    dto.setSolarSistemas(((BigInteger) i[10]).intValue());
+                }
+                if (Objects.nonNull(i[11])) {
+                    dto.setSolarPopulacao(((BigInteger) i[11]).intValue());
+                }
+                if (Objects.nonNull(i[12])) {
+                    dto.setSolarPerc(((BigDecimal) i[12]).intValue());
+                }
+                if (Objects.nonNull(i[13])) {
+                    dto.setEolicaSistemas(((BigInteger) i[13]).intValue());
+                }
+                if (Objects.nonNull(i[14])) {
+                    dto.setEolicaPopulacao(((BigInteger) i[14]).intValue());
+                }
+                if (Objects.nonNull(i[15])) {
+                    dto.setEolicaPerc(((BigDecimal) i[15]).intValue());
+                }
+                if (Objects.nonNull(i[16])) {
+                    dto.setElectricaSistemas(((BigInteger) i[16]).intValue());
+                }
+                if (Objects.nonNull(i[17])) {
+                    dto.setElectricaPopulacao(((BigInteger) i[17]).intValue());
+                }
+                if (Objects.nonNull(i[18])) {
+                    dto.setElectricaPerc(((BigDecimal) i[18]).intValue());
+                }
+                if (Objects.nonNull(i[19])) {
+                    dto.setOutroSistemas(((BigInteger) i[19]).intValue());
+                }
+                if (Objects.nonNull(i[20])) {
+                    dto.setOutroPopulacao(((BigInteger) i[20]).intValue());
+                }
+                if (Objects.nonNull(i[21])) {
+                    dto.setOutroPerc(((BigDecimal) i[21]).intValue());
+                }
+
+                retorno.add(dto);
+            });
+        }
+        return retorno;
+    }
+
+    //BENEFICIARIOS BOMBA MANUAL - Municipal
+    public List<BeneficiariosBmbManualDTO> beneficiariosAguaBmbManualComunal() {
+        List<BeneficiariosBmbManualDTO> retorno = new ArrayList<>();
+        List<Object[]> list = this.relatorioRepository.beneficiariosAguaBmbManualComunalQuery();
+        if (Objects.nonNull(list)) {
+            list.stream().forEach(i -> {
+                BeneficiariosBmbManualDTO dto = new BeneficiariosBmbManualDTO();
+
+
+                dto.setNomeProvincia((String) i[0]);
+                dto.setNomeMunicipio((String) i[1]);
+                dto.setNomeComuna((String) i[2]);
+
+                if (Objects.nonNull(i[3])) {
+                    dto.setPocoMelhorado(((BigInteger) i[3]).intValue());
+                }
+                if (Objects.nonNull(i[4])) {
+                    dto.setFuro(((BigInteger) i[4]).intValue());
+                }
+                if (Objects.nonNull(i[5])) {
+                    dto.setNascente(((BigInteger) i[5]).intValue());
+                }
+                if (Objects.nonNull(i[6])) {
+                    dto.setTotalSistemas(((BigInteger) i[6]).intValue());
+                }
+
+                if (Objects.nonNull(i[7])) {
+                    dto.setAfridevTotalSistema(((BigInteger) i[7]).intValue());
+                }
+                if (Objects.nonNull(i[8])) {
+                    dto.setAfridevSistemaFunciona(((BigInteger) i[8]).intValue());
+                }
+                if (Objects.nonNull(i[9])) {
+                    dto.setAfridevSistemaNaoFunciona(((BigInteger) i[9]).intValue());
+                }
+
+                if (Objects.nonNull(i[10])) {
+                    dto.setVergnetTotalSistema(((BigInteger) i[10]).intValue());
+                }
+                if (Objects.nonNull(i[11])) {
+                    dto.setVergnetSistemaFunciona(((BigInteger) i[11]).intValue());
+                }
+                if (Objects.nonNull(i[12])) {
+                    dto.setVergnetSistemaNaoFunciona(((BigInteger) i[12]).intValue());
+                }
+
+                if (Objects.nonNull(i[13])) {
+                    dto.setVolantTotalSistema(((BigInteger) i[13]).intValue());
+                }
+                if (Objects.nonNull(i[14])) {
+                    dto.setVolantSistemaFunciona(((BigInteger) i[14]).intValue());
+                }
+                if (Objects.nonNull(i[15])) {
+                    dto.setVolantSistemaNaoFunciona(((BigInteger) i[15]).intValue());
+                }
+
+                if (Objects.nonNull(i[16])) {
+                    dto.setIndiaTotalSistema(((BigInteger) i[16]).intValue());
+                }
+                if (Objects.nonNull(i[17])) {
+                    dto.setIndiaSistemaFunciona(((BigInteger) i[17]).intValue());
+                }
+                if (Objects.nonNull(i[18])) {
+                    dto.setIndiaSistemaNaoFunciona(((BigInteger) i[18]).intValue());
+                }
+
+                if (Objects.nonNull(i[19])) {
+                    dto.setOutroTotalSistema(((BigInteger) i[19]).intValue());
+                }
+                if (Objects.nonNull(i[20])) {
+                    dto.setOutroSistemaFunciona(((BigInteger) i[20]).intValue());
+                }
+                if (Objects.nonNull(i[21])) {
+                    dto.setOutroSistemaNaoFunciona(((BigInteger) i[21]).intValue());
+                }
+
+                retorno.add(dto);
+            });
+        }
+        return retorno;
+    }
+
 
     //FUNCIONAMENTO SERVICOS DE AGUA E CHAFARIZES - MUNICIPAL
     public List<FuncAguaChafarizesDadosDTO> funcionamentoServicosAguaChafarizesMunicipal() {

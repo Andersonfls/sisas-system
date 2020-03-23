@@ -5,24 +5,24 @@ import { HttpResponse } from '@angular/common/http';
 import { User } from '../../shared/user/user.model';
 import { Principal } from '../../shared/auth/principal.service';
 import {RelatoriosService} from '../relatorios.service';
-import {BeneficiariosBmbMecanica} from './beneficiarios-bmb-mecanica.model';
 import * as jsPDF from 'jspdf';
 import {TableUtil} from '../../shared/util/tableUtil';
 import * as html2canvas from 'html2canvas';
 import {DadosRelatorio} from '../cobertura-sector-agua-provincial/dadosRelatorio.model';
+import {BeneficiariosBmbManual} from './beneficiarios-bmb-manual.model';
 
 @Component({
     selector: 'jhi-benef-opt-tecnica',
-    templateUrl: './beneficiarios-bmb-mecanica.component.html',
+    templateUrl: './beneficiarios-bmb-manual.component.html',
     styleUrls: [
-        'beneficiarios-bmb-mecanica.css'
+        'beneficiarios-bmb-manual.css'
     ]
 })
 
-export class BeneficiariosBombMecanicaComponent implements OnInit {
+export class BeneficiariosBombManualComponent implements OnInit {
 
     user: User;
-    listaTabela: BeneficiariosBmbMecanica[];
+    listaTabela: BeneficiariosBmbManual[];
     tipoRelatorio: string;
     predicate: any;
     reverse: any;
@@ -35,26 +35,27 @@ export class BeneficiariosBombMecanicaComponent implements OnInit {
     totalPocoMelhorado = 0;
     totalFuro = 0;
     totalNascente = 0;
+    totalSistemaTotal = 0;
 
-    totalDieselSistemas = 0;
-    totalDieselPopulacao = 0;
-    totalDieselPerc = 0;
+    totalAfridevTotalSistema = 0;
+    totalAfridevSistemaFunciona = 0;
+    totalAfridevSistemaNaoFunciona = 0;
 
-    totalSolarSistemas = 0;
-    totalSolarPopulacao = 0;
-    totalSolarPerc = 0;
+    totalVergnetAfridevSistemaFunciona = 0;
+    totalVergnetAfridevSistemaNaoFunciona = 0;
+    totalVergnetAfridevTotalSistema = 0;
 
-    totalEolicaSistemas = 0;
-    totalEolicaPopulacao = 0;
-    totalEolicaPerc = 0;
+    totalVolantaTotalSistema = 0;
+    totalVolantaSistemaFunciona = 0;
+    totalVolantaSistemaNaoFunciona = 0;
 
-    totalElectraSistemas = 0;
-    totalElectraPopulacao = 0;
-    totalElectraPerc = 0;
+    totalIndiaTotalSistema = 0;
+    totalIndiaSistemaFunciona = 0;
+    totalIndiaSistemaNaoFunciona = 0;
 
-    totalOutroSistemas = 0;
-    totalOutroPopulacao = 0;
-    totalOutroPerc = 0;
+    totalOutroTotalSistema = 0;
+    totalOutroSistemaFunciona = 0;
+    totalOutroSistemaNaoFunciona = 0;
 
     constructor(
         private jhiAlertService: JhiAlertService,
@@ -92,14 +93,14 @@ export class BeneficiariosBombMecanicaComponent implements OnInit {
     }
 
     validaTipoRelatorio() {
-        if (this.tipoRelatorio === 'Nível Provincial') {
+/*        if (this.tipoRelatorio === 'Nível Provincial') {
             this.buscaDadosTabelaProvincial();
         }
         if (this.tipoRelatorio === 'Nível Municipal') {
             this.buscaDadosTabelaMunicipal();
-        }
+        }*/
         if (this.tipoRelatorio === 'Nível Comunal') {
-            /*this.buscaDadosTabela();*/
+            this.buscaDadosTabelaComunal();
         }
     }
 
@@ -107,25 +108,9 @@ export class BeneficiariosBombMecanicaComponent implements OnInit {
         this.tipoRelatorio = null;
     }
 
-    buscaDadosTabelaProvincial() {
-        this.relatorioService.buscaDadosBeneficiariosBmbMecanicaProvincial().subscribe(
-            (res: HttpResponse<BeneficiariosBmbMecanica[]>) => {
-                this.listaTabela = res.body;
-                console.log(this.listaTabela);
-
-                this.listaNaoFuncionam = new Array();
-                this.listaFuncionam = new Array();
-                this.listaNumSistemas = new Array();
-
-                this.listaTabela.forEach( (i) => {
-                    const item: DadosRelatorio = new DadosRelatorio();
-                });
-            });
-    }
-
-    buscaDadosTabelaMunicipal() {
-        this.relatorioService.buscaDadosFuncAguaChafarizMunicipal().subscribe(
-            (res: HttpResponse<BeneficiariosBmbMecanica[]>) => {
+    buscaDadosTabelaComunal() {
+        this.relatorioService.buscaDadosBeneficiariosBmbManualComunal().subscribe(
+            (res: HttpResponse<BeneficiariosBmbManual[]>) => {
                 this.listaTabela = res.body;
                 console.log(this.listaTabela);
 

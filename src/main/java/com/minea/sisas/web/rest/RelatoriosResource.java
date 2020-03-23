@@ -185,10 +185,22 @@ public class RelatoriosResource {
         return this.relatorioService.coberturaSectorAguasComunal();
     }
 
-    // BENEFICIARIOS BOMBA MECANICA (Nivel Provincial)
-    @GetMapping("/relatorios/benef-bomba-mecanica-provincial")
-    public List<BeneficiariosBmbMecanicaDTO> getDadosBeneficiariosBmbMecanicaProvincial() {
-        return this.relatorioService.beneficiariosAguaBmbMecanicaProvincial();
+    // BENEFICIARIOS BOMBA Energia (Nivel Provincial)
+    @GetMapping("/relatorios/benef-bomba-energia-provincial")
+    public List<BeneficiariosBmbEnergiaDTO> getDadosBeneficiariosBmbEnergiaProvincial() {
+        return this.relatorioService.beneficiariosAguaBmbEnergiaProvincial();
+    }
+
+    // BENEFICIARIOS BOMBA ENERGIA (Nivel Municipal)
+    @GetMapping("/relatorios/benef-bomba-energia-comunal")
+    public List<BeneficiariosBmbEnergiaDTO> getDadosBeneficiariosBmbEnergiaComunal() {
+        return this.relatorioService.beneficiariosAguaBmbEnergiaComunal();
+    }
+
+    // BENEFICIARIOS BOMBA MANUAL (Nivel Comunal)
+    @GetMapping("/relatorios/benef-bomba-manual-comunal")
+    public List<BeneficiariosBmbManualDTO> getDadosBeneficiariosBmbManualComunal() {
+        return this.relatorioService.beneficiariosAguaBmbManualComunal();
     }
 
     // FUNCIONAMENTO SISTEMA DE AGUA E CHAFARIZES

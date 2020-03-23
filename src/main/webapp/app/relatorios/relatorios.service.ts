@@ -12,7 +12,8 @@ import {TratamentoSistemaAguaDados} from './tratamento-sistemas-agua/tratamentoS
 import {IndicadorProducaoProvincia} from './indicador-producao/IndicadorProducaoProvincia.model';
 import {CoberturaSectorAguaModel} from './cobertura-sector-agua-provincial/coberturaSectorAgua.model';
 import {FuncAgua} from './funcionamento-agua/FuncAgua.model';
-import {BeneficiariosBmbMecanica} from './beneficiarios-agua-ft-subt-bomb-mecanica/beneficiarios-bmb-mecanica.model';
+import {BeneficiariosBmbEnergia} from './beneficiarios-agua-ft-subt-bomb-energia/beneficiarios-bmb-energia.model';
+import {BeneficiariosBmbManual} from './beneficiarios-agua-ft-subt-bomb-manual/beneficiarios-bmb-manual.model';
 
 export type EntityResponseType = HttpResponse<Provincia>;
 
@@ -52,9 +53,19 @@ export class RelatoriosService {
         return this.http.get<CoberturaSectorAguaModel[]>(this.resourceUrl + '/cobertura-sector-agua-comunal', {params: options, observe: 'response'});
     }
 
-    buscaDadosBeneficiariosBmbMecanicaProvincial(req?: any): Observable<HttpResponse<FuncAguaChafarizes[]>> {
+    buscaDadosBeneficiariosBmbEnergiaProvincial(req?: any): Observable<HttpResponse<BeneficiariosBmbEnergia[]>> {
         const options = createRequestOption(req);
-        return this.http.get<BeneficiariosBmbMecanica[]>(this.resourceUrl + '/benef-bomba-mecanica-provincial', {params: options, observe: 'response'});
+        return this.http.get<BeneficiariosBmbEnergia[]>(this.resourceUrl + '/benef-bomba-energia-provincial', {params: options, observe: 'response'});
+    }
+
+    buscaDadosBeneficiariosBmbEnergiaComunal(req?: any): Observable<HttpResponse<BeneficiariosBmbEnergia[]>> {
+        const options = createRequestOption(req);
+        return this.http.get<BeneficiariosBmbEnergia[]>(this.resourceUrl + '/benef-bomba-energia-comunal', {params: options, observe: 'response'});
+    }
+
+    buscaDadosBeneficiariosBmbManualComunal(req?: any): Observable<HttpResponse<BeneficiariosBmbManual[]>> {
+        const options = createRequestOption(req);
+        return this.http.get<BeneficiariosBmbManual[]>(this.resourceUrl + '/benef-bomba-manual-comunal', {params: options, observe: 'response'});
     }
 
     buscaDadosFuncAguaChafarizMunicipal(req?: any): Observable<HttpResponse<FuncAguaChafarizes[]>> {
