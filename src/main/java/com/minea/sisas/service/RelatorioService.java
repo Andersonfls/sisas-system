@@ -312,19 +312,15 @@ public class RelatorioService {
         return retorno;
     }
 
-    //BENEFICIARIOS BOMBA MECANICA - PROVINCIAL
-    public List<BeneficiariosBmbMecanicaDTO> beneficiariosAguaBmbMecanicaProvincial() {
-        User user = buscaUsuarioLogado();
-        List<Object[]> list;
-        List<BeneficiariosBmbMecanicaDTO> retorno = new ArrayList<>();
-        if (isAdminGeral(user)) {
-            list = this.relatorioAdminRepository.beneficiariosAguaBmbMecanicaProvincialQuery();
-        } else {
-            list = this.relatorioRepository.beneficiariosAguaBmbMecanicaProvincialQuery(user.getProvincia().getId());
-        }
+    //BENEFICIARIOS BOMBA ENERGIA - PROVINCIAL
+    public List<BeneficiariosBmbEnergiaDTO> beneficiariosAguaBmbEnergiaProvincial() {
+        List<BeneficiariosBmbEnergiaDTO> retorno = new ArrayList<>();
+        List<Object[]> list = this.relatorioRepository.beneficiariosAguaBmbEnergiaProvincialQuery();
+
         if (Objects.nonNull(list)) {
             list.stream().forEach(i -> {
-                BeneficiariosBmbMecanicaDTO dto = new BeneficiariosBmbMecanicaDTO();
+                BeneficiariosBmbEnergiaDTO dto = new BeneficiariosBmbEnergiaDTO();
+
                 dto.setNomeProvincia((String) i[0]);
                 if (Objects.nonNull(i[1])) {
                     dto.setPopulacao(((BigInteger) i[1]).intValue());
@@ -390,7 +386,7 @@ public class RelatorioService {
         return retorno;
     }
 
-    //BENEFICIARIOS BOMBA ENERGIA - Municipal
+    //BENEFICIARIOS BOMBA ENERGIA - Comunal
     public List<BeneficiariosBmbEnergiaDTO> beneficiariosAguaBmbEnergiaComunal() {
         List<BeneficiariosBmbEnergiaDTO> retorno = new ArrayList<>();
         List<Object[]> list = this.relatorioRepository.beneficiariosAguaBmbEnergiaComunalQuery();
@@ -398,11 +394,9 @@ public class RelatorioService {
             list.stream().forEach(i -> {
                 BeneficiariosBmbEnergiaDTO dto = new BeneficiariosBmbEnergiaDTO();
 
-
                 dto.setNomeProvincia((String) i[0]);
                 dto.setNomeMunicipio((String) i[1]);
                 dto.setNomeComuna((String) i[2]);
-
                 if (Objects.nonNull(i[3])) {
                     dto.setPopulacao(((BigInteger) i[3]).intValue());
                 }
@@ -467,14 +461,13 @@ public class RelatorioService {
         return retorno;
     }
 
-    //BENEFICIARIOS BOMBA MANUAL - Municipal
+    //BENEFICIARIOS BOMBA MANUAL - Comunal
     public List<BeneficiariosBmbManualDTO> beneficiariosAguaBmbManualComunal() {
         List<BeneficiariosBmbManualDTO> retorno = new ArrayList<>();
         List<Object[]> list = this.relatorioRepository.beneficiariosAguaBmbManualComunalQuery();
         if (Objects.nonNull(list)) {
             list.stream().forEach(i -> {
                 BeneficiariosBmbManualDTO dto = new BeneficiariosBmbManualDTO();
-
 
                 dto.setNomeProvincia((String) i[0]);
                 dto.setNomeMunicipio((String) i[1]);

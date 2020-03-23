@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
-
 import {InqueritosPreenchidosDados} from './inqueritos-preenchidos/InqueritosPreenchidosDados.model';
 import {SERVER_API_URL} from '../app.constants';
 import {SectorAguaSaneamentoDados} from './cobertura-sector-agua-saneamento/SectorAguaSaneamentoDados.model';
@@ -11,10 +10,11 @@ import {TratamentoSistemaAguaDados} from './tratamento-sistemas-agua/tratamentoS
 import {IndicadorProducaoProvincia} from './indicador-producao/IndicadorProducaoProvincia.model';
 import {CoberturaSectorAguaModel} from './cobertura-sector-agua-provincial/coberturaSectorAgua.model';
 import {FuncAgua} from './funcionamento-agua/FuncAgua.model';
-import {BeneficiariosBmbMecanica} from './beneficiarios-agua-ft-subt-bomb-mecanica/beneficiarios-bmb-mecanica.model';
 import {BeneAguaFtSubterraneaTpBomba} from './beneficiarios-agua-ft-subt-tp-bmb/beneAguaFtSubterraneaTpBomba.model';
 import {BeneAguaFtSubterraneaTpBombaManual} from './beneficiarios-agua-ft-subt-tp-bmb-manual-pro/beneAguaFtSubterraneaTpBomba.model';
 import {FuncAguaChafarizes} from './funcionamento-agua-chafarizes-comunal/FuncAguaChafarizes.model';
+import {BeneficiariosBmbEnergia} from './beneficiarios-agua-ft-subt-bomb-energia/beneficiarios-bmb-energia.model';
+import {BeneficiariosBmbManual} from './beneficiarios-agua-ft-subt-bomb-manual/beneficiarios-bmb-manual.model';
 
 export type EntityResponseType = HttpResponse<Provincia>;
 
