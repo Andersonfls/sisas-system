@@ -1,6 +1,6 @@
 package com.minea.sisas.service.dto;
 
-public class BeneficiariosBmbManualDTO {
+public class SistemaAguaBmbManualDTO {
 
     private String nomeProvincia;
     private String nomeMunicipio;

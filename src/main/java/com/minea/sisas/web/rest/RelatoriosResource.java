@@ -197,10 +197,10 @@ public class RelatoriosResource {
         return this.relatorioService.beneficiariosAguaBmbEnergiaComunal();
     }
 
-    // BENEFICIARIOS BOMBA MANUAL (Nivel Comunal)
-    @GetMapping("/relatorios/benef-bomba-manual-comunal")
-    public List<BeneficiariosBmbManualDTO> getDadosBeneficiariosBmbManualComunal() {
-        return this.relatorioService.beneficiariosAguaBmbManualComunal();
+    // SISTEMA AGUA BOMBA MANUAL (Nivel Comunal)
+    @GetMapping("/relatorios/sistema-agua-bomba-manual-comunal")
+    public List<SistemaAguaBmbManualDTO> getDadosBeneficiariosBmbManualComunal() {
+        return this.relatorioService.sistemaAguaBmbManualComunal();
     }
 
     // DASHBOARD

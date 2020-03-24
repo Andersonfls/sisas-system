@@ -1,5 +1,4 @@
-
-export class BeneficiariosBmbManual {
+export class SistemaAguaBmbManualComunal {
     constructor(
         public nomeProvincia?: string,
         public nomeMunicipio?: string,
@@ -17,9 +16,9 @@ export class BeneficiariosBmbManual {
         public vergnetSistemaFunciona?: number,
         public vergnetSistemaNaoFunciona?: number,
 
-        public volantTotalSistema?: number,
-        public volantSistemaFunciona?: number,
-        public volantSistemaNaoFunciona?: number,
+        public volantaTotalSistema?: number,
+        public volantaSistemaFunciona?: number,
+        public volantaSistemaNaoFunciona?: number,
 
         public indiaTotalSistema?: number,
         public indiaSistemaFunciona?: number,

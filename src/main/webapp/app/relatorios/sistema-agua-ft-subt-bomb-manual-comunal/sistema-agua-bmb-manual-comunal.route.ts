@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes } from '@angular/router';
 import { JhiPaginationUtil } from 'ng-jhipster';
 import { UserRouteAccessService } from '../../shared';
-import {BeneficiariosBombManualComponent} from './beneficiarios-bmb-manual.component';
+import { SistemaAguaBombManualComunalComponent} from './sistema-agua-bmb-manual-comunal.component';
 
 @Injectable()
-export class BeneficiariosBombManualResolvePagingParams implements Resolve<any> {
+export class SistemaAguaBombManualComunalResolvePagingParams implements Resolve<any> {
 
     constructor(private paginationUtil: JhiPaginationUtil) {}
 
@@ -20,16 +20,16 @@ export class BeneficiariosBombManualResolvePagingParams implements Resolve<any> 
     }
 }
 
-export const beneficiariosTpBombaManualRoute: Routes = [
+export const sistemaAguaTpBombaManualComunalRoute: Routes = [
     {
-        path: 'benef-ft-subte-manual',
-        component: BeneficiariosBombManualComponent,
+        path: 'sistema-agua-ft-subte-manual-comunal',
+        component: SistemaAguaBombManualComunalComponent,
         resolve: {
-            'pagingParams': BeneficiariosBombManualResolvePagingParams
+            'pagingParams': SistemaAguaBombManualComunalResolvePagingParams
         },
         data: {
             authorities: ['ROLE_USER', 'ROLE_ADMIN', 'ADMIN_PROVINCIAL'],
-            pageTitle: 'relatorios.title.benef-agua-fonte-subterranea-manual'
+            pageTitle: 'relatorios.title.sistema-agua-fonte-subterranea-manual-comunal'
         },
         canActivate: [UserRouteAccessService]
     }

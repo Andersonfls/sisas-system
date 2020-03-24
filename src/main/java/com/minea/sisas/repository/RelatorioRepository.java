@@ -479,7 +479,7 @@ public interface RelatorioRepository extends JpaRepository<Provincia, Long>, Jpa
         "       c.ID_COMUNA", nativeQuery = true)
     List<Object[]> beneficiariosAguaBmbEnergiaComunalQuery();
 
-    //BENEFICIARIOS BOMBA MANUAL - COMUNAL
+    //SISTEMA AGUA BOMBA MANUAL - COMUNAL
     @Query(value = " SELECT 	p.NM_PROVINCIA, " +
         "	    m.NM_MUNICIPIO," +
         "	    c.NM_COMUNA," +
@@ -692,7 +692,7 @@ public interface RelatorioRepository extends JpaRepository<Provincia, Long>, Jpa
         "       p.NM_PROVINCIA," +
         "       m.ID_MUNICIPIO," +
         "       c.ID_COMUNA", nativeQuery = true)
-    List<Object[]> beneficiariosAguaBmbManualComunalQuery();
+    List<Object[]> sistemaAguaBmbManualComunalQuery();
 
     //FUNCIONAMENTO DE SISTEMA DE AGUA E CHAFARIZES
     @Query(value = "SELECT     p.NM_PROVINCIA,   " +

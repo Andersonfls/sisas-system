@@ -3,13 +3,13 @@ import { RouterModule } from '@angular/router';
 import { SisasSharedModule } from '../../shared';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import {
-    BeneficiariosBombManualResolvePagingParams,
-    beneficiariosTpBombaManualRoute,
-} from './beneficiarios-bmb-manual.route';
-import {BeneficiariosBombManualComponent} from './beneficiarios-bmb-manual.component';
+    SistemaAguaBombManualComunalResolvePagingParams,
+    sistemaAguaTpBombaManualComunalRoute,
+} from './sistema-agua-bmb-manual-comunal.route';
+import {SistemaAguaBombManualComunalComponent} from './sistema-agua-bmb-manual-comunal.component';
 
 const ENTITY_STATES = [
-    ...beneficiariosTpBombaManualRoute
+    ...sistemaAguaTpBombaManualComunalRoute
 ];
 
 @NgModule({
@@ -19,14 +19,14 @@ const ENTITY_STATES = [
         RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [
-        BeneficiariosBombManualComponent
+        SistemaAguaBombManualComunalComponent
     ],
     entryComponents: [
-        BeneficiariosBombManualComponent
+        SistemaAguaBombManualComunalComponent
     ],
     providers: [
-        BeneficiariosBombManualResolvePagingParams
+        SistemaAguaBombManualComunalResolvePagingParams
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class SisasBenefBmbManualModule {}
+export class SisasSistemaAguaBmbManualComunalModule {}

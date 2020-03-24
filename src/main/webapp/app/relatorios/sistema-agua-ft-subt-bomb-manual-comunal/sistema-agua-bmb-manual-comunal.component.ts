@@ -1,37 +1,32 @@
-import { Component, OnInit } from '@angular/core';
-import { JhiAlertService } from 'ng-jhipster';
-import { UserService } from '../../shared/user/user.service';
-import { HttpResponse } from '@angular/common/http';
-import { User } from '../../shared/user/user.model';
-import { Principal } from '../../shared/auth/principal.service';
+import {Component, OnInit} from '@angular/core';
+import {JhiAlertService} from 'ng-jhipster';
+import {UserService} from '../../shared/user/user.service';
+import {HttpResponse} from '@angular/common/http';
+import {User} from '../../shared/user/user.model';
+import {Principal} from '../../shared/auth/principal.service';
 import {RelatoriosService} from '../relatorios.service';
 import * as jsPDF from 'jspdf';
 import {TableUtil} from '../../shared/util/tableUtil';
 import * as html2canvas from 'html2canvas';
-import {DadosRelatorio} from '../cobertura-sector-agua-provincial/dadosRelatorio.model';
-import {BeneficiariosBmbManual} from './beneficiarios-bmb-manual.model';
+import {SistemaAguaBmbManualComunal} from './sistema-agua-bmb-manual-comunal.model';
 
 @Component({
-    selector: 'jhi-benef-opt-tecnica',
-    templateUrl: './beneficiarios-bmb-manual.component.html',
+    selector: 'jhi-sistema-agua-bomba-manual-comunal',
+    templateUrl: './sistema-agua-bmb-manual-comunal.component.html',
     styleUrls: [
-        'beneficiarios-bmb-manual.css'
+        'sistema-agua-bmb-manual-comunal.css'
     ]
 })
 
-export class BeneficiariosBombManualComponent implements OnInit {
+export class SistemaAguaBombManualComunalComponent implements OnInit {
 
     user: User;
-    listaTabela: BeneficiariosBmbManual[];
+    listaTabela: SistemaAguaBmbManualComunal[];
     tipoRelatorio: string;
     predicate: any;
     reverse: any;
     chart: any;
-    listaFuncionam: DadosRelatorio[];
-    listaNaoFuncionam: DadosRelatorio[];
-    listaNumSistemas: DadosRelatorio[];
 
-    totalPopulacao = 0;
     totalPocoMelhorado = 0;
     totalFuro = 0;
     totalNascente = 0;
@@ -41,9 +36,9 @@ export class BeneficiariosBombManualComponent implements OnInit {
     totalAfridevSistemaFunciona = 0;
     totalAfridevSistemaNaoFunciona = 0;
 
-    totalVergnetAfridevSistemaFunciona = 0;
-    totalVergnetAfridevSistemaNaoFunciona = 0;
-    totalVergnetAfridevTotalSistema = 0;
+    totalVergnetSistemaFunciona = 0;
+    totalVergnetSistemaNaoFunciona = 0;
+    totalVergnetTotalSistema = 0;
 
     totalVolantaTotalSistema = 0;
     totalVolantaSistemaFunciona = 0;
@@ -69,6 +64,8 @@ export class BeneficiariosBombManualComponent implements OnInit {
             this.user = userIdentity;
         });
         this.tipoRelatorio = null;
+
+        this.buscaDadosTabelaComunal();
     }
 
     public captureScreen(elementId) {
@@ -92,34 +89,32 @@ export class BeneficiariosBombManualComponent implements OnInit {
         TableUtil.exportToExcel(tabeId);
     }
 
-    validaTipoRelatorio() {
-/*        if (this.tipoRelatorio === 'Nível Provincial') {
-            this.buscaDadosTabelaProvincial();
-        }
-        if (this.tipoRelatorio === 'Nível Municipal') {
-            this.buscaDadosTabelaMunicipal();
-        }*/
-        if (this.tipoRelatorio === 'Nível Comunal') {
-            this.buscaDadosTabelaComunal();
-        }
-    }
-
-    voltarEscolha() {
-        this.tipoRelatorio = null;
-    }
-
     buscaDadosTabelaComunal() {
-        this.relatorioService.buscaDadosBeneficiariosBmbManualComunal().subscribe(
-            (res: HttpResponse<BeneficiariosBmbManual[]>) => {
+        this.relatorioService.buscaDadosSistemaAguaBmbManualComunal().subscribe(
+            (res: HttpResponse<SistemaAguaBmbManualComunal[]>) => {
                 this.listaTabela = res.body;
                 console.log(this.listaTabela);
 
-                this.listaNaoFuncionam = new Array();
-                this.listaFuncionam = new Array();
-                this.listaNumSistemas = new Array();
-
                 this.listaTabela.forEach( (i) => {
-                    const item: DadosRelatorio = new DadosRelatorio();
+                    this.totalPocoMelhorado += i.pocoMelhorado;
+                    this.totalFuro += i.furo;
+                    this.totalNascente += i.nascente;
+                    this.totalSistemaTotal += i.totalSistemas;
+                    this.totalAfridevTotalSistema += i.afridevTotalSistema;
+                    this.totalAfridevSistemaFunciona += i.afridevSistemaFunciona;
+                    this.totalAfridevSistemaNaoFunciona += i.afridevSistemaNaoFunciona;
+                    this.totalVergnetSistemaFunciona += i.vergnetSistemaFunciona;
+                    this.totalVergnetSistemaNaoFunciona += i.vergnetSistemaNaoFunciona;
+                    this.totalVergnetTotalSistema += i.vergnetTotalSistema;
+                    this.totalVolantaTotalSistema += i.volantaTotalSistema;
+                    this.totalVolantaSistemaFunciona += i.volantaSistemaFunciona;
+                    this.totalVolantaSistemaNaoFunciona += i.volantaSistemaNaoFunciona;
+                    this.totalIndiaTotalSistema += i.indiaTotalSistema;
+                    this.totalIndiaSistemaFunciona += i.indiaSistemaFunciona;
+                    this.totalIndiaSistemaNaoFunciona += i.indiaSistemaNaoFunciona;
+                    this.totalOutroTotalSistema += i.outroTotalSistema;
+                    this.totalOutroSistemaFunciona += i.outroSistemaFunciona;
+                    this.totalOutroSistemaNaoFunciona += i.outroSistemaNaoFunciona;
                 });
             });
     }

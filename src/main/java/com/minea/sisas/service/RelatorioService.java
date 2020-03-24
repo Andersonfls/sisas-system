@@ -461,13 +461,13 @@ public class RelatorioService {
         return retorno;
     }
 
-    //BENEFICIARIOS BOMBA MANUAL - Comunal
-    public List<BeneficiariosBmbManualDTO> beneficiariosAguaBmbManualComunal() {
-        List<BeneficiariosBmbManualDTO> retorno = new ArrayList<>();
-        List<Object[]> list = this.relatorioRepository.beneficiariosAguaBmbManualComunalQuery();
+    //SISTEMA AGUA BOMBA MANUAL - Comunal
+    public List<SistemaAguaBmbManualDTO> sistemaAguaBmbManualComunal() {
+        List<SistemaAguaBmbManualDTO> retorno = new ArrayList<>();
+        List<Object[]> list = this.relatorioRepository.sistemaAguaBmbManualComunalQuery();
         if (Objects.nonNull(list)) {
             list.stream().forEach(i -> {
-                BeneficiariosBmbManualDTO dto = new BeneficiariosBmbManualDTO();
+                SistemaAguaBmbManualDTO dto = new SistemaAguaBmbManualDTO();
 
                 dto.setNomeProvincia((String) i[0]);
                 dto.setNomeMunicipio((String) i[1]);

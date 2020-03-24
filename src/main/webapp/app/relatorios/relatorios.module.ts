@@ -19,7 +19,7 @@ import {SisasBenefAguaTpBombaManualProModule} from './beneficiarios-agua-ft-subt
 import {SisasFuncAguaChafarizesComunalModule} from './funcionamento-agua-chafarizes-comunal/func-agua-chafarizes.module';
 import {SisasFuncAguaChafarizesMunicipalModule} from './funcionamento-agua-chafarizes-municipal/func-agua-chafarizes.module';
 import {SisasFuncAguaChafarizesProvincialModule} from './funcionamento-agua-chafarizes-provincial/func-agua-chafarizes.module';
-import {SisasBenefBmbManualModule} from './beneficiarios-agua-ft-subt-bomb-manual/beneficiarios-bmb-manual.module';
+import {SisasSistemaAguaBmbManualComunalModule} from './sistema-agua-ft-subt-bomb-manual-comunal/sistema-agua-bmb-manual-comunal.module';
 import {SisasBenefBmbEnergiaModule} from './beneficiarios-agua-ft-subt-bomb-energia/beneficiarios-bmb-energia.module';
 import {SisasBeneficiariosTpBombaModule} from './beneficiarios-agua-ft-subt-bomba-energ/beneficiarios-tp-bmb.module';
 
@@ -31,7 +31,7 @@ import {SisasBeneficiariosTpBombaModule} from './beneficiarios-agua-ft-subt-bomb
         SisasTratamentoSistemasAguaModule,
         SisasFuncAguaModule,
         SisasBenefOptTecnicaModule,
-        SisasBenefBmbManualModule,
+        SisasSistemaAguaBmbManualComunalModule,
         SisasBenefBmbEnergiaModule,
         SisasBeneficiariosTpBombaModule,
         SisasSectorAguaProvincialModule,
