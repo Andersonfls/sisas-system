@@ -5,24 +5,24 @@ import { HttpResponse } from '@angular/common/http';
 import { User } from '../../shared/user/user.model';
 import { Principal } from '../../shared/auth/principal.service';
 import {RelatoriosService} from '../relatorios.service';
-import {BeneficiariosBmbEnergia} from './beneficiarios-bmb-energia.model';
+import {BeneficiariosBmbEnergiaProvincial} from './beneficiarios-bmb-energia-provincial.model';
 import * as jsPDF from 'jspdf';
 import {TableUtil} from '../../shared/util/tableUtil';
 import * as html2canvas from 'html2canvas';
 import {DadosRelatorio} from '../cobertura-sector-agua-provincial/dadosRelatorio.model';
 
 @Component({
-    selector: 'jhi-benef-bmb-energia',
-    templateUrl: './beneficiarios-bmb-energia.component.html',
+    selector: 'jhi-benef-bmb-energia-provincial',
+    templateUrl: './beneficiarios-bmb-energia-provincial.component.html',
     styleUrls: [
-        'beneficiarios-bmb-energia.css'
+        'beneficiarios-bmb-energia-provincial.css'
     ]
 })
 
-export class BeneficiariosBombEnergiaComponent implements OnInit {
+export class BeneficiariosBombEnergiaProvincialComponent implements OnInit {
 
     user: User;
-    listaTabela: BeneficiariosBmbEnergia[];
+    listaTabela: BeneficiariosBmbEnergiaProvincial[];
     tipoRelatorio: string;
     predicate: any;
     reverse: any;
@@ -65,6 +65,8 @@ export class BeneficiariosBombEnergiaComponent implements OnInit {
             this.user = userIdentity;
         });
         this.tipoRelatorio = null;
+
+        this.buscaDadosTabelaProvincial();
     }
 
     public captureScreen(elementId) {
@@ -88,37 +90,9 @@ export class BeneficiariosBombEnergiaComponent implements OnInit {
         TableUtil.exportToExcel(tabeId);
     }
 
-    validaTipoRelatorio() {
-        if (this.tipoRelatorio === 'Nível Provincial') {
-            this.buscaDadosTabelaProvincial();
-        }
-/*        if (this.tipoRelatorio === 'Nível Municipal') {
-            this.buscaDadosTabelaMunicipal();
-        }*/
-        if (this.tipoRelatorio === 'Nível Comunal') {
-            this.buscaDadosTabelaComunal();
-        }
-    }
-
-    voltarEscolha() {
-        this.tipoRelatorio = null;
-    }
-
     buscaDadosTabelaProvincial() {
         this.relatorioService.buscaDadosBeneficiariosBmbEnergiaProvincial().subscribe(
-            (res: HttpResponse<BeneficiariosBmbEnergia[]>) => {
-                this.listaTabela = res.body;
-                console.log(this.listaTabela);
-
-                this.listaTabela.forEach( (i) => {
-                    const item: DadosRelatorio = new DadosRelatorio();
-                });
-            });
-    }
-
-    buscaDadosTabelaComunal() {
-        this.relatorioService.buscaDadosBeneficiariosBmbEnergiaComunal().subscribe(
-            (res: HttpResponse<BeneficiariosBmbEnergia[]>) => {
+            (res: HttpResponse<BeneficiariosBmbEnergiaProvincial[]>) => {
                 this.listaTabela = res.body;
                 console.log(this.listaTabela);
 

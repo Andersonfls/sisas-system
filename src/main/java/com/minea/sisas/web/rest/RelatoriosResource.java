@@ -191,7 +191,7 @@ public class RelatoriosResource {
         return this.relatorioService.beneficiariosAguaBmbEnergiaProvincial();
     }
 
-    // BENEFICIARIOS BOMBA ENERGIA (Nivel Municipal)
+    // BENEFICIARIOS BOMBA ENERGIA (Nivel Comunal)
     @GetMapping("/relatorios/benef-bomba-energia-comunal")
     public List<BeneficiariosBmbEnergiaDTO> getDadosBeneficiariosBmbEnergiaComunal() {
         return this.relatorioService.beneficiariosAguaBmbEnergiaComunal();
