@@ -70,7 +70,7 @@ export class BeneficiariosOptTecnicaComponent implements OnInit {
     }
 
     buscaDadosTabela() {
-        this.relatorioService.buscaDadosBenOptTecnicaMunicipal().subscribe(
+        this.relatorioService.buscaDadosBenOptTecnicaProvincial().subscribe(
             (res: HttpResponse<BeneficiariosOptTecnica[]>) => {
                 this.listaTabela = res.body;
 

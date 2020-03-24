@@ -6,20 +6,27 @@ import java.io.Serializable;
 /**
  * A DTO for the Projectos entity.
  */
-public class BeneAguaFtSubterraneaTpBomba implements Serializable {
+public class BeneAguaFtSubterraneaOptTecnicaDTO implements Serializable {
 
     private String nomeProvincia;
     private String nomeMunicipio;
     private String nomeComuna;
-    private Integer numeroPocoMelhorado;
-    private Integer furo;
-    private Integer nascente;
-    private Integer totalBombaGravidade;
-    private Integer populacaoBeneficiadaGravidade;
-    private Integer totalTipoBombaOutros;
-    private Integer qtdPopulacaoOutros;
+    private String fonteAgua;
+    private Integer populacao;
 
-    public BeneAguaFtSubterraneaTpBomba() {
+    private Integer electricaSistemas;
+    private Integer electricaPopulacao;
+    private Float electricaPerc;
+
+    private Integer dieselSistemas;
+    private Integer dieselPopulacao;
+    private Float dieselPerc;
+
+    private Integer gravidadeSistemas;
+    private Integer gravidadePopulacao;
+    private Float gravidadePerc;
+
+    public BeneAguaFtSubterraneaOptTecnicaDTO() {
     }
 
     public String getNomeProvincia() {
@@ -46,59 +53,91 @@ public class BeneAguaFtSubterraneaTpBomba implements Serializable {
         this.nomeComuna = nomeComuna;
     }
 
-    public Integer getNumeroPocoMelhorado() {
-        return numeroPocoMelhorado;
+    public String getFonteAgua() {
+        return fonteAgua;
     }
 
-    public void setNumeroPocoMelhorado(Integer numeroPocoMelhorado) {
-        this.numeroPocoMelhorado = numeroPocoMelhorado;
+    public void setFonteAgua(String fonteAgua) {
+        this.fonteAgua = fonteAgua;
     }
 
-    public Integer getFuro() {
-        return furo;
+    public Integer getPopulacao() {
+        return populacao;
     }
 
-    public void setFuro(Integer furo) {
-        this.furo = furo;
+    public void setPopulacao(Integer populacao) {
+        this.populacao = populacao;
     }
 
-    public Integer getNascente() {
-        return nascente;
+    public Integer getElectricaSistemas() {
+        return electricaSistemas;
     }
 
-    public void setNascente(Integer nascente) {
-        this.nascente = nascente;
+    public void setElectricaSistemas(Integer electricaSistemas) {
+        this.electricaSistemas = electricaSistemas;
     }
 
-    public Integer getTotalBombaGravidade() {
-        return totalBombaGravidade;
+    public Integer getElectricaPopulacao() {
+        return electricaPopulacao;
     }
 
-    public void setTotalBombaGravidade(Integer totalBombaGravidade) {
-        this.totalBombaGravidade = totalBombaGravidade;
+    public void setElectricaPopulacao(Integer electricaPopulacao) {
+        this.electricaPopulacao = electricaPopulacao;
     }
 
-    public Integer getPopulacaoBeneficiadaGravidade() {
-        return populacaoBeneficiadaGravidade;
+    public Float getElectricaPerc() {
+        return electricaPerc;
     }
 
-    public void setPopulacaoBeneficiadaGravidade(Integer populacaoBeneficiadaGravidade) {
-        this.populacaoBeneficiadaGravidade = populacaoBeneficiadaGravidade;
+    public void setElectricaPerc(Float electricaPerc) {
+        this.electricaPerc = electricaPerc;
     }
 
-    public Integer getTotalTipoBombaOutros() {
-        return totalTipoBombaOutros;
+    public Integer getDieselSistemas() {
+        return dieselSistemas;
     }
 
-    public void setTotalTipoBombaOutros(Integer totalTipoBombaOutros) {
-        this.totalTipoBombaOutros = totalTipoBombaOutros;
+    public void setDieselSistemas(Integer dieselSistemas) {
+        this.dieselSistemas = dieselSistemas;
     }
 
-    public Integer getQtdPopulacaoOutros() {
-        return qtdPopulacaoOutros;
+    public Integer getDieselPopulacao() {
+        return dieselPopulacao;
     }
 
-    public void setQtdPopulacaoOutros(Integer qtdPopulacaoOutros) {
-        this.qtdPopulacaoOutros = qtdPopulacaoOutros;
+    public void setDieselPopulacao(Integer dieselPopulacao) {
+        this.dieselPopulacao = dieselPopulacao;
+    }
+
+    public Float getDieselPerc() {
+        return dieselPerc;
+    }
+
+    public void setDieselPerc(Float dieselPerc) {
+        this.dieselPerc = dieselPerc;
+    }
+
+    public Integer getGravidadeSistemas() {
+        return gravidadeSistemas;
+    }
+
+    public void setGravidadeSistemas(Integer gravidadeSistemas) {
+        this.gravidadeSistemas = gravidadeSistemas;
+    }
+
+    public Integer getGravidadePopulacao() {
+        return gravidadePopulacao;
+    }
+
+    public void setGravidadePopulacao(Integer gravidadePopulacao) {
+        this.gravidadePopulacao = gravidadePopulacao;
+    }
+
+    public Float getGravidadePerc() {
+        return gravidadePerc;
+    }
+
+    public void setGravidadePerc(Float gravidadePerc) {
+        this.gravidadePerc = gravidadePerc;
     }
 }

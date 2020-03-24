@@ -23,32 +23,17 @@ export class BeneficiariosOptTecnicaComponent implements OnInit {
 
     user: User;
     listaTabela: BeneficiariosOptTecnica[];
-    tipoRelatorio: string;
     predicate: any;
     reverse: any;
     chart: any;
-    listaFuncionam: DadosRelatorio[];
-    listaNaoFuncionam: DadosRelatorio[];
-    listaNumSistemas: DadosRelatorio[];
 
-    totalSistemas = 0;
+    totalPopulacao = 0;
     totalElectraSistemas = 0;
-    totalElectrafuncionam = 0;
-    totalElectranaoFuncionam = 0;
     totalElectraPopulacao = 0;
-    totalElectraPerc = 0;
-
     totalDieselSistemas = 0;
-    totalDieselfuncionam = 0;
-    totalDieselnaoFuncionam = 0;
     totalDieselPopulacao = 0;
-    totalDieselPerc = 0;
-
     totalGravidadeSistemas = 0;
-    totalGravidadefuncionam = 0;
-    totalGravidadenaoFuncionam = 0;
     totalGravidadePopulacao = 0;
-    totalGravidadePerc = 0;
 
     constructor(
         private jhiAlertService: JhiAlertService,
@@ -61,7 +46,7 @@ export class BeneficiariosOptTecnicaComponent implements OnInit {
         this.principal.identity().then((userIdentity) => {
             this.user = userIdentity;
         });
-        this.tipoRelatorio = null;
+        this.buscaDadosTabela();
     }
 
     public captureScreen(elementId) {
@@ -85,34 +70,20 @@ export class BeneficiariosOptTecnicaComponent implements OnInit {
         TableUtil.exportToExcel(tabeId);
     }
 
-    validaTipoRelatorio() {
-        if (this.tipoRelatorio === 'Nível Provincial') {
-            this.buscaDadosTabela();
-        }
-        if (this.tipoRelatorio === 'Nível Municipal') {
-            this.buscaDadosTabela();
-        }
-        if (this.tipoRelatorio === 'Nível Comunal') {
-            this.buscaDadosTabela();
-        }
-    }
-
-    voltarEscolha() {
-        this.tipoRelatorio = null;
-    }
-
     buscaDadosTabela() {
-        this.relatorioService.buscaDadosFuncAguaChafarizMunicipal().subscribe(
+        this.relatorioService.buscaDadosBenOptTecnicaComunal().subscribe(
             (res: HttpResponse<BeneficiariosOptTecnica[]>) => {
                 this.listaTabela = res.body;
-                console.log(this.listaTabela);
-
-                this.listaNaoFuncionam = new Array();
-                this.listaFuncionam = new Array();
-                this.listaNumSistemas = new Array();
 
                 this.listaTabela.forEach( (i) => {
-                    const item: DadosRelatorio = new DadosRelatorio();
+                    this.totalPopulacao += i.populacao;
+                    this.totalElectraSistemas += i.electricaSistemas;
+                    this.totalElectraPopulacao += i.electricaPopulacao;
+                    this.totalDieselSistemas += i.dieselSistemas;
+                    this.totalDieselPopulacao += i.dieselPopulacao;
+                    this.totalGravidadeSistemas += i.gravidadeSistemas;
+                    this.totalGravidadePopulacao += i.gravidadePopulacao;
+
                 });
             });
     }

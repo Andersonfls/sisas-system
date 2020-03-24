@@ -1,4 +1,3 @@
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <div>
     <jhi-alert></jhi-alert>
 
@@ -15,13 +14,13 @@
         </div>
         <div id="comunal">
             <h2 class="text-centro" style="margin-left: 2%; font-size: 1.4rem;">
-                <span>Beneficiários de Água por Fonte Superficial e por Opcão Técnica (Nível Comunal)</span>
+                <span>Beneficiários de Água por Fonte Superficial e por Opcão Técnica (Nível Municipal)</span>
             </h2>
         <div class="table-responsive" *ngIf="listaTabela">
             <table id="tbcomu" class="table table-striped">
                 <thead>
                 <tr  class="borda-th" style="background-color: #1f749c">
-                    <th class="borda-th" colspan="5"></th>
+                    <th class="borda-th" colspan="4"></th>
                     <th class="borda-th" colspan="3"><span style="margin-left: 30%">Electrica</span></th>
                     <th class="borda-th" colspan="3"><span style="margin-left: 30%">Diesel</span></th>
                     <th class="borda-th"colspan="3"><span style="margin-left: 30%">Gravidade</span></th>
@@ -29,7 +28,6 @@
                 <tr class="borda-th" style="background-color: #1f749c">
                     <th class="borda-th"><span>Província</span></th>
                     <th class="borda-th"><span>Municipios</span></th>
-                    <th class="borda-th"><span>Comuna</span></th>
                     <th style="max-width: 160px;" class="borda-th"><span>Fonte de Agua(Rio,Lagoa,Vetente,Nascente,etc.)</span></th>
                     <th class="borda-th"><span>População</span></th>
                     <th class="borda-th"><span>N°.Sist.</span></th>
@@ -47,7 +45,6 @@
                 <tr *ngFor="let provincia of listaTabela">
                     <td class="text-centro">{{provincia.nomeProvincia}}</td>
                     <td class="text-centro">{{provincia.nomeMunicipio}}</td>
-                    <td class="text-centro">{{provincia.nomeComuna}}</td>
                     <td class="text-centro">{{provincia.fonteAgua}}</td>
                     <td class="text-centro">{{provincia.populacao | number}}</td>
                     <td class="text-centro">{{provincia.electricaSistemas}}</td>
@@ -63,7 +60,7 @@
                 </tbody>
                 <tfoot>
                 <tr class="borda-th" style="background-color: #1f749c">
-                    <td colspan="4"> <span style="font-weight: bold">Total Comunal: </span></td>
+                    <td colspan="3"> <span style="font-weight: bold">Total Municipal: </span></td>
                     <td class="text-centro"> <span style="font-weight: bold">{{totalPopulacao | number }}</span></td>
                     <td class="text-centro"> <span style="font-weight: bold">{{totalElectraSistemas | number }}</span></td>
                     <td class="text-centro"> <span style="font-weight: bold">{{totalElectraPopulacao | number}}</span></td>

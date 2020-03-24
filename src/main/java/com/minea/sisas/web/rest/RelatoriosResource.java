@@ -41,12 +41,6 @@ public class RelatoriosResource {
         this.relatorioRepository = relatorioRepository;
     }
 
-//    @GetMapping("relatorios/provincias/relatorio")
-//    public List<SectorAguaDadosDTO> getAllDadosProvincias() {
-//
-//        return this.relatorioService.montaListaEstáticaParaTeste();
-//    }
-
     //RELATORIO COBERTURA DE SERVICOS DE AGUA
     @GetMapping("relatorios/provincias/relatorio-saneamento")
     public List<SectorAguaSaneamentoDadosDTO> getAllDadosAguaAmbito() {
@@ -271,5 +265,22 @@ public class RelatoriosResource {
     @GetMapping("/relatorios/func-agua-chaf-comunal")
     public List<FuncAguaChafarizesDadosDTO> getDadosFuncAguaChafarizesComunal() {
         return this.relatorioService.funcionamentoServicosAguaChafarizesComunal();
+    }
+
+    //BENEFICIARIOS DE AGUA POR FONTE SUPERFICIAL E POR OPCAO TECNICA
+
+    @GetMapping("/relatorios/ben-opt-tecnica-provincial")
+    public List<BeneAguaFtSubterraneaOptTecnicaDTO> getDadosBenOptTecnicaProvincial() {
+        return this.relatorioService.beneficiariosFtSubtOptTecnicaProvincial();
+    }
+
+    @GetMapping("/relatorios/ben-opt-tecnica-municipal")
+    public List<BeneAguaFtSubterraneaOptTecnicaDTO> getDadosBenOptTecnicaMunicipal() {
+        return this.relatorioService.beneficiariosFtSubtOptTecnicaMunicipal();
+    }
+
+    @GetMapping("/relatorios/ben-opt-tecnica-comunal")
+    public List<BeneAguaFtSubterraneaOptTecnicaDTO> getDadosBenOptTecnicaComunal() {
+        return this.relatorioService.beneficiariosFtSubtOptTecnicaComunal();
     }
 }

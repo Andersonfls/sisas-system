@@ -29,4 +29,4 @@ const ENTITY_STATES = [
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class SisasBenefOptTecnicaComunalModule {}
+export class SisasBenefOptTecnicaMunicipalModule {}

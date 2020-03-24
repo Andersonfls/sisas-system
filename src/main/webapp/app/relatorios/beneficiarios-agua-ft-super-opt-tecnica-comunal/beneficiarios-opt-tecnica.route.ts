@@ -22,7 +22,7 @@ export class BeneficiariosOptTecnicaResolvePagingParams implements Resolve<any> 
 
 export const beneficiariosOptTecnicaRoute: Routes = [
     {
-        path: 'ben-ft-super-opt-tecnica',
+        path: 'ben-ft-super-opt-tecnica-comunal',
         component: BeneficiariosOptTecnicaComponent,
         resolve: {
             'pagingParams': BeneficiariosOptTecnicaResolvePagingParams
