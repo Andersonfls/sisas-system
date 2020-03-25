@@ -64,33 +64,28 @@
                 </thead>
                 <tbody>
                 <tr *ngFor="let provincia of listaTabela">
-                    <td>{{provincia.nomeProvincia}}</td>
-                    <td>{{provincia.nomeMunicipio}}</td>
-                    <td>{{provincia.nomeComuna}}</td>
-                    <td>{{provincia.pocoMelhorado}}</td>
-                    <td>{{provincia.furo}}</td>
-                    <td>{{provincia.nascente}}</td>
-                    <td>{{provincia.totalSistemas}}</td>
-
-                    <td>{{provincia.afridevTotalSistema}}</td>
-                    <td>{{provincia.afridevSistemaFunciona}}</td>
-                    <td>{{provincia.afridevSistemaNaoFunciona}}</td>
-
-                    <td>{{provincia.vergnetTotalSistema}}</td>
-                    <td>{{provincia.vergnetSistemaFunciona}}</td>
-                    <td>{{provincia.vergnetSistemaNaoFunciona}}</td>
-
-                    <td>{{provincia.volantTotalSistema}}</td>
-                    <td>{{provincia.volantSistemaFunciona}}</td>
-                    <td>{{provincia.volantSistemaNaoFunciona}}</td>
-
-                    <td>{{provincia.indiaTotalSistema}}</td>
-                    <td>{{provincia.indiaSistemaFunciona}}</td>
-                    <td>{{provincia.indiaSistemaNaoFunciona}}</td>
-
-                    <td>{{provincia.outroTotalSistema}}</td>
-                    <td>{{provincia.outroSistemaFunciona}}</td>
-                    <td>{{provincia.outroSistemaNaoFunciona}}</td>
+                    <td class="borda-th">{{provincia.nomeProvincia}}</td>
+                    <td class="borda-th">{{provincia.nomeMunicipio}}</td>
+                    <td class="borda-th">{{provincia.nomeComuna}}</td>
+                    <td class="borda-th">{{provincia.pocoMelhorado}}</td>
+                    <td class="borda-th">{{provincia.furo}}</td>
+                    <td class="borda-th">{{provincia.nascente}}</td>
+                    <td class="borda-th">{{provincia.totalSistemas}}</td>
+                    <td class="borda-th">{{provincia.afridevTotalSistema}}</td>
+                    <td class="borda-th">{{provincia.afridevSistemaFunciona}}</td>
+                    <td class="borda-th">{{provincia.afridevSistemaNaoFunciona}}</td>
+                    <td class="borda-th">{{provincia.vergnetTotalSistema}}</td>
+                    <td class="borda-th">{{provincia.vergnetSistemaFunciona}}</td>
+                    <td class="borda-th">{{provincia.vergnetSistemaNaoFunciona}}</td>
+                    <td class="borda-th">{{provincia.volantTotalSistema}}</td>
+                    <td class="borda-th">{{provincia.volantSistemaFunciona}}</td>
+                    <td class="borda-th">{{provincia.volantSistemaNaoFunciona}}</td>
+                    <td class="borda-th">{{provincia.indiaTotalSistema}}</td>
+                    <td class="borda-th">{{provincia.indiaSistemaFunciona}}</td>
+                    <td class="borda-th">{{provincia.indiaSistemaNaoFunciona}}</td>
+                    <td class="borda-th">{{provincia.outroTotalSistema}}</td>
+                    <td class="borda-th">{{provincia.outroSistemaFunciona}}</td>
+                    <td class="borda-th">{{provincia.outroSistemaNaoFunciona}}</td>
 
                 </tr>
                 </tbody>
@@ -100,7 +95,7 @@
                     <td> <span style="font-weight: bold"></span></td>
                     <td> <span style="font-weight: bold">Total Comunal: </span></td>
                     <!--<td> <span style="font-weight: bold">{{totalPopulacao | number }}</span></td>-->
-                    <td> <span style="font-weight: bold">{{totalPocoMelhorado | number }}</span></td>
+                    <td> <span style="font-weight: bold">{{totalPocoMelhorado | number}}</span></td>
                     <td> <span style="font-weight: bold">{{totalFuro | number}}</span></td>
                     <td> <span style="font-weight: bold">{{totalNascente | number}}</span></td>
                     <td> <span style="font-weight: bold">{{totalSistemaTotal | number}}</span></td>

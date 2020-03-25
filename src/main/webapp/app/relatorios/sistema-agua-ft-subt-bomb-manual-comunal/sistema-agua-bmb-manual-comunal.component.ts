@@ -103,9 +103,9 @@ export class SistemaAguaBombManualComunalComponent implements OnInit {
                     this.totalAfridevTotalSistema += i.afridevTotalSistema;
                     this.totalAfridevSistemaFunciona += i.afridevSistemaFunciona;
                     this.totalAfridevSistemaNaoFunciona += i.afridevSistemaNaoFunciona;
+                    this.totalVergnetTotalSistema += i.vergnetTotalSistema;
                     this.totalVergnetSistemaFunciona += i.vergnetSistemaFunciona;
                     this.totalVergnetSistemaNaoFunciona += i.vergnetSistemaNaoFunciona;
-                    this.totalVergnetTotalSistema += i.vergnetTotalSistema;
                     this.totalVolantaTotalSistema += i.volantaTotalSistema;
                     this.totalVolantaSistemaFunciona += i.volantaSistemaFunciona;
                     this.totalVolantaSistemaNaoFunciona += i.volantaSistemaNaoFunciona;
