@@ -1,0 +1,120 @@
+<div>
+    <br>
+    <div class="export-container">
+        <button type="button" (click)="exportTable('tbmuni')" class="btn btn-primary btn-sm">
+            <span class="fa fa-file-excel-o"></span>
+            <span class="d-none d-md-inline">Excel</span>
+        </button>
+        <button type="button" (click)="captureScreen('muni')" class="btn btn-primary btn-sm">
+            <span class="fas fa-file-pdf"></span>
+            <span class="d-none d-md-inline">PDF</span>
+        </button>
+    </div>
+    <jhi-alert></jhi-alert>
+    <br>
+
+    <div class="card">
+        <div id="muni">
+            <h2 class="text-centro">
+                <span>Beneficiários de Água por Fonte Subterrânea e por Bomba Mecanica (Nível Municipal)</span>
+            </h2>
+        <div class="table-responsive" *ngIf="listaTabela">
+            <table id="tbmuni" class="table table-striped">
+                <thead>
+                <tr style="background-color: #1f749c">
+                    <th colspan="6"></th>
+                    <th class="text-centro" colspan="15"><span>Tipo de Bomba Mecanica/Energia</span></th>
+                </tr>
+
+                <tr style="background-color: #1f749c">
+                    <th colspan="6"></th>
+                    <th class="borda-th" colspan="3"><span style="margin-left: 30%">Diesel</span></th>
+                    <th class="borda-th" colspan="3"><span style="margin-left: 30%">Solar</span></th>
+                    <th class="borda-th" colspan="3"><span style="margin-left: 30%">Eólica</span></th>
+                    <th class="borda-th" colspan="3"><span style="margin-left: 30%">Electrica</span></th>
+                    <th class="borda-th" colspan="3"><span style="margin-left: 30%">Outro</span></th>
+                </tr>
+                <tr style="background-color: #1f749c">
+                    <th class="borda-th"><span>Província</span></th>
+                    <th class="borda-th"><span>Municipio</span></th>
+                    <th class="borda-th"><span>Populacao</span></th>
+                    <th class="borda-th"><span>Poco melhorado</span></th>
+                    <th class="borda-th"><span>Furo</span></th>
+                    <th class="borda-th"><span>Nascente</span></th>
+                    <th class="borda-th"><span>N° Sist</span></th>
+                    <th class="borda-th"><span>Pop.Benef</span></th>
+                    <th class="borda-th"><span>(%)</span></th>
+                    <th class="borda-th"><span>N° Sist</span></th>
+                    <th class="borda-th"><span>Pop.Benef</span></th>
+                    <th class="borda-th"><span>(%)</span></th>
+                    <th class="borda-th"><span>N° Sist</span></th>
+                    <th class="borda-th"><span>Pop.Benef</span></th>
+                    <th class="borda-th"><span>(%)</span></th>
+                    <th class="borda-th"><span>N° Sist</span></th>
+                    <th class="borda-th"><span>Pop.Benef</span></th>
+                    <th class="borda-th"><span>(%)</span></th>
+                    <th class="borda-th"><span>N° Sist</span></th>
+                    <th class="borda-th"><span>Pop.Benef</span></th>
+                    <th class="borda-th"><span>(%)</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let provincia of listaTabela">
+                    <td >{{provincia.nomeProvincia}}</td>
+                    <td>{{provincia.nomeMunicipio}}</td>
+                    <td class="text-centro">{{provincia.pocoMelhorado}}</td>
+                    <td class="text-centro">{{provincia.furo}}</td>
+                    <td class="text-centro">{{provincia.nascente}}</td>
+                    <td class="text-centro">{{provincia.dieselSistemas}}</td>
+                    <td class="text-centro">{{provincia.dieselPopulacao}}</td>
+                    <td class="text-centro">{{provincia.dieselPercent}}</td>
+                    <td class="text-centro">{{provincia.solarSistemas}}</td>
+                    <td class="text-centro">{{provincia.solarPopulacao}}</td>
+                    <td class="text-centro">{{provincia.solarPercent}}</td>
+                    <td class="text-centro">{{provincia.eolicaSistemas}}</td>
+                    <td class="text-centro">{{provincia.eolicaPopulacao}}</td>
+                    <td class="text-centro">{{provincia.eolicaPercent}}</td>
+                    <td class="text-centro">{{provincia.electricaSistemas}}</td>
+                    <td class="text-centro">{{provincia.electricaPopulacao}}</td>
+                    <td class="text-centro">{{provincia.electricaPercent}}</td>
+                    <td class="text-centro">{{provincia.outroSistemas}}</td>
+                    <td class="text-centro">{{provincia.outroPopulacao}}</td>
+                    <td class="text-centro">{{provincia.outroPercent}}</td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr style="background-color: #1f749c" class="borda-th">
+                    <td colspan="2"> <span style="font-weight: bold">Total Municipal:</span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{totalPopulacao | number }}</span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{totalPocoMelhorado | number }}</span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{totalFuro | number}}</span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{totalNascente | number}}</span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{totalDieselSistema | number }} </span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{totalDieselPopulacao | number }}</span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{((totalDieselPopulacao *100) / totalPopulacao) | number:'1.2-2'}}%</span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{totalSolarSistema | number }}</span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{totalSolarPopulacao | number }}</span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{((totalSolarPopulacao *100) / totalPopulacao) | number:'1.2-2'}}%</span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{totalEolicaSistema | number }}</span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{totalEolicaPopulacao | number }}</span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{((totalEolicaPopulacao *100) / totalPopulacao) | number:'1.2-2'}}%</span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{totalElectricaSistema | number }}</span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{totalElectricaPopulacao | number }}</span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{((totalElectricaPopulacao *100) / totalPopulacao) | number:'1.2-2'}}%</span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{totalOutroSistema | number }}</span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{totalOutroPopulacao | number }}</span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{((totalOutroPopulacao *100) / totalPopulacao) | number:'1.2-2'}}%</span></td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+        </div>
+    </div>
+    <br>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" [routerLink]="['/../../dashboard']"  >
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+    </div>
+</div>

@@ -283,4 +283,16 @@ public class RelatoriosResource {
     public List<BeneAguaFtSubterraneaOptTecnicaDTO> getDadosBenOptTecnicaComunal() {
         return this.relatorioService.beneficiariosFtSubtOptTecnicaComunal();
     }
+
+    //BENEFICIARIOS DE AGUA POR FONTE SUBTERRANEA E POR BOMBA MECANICA
+
+    @GetMapping("/relatorios/ben-bmb-mecanica-municipal")
+    public List<BeneficiariosBmbMecanicaDTO> getDadosBenFtSubtBmbMecanicaMunicipal() {
+        return this.relatorioService.beneficiariosFtSubtBmbMecanicaMunicipal();
+    }
+
+    @GetMapping("/relatorios/ben-bmb-mecanica-comunal")
+    public List<BeneficiariosBmbMecanicaDTO> getDadosBenFtSubtBmbMecanicaComunal() {
+        return this.relatorioService.beneficiariosFtSubtBmbMecanicaComunal();
+    }
 }

@@ -1380,4 +1380,10 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "    s.NM_FONTE_AGUA_UTILIZADA",nativeQuery = true)
     List<Object[]> buscaDadosBenefFtSubtOptTecnicaComunal();
 
+    @Query(value = "", nativeQuery = true)
+    List<Object[]> buscaDadosBenefFtSubtBmbMecanicaComunal();
+
+    @Query(value = "", nativeQuery = true)
+    List<Object[]> buscaDadosBenefFtSubtBmbMecanicaMunicipal();
+
 }

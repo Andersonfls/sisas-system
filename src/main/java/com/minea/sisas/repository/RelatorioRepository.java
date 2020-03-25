@@ -1819,5 +1819,10 @@ public interface RelatorioRepository extends JpaRepository<Provincia, Long>, Jpa
         "    s.NM_FONTE_AGUA_UTILIZADA", nativeQuery = true)
     List<Object[]> buscaDadosBenefFtSubtOptTecnicaComunal(@Param("provinciaId") Long provinciaId);
 
+    @Query(value = "", nativeQuery = true)
+    List<Object[]> buscaDadosBenefFtSubtBmbMecanicaMunicipal(@Param("provinciaId") Long provinciaId);
+
+    @Query(value = "", nativeQuery = true)
+    List<Object[]> buscaDadosBenefFtSubtBmbMecanicaComunal(@Param("provinciaId") Long provinciaId);
 
 }

@@ -1061,4 +1061,75 @@ public class RelatorioService {
         }
         return retorno;
     }
+
+    //BOMBA MECANICA
+    public List<BeneficiariosBmbMecanicaDTO> beneficiariosFtSubtBmbMecanicaMunicipal() {
+        User user = buscaUsuarioLogado();
+        List<Object[]> list;
+        List<BeneficiariosBmbMecanicaDTO> retorno = new ArrayList<>();
+        if (isAdminGeral(user)) {
+            list = this.relatorioAdminRepository.buscaDadosBenefFtSubtBmbMecanicaMunicipal();
+        } else {
+            list = this.relatorioRepository.buscaDadosBenefFtSubtBmbMecanicaMunicipal(user.getProvincia().getId());
+        }
+        if (Objects.nonNull(list)) {
+            list.stream().forEach(i -> {
+                BeneficiariosBmbMecanicaDTO dto = new BeneficiariosBmbMecanicaDTO();
+//                dto.setNomeProvincia((String) i[0]);
+//                dto.setNomeMunicipio((String) i[1]);
+//                dto.setNomeComuna((String) i[2]);
+//                if (Objects.nonNull(i[3])) {
+//                    dto.setFonteAgua(((String) i[3]));
+//                }
+//                dto.setPopulacao(((BigInteger) i[4]).intValue());
+//                dto.setElectricaSistemas(((BigInteger) i[5]).intValue());
+//                dto.setElectricaPopulacao(((BigDecimal) i[6]).intValue());
+//                dto.setElectricaPerc(((BigDecimal) i[7]).floatValue());
+//                dto.setDieselSistemas(((BigInteger) i[8]).intValue());
+//                dto.setDieselPopulacao(((BigDecimal) i[9]).intValue());
+//                dto.setDieselPerc(((BigDecimal) i[10]).floatValue());
+//                dto.setGravidadeSistemas(((BigInteger) i[11]).intValue());
+//                dto.setGravidadePopulacao(((BigDecimal) i[12]).intValue());
+//                dto.setGravidadePerc(((BigDecimal) i[13]).floatValue());
+
+                retorno.add(dto);
+            });
+        }
+        return retorno;
+    }
+
+    public List<BeneficiariosBmbMecanicaDTO> beneficiariosFtSubtBmbMecanicaComunal() {
+        User user = buscaUsuarioLogado();
+        List<Object[]> list;
+        List<BeneficiariosBmbMecanicaDTO> retorno = new ArrayList<>();
+        if (isAdminGeral(user)) {
+            list = this.relatorioAdminRepository.buscaDadosBenefFtSubtBmbMecanicaComunal();
+        } else {
+            list = this.relatorioRepository.buscaDadosBenefFtSubtBmbMecanicaComunal(user.getProvincia().getId());
+        }
+        if (Objects.nonNull(list)) {
+            list.stream().forEach(i -> {
+                BeneficiariosBmbMecanicaDTO dto = new BeneficiariosBmbMecanicaDTO();
+//                dto.setNomeProvincia((String) i[0]);
+//                dto.setNomeMunicipio((String) i[1]);
+//                dto.setNomeComuna((String) i[2]);
+//                if (Objects.nonNull(i[3])) {
+//                    dto.setFonteAgua(((String) i[3]));
+//                }
+//                dto.setPopulacao(((BigInteger) i[4]).intValue());
+//                dto.setElectricaSistemas(((BigInteger) i[5]).intValue());
+//                dto.setElectricaPopulacao(((BigDecimal) i[6]).intValue());
+//                dto.setElectricaPerc(((BigDecimal) i[7]).floatValue());
+//                dto.setDieselSistemas(((BigInteger) i[8]).intValue());
+//                dto.setDieselPopulacao(((BigDecimal) i[9]).intValue());
+//                dto.setDieselPerc(((BigDecimal) i[10]).floatValue());
+//                dto.setGravidadeSistemas(((BigInteger) i[11]).intValue());
+//                dto.setGravidadePopulacao(((BigDecimal) i[12]).intValue());
+//                dto.setGravidadePerc(((BigDecimal) i[13]).floatValue());
+
+                retorno.add(dto);
+            });
+        }
+        return retorno;
+    }
 }

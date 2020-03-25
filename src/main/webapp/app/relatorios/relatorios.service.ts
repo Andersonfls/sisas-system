@@ -17,6 +17,7 @@ import {BeneficiariosBmbEnergiaProvincial} from './beneficiarios-agua-ft-subt-bo
 import {BeneficiariosBmbEnergiaComunal} from './beneficiarios-agua-ft-subt-bomb-energia-comunal/beneficiarios-bmb-energia-comunal.model';
 import {SistemaAguaBmbManualComunal} from './sistema-agua-ft-subt-bomb-manual-comunal/sistema-agua-bmb-manual-comunal.model';
 import {BeneficiariosOptTecnica} from './beneficiarios-agua-ft-super-opt-tecnica-comunal/BeneficiariosOptTecnica.model';
+import {BeneficiariosBmbMecanica} from './beneficiarios-agua-ft-subt-bmb-mecanica-municipal/beneficiarios-bmb-mecanica.model';
 
 export type EntityResponseType = HttpResponse<Provincia>;
 
@@ -158,4 +159,15 @@ export class RelatoriosService {
         const options = createRequestOption(req);
         return this.http.get<BeneficiariosOptTecnica[]>(this.resourceUrl + '/ben-opt-tecnica-comunal', {params: options, observe: 'response'});
     }
+
+    buscaDadosBenFtSubtBbmMecanicaMunicipal(req?: any): Observable<HttpResponse<BeneficiariosBmbMecanica[]>> {
+        const options = createRequestOption(req);
+        return this.http.get<BeneficiariosBmbMecanica[]>(this.resourceUrl + '/ben-bmb-mecanica-municipal', {params: options, observe: 'response'});
+    }
+
+    buscaDadosBenFtSubtBbmMecanicaComunal(req?: any): Observable<HttpResponse<BeneficiariosBmbMecanica[]>> {
+        const options = createRequestOption(req);
+        return this.http.get<BeneficiariosBmbMecanica[]>(this.resourceUrl + '/ben-bmb-mecanica-comunal', {params: options, observe: 'response'});
+    }
+
 }
