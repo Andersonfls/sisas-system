@@ -4,7 +4,6 @@ import {SisasInqueritosPreenchidosModule} from './inqueritos-preenchidos/inqueri
 import {RelatoriosService} from './relatorios.service';
 import {SisasTratamentoSistemasAguaModule} from './tratamento-sistemas-agua/tratamento-sistemas-agua.module';
 import {SisasFuncAguaModule} from './funcionamento-agua/func-agua.module';
-import {SisasBenefOptTecnicaModule} from './beneficiarios-agua-ft-super-opt-tecnica/beneficiarios-opt-tecnica.module';
 import {SisasIndicadorProducaoProvinciaModule} from './indicador-producao/indicador-producao-provincia.module';
 import {SisasSectorAguaProvincialModule} from './cobertura-sector-agua-provincial/sector-agua.module';
 import {SisasSectorAguaComunalModule} from './cobertura-sector-agua-comunal/sector-agua.module';
@@ -23,6 +22,9 @@ import {SisasSistemaAguaBmbManualComunalModule} from './sistema-agua-ft-subt-bom
 import {SisasBenefBmbEnergiaComunalModule} from './beneficiarios-agua-ft-subt-bomb-energia-comunal/beneficiarios-bmb-energia-comunal.module';
 import {SisasBenefBmbEnergiaProvincialModule} from './beneficiarios-agua-ft-subt-bomb-energia-provincial/beneficiarios-bmb-energia-provincial.module';
 import {SisasBeneficiariosTpBombaModule} from './beneficiarios-agua-ft-subt-bomba-energ/beneficiarios-tp-bmb.module';
+import {SisasBenefOptTecnicaComunalModule} from './beneficiarios-agua-ft-super-opt-tecnica-comunal/beneficiarios-opt-tecnica.module';
+import {SisasBenefOptTecnicaMunicipalModule} from './beneficiarios-agua-ft-super-opt-tecnica-municipal/beneficiarios-opt-tecnica.module';
+import {SisasBenefOptTecnicaProvincialModule} from './beneficiarios-agua-ft-super-opt-tecnica-provincial/beneficiarios-opt-tecnica.module';
 
 @NgModule({
     imports: [
@@ -31,7 +33,6 @@ import {SisasBeneficiariosTpBombaModule} from './beneficiarios-agua-ft-subt-bomb
         SisasInqueritosPreenchidosModule,
         SisasTratamentoSistemasAguaModule,
         SisasFuncAguaModule,
-        SisasBenefOptTecnicaModule,
         SisasSistemaAguaBmbManualComunalModule,
         SisasBenefBmbEnergiaProvincialModule,
         SisasBenefBmbEnergiaComunalModule,
@@ -48,7 +49,10 @@ import {SisasBeneficiariosTpBombaModule} from './beneficiarios-agua-ft-subt-bomb
         SisasBenefAguaTpBombaManualProModule,
         SisasFuncAguaChafarizesComunalModule,
         SisasFuncAguaChafarizesMunicipalModule,
-        SisasFuncAguaChafarizesProvincialModule
+        SisasFuncAguaChafarizesProvincialModule,
+        SisasBenefOptTecnicaComunalModule,
+        SisasBenefOptTecnicaMunicipalModule,
+        SisasBenefOptTecnicaProvincialModule
     ],
     declarations: [],
     entryComponents: [],

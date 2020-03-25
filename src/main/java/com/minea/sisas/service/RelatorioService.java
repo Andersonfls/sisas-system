@@ -958,4 +958,107 @@ public class RelatorioService {
         return retorno;
     }
 
+    //BENEFICIARIOS DE AGUA POR FONTE SUPERFICIAL E POR OPCAO TECNICA
+
+    public List<BeneAguaFtSubterraneaOptTecnicaDTO> beneficiariosFtSubtOptTecnicaProvincial() {
+        User user = buscaUsuarioLogado();
+        List<Object[]> list;
+        List<BeneAguaFtSubterraneaOptTecnicaDTO> retorno = new ArrayList<>();
+        if (isAdminGeral(user)) {
+            list = this.relatorioAdminRepository.buscaDadosBenefFtSubtOptTecnicaProvincial();
+        } else {
+            list = this.relatorioRepository.buscaDadosBenefFtSubtOptTecnicaProvincial(user.getProvincia().getId());
+        }
+        if (Objects.nonNull(list)) {
+            list.stream().forEach(i -> {
+                BeneAguaFtSubterraneaOptTecnicaDTO dto = new BeneAguaFtSubterraneaOptTecnicaDTO();
+                dto.setNomeProvincia((String) i[0]);
+                if (Objects.nonNull(i[1])) {
+                    dto.setFonteAgua(((String) i[1]));
+                }
+                dto.setPopulacao(((BigInteger) i[2]).intValue());
+                dto.setElectricaSistemas(((BigInteger) i[3]).intValue());
+                dto.setElectricaPopulacao(((BigDecimal) i[4]).intValue());
+                dto.setElectricaPerc(((BigDecimal) i[5]).floatValue());
+                dto.setDieselSistemas(((BigInteger) i[6]).intValue());
+                dto.setDieselPopulacao(((BigDecimal) i[7]).intValue());
+                dto.setDieselPerc(((BigDecimal) i[8]).floatValue());
+                dto.setGravidadeSistemas(((BigInteger) i[9]).intValue());
+                dto.setGravidadePopulacao(((BigDecimal) i[10]).intValue());
+                dto.setGravidadePerc(((BigDecimal) i[11]).floatValue());
+
+                retorno.add(dto);
+            });
+        }
+        return retorno;
+    }
+
+    public List<BeneAguaFtSubterraneaOptTecnicaDTO> beneficiariosFtSubtOptTecnicaMunicipal() {
+        User user = buscaUsuarioLogado();
+        List<Object[]> list;
+        List<BeneAguaFtSubterraneaOptTecnicaDTO> retorno = new ArrayList<>();
+        if (isAdminGeral(user)) {
+            list = this.relatorioAdminRepository.buscaDadosBenefFtSubtOptTecnicaMunicipal();
+        } else {
+            list = this.relatorioRepository.buscaDadosBenefFtSubtOptTecnicaMunicipal(user.getProvincia().getId());
+        }
+        if (Objects.nonNull(list)) {
+            list.stream().forEach(i -> {
+                BeneAguaFtSubterraneaOptTecnicaDTO dto = new BeneAguaFtSubterraneaOptTecnicaDTO();
+                dto.setNomeProvincia((String) i[0]);
+                dto.setNomeMunicipio((String) i[1]);
+                if (Objects.nonNull(i[2])) {
+                    dto.setFonteAgua(((String) i[2]));
+                }
+                dto.setPopulacao(((BigInteger) i[3]).intValue());
+                dto.setElectricaSistemas(((BigInteger) i[4]).intValue());
+                dto.setElectricaPopulacao(((BigDecimal) i[5]).intValue());
+                dto.setElectricaPerc(((BigDecimal) i[6]).floatValue());
+                dto.setDieselSistemas(((BigInteger) i[7]).intValue());
+                dto.setDieselPopulacao(((BigDecimal) i[8]).intValue());
+                dto.setDieselPerc(((BigDecimal) i[9]).floatValue());
+                dto.setGravidadeSistemas(((BigInteger) i[10]).intValue());
+                dto.setGravidadePopulacao(((BigDecimal) i[11]).intValue());
+                dto.setGravidadePerc(((BigDecimal) i[12]).floatValue());
+
+                retorno.add(dto);
+            });
+        }
+        return retorno;
+    }
+
+    public List<BeneAguaFtSubterraneaOptTecnicaDTO> beneficiariosFtSubtOptTecnicaComunal() {
+        User user = buscaUsuarioLogado();
+        List<Object[]> list;
+        List<BeneAguaFtSubterraneaOptTecnicaDTO> retorno = new ArrayList<>();
+        if (isAdminGeral(user)) {
+            list = this.relatorioAdminRepository.buscaDadosBenefFtSubtOptTecnicaComunal();
+        } else {
+            list = this.relatorioRepository.buscaDadosBenefFtSubtOptTecnicaComunal(user.getProvincia().getId());
+        }
+        if (Objects.nonNull(list)) {
+            list.stream().forEach(i -> {
+                BeneAguaFtSubterraneaOptTecnicaDTO dto = new BeneAguaFtSubterraneaOptTecnicaDTO();
+                dto.setNomeProvincia((String) i[0]);
+                dto.setNomeMunicipio((String) i[1]);
+                dto.setNomeComuna((String) i[2]);
+                if (Objects.nonNull(i[3])) {
+                    dto.setFonteAgua(((String) i[3]));
+                }
+                dto.setPopulacao(((BigInteger) i[4]).intValue());
+                dto.setElectricaSistemas(((BigInteger) i[5]).intValue());
+                dto.setElectricaPopulacao(((BigDecimal) i[6]).intValue());
+                dto.setElectricaPerc(((BigDecimal) i[7]).floatValue());
+                dto.setDieselSistemas(((BigInteger) i[8]).intValue());
+                dto.setDieselPopulacao(((BigDecimal) i[9]).intValue());
+                dto.setDieselPerc(((BigDecimal) i[10]).floatValue());
+                dto.setGravidadeSistemas(((BigInteger) i[11]).intValue());
+                dto.setGravidadePopulacao(((BigDecimal) i[12]).intValue());
+                dto.setGravidadePerc(((BigDecimal) i[13]).floatValue());
+
+                retorno.add(dto);
+            });
+        }
+        return retorno;
+    }
 }
