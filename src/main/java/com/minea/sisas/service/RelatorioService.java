@@ -314,8 +314,14 @@ public class RelatorioService {
 
     //BENEFICIARIOS BOMBA ENERGIA - PROVINCIAL
     public List<BeneficiariosBmbEnergiaDTO> beneficiariosAguaBmbEnergiaProvincial() {
+        User userDTO = buscaUsuarioLogado();
+        List<Object[]> list;
         List<BeneficiariosBmbEnergiaDTO> retorno = new ArrayList<>();
-        List<Object[]> list = this.relatorioRepository.beneficiariosAguaBmbEnergiaProvincialQuery();
+        if (isAdminGeral(userDTO)) {
+            list = this.relatorioAdminRepository.beneficiariosAguaBmbEnergiaProvincialQuery();
+        } else {
+            list = this.relatorioRepository.beneficiariosAguaBmbEnergiaProvincialQuery(userDTO.getProvincia().getId());
+        }
 
         if (Objects.nonNull(list)) {
             list.stream().forEach(i -> {
@@ -388,8 +394,15 @@ public class RelatorioService {
 
     //BENEFICIARIOS BOMBA ENERGIA - Comunal
     public List<BeneficiariosBmbEnergiaDTO> beneficiariosAguaBmbEnergiaComunal() {
+        User userDTO = buscaUsuarioLogado();
+        List<Object[]> list;
         List<BeneficiariosBmbEnergiaDTO> retorno = new ArrayList<>();
-        List<Object[]> list = this.relatorioRepository.beneficiariosAguaBmbEnergiaComunalQuery();
+        if (isAdminGeral(userDTO)) {
+            list = this.relatorioAdminRepository.beneficiariosAguaBmbEnergiaComunalQuery();
+        } else {
+            list = this.relatorioRepository.beneficiariosAguaBmbEnergiaComunalQuery(userDTO.getProvincia().getId());
+        }
+
         if (Objects.nonNull(list)) {
             list.stream().forEach(i -> {
                 BeneficiariosBmbEnergiaDTO dto = new BeneficiariosBmbEnergiaDTO();
@@ -413,7 +426,7 @@ public class RelatorioService {
                     dto.setDieselSistemas(((BigInteger) i[7]).intValue());
                 }
                 if (Objects.nonNull(i[8])) {
-                    dto.setDieselPopulacao(((BigInteger) i[8]).intValue());
+                    dto.setDieselPopulacao(((BigDecimal) i[8]).intValue());
                 }
                 if (Objects.nonNull(i[9])) {
                     dto.setDieselPerc(((BigDecimal) i[9]).intValue());
@@ -422,7 +435,7 @@ public class RelatorioService {
                     dto.setSolarSistemas(((BigInteger) i[10]).intValue());
                 }
                 if (Objects.nonNull(i[11])) {
-                    dto.setSolarPopulacao(((BigInteger) i[11]).intValue());
+                    dto.setSolarPopulacao(((BigDecimal) i[11]).intValue());
                 }
                 if (Objects.nonNull(i[12])) {
                     dto.setSolarPerc(((BigDecimal) i[12]).intValue());
@@ -431,7 +444,7 @@ public class RelatorioService {
                     dto.setEolicaSistemas(((BigInteger) i[13]).intValue());
                 }
                 if (Objects.nonNull(i[14])) {
-                    dto.setEolicaPopulacao(((BigInteger) i[14]).intValue());
+                    dto.setEolicaPopulacao(((BigDecimal) i[14]).intValue());
                 }
                 if (Objects.nonNull(i[15])) {
                     dto.setEolicaPerc(((BigDecimal) i[15]).intValue());
@@ -440,7 +453,7 @@ public class RelatorioService {
                     dto.setElectricaSistemas(((BigInteger) i[16]).intValue());
                 }
                 if (Objects.nonNull(i[17])) {
-                    dto.setElectricaPopulacao(((BigInteger) i[17]).intValue());
+                    dto.setElectricaPopulacao(((BigDecimal) i[17]).intValue());
                 }
                 if (Objects.nonNull(i[18])) {
                     dto.setElectricaPerc(((BigDecimal) i[18]).intValue());
@@ -449,7 +462,7 @@ public class RelatorioService {
                     dto.setOutroSistemas(((BigInteger) i[19]).intValue());
                 }
                 if (Objects.nonNull(i[20])) {
-                    dto.setOutroPopulacao(((BigInteger) i[20]).intValue());
+                    dto.setOutroPopulacao(((BigDecimal) i[20]).intValue());
                 }
                 if (Objects.nonNull(i[21])) {
                     dto.setOutroPerc(((BigDecimal) i[21]).intValue());

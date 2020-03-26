@@ -259,11 +259,11 @@ public interface RelatorioRepository extends JpaRepository<Provincia, Long>, Jpa
         " )))),2) PercentagemSistemaOutros" +
         " FROM sisas.sistema_agua s " +
         " INNER JOIN sisas.provincia p ON s.ID_PROVINCIA = p.ID_PROVINCIA" +
-        " WHERE s.ID_PROVINCIA = :provinciaId"+
+        " WHERE s.ID_PROVINCIA = :provinciaId "+
         " GROUP BY" +
         " p.NM_PROVINCIA," +
         " p.ID_PROVINCIA", nativeQuery = true)
-    List<Object[]> beneficiariosAguaBmbEnergiaProvincialQuery();
+    List<Object[]> beneficiariosAguaBmbEnergiaProvincialQuery(@Param("provinciaId") Long provinciaId);
 
     //BENEFICIARIOS BOMBA ENERGIA - COMUNAL
     @Query(value = "SELECT 	p.NM_PROVINCIA," +
@@ -470,14 +470,14 @@ public interface RelatorioRepository extends JpaRepository<Provincia, Long>, Jpa
         "     p.ID_PROVINCIA = m.ID_PROVINCIA " +
         "     inner join comuna c on" +
         "     c.ID_MUNICIPIO = m.ID_MUNICIPIO " +
-        "     WHERE 	s.POSSUI_SISTEMA_AGUA = 1 " +
+        "     WHERE 	s.POSSUI_SISTEMA_AGUA = 1 AND s.ID_PROVINCIA = :provinciaId " +
         "			  AND	s.NM_TP_FONTE = 'Subterrânea'" +
         "              AND s.NM_TIPO_BOMBA = 'Bomba de energia'" +
         " GROUP BY " +
         "       p.NM_PROVINCIA," +
         "       m.ID_MUNICIPIO, " +
         "       c.ID_COMUNA", nativeQuery = true)
-    List<Object[]> beneficiariosAguaBmbEnergiaComunalQuery();
+    List<Object[]> beneficiariosAguaBmbEnergiaComunalQuery(@Param("provinciaId") Long provinciaId);
 
     //SISTEMA AGUA BOMBA MANUAL - COMUNAL
     @Query(value = " SELECT 	p.NM_PROVINCIA, " +
@@ -1819,10 +1819,10 @@ public interface RelatorioRepository extends JpaRepository<Provincia, Long>, Jpa
         "    s.NM_FONTE_AGUA_UTILIZADA", nativeQuery = true)
     List<Object[]> buscaDadosBenefFtSubtOptTecnicaComunal(@Param("provinciaId") Long provinciaId);
 
-    @Query(value = "", nativeQuery = true)
+    @Query(value = "SELECT * FROM jhi_user", nativeQuery = true)
     List<Object[]> buscaDadosBenefFtSubtBmbMecanicaMunicipal(@Param("provinciaId") Long provinciaId);
 
-    @Query(value = "", nativeQuery = true)
+    @Query(value = "SELECT * FROM jhi_user", nativeQuery = true)
     List<Object[]> buscaDadosBenefFtSubtBmbMecanicaComunal(@Param("provinciaId") Long provinciaId);
 
 }
