@@ -97,7 +97,25 @@ export class BeneficiariosBombEnergiaProvincialComponent implements OnInit {
                 console.log(this.listaTabela);
 
                 this.listaTabela.forEach( (i) => {
-                    const item: DadosRelatorio = new DadosRelatorio();
+                    this.totalPopulacao += i.populacao;
+                    this.totalPocoMelhorado += i.pocoMelhorado;
+                    this.totalFuro += i.furo;
+                    this.totalNascente += i.nascente;
+                    this.totalDieselSistemas += i.dieselSistemas;
+                    this.totalDieselPopulacao += i.dieselPopulacao;
+                    this.totalDieselPerc += i.dieselPerc;
+                    this.totalSolarSistemas += i.solarSistemas;
+                    this.totalSolarPopulacao += i.solarPopulacao;
+                    this.totalSolarPerc += i.solarPerc;
+                    this.totalEolicaSistemas += i.eolicaSistemas;
+                    this.totalEolicaPopulacao += i.eolicaPopulacao;
+                    this.totalEolicaPerc += i.eolicaPerc;
+                    this.totalElectraSistemas += i.electricaSistemas;
+                    this.totalElectraPopulacao += i.electricaPopulacao;
+                    this.totalElectraPerc += i.electricaPerc;
+                    this.totalOutroSistemas += i.outroSistemas;
+                    this.totalOutroPopulacao += i.outroPopulacao;
+                    this.totalOutroPerc += i.outroPerc;
                 });
             });
     }

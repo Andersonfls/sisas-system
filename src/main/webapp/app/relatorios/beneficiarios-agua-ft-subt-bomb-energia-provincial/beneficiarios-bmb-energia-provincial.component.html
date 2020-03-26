@@ -21,8 +21,6 @@
                         <th></th>
                         <th></th>
                         <th></th>
-                        <!--<th></th>-->
-                        <th></th>
                         <th></th>
                         <th></th>
                         <th class="borda-th" colspan="3"><span style="margin-left: 30%">Diesel</span></th>
@@ -33,24 +31,27 @@
                     </tr>
                     <tr class="borda-th" style="background-color: #1f749c">
                         <th class="borda-th"><span>Província</span></th>
-                        <th class="borda-th"><span>Municipal</span></th>
-                        <th class="borda-th"><span>Comunas</span></th>
                         <th class="borda-th"><span>Populacao</span></th>
                         <th class="borda-th"><span>Poco Melhorado</span></th>
                         <th class="borda-th"><span>Furo</span></th>
                         <th class="borda-th"><span>Nascente</span></th>
+
                         <th class="borda-th"><span>N° Sist</span></th>
                         <th class="borda-th"><span>Pop.Benef</span></th>
                         <th class="borda-th"><span>(%)</span></th>
+
                         <th class="borda-th"><span>N° Sist</span></th>
                         <th class="borda-th"><span>Pop.Benef</span></th>
                         <th class="borda-th"><span>(%)</span></th>
+
                         <th class="borda-th"><span>N° Sist</span></th>
                         <th class="borda-th"><span>Pop.Benef</span></th>
                         <th class="borda-th"><span>(%)</span></th>
+
                         <th class="borda-th"><span>N° Sist</span></th>
                         <th class="borda-th"><span>Pop.Benef</span></th>
                         <th class="borda-th"><span>(%)</span></th>
+
                         <th class="borda-th"><span>N° Sist</span></th>
                         <th class="borda-th"><span>Pop.Benef</span></th>
                         <th class="borda-th"><span>(%)</span></th>
@@ -59,24 +60,27 @@
                     <tbody>
                     <tr *ngFor="let provincia of listaTabela" class="borda-th">
                         <td class="borda-th">{{provincia.nomeProvincia}}</td>
-                        <td class="borda-th">{{provincia.nomeMunicipio}}</td>
-                        <td class="borda-th">{{provincia.nomeComuna}}</td>
                         <td class="borda-th">{{provincia.populacao | number}}</td>
                         <td class="borda-th">{{provincia.pocoMelhorado}}</td>
                         <td class="borda-th">{{provincia.furo}}</td>
                         <td class="borda-th">{{provincia.nascente}}</td>
+
                         <td class="borda-th">{{provincia.dieselSistemas}}</td>
                         <td class="borda-th">{{provincia.dieselPopulacao}}</td>
                         <td class="borda-th">{{provincia.dieselPerc}}%</td>
+
                         <td class="borda-th">{{provincia.solarSistemas}}</td>
                         <td class="borda-th">{{provincia.solarPopulacao}}</td>
                         <td class="borda-th">{{provincia.solarPerc}}%</td>
+
                         <td class="borda-th">{{provincia.eolicaSistemas}}</td>
                         <td class="borda-th">{{provincia.eolicaPopulacao}}</td>
                         <td class="borda-th">{{provincia.eolicaPerc}}%</td>
+
                         <td class="borda-th">{{provincia.electricaSistemas}}</td>
                         <td class="borda-th">{{provincia.electricaPopulacao}}</td>
                         <td class="borda-th">{{provincia.electricaPerc}}%</td>
+
                         <td class="borda-th">{{provincia.outroSistemas}}</td>
                         <td class="borda-th">{{provincia.outroPopulacao}}</td>
                         <td class="borda-th">{{provincia.outroPerc}}%</td>
@@ -84,10 +88,9 @@
                     </tbody>
                     <tfoot>
                     <tr class="borda-th" style="background-color: #1f749c; border-top: 2px solid #dee2e6; border-bottom: 2px solid #dee2e6">
-                        <td> <span style="font-weight: bold"></span></td>
-                        <td> <span style="font-weight: bold"></span></td>
-                        <td> <span style="font-weight: bold">Total Comunal: </span></td>
-                        <!--<td> <span style="font-weight: bold">{{totalPopulacao | number }}</span></td>-->
+                        <td> <span style="font-weight: bold">Total Provincial: </span></td>
+
+                        <td> <span style="font-weight: bold">{{totalPopulacao | number }}</span></td>
                         <td> <span style="font-weight: bold">{{totalPocoMelhorado | number }}</span></td>
                         <td> <span style="font-weight: bold">{{totalFuro | number}}</span></td>
                         <td> <span style="font-weight: bold">{{totalNascente | number}}</span></td>
