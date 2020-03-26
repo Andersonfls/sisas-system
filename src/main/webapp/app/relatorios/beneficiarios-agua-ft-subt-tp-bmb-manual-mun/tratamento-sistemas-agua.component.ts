@@ -5,41 +5,40 @@ import { HttpResponse } from '@angular/common/http';
 import { User } from '../../shared/user/user.model';
 import { Principal } from '../../shared/auth/principal.service';
 import {RelatoriosService} from '../relatorios.service';
-import {BeneficiariosBmbMecanica} from './beneficiarios-bmb-mecanica.model';
 import * as jsPDF from 'jspdf';
 import {TableUtil} from '../../shared/util/tableUtil';
 import * as html2canvas from 'html2canvas';
+import {BeneAguaFtSubterraneaTpBombaManual} from '../beneficiarios-agua-ft-subt-tp-bmb-manual-pro/beneAguaFtSubterraneaTpBomba.model';
 
 @Component({
-    selector: 'jhi-benef-opt-tecnica',
-    templateUrl: './beneficiarios-bmb-mecanica.component.html',
+    selector: 'jhi-trat-sist-agua',
+    templateUrl: './tratamento-sistemas-agua.component.html',
     styleUrls: [
-        'beneficiarios-bmb-mecanica.css'
+        'tratamento-sistemas-agua.css'
     ]
 })
 
-export class BeneficiariosTpBombaComponent implements OnInit {
+export class TratamentoSistemasAguaComponent implements OnInit {
 
     user: User;
-    listaTabela: BeneficiariosBmbMecanica[];
-    tipoRelatorio: string;
+    listaTabela: BeneAguaFtSubterraneaTpBombaManual[];
     predicate: any;
     reverse: any;
     chart: any;
 
     totalPopulacao = 0;
-    totalPoco = 0;
+    totalPocoMelhorado = 0;
     totalFuro = 0;
     totalNascente = 0;
-    totalDieselSistema = 0;
-    totalDieselPopulacao = 0;
-    totalSolarSistema = 0;
-    totalSolarPopulacao = 0;
-    totalEolicaSistema = 0;
-    totalEolicaPopulacao = 0;
-    totalElectricaSistema = 0;
-    totalElectricaPopulacao = 0;
-    totalOutroSistema = 0;
+    totalAfridev = 0;
+    totalAfridevPopulacao = 0;
+    totalVergnet = 0;
+    totalVergnetPopulacao = 0;
+    totalVolanta = 0;
+    totalVolantaPopulacao = 0;
+    totalIndiaMarc = 0;
+    totalIndiaMarcPopulacao = 0;
+    totalOutro = 0;
     totalOutroPopulacao = 0;
 
     constructor(
@@ -53,7 +52,6 @@ export class BeneficiariosTpBombaComponent implements OnInit {
         this.principal.identity().then((userIdentity) => {
             this.user = userIdentity;
         });
-
         this.buscaDadosTabela();
     }
 
@@ -68,7 +66,7 @@ export class BeneficiariosTpBombaComponent implements OnInit {
             const pdf = new jsPDF('p', 'mm', 'a4');
             const position = 0;
             pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
-            pdf.save('relatorio-sisas.pdf');
+            pdf.save('tratamentoSistemasAguas.pdf');
         }).catch(function(error) {
             // Error Handling
         });
@@ -79,25 +77,23 @@ export class BeneficiariosTpBombaComponent implements OnInit {
     }
 
     buscaDadosTabela() {
-        this.relatorioService.buscaDadosBenFtSubtBbmMecanicaMunicipal().subscribe(
-            (res: HttpResponse<BeneficiariosBmbMecanica[]>) => {
+        this.relatorioService.buscaDadosBenfAguaSubtTipoBombaManualMun().subscribe(
+            (res: HttpResponse<BeneAguaFtSubterraneaTpBombaManual[]>) => {
                 this.listaTabela = res.body;
-                console.log(this.listaTabela);
-
                 this.listaTabela.forEach((i) => {
                     this.totalPopulacao += i.populacao;
-                    this.totalPoco += i.pocoMelhorado;
+                    this.totalPocoMelhorado += i.numeroPocoMelhorado;
                     this.totalFuro += i.furo;
                     this.totalNascente += i.nascente;
-                    this.totalDieselSistema += i.dieselSistemas;
-                    this.totalDieselPopulacao += i.dieselPopulacao;
-                    this.totalSolarSistema += i.solarSistemas;
-                    this.totalSolarPopulacao += i.solarPopulacao;
-                    this.totalEolicaSistema += i.eolicaSistemas;
-                    this.totalEolicaPopulacao += i.eolicaPopulacao;
-                    this.totalElectricaSistema += i.electricaSistemas;
-                    this.totalElectricaPopulacao += i.electricaPopulacao;
-                    this.totalOutroSistema += i.outroSistemas;
+                    this.totalAfridev += i.afridev;
+                    this.totalAfridevPopulacao += i.afridevPopulacao;
+                    this.totalVergnet += i.vergnet;
+                    this.totalVergnetPopulacao += i.vergnetPopulacao;
+                    this.totalVolanta += i.volanta;
+                    this.totalVolantaPopulacao += i.volantaPopulacao;
+                    this.totalIndiaMarc += i.indiaMarc;
+                    this.totalIndiaMarcPopulacao += i.indiaMarcPopulacao;
+                    this.totalOutro += i.outro;
                     this.totalOutroPopulacao += i.outroPopulacao;
                 });
             });

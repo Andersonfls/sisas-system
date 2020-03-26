@@ -1,0 +1,146 @@
+/* ==========================================================================
+Dashboard page styles
+========================================================================== */
+.card-counter{
+    box-shadow: 2px 2px 10px transparent;
+    margin: 5px;
+    padding: 20px 10px;
+    background-color: #fff;
+    height: 100px;
+    border-radius: 5px;
+    transition: .3s linear all;
+}
+
+.card-counter:hover{
+    box-shadow: 4px 4px 20px transparent;
+    transition: .3s linear all;
+}
+
+.card-counter.primary{
+    color: #FFF;
+}
+
+.card-counter.danger{
+    color: #FFF;
+}
+
+.card-counter.success{
+    color: #FFF;
+}
+
+.card-counter.info{
+    color: #FFF;
+}
+
+.card-counter i{
+    font-size: 5em;
+    opacity: 0.2;
+}
+
+.card-counter .count-numbers{
+    position: absolute;
+    right: 35px;
+    top: 20px;
+    font-size: 32px;
+    display: block;
+}
+
+.card-counter .count-name{
+    position: absolute;
+    right: 35px;
+    top: 65px;
+    font-style: italic;
+    text-transform: capitalize;
+    opacity: 0.5;
+    display: block;
+    font-size: 18px;
+}
+
+.espaco {
+    padding-top: 40px;
+}
+
+.card-dash {
+    background-color: #ffffff;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}
+
+.teste-acima {
+    height: 240px;
+    border-radius: 13px;
+}
+
+.teste-abaixo {
+    height: 190px;
+    border-radius: 13px;
+}
+
+.borda-th {
+    border-left: 2px solid #dee2e6;
+    border-right: 2px solid #dee2e6;
+    text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+    div#barchart{
+        margin-top: 60px;
+    }
+    div#pieChart{
+        margin-top: 6px;
+    }
+    div#lineChart {
+        margin-top: 6px;
+    }
+    div#topReservas {
+        margin-top: 6px;
+    }
+    div#circulacao {
+        margin-top: 6px;
+    }
+}
+
+/*
+.flip-container {
+    perspective: 1000;
+}
+.flip-container:hover .flipper, .flip-container.hover .flipper {
+    transform: rotateY(180deg);
+}
+.flip-container, .front, .back {
+    width: 320px;
+    height: 480px;
+}
+.flipper {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
+}
+.front, .back {
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.front {
+    z-index: 2;
+
+    transform: rotateY(0deg);
+}
+.back {
+    transform: rotateY(180deg);
+}
+.box{
+    width:300px;
+    height:300px;
+    font-size:10px;
+    line-height:300px;
+    text-shadow: 1px 1px 1px #fff;
+    cursor:pointer;
+}
+.box-front{
+    background:#00cee2;
+}
+.box-back{
+    background:#ffb300;
+}
+*/

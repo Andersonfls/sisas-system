@@ -29,7 +29,7 @@ export const tratamentoSistemasAguaRoute: Routes = [
         },
         data: {
             authorities: ['ROLE_USER', 'ROLE_ADMIN', 'ADMIN_PROVINCIAL'],
-            pageTitle: 'relatorios.title.tratamento-sistemas-agua'
+            pageTitle: 'relatorios.title.benef-agua-subterranea-tp-bomba'
         },
         canActivate: [UserRouteAccessService]
     }

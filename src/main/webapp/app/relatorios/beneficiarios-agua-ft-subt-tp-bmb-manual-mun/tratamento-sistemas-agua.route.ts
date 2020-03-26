@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes } from '@angular/router';
 import { JhiPaginationUtil } from 'ng-jhipster';
 import { UserRouteAccessService } from '../../shared';
-import {BeneficiariosBombEnergiaComunalComponent} from './beneficiarios-bmb-energia-comunal.component';
+import { TratamentoSistemasAguaComponent} from './tratamento-sistemas-agua.component';
 
 @Injectable()
-export class BeneficiariosBombEnergiaComunalResolvePagingParams implements Resolve<any> {
+export class TratamentoSistemasAguaResolvePagingParams implements Resolve<any> {
 
     constructor(private paginationUtil: JhiPaginationUtil) {}
 
@@ -20,16 +20,16 @@ export class BeneficiariosBombEnergiaComunalResolvePagingParams implements Resol
     }
 }
 
-export const beneficiariosTpBombaEnergiaComunalRoute: Routes = [
+export const tratamentoSistemasAguaRoute: Routes = [
     {
-        path: 'benef-ft-subte-energia-comunal',
-        component: BeneficiariosBombEnergiaComunalComponent,
+        path: 'ben-agua-ft-subt-tp-bmb-man-municipal',
+        component: TratamentoSistemasAguaComponent,
         resolve: {
-            'pagingParams': BeneficiariosBombEnergiaComunalResolvePagingParams
+            'pagingParams': TratamentoSistemasAguaResolvePagingParams
         },
         data: {
-            authorities: ['ROLE_USER', 'ROLE_ADMIN'],
-            pageTitle: 'relatorios.title.benef-agua-fonte-subterranea-energia'
+            authorities: ['ROLE_USER', 'ROLE_ADMIN', 'ADMIN_PROVINCIAL'],
+            pageTitle: 'relatorios.title.benef-agua-subterranea-tp-bomba'
         },
         canActivate: [UserRouteAccessService]
     }

@@ -27,6 +27,8 @@ import {SisasBenefOptTecnicaProvincialModule} from './beneficiarios-agua-ft-supe
 import {
     SisasBeneficiariosTpBombaMecComunalModule
 } from './beneficiarios-agua-ft-subt-bmb-mecanica-comunal/beneficiarios-bmb-mecanica.module';
+import {SisasBenefAguaTpBombaManualMunModule} from './beneficiarios-agua-ft-subt-tp-bmb-manual-mun/tratamento-sistemas-agua.module';
+import {SisasBeneficiariosTpBombaMecMuniModule} from './beneficiarios-agua-ft-subt-bmb-mecanica-municipal/beneficiarios-bmb-mecanica.module';
 
 @NgModule({
     imports: [
@@ -54,7 +56,9 @@ import {
         SisasBenefOptTecnicaComunalModule,
         SisasBenefOptTecnicaMunicipalModule,
         SisasBenefOptTecnicaProvincialModule,
-        SisasBeneficiariosTpBombaMecComunalModule
+        SisasBeneficiariosTpBombaMecComunalModule,
+        SisasBenefAguaTpBombaManualMunModule,
+        SisasBeneficiariosTpBombaMecMuniModule
     ],
     declarations: [],
     entryComponents: [],

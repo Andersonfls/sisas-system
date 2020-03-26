@@ -938,6 +938,7 @@ public class RelatorioService {
         return retorno;
     }
 
+    //BENEFICIARIOS FONTE SUBTERRANE E TIPO DE BOMBA MANUAL
     public List<BeneAguaFtSubterraneaTpBombaManual> beneficiariosFtSubtTpBombaManualProvincial() {
         User user = buscaUsuarioLogado();
         List<Object[]> list;
@@ -965,6 +966,40 @@ public class RelatorioService {
                 dto.setIndiaMarcPopulacao(((BigDecimal) i[12]).intValue());
                 dto.setOutro(((BigInteger) i[13]).intValue());
                 dto.setOutroPopulacao(((BigDecimal) i[14]).intValue());
+                retorno.add(dto);
+            });
+        }
+        return retorno;
+    }
+
+    public List<BeneAguaFtSubterraneaTpBombaManual> beneficiariosFtSubtTpBombaManualMunicipal() {
+        User user = buscaUsuarioLogado();
+        List<Object[]> list;
+        List<BeneAguaFtSubterraneaTpBombaManual> retorno = new ArrayList<>();
+        if (isAdminGeral(user)) {
+            list = this.relatorioAdminRepository.buscaDadosBenefAguaFonteSubterraneaTipoBombaManualMunicipal();
+        } else {
+            list = this.relatorioRepository.buscaDadosBenefAguaFonteSubterraneaTipoBombaManualMunicipal(user.getProvincia().getId());
+        }
+        if (Objects.nonNull(list)) {
+            list.stream().forEach(i -> {
+                BeneAguaFtSubterraneaTpBombaManual dto = new BeneAguaFtSubterraneaTpBombaManual();
+                dto.setNomeProvincia((String) i[0]);
+                dto.setNomeMunicipio((String) i[1]);
+                dto.setPopulacao(((BigInteger) i[2]).intValue());
+                dto.setNumeroPocoMelhorado(((BigInteger) i[3]).intValue());
+                dto.setFuro(((BigInteger) i[4]).intValue());
+                dto.setNascente(((BigInteger) i[5]).intValue());
+                dto.setAfridev(((BigInteger) i[6]).intValue());
+                dto.setAfridevPopulacao(((BigDecimal) i[7]).intValue());
+                dto.setVergnet(((BigInteger) i[8]).intValue());
+                dto.setVergnetPopulacao(((BigDecimal) i[9]).intValue());
+                dto.setVolanta(((BigInteger) i[10]).intValue());
+                dto.setVolantaPopulacao(((BigDecimal) i[11]).intValue());
+                dto.setIndiaMarc(((BigInteger) i[12]).intValue());
+                dto.setIndiaMarcPopulacao(((BigDecimal) i[13]).intValue());
+                dto.setOutro(((BigInteger) i[14]).intValue());
+                dto.setOutroPopulacao(((BigDecimal) i[15]).intValue());
                 retorno.add(dto);
             });
         }
@@ -1088,22 +1123,27 @@ public class RelatorioService {
         if (Objects.nonNull(list)) {
             list.stream().forEach(i -> {
                 BeneficiariosBmbMecanicaDTO dto = new BeneficiariosBmbMecanicaDTO();
-//                dto.setNomeProvincia((String) i[0]);
-//                dto.setNomeMunicipio((String) i[1]);
-//                dto.setNomeComuna((String) i[2]);
-//                if (Objects.nonNull(i[3])) {
-//                    dto.setFonteAgua(((String) i[3]));
-//                }
-//                dto.setPopulacao(((BigInteger) i[4]).intValue());
-//                dto.setElectricaSistemas(((BigInteger) i[5]).intValue());
-//                dto.setElectricaPopulacao(((BigDecimal) i[6]).intValue());
-//                dto.setElectricaPerc(((BigDecimal) i[7]).floatValue());
-//                dto.setDieselSistemas(((BigInteger) i[8]).intValue());
-//                dto.setDieselPopulacao(((BigDecimal) i[9]).intValue());
-//                dto.setDieselPerc(((BigDecimal) i[10]).floatValue());
-//                dto.setGravidadeSistemas(((BigInteger) i[11]).intValue());
-//                dto.setGravidadePopulacao(((BigDecimal) i[12]).intValue());
-//                dto.setGravidadePerc(((BigDecimal) i[13]).floatValue());
+                dto.setNomeProvincia((String) i[0]);
+                dto.setNomeMunicipio((String) i[1]);
+                dto.setPopulacao(((BigInteger) i[2]).intValue());
+                dto.setPocoMelhorado(((BigInteger) i[3]).intValue());
+                dto.setFuro(((BigInteger) i[4]).intValue());
+                dto.setNascente(((BigInteger) i[5]).intValue());
+                dto.setDieselSistemas(((BigInteger) i[6]).intValue());
+                dto.setDieselPopulacao(((BigDecimal) i[7]).intValue());
+                dto.setDieselPercent(((BigDecimal) i[8]).floatValue());
+                dto.setSolarSistemas(((BigInteger) i[9]).intValue());
+                dto.setSolarPopulacao(((BigDecimal) i[10]).intValue());
+                dto.setSolarPercent(((BigDecimal) i[11]).floatValue());
+                dto.setEolicaSistemas(((BigInteger) i[12]).intValue());
+                dto.setEolicaPopulacao(((BigDecimal) i[13]).intValue());
+                dto.setEolicaPercent(((BigDecimal) i[14]).floatValue());
+                dto.setElectricaSistemas(((BigInteger) i[15]).intValue());
+                dto.setElectricaPopulacao(((BigDecimal) i[16]).intValue());
+                dto.setElectricaPercent(((BigDecimal) i[17]).floatValue());
+                dto.setOutroSistemas(((BigInteger) i[18]).intValue());
+                dto.setOutroPopulacao(((BigDecimal) i[19]).intValue());
+                dto.setOutroPercent(((BigDecimal) i[20]).floatValue());
 
                 retorno.add(dto);
             });
@@ -1123,22 +1163,28 @@ public class RelatorioService {
         if (Objects.nonNull(list)) {
             list.stream().forEach(i -> {
                 BeneficiariosBmbMecanicaDTO dto = new BeneficiariosBmbMecanicaDTO();
-//                dto.setNomeProvincia((String) i[0]);
-//                dto.setNomeMunicipio((String) i[1]);
-//                dto.setNomeComuna((String) i[2]);
-//                if (Objects.nonNull(i[3])) {
-//                    dto.setFonteAgua(((String) i[3]));
-//                }
-//                dto.setPopulacao(((BigInteger) i[4]).intValue());
-//                dto.setElectricaSistemas(((BigInteger) i[5]).intValue());
-//                dto.setElectricaPopulacao(((BigDecimal) i[6]).intValue());
-//                dto.setElectricaPerc(((BigDecimal) i[7]).floatValue());
-//                dto.setDieselSistemas(((BigInteger) i[8]).intValue());
-//                dto.setDieselPopulacao(((BigDecimal) i[9]).intValue());
-//                dto.setDieselPerc(((BigDecimal) i[10]).floatValue());
-//                dto.setGravidadeSistemas(((BigInteger) i[11]).intValue());
-//                dto.setGravidadePopulacao(((BigDecimal) i[12]).intValue());
-//                dto.setGravidadePerc(((BigDecimal) i[13]).floatValue());
+                dto.setNomeProvincia((String) i[0]);
+                dto.setNomeMunicipio((String) i[1]);
+                dto.setNomeComuna((String) i[2]);
+                dto.setPopulacao(((BigInteger) i[3]).intValue());
+                dto.setPocoMelhorado(((BigInteger) i[4]).intValue());
+                dto.setFuro(((BigInteger) i[5]).intValue());
+                dto.setNascente(((BigInteger) i[6]).intValue());
+                dto.setDieselSistemas(((BigInteger) i[7]).intValue());
+                dto.setDieselPopulacao(((BigDecimal) i[8]).intValue());
+                dto.setDieselPercent(((BigDecimal) i[9]).floatValue());
+                dto.setSolarSistemas(((BigInteger) i[10]).intValue());
+                dto.setSolarPopulacao(((BigDecimal) i[11]).intValue());
+                dto.setSolarPercent(((BigDecimal) i[12]).floatValue());
+                dto.setEolicaSistemas(((BigInteger) i[13]).intValue());
+                dto.setEolicaPopulacao(((BigDecimal) i[14]).intValue());
+                dto.setEolicaPercent(((BigDecimal) i[15]).floatValue());
+                dto.setElectricaSistemas(((BigInteger) i[16]).intValue());
+                dto.setElectricaPopulacao(((BigDecimal) i[17]).intValue());
+                dto.setElectricaPercent(((BigDecimal) i[18]).floatValue());
+                dto.setOutroSistemas(((BigInteger) i[19]).intValue());
+                dto.setOutroPopulacao(((BigDecimal) i[20]).intValue());
+                dto.setOutroPercent(((BigDecimal) i[21]).floatValue());
 
                 retorno.add(dto);
             });

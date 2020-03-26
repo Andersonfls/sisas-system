@@ -130,6 +130,11 @@ export class RelatoriosService {
         return this.http.get<BeneAguaFtSubterraneaTpBombaManual[]>(this.resourceUrl + '/ben-agua-ft-subt-tp-bmb-man-provincial', {params: options, observe: 'response'});
     }
 
+    buscaDadosBenfAguaSubtTipoBombaManualMun(req?: any): Observable<HttpResponse<BeneAguaFtSubterraneaTpBombaManual[]>> {
+        const options = createRequestOption(req);
+        return this.http.get<BeneAguaFtSubterraneaTpBombaManual[]>(this.resourceUrl + '/ben-agua-ft-subt-tp-bmb-man-municipal', {params: options, observe: 'response'});
+    }
+
     buscaDadosFuncAguaChafarizProvincial(req?: any): Observable<HttpResponse<FuncAguaChafarizes[]>> {
         const options = createRequestOption(req);
         return this.http.get<FuncAguaChafarizes[]>(this.resourceUrl + '/func-agua-chaf-provincial', {params: options, observe: 'response'});

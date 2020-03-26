@@ -13,9 +13,9 @@
     <jhi-alert></jhi-alert>
     <br>
 
-    <div class="card">
+    <div>
         <div id="muni">
-            <h2 class="text-centro">
+            <h2 style="font-size: 1.8em" class="text-centro">
                 <span>Beneficiários de Água por Fonte Subterrânea e por Bomba Mecanica (Nível Municipal)</span>
             </h2>
         <div class="table-responsive" *ngIf="listaTabela">
@@ -62,21 +62,27 @@
                 <tr *ngFor="let provincia of listaTabela">
                     <td >{{provincia.nomeProvincia}}</td>
                     <td>{{provincia.nomeMunicipio}}</td>
+                    <td class="text-centro">{{provincia.populacao}}</td>
                     <td class="text-centro">{{provincia.pocoMelhorado}}</td>
                     <td class="text-centro">{{provincia.furo}}</td>
                     <td class="text-centro">{{provincia.nascente}}</td>
+
                     <td class="text-centro">{{provincia.dieselSistemas}}</td>
                     <td class="text-centro">{{provincia.dieselPopulacao}}</td>
                     <td class="text-centro">{{provincia.dieselPercent}}</td>
+
                     <td class="text-centro">{{provincia.solarSistemas}}</td>
                     <td class="text-centro">{{provincia.solarPopulacao}}</td>
                     <td class="text-centro">{{provincia.solarPercent}}</td>
+
                     <td class="text-centro">{{provincia.eolicaSistemas}}</td>
                     <td class="text-centro">{{provincia.eolicaPopulacao}}</td>
                     <td class="text-centro">{{provincia.eolicaPercent}}</td>
+
                     <td class="text-centro">{{provincia.electricaSistemas}}</td>
                     <td class="text-centro">{{provincia.electricaPopulacao}}</td>
                     <td class="text-centro">{{provincia.electricaPercent}}</td>
+
                     <td class="text-centro">{{provincia.outroSistemas}}</td>
                     <td class="text-centro">{{provincia.outroPopulacao}}</td>
                     <td class="text-centro">{{provincia.outroPercent}}</td>
@@ -86,7 +92,7 @@
                 <tr style="background-color: #1f749c" class="borda-th">
                     <td colspan="2"> <span style="font-weight: bold">Total Municipal:</span></td>
                     <td class="text-centro"> <span style="font-weight: bold">{{totalPopulacao | number }}</span></td>
-                    <td class="text-centro"> <span style="font-weight: bold">{{totalPocoMelhorado | number }}</span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{totalPoco | number }}</span></td>
                     <td class="text-centro"> <span style="font-weight: bold">{{totalFuro | number}}</span></td>
                     <td class="text-centro"> <span style="font-weight: bold">{{totalNascente | number}}</span></td>
                     <td class="text-centro"> <span style="font-weight: bold">{{totalDieselSistema | number }} </span></td>
