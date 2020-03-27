@@ -29,7 +29,7 @@ export const sistemaAguaTpBombaGravidadeComunalRoute: Routes = [
         },
         data: {
             authorities: ['ROLE_USER', 'ROLE_ADMIN', 'ADMIN_PROVINCIAL'],
-            pageTitle: 'relatorios.title.sistema-agua-fonte-subterranea-gravidade-comunal'
+            pageTitle: 'relatorios.title.sist-agua-fonte-subterranea-gravidade'
         },
         canActivate: [UserRouteAccessService]
     }
