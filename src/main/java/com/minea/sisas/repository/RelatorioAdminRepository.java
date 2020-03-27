@@ -25,23 +25,23 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "( SELECT COUNT(c.ID_comuna)  FROM sisas.comuna c       " +
         "  WHERE m.id_municipio = c.id_municipio      " +
         ") NumeroComunas,      " +
-        " (       SELECT     COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)       " +
+        " (       SELECT     COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)       " +
         "               FROM     sisas.sistema_agua s       " +
         "               WHERE     s.ID_PROVINCIA = p.ID_PROVINCIA      " +
         "                  AND     s.POSSUI_SISTEMA_AGUA = 1      " +
         "              AND     s.estado_funcionamento_sistema = 'Está em funcionamento (Bom)'      " +
         "          ) NrSistemasFuncionam,      " +
         "      p.populacao,      " +
-        "       ( SELECT      COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),2)      " +
+        "       ( SELECT      COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)      " +
         "               FROM   sisas.sistema_agua s       " +
         "               WHERE  s.ID_PROVINCIA = p.ID_PROVINCIA      " +
         "               AND     s.POSSUI_SISTEMA_AGUA = 1                   " +
         "        ) NrBeneficiariosSistemaAgua,         " +
-        "      ROUND((( ((SELECT     ((COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),2)*100)/p.populacao)      " +
+        "      ROUND((( ((SELECT     ((COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)*100)/p.populacao)      " +
         "               FROM     sisas.sistema_agua s       " +
         "               WHERE     s.ID_PROVINCIA = p.ID_PROVINCIA      " +
         "                AND     s.POSSUI_SISTEMA_AGUA = 1      " +
-        "        )))),2) PercentagemCobertura       " +
+        "        )))),0) PercentagemCobertura       " +
         "FROM sisas.sistema_agua s      " +
         "    INNER JOIN sisas.provincia p on s.ID_PROVINCIA = p.ID_PROVINCIA      " +
         "    INNER JOIN sisas.municipio m ON s.ID_MUNICIPIO  = m.ID_MUNICIPIO       " +
@@ -54,25 +54,25 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
     //COBERTURA SERVICOS DE AGUA (Nível Municipal)
     @Query(value = "SELECT p.NM_PROVINCIA,   " +
         "        m.NM_MUNICIPIO,   " +
-        "      ( SELECT    COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)   " +
+        "      ( SELECT    COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)   " +
         "            FROM    sisas.sistema_agua s    " +
         "            WHERE    s.ID_PROVINCIA = p.ID_PROVINCIA   " +
         "              AND    s.ID_MUNICIPIO = m.ID_MUNICIPIO   " +
         "              AND    s.POSSUI_SISTEMA_AGUA = 1   " +
         "        ) NrSistemas,    " +
         "         p.populacao,    " +
-        "       ( SELECT     COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),2)   " +
+        "       ( SELECT     COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)   " +
         "            FROM   sisas.sistema_agua s    " +
         "            WHERE  s.ID_PROVINCIA = p.ID_PROVINCIA   " +
         "             AND s.ID_MUNICIPIO = m.ID_MUNICIPIO   " +
         "            AND    s.POSSUI_SISTEMA_AGUA = 1    " +
         "       ) NrHabAcessoAgua,   " +
-        "      ROUND((( ((SELECT    ((COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),2)*100)/p.populacao)   " +
+        "      ROUND((( ((SELECT    ((COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)*100)/p.populacao)   " +
         "            FROM    sisas.sistema_agua s    " +
         "            WHERE    s.ID_PROVINCIA = p.ID_PROVINCIA   " +
         "              AND    s.ID_MUNICIPIO = m.ID_MUNICIPIO   " +
         "              AND    s.POSSUI_SISTEMA_AGUA = 1   " +
-        "       )))),2) PercentagemCobertura   " +
+        "       )))),0) PercentagemCobertura   " +
         "FROM sisas.sistema_agua s   " +
         "    INNER JOIN sisas.provincia p on s.ID_PROVINCIA = p.ID_PROVINCIA   " +
         "    INNER JOIN sisas.municipio m on p.ID_PROVINCIA = m.ID_PROVINCIA    " +
@@ -86,7 +86,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
     @Query(value ="SELECT p.NM_PROVINCIA,  " +
         "     m.NM_MUNICIPIO,  " +
         "        c.NM_COMUNA,  " +
-        " (  SELECT COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)  " +
+        " (  SELECT COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)  " +
         "   FROM sisas.sistema_agua s   " +
         "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
         "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
@@ -94,20 +94,20 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "     AND s.POSSUI_SISTEMA_AGUA = 1  " +
         "  ) NrSistemas,  " +
         "          p.populacao,   " +
-        "       ( SELECT  COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),2)  " +
+        "       ( SELECT  COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)  " +
         "   FROM   sisas.sistema_agua s   " +
         "   WHERE  s.ID_PROVINCIA = p.ID_PROVINCIA  " +
         "          AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
         "   AND s.ID_COMUNA = c.ID_COMUNA  " +
         "   AND s.POSSUI_SISTEMA_AGUA = 1      " +
         "    ) NrHabAcessoAgua,    " +
-        "      ROUND((( ((SELECT ((COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),2)*100)/p.populacao)  " +
+        "      ROUND((( ((SELECT ((COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)*100)/p.populacao)  " +
         "   FROM sisas.sistema_agua s   " +
         "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
         "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
         "     AND s.ID_COMUNA = c.ID_COMUNA  " +
         "     AND s.POSSUI_SISTEMA_AGUA = 1  " +
-        "    )))),2) PercentagemCobertura  " +
+        "    )))),0) PercentagemCobertura  " +
         "FROM sisas.sistema_agua s  " +
         "    INNER JOIN sisas.provincia p ON s.ID_PROVINCIA = p.ID_PROVINCIA  " +
         "    INNER JOIN sisas.municipio m ON  p.ID_PROVINCIA = m.ID_PROVINCIA   " +
@@ -122,13 +122,13 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
     @Query(value = "SELECT p.NM_PROVINCIA," +
         " p.populacao," +
         " (" +
-        " SELECT COALESCE(COUNT(Esquema),2)" +
+        " SELECT COALESCE(COUNT(Esquema),0)" +
         " FROM sistema_agua s " +
         " WHERE s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "  AND	s.Esquema = 'Poço/cacimba melhorada'" +
         "   ) PocoMelhorado, " +
         "     ( " +
-        " SELECT COALESCE(COUNT(Esquema),2)" +
+        " SELECT COALESCE(COUNT(Esquema),0)" +
         " FROM	sistema_agua s " +
         " WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "  AND	s.Esquema = 'Furo'" +
@@ -140,7 +140,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "  AND	s.Esquema = 'Nascente'" +
         "   )  Nascente," +
         "      ( " +
-        "		SELECT	COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)" +
+        "		SELECT	COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)" +
         "	FROM	sistema_agua s " +
         "	WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA " +
         "     AND   s.NM_TP_FONTE = 'Subterrânea' " +
@@ -148,7 +148,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "     AND   s.POSSUI_SISTEMA_AGUA = 1 " +
         " ) NrSistemasDiesel, " +
         " (" +
-        " SELECT	COALESCE(COUNT(NM_TP_BOMBA_ENERGIA),2)" +
+        " SELECT	COALESCE(COUNT(NM_TP_BOMBA_ENERGIA),0)" +
         "	FROM	sistema_agua s" +
         "	WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "      AND   s.NM_TP_FONTE = 'Subterrânea'" +
@@ -161,9 +161,9 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "     AND	s.NM_TP_FONTE = 'Subterrânea'" +
         "       AND   NM_TP_BOMBA_ENERGIA = 'Diesel/Motobomba'" +
         "      AND   s.POSSUI_SISTEMA_AGUA = 1" +
-        " )))),2) PercentagemAcessoBombaDiesel," +
+        " )))),0) PercentagemAcessoBombaDiesel," +
         " (" +
-        " SELECT	COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)" +
+        " SELECT	COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)" +
         "	FROM	sistema_agua s" +
         "	WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "      AND   s.NM_TP_FONTE = 'Subterrânea'" +
@@ -171,7 +171,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "     AND   s.POSSUI_SISTEMA_AGUA = 1" +
         " ) NrSistemasSolar," +
         " (" +
-        " SELECT	COALESCE(COUNT(NM_TP_BOMBA_ENERGIA),2)" +
+        " SELECT	COALESCE(COUNT(NM_TP_BOMBA_ENERGIA),0)" +
         "	FROM	sistema_agua s " +
         "	WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "     AND   s.NM_TP_FONTE = 'Subterrânea'" +
@@ -184,9 +184,9 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "      AND	s.NM_TP_FONTE = 'Subterrânea'" +
         "       AND   NM_TP_BOMBA_ENERGIA = 'Solar'" +
         "      AND   s.POSSUI_SISTEMA_AGUA = 1" +
-        " )))),2) PercentagemSistemaSolar," +
+        " )))),0) PercentagemSistemaSolar," +
         " (" +
-        " SELECT	COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)" +
+        " SELECT	COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)" +
         "	FROM	sistema_agua s " +
         "	WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "      AND   s.NM_TP_FONTE = 'Subterrânea'" +
@@ -194,7 +194,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "     AND   s.POSSUI_SISTEMA_AGUA = 1" +
         " ) NrSistemasEolica," +
         " (" +
-        " SELECT	COALESCE(COUNT(NM_TP_BOMBA_ENERGIA),2)" +
+        " SELECT	COALESCE(COUNT(NM_TP_BOMBA_ENERGIA),0)" +
         "	FROM	sistema_agua s" +
         "	WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "      AND   s.NM_TP_FONTE = 'Subterrânea'" +
@@ -207,9 +207,9 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "      AND	s.NM_TP_FONTE = 'Subterrânea'" +
         "       AND   NM_TP_BOMBA_ENERGIA = 'Eólica'" +
         "      AND   s.POSSUI_SISTEMA_AGUA = 1" +
-        " )))),2) PercentagemSistemaEolica," +
+        " )))),0) PercentagemSistemaEolica," +
         " (" +
-        " SELECT	COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)" +
+        " SELECT	COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)" +
         "	FROM	sistema_agua s" +
         "	WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "      AND   s.NM_TP_FONTE = 'Subterrânea'" +
@@ -217,7 +217,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "     AND   s.POSSUI_SISTEMA_AGUA = 1" +
         " ) NrSistemasElectrica," +
         " (" +
-        " SELECT	COALESCE(COUNT(NM_TP_BOMBA_ENERGIA),2)" +
+        " SELECT	COALESCE(COUNT(NM_TP_BOMBA_ENERGIA),0)" +
         "	FROM	sistema_agua s" +
         "	WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "      AND   s.NM_TP_FONTE = 'Subterrânea'" +
@@ -230,9 +230,9 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "      AND	s.NM_TP_FONTE = 'Subterrânea'" +
         "       AND   NM_TP_BOMBA_ENERGIA = 'Eléctrica'" +
         "      AND   s.POSSUI_SISTEMA_AGUA = 1" +
-        " )))),2) PercentagemSistemaElectrica," +
+        " )))),0) PercentagemSistemaElectrica," +
         " (" +
-        " SELECT	COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)" +
+        " SELECT	COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)" +
         "	FROM	sistema_agua s" +
         "	WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "      AND   s.NM_TP_FONTE = 'Subterrânea'" +
@@ -240,7 +240,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "     AND   s.POSSUI_SISTEMA_AGUA = 1" +
         " ) NrSistemasOutros," +
         " (" +
-        " SELECT	COALESCE(COUNT(NM_TP_BOMBA_ENERGIA),2)" +
+        " SELECT	COALESCE(COUNT(NM_TP_BOMBA_ENERGIA),0)" +
         "	FROM	sistema_agua s" +
         "	WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "      AND   s.NM_TP_FONTE = 'Subterrânea'" +
@@ -253,7 +253,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "      AND	s.NM_TP_FONTE = 'Subterrânea'" +
         "       AND   NM_TP_BOMBA_ENERGIA = 'Outros'" +
         "      AND   s.POSSUI_SISTEMA_AGUA = 1" +
-        " )))),2) PercentagemSistemaOutros" +
+        " )))),0) PercentagemSistemaOutros" +
         " from sistema_agua s " +
         " inner join provincia p on" +
         " s.ID_PROVINCIA = p.ID_PROVINCIA" +
@@ -264,57 +264,57 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
 
     //FUNCIONAMENTO DE SISTEMA DE AGUA E CHAFARIZES
     @Query(value = "SELECT     p.NM_PROVINCIA,   " +
-        "      (SELECT    COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)   " +
+        "      (SELECT    COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)   " +
         "            FROM    sisas.sistema_agua s    " +
         "            WHERE    s.ID_PROVINCIA = p.ID_PROVINCIA   " +
         "              AND    s.POSSUI_SISTEMA_AGUA = 1   " +
         "       ) NrSistemas,    " +
-        "     ( SELECT    COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)   " +
+        "     ( SELECT    COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)   " +
         "            FROM    sisas.sistema_agua s    " +
         "            WHERE    s.ID_PROVINCIA = p.ID_PROVINCIA   " +
         "              AND    s.POSSUI_SISTEMA_AGUA = 1   " +
         "              AND    s.estado_funcionamento_sistema = 'Está em funcionamento (Bom)'   " +
         "       ) NrSistemasFuncionam,    " +
-        "      ( SELECT    COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)   " +
+        "      ( SELECT    COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)   " +
         "            FROM    sisas.sistema_agua s    " +
         "            WHERE    s.ID_PROVINCIA = p.ID_PROVINCIA   " +
         "              AND    s.POSSUI_SISTEMA_AGUA = 1   " +
         "              AND    s.estado_funcionamento_sistema =  'Não está em funcionamento'   " +
         "       )  NrSistemasNaoFuncionam,   " +
-        "      ROUND((( ((SELECT    COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)   " +
+        "      ROUND((( ((SELECT    COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)   " +
         "            FROM    sisas.sistema_agua s    " +
         "            WHERE    s.ID_PROVINCIA = p.ID_PROVINCIA   " +
         "              AND    s.POSSUI_SISTEMA_AGUA = 1   " +
         "              AND    s.estado_funcionamento_sistema = 'Está em funcionamento (Bom)'   " +
-        "       ))  *100)/ (SELECT    COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)   " +
+        "       ))  *100)/ (SELECT    COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)   " +
         "            FROM    sisas.sistema_agua s    " +
         "            WHERE    s.ID_PROVINCIA = p.ID_PROVINCIA   " +
         "              AND    s.POSSUI_SISTEMA_AGUA = 1   " +
-        "       )),2) PercentagemQueFuncionam,   " +
-        "    (     SELECT    COALESCE(SUM(qtd_chafarises_existentes),2)   " +
+        "       )),0) PercentagemQueFuncionam,   " +
+        "    (     SELECT    COALESCE(SUM(qtd_chafarises_existentes),0)   " +
         "            FROM    sisas.sistema_agua s    " +
         "            WHERE    s.ID_PROVINCIA = p.ID_PROVINCIA   " +
         "              AND    s.POSSUI_SISTEMA_AGUA = 1   " +
         "       )  QtddeChafarizesExistentes,      " +
-        "      (SELECT    COALESCE(SUM(QTD_CHAFARISES_FUNCIONANDO),2)   " +
+        "      (SELECT    COALESCE(SUM(QTD_CHAFARISES_FUNCIONANDO),0)   " +
         "            FROM    sisas.sistema_agua s    " +
         "            WHERE    s.ID_PROVINCIA = p.ID_PROVINCIA   " +
         "              AND    s.POSSUI_SISTEMA_AGUA = 1   " +
         "       )  QtddeChafarizesQueFuncionam,      " +
-        "      ( SELECT    COALESCE(SUM(qtd_chafarises_existentes),2)-COALESCE(SUM(QTD_CHAFARISES_FUNCIONANDO),2)   " +
+        "      ( SELECT    COALESCE(SUM(qtd_chafarises_existentes),0)-COALESCE(SUM(QTD_CHAFARISES_FUNCIONANDO),0)   " +
         "            FROM    sisas.sistema_agua s    " +
         "            WHERE    s.ID_PROVINCIA = p.ID_PROVINCIA   " +
         "              AND    s.POSSUI_SISTEMA_AGUA = 1   " +
         "       )  QtddeChafarizesQueNaoFuncionam,      " +
-        "       ROUND((( ((SELECT    COALESCE(SUM(qtd_chafarises_existentes),2)-COALESCE(SUM(QTD_CHAFARISES_FUNCIONANDO),2)   " +
+        "       ROUND((( ((SELECT    COALESCE(SUM(qtd_chafarises_existentes),0)-COALESCE(SUM(QTD_CHAFARISES_FUNCIONANDO),0)   " +
         "            FROM    sisas.sistema_agua s    " +
         "            WHERE    s.ID_PROVINCIA = p.ID_PROVINCIA   " +
         "              AND    s.POSSUI_SISTEMA_AGUA = 1                " +
-        "       ))  *100)/ (SELECT    COALESCE(COUNT(QTD_CHAFARISES_FUNCIONANDO),2)   " +
+        "       ))  *100)/ (SELECT    COALESCE(COUNT(QTD_CHAFARISES_FUNCIONANDO),0)   " +
         "            FROM    sisas.sistema_agua s    " +
         "            WHERE    s.ID_PROVINCIA = p.ID_PROVINCIA   " +
         "              AND    s.POSSUI_SISTEMA_AGUA = 1   " +
-        "       )),2) PercentagemQueNaoFuncionam   " +
+        "       )),0) PercentagemQueNaoFuncionam   " +
         "from sisas.sistema_agua s   " +
         "     inner join sisas.provincia p on s.ID_PROVINCIA = p.ID_PROVINCIA   " +
         "     where  s.POSSUI_SISTEMA_AGUA = 1   " +
@@ -324,67 +324,67 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
 
     @Query(value = "SELECT  p.NM_PROVINCIA,  " +
         "        m.NM_MUNICIPIO,  " +
-        "      ( SELECT COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)  " +
+        "      ( SELECT COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)  " +
         "   FROM sisas.sistema_agua s   " +
         "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
         "              AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
         "     AND s.POSSUI_SISTEMA_AGUA = 1  " +
         "    ) NrSistemas,   " +
-        "     ( SELECT COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)  " +
+        "     ( SELECT COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)  " +
         "   FROM sisas.sistema_agua s   " +
         "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
         "              AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
         "     AND s.POSSUI_SISTEMA_AGUA = 1  " +
         "              AND s.estado_funcionamento_sistema = 'Está em funcionamento (Bom)'      " +
         "    ) NrSistemasFuncionam,   " +
-        "      (  SELECT COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)  " +
+        "      (  SELECT COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)  " +
         "   FROM sisas.sistema_agua s   " +
         "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
         "              AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
         "     AND s.POSSUI_SISTEMA_AGUA = 1  " +
         "              AND s.estado_funcionamento_sistema =  'Não está em funcionamento'         " +
         "    )  NrSistemasNaoFuncionam,  " +
-        "      ROUND((( ((SELECT COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)  " +
+        "      ROUND((( ((SELECT COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)  " +
         "   FROM sisas.sistema_agua s   " +
         "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
         "              AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
         "     AND s.POSSUI_SISTEMA_AGUA = 1  " +
         "              AND s.estado_funcionamento_sistema = 'Está em funcionamento (Bom)'              " +
-        "    ))  *100)/ (SELECT COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)  " +
+        "    ))  *100)/ (SELECT COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)  " +
         "   FROM sisas.sistema_agua s   " +
         "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
         "              AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
         "     AND s.POSSUI_SISTEMA_AGUA = 1   " +
-        "    )),2) PercentagemQueFuncionam,  " +
-        "    (  SELECT COALESCE(SUM(qtd_chafarises_existentes),2)  " +
+        "    )),0) PercentagemQueFuncionam,  " +
+        "    (  SELECT COALESCE(SUM(qtd_chafarises_existentes),0)  " +
         "   FROM sisas.sistema_agua s   " +
         "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
         "              AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
         "     AND s.POSSUI_SISTEMA_AGUA = 1  " +
         "    )  QtddeChafarizesExistentes,     " +
-        "      ( SELECT COALESCE(SUM(QTD_CHAFARISES_FUNCIONANDO),2)  " +
+        "      ( SELECT COALESCE(SUM(QTD_CHAFARISES_FUNCIONANDO),0)  " +
         "   FROM sisas.sistema_agua s   " +
         "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
         "              AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
         "     AND s.POSSUI_SISTEMA_AGUA = 1  " +
         "    )  QtddeChafarizesQueFuncionam,     " +
-        "      ( SELECT COALESCE(SUM(qtd_chafarises_existentes),2)-COALESCE(SUM(QTD_CHAFARISES_FUNCIONANDO),2)  " +
+        "      ( SELECT COALESCE(SUM(qtd_chafarises_existentes),0)-COALESCE(SUM(QTD_CHAFARISES_FUNCIONANDO),0)  " +
         "   FROM sisas.sistema_agua s   " +
         "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
         "              AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
         "     AND s.POSSUI_SISTEMA_AGUA = 1  " +
         "    )  QtddeChafarizesQueNaoFuncionam,     " +
-        "       ROUND((( ((SELECT COALESCE(SUM(qtd_chafarises_existentes),2)-COALESCE(SUM(QTD_CHAFARISES_FUNCIONANDO),2)  " +
+        "       ROUND((( ((SELECT COALESCE(SUM(qtd_chafarises_existentes),0)-COALESCE(SUM(QTD_CHAFARISES_FUNCIONANDO),0)  " +
         "   FROM sisas.sistema_agua s   " +
         "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
         "              AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
         "     AND s.POSSUI_SISTEMA_AGUA = 1    " +
-        "    ))  *100)/ (SELECT COALESCE(COUNT(QTD_CHAFARISES_FUNCIONANDO),2)  " +
+        "    ))  *100)/ (SELECT COALESCE(COUNT(QTD_CHAFARISES_FUNCIONANDO),0)  " +
         "   FROM sisas.sistema_agua s   " +
         "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
         "              AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
         "     AND s.POSSUI_SISTEMA_AGUA = 1  " +
-        "    )),2) PercentagemQueNaoFuncionam  " +
+        "    )),0) PercentagemQueNaoFuncionam  " +
         " from sisas.sistema_agua s  " +
         "     inner join sisas.provincia p on s.ID_PROVINCIA = p.ID_PROVINCIA  " +
         "     inner join sisas.municipio m on s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
@@ -397,14 +397,14 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
     @Query(value = "SELECT      p.NM_PROVINCIA,      " +
         "        m.NM_MUNICIPIO,      " +
         "        c.NM_COMUNA,      " +
-        "      ( SELECT     COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)      " +
+        "      ( SELECT     COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)      " +
         "               FROM     sisas.sistema_agua s       " +
         "               WHERE     s.ID_PROVINCIA = p.ID_PROVINCIA      " +
         "              AND     s.ID_MUNICIPIO = m.ID_MUNICIPIO      " +
         "              AND s.ID_COMUNA = c.ID_COMUNA      " +
         "                 AND     s.POSSUI_SISTEMA_AGUA = 1      " +
         "        ) NrSistemas,       " +
-        "     ( SELECT     COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)      " +
+        "     ( SELECT     COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)      " +
         "               FROM     sisas.sistema_agua s       " +
         "               WHERE     s.ID_PROVINCIA = p.ID_PROVINCIA      " +
         "               AND     s.ID_MUNICIPIO = m.ID_MUNICIPIO      " +
@@ -412,7 +412,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "                  AND     s.POSSUI_SISTEMA_AGUA = 1      " +
         "               AND     s.estado_funcionamento_sistema = 'Está em funcionamento (Bom)'      " +
         "        ) NrSistemasFuncionam,       " +
-        "      ( SELECT     COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)      " +
+        "      ( SELECT     COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)      " +
         "               FROM     sisas.sistema_agua s       " +
         "               WHERE     s.ID_PROVINCIA = p.ID_PROVINCIA      " +
         "              AND     s.ID_MUNICIPIO = m.ID_MUNICIPIO      " +
@@ -421,54 +421,54 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "                 AND     s.POSSUI_SISTEMA_AGUA = 1      " +
         "              AND     s.estado_funcionamento_sistema =  'Não está em funcionamento'      " +
         "        )  NrSistemasNaoFuncionam,      " +
-        "      ROUND((( ((SELECT     COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)      " +
+        "      ROUND((( ((SELECT     COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)      " +
         "               FROM     sisas.sistema_agua s       " +
         "               WHERE     s.ID_PROVINCIA = p.ID_PROVINCIA      " +
         "              AND     s.ID_MUNICIPIO = m.ID_MUNICIPIO      " +
         "              AND s.ID_COMUNA = c.ID_COMUNA      " +
         "                 AND     s.POSSUI_SISTEMA_AGUA = 1      " +
         "              AND     s.estado_funcionamento_sistema = 'Está em funcionamento (Bom)'      " +
-        "        ))  *100)/ (SELECT     COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)      " +
+        "        ))  *100)/ (SELECT     COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)      " +
         "               FROM     sisas.sistema_agua s       " +
         "               WHERE     s.ID_PROVINCIA = p.ID_PROVINCIA      " +
         "              AND     s.ID_MUNICIPIO = m.ID_MUNICIPIO      " +
         "              AND   s.ID_COMUNA = c.ID_COMUNA      " +
         "                 AND     s.POSSUI_SISTEMA_AGUA = 1      " +
-        "        )),2) PercentagemQueFuncionam,      " +
-        "    (  SELECT     COALESCE(SUM(qtd_chafarises_existentes),2)      " +
+        "        )),0) PercentagemQueFuncionam,      " +
+        "    (  SELECT     COALESCE(SUM(qtd_chafarises_existentes),0)      " +
         "               FROM     sisas.sistema_agua s       " +
         "               WHERE     s.ID_PROVINCIA = p.ID_PROVINCIA      " +
         "              AND     s.ID_MUNICIPIO = m.ID_MUNICIPIO      " +
         "              AND s.ID_COMUNA = c.ID_COMUNA      " +
         "                 AND     s.POSSUI_SISTEMA_AGUA = 1      " +
         "        )  QtddeChafarizesExistentes,         " +
-        "      (  SELECT     COALESCE(SUM(QTD_CHAFARISES_FUNCIONANDO),2)      " +
+        "      (  SELECT     COALESCE(SUM(QTD_CHAFARISES_FUNCIONANDO),0)      " +
         "               FROM     sisas.sistema_agua s       " +
         "               WHERE     s.ID_PROVINCIA = p.ID_PROVINCIA      " +
         "              AND     s.ID_MUNICIPIO = m.ID_MUNICIPIO      " +
         "              AND s.ID_COMUNA = c.ID_COMUNA      " +
         "                 AND     s.POSSUI_SISTEMA_AGUA = 1      " +
         "        )  QtddeChafarizesQueFuncionam,         " +
-        "      (  SELECT     COALESCE(SUM(qtd_chafarises_existentes),2)-COALESCE(SUM(QTD_CHAFARISES_FUNCIONANDO),2)      " +
+        "      (  SELECT     COALESCE(SUM(qtd_chafarises_existentes),0)-COALESCE(SUM(QTD_CHAFARISES_FUNCIONANDO),0)      " +
         "               FROM     sisas.sistema_agua s       " +
         "               WHERE     s.ID_PROVINCIA = p.ID_PROVINCIA      " +
         "              AND     s.ID_MUNICIPIO = m.ID_MUNICIPIO      " +
         "              AND   s.ID_COMUNA = c.ID_COMUNA      " +
         "                 AND     s.POSSUI_SISTEMA_AGUA = 1      " +
         "        )  QtddeChafarizesQueNaoFuncionam,         " +
-        "       ROUND((( ((SELECT     COALESCE(SUM(qtd_chafarises_existentes),2)-COALESCE(SUM(QTD_CHAFARISES_FUNCIONANDO),2)      " +
+        "       ROUND((( ((SELECT     COALESCE(SUM(qtd_chafarises_existentes),0)-COALESCE(SUM(QTD_CHAFARISES_FUNCIONANDO),0)      " +
         "               FROM     sisas.sistema_agua s       " +
         "               WHERE     s.ID_PROVINCIA = p.ID_PROVINCIA      " +
         "              AND     s.ID_MUNICIPIO = m.ID_MUNICIPIO      " +
         "              AND s.ID_COMUNA = c.ID_COMUNA      " +
         "                 AND     s.POSSUI_SISTEMA_AGUA = 1      " +
-        "        ))  *100)/ (SELECT     COALESCE(COUNT(QTD_CHAFARISES_FUNCIONANDO),2)      " +
+        "        ))  *100)/ (SELECT     COALESCE(COUNT(QTD_CHAFARISES_FUNCIONANDO),0)      " +
         "               FROM     sisas.sistema_agua s       " +
         "               WHERE     s.ID_PROVINCIA = p.ID_PROVINCIA      " +
         "              AND     s.ID_MUNICIPIO = m.ID_MUNICIPIO      " +
         "              AND s.ID_COMUNA = c.ID_COMUNA      " +
         "                 AND     s.POSSUI_SISTEMA_AGUA = 1      " +
-        "        )),2) PercentagemQueNaoFuncionam      " +
+        "        )),0) PercentagemQueNaoFuncionam      " +
         " from sisas.sistema_agua s      " +
         "     inner join sisas.provincia p on s.ID_PROVINCIA = p.ID_PROVINCIA      " +
         "     inner join sisas.municipio m on s.ID_MUNICIPIO = m.ID_MUNICIPIO      " +
@@ -502,7 +502,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "   ))  *100)/ (SELECT COUNT(POSSUI_SISTEMA_AGUA)" +
         "               FROM sisas.sistema_agua s " +
         "               WHERE s.ID_PROVINCIA = p.ID_PROVINCIA" +
-        "   )),2) PercentagemQueFuncionam," +
+        "   )),0) PercentagemQueFuncionam," +
         "   ( " +
         " SELECT COUNT(POSSUI_SISTEMA_AGUA) " +
         " FROM sisas.sistema_agua s " +
@@ -517,7 +517,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "   ))  *100)/ (SELECT COUNT(POSSUI_SISTEMA_AGUA)" +
         " FROM sisas.sistema_agua s " +
         " WHERE s.ID_PROVINCIA = p.ID_PROVINCIA" +
-        "   )),2) PercentagemQueNaoFuncionam" +
+        "   )),0) PercentagemQueNaoFuncionam" +
         " FROM sisas.sistema_agua s" +
         "     INNER JOIN sisas.provincia p on s.ID_PROVINCIA = p.ID_PROVINCIA " +
         "     WHERE s.POSSUI_SISTEMA_AGUA = 1 " +
@@ -640,48 +640,48 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
 
     //FUNCIONAMNETO SISTEMAS DE AGUA
     @Query(value = "SELECT  p.NM_PROVINCIA,        " +
-        "          (  SELECT COALESCE(SUM(s.QTD_HABITANTES_ACESSO_SERVICO_AGUA),2)  " +
+        "          (  SELECT COALESCE(SUM(s.QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)  " +
         "                      FROM  sisas.sistema_agua s         " +
         "                      WHERE s.ID_PROVINCIA = p.ID_PROVINCIA        " +
         "                      AND   s.POSSUI_SISTEMA_AGUA = 1        " +
         "          ) NrPopulcaoBeneficiada,         " +
-        "          ( SELECT  COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)        " +
+        "          ( SELECT  COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)        " +
         "                     FROM   sisas.sistema_agua s         " +
         "                     WHERE  s.ID_PROVINCIA = p.ID_PROVINCIA        " +
         "                     AND    s.POSSUI_SISTEMA_AGUA = 1               " +
         "          ) NrSistemas,        " +
-        "          ( SELECT  COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)        " +
+        "          ( SELECT  COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)        " +
         "                     FROM   sisas.sistema_agua s         " +
         "                     WHERE  s.ID_PROVINCIA = p.ID_PROVINCIA        " +
         "                     AND    s.POSSUI_SISTEMA_AGUA = 1        " +
         "                     AND    s.estado_funcionamento_sistema = 'Está em funcionamento (Bom)'           " +
         "          ) NrSistemasFuncionam,         " +
-        "      ( SELECT COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)        " +
+        "      ( SELECT COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)        " +
         "                     FROM  sisas.sistema_agua s         " +
         "                     WHERE s.ID_PROVINCIA = p.ID_PROVINCIA        " +
         "                     AND   s.POSSUI_SISTEMA_AGUA = 1        " +
         "                     AND   s.estado_funcionamento_sistema =  'Não está em funcionamento'        " +
         "          )  NrSistemasNaoFuncionam,           " +
-        "      ROUND((( ((SELECT  COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)        " +
+        "      ROUND((( ((SELECT  COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)        " +
         "                     FROM  sisas.sistema_agua s         " +
         "                     WHERE s.ID_PROVINCIA = p.ID_PROVINCIA        " +
         "                     AND   s.POSSUI_SISTEMA_AGUA = 1        " +
         "                     AND   s.estado_funcionamento_sistema = 'Está em funcionamento (Bom)'          " +
-        "          ))  *100)/ (SELECT COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)        " +
+        "          ))  *100)/ (SELECT COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)        " +
         "                     FROM  sisas.sistema_agua s         " +
         "                     WHERE s.ID_PROVINCIA = p.ID_PROVINCIA        " +
         "                     AND   s.POSSUI_SISTEMA_AGUA = 1        " +
-        "          )),2) PercentagemQueFuncionam,        " +
-        "      ROUND((( (( SELECT  COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)        " +
+        "          )),0) PercentagemQueFuncionam,        " +
+        "      ROUND((( (( SELECT  COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)        " +
         "                     FROM  sisas.sistema_agua s         " +
         "                     WHERE s.ID_PROVINCIA = p.ID_PROVINCIA        " +
         "                     AND   s.POSSUI_SISTEMA_AGUA = 1        " +
         "                     AND   s.estado_funcionamento_sistema = 'Não está em funcionamento'            " +
-        "          ))  *100)/ (SELECT COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)        " +
+        "          ))  *100)/ (SELECT COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)        " +
         "                     FROM  sisas.sistema_agua s         " +
         "                     WHERE s.ID_PROVINCIA = p.ID_PROVINCIA        " +
         "                     AND   s.POSSUI_SISTEMA_AGUA = 1        " +
-        "          )),2) PercentagemQueNaoFuncionam              " +
+        "          )),0) PercentagemQueNaoFuncionam              " +
         " FROM sisas.sistema_agua s        " +
         "     INNER JOIN sisas.provincia p ON s.ID_PROVINCIA = p.ID_PROVINCIA        " +
         "     WHERE  s.POSSUI_SISTEMA_AGUA = 1        " +
@@ -691,56 +691,56 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
 
     @Query(value = "SELECT           p.NM_PROVINCIA,         " +
         "      m.NM_MUNICIPIO,         " +
-        "          (  SELECT          COALESCE(SUM(s.QTD_HABITANTES_ACESSO_SERVICO_AGUA),2)         " +
+        "          (  SELECT          COALESCE(SUM(s.QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)         " +
         "                               FROM          sisas.sistema_agua s          " +
         "                               WHERE          s.ID_PROVINCIA = p.ID_PROVINCIA         " +
         "             AND          s.ID_MUNICIPIO = m.ID_MUNICIPIO         " +
         "                                AND          s.POSSUI_SISTEMA_AGUA = 1         " +
         "             ) NrPopulcaoBeneficiada,          " +
-        "          ( SELECT          COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)         " +
+        "          ( SELECT          COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)         " +
         "                              FROM          sisas.sistema_agua s          " +
         "                              WHERE          s.ID_PROVINCIA = p.ID_PROVINCIA         " +
         "            AND          s.ID_MUNICIPIO = m.ID_MUNICIPIO         " +
         "                              AND          s.POSSUI_SISTEMA_AGUA = 1         " +
         "             ) NrSistemas,          " +
-        "      (           SELECT          COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)         " +
+        "      (           SELECT          COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)         " +
         "                              FROM          sisas.sistema_agua s          " +
         "                              WHERE          s.ID_PROVINCIA = p.ID_PROVINCIA         " +
         "            AND          s.ID_MUNICIPIO = m.ID_MUNICIPIO         " +
         "                              AND          s.POSSUI_SISTEMA_AGUA = 1         " +
         "            AND          s.estado_funcionamento_sistema = 'Está em funcionamento (Bom)'                   " +
         "             ) NrSistemasFuncionam,          " +
-        "      ( SELECT          COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)         " +
+        "      ( SELECT          COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)         " +
         "                              FROM          sisas.sistema_agua s          " +
         "                              WHERE          s.ID_PROVINCIA = p.ID_PROVINCIA         " +
         "            AND          s.ID_MUNICIPIO = m.ID_MUNICIPIO         " +
         "                              AND          s.POSSUI_SISTEMA_AGUA = 1         " +
         "            AND          s.estado_funcionamento_sistema =  'Não está em funcionamento'           " +
         "             )  NrSistemasNaoFuncionam,         " +
-        "      ROUND((( ((SELECT          COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)         " +
+        "      ROUND((( ((SELECT          COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)         " +
         "                              FROM          sisas.sistema_agua s          " +
         "                              WHERE          s.ID_PROVINCIA = p.ID_PROVINCIA         " +
         "            AND          s.ID_MUNICIPIO = m.ID_MUNICIPIO         " +
         "                           AND          s.POSSUI_SISTEMA_AGUA = 1         " +
         "            AND          s.estado_funcionamento_sistema = 'Está em funcionamento (Bom)'         " +
-        "             ))  *100)/ (SELECT          COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)         " +
+        "             ))  *100)/ (SELECT          COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)         " +
         "                              FROM          sisas.sistema_agua s          " +
         "                              WHERE          s.ID_PROVINCIA = p.ID_PROVINCIA         " +
         "            AND          s.ID_MUNICIPIO = m.ID_MUNICIPIO         " +
         "                                AND          s.POSSUI_SISTEMA_AGUA = 1                 " +
-        "             )),2) PercentagemQueFuncionam,         " +
-        "      ROUND((( ((SELECT          COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)         " +
+        "             )),0) PercentagemQueFuncionam,         " +
+        "      ROUND((( ((SELECT          COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)         " +
         "                              FROM          sisas.sistema_agua s          " +
         "                              WHERE          s.ID_PROVINCIA = p.ID_PROVINCIA         " +
         "            AND          s.ID_MUNICIPIO = m.ID_MUNICIPIO         " +
         "                              AND          s.POSSUI_SISTEMA_AGUA = 1         " +
         "            AND          s.estado_funcionamento_sistema = 'Não está em funcionamento'                       " +
-        "             ))  *100)/ (SELECT          COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)         " +
+        "             ))  *100)/ (SELECT          COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)         " +
         "                              FROM          sisas.sistema_agua s          " +
         "                              WHERE          s.ID_PROVINCIA = p.ID_PROVINCIA         " +
         "            AND          s.ID_MUNICIPIO = m.ID_MUNICIPIO         " +
         "                              AND          s.POSSUI_SISTEMA_AGUA = 1         " +
-        "             )),2) PercentagemQueNaoFuncionam               " +
+        "             )),0) PercentagemQueNaoFuncionam               " +
         " FROM sisas.sistema_agua s          " +
         "     INNER JOIN sisas.provincia p on s.ID_PROVINCIA = p.ID_PROVINCIA         " +
         "     INNER JOIN sisas.municipio m on s.ID_MUNICIPIO = m.ID_MUNICIPIO         " +
@@ -754,21 +754,21 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
     @Query(value = "SELECT p.NM_PROVINCIA,  " +
         "       m.NM_MUNICIPIO,  " +
         "       c.NM_COMUNA,  " +
-        "          ( SELECT COALESCE(SUM(s.QTD_HABITANTES_ACESSO_SERVICO_AGUA),2)  " +
+        "          ( SELECT COALESCE(SUM(s.QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)  " +
         "   FROM sisas.sistema_agua s   " +
         "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
         "            AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
         "            AND  c.ID_COMUNA = c.ID_COMUNA   " +
         "   AND s.POSSUI_SISTEMA_AGUA = 1  " +
         "    ) NrPopulcaoBeneficiada,   " +
-        "          (  SELECT COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)  " +
+        "          (  SELECT COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)  " +
         "    FROM sisas.sistema_agua s   " +
         "    WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
         "             AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
         "             AND  c.ID_COMUNA = c.ID_COMUNA  " +
         "    AND s.POSSUI_SISTEMA_AGUA = 1      " +
         "    ) NrSistemas,   " +
-        "      (  SELECT COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)  " +
+        "      (  SELECT COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)  " +
         "   FROM sisas.sistema_agua s   " +
         "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
         "            AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
@@ -776,7 +776,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "   AND s.POSSUI_SISTEMA_AGUA = 1  " +
         "            AND s.estado_funcionamento_sistema = 'Está em funcionamento (Bom)'    " +
         "    ) NrSistemasFuncionam,   " +
-        "      ( SELECT COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)  " +
+        "      ( SELECT COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)  " +
         "   FROM sisas.sistema_agua s   " +
         "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
         "            AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
@@ -784,34 +784,34 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "      AND s.POSSUI_SISTEMA_AGUA = 1  " +
         "            AND s.estado_funcionamento_sistema =  'Não está em funcionamento'  " +
         "    )  NrSistemasNaoFuncionam,  " +
-        "      ROUND((( ((SELECT COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)  " +
+        "      ROUND((( ((SELECT COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)  " +
         "   FROM sisas.sistema_agua s   " +
         "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
         "            AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
         "            AND  c.ID_COMUNA = c.ID_COMUNA  " +
         "     AND s.POSSUI_SISTEMA_AGUA = 1  " +
         "             AND s.estado_funcionamento_sistema = 'Está em funcionamento (Bom)'           " +
-        "    ))  *100)/ (SELECT COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)  " +
+        "    ))  *100)/ (SELECT COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)  " +
         "   FROM sisas.sistema_agua s   " +
         "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
         "            AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
         "            AND  c.ID_COMUNA = c.ID_COMUNA  " +
         "   AND s.POSSUI_SISTEMA_AGUA = 1  " +
-        "    )),2) PercentagemQueFuncionam,      " +
-        "      ROUND((( ((SELECT COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)  " +
+        "    )),0) PercentagemQueFuncionam,      " +
+        "      ROUND((( ((SELECT COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)  " +
         "   FROM sisas.sistema_agua s   " +
         "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
         "            AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
         "            AND  c.ID_COMUNA = c.ID_COMUNA  " +
         "     AND s.POSSUI_SISTEMA_AGUA = 1  " +
         "             AND s.estado_funcionamento_sistema = 'Não está em funcionamento'                 " +
-        "    ))  *100)/ (SELECT COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)  " +
+        "    ))  *100)/ (SELECT COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)  " +
         "   FROM sisas.sistema_agua s   " +
         "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
         "            AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
         "            AND  c.ID_COMUNA = c.ID_COMUNA  " +
         "     AND s.POSSUI_SISTEMA_AGUA = 1        " +
-        "    )),2) PercentagemQueNaoFuncionam            " +
+        "    )),0) PercentagemQueNaoFuncionam            " +
         " from sisas.sistema_agua s  " +
         "     inner join sisas.provincia p on s.ID_PROVINCIA = p.ID_PROVINCIA  " +
         "     inner join sisas.municipio m on s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
@@ -827,7 +827,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
     @Query(value = "SELECT p.NM_PROVINCIA,        " +
         "              m.NM_MUNICIPIO,        " +
         "              c.NM_COMUNA,        " +
-        "      (SELECT       COALESCE(COUNT(Esquema),2)        " +
+        "      (SELECT       COALESCE(COUNT(Esquema),0)        " +
         "                     FROM       sisas.sistema_agua s         " +
         "                     WHERE       s.ID_PROVINCIA = p.ID_PROVINCIA        " +
         "              AND       s.ID_MUNICIPIO = m.ID_MUNICIPIO        " +
@@ -835,7 +835,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "              AND       s.NM_TP_FONTE= 'Subterrânea'        " +
         "              AND       s.Esquema = 'Poço/cacimba melhorada'        " +
         "          ) NrPocvoMelhorado,         " +
-        "          ( SELECT       COALESCE(COUNT(Esquema),2)        " +
+        "          ( SELECT       COALESCE(COUNT(Esquema),0)        " +
         "                     FROM       sisas.sistema_agua s         " +
         "                     WHERE       s.ID_PROVINCIA = p.ID_PROVINCIA        " +
         "                       AND       s.ID_MUNICIPIO = m.ID_MUNICIPIO        " +
@@ -843,7 +843,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "                       AND       s.NM_TP_FONTE = 'Subterrânea'        " +
         "                       AND       s.ESQUEMA = 'Furo'         " +
         "              ) Furo,        " +
-        "      (        SELECT       COALESCE(COUNT(Esquema),2)        " +
+        "      (        SELECT       COALESCE(COUNT(Esquema),0)        " +
         "                     FROM       sisas.sistema_agua s         " +
         "                     WHERE       s.ID_PROVINCIA = p.ID_PROVINCIA        " +
         "                       AND       s.ID_MUNICIPIO = m.ID_MUNICIPIO        " +
@@ -851,7 +851,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "                       AND       s.NM_TP_FONTE  = 'Subterrânea'        " +
         "                       AND       s.ESQUEMA = 'Nascente'        " +
         "              ) Nascente,        " +
-        "       (   SELECT       COALESCE(count(NM_TIPO_BOMBA),2)        " +
+        "       (   SELECT       COALESCE(count(NM_TIPO_BOMBA),0)        " +
         "                     FROM       sisas.sistema_agua s         " +
         "                     WHERE       s.ID_PROVINCIA = p.ID_PROVINCIA        " +
         "                       AND       s.ID_MUNICIPIO = m.ID_MUNICIPIO        " +
@@ -869,7 +869,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "                       AND       s.NM_TP_FONTE  = 'Subterrânea'        " +
         "                       AND       s.NM_TIPO_BOMBA = 'Sistema por gravidade'        " +
         "              )  PopulacaoBeneficiadaGravidade,        " +
-        "        (  SELECT       COALESCE(count(NM_TIPO_BOMBA),2)        " +
+        "        (  SELECT       COALESCE(count(NM_TIPO_BOMBA),0)        " +
         "                     FROM       sisas.sistema_agua s         " +
         "                     WHERE       s.ID_PROVINCIA = p.ID_PROVINCIA        " +
         "                       AND       s.ID_MUNICIPIO = m.ID_MUNICIPIO        " +
@@ -901,27 +901,27 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
     @Query(value = "SELECT p.NM_PROVINCIA,            " +
         "                  m.NM_MUNICIPIO,            " +
         "                  m.populacao,            " +
-        "      (SELECT COALESCE(COUNT(Esquema),2)            " +
+        "      (SELECT COALESCE(COUNT(Esquema),0)            " +
         "              FROM sisas.sistema_agua s             " +
         "              WHERE s.ID_PROVINCIA = p.ID_PROVINCIA            " +
         "              AND   s.ID_MUNICIPIO = m.ID_MUNICIPIO            " +
         "              AND   s.NM_TP_FONTE= 'Subterrânea'            " +
         "              AND   s.Esquema = 'Poço/cacimba melhorada'            " +
         "       ) NrPocvoMelhorado,             " +
-        "       ( SELECT COALESCE(COUNT(Esquema),2)            " +
+        "       ( SELECT COALESCE(COUNT(Esquema),0)            " +
         "                                 WHERE s.ID_PROVINCIA = p.ID_PROVINCIA            " +
         "                                   AND s.ID_MUNICIPIO = m.ID_MUNICIPIO            " +
         "                                   AND s.NM_TP_FONTE = 'Subterrânea'            " +
         "                                   AND s.ESQUEMA = 'Furo'             " +
         "              ) Furo,            " +
-        "       ( SELECT COALESCE(COUNT(Esquema),2)            " +
+        "       ( SELECT COALESCE(COUNT(Esquema),0)            " +
         "                FROM sisas.sistema_agua s             " +
         "                WHERE s.ID_PROVINCIA = p.ID_PROVINCIA            " +
         "                AND   s.ID_MUNICIPIO = m.ID_MUNICIPIO            " +
         "                AND   s.NM_TP_FONTE  = 'Subterrânea'            " +
         "                AND   s.ESQUEMA = 'Nascente'            " +
         "        ) Nascente,             " +
-        "        ( SELECT COALESCE(COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA),2)            " +
+        "        ( SELECT COALESCE(COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA),0)            " +
         "                 FROM  sisas.sistema_agua s             " +
         "                 WHERE s.ID_PROVINCIA = p.ID_PROVINCIA            " +
         "                 AND   s.ID_MUNICIPIO = m.ID_MUNICIPIO            " +
@@ -935,7 +935,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "                 AND           s.NM_TIPO_BOMBA  = 'Bombagem manual'            " +
         "            AND NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Afridev'            " +
         "       ) QtPessoasAcessoAfridev,            " +
-        "      ( SELECT COALESCE(COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA),2)            " +
+        "      ( SELECT COALESCE(COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA),0)            " +
         "                FROM   sisas.sistema_agua s             " +
         "                WHERE  s.ID_PROVINCIA = p.ID_PROVINCIA            " +
         "                AND    s.ID_MUNICIPIO = m.ID_MUNICIPIO            " +
@@ -949,7 +949,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "                AND    s.NM_TIPO_BOMBA  = 'Bombagem manual'            " +
         "            AND NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Vergnet'            " +
         "      ) QtPessoasAcessoVergnet,            " +
-        "      ( SELECT COALESCE(COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA),2)            " +
+        "      ( SELECT COALESCE(COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA),0)            " +
         "               FROM    sisas.sistema_agua s             " +
         "               WHERE   s.ID_PROVINCIA = p.ID_PROVINCIA            " +
         "               AND     s.ID_MUNICIPIO = m.ID_MUNICIPIO            " +
@@ -963,7 +963,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "                AND    s.NM_TIPO_BOMBA  = 'Bombagem manual'            " +
         "                AND    s.NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Volanta'            " +
         "      ) QtPessoasAcessoVolanta,            " +
-        "      ( SELECT COALESCE(COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA),2)            " +
+        "      ( SELECT COALESCE(COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA),0)            " +
         "                FROM   sisas.sistema_agua s             " +
         "                WHERE  s.ID_PROVINCIA = p.ID_PROVINCIA            " +
         "                AND    s.ID_MUNICIPIO = m.ID_MUNICIPIO            " +
@@ -977,7 +977,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "                AND    s.NM_TIPO_BOMBA  = 'Bombagem manual'            " +
         "                AND    s.NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'India Mark II'            " +
         "              ) QtPessoasAcessoIndiaMarkII,             " +
-        "      ( SELECT  COALESCE(COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA),2)            " +
+        "      ( SELECT  COALESCE(COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA),0)            " +
         "                FROM   sisas.sistema_agua s             " +
         "                WHERE  s.ID_PROVINCIA = p.ID_PROVINCIA            " +
         "                AND    s.ID_MUNICIPIO = m.ID_MUNICIPIO            " +
@@ -1007,28 +1007,28 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
     // BENEFICIARIOS DE AGUA POR FONTE SUBTERRANEA E POR TIPO DE BOMBA MANUAL (Nivel Provincial)
     @Query(value = "SELECT p.NM_PROVINCIA,         " +
         "                  p.populacao,         " +
-        "      (SELECT  COALESCE(COUNT(Esquema),2)         " +
+        "      (SELECT  COALESCE(COUNT(Esquema),0)         " +
         "              FROM  sisas.sistema_agua s          " +
         "              WHERE s.ID_PROVINCIA = p.ID_PROVINCIA         " +
         "              AND s.POSSUI_SISTEMA_AGUA = 1         " +
         "              AND s.NM_TP_FONTE= 'Subterrânea'         " +
         "              AND s.Esquema = 'Poço/cacimba melhorada'         " +
         "             ) NrPocvoMelhorado,          " +
-        "      ( SELECT COALESCE(COUNT(Esquema),2)         " +
+        "      ( SELECT COALESCE(COUNT(Esquema),0)         " +
         "              FROM sisas.sistema_agua s          " +
         "              WHERE s.ID_PROVINCIA = p.ID_PROVINCIA         " +
         "              AND s.POSSUI_SISTEMA_AGUA = 1         " +
         "              AND s.NM_TP_FONTE = 'Subterrânea'         " +
         "              AND s.ESQUEMA = 'Furo'          " +
         "                    ) Furo,         " +
-        "      ( SELECT          COALESCE(COUNT(Esquema),2)         " +
+        "      ( SELECT          COALESCE(COUNT(Esquema),0)         " +
         "                              FROM          sisas.sistema_agua s          " +
         "                              WHERE          s.ID_PROVINCIA = p.ID_PROVINCIA         " +
         "              AND s.POSSUI_SISTEMA_AGUA = 1         " +
         "                                AND          s.NM_TP_FONTE  = 'Subterrânea'         " +
         "                                AND          s.ESQUEMA = 'Nascente'         " +
         "                    ) Nascente,         " +
-        "        ( SELECT          COALESCE(COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA),2)         " +
+        "        ( SELECT          COALESCE(COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA),0)         " +
         "                              FROM          sisas.sistema_agua s          " +
         "                              WHERE          s.ID_PROVINCIA = p.ID_PROVINCIA         " +
         "              AND s.POSSUI_SISTEMA_AGUA = 1         " +
@@ -1042,7 +1042,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "                                AND          s.NM_TIPO_BOMBA  = 'Bombagem manual'         " +
         "            AND NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Afridev'         " +
         "             ) QtPessoasAcessoAfridev,         " +
-        "      ( SELECT          COALESCE(COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA),2)         " +
+        "      ( SELECT          COALESCE(COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA),0)         " +
         "                              FROM          sisas.sistema_agua s          " +
         "                              WHERE          s.ID_PROVINCIA = p.ID_PROVINCIA         " +
         "              AND s.POSSUI_SISTEMA_AGUA = 1         " +
@@ -1056,7 +1056,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "                                AND          s.NM_TIPO_BOMBA  = 'Bombagem manual'         " +
         "            AND NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Vergnet'         " +
         "             ) QtPessoasAcessoVergnet,         " +
-        "      ( SELECT          COALESCE(COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA),2)         " +
+        "      ( SELECT          COALESCE(COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA),0)         " +
         "                              FROM          sisas.sistema_agua s          " +
         "                              WHERE          s.ID_PROVINCIA = p.ID_PROVINCIA         " +
         "               AND s.POSSUI_SISTEMA_AGUA = 1         " +
@@ -1070,7 +1070,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "            AND s.POSSUI_SISTEMA_AGUA = 1         " +
         "            AND NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Volanta'         " +
         "             ) QtPessoasAcessoVolanta,         " +
-        "      ( SELECT          COALESCE(COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA),2)         " +
+        "      ( SELECT          COALESCE(COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA),0)         " +
         "                              FROM          sisas.sistema_agua s          " +
         "                              WHERE          s.ID_PROVINCIA = p.ID_PROVINCIA         " +
         "                                AND          s.NM_TIPO_BOMBA  = 'Bombagem manual'         " +
@@ -1084,7 +1084,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "            AND s.POSSUI_SISTEMA_AGUA = 1         " +
         "            AND NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'India Mark II'         " +
         "             ) QtPessoasAcessoIndiaMarkII,         " +
-        "      ( SELECT          COALESCE(COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA),2)         " +
+        "      ( SELECT          COALESCE(COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA),0)         " +
         "                              FROM          sisas.sistema_agua s          " +
         "                              WHERE          s.ID_PROVINCIA = p.ID_PROVINCIA         " +
         "                                AND          s.NM_TIPO_BOMBA  = 'Bombagem manual'         " +
@@ -1104,6 +1104,123 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         " GROUP BY          " +
         "       p.NM_PROVINCIA, p.ID_PROVINCIA ", nativeQuery = true)
     List<Object[]> buscaDadosBenefAguaFonteSubterraneaTipoBombaManualProvincial();
+
+    @Query(value = "SELECT  p.NM_PROVINCIA,  " +
+        "     m.NM_MUNICIPIO,  " +
+        "        m.populacao,  " +
+        "      (   " +
+        "  SELECT COALESCE(COUNT(Esquema),0)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "              AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "              AND s.NM_TP_FONTE= 'Subterrânea'  " +
+        "              AND s.Esquema = 'Poço/cacimba melhorada'  " +
+        "    ) NrPocvoMelhorado,   " +
+        "      (   " +
+        "   SELECT COALESCE(COUNT(Esquema),0)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.NM_TP_FONTE = 'Subterrânea'  " +
+        "     AND s.ESQUEMA = 'Furo'   " +
+        "  ) Furo,  " +
+        "      (   " +
+        "   SELECT COALESCE(COUNT(Esquema),0)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.NM_TP_FONTE  = 'Subterrânea'  " +
+        "     AND s.ESQUEMA = 'Nascente'  " +
+        "  ) Nascente,  " +
+        "         (   " +
+        "   SELECT COALESCE(COUNT(NM_TIPO_BOMBA),0)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.NM_TIPO_BOMBA  = 'Bombagem manual'  " +
+        "              AND NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Afridev'  " +
+        "  ) Afridev,  " +
+        "         (   " +
+        "     SELECT  COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)  " +
+        "   FROM   sisas.sistema_agua s   " +
+        "   WHERE  s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "          AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.NM_TIPO_BOMBA  = 'Bombagem manual'  " +
+        "            AND NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Afridev'  " +
+        "    ) QtPessoasAcessoAfridev,  " +
+        "      (   " +
+        "   SELECT COALESCE(COUNT(NM_TIPO_BOMBA),0)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.NM_TIPO_BOMBA  = 'Bombagem manual'  " +
+        "              AND NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Vergnet'  " +
+        "  ) Vergnet,  " +
+        "         (   " +
+        "     SELECT  COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)  " +
+        "   FROM   sisas.sistema_agua s   " +
+        "   WHERE  s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "          AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.NM_TIPO_BOMBA  = 'Bombagem manual'  " +
+        "            AND NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Vergnet'  " +
+        "    ) QtPessoasAcessoVergnet,  " +
+        "      (   " +
+        "   SELECT COALESCE(COUNT(NM_TIPO_BOMBA),0)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.NM_TIPO_BOMBA  = 'Bombagem manual'  " +
+        "              AND NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Volanta'  " +
+        "  ) Volanta,  " +
+        "        (   " +
+        "     SELECT  COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)  " +
+        "   FROM   sisas.sistema_agua s   " +
+        "   WHERE  s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "          AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.NM_TIPO_BOMBA  = 'Bombagem manual'  " +
+        "            AND NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Volanta'  " +
+        "    ) QtPessoasAcessoVolanta,  " +
+        "      (   " +
+        "   SELECT COALESCE(COUNT(NM_TIPO_BOMBA),0)  " +
+        "   FROM sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.NM_TIPO_BOMBA  = 'Bombagem manual'  " +
+        "              AND NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'India Mark II'  " +
+        "  ) IndiaMarkII,  " +
+        "        (   " +
+        "     SELECT  COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)  " +
+        "   FROM   sisas.sistema_agua s   " +
+        "   WHERE  s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "          AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.NM_TIPO_BOMBA  = 'Bombagem manual'  " +
+        "            AND NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'India Mark II'  " +
+        "    ) QtPessoasAcessoIndiaMarkII,  " +
+        "      (   " +
+        "   SELECT COALESCE(COUNT(NM_TIPO_BOMBA),0)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.NM_TIPO_BOMBA  = 'Bombagem manual'  " +
+        "              AND NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Outros'  " +
+        "  ) Outros,  " +
+        "        (   " +
+        "     SELECT  COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)  " +
+        "   FROM   sisas.sistema_agua s   " +
+        "   WHERE  s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "          AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.NM_TIPO_BOMBA  = 'Bombagem manual'  " +
+        "            AND NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Outros'  " +
+        "    ) QtPessoasAcessoOutros  " +
+        "from sisas.sistema_agua s  " +
+        "     inner join sisas.provincia p on s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     inner join sisas.municipio m on p.ID_PROVINCIA = m.ID_PROVINCIA   " +
+        "     where  s.POSSUI_SISTEMA_AGUA = 1  " +
+        "GROUP BY   " +
+        "       p.NM_PROVINCIA, p.ID_PROVINCIA,   " +
+        "       m.ID_MUNICIPIO, s.ID_MUNICIPIO,  " +
+        "       s.NM_TP_FONTE, s.ESQUEMA ", nativeQuery = true)
+    List<Object[]> buscaDadosBenefAguaFonteSubterraneaTipoBombaManualMunicipal();
 
     
     @Query(value = "SELECT     p.NM_PROVINCIA,   " +
@@ -1131,7 +1248,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "              AND     s.NM_TP_FONTE = 'Superficial'   " +
         "              AND    s.NM_TIPO_BOMBA ='Bomba elétrica'   " +
         "              AND   s.POSSUI_SISTEMA_AGUA = 1          " +
-        "       )))),2) PercentagemAcessoBombaEletrica,   " +
+        "       )))),0) PercentagemAcessoBombaEletrica,   " +
         "      (    " +
         "        SELECT    COUNT(NM_TIPO_BOMBA)   " +
         "            FROM    sistema_agua s    " +
@@ -1154,7 +1271,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "              AND      s.NM_TP_FONTE = 'Superficial'   " +
         "              AND    s.NM_TIPO_BOMBA ='Bomba a diesel'   " +
         "              AND   s.POSSUI_SISTEMA_AGUA = 1          " +
-        "       )))),2) PercentagemAcessoBombaDiesel,   " +
+        "       )))),0) PercentagemAcessoBombaDiesel,   " +
         "      (    " +
         "        SELECT    COUNT(NM_TIPO_BOMBA)   " +
         "            FROM    sistema_agua s    " +
@@ -1177,7 +1294,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "              AND      s.NM_TP_FONTE = 'Superficial'   " +
         "              AND    s.NM_TIPO_BOMBA ='Bomba por gravidade'   " +
         "              AND   s.POSSUI_SISTEMA_AGUA = 1          " +
-        "       )))),2) PercentagemAcessoGravidade   " +
+        "       )))),0) PercentagemAcessoGravidade   " +
         "from sistema_agua s   " +
         "     inner join provincia p on   " +
         "     s.ID_PROVINCIA = p.ID_PROVINCIA   " +
@@ -1216,7 +1333,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "              AND     s.NM_TP_FONTE = 'Superficial'      " +
         "              AND     s.NM_TIPO_BOMBA ='Bomba elétrica'      " +
         "              AND   s.POSSUI_SISTEMA_AGUA = 1             " +
-        "        )))),2) PercentagemAcessoBombaEletrica,      " +
+        "        )))),0) PercentagemAcessoBombaEletrica,      " +
         "      (       " +
         "          SELECT     COUNT(NM_TIPO_BOMBA)      " +
         "               FROM     sistema_agua s       " +
@@ -1242,7 +1359,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "              AND     s.NM_TP_FONTE = 'Superficial'      " +
         "              AND     s.NM_TIPO_BOMBA ='Bomba a diesel'      " +
         "              AND   s.POSSUI_SISTEMA_AGUA = 1             " +
-        "        )))),2) PercentagemAcessoBombaDiesel,      " +
+        "        )))),0) PercentagemAcessoBombaDiesel,      " +
         "      (       " +
         "          SELECT     COUNT(NM_TIPO_BOMBA)      " +
         "               FROM     sistema_agua s       " +
@@ -1268,7 +1385,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "              AND   s.NM_TP_FONTE = 'Superficial'      " +
         "              AND     s.NM_TIPO_BOMBA ='Bomba por gravidade'      " +
         "              AND   s.POSSUI_SISTEMA_AGUA = 1             " +
-        "        )))),2) PercentagemAcessoGravidade      " +
+        "        )))),0) PercentagemAcessoGravidade      " +
         "from sistema_agua s      " +
         "     inner join provincia p on      " +
         "     s.ID_PROVINCIA = p.ID_PROVINCIA      " +
@@ -1313,7 +1430,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "              AND s.NM_TP_FONTE = 'Superficial'  " +
         "              AND s.NM_TIPO_BOMBA ='Bomba elétrica'  " +
         "              AND   s.POSSUI_SISTEMA_AGUA = 1         " +
-        "    )))),2) PercentagemAcessoBombaEletrica,  " +
+        "    )))),0) PercentagemAcessoBombaEletrica,  " +
         "      (  SELECT COUNT(NM_TIPO_BOMBA)  " +
         "   FROM sisas.sistema_agua s   " +
         "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
@@ -1340,7 +1457,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "              AND   s.NM_TP_FONTE = 'Superficial'  " +
         "              AND s.NM_TIPO_BOMBA ='Bomba a diesel'  " +
         "              AND   s.POSSUI_SISTEMA_AGUA = 1         " +
-        "    )))),2) PercentagemAcessoBombaDiesel,  " +
+        "    )))),0) PercentagemAcessoBombaDiesel,  " +
         "      (  SELECT COUNT(NM_TIPO_BOMBA)  " +
         "   FROM sisas.sistema_agua s   " +
         "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
@@ -1367,7 +1484,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "              AND s.NM_TP_FONTE = 'Superficial'  " +
         "              AND s.NM_TIPO_BOMBA ='Bomba por gravidade'  " +
         "              AND   s.POSSUI_SISTEMA_AGUA = 1         " +
-        "    )))),2) PercentagemAcessoGravidade  " +
+        "    )))),0) PercentagemAcessoGravidade  " +
         "FROM sisas.sistema_agua s  " +
         "     INNER JOIN sisas.provincia p on s.ID_PROVINCIA = p.ID_PROVINCIA  " +
         "     INNER JOIN sisas.municipio m on s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
@@ -1384,13 +1501,13 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
     @Query(value = "SELECT p.NM_PROVINCIA," +
         " p.populacao," +
         " (" +
-        " SELECT COALESCE(COUNT(Esquema),2)" +
+        " SELECT COALESCE(COUNT(Esquema),0)" +
         " FROM sistema_agua s " +
         " WHERE s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "  AND	s.Esquema = 'Poço/cacimba melhorada'" +
         "   ) PocoMelhorado, " +
         "     ( " +
-        " SELECT COALESCE(COUNT(Esquema),2)" +
+        " SELECT COALESCE(COUNT(Esquema),0)" +
         " FROM	sistema_agua s " +
         " WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "  AND	s.Esquema = 'Furo'" +
@@ -1402,7 +1519,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "  AND	s.Esquema = 'Nascente'" +
         "   )  Nascente," +
         "      ( " +
-        "		SELECT	COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)" +
+        "		SELECT	COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)" +
         "	FROM	sistema_agua s " +
         "	WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA " +
         "     AND   s.NM_TP_FONTE = 'Subterrânea' " +
@@ -1410,7 +1527,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "     AND   s.POSSUI_SISTEMA_AGUA = 1 " +
         " ) NrSistemasDiesel, " +
         " (" +
-        " SELECT	COALESCE(COUNT(NM_TP_BOMBA_ENERGIA),2)" +
+        " SELECT	COALESCE(COUNT(NM_TP_BOMBA_ENERGIA),0)" +
         "	FROM	sistema_agua s" +
         "	WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "      AND   s.NM_TP_FONTE = 'Subterrânea'" +
@@ -1423,9 +1540,9 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "     AND	s.NM_TP_FONTE = 'Subterrânea'" +
         "       AND   NM_TP_BOMBA_ENERGIA = 'Diesel/Motobomba'" +
         "      AND   s.POSSUI_SISTEMA_AGUA = 1" +
-        " )))),2) PercentagemAcessoBombaDiesel," +
+        " )))),0) PercentagemAcessoBombaDiesel," +
         " (" +
-        " SELECT	COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)" +
+        " SELECT	COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)" +
         "	FROM	sistema_agua s" +
         "	WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "      AND   s.NM_TP_FONTE = 'Subterrânea'" +
@@ -1433,7 +1550,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "     AND   s.POSSUI_SISTEMA_AGUA = 1" +
         " ) NrSistemasSolar," +
         " (" +
-        " SELECT	COALESCE(COUNT(NM_TP_BOMBA_ENERGIA),2)" +
+        " SELECT	COALESCE(COUNT(NM_TP_BOMBA_ENERGIA),0)" +
         "	FROM	sistema_agua s " +
         "	WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "     AND   s.NM_TP_FONTE = 'Subterrânea'" +
@@ -1446,9 +1563,9 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "      AND	s.NM_TP_FONTE = 'Subterrânea'" +
         "       AND   NM_TP_BOMBA_ENERGIA = 'Solar'" +
         "      AND   s.POSSUI_SISTEMA_AGUA = 1" +
-        " )))),2) PercentagemSistemaSolar," +
+        " )))),0) PercentagemSistemaSolar," +
         " (" +
-        " SELECT	COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)" +
+        " SELECT	COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)" +
         "	FROM	sistema_agua s " +
         "	WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "      AND   s.NM_TP_FONTE = 'Subterrânea'" +
@@ -1456,7 +1573,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "     AND   s.POSSUI_SISTEMA_AGUA = 1" +
         " ) NrSistemasEolica," +
         " (" +
-        " SELECT	COALESCE(COUNT(NM_TP_BOMBA_ENERGIA),2)" +
+        " SELECT	COALESCE(COUNT(NM_TP_BOMBA_ENERGIA),0)" +
         "	FROM	sistema_agua s" +
         "	WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "      AND   s.NM_TP_FONTE = 'Subterrânea'" +
@@ -1469,9 +1586,9 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "      AND	s.NM_TP_FONTE = 'Subterrânea'" +
         "       AND   NM_TP_BOMBA_ENERGIA = 'Eólica'" +
         "      AND   s.POSSUI_SISTEMA_AGUA = 1" +
-        " )))),2) PercentagemSistemaEolica," +
+        " )))),0) PercentagemSistemaEolica," +
         " (" +
-        " SELECT	COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)" +
+        " SELECT	COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)" +
         "	FROM	sistema_agua s" +
         "	WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "      AND   s.NM_TP_FONTE = 'Subterrânea'" +
@@ -1479,7 +1596,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "     AND   s.POSSUI_SISTEMA_AGUA = 1" +
         " ) NrSistemasElectrica," +
         " (" +
-        " SELECT	COALESCE(COUNT(NM_TP_BOMBA_ENERGIA),2)" +
+        " SELECT	COALESCE(COUNT(NM_TP_BOMBA_ENERGIA),0)" +
         "	FROM	sistema_agua s" +
         "	WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "      AND   s.NM_TP_FONTE = 'Subterrânea'" +
@@ -1492,9 +1609,9 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "      AND	s.NM_TP_FONTE = 'Subterrânea'" +
         "       AND   NM_TP_BOMBA_ENERGIA = 'Eléctrica'" +
         "      AND   s.POSSUI_SISTEMA_AGUA = 1" +
-        " )))),2) PercentagemSistemaElectrica," +
+        " )))),0) PercentagemSistemaElectrica," +
         " (" +
-        " SELECT	COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)" +
+        " SELECT	COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)" +
         "	FROM	sistema_agua s" +
         "	WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "      AND   s.NM_TP_FONTE = 'Subterrânea'" +
@@ -1502,7 +1619,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "     AND   s.POSSUI_SISTEMA_AGUA = 1" +
         " ) NrSistemasOutros," +
         " (" +
-        " SELECT	COALESCE(COUNT(NM_TP_BOMBA_ENERGIA),2)" +
+        " SELECT	COALESCE(COUNT(NM_TP_BOMBA_ENERGIA),0)" +
         "	FROM	sistema_agua s" +
         "	WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "      AND   s.NM_TP_FONTE = 'Subterrânea'" +
@@ -1515,7 +1632,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "      AND	s.NM_TP_FONTE = 'Subterrânea'" +
         "       AND   NM_TP_BOMBA_ENERGIA = 'Outros'" +
         "      AND   s.POSSUI_SISTEMA_AGUA = 1" +
-        " )))),2) PercentagemSistemaOutros" +
+        " )))),0) PercentagemSistemaOutros" +
         " FROM sisas.sistema_agua s " +
         " INNER JOIN sisas.provincia p ON s.ID_PROVINCIA = p.ID_PROVINCIA" +
         " GROUP BY" +
@@ -1529,7 +1646,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "	    c.NM_COMUNA," +
         "        c.populacao," +
         "          ( " +
-        "		SELECT	COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)" +
+        "		SELECT	COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)" +
         "			FROM	sistema_agua s " +
         "			WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "			  AND	s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
@@ -1540,7 +1657,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "               AND	s.Esquema = 'Poço/cacimba melhorada'" +
         " 	  ) PocoMelhorado, " +
         "          ( " +
-        "			SELECT	COALESCE(COUNT(Esquema),2)" +
+        "			SELECT	COALESCE(COUNT(Esquema),0)" +
         "			FROM	sistema_agua s " +
         "			WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "			  AND	s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
@@ -1551,7 +1668,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "			  AND	s.ESQUEMA = 'Furo' " +
         "		) Furo," +
         "		( " +
-        "			SELECT	COALESCE(COUNT(Esquema),2)" +
+        "			SELECT	COALESCE(COUNT(Esquema),0)" +
         "			FROM	sistema_agua s " +
         "			WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "			  AND	s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
@@ -1562,7 +1679,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "			  AND	s.ESQUEMA = 'Nascente'" +
         "		) Nascente, " +
         "           (             " +
-        "           SELECT	COALESCE(count(NM_TP_BOMBA_ENERGIA),2)" +
+        "           SELECT	COALESCE(count(NM_TP_BOMBA_ENERGIA),0)" +
         "			FROM	sistema_agua s " +
         "			WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "			  AND	s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
@@ -1573,7 +1690,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "			  AND	s.NM_TP_BOMBA_ENERGIA = 'Diesel/Motobomba'" +
         "		)  NrSistemasDiesel," +
         " ( " +
-        "		SELECT	 COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),2)" +
+        "		SELECT	 COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)" +
         "			FROM   sistema_agua s " +
         "			WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "			  AND	s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
@@ -1583,7 +1700,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "              AND s.NM_TIPO_BOMBA = 'Bomba de energia'" +
         "			  AND	s.NM_TP_BOMBA_ENERGIA = 'Diesel/Motobomba'" +
         " 	  ) NrPopulacaoBeficiadaDiesel," +
-        "      ROUND((( ((SELECT	((COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),2)*100)/c.populacao)" +
+        "      ROUND((( ((SELECT	((COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)*100)/c.populacao)" +
         "			FROM   sistema_agua s " +
         "			WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "			  AND	s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
@@ -1592,9 +1709,9 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "			  AND	s.NM_TP_FONTE  = 'Subterrânea'" +
         "              AND s.NM_TIPO_BOMBA = 'Bomba de energia'" +
         "			  AND	s.NM_TP_BOMBA_ENERGIA = 'Diesel/Motobomba'" +
-        " 	  )))),2) PercentagemCoberturaDiesel," +
+        " 	  )))),0) PercentagemCoberturaDiesel," +
         " (" +
-        "           SELECT	COALESCE(count(NM_TP_BOMBA_ENERGIA),2)" +
+        "           SELECT	COALESCE(count(NM_TP_BOMBA_ENERGIA),0)" +
         "			FROM	sistema_agua s " +
         "			WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "			  AND	s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
@@ -1605,7 +1722,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "			  AND	s.NM_TP_BOMBA_ENERGIA = 'Solar'" +
         "		)  NrSistemasSolar," +
         "      (" +
-        "      SELECT	 COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),2)" +
+        "      SELECT	 COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)" +
         "			FROM   sistema_agua s " +
         "			WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "			  AND	s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
@@ -1615,7 +1732,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "              AND s.NM_TIPO_BOMBA = 'Bomba de energia'" +
         "			  AND	s.NM_TP_BOMBA_ENERGIA = 'Solar'" +
         "		) NrPopulacaoBeficiadaSolar," +
-        "      ROUND((( ((SELECT	((COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),2)*100)/c.populacao)" +
+        "      ROUND((( ((SELECT	((COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)*100)/c.populacao)" +
         "			FROM   sistema_agua s " +
         "			WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "			  AND	s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
@@ -1624,9 +1741,9 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "			  AND	s.NM_TP_FONTE  = 'Subterrânea'" +
         "              AND s.NM_TIPO_BOMBA = 'Bomba de energia'" +
         "			  AND	s.NM_TP_BOMBA_ENERGIA = 'Solar'" +
-        " 	  )))),2) PercentagemCoberturaSolar," +
+        " 	  )))),0) PercentagemCoberturaSolar," +
         " (" +
-        "           SELECT	COALESCE(count(NM_TP_BOMBA_ENERGIA),2)" +
+        "           SELECT	COALESCE(count(NM_TP_BOMBA_ENERGIA),0)" +
         "			FROM	sistema_agua s " +
         "			WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "			  AND	s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
@@ -1637,7 +1754,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "			  AND	s.NM_TP_BOMBA_ENERGIA = 'Eólica'" +
         "		)  NrSistemasEolica," +
         "      (" +
-        "      SELECT	 COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),2)" +
+        "      SELECT	 COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)" +
         "			FROM   sistema_agua s " +
         "			WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "			  AND	s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
@@ -1647,7 +1764,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "              AND s.NM_TIPO_BOMBA = 'Bomba de energia'" +
         "			  AND	s.NM_TP_BOMBA_ENERGIA = 'Eólica'" +
         "		) NrPopulacaoBeficiadaEolica," +
-        "      ROUND((( ((SELECT	((COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),2)*100)/c.populacao)" +
+        "      ROUND((( ((SELECT	((COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)*100)/c.populacao)" +
         "			FROM   sistema_agua s " +
         "			WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "			  AND	s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
@@ -1656,9 +1773,9 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "			  AND	s.NM_TP_FONTE  = 'Subterrânea'" +
         "              AND s.NM_TIPO_BOMBA = 'Bomba de energia'" +
         "			  AND	s.NM_TP_BOMBA_ENERGIA = 'Eólica'" +
-        " 	  )))),2) PercentagemCoberturaEolica," +
+        " 	  )))),0) PercentagemCoberturaEolica," +
         " (" +
-        "           SELECT	COALESCE(count(NM_TP_BOMBA_ENERGIA),2)" +
+        "           SELECT	COALESCE(count(NM_TP_BOMBA_ENERGIA),0)" +
         "			FROM	sistema_agua s " +
         "			WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "			  AND	s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
@@ -1669,7 +1786,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "			  AND	s.NM_TP_BOMBA_ENERGIA = 'Eléctrica'" +
         "		)  NrSistemasEletrica," +
         "      (" +
-        "      SELECT	 COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),2)" +
+        "      SELECT	 COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)" +
         "			FROM   sistema_agua s " +
         "			WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "			  AND	s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
@@ -1679,7 +1796,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "              AND s.NM_TIPO_BOMBA = 'Bomba de energia'" +
         "			  AND	s.NM_TP_BOMBA_ENERGIA = 'Eléctrica'" +
         "		) NrPopulacaoBeficiadaEletrica," +
-        "      ROUND((( ((SELECT	((COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),2)*100)/c.populacao)" +
+        "      ROUND((( ((SELECT	((COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)*100)/c.populacao)" +
         "			FROM   sistema_agua s " +
         "			WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "			  AND	s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
@@ -1688,9 +1805,9 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "			  AND	s.NM_TP_FONTE  = 'Subterrânea'" +
         "              AND s.NM_TIPO_BOMBA = 'Bomba de energia'" +
         "			  AND	s.NM_TP_BOMBA_ENERGIA = 'Eléctrica'" +
-        " 	  )))),2) PercentagemCoberturaEletrica," +
+        " 	  )))),0) PercentagemCoberturaEletrica," +
         " (" +
-        "           SELECT	COALESCE(count(NM_TP_BOMBA_ENERGIA),2)" +
+        "           SELECT	COALESCE(count(NM_TP_BOMBA_ENERGIA),0)" +
         "			FROM	sistema_agua s " +
         "			WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "			  AND	s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
@@ -1701,7 +1818,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "			  AND	s.NM_TP_BOMBA_ENERGIA = 'Outros'" +
         "		)  NrSistemasOutros," +
         "      (" +
-        "      SELECT	 COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),2)" +
+        "      SELECT	 COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)" +
         "			FROM   sistema_agua s " +
         "			WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "			  AND	s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
@@ -1711,7 +1828,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "              AND s.NM_TIPO_BOMBA = 'Bomba de energia'" +
         "			  AND	s.NM_TP_BOMBA_ENERGIA = 'Outros'" +
         "		) NrPopulacaoBeficiadaOutros," +
-        "      ROUND((( ((SELECT	((COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),2)*100)/c.populacao)" +
+        "      ROUND((( ((SELECT	((COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)*100)/c.populacao)" +
         "			FROM   sistema_agua s " +
         "			WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
         "			  AND	s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
@@ -1720,7 +1837,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "			  AND	s.NM_TP_FONTE  = 'Subterrânea'" +
         "              AND s.NM_TIPO_BOMBA = 'Bomba de energia'" +
         "			  AND	s.NM_TP_BOMBA_ENERGIA = 'Outros'" +
-        " 	  )))),2) PercentagemCoberturaOutros" +
+        " 	  )))),0) PercentagemCoberturaOutros" +
         " from sistema_agua s" +
         "     inner join provincia p on" +
         "     s.ID_PROVINCIA = p.ID_PROVINCIA" +
@@ -1737,10 +1854,563 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "       c.ID_COMUNA", nativeQuery = true)
     List<Object[]> beneficiariosAguaBmbEnergiaComunalQuery();
 
-    @Query(value = "SELECT * FROM jhi_user", nativeQuery = true)
+    @Query(value = "SELECT         p.NM_PROVINCIA,         " +
+        "        m.NM_MUNICIPIO,         " +
+        "        c.NM_COMUNA,         " +
+        "        c.populacao,         " +
+        "          (          " +
+        "                SELECT        COALESCE(COUNT(Esquema),0)         " +
+        "                        FROM        sisas.sistema_agua s          " +
+        "                        WHERE        s.ID_PROVINCIA = p.ID_PROVINCIA         " +
+        "              AND   s.ID_MUNICIPIO = m.ID_MUNICIPIO          " +
+        "              AND   s.ID_COMUNA = c.ID_COMUNA         " +
+        "              AND        s.NM_TP_FONTE= 'Subterrânea'         " +
+        "              AND        s.Esquema = 'Poço/cacimba melhorada'         " +
+        "           ) NrPocvoMelhorado,          " +
+        "      (          " +
+        "                        SELECT        COALESCE(COUNT(Esquema),0)         " +
+        "                        FROM        sisas.sistema_agua s          " +
+        "                        WHERE        s.ID_PROVINCIA = p.ID_PROVINCIA         " +
+        "              AND   s.ID_MUNICIPIO = m.ID_MUNICIPIO          " +
+        "              AND   s.ID_COMUNA = c.ID_COMUNA         " +
+        "                          AND        s.NM_TP_FONTE = 'Subterrânea'         " +
+        "                          AND        s.ESQUEMA = 'Furo'          " +
+        "                ) Furo,         " +
+        "      (          " +
+        "                        SELECT        COALESCE(COUNT(Esquema),0)         " +
+        "                        FROM        sisas.sistema_agua s          " +
+        "                        WHERE        s.ID_PROVINCIA = p.ID_PROVINCIA         " +
+        "              AND   s.ID_MUNICIPIO = m.ID_MUNICIPIO          " +
+        "              AND   s.ID_COMUNA = c.ID_COMUNA         " +
+        "                          AND        s.NM_TP_FONTE  = 'Subterrânea'         " +
+        "                          AND        s.ESQUEMA = 'Nascente'         " +
+        "                ) Nascente,         " +
+        "         (          " +
+        "                        SELECT        COALESCE(COUNT(NM_TP_BOMBA_ENERGIA),0)         " +
+        "                        FROM        sisas.sistema_agua s          " +
+        "                        WHERE        s.ID_PROVINCIA = p.ID_PROVINCIA         " +
+        "              AND   s.ID_MUNICIPIO = m.ID_MUNICIPIO          " +
+        "              AND   s.ID_COMUNA = c.ID_COMUNA         " +
+        "              AND        s.NM_TP_FONTE= 'Subterrânea'         " +
+        "              AND        s.NM_TIPO_BOMBA  IN('Bombagem manual','Bomba eléctrica')         " +
+        "                          AND        s.NM_TP_BOMBA_ENERGIA  = 'Diesel/Motobomba'         " +
+        "                ) NrSistemasAdiesel,         " +
+        "         (          " +
+        "                   SELECT         COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)         " +
+        "                        FROM    sisas.sistema_agua s          " +
+        "                          Where   s.ID_PROVINCIA = p.ID_PROVINCIA         " +
+        "              AND   s.ID_MUNICIPIO   = m.ID_MUNICIPIO          " +
+        "              AND   s.ID_COMUNA = c.ID_COMUNA         " +
+        "              AND          s.NM_TP_FONTE  = 'Subterrânea'         " +
+        "              AND        s.NM_TIPO_BOMBA  IN('Bombagem manual','Bomba eléctrica')         " +
+        "              AND     s.NM_TP_BOMBA_ENERGIA  = 'Diesel/Motobomba'         " +
+        "           ) QtPessoasAcessoBombaDiesel,         " +
+        "      ROUND((( ((SELECT        ((COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)*100)/c.populacao)         " +
+        "                        FROM        sisas.sistema_agua s          " +
+        "                        WHERE        s.ID_PROVINCIA = p.ID_PROVINCIA         " +
+        "              AND   s.ID_MUNICIPIO = m.ID_MUNICIPIO          " +
+        "              AND   s.ID_COMUNA = c.ID_COMUNA         " +
+        "              AND        s.NM_TP_FONTE= 'Subterrânea'         " +
+        "              AND        s.NM_TIPO_BOMBA  IN('Bombagem manual','Bomba eléctrica')         " +
+        "              AND        s.NM_TP_BOMBA_ENERGIA  = 'Diesel/Motobomba'         " +
+        "           )))),0) PercentagemAcessoDiesel,         " +
+        "      (          " +
+        "                        SELECT        COALESCE(COUNT(NM_TP_BOMBA_ENERGIA),0)         " +
+        "                        FROM        sisas.sistema_agua s          " +
+        "                        WHERE        s.ID_PROVINCIA = p.ID_PROVINCIA         " +
+        "              AND   s.ID_MUNICIPIO = m.ID_MUNICIPIO          " +
+        "              AND   s.ID_COMUNA = c.ID_COMUNA         " +
+        "              AND        s.NM_TP_FONTE= 'Subterrânea'         " +
+        "              AND        s.NM_TIPO_BOMBA  IN('Bombagem manual','Bomba eléctrica')         " +
+        "                          AND        s.NM_TP_BOMBA_ENERGIA  = 'Solar'         " +
+        "                ) NrSistemasSolar,         " +
+        "         (          " +
+        "                   SELECT         COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)         " +
+        "                        FROM      sisas.sistema_agua s          " +
+        "                          Where   s.ID_PROVINCIA = p.ID_PROVINCIA         " +
+        "                 AND  s.ID_MUNICIPIO = m.ID_MUNICIPIO          " +
+        "                 AND   s.ID_COMUNA = c.ID_COMUNA         " +
+        "                 AND  s.NM_TP_FONTE = 'Subterrânea'         " +
+        "                 AND        s.NM_TIPO_BOMBA  IN('Bombagem manual','Bomba eléctrica')         " +
+        "                 AND  s.NM_TP_BOMBA_ENERGIA  = 'Solar'         " +
+        "           ) QtPessoasAcessoBombaSolar,         " +
+        "      ROUND((( ((SELECT        ((COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)*100)/c.populacao)         " +
+        "                        FROM        sisas.sistema_agua s                      " +
+        "                        WHERE        s.ID_PROVINCIA = p.ID_PROVINCIA         " +
+        "              AND   s.ID_MUNICIPIO = m.ID_MUNICIPIO          " +
+        "              AND   s.ID_COMUNA = c.ID_COMUNA         " +
+        "              AND        s.NM_TP_FONTE= 'Subterrânea'         " +
+        "              AND        s.NM_TIPO_BOMBA  IN('Bombagem manual','Bomba eléctrica')         " +
+        "              AND        s.NM_TP_BOMBA_ENERGIA  = 'Solar'         " +
+        "           )))),0) PercentagemAcessoSolar,         " +
+        "   (          " +
+        "                        SELECT        COALESCE(COUNT(NM_TP_BOMBA_ENERGIA),0)         " +
+        "                        FROM        sisas.sistema_agua s          " +
+        "                        WHERE        s.ID_PROVINCIA = p.ID_PROVINCIA         " +
+        "              AND   s.ID_MUNICIPIO = m.ID_MUNICIPIO          " +
+        "              AND   s.ID_COMUNA = c.ID_COMUNA         " +
+        "              AND        s.NM_TP_FONTE= 'Subterrânea'         " +
+        "              AND        s.NM_TIPO_BOMBA  IN('Bombagem manual','Bomba eléctrica')         " +
+        "                          AND        s.NM_TP_BOMBA_ENERGIA  = 'Eólica'         " +
+        "                ) NrSistemasEolica,         " +
+        "         (          " +
+        "                   SELECT         COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)         " +
+        "                        FROM    sisas.sistema_agua s          " +
+        "                          Where   s.ID_PROVINCIA = p.ID_PROVINCIA         " +
+        "              AND   s.ID_MUNICIPIO = m.ID_MUNICIPIO          " +
+        "              AND   s.ID_COMUNA = c.ID_COMUNA         " +
+        "              AND        s.NM_TP_FONTE = 'Subterrânea'         " +
+        "              AND        s.NM_TIPO_BOMBA  IN('Bombagem manual','Bomba eléctrica')         " +
+        "              AND   s.NM_TP_BOMBA_ENERGIA  = 'Eólica'         " +
+        "           ) QtPessoasAcessoBombaEolica,         " +
+        "      ROUND((( ((SELECT        ((COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)*100)/c.populacao)         " +
+        "                        FROM        sisas.sistema_agua s          " +
+        "                        WHERE        s.ID_PROVINCIA = p.ID_PROVINCIA         " +
+        "              AND   s.ID_MUNICIPIO = m.ID_MUNICIPIO          " +
+        "              AND   s.ID_COMUNA = c.ID_COMUNA         " +
+        "              AND        s.NM_TP_FONTE= 'Subterrânea'         " +
+        "              AND        s.NM_TIPO_BOMBA  IN('Bombagem manual','Bomba eléctrica')         " +
+        "              AND        s.NM_TP_BOMBA_ENERGIA  = 'Eólica'         " +
+        "           )))),0) PercentagemAcessoEolica,         " +
+        "     (          " +
+        "                        SELECT        COALESCE(COUNT(NM_TP_BOMBA_ENERGIA),0)         " +
+        "                        FROM        sisas.sistema_agua s          " +
+        "                        WHERE        s.ID_PROVINCIA = p.ID_PROVINCIA         " +
+        "              AND   s.ID_MUNICIPIO = m.ID_MUNICIPIO          " +
+        "              AND   s.ID_COMUNA = c.ID_COMUNA         " +
+        "              AND        s.NM_TP_FONTE= 'Subterrânea'         " +
+        "              AND        s.NM_TIPO_BOMBA  IN('Bombagem manual','Bomba eléctrica')         " +
+        "                          AND        s.NM_TP_BOMBA_ENERGIA  = 'Elétrica'         " +
+        "                ) NrSistemasEletrica,         " +
+        "         (          " +
+        "                   SELECT         COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)         " +
+        "                        FROM    sisas.sistema_agua s          " +
+        "                          Where   s.ID_PROVINCIA = p.ID_PROVINCIA         " +
+        "              AND   s.ID_MUNICIPIO = m.ID_MUNICIPIO          " +
+        "              AND   s.ID_COMUNA = c.ID_COMUNA         " +
+        "              AND          s.NM_TP_FONTE = 'Subterrânea'         " +
+        "              AND        s.NM_TIPO_BOMBA  IN('Bombagem manual','Bomba eléctrica')         " +
+        "              AND     s.NM_TP_BOMBA_ENERGIA  = 'Elétrica'         " +
+        "           ) QtPessoasAcessoBombaEletrica,         " +
+        "      ROUND((( ((SELECT        ((COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)*100)/c.populacao)         " +
+        "                        FROM        sisas.sistema_agua s          " +
+        "                        WHERE        s.ID_PROVINCIA = p.ID_PROVINCIA         " +
+        "              AND   s.ID_MUNICIPIO = m.ID_MUNICIPIO          " +
+        "              AND   s.ID_COMUNA = c.ID_COMUNA         " +
+        "              AND        s.NM_TP_FONTE = 'Subterrânea'         " +
+        "              AND        s.NM_TIPO_BOMBA  IN('Bombagem manual','Bomba eléctrica')         " +
+        "              AND        s.NM_TP_BOMBA_ENERGIA  = 'Elétrica'         " +
+        "           )))),0) PercentagemAcessoEletrica,         " +
+        "        (          " +
+        "                        SELECT        COALESCE(COUNT(NM_TP_BOMBA_ENERGIA),0)         " +
+        "                        FROM        sisas.sistema_agua s          " +
+        "                        WHERE        s.ID_PROVINCIA = p.ID_PROVINCIA         " +
+        "              AND   s.ID_MUNICIPIO = m.ID_MUNICIPIO          " +
+        "              AND   s.ID_COMUNA = c.ID_COMUNA         " +
+        "              AND        s.NM_TP_FONTE= 'Subterrânea'         " +
+        "              AND        s.NM_TIPO_BOMBA  IN('Bombagem manual','Bomba eléctrica')         " +
+        "                          AND        s.NM_TP_BOMBA_ENERGIA  = 'Outros'         " +
+        "                ) NrSistemasOutros,         " +
+        "         (          " +
+        "                   SELECT         COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)         " +
+        "                        FROM    sisas.sistema_agua s          " +
+        "                          Where   s.ID_PROVINCIA = p.ID_PROVINCIA         " +
+        "              AND   s.ID_MUNICIPIO = m.ID_MUNICIPIO          " +
+        "              AND   s.ID_COMUNA = c.ID_COMUNA         " +
+        "              AND        s.NM_TP_FONTE = 'Subterrânea'         " +
+        "              AND        s.NM_TIPO_BOMBA  IN('Bombagem manual','Bomba eléctrica')         " +
+        "              AND   s.NM_TP_BOMBA_ENERGIA  = 'Outros'         " +
+        "           ) QtPessoasAcessoOutros,         " +
+        "      ROUND((( ((SELECT        ((COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)*100)/c.populacao)         " +
+        "                        FROM        sisas.sistema_agua s          " +
+        "                        WHERE        s.ID_PROVINCIA = p.ID_PROVINCIA         " +
+        "              AND   s.ID_MUNICIPIO = m.ID_MUNICIPIO          " +
+        "              AND        s.NM_TP_FONTE= 'Subterrânea'         " +
+        "              AND        s.NM_TIPO_BOMBA  IN('Bombagem manual','Bomba eléctrica')         " +
+        "              AND        s.NM_TP_BOMBA_ENERGIA  = 'Outros'         " +
+        "           )))),0) PercentagemOutros         " +
+        "from sisas.sistema_agua s         " +
+        "     inner join sisas.provincia p on s.ID_PROVINCIA = p.ID_PROVINCIA         " +
+        "     inner join sisas.municipio m on s.ID_MUNICIPIO = m.ID_MUNICIPIO          " +
+        "     inner join sisas.comuna c on s.ID_COMUNA = c.ID_COMUNA         " +
+        "     where s.POSSUI_SISTEMA_AGUA = 1         " +
+        "GROUP BY          " +
+        "       p.NM_PROVINCIA, p.ID_PROVINCIA,          " +
+        "       m.NM_MUNICIPIO, m.ID_MUNICIPIO,          " +
+        "       c.NM_COMUNA, c.ID_COMUNA", nativeQuery = true)
     List<Object[]> buscaDadosBenefFtSubtBmbMecanicaComunal();
 
-    @Query(value = "SELECT * FROM jhi_user", nativeQuery = true)
+    @Query(value = "SELECT        p.NM_PROVINCIA,       " +
+        "        m.NM_MUNICIPIO,       " +
+        "        m.populacao,       " +
+        "          (        " +
+        "              SELECT       COALESCE(COUNT(Esquema),0)       " +
+        "                     FROM       sisas.sistema_agua s        " +
+        "                     WHERE       s.ID_PROVINCIA = p.ID_PROVINCIA       " +
+        "              AND   s.ID_MUNICIPIO = m.ID_MUNICIPIO        " +
+        "              AND       s.NM_TP_FONTE= 'Subterrânea'       " +
+        "              AND       s.Esquema = 'Poço/cacimba melhorada'       " +
+        "          ) NrPocvoMelhorado,        " +
+        "      (        " +
+        "                     SELECT       COALESCE(COUNT(Esquema),0)       " +
+        "                     FROM       sisas.sistema_agua s        " +
+        "                     WHERE       s.ID_PROVINCIA = p.ID_PROVINCIA       " +
+        "              AND   s.ID_MUNICIPIO = m.ID_MUNICIPIO        " +
+        "                       AND       s.NM_TP_FONTE = 'Subterrânea'       " +
+        "                       AND       s.ESQUEMA = 'Furo'        " +
+        "              ) Furo,       " +
+        "      (        " +
+        "                     SELECT       COALESCE(COUNT(Esquema),0)       " +
+        "                     FROM       sisas.sistema_agua s        " +
+        "                     WHERE       s.ID_PROVINCIA = p.ID_PROVINCIA       " +
+        "              AND   s.ID_MUNICIPIO = m.ID_MUNICIPIO        " +
+        "                       AND       s.NM_TP_FONTE  = 'Subterrânea'       " +
+        "                       AND       s.ESQUEMA = 'Nascente'       " +
+        "              ) Nascente,       " +
+        "         (        " +
+        "                     SELECT       COALESCE(COUNT(NM_TP_BOMBA_ENERGIA),0)       " +
+        "                     FROM       sisas.sistema_agua s        " +
+        "                     WHERE       s.ID_PROVINCIA = p.ID_PROVINCIA       " +
+        "              AND   s.ID_MUNICIPIO = m.ID_MUNICIPIO        " +
+        "              AND       s.NM_TP_FONTE= 'Subterrânea'       " +
+        "              AND       s.NM_TIPO_BOMBA = 'Bomba eléctrica'       " +
+        "                       AND       s.NM_TP_BOMBA_ENERGIA  = 'Diesel/Motobomba'       " +
+        "              ) NrSistemasAdiesel,       " +
+        "         (        " +
+        "                 SELECT        COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)       " +
+        "                     FROM   sisas.sistema_agua s        " +
+        "                       Where   s.ID_PROVINCIA = p.ID_PROVINCIA       " +
+        "              AND   s.ID_MUNICIPIO   = m.ID_MUNICIPIO        " +
+        "              AND         s.NM_TP_FONTE  = 'Subterrânea'       " +
+        "              AND       s.NM_TIPO_BOMBA = 'Bomba eléctrica'       " +
+        "              AND     s.NM_TP_BOMBA_ENERGIA  = 'Diesel/Motobomba'       " +
+        "          ) QtPessoasAcessoBombaDiesel,       " +
+        "      ROUND((( ((SELECT       ((COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)*100)/m.populacao)       " +
+        "                     FROM       sisas.sistema_agua s        " +
+        "                     WHERE       s.ID_PROVINCIA = p.ID_PROVINCIA       " +
+        "              AND   s.ID_MUNICIPIO = m.ID_MUNICIPIO        " +
+        "              AND       s.NM_TP_FONTE= 'Subterrânea'       " +
+        "              AND       s.NM_TIPO_BOMBA = 'Bomba eléctrica'       " +
+        "              AND       s.NM_TP_BOMBA_ENERGIA  = 'Diesel/Motobomba'       " +
+        "          )))),0) PercentagemAcessoDiesel,       " +
+        "      (        " +
+        "                     SELECT       COALESCE(COUNT(NM_TP_BOMBA_ENERGIA),0)       " +
+        "                     FROM       sisas.sistema_agua s        " +
+        "                     WHERE       s.ID_PROVINCIA = p.ID_PROVINCIA       " +
+        "              AND   s.ID_MUNICIPIO = m.ID_MUNICIPIO        " +
+        "              AND       s.NM_TP_FONTE= 'Subterrânea'       " +
+        "              AND       s.NM_TIPO_BOMBA = 'Bomba eléctrica'       " +
+        "                       AND       s.NM_TP_BOMBA_ENERGIA  = 'Solar'       " +
+        "              ) NrSistemasSolar,       " +
+        "         (        " +
+        "                 SELECT        COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)       " +
+        "                     FROM   sisas.sistema_agua s        " +
+        "                       Where   s.ID_PROVINCIA = p.ID_PROVINCIA       " +
+        "                 AND  s.ID_MUNICIPIO = m.ID_MUNICIPIO        " +
+        "                 AND  s.NM_TP_FONTE = 'Subterrânea'       " +
+        "                 AND       s.NM_TIPO_BOMBA = 'Bomba eléctrica'       " +
+        "                 AND  s.NM_TP_BOMBA_ENERGIA  = 'Solar'       " +
+        "          ) QtPessoasAcessoBombaSolar,       " +
+        "      ROUND((( ((SELECT       ((COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)*100)/m.populacao)       " +
+        "                     FROM       sisas.sistema_agua s                    " +
+        "                     WHERE       s.ID_PROVINCIA = p.ID_PROVINCIA       " +
+        "              AND   s.ID_MUNICIPIO = m.ID_MUNICIPIO        " +
+        "              AND       s.NM_TP_FONTE= 'Subterrânea'       " +
+        "              AND       s.NM_TIPO_BOMBA = 'Bomba eléctrica'       " +
+        "              AND       s.NM_TP_BOMBA_ENERGIA  = 'Solar'       " +
+        "          )))),0) PercentagemAcessoSolar,       " +
+        "   (        " +
+        "                     SELECT       COALESCE(COUNT(NM_TP_BOMBA_ENERGIA),0)       " +
+        "                     FROM       sistema_agua s        " +
+        "                     WHERE       s.ID_PROVINCIA = p.ID_PROVINCIA       " +
+        "              AND   s.ID_MUNICIPIO = m.ID_MUNICIPIO        " +
+        "              AND       s.NM_TP_FONTE= 'Subterrânea'       " +
+        "              AND       s.NM_TIPO_BOMBA = 'Bomba eléctrica'       " +
+        "                       AND       s.NM_TP_BOMBA_ENERGIA  = 'Eólica'       " +
+        "              ) NrSistemasEolica,       " +
+        "         (        " +
+        "                 SELECT        COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)       " +
+        "                     FROM   sistema_agua s        " +
+        "                       Where   s.ID_PROVINCIA = p.ID_PROVINCIA       " +
+        "              AND   s.ID_MUNICIPIO = m.ID_MUNICIPIO        " +
+        "              AND         s.NM_TP_FONTE = 'Subterrânea'       " +
+        "              AND       s.NM_TIPO_BOMBA = 'Bomba eléctrica'       " +
+        "              AND     s.NM_TP_BOMBA_ENERGIA  = 'Eólica'       " +
+        "          ) QtPessoasAcessoBombaEolica,       " +
+        "      ROUND((( ((SELECT       ((COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)*100)/m.populacao)       " +
+        "                     FROM       sisas.sistema_agua s        " +
+        "                     WHERE       s.ID_PROVINCIA = p.ID_PROVINCIA       " +
+        "              AND   s.ID_MUNICIPIO = m.ID_MUNICIPIO        " +
+        "              AND       s.NM_TP_FONTE= 'Subterrânea'       " +
+        "              AND       s.NM_TIPO_BOMBA = 'Bomba eléctrica'       " +
+        "              AND       s.NM_TP_BOMBA_ENERGIA  = 'Eólica'       " +
+        "          )))),0) PercentagemAcessoEolica,       " +
+        "     (        " +
+        "                     SELECT       COALESCE(COUNT(NM_TP_BOMBA_ENERGIA),0)       " +
+        "                     FROM       sisas.sistema_agua s        " +
+        "                     WHERE       s.ID_PROVINCIA = p.ID_PROVINCIA       " +
+        "              AND   s.ID_MUNICIPIO = m.ID_MUNICIPIO        " +
+        "              AND       s.NM_TP_FONTE= 'Subterrânea'       " +
+        "              AND       s.NM_TIPO_BOMBA = 'Bomba eléctrica'       " +
+        "                       AND       s.NM_TP_BOMBA_ENERGIA  = 'Elétrica'       " +
+        "              ) NrSistemasEletrica,       " +
+        "         (        " +
+        "                 SELECT        COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)       " +
+        "                     FROM   sisas.sistema_agua s        " +
+        "                       Where   s.ID_PROVINCIA = p.ID_PROVINCIA       " +
+        "              AND   s.ID_MUNICIPIO = m.ID_MUNICIPIO        " +
+        "              AND         s.NM_TP_FONTE = 'Subterrânea'       " +
+        "              AND       s.NM_TIPO_BOMBA = 'Bomba eléctrica'       " +
+        "              AND     s.NM_TP_BOMBA_ENERGIA  = 'Elétrica'       " +
+        "          ) QtPessoasAcessoBombaEletrica,       " +
+        "      ROUND((( ((SELECT       ((COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)*100)/m.populacao)       " +
+        "                     FROM       sisas.sistema_agua s        " +
+        "                     WHERE       s.ID_PROVINCIA = p.ID_PROVINCIA       " +
+        "              AND   s.ID_MUNICIPIO = m.ID_MUNICIPIO        " +
+        "              AND       s.NM_TP_FONTE = 'Subterrânea'       " +
+        "              AND       s.NM_TIPO_BOMBA = 'Bomba eléctrica'       " +
+        "              AND       s.NM_TP_BOMBA_ENERGIA  = 'Elétrica'       " +
+        "          )))),0) PercentagemAcessoEletrica,       " +
+        "        (        " +
+        "                     SELECT       COALESCE(COUNT(NM_TP_BOMBA_ENERGIA),0)       " +
+        "                     FROM       sisas.sistema_agua s        " +
+        "                     WHERE       s.ID_PROVINCIA = p.ID_PROVINCIA       " +
+        "              AND   s.ID_MUNICIPIO = m.ID_MUNICIPIO        " +
+        "              AND       s.NM_TP_FONTE= 'Subterrânea'       " +
+        "              AND       s.NM_TIPO_BOMBA = 'Bomba eléctrica'       " +
+        "                       AND       s.NM_TP_BOMBA_ENERGIA  = 'Outros'       " +
+        "              ) NrSistemasOutros,       " +
+        "         (        " +
+        "                 SELECT        COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)       " +
+        "                     FROM   sisas.sistema_agua s        " +
+        "                       Where   s.ID_PROVINCIA = p.ID_PROVINCIA       " +
+        "              AND   s.ID_MUNICIPIO = m.ID_MUNICIPIO        " +
+        "              AND         s.NM_TP_FONTE = 'Subterrânea'       " +
+        "              AND       s.NM_TIPO_BOMBA = 'Bomba eléctrica'       " +
+        "              AND     s.NM_TP_BOMBA_ENERGIA  = 'Outros'       " +
+        "          ) QtPessoasAcessoOutros,       " +
+        "      ROUND((( ((SELECT       ((COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)*100)/m.populacao)       " +
+        "                     FROM       sisas.sistema_agua s        " +
+        "                     WHERE       s.ID_PROVINCIA = p.ID_PROVINCIA       " +
+        "              AND   s.ID_MUNICIPIO = m.ID_MUNICIPIO        " +
+        "              AND       s.NM_TP_FONTE= 'Subterrânea'       " +
+        "              AND       s.NM_TIPO_BOMBA = 'Bomba eléctrica'       " +
+        "              AND       s.NM_TP_BOMBA_ENERGIA  = 'Outros'       " +
+        "          )))),0) PercentagemOutros       " +
+        "from sisas.sistema_agua s       " +
+        "     inner join sisas.provincia p on s.ID_PROVINCIA = p.ID_PROVINCIA       " +
+        "     inner join sisas.municipio m on s.ID_MUNICIPIO = m.ID_MUNICIPIO        " +
+        "     where s.POSSUI_SISTEMA_AGUA = 1       " +
+        "GROUP BY        " +
+        "       p.NM_PROVINCIA, p.ID_PROVINCIA,       " +
+        "       m.NM_MUNICIPIO, m.ID_MUNICIPIO", nativeQuery = true)
     List<Object[]> buscaDadosBenefFtSubtBmbMecanicaMunicipal();
+
+    //SISTEMAS AGUA FT SUBT BOMBA ENERGIA
+    @Query(value = "SELECT  p.NM_PROVINCIA,  " +
+        "     m.NM_MUNICIPIO,  " +
+        "     c.NM_COMUNA,  " +
+        "          (   " +
+        "  SELECT COUNT(Esquema)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "            AND     s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "     AND s.POSSUI_SISTEMA_AGUA = 1  " +
+        "     AND s.NM_TP_FONTE= 'Subterrânea'  " +
+        "              AND s.Esquema = 'Poço/cacimba melhorada'  " +
+        "    ) PocoMelhorado,   " +
+        "          (   " +
+        "   SELECT COUNT(Esquema)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "     AND s.POSSUI_SISTEMA_AGUA = 1   " +
+        "     AND s.NM_TP_FONTE = 'Subterrânea'  " +
+        "     AND s.ESQUEMA = 'Furo'   " +
+        "  ) Furo,  " +
+        "  (   " +
+        "   SELECT COUNT(Esquema)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "               AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "         AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "               AND s.POSSUI_SISTEMA_AGUA = 1   " +
+        "     AND s.NM_TP_FONTE  = 'Subterrânea'  " +
+        "     AND s.ESQUEMA = 'Nascente'  " +
+        "  ) Nascente,   " +
+        "           (               " +
+        "           SELECT count(POSSUI_SISTEMA_AGUA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "     AND s.POSSUI_SISTEMA_AGUA = 1   " +
+        "     AND s.NM_TP_FONTE  = 'Subterrânea'  " +
+        "     AND s.NM_TP_BOMBA_ENERGIA = 'Diesel/Motobomba'  " +
+        "  )  TotalSistemasDiesel,  " +
+        "(               " +
+        "           SELECT count(POSSUI_SISTEMA_AGUA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "              AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "              AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "       AND s.POSSUI_SISTEMA_AGUA = 1   " +
+        "              AND s.estado_funcionamento_sistema = 'Está em funcionamento (Bom)'  " +
+        "          AND s.NM_TP_FONTE  = 'Subterrânea'  " +
+        "    AND s.NM_TP_BOMBA_ENERGIA = 'Diesel/Motobomba'  " +
+        "  )  TotalSistemasDieselFunciona,  " +
+        "    (              " +
+        "                     " +
+        "           SELECT count(POSSUI_SISTEMA_AGUA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "         AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "         AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "         AND s.POSSUI_SISTEMA_AGUA = 1   " +
+        "              AND s.estado_funcionamento_sistema = 'Não está em funcionamento'  " +
+        "         AND s.NM_TP_FONTE  = 'Subterrânea'  " +
+        "         AND s.NM_TP_BOMBA_ENERGIA = 'Diesel/Motobomba'  " +
+        "  )  TotalSistemasDieselNaoFunciona,  " +
+        "        (               " +
+        "           SELECT count(NM_TP_BOMBA_ENERGIA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "           AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "             AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "              AND s.POSSUI_SISTEMA_AGUA = 1   " +
+        "     AND s.NM_TP_FONTE  = 'Subterrânea'  " +
+        "     AND s.NM_TP_BOMBA_ENERGIA = 'Solar'  " +
+        "  )  TotalSistemasSolar,  " +
+        "(               " +
+        "           SELECT count(POSSUI_SISTEMA_AGUA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "     AND s.POSSUI_SISTEMA_AGUA = 1   " +
+        "              AND s.estado_funcionamento_sistema = 'Está em funcionamento (Bom)'  " +
+        "     AND s.NM_TP_FONTE  = 'Subterrânea'  " +
+        "       AND s.NM_TP_BOMBA_ENERGIA = 'Solar'  " +
+        "  )  TotalSistemasSolarFunciona,  " +
+        "    (              " +
+        "                     " +
+        "           SELECT count(POSSUI_SISTEMA_AGUA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "        AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "        AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "     AND s.POSSUI_SISTEMA_AGUA = 1   " +
+        "              AND s.estado_funcionamento_sistema = 'Não está em funcionamento'  " +
+        "     AND s.NM_TP_FONTE  = 'Subterrânea'  " +
+        "     AND s.NM_TP_BOMBA_ENERGIA = 'Solar'  " +
+        "  )  TotalSistemasSolarNaoFunciona,  " +
+        "        (               " +
+        "           SELECT count(NM_TP_BOMBA_ENERGIA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "     AND s.POSSUI_SISTEMA_AGUA = 1   " +
+        "     AND s.NM_TP_FONTE  = 'Subterrânea'  " +
+        "     AND s.NM_TP_BOMBA_ENERGIA = 'Eólica'  " +
+        "  )  TotalSistemasEolica,  " +
+        "(               " +
+        "           SELECT count(POSSUI_SISTEMA_AGUA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "     AND s.POSSUI_SISTEMA_AGUA = 1   " +
+        "              AND s.estado_funcionamento_sistema = 'Está em funcionamento (Bom)'  " +
+        "     AND s.NM_TP_FONTE  = 'Subterrânea'  " +
+        "     AND s.NM_TP_BOMBA_ENERGIA = 'Eólica'  " +
+        "  )  TotalSistemasEolicaFunciona,  " +
+        "    (              " +
+        "           SELECT count(POSSUI_SISTEMA_AGUA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "     AND s.POSSUI_SISTEMA_AGUA = 1   " +
+        "              AND s.estado_funcionamento_sistema = 'Não está em funcionamento'  " +
+        "     AND s.NM_TP_FONTE  = 'Subterrânea'  " +
+        "    AND s.NM_TP_BOMBA_ENERGIA = 'Eólica'  " +
+        "  )  TotalSistemasEolicaNaoFunciona,  " +
+        "      (               " +
+        "           SELECT count(NM_TP_BOMBA_ENERGIA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "     AND s.POSSUI_SISTEMA_AGUA = 1   " +
+        "     AND s.NM_TP_FONTE  = 'Subterrânea'  " +
+        "     AND s.NM_TP_BOMBA_ENERGIA = 'Eléctrica'  " +
+        "  )  TotalSistemasElectrica,  " +
+        "(               " +
+        "           SELECT count(POSSUI_SISTEMA_AGUA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "     AND s.POSSUI_SISTEMA_AGUA = 1   " +
+        "              AND s.estado_funcionamento_sistema = 'Está em funcionamento (Bom)'  " +
+        "     AND s.NM_TP_FONTE  = 'Subterrânea'  " +
+        "     AND s.NM_TP_BOMBA_ENERGIA = 'Eléctrica'  " +
+        "  )  TotalSistemasElectricaFunciona,  " +
+        "    (              " +
+        "           SELECT count(NM_TP_BOMBA_ENERGIA)  as Total   " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "     AND s.POSSUI_SISTEMA_AGUA = 1   " +
+        "              AND s.estado_funcionamento_sistema = 'Não está em funcionamento'  " +
+        "     AND s.NM_TP_FONTE  = 'Subterrânea'  " +
+        "    AND s.NM_TP_BOMBA_ENERGIA = 'Eléctrica'  " +
+        "  )  TotalSistemasElectricaNaoFunciona,  " +
+        "        (               " +
+        "           SELECT count(NM_TP_BOMBA_ENERGIA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "     AND s.POSSUI_SISTEMA_AGUA = 1   " +
+        "     AND s.NM_TP_FONTE  = 'Subterrânea'  " +
+        "     AND s.NM_TP_BOMBA_ENERGIA = 'Outros'  " +
+        "  )  TotalSistemasOutros,  " +
+        "(               " +
+        "           SELECT count(POSSUI_SISTEMA_AGUA)  " +
+        "   FROM sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "     AND s.POSSUI_SISTEMA_AGUA = 1   " +
+        "              AND s.estado_funcionamento_sistema = 'Está em funcionamento (Bom)'  " +
+        "         AND s.NM_TP_FONTE  = 'Subterrânea'  " +
+        "              AND s.NM_TP_BOMBA_ENERGIA = 'Outros'  " +
+        "  )  TotalSistemasOutrosFunciona,  " +
+        "    (              " +
+        "                     " +
+        "           SELECT count(POSSUI_SISTEMA_AGUA)  as Total   " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "     AND s.POSSUI_SISTEMA_AGUA = 1   " +
+        "              AND s.estado_funcionamento_sistema = 'Não está em funcionamento'  " +
+        "     AND s.NM_TP_FONTE  = 'Subterrânea'  " +
+        "    AND s.NM_TP_BOMBA_ENERGIA = 'Outros'  " +
+        "  )  TotalSistemasOutrosNaoFunciona                " +
+        "from sisas.sistema_agua s  " +
+        "     inner join sisas.provincia p on s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     inner join sisas.municipio m on p.ID_PROVINCIA = m.ID_PROVINCIA   " +
+        "     inner join sisas.comuna c on c.ID_MUNICIPIO = m.ID_MUNICIPIO   " +
+        "GROUP BY   " +
+        "       p.NM_PROVINCIA, p.ID_PROVINCIA ,  " +
+        "       m.ID_MUNICIPIO, m.ID_MUNICIPIO,   " +
+        "       c.ID_COMUNA, c.ID_COMUNA", nativeQuery = true)
+    List<Object[]> buscaDadosSistAguafFtSubtBmbEnergiaMunicipal();
 
 }

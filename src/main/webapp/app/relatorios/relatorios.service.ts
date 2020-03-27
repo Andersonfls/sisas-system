@@ -18,6 +18,7 @@ import {BeneficiariosBmbEnergiaComunal} from './beneficiarios-agua-ft-subt-bomb-
 import {SistemaAguaBmbManualComunal} from './sistema-agua-ft-subt-bomb-manual-comunal/sistema-agua-bmb-manual-comunal.model';
 import {BeneficiariosOptTecnica} from './beneficiarios-agua-ft-super-opt-tecnica-comunal/BeneficiariosOptTecnica.model';
 import {BeneficiariosBmbMecanica} from './beneficiarios-agua-ft-subt-bmb-mecanica-municipal/beneficiarios-bmb-mecanica.model';
+import {SistemasFtSubtBmbEnergia} from './sistemas-agua-ft-subt-bomb-energia-comunal/sistemas-bmb-energia-comunal.model';
 import {SistemaAguaBmbGravidadeComunal} from './sistema-agua-ft-subt-bomb-gravidade-comunal/sistema-agua-bmb-gravidade-comunal.model';
 import {SistemaAguaSprOpcaoTecnicaComunal} from './sistema-agua-ft-supr-opcao-tecnica-comunal/sistema-agua-supr-opcao-tecnica-comunal.model';
 
@@ -142,6 +143,11 @@ export class RelatoriosService {
         return this.http.get<BeneAguaFtSubterraneaTpBombaManual[]>(this.resourceUrl + '/ben-agua-ft-subt-tp-bmb-man-provincial', {params: options, observe: 'response'});
     }
 
+    buscaDadosBenfAguaSubtTipoBombaManualMun(req?: any): Observable<HttpResponse<BeneAguaFtSubterraneaTpBombaManual[]>> {
+        const options = createRequestOption(req);
+        return this.http.get<BeneAguaFtSubterraneaTpBombaManual[]>(this.resourceUrl + '/ben-agua-ft-subt-tp-bmb-man-municipal', {params: options, observe: 'response'});
+    }
+
     buscaDadosFuncAguaChafarizProvincial(req?: any): Observable<HttpResponse<FuncAguaChafarizes[]>> {
         const options = createRequestOption(req);
         return this.http.get<FuncAguaChafarizes[]>(this.resourceUrl + '/func-agua-chaf-provincial', {params: options, observe: 'response'});
@@ -180,6 +186,11 @@ export class RelatoriosService {
     buscaDadosBenFtSubtBbmMecanicaComunal(req?: any): Observable<HttpResponse<BeneficiariosBmbMecanica[]>> {
         const options = createRequestOption(req);
         return this.http.get<BeneficiariosBmbMecanica[]>(this.resourceUrl + '/ben-bmb-mecanica-comunal', {params: options, observe: 'response'});
+    }
+
+    buscaDadosSistemasFtSubtBmbEnergiaComunal(req?: any): Observable<HttpResponse<SistemasFtSubtBmbEnergia[]>> {
+        const options = createRequestOption(req);
+        return this.http.get<SistemasFtSubtBmbEnergia[]>(this.resourceUrl + '/sistemas-ft-subt-bomba-energia-comunal', {params: options, observe: 'response'});
     }
 
 }

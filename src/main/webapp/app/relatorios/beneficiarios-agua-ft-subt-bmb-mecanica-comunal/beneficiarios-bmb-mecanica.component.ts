@@ -22,7 +22,6 @@ export class BeneficiariosTpBombaComponent implements OnInit {
 
     user: User;
     listaTabela: BeneficiariosBmbMecanica[];
-    tipoRelatorio: string;
     predicate: any;
     reverse: any;
     chart: any;
@@ -82,7 +81,23 @@ export class BeneficiariosTpBombaComponent implements OnInit {
         this.relatorioService.buscaDadosBenFtSubtBbmMecanicaComunal().subscribe(
             (res: HttpResponse<BeneficiariosBmbMecanica[]>) => {
                 this.listaTabela = res.body;
-                console.log(this.listaTabela);
+
+                this.listaTabela.forEach((i) => {
+                    this.totalPopulacao += i.populacao;
+                    this.totalPoco += i.pocoMelhorado;
+                    this.totalFuro += i.furo;
+                    this.totalNascente += i.nascente;
+                    this.totalDieselSistema += i.dieselSistemas;
+                    this.totalDieselPopulacao += i.dieselPopulacao;
+                    this.totalSolarSistema += i.solarSistemas;
+                    this.totalSolarPopulacao += i.solarPopulacao;
+                    this.totalEolicaSistema += i.eolicaSistemas;
+                    this.totalEolicaPopulacao += i.eolicaPopulacao;
+                    this.totalElectricaSistema += i.electricaSistemas;
+                    this.totalElectricaPopulacao += i.electricaPopulacao;
+                    this.totalOutroSistema += i.outroSistemas;
+                    this.totalOutroPopulacao += i.outroPopulacao;
+                });
             });
     }
 

@@ -258,9 +258,15 @@ public class RelatoriosResource {
         return this.relatorioService.beneficiariosFtSubtTpBombaMunicipal();
     }
 
+    // BENEFICIARIOS DE AGUA POR FONTE SUBTERRANEA E POR TIPO DE BOMBA MANUAL
     @GetMapping("/relatorios/ben-agua-ft-subt-tp-bmb-man-provincial")
     public List<BeneAguaFtSubterraneaTpBombaManual> getDadosBenefAguaSubtTpBombaManualProvincial() {
         return this.relatorioService.beneficiariosFtSubtTpBombaManualProvincial();
+    }
+
+    @GetMapping("/relatorios/ben-agua-ft-subt-tp-bmb-man-municipal")
+    public List<BeneAguaFtSubterraneaTpBombaManual> getDadosBenefAguaSubtTpBombaManualMunicipal() {
+        return this.relatorioService.beneficiariosFtSubtTpBombaManualMunicipal();
     }
 
     // FUNCIONAMENTO SISTEMA DE AGUA E CHAFARIZES
@@ -297,7 +303,6 @@ public class RelatoriosResource {
     }
 
     //BENEFICIARIOS DE AGUA POR FONTE SUBTERRANEA E POR BOMBA MECANICA
-
     @GetMapping("/relatorios/ben-bmb-mecanica-municipal")
     public List<BeneficiariosBmbMecanicaDTO> getDadosBenFtSubtBmbMecanicaMunicipal() {
         return this.relatorioService.beneficiariosFtSubtBmbMecanicaMunicipal();
@@ -306,5 +311,11 @@ public class RelatoriosResource {
     @GetMapping("/relatorios/ben-bmb-mecanica-comunal")
     public List<BeneficiariosBmbMecanicaDTO> getDadosBenFtSubtBmbMecanicaComunal() {
         return this.relatorioService.beneficiariosFtSubtBmbMecanicaComunal();
+    }
+
+    //SISTEMAS DE AGUA POR FONTE SUBTERRANEA E BOMBA DE ENERGIA
+    @GetMapping("/relatorios/sistemas-ft-subt-bomba-energia-comunal")
+    public List<SistemasAguaFtSubtBmbEnergiaDTO> getDadosSistAguaFtSubtBmbEnergiaComunal() {
+        return this.relatorioService.sistemasAguaFtSubtBmbEnergiaComunal();
     }
 }

@@ -1,0 +1,93 @@
+<div>
+    <div class="export-container">
+        <button type="button" (click)="exportTable('table')" class="btn btn-primary btn-sm">
+            <span class="fa fa-file-excel-o"></span>
+            <span class="d-none d-md-inline">Excel</span>
+        </button>
+        <button type="button" (click)="captureScreen('content')" class="btn btn-primary btn-sm">
+            <span class="fas fa-file-pdf"></span>
+            <span class="d-none d-md-inline">PDF</span>
+        </button>
+    </div>
+    <div id="content">
+        <h2 style="text-align: center; font-size: 1.4rem;">
+            <span>Beneficiários de Água por Fonte Subterranea e por Tipo de Bomba Manual (Nível Municipal)</span>
+        </h2>
+        <jhi-alert></jhi-alert>
+
+        <div class="table-responsive" *ngIf="listaTabela">
+            <table id="table" class="table table-striped">
+                <thead>
+                <tr style="background-color: #1f749c; text-align: center;">
+                    <th class="borda-th" colspan="6"></th>
+                    <th class="borda-th" colspan="10"><span>N° de Sistemas por Tipo de Bomba Manual</span></th>
+                </tr>
+                <tr style="background-color: #1f749c">
+                    <th class="borda-th"><span>Provincia</span></th>
+                    <th class="borda-th"><span>Municipio</span></th>
+                    <th class="borda-th"><span>População</span></th>
+                    <th class="borda-th"><span>Poco Melhorado</span></th>
+                    <th class="borda-th"><span>Furo</span></th>
+                    <th class="borda-th"><span>Nascente</span></th>
+                    <th class="borda-th"><span>Afridev</span></th>
+                    <th class="borda-th"><span>População</span></th>
+                    <th class="borda-th"><span>Vergnet</span></th>
+                    <th class="borda-th"><span>População</span></th>
+                    <th class="borda-th"><span>Volanta</span></th>
+                    <th class="borda-th"><span>População</span></th>
+                    <th class="borda-th"><span>India Marc II</span></th>
+                    <th class="borda-th"><span>População</span></th>
+                    <th class="borda-th"><span>Outro</span></th>
+                    <th class="borda-th"><span>População</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="borda-th" *ngFor="let provincia of listaTabela ;trackBy: trackId">
+                    <td class="borda-th">{{provincia.nomeProvincia}}</td>
+                    <td class="borda-th">{{provincia.nomeMunicipio}}</td>
+                    <td class="borda-th">{{provincia.populacao}}</td>
+                    <td class="borda-th">{{provincia.numeroPocoMelhorado}}</td>
+                    <td class="borda-th">{{provincia.furo}}</td>
+                    <td class="borda-th">{{provincia.nascente }}</td>
+                    <td class="borda-th">{{provincia.afridev }}</td>
+                    <td class="borda-th">{{provincia.afridevPopulacao }}</td>
+                    <td class="borda-th">{{provincia.vergnet }}</td>
+                    <td class="borda-th">{{provincia.vergnetPopulacao }}</td>
+                    <td class="borda-th">{{provincia.volanta }}</td>
+                    <td class="borda-th">{{provincia.volantaPopulacao }}</td>
+                    <td class="borda-th">{{provincia.indiaMarc }}</td>
+                    <td class="borda-th">{{provincia.indiaMarcPopulacao }}</td>
+                    <td class="borda-th">{{provincia.outro }}</td>
+                    <td class="borda-th">{{provincia.outroPopulacao }}</td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr style="background-color: #1f749c">
+                    <td colspan="2"> <span style="font-weight: bold">Total: </span></td>
+                    <td style="text-align: center;"> <span style="font-weight: bold">{{totalPopulacao}} </span></td>
+                    <td style="text-align: center;"> <span style="font-weight: bold">{{totalPocoMelhorado}} </span></td>
+                    <td style="text-align: center;"> <span style="font-weight: bold">{{totalFuro}} </span></td>
+                    <td style="text-align: center;"> <span style="font-weight: bold">{{totalNascente | number }} </span></td>
+                    <td style="text-align: center;"> <span style="font-weight: bold">{{totalAfridev | number }} </span></td>
+                    <td style="text-align: center;"> <span style="font-weight: bold">{{totalAfridevPopulacao | number }} </span></td>
+                    <td style="text-align: center;"> <span style="font-weight: bold">{{totalVergnet | number }} </span></td>
+                    <td style="text-align: center;"> <span style="font-weight: bold">{{totalVergnetPopulacao | number }} </span></td>
+                    <td style="text-align: center;"> <span style="font-weight: bold">{{totalVolanta | number }} </span></td>
+                    <td style="text-align: center;"> <span style="font-weight: bold">{{totalVolantaPopulacao | number }} </span></td>
+                    <td style="text-align: center;"> <span style="font-weight: bold">{{totalIndiaMarc | number }} </span></td>
+                    <td style="text-align: center;"> <span style="font-weight: bold">{{totalIndiaMarcPopulacao | number }} </span></td>
+                    <td style="text-align: center;"> <span style="font-weight: bold">{{totalOutros | number }} </span></td>
+                    <td style="text-align: center;"> <span style="font-weight: bold">{{totalOutroPopulacao | number }} </span></td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+        <br>
+    </div>
+    <br>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" [routerLink]="['/../../dashboard']"  >
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+    </div>
+</div>

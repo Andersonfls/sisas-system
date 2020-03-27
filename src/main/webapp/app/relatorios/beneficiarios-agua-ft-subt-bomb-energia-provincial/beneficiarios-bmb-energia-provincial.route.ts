@@ -29,7 +29,7 @@ export const beneficiariosTpBombaEnergiaProvincialRoute: Routes = [
         },
         data: {
             authorities: ['ROLE_USER', 'ROLE_ADMIN'],
-            pageTitle: 'relatorios.title.benef-agua-fonte-subterranea-energia-provincial'
+            pageTitle: 'relatorios.title.benef-agua-fonte-subterranea-energia'
         },
         canActivate: [UserRouteAccessService]
     }
