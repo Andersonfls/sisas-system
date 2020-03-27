@@ -197,6 +197,18 @@ public class RelatoriosResource {
         return this.relatorioService.sistemaAguaBmbManualComunal();
     }
 
+    // SISTEMA AGUA BOMBA GRAVIDADE (Nivel Comunal)
+    @GetMapping("/relatorios/sistema-agua-bomba-gravidade-comunal")
+    public List<SistemaAguaBmbGravidadeDTO> getDadosBeneficiariosBmbGravidadeComunal() {
+        return this.relatorioService.sistemaAguaBmbGravidadeComunal();
+    }
+
+    // SISTEMA AGUA SUPERFICIAL OPCAO TECNICA (Nivel Comunal)
+    @GetMapping("/relatorios/sistema-agua-super-opcao-tecnica-comunal")
+    public List<SistemaAguaSuperOpcaoTecnicaDTO> getDadosBeneficiariosSuperOpcaoTecnicaComunal() {
+        return this.relatorioService.sistemaAguaSuperOpcaoTecnicaComunal();
+    }
+
     // DASHBOARD
     @GetMapping("/relatorios/dashboard-principal")
     public List<DashboardDTO> getDadosDashboardPrincipal() {

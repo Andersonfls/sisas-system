@@ -694,6 +694,254 @@ public interface RelatorioRepository extends JpaRepository<Provincia, Long>, Jpa
         "       c.ID_COMUNA", nativeQuery = true)
     List<Object[]> sistemaAguaBmbManualComunalQuery();
 
+    //SISTEMA AGUA BOMBA GRAVIDADE - COMUNAL
+    @Query(value = "SELECT 	p.NM_PROVINCIA," +
+        "	    m.NM_MUNICIPIO," +
+        "	    c.NM_COMUNA," +
+        "          ( " +
+        "		SELECT	COALESCE(COUNT(ESQUEMA),0)" +
+        "			FROM	sistema_agua s " +
+        "			WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
+        "			  AND	s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
+        "			  AND	s.ID_COMUNA = c.ID_COMUNA" +
+        "			  AND	s.POSSUI_SISTEMA_AGUA = 1" +
+        "              AND   s.NM_TP_FONTE= 'Subterrânea'" +
+        "			  AND ESQUEMA = 'Poço/cacimba melhorada'" +
+        " 	  ) TotalPocoMelhorado,    " +
+        "       ( " +
+        "		SELECT	COALESCE(COUNT(ESQUEMA),0)" +
+        "			FROM	sistema_agua s " +
+        "			WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
+        "			  AND	s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
+        "			  AND	s.ID_COMUNA = c.ID_COMUNA" +
+        "              AND   s.NM_TP_FONTE= 'Subterrânea'  " +
+        "			  AND	s.POSSUI_SISTEMA_AGUA = 1" +
+        "			  AND ESQUEMA = 'Furo'" +
+        " 	  ) TotalFuro, " +
+        "      ( " +
+        "		SELECT	COALESCE(COUNT(ESQUEMA),0)" +
+        "			FROM	sistema_agua s " +
+        "			WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
+        "			  AND	s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
+        "			  AND	s.ID_COMUNA = c.ID_COMUNA" +
+        "              AND   s.NM_TP_FONTE= 'Subterrânea'  " +
+        "			  AND	s.POSSUI_SISTEMA_AGUA = 1" +
+        "			  AND ESQUEMA = 'Nascente'" +
+        " 	  ) TotalNascente," +
+        "      ( " +
+        "		SELECT	COALESCE(COUNT(s.POSSUI_SISTEMA_AGUA),0)" +
+        "			FROM	sistema_agua s " +
+        "			WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
+        "        	  AND	s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
+        "			  AND	s.ID_COMUNA = c.ID_COMUNA" +
+        "              AND   s.NM_TP_FONTE= 'Subterrânea'  " +
+        "          	  AND	s.POSSUI_SISTEMA_AGUA = 1" +
+        " 	  ) TotalSistemas,  " +
+        "      ( " +
+        "		SELECT	COALESCE(COUNT(NM_TIPO_BOMBA),0)" +
+        "			FROM	sistema_agua s " +
+        "			WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
+        "              AND	s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
+        "			  AND	s.ID_COMUNA = c.ID_COMUNA" +
+        "              AND   s.NM_TP_FONTE= 'Subterrânea' " +
+        "			  AND	s.POSSUI_SISTEMA_AGUA = 1" +
+        "              AND   s.NM_TIPO_BOMBA = 'Sistema por gravidade'" +
+        " 	  ) TotaldBomaGravidade,   " +
+        "      ( " +
+        "		SELECT	COALESCE(COUNT(NM_TIPO_BOMBA),0)" +
+        "			FROM	sistema_agua s " +
+        "			WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
+        "			  AND	s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
+        "			  AND	s.ID_COMUNA = c.ID_COMUNA" +
+        "			  AND	s.POSSUI_SISTEMA_AGUA = 1" +
+        "              AND   s.NM_TP_FONTE= 'Subterrânea'  " +
+        "              AND   s.NM_TIPO_BOMBA = 'Sistema por gravidade'" +
+        "              AND	s.estado_funcionamento_sistema = 'Está em funcionamento (Bom)'" +
+        " 	  ) TotaldBomaGravidadeFunciona," +
+        "      ( " +
+        "		SELECT	COALESCE(COUNT(NM_TIPO_BOMBA),0)" +
+        "			FROM	sistema_agua s " +
+        "			WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
+        "			  AND	s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
+        "			  AND	s.ID_COMUNA = c.ID_COMUNA" +
+        "			  AND	s.POSSUI_SISTEMA_AGUA = 1" +
+        "              AND   s.NM_TIPO_BOMBA = 'Sistema por gravidade'" +
+        "              AND   s.NM_TP_FONTE= 'Subterrânea'  " +
+        "              AND	s.estado_funcionamento_sistema = 'Não está em funcionamento'" +
+        " 	  ) TotaldBomaGravidadeNaoFunciona,  " +
+        "      ( " +
+        "		SELECT	COALESCE(COUNT(NM_TIPO_BOMBA),0)" +
+        "			FROM	sistema_agua s " +
+        "			WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
+        "			  AND	s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
+        "			  AND	s.ID_COMUNA = c.ID_COMUNA" +
+        "			  AND	s.POSSUI_SISTEMA_AGUA = 1" +
+        "              AND   s.NM_TP_FONTE= 'Subterrânea'  " +
+        "              AND   s.NM_TIPO_BOMBA = 'Outros'" +
+        " 	  ) TotalOutros,     " +
+        "      ( " +
+        "		SELECT	COALESCE(COUNT(NM_TIPO_BOMBA),0) " +
+        "			FROM	sistema_agua s " +
+        "			WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
+        "			  AND	s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
+        "			  AND	s.ID_COMUNA = c.ID_COMUNA" +
+        "			  AND	s.POSSUI_SISTEMA_AGUA = 1" +
+        "              AND   s.NM_TIPO_BOMBA = 'Outros'" +
+        "              AND   s.NM_TP_FONTE= 'Subterrânea'  " +
+        "              AND	s.estado_funcionamento_sistema =  'Está em funcionamento (Bom)'" +
+        " 	  ) TotalOutrosFunciona,  " +
+        "  ( " +
+        "		SELECT	COALESCE(COUNT(NM_TIPO_BOMBA),0)" +
+        "			FROM	sistema_agua s " +
+        "			WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
+        "			  AND	s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
+        "			  AND	s.ID_COMUNA = c.ID_COMUNA" +
+        "			  AND	s.POSSUI_SISTEMA_AGUA = 1" +
+        "              AND   s.NM_TIPO_BOMBA = 'Outros'" +
+        "              AND   s.NM_TP_FONTE= 'Subterrânea'  " +
+        "              AND	s.estado_funcionamento_sistema = 'Não está em funcionamento'" +
+        " 	  ) TotalOutrosNaoFunciona     " +
+        " from sistema_agua s" +
+        "     inner join provincia p on" +
+        "     s.ID_PROVINCIA = p.ID_PROVINCIA" +
+        "     inner join municipio m on" +
+        "     p.ID_PROVINCIA = m.ID_PROVINCIA " +
+        "     inner join comuna c on" +
+        "     c.ID_MUNICIPIO = m.ID_MUNICIPIO " +
+        "     WHERE 	s.POSSUI_SISTEMA_AGUA = 1" +
+        "            AND   s.NM_TIPO_BOMBA = 'Outros'" +
+        "            AND   s.NM_TP_FONTE= 'Subterrânea'  " +
+        " GROUP BY " +
+        "       p.NM_PROVINCIA," +
+        "       m.ID_MUNICIPIO, " +
+        "       c.ID_COMUNA", nativeQuery = true)
+    List<Object[]> sistemaAguaBmbGravidadeComunalQuery();
+
+    //SISTEMA AGUA SUPERFICIAL OPCAO TECNICA - COMUNAL
+    @Query(value = "SELECT 	p.NM_PROVINCIA," +
+        "	    m.NM_MUNICIPIO," +
+        "	    c.NM_COMUNA," +
+        "          ( " +
+        "		SELECT	COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)" +
+        "			FROM	sistema_agua s " +
+        "			WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
+        "			  AND	s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
+        "			  AND	s.ID_COMUNA = c.ID_COMUNA" +
+        "               AND s.NM_TP_FONTE = 'Superficial' " +
+        "			  AND	s.POSSUI_SISTEMA_AGUA = 1" +
+        " 	  ) TotalSistemas," +
+        "    ( " +
+        "		SELECT	COALESCE(COUNT(NM_TIPO_BOMBA),0) " +
+        "			FROM	sistema_agua s " +
+        "			WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
+        "			  AND	s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
+        "			  AND	s.ID_COMUNA = c.ID_COMUNA" +
+        "			  AND	s.POSSUI_SISTEMA_AGUA = 1" +
+        "              AND s.NM_TP_FONTE = 'Superficial' " +
+        "              AND   s.NM_TIPO_BOMBA = 'Bomba eléctrica'" +
+        " 	  ) QtdBomaSistemasEletrica, " +
+        "      ( " +
+        "		SELECT	COALESCE(COUNT(NM_TIPO_BOMBA),0)" +
+        "			FROM	sistema_agua s " +
+        "			WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
+        "			  AND	s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
+        "			  AND	s.ID_COMUNA = c.ID_COMUNA" +
+        "			  AND	s.POSSUI_SISTEMA_AGUA = 1" +
+        "              AND   s.NM_TIPO_BOMBA = 'Bomba eléctrica'" +
+        "              AND s.NM_TP_FONTE = 'Superficial' " +
+        "              AND	s.estado_funcionamento_sistema = 'Está em funcionamento (Bom)'" +
+        " 	  ) QtdBomaEletricaSistemasFuncionam, " +
+        "( " +
+        "		SELECT	COALESCE(COUNT(NM_TIPO_BOMBA),0) " +
+        "			FROM	sistema_agua s " +
+        "			WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
+        "			  AND	s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
+        "			  AND	s.ID_COMUNA = c.ID_COMUNA" +
+        "			  AND	s.POSSUI_SISTEMA_AGUA = 1" +
+        "              AND   s.NM_TIPO_BOMBA = 'Bomba eléctrica'" +
+        "              AND s.NM_TP_FONTE = 'Superficial' " +
+        "              AND	s.estado_funcionamento_sistema = 'Não está em funcionamento'" +
+        " 	  ) QtdBomaSistemaEletricaNaoFuncionam," +
+        "      ( " +
+        "		SELECT	COALESCE(COUNT(NM_TIPO_BOMBA),0) " +
+        "			FROM	sistema_agua s " +
+        "			WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
+        "              AND	s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
+        "			  AND	s.ID_COMUNA = c.ID_COMUNA" +
+        "			  AND	s.POSSUI_SISTEMA_AGUA = 1" +
+        "              AND s.NM_TP_FONTE = 'Superficial' " +
+        "              AND   s.NM_TIPO_BOMBA = 'Bomba a diesel'" +
+        " 	  ) TotalBomaDiesel," +
+        "      ( " +
+        "		SELECT	COALESCE(COUNT(NM_TIPO_BOMBA),0)" +
+        "			FROM	sistema_agua s " +
+        "			WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
+        "			  AND	s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
+        "			  AND	s.ID_COMUNA = c.ID_COMUNA" +
+        " 			  AND	s.POSSUI_SISTEMA_AGUA = 1" +
+        "              AND   s.NM_TP_FONTE = 'Superficial' " +
+        "              AND   s.NM_TIPO_BOMBA = 'Bomba a diesel'" +
+        "              AND	s.estado_funcionamento_sistema = 'Está em funcionamento (Bom)'" +
+        " 	  ) TotalBomaDieselFunciona," +
+        "      ( " +
+        "		SELECT	COALESCE(COUNT(NM_TIPO_BOMBA),0) " +
+        "			FROM	sistema_agua s " +
+        "			WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
+        "			  AND	s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
+        "			  AND	s.ID_COMUNA = c.ID_COMUNA" +
+        "			  AND	s.POSSUI_SISTEMA_AGUA = 1" +
+        "              AND   s.NM_TIPO_BOMBA = 'Bomba a diesel'" +
+        "              AND   s.NM_TP_FONTE = 'Superficial' " +
+        "              AND	s.estado_funcionamento_sistema = 'Não está em funcionamento'" +
+        " 	  ) TotalBomaDieselNaoFunciona," +
+        "      ( " +
+        "		SELECT	COALESCE(COUNT(NM_TIPO_BOMBA),0)" +
+        "			FROM	sistema_agua s " +
+        "			WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
+        "			  AND	s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
+        "			  AND	s.ID_COMUNA = c.ID_COMUNA" +
+        "			  AND	s.POSSUI_SISTEMA_AGUA = 1" +
+        "              AND   s.NM_TP_FONTE = 'Superficial' " +
+        "              AND   s.NM_TIPO_BOMBA = 'Bomba por gravidade'" +
+        " 	  ) TotalBomaGravidade," +
+        "      ( " +
+        "		SELECT	COALESCE(COUNT(NM_TIPO_BOMBA),0) " +
+        "			FROM	sistema_agua s " +
+        "			WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
+        "			  AND	s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
+        "     		  AND	s.ID_COMUNA = c.ID_COMUNA" +
+        "			  AND	s.POSSUI_SISTEMA_AGUA = 1" +
+        "              AND   s.NM_TP_FONTE = 'Superficial' " +
+        "              AND   s.NM_TIPO_BOMBA = 'Bomba por gravidade'" +
+        "              AND	s.estado_funcionamento_sistema = 'Está em funcionamento (Bom)'" +
+        "      ) TotalBomaGravidadeFunciona," +
+        "      ( " +
+        "		SELECT	COALESCE(COUNT(NM_TIPO_BOMBA),0) " +
+        "			FROM	sistema_agua s " +
+        "			WHERE	s.ID_PROVINCIA = p.ID_PROVINCIA" +
+        "			  AND	s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
+        "			  AND	s.ID_COMUNA = c.ID_COMUNA" +
+        "			  AND	s.POSSUI_SISTEMA_AGUA = 1" +
+        "              AND   s.NM_TIPO_BOMBA = 'Bomba por gravidade'" +
+        "              AND   s.NM_TP_FONTE = 'Superficial' " +
+        "              AND	s.estado_funcionamento_sistema = 'Não está em funcionamento'" +
+        " 	  ) TotalBomaGravidadeNaoFunciona" +
+        " from sistema_agua s" +
+        "     inner join provincia p on" +
+        "     s.ID_PROVINCIA = p.ID_PROVINCIA" +
+        "     inner join municipio m on" +
+        "     p.ID_PROVINCIA = m.ID_PROVINCIA " +
+        "     inner join comuna c on" +
+        "     c.ID_MUNICIPIO = m.ID_MUNICIPIO " +
+        "	WHERE s.POSSUI_SISTEMA_AGUA = 1" +
+        "            AND   s.NM_TIPO_BOMBA = 'Bomba por gravidade'" +
+        "             AND   s.NM_TP_FONTE = 'Superficial' " +
+        " GROUP BY " +
+        "       p.NM_PROVINCIA," +
+        "       m.ID_MUNICIPIO, " +
+        "       c.ID_COMUNA", nativeQuery = true)
+    List<Object[]> sistemaAguaSuperOpcaoTecnicaComunalQuery();
+
     //FUNCIONAMENTO DE SISTEMA DE AGUA E CHAFARIZES
     @Query(value = "SELECT     p.NM_PROVINCIA,   " +
         "      (SELECT    COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)   " +

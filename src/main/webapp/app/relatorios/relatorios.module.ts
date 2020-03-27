@@ -24,9 +24,9 @@ import {SisasBenefBmbEnergiaProvincialModule} from './beneficiarios-agua-ft-subt
 import {SisasBenefOptTecnicaComunalModule} from './beneficiarios-agua-ft-super-opt-tecnica-comunal/beneficiarios-opt-tecnica.module';
 import {SisasBenefOptTecnicaMunicipalModule} from './beneficiarios-agua-ft-super-opt-tecnica-municipal/beneficiarios-opt-tecnica.module';
 import {SisasBenefOptTecnicaProvincialModule} from './beneficiarios-agua-ft-super-opt-tecnica-provincial/beneficiarios-opt-tecnica.module';
-import {
-    SisasBeneficiariosTpBombaMecComunalModule
-} from './beneficiarios-agua-ft-subt-bmb-mecanica-comunal/beneficiarios-bmb-mecanica.module';
+import {SisasSistemaAguaBmbGravidadeComunalModule} from './sistema-agua-ft-subt-bomb-gravidade-comunal/sistema-agua-bmb-gravidade-comunal.module';
+import {SisasBeneficiariosTpBombaMecComunalModule} from './beneficiarios-agua-ft-subt-bmb-mecanica-comunal/beneficiarios-bmb-mecanica.module';
+import {SisasSistemaAguaSprOpcaoTecnicaComunalModule} from './sistema-agua-ft-supr-opcao-tecnica-comunal/sistema-agua-supr-opcao-tecnica-comunal.module';
 
 @NgModule({
     imports: [
@@ -36,6 +36,8 @@ import {
         SisasTratamentoSistemasAguaModule,
         SisasFuncAguaModule,
         SisasSistemaAguaBmbManualComunalModule,
+        SisasSistemaAguaBmbGravidadeComunalModule,
+        SisasSistemaAguaSprOpcaoTecnicaComunalModule,
         SisasBenefBmbEnergiaProvincialModule,
         SisasBenefBmbEnergiaComunalModule,
         SisasSectorAguaProvincialModule,

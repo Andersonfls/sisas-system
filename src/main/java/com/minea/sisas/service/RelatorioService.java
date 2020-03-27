@@ -555,6 +555,109 @@ public class RelatorioService {
         return retorno;
     }
 
+    //SISTEMA AGUA BOMBA GRAVIDADE - Comunal
+    public List<SistemaAguaBmbGravidadeDTO> sistemaAguaBmbGravidadeComunal() {
+        List<SistemaAguaBmbGravidadeDTO> retorno = new ArrayList<>();
+        List<Object[]> list = this.relatorioRepository.sistemaAguaBmbGravidadeComunalQuery();
+        if (Objects.nonNull(list)) {
+            list.stream().forEach(i -> {
+                SistemaAguaBmbGravidadeDTO dto = new SistemaAguaBmbGravidadeDTO();
+
+                dto.setNomeProvincia((String) i[0]);
+                dto.setNomeMunicipio((String) i[1]);
+                dto.setNomeComuna((String) i[2]);
+
+                if (Objects.nonNull(i[3])) {
+                    dto.setPocoMelhorado(((BigInteger) i[3]).intValue());
+                }
+                if (Objects.nonNull(i[4])) {
+                    dto.setFuro(((BigInteger) i[4]).intValue());
+                }
+                if (Objects.nonNull(i[5])) {
+                    dto.setNascente(((BigInteger) i[5]).intValue());
+                }
+                if (Objects.nonNull(i[6])) {
+                    dto.setTotalSistemas(((BigInteger) i[6]).intValue());
+                }
+
+                if (Objects.nonNull(i[7])) {
+                    dto.setGravidadeTotalSistema(((BigInteger) i[7]).intValue());
+                }
+                if (Objects.nonNull(i[8])) {
+                    dto.setGravidadeSistemaFunciona(((BigInteger) i[8]).intValue());
+                }
+                if (Objects.nonNull(i[9])) {
+                    dto.setGravidadeSistemaNaoFunciona(((BigInteger) i[9]).intValue());
+                }
+
+                if (Objects.nonNull(i[10])) {
+                    dto.setOutroTotalSistema(((BigInteger) i[10]).intValue());
+                }
+                if (Objects.nonNull(i[11])) {
+                    dto.setOutroSistemaFunciona(((BigInteger) i[11]).intValue());
+                }
+                if (Objects.nonNull(i[12])) {
+                    dto.setOutroSistemaNaoFunciona(((BigInteger) i[12]).intValue());
+                }
+
+                retorno.add(dto);
+            });
+        }
+        return retorno;
+    }
+
+    //SISTEMA AGUA BOMBA SUPERCIFICIAL OPCAO TECNICA - Comunal
+    public List<SistemaAguaSuperOpcaoTecnicaDTO> sistemaAguaSuperOpcaoTecnicaComunal() {
+        List<SistemaAguaSuperOpcaoTecnicaDTO> retorno = new ArrayList<>();
+        List<Object[]> list = this.relatorioRepository.sistemaAguaSuperOpcaoTecnicaComunalQuery();
+        if (Objects.nonNull(list)) {
+            list.stream().forEach(i -> {
+                SistemaAguaSuperOpcaoTecnicaDTO dto = new SistemaAguaSuperOpcaoTecnicaDTO();
+
+                dto.setNomeProvincia((String) i[0]);
+                dto.setNomeMunicipio((String) i[1]);
+                dto.setNomeComuna((String) i[2]);
+
+                if (Objects.nonNull(i[3])) {
+                    dto.setTotalSistemas(((BigInteger) i[3]).intValue());
+                }
+
+                if (Objects.nonNull(i[4])) {
+                    dto.setElectricaTotalSistema(((BigInteger) i[4]).intValue());
+                }
+                if (Objects.nonNull(i[5])) {
+                    dto.setElectricaSistemaFunciona(((BigInteger) i[5]).intValue());
+                }
+                if (Objects.nonNull(i[6])) {
+                    dto.setElectricaSistemaNaoFunciona(((BigInteger) i[6]).intValue());
+                }
+
+                if (Objects.nonNull(i[7])) {
+                    dto.setDieselTotalSistema(((BigInteger) i[7]).intValue());
+                }
+                if (Objects.nonNull(i[8])) {
+                    dto.setDieselSistemaFunciona(((BigInteger) i[8]).intValue());
+                }
+                if (Objects.nonNull(i[9])) {
+                    dto.setDieselSistemaNaoFunciona(((BigInteger) i[9]).intValue());
+                }
+
+                if (Objects.nonNull(i[10])) {
+                    dto.setGravidadeTotalSistema(((BigInteger) i[10]).intValue());
+                }
+                if (Objects.nonNull(i[11])) {
+                    dto.setGravidadeSistemaFunciona(((BigInteger) i[11]).intValue());
+                }
+                if (Objects.nonNull(i[12])) {
+                    dto.setGravidadeSistemaNaoFunciona(((BigInteger) i[12]).intValue());
+                }
+
+                retorno.add(dto);
+            });
+        }
+        return retorno;
+    }
+
     //FUNCIONAMENTO SERVICOS DE AGUA E CHAFARIZES
     public List<FuncAguaChafarizesDadosDTO> funcionamentoServicosAguaChafarizesProvincial() {
         User user = buscaUsuarioLogado();

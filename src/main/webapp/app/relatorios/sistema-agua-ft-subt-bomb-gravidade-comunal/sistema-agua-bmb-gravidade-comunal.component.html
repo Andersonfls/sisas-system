@@ -1,0 +1,101 @@
+<jhi-alert></jhi-alert>
+<div>
+    <div class="export-container">
+        <button type="button" (click)="exportTable('tbcomun')" class="btn btn-primary btn-sm">
+            <span class="fa fa-file-excel-o"></span>
+            <span class="d-none d-md-inline">Excel</span>
+        </button>
+        <button type="button" (click)="captureScreen('comunnc')" class="btn btn-primary btn-sm">
+            <span class="fas fa-file-pdf"></span>
+            <span class="d-none d-md-inline">PDF</span>
+        </button>
+    </div>
+    <div id="comunnc">
+        <h2 class="text-centro">
+            <span>Sistema de Água por fonte Subterrânea e por Bomba Gravidade/Outros (Nível Comunal)</span>
+        </h2>
+        <div class="table-responsive" *ngIf="listaTabela">
+            <table id="tbcomun" class="table table-striped">
+                <thead>
+                <tr style="background-color: #1f749c">
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <!--<th></th>-->
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th class="borda-th" colspan="3"><span style="margin-left: 30%">GRAVIDADE</span></th>
+                    <th class="borda-th" colspan="3"><span style="margin-left: 30%">OUTROS</span></th>
+                </tr>
+                <tr class="borda-th" style="background-color: #1f749c">
+                    <th class="borda-th"><span>Província</span></th>
+                    <th class="borda-th"><span>Municipal</span></th>
+                    <th class="borda-th"><span>Comunas</span></th>
+                    <th class="borda-th"><span>Poco Melhorado</span></th>
+                    <th class="borda-th"><span>Furo</span></th>
+                    <th class="borda-th"><span>Nascente</span></th>
+                    <th class="borda-th"><span>Total Sistemas</span></th>
+
+                    <th class="borda-th"><span>Nº Sistemas</span></th>
+                    <th class="borda-th"><span>Sist. Funciona</span></th>
+                    <th class="borda-th"><span>Sist. Não Funciona</span></th>
+
+                    <th class="borda-th"><span>Nº Sistemas</span></th>
+                    <th class="borda-th"><span>Sist. Funciona</span></th>
+                    <th class="borda-th"><span>Sist. Não Funciona</span></th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let provincia of listaTabela">
+                    <td class="borda-th">{{provincia.nomeProvincia}}</td>
+                    <td class="borda-th">{{provincia.nomeMunicipio}}</td>
+                    <td class="borda-th">{{provincia.nomeComuna}}</td>
+                    <td class="borda-th">{{provincia.pocoMelhorado}}</td>
+                    <td class="borda-th">{{provincia.furo}}</td>
+                    <td class="borda-th">{{provincia.nascente}}</td>
+                    <td class="borda-th">{{provincia.totalSistemas}}</td>
+                    <td class="borda-th">{{provincia.gravidadeTotalSistema}}</td>
+                    <td class="borda-th">{{provincia.gravidadeSistemaFunciona}}</td>
+                    <td class="borda-th">{{provincia.gravidadeSistemaNaoFunciona}}</td>
+                    <td class="borda-th">{{provincia.outroTotalSistema}}</td>
+                    <td class="borda-th">{{provincia.outroSistemaFunciona}}</td>
+                    <td class="borda-th">{{provincia.outroSistemaNaoFunciona}}</td>
+
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr class="borda-th" style="background-color: #1f749c; border-top: 2px solid #dee2e6; border-bottom: 2px solid #dee2e6">
+                    <td> <span style="font-weight: bold"></span></td>
+                    <td> <span style="font-weight: bold"></span></td>
+                    <td> <span style="font-weight: bold">Total Comunal: </span></td>
+                    <!--<td> <span style="font-weight: bold">{{totalPopulacao | number }}</span></td>-->
+                    <td> <span style="font-weight: bold">{{totalPocoMelhorado | number}}</span></td>
+                    <td> <span style="font-weight: bold">{{totalFuro | number}}</span></td>
+                    <td> <span style="font-weight: bold">{{totalNascente | number}}</span></td>
+                    <td> <span style="font-weight: bold">{{totalSistemaTotal | number}}</span></td>
+
+                    <td> <span style="font-weight: bold">{{totalGravidadeTotalSistema | number }} </span></td>
+                    <td> <span style="font-weight: bold">{{totalGravidadeSistemaFunciona | number}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalGravidadeSistemaNaoFunciona | number}} </span></td>
+
+                    <td> <span style="font-weight: bold">{{totalOutroTotalSistema | number }} </span></td>
+                    <td> <span style="font-weight: bold">{{totalOutroSistemaFunciona | number}} </span></td>
+                    <td> <span style="font-weight: bold">{{totalOutroSistemaNaoFunciona | number}} </span></td>
+
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+        </div>
+    </div>
+    <br>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" [routerLink]="['/../../dashboard']"  >
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+    </div>
+</div>
