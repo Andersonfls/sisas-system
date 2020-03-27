@@ -24,9 +24,6 @@ import {SisasBenefBmbEnergiaProvincialModule} from './beneficiarios-agua-ft-subt
 import {SisasBenefOptTecnicaComunalModule} from './beneficiarios-agua-ft-super-opt-tecnica-comunal/beneficiarios-opt-tecnica.module';
 import {SisasBenefOptTecnicaMunicipalModule} from './beneficiarios-agua-ft-super-opt-tecnica-municipal/beneficiarios-opt-tecnica.module';
 import {SisasBenefOptTecnicaProvincialModule} from './beneficiarios-agua-ft-super-opt-tecnica-provincial/beneficiarios-opt-tecnica.module';
-import {
-    SisasBeneficiariosTpBombaMecComunalModule
-} from './beneficiarios-agua-ft-subt-bmb-mecanica-comunal/beneficiarios-bmb-mecanica.module';
 import {SisasBenefAguaTpBombaManualMunModule} from './beneficiarios-agua-ft-subt-tp-bmb-manual-mun/tratamento-sistemas-agua.module';
 import {SisasBeneficiariosTpBombaMecMuniModule} from './beneficiarios-agua-ft-subt-bmb-mecanica-municipal/beneficiarios-bmb-mecanica.module';
 import {SisasSistBmbEnergiaComunalModule} from './sistemas-agua-ft-subt-bomb-energia-comunal/sistemas-bmb-energia-comunal.module';
