@@ -18,6 +18,7 @@ import {BeneficiariosBmbEnergiaComunal} from './beneficiarios-agua-ft-subt-bomb-
 import {SistemaAguaBmbManualComunal} from './sistema-agua-ft-subt-bomb-manual-comunal/sistema-agua-bmb-manual-comunal.model';
 import {BeneficiariosOptTecnica} from './beneficiarios-agua-ft-super-opt-tecnica-comunal/BeneficiariosOptTecnica.model';
 import {BeneficiariosBmbMecanica} from './beneficiarios-agua-ft-subt-bmb-mecanica-municipal/beneficiarios-bmb-mecanica.model';
+import {SistemasFtSubtBmbEnergia} from './sistemas-agua-ft-subt-bomb-energia-comunal/sistemas-bmb-energia-comunal.model';
 
 export type EntityResponseType = HttpResponse<Provincia>;
 
@@ -173,6 +174,11 @@ export class RelatoriosService {
     buscaDadosBenFtSubtBbmMecanicaComunal(req?: any): Observable<HttpResponse<BeneficiariosBmbMecanica[]>> {
         const options = createRequestOption(req);
         return this.http.get<BeneficiariosBmbMecanica[]>(this.resourceUrl + '/ben-bmb-mecanica-comunal', {params: options, observe: 'response'});
+    }
+
+    buscaDadosSistemasFtSubtBmbEnergiaComunal(req?: any): Observable<HttpResponse<SistemasFtSubtBmbEnergia[]>> {
+        const options = createRequestOption(req);
+        return this.http.get<SistemasFtSubtBmbEnergia[]>(this.resourceUrl + '/sistemas-ft-subt-bomba-energia-comunal', {params: options, observe: 'response'});
     }
 
 }

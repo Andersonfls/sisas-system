@@ -11,7 +11,8 @@
             "benef-agua-fonte-subterranea-mecanica":"Beneficiários de Água por Fonte Subterranea e Bomba Mecanica",
             "benef-agua-fonte-subterranea-energia":"Beneficiários de Água por Fonte Subterranea e Bomba Energia",
             "benef-agua-subterranea-tp-bomba":"Beneficiários de Água por Fonte Subterranea e Tipo Bomba",
-            "indicador-producao-provincia":"Indicador de Produção"
+            "indicador-producao-provincia":"Indicador de Produção",
+            "sist-agua-fonte-subterranea-energia":"Sistemas de Água por Fonte Subterranea e Bomba Energia"
         },
         "home": {
             "obras": "Obras",

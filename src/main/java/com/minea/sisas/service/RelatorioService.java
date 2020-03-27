@@ -1191,4 +1191,51 @@ public class RelatorioService {
         }
         return retorno;
     }
+
+    //SISTEMAS DE AGUA POR FONTE SUBTERRANE E BOMBA DE ENERGIA
+    public List<SistemasAguaFtSubtBmbEnergiaDTO> sistemasAguaFtSubtBmbEnergiaComunal() {
+        User user = buscaUsuarioLogado();
+        List<Object[]> list;
+        List<SistemasAguaFtSubtBmbEnergiaDTO> retorno = new ArrayList<>();
+        if (isAdminGeral(user)) {
+            list = this.relatorioAdminRepository.buscaDadosSistAguafFtSubtBmbEnergiaMunicipal();
+        } else {
+            list = this.relatorioRepository.buscaDadosSistAguafFtSubtBmbEnergiaMunicipal(user.getProvincia().getId());
+        }
+        if (Objects.nonNull(list)) {
+            list.stream().forEach(i -> {
+                SistemasAguaFtSubtBmbEnergiaDTO dto = new SistemasAguaFtSubtBmbEnergiaDTO();
+                dto.setNomeProvincia((String) i[0]);
+                dto.setNomeMunicipio((String) i[1]);
+                dto.setNomeComuna((String) i[2]);
+
+                dto.setPocoMelhorado(((BigInteger)i[3]).intValue());
+                dto.setFuro(((BigInteger) i[4]).intValue());
+                dto.setNascente(((BigInteger) i[5]).intValue());
+
+                dto.setDieselSistemas(((BigInteger) i[6]).intValue());
+                dto.setDieselSistemaFunciona(((BigInteger) i[7]).intValue());
+                dto.setDieselSistemaNaoFunciona(((BigInteger) i[8]).floatValue());
+
+                dto.setSolarSistemas(((BigInteger) i[9]).intValue());
+                dto.setSolarSistemaFunciona(((BigInteger) i[10]).intValue());
+                dto.setSolarSistemaNaoFunciona(((BigInteger) i[11]).floatValue());
+
+                dto.setEolicaSistemas(((BigInteger) i[12]).intValue());
+                dto.setEolicaSistemaFunciona(((BigInteger) i[13]).intValue());
+                dto.setEolicaSistemaNaoFunciona(((BigInteger) i[14]).floatValue());
+
+                dto.setElectricaSistemas(((BigInteger) i[15]).intValue());
+                dto.setElectricaSistemaFunciona(((BigInteger) i[16]).intValue());
+                dto.setElectricaSistemaNaoFunciona(((BigInteger) i[17]).floatValue());
+
+                dto.setOutroSistemas(((BigInteger) i[18]).intValue());
+                dto.setOutroSistemaFunciona(((BigInteger) i[19]).intValue());
+                dto.setOutroSistemaNaoFunciona(((BigInteger) i[20]).floatValue());
+
+                retorno.add(dto);
+            });
+        }
+        return retorno;
+    }
 }

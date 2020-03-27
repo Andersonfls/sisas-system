@@ -2206,4 +2206,211 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "       m.NM_MUNICIPIO, m.ID_MUNICIPIO", nativeQuery = true)
     List<Object[]> buscaDadosBenefFtSubtBmbMecanicaMunicipal();
 
+    //SISTEMAS AGUA FT SUBT BOMBA ENERGIA
+    @Query(value = "SELECT  p.NM_PROVINCIA,  " +
+        "     m.NM_MUNICIPIO,  " +
+        "     c.NM_COMUNA,  " +
+        "          (   " +
+        "  SELECT COUNT(Esquema)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "            AND     s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "     AND s.POSSUI_SISTEMA_AGUA = 1  " +
+        "     AND s.NM_TP_FONTE= 'Subterrânea'  " +
+        "              AND s.Esquema = 'Poço/cacimba melhorada'  " +
+        "    ) PocoMelhorado,   " +
+        "          (   " +
+        "   SELECT COUNT(Esquema)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "     AND s.POSSUI_SISTEMA_AGUA = 1   " +
+        "     AND s.NM_TP_FONTE = 'Subterrânea'  " +
+        "     AND s.ESQUEMA = 'Furo'   " +
+        "  ) Furo,  " +
+        "  (   " +
+        "   SELECT COUNT(Esquema)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "               AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "         AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "               AND s.POSSUI_SISTEMA_AGUA = 1   " +
+        "     AND s.NM_TP_FONTE  = 'Subterrânea'  " +
+        "     AND s.ESQUEMA = 'Nascente'  " +
+        "  ) Nascente,   " +
+        "           (               " +
+        "           SELECT count(POSSUI_SISTEMA_AGUA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "     AND s.POSSUI_SISTEMA_AGUA = 1   " +
+        "     AND s.NM_TP_FONTE  = 'Subterrânea'  " +
+        "     AND s.NM_TP_BOMBA_ENERGIA = 'Diesel/Motobomba'  " +
+        "  )  TotalSistemasDiesel,  " +
+        "(               " +
+        "           SELECT count(POSSUI_SISTEMA_AGUA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "              AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "              AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "       AND s.POSSUI_SISTEMA_AGUA = 1   " +
+        "              AND s.estado_funcionamento_sistema = 'Está em funcionamento (Bom)'  " +
+        "          AND s.NM_TP_FONTE  = 'Subterrânea'  " +
+        "    AND s.NM_TP_BOMBA_ENERGIA = 'Diesel/Motobomba'  " +
+        "  )  TotalSistemasDieselFunciona,  " +
+        "    (              " +
+        "                     " +
+        "           SELECT count(POSSUI_SISTEMA_AGUA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "         AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "         AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "         AND s.POSSUI_SISTEMA_AGUA = 1   " +
+        "              AND s.estado_funcionamento_sistema = 'Não está em funcionamento'  " +
+        "         AND s.NM_TP_FONTE  = 'Subterrânea'  " +
+        "         AND s.NM_TP_BOMBA_ENERGIA = 'Diesel/Motobomba'  " +
+        "  )  TotalSistemasDieselNaoFunciona,  " +
+        "        (               " +
+        "           SELECT count(NM_TP_BOMBA_ENERGIA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "           AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "             AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "              AND s.POSSUI_SISTEMA_AGUA = 1   " +
+        "     AND s.NM_TP_FONTE  = 'Subterrânea'  " +
+        "     AND s.NM_TP_BOMBA_ENERGIA = 'Solar'  " +
+        "  )  TotalSistemasSolar,  " +
+        "(               " +
+        "           SELECT count(POSSUI_SISTEMA_AGUA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "     AND s.POSSUI_SISTEMA_AGUA = 1   " +
+        "              AND s.estado_funcionamento_sistema = 'Está em funcionamento (Bom)'  " +
+        "     AND s.NM_TP_FONTE  = 'Subterrânea'  " +
+        "       AND s.NM_TP_BOMBA_ENERGIA = 'Solar'  " +
+        "  )  TotalSistemasSolarFunciona,  " +
+        "    (              " +
+        "                     " +
+        "           SELECT count(POSSUI_SISTEMA_AGUA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "        AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "        AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "     AND s.POSSUI_SISTEMA_AGUA = 1   " +
+        "              AND s.estado_funcionamento_sistema = 'Não está em funcionamento'  " +
+        "     AND s.NM_TP_FONTE  = 'Subterrânea'  " +
+        "     AND s.NM_TP_BOMBA_ENERGIA = 'Solar'  " +
+        "  )  TotalSistemasSolarNaoFunciona,  " +
+        "        (               " +
+        "           SELECT count(NM_TP_BOMBA_ENERGIA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "     AND s.POSSUI_SISTEMA_AGUA = 1   " +
+        "     AND s.NM_TP_FONTE  = 'Subterrânea'  " +
+        "     AND s.NM_TP_BOMBA_ENERGIA = 'Eólica'  " +
+        "  )  TotalSistemasEolica,  " +
+        "(               " +
+        "           SELECT count(POSSUI_SISTEMA_AGUA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "     AND s.POSSUI_SISTEMA_AGUA = 1   " +
+        "              AND s.estado_funcionamento_sistema = 'Está em funcionamento (Bom)'  " +
+        "     AND s.NM_TP_FONTE  = 'Subterrânea'  " +
+        "     AND s.NM_TP_BOMBA_ENERGIA = 'Eólica'  " +
+        "  )  TotalSistemasEolicaFunciona,  " +
+        "    (              " +
+        "           SELECT count(POSSUI_SISTEMA_AGUA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "     AND s.POSSUI_SISTEMA_AGUA = 1   " +
+        "              AND s.estado_funcionamento_sistema = 'Não está em funcionamento'  " +
+        "     AND s.NM_TP_FONTE  = 'Subterrânea'  " +
+        "    AND s.NM_TP_BOMBA_ENERGIA = 'Eólica'  " +
+        "  )  TotalSistemasEolicaNaoFunciona,  " +
+        "      (               " +
+        "           SELECT count(NM_TP_BOMBA_ENERGIA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "     AND s.POSSUI_SISTEMA_AGUA = 1   " +
+        "     AND s.NM_TP_FONTE  = 'Subterrânea'  " +
+        "     AND s.NM_TP_BOMBA_ENERGIA = 'Eléctrica'  " +
+        "  )  TotalSistemasElectrica,  " +
+        "(               " +
+        "           SELECT count(POSSUI_SISTEMA_AGUA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "     AND s.POSSUI_SISTEMA_AGUA = 1   " +
+        "              AND s.estado_funcionamento_sistema = 'Está em funcionamento (Bom)'  " +
+        "     AND s.NM_TP_FONTE  = 'Subterrânea'  " +
+        "     AND s.NM_TP_BOMBA_ENERGIA = 'Eléctrica'  " +
+        "  )  TotalSistemasElectricaFunciona,  " +
+        "    (              " +
+        "           SELECT count(NM_TP_BOMBA_ENERGIA)  as Total   " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "     AND s.POSSUI_SISTEMA_AGUA = 1   " +
+        "              AND s.estado_funcionamento_sistema = 'Não está em funcionamento'  " +
+        "     AND s.NM_TP_FONTE  = 'Subterrânea'  " +
+        "    AND s.NM_TP_BOMBA_ENERGIA = 'Eléctrica'  " +
+        "  )  TotalSistemasElectricaNaoFunciona,  " +
+        "        (               " +
+        "           SELECT count(NM_TP_BOMBA_ENERGIA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "     AND s.POSSUI_SISTEMA_AGUA = 1   " +
+        "     AND s.NM_TP_FONTE  = 'Subterrânea'  " +
+        "     AND s.NM_TP_BOMBA_ENERGIA = 'Outros'  " +
+        "  )  TotalSistemasOutros,  " +
+        "(               " +
+        "           SELECT count(POSSUI_SISTEMA_AGUA)  " +
+        "   FROM sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "     AND s.POSSUI_SISTEMA_AGUA = 1   " +
+        "              AND s.estado_funcionamento_sistema = 'Está em funcionamento (Bom)'  " +
+        "         AND s.NM_TP_FONTE  = 'Subterrânea'  " +
+        "              AND s.NM_TP_BOMBA_ENERGIA = 'Outros'  " +
+        "  )  TotalSistemasOutrosFunciona,  " +
+        "    (              " +
+        "                     " +
+        "           SELECT count(POSSUI_SISTEMA_AGUA)  as Total   " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "     AND s.POSSUI_SISTEMA_AGUA = 1   " +
+        "              AND s.estado_funcionamento_sistema = 'Não está em funcionamento'  " +
+        "     AND s.NM_TP_FONTE  = 'Subterrânea'  " +
+        "    AND s.NM_TP_BOMBA_ENERGIA = 'Outros'  " +
+        "  )  TotalSistemasOutrosNaoFunciona                " +
+        "from sisas.sistema_agua s  " +
+        "     inner join sisas.provincia p on s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     inner join sisas.municipio m on p.ID_PROVINCIA = m.ID_PROVINCIA   " +
+        "     inner join sisas.comuna c on c.ID_MUNICIPIO = m.ID_MUNICIPIO   " +
+        "GROUP BY   " +
+        "       p.NM_PROVINCIA, p.ID_PROVINCIA ,  " +
+        "       m.ID_MUNICIPIO, m.ID_MUNICIPIO,   " +
+        "       c.ID_COMUNA, c.ID_COMUNA", nativeQuery = true)
+    List<Object[]> buscaDadosSistAguafFtSubtBmbEnergiaMunicipal();
+
 }

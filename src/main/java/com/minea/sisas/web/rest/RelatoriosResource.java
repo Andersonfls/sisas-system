@@ -300,4 +300,10 @@ public class RelatoriosResource {
     public List<BeneficiariosBmbMecanicaDTO> getDadosBenFtSubtBmbMecanicaComunal() {
         return this.relatorioService.beneficiariosFtSubtBmbMecanicaComunal();
     }
+
+    //SISTEMAS DE AGUA POR FONTE SUBTERRANEA E BOMBA DE ENERGIA
+    @GetMapping("/relatorios/sistemas-ft-subt-bomba-energia-comunal")
+    public List<SistemasAguaFtSubtBmbEnergiaDTO> getDadosSistAguaFtSubtBmbEnergiaComunal() {
+        return this.relatorioService.sistemasAguaFtSubtBmbEnergiaComunal();
+    }
 }
