@@ -5,7 +5,8 @@
             "type": "Feature",
             "properties": {
                 "nome": "Zaire",
-                "code": 2
+                "code": 2,
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -803,7 +804,8 @@
             "type": "Feature",
             "properties": {
                 "nome": "Uige",
-                "code": 3
+                "code": 3,
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -2449,7 +2451,8 @@
             "type": "Feature",
             "properties": {
                 "nome": "Luanda",
-                "code": 4
+                "code": 4,
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -2671,7 +2674,8 @@
             "type": "Feature",
             "properties": {
                 "nome": "Bengo",
-                "code": 18
+                "code": 18,
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -3213,7 +3217,8 @@
             "type": "Feature",
             "properties": {
                 "nome": "Kuanza Norte",
-                "code": 5
+                "code": 5,
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -3619,7 +3624,8 @@
             "type": "Feature",
             "properties": {
                 "nome": "Malanje",
-                "code": 7
+                "code": 7,
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -4161,7 +4167,8 @@
             "type": "Feature",
             "properties": {
                 "nome": "Luanda Norte",
-                "code": 8
+                "code": 8,
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -4499,7 +4506,8 @@
             "type": "Feature",
             "properties": {
                 "nome": "Luanda Sul",
-                "code": 17
+                "code": 17,
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -4797,7 +4805,8 @@
             "type": "Feature",
             "properties": {
                 "nome": "Moxico",
-                "code": 12
+                "code": 12,
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -5195,7 +5204,8 @@
             "type": "Feature",
             "properties": {
                 "nome": "Bie",
-                "code": 11
+                "code": 11,
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -5521,7 +5531,8 @@
             "type": "Feature",
             "properties": {
                 "nome": "Huambo",
-                "code": 10
+                "code": 10,
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -5767,7 +5778,8 @@
             "type": "Feature",
             "properties": {
                 "nome": "Kuanza Sul",
-                "code": 6
+                "code": 6,
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -6165,7 +6177,8 @@
             "type": "Feature",
             "properties": {
                 "nome": "Benguela",
-                "code": 9
+                "code": 9,
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -6451,7 +6464,8 @@
             "type": "Feature",
             "properties": {
                 "nome": "Namide",
-                "code": 14
+                "code": 14,
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -6805,7 +6819,8 @@
             "type": "Feature",
             "properties": {
                 "nome": "Hulia",
-                "code": 15
+                "code": 15,
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -7255,7 +7270,8 @@
             "type": "Feature",
             "properties": {
                 "nome": "Cunene",
-                "code": 16
+                "code": 16,
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -7469,7 +7485,8 @@
             "type": "Feature",
             "properties": {
                 "nome": "Kuando Kubango",
-                "code": 13
+                "code": 13,
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -7799,7 +7816,8 @@
             "type": "Feature",
             "properties": {
                 "nome": "Cabinda",
-                "code": 1
+                "code": 1,
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",

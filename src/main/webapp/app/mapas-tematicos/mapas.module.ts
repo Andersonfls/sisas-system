@@ -29,6 +29,7 @@ import {SisasMunicipalSaneamentoFuncionamModule} from './municipalSaneamentoFunc
 import {SisasMunicipalSaneamentoModule} from './municipalSaneamento/municipal.module';
 import {SisasMunicipalAguaFuncionamModule} from './municipalAguaFuncionam/municipal.module';
 import {SisasMunicipalAguaNaoFuncionamModule} from './municipalAguaNaoFuncionam/municipal.module';
+import {MapasService} from './mapas.service';
 
 @NgModule({
     imports: [
@@ -65,7 +66,7 @@ import {SisasMunicipalAguaNaoFuncionamModule} from './municipalAguaNaoFuncionam/
     ],
     declarations: [],
     entryComponents: [],
-    providers: [],
+    providers: [MapasService],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SisasMapasTematicosModule {
