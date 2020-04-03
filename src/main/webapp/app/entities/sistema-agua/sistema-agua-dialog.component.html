@@ -336,7 +336,7 @@
                             <div class="form-group">
                                 <label class="form-control-label negrito" jhiTranslate="sisasApp.sistemaAgua.nmFonteAguaUtilizada"
                                        for="field_nmFonteAguaUtilizada">Nm Fonte Agua Utilizada</label>
-                                <select class="form-control" id="field_nmFonteAguaUtilizada" name="nmFonteAguaUtilizada"  [(ngModel)]="sistemaAgua.nmFonteAguaUtilizada">
+                                <select class="form-control" id="field_nmFonteAguaUtilizada" name="nmFonteAguaUtilizada"  [(ngModel)]="sistemaAgua.nmFonteAguaUtilizada" required>
                                     <option *ngIf="!editForm.value.nmFonteAguaUtilizada" [ngValue]="null" selected>Selecione a fonte de água utilizada...</option>
                                     <option label="Rio">Rio</option>
                                     <option label="Lagoa">Lagoa</option>

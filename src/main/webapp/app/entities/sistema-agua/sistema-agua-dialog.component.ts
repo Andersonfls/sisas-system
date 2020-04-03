@@ -194,7 +194,8 @@ export class SistemaAguaDialogComponent implements OnInit {
 
     montaListaAnos() {
         this.listaAnos = new Array();
-        const ano = 2030;
+        const date = new Date();
+        const ano = date.getFullYear();
 
         for (let i = ano; i >= 1973; i-- ) {
             this.listaAnos.push(i);
@@ -204,12 +205,28 @@ export class SistemaAguaDialogComponent implements OnInit {
     save() {
         this.isSaving = true;
         console.log(this.sistemaAgua);
-        if (this.sistemaAgua.id !== undefined) {
-            this.subscribeToSaveResponse(
-                this.sistemaAguaService.update(this.sistemaAgua));
+        if (this.isEstadoFuncionamentoPreenchido()) {
+            if (this.sistemaAgua.id !== undefined) {
+                this.subscribeToSaveResponse(
+                    this.sistemaAguaService.update(this.sistemaAgua));
+            } else {
+                this.subscribeToSaveResponse(
+                    this.sistemaAguaService.create(this.sistemaAgua));
+            }
         } else {
-            this.subscribeToSaveResponse(
-                this.sistemaAguaService.create(this.sistemaAgua));
+            alert('Preencha o Estado de funcionamento do Sistema.');
+        }
+    }
+
+    isEstadoFuncionamentoPreenchido() {
+        if (this.sistemaAgua.possuiSistemaAgua) {
+            if (this.sistemaAgua.estadoFuncionamentoSistema === 'Está em funcionamento (Bom)' || this.sistemaAgua.estadoFuncionamentoSistema === 'Não está em funcionamento') {
+                return true;
+            }else {
+                return false;
+            }
+        } else {
+            return true;
         }
     }
 

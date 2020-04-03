@@ -13,7 +13,8 @@
             "benef-agua-subterranea-tp-bomba":"Beneficiários de Água por Fonte Subterranea e Tipo Bomba",
             "indicador-producao-provincia":"Indicador de Produção",
             "sist-agua-fonte-subterranea-energia":"Sistemas de Água por Fonte Subterranea e Bomba Energia",
-            "sist-agua-fonte-subterranea-gravidade":"Sistemas de Água por Fonte Subterranea e Bomba Gravidade/Outros"
+            "sist-agua-fonte-subterranea-gravidade":"Sistemas de Água por Fonte Subterranea e Bomba Gravidade/Outros",
+            "sistema-agua-super-opcao-tecnica-comunal": "Sistemas de Água por Fonte Superficial e Opcao Técnica"
         },
         "home": {
             "obras": "Obras",

@@ -11,7 +11,7 @@
     </div>
     <div id="content">
         <h2 style="text-align: center; font-size: 1.4rem;">
-            <span>Beneficiários de Água por Fonte Subterranea e por Tipo de Bomba Manual (Nível Municipal)</span>
+            <span>Beneficiários de Água por Fonte Subterrânea e por Tipo de Bomba Manual (Nível Municipal)</span>
         </h2>
         <jhi-alert></jhi-alert>
 
@@ -42,7 +42,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr class="borda-th" *ngFor="let provincia of listaTabela ;trackBy: trackId">
+                <tr class="borda-th" *ngFor="let provincia of listaTabela">
                     <td class="borda-th">{{provincia.nomeProvincia}}</td>
                     <td class="borda-th">{{provincia.nomeMunicipio}}</td>
                     <td class="borda-th">{{provincia.populacao}}</td>
@@ -76,7 +76,7 @@
                     <td style="text-align: center;"> <span style="font-weight: bold">{{totalVolantaPopulacao | number }} </span></td>
                     <td style="text-align: center;"> <span style="font-weight: bold">{{totalIndiaMarc | number }} </span></td>
                     <td style="text-align: center;"> <span style="font-weight: bold">{{totalIndiaMarcPopulacao | number }} </span></td>
-                    <td style="text-align: center;"> <span style="font-weight: bold">{{totalOutros | number }} </span></td>
+                    <td style="text-align: center;"> <span style="font-weight: bold">{{totalOutro | number }} </span></td>
                     <td style="text-align: center;"> <span style="font-weight: bold">{{totalOutroPopulacao | number }} </span></td>
                 </tr>
                 </tfoot>

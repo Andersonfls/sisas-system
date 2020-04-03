@@ -9,7 +9,6 @@ import {BeneficiariosBmbEnergiaProvincial} from './beneficiarios-bmb-energia-pro
 import * as jsPDF from 'jspdf';
 import {TableUtil} from '../../shared/util/tableUtil';
 import * as html2canvas from 'html2canvas';
-import {DadosRelatorio} from '../cobertura-sector-agua-provincial/dadosRelatorio.model';
 
 @Component({
     selector: 'jhi-benef-bmb-energia-provincial',
