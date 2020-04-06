@@ -37,19 +37,6 @@ public class MapasTematicosService {
         this.mapasTematicosRepository = mapasTematicosRepository;
     }
 
-//    private User buscaUsuarioLogado() {
-//        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        User user = null;
-//        String username = null;
-//        if (principal instanceof UserDetails) {
-//            username = ((UserDetails)principal).getUsername();
-//        }
-//        if (Objects.nonNull(username)) {
-//            user = this.userRepository.findByLoginEquals(username);
-//        }
-//        return user;
-//    }
-
     private boolean isAdminGeral(User user){
         for (Authority permissao: user.getAuthorities() ) {
             if (permissao.getName().equals("ROLE_ADMIN")) {
@@ -61,7 +48,7 @@ public class MapasTematicosService {
 
     public List<MapasDTO> montaListaDadosPorcentagemCoberturaServicosAguaProvincial(){
         List<MapasDTO> retorno = new ArrayList<>();
-        List<Object[]> list = this.mapasTematicosRepository.porcentagemCoberturaServicosAguaProvincial();
+        List<Object[]> list = this.mapasTematicosRepository.porcentagemCoberturaServicosAguaNacional();
         if (Objects.nonNull(list)) {
             for (Object[] i : list) {
                 MapasDTO dto = new MapasDTO();
@@ -74,15 +61,47 @@ public class MapasTematicosService {
         return retorno;
     }
 
+    public List<MapasDTO> montaListaDadosPorcentagemCoberturaServicosAguaMunicipios(Long provinciaId){
+        List<MapasDTO> retorno = new ArrayList<>();
+        List<Object[]> list = this.mapasTematicosRepository.porcentagemCoberturaServicosAguaPorProvincia(provinciaId);
+        if (Objects.nonNull(list)) {
+            for (Object[] i : list) {
+                MapasDTO dto = new MapasDTO();
+                dto.setIdProvincia(provinciaId);
+                dto.setIdMunicipio(((BigInteger) i[0]).longValue());
+                //dto.setBeneficiariosSistemaAgua(((BigDecimal) i[1]).intValue());
+                dto.setPorcentagemCobertura(((BigDecimal) i[4]).floatValue());
+                retorno.add(dto);
+            }
+        }
+        return retorno;
+    }
+
     public List<MapasDTO> montaListaDadosPorcentagemSistemasAguaProvincial(){
         List<MapasDTO> retorno = new ArrayList<>();
-        List<Object[]> list = this.mapasTematicosRepository.porcentagemSistemasAguaProvincial();
+        List<Object[]> list = this.mapasTematicosRepository.porcentagemSistemasAguaNacional();
         if (Objects.nonNull(list)) {
             for (Object[] i : list) {
                 MapasDTO dto = new MapasDTO();
                 dto.setIdProvincia(((BigInteger) i[0]).longValue());
                 dto.setPorcentagemFuncionam(((BigDecimal) i[1]).floatValue());
                 dto.setPorcentagemNaoFuncionam(((BigDecimal) i[2]).floatValue());
+                retorno.add(dto);
+            }
+        }
+        return retorno;
+    }
+
+    public List<MapasDTO> montaListaDadosPorcentagemSistemasAguaPorProvincia(Long provinciaId){
+        List<MapasDTO> retorno = new ArrayList<>();
+        List<Object[]> list = this.mapasTematicosRepository.porcentagemSistemasAguaNacionalPorProvincia(provinciaId);
+        if (Objects.nonNull(list)) {
+            for (Object[] i : list) {
+                MapasDTO dto = new MapasDTO();
+                dto.setIdProvincia(provinciaId);
+                dto.setIdMunicipio(((BigInteger) i[2]).longValue());
+                dto.setPorcentagemFuncionam(((BigDecimal) i[6]).floatValue());
+                dto.setPorcentagemNaoFuncionam(((BigDecimal) i[7]).floatValue());
                 retorno.add(dto);
             }
         }

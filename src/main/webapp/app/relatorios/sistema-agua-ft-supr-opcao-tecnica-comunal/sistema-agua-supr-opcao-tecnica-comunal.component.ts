@@ -66,8 +66,8 @@ export class SistemaAguaSupeOpcaoTecnicaComunalComponent implements OnInit {
             const heightLeft = imgHeight;
             const contentDataURL = canvas.toDataURL('image/png');
             const pdf = new jsPDF('p', 'mm', 'a4');
-            const position = 0;
-            pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
+            pdf.text('Sistema de Água por fonte Superficial e por Opção Técnica (Nível Comunal)', 5, 7);
+            pdf.addImage(contentDataURL, 'PNG', 2, 9, imgWidth, imgHeight);
             pdf.save('relatorio-sisas.pdf');
         }).catch(function(error) {
             // Error Handling

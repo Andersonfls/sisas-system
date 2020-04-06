@@ -58,8 +58,8 @@ export class BeneficiariosOptTecnicaComponent implements OnInit {
             const heightLeft = imgHeight;
             const contentDataURL = canvas.toDataURL('image/png');
             const pdf = new jsPDF('p', 'mm', 'a4');
-            const position = 0;
-            pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
+            pdf.text('Beneficiários de Água por Fonte Superficial e por Opcão Técnica (Nível Comunal)', 2, 7);
+            pdf.addImage(contentDataURL, 'PNG', 2, 13, imgWidth, imgHeight);
             pdf.save('relatorio-sisas.pdf');
         }).catch(function(error) {
             // Error Handling

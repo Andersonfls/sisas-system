@@ -5,7 +5,8 @@
             "type": "Feature",
             "properties": {
                 "code": 509,
-                "nome": "Camabatela"
+                "nome": "Camabatela",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -219,7 +220,8 @@
             "type": "Feature",
             "properties": {
                 "code": 513,
-                "nome": "Bolongongo"
+                "nome": "Bolongongo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -393,7 +395,8 @@
             "type": "Feature",
             "properties": {
                 "code": 517,
-                "nome": "Samba Caju"
+                "nome": "Samba Caju",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -607,7 +610,8 @@
             "type": "Feature",
             "properties": {
                 "code": 511,
-                "nome": "Quculungo"
+                "nome": "Quculungo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -729,7 +733,8 @@
             "type": "Feature",
             "properties": {
                 "code": 507,
-                "nome": "Cambambe"
+                "nome": "Cambambe",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -1035,7 +1040,8 @@
             "type": "Feature",
             "properties": {
                 "code": 503,
-                "nome": "Lucala"
+                "nome": "Lucala",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -1221,7 +1227,8 @@
             "type": "Feature",
             "properties": {
                 "code": 501,
-                "nome": "Ndalatando"
+                "nome": "Ndalatando",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -1459,7 +1466,8 @@
             "type": "Feature",
             "properties": {
                 "code": 505,
-                "nome": "Golungo Alto"
+                "nome": "Golungo Alto",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -1665,7 +1673,8 @@
             "type": "Feature",
             "properties": {
                 "code": 515,
-                "nome": "Banga"
+                "nome": "Banga",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -1827,7 +1836,8 @@
             "type": "Feature",
             "properties": {
                 "code": 519,
-                "nome": "Conguembo"
+                "nome": "Conguembo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",

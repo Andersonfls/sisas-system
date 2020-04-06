@@ -63,7 +63,8 @@ export class CoberturaSectorAguaProvincialComponent implements OnInit {
             const contentDataURL = canvas.toDataURL('image/png');
             const pdf = new jsPDF('p', 'mm', 'a4');
             const position = 0;
-            pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
+            pdf.text('Cobertura no Sector de Água (Nível Provincial)', 40, 10);
+            pdf.addImage(contentDataURL, 'PNG', 2, 12, imgWidth, imgHeight);
             pdf.save('relatorio-sector-aguas.pdf');
         }).catch(function(error) {
             // Error Handling
@@ -78,6 +79,8 @@ export class CoberturaSectorAguaProvincialComponent implements OnInit {
         this.relatorioService.buscaDadosCoberturaSectorAguaProvincial().subscribe(
             (res: HttpResponse<CoberturaSectorAguaModel[]>) => {
                 this.listaTabela = res.body;
+                console.log('dados tabela');
+                console.log(this.listaTabela);
                 this.listaMedia = Array<any>();
                 this.listaCobertura = Array<any>();
 

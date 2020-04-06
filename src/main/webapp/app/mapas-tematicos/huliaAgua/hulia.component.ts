@@ -1,10 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {JhiAlertService, JhiParseLinks} from 'ng-jhipster';
 import {UserService} from '../../shared/user/user.service';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpResponse} from '@angular/common/http';
 import {Principal} from '../../shared/auth/principal.service';
 import {ActivatedRoute} from '@angular/router';
 import * as L from 'leaflet';
+import {MapasDados} from '../mapasDados.model';
+import {MapasService} from '../mapas.service';
 
 @Component({
     selector: 'jhi-map',
@@ -28,6 +30,7 @@ export class HuliaComponent implements OnInit {
     reverse: any;
     predicate: any;
     tipo: string;
+    dadosMapa: MapasDados[];
 
     map: L.Map;
     json;
@@ -48,7 +51,8 @@ export class HuliaComponent implements OnInit {
         private userService: UserService,
         private principal: Principal,
         private activatedRoute: ActivatedRoute,
-        private http: HttpClient
+        private http: HttpClient,
+        private mapasService: MapasService
     ) {
         this.routeData = this.activatedRoute.data.subscribe((data) => {
             this.page = data.pagingParams.page;
@@ -62,10 +66,22 @@ export class HuliaComponent implements OnInit {
     ngOnInit() {
         this.principal.identity().then((account) => {
             this.currentAccount = account;
+            this.buscaDados();
         });
     }
 
+    buscaDados() {
+        this.mapasService.buscaDadosPorcentagemCoberturaServicosAguaHuila().subscribe(
+            (res: HttpResponse<MapasDados[]>) => {
+                this.dadosMapa = res.body;
+                console.log(this.dadosMapa);
+            });
+    }
+
     onMapReady(map: L.Map) {
+        setTimeout(() => {
+            map.invalidateSize(true  );
+        }, 1000 );
         let geojson;
 
         // LEGENDA
@@ -101,20 +117,7 @@ export class HuliaComponent implements OnInit {
             this._div.innerHTML = '<h4>Informações</h4>' +  (props ?   '<b>' + props.nome + '</b><br />' : '');
             this._div.innerHTML += props ? '<b>Codigo: ' + props.code + '</b><br />' : '';
             if (props) {
-                switch (props.code) {
-                    case 1513: this._div.innerHTML += '<b>Valor: ' + 35 + '% </b><br />'; break; // Cabinda
-                    case 1523: this._div.innerHTML += '<b>Valor: ' + 41 + '% </b><br />'; break; // Zaire
-                    case 1521: this._div.innerHTML += '<b>Valor: ' + 35 + '% </b><br />'; break; // Uige
-                    case 1507: this._div.innerHTML += '<b>Valor: ' + 15 + '% </b><br />'; break; // Luanda
-                    case 1511: this._div.innerHTML += '<b>Valor: ' + 3 + '% </b><br />'; break; // Kuanza Norte
-                    case 1509: this._div.innerHTML += '<b>Valor: ' + 1 + '% </b><br />'; break; // Kuanza Sul
-                    case 1519: this._div.innerHTML += '<b>Valor: ' + 17 + '% </b><br />'; break; // Malanje
-                    case 1525: this._div.innerHTML += '<b>Valor: ' + 30 + '% </b><br />'; break; // Lunda Norte
-                    case 1517: this._div.innerHTML += '<b>Valor: ' + 36 + '% </b><br />'; break; // Benguela
-                    case 1515: this._div.innerHTML += '<b>Valor: ' + 46 + '% </b><br />'; break; // Huambo
-                    case 1501: this._div.innerHTML += '<b>Valor: ' + 15 + '% </b><br />'; break; // Bie
-                    case 1505: this._div.innerHTML += '<b>Valor: ' + 4 + '% </b><br />'; break; // Moxico
-                }
+                this._div.innerHTML += '<b>Valor: ' + props.valor + '% </b><br />';
             }
         };
 
@@ -150,22 +153,46 @@ export class HuliaComponent implements OnInit {
         // INICIALIZAZAO DO MAPA
         this.http.get('api/downloadFile/hulia.json').subscribe((json: any) => {
             console.log(json);
+            for (let i = 0; i < json.features.length; i++) {
+                if (this.dadosMapa) {
+                    this.dadosMapa.forEach((item) => {
+                        if (item.idProvincia === json.features[i].properties.code) {
+                            json.features[i].properties.valor = item.porcentagemCobertura.toFixed(2);
+                        }
+                    });
+                }
+                console.log(json.features[i]);
+            }
             geojson =  L.geoJSON(json, {
                 style: (feature) => {
-                    switch (feature.properties.code) {
-                        case 1513: return {color: 'white', weight: 2, opacity: 1, fillColor: '#9CCDFE', fillOpacity: 0.7}; // Kuvango
-                        case 1523: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7}; // Chipindo
-                        case 1521: return {color: 'white', weight: 2, opacity: 1, fillColor: '#9CCDFE', fillOpacity: 0.7}; // Jamba
-                        case 1507: return {color: 'white', weight: 2, opacity: 1, fillColor: '#feff1c', fillOpacity: 0.7}; // Caconda
-                        case 1511: return {color: 'white', weight: 2, opacity: 1, fillColor: '#feff1c', fillOpacity: 0.7}; // Quilengues
-                        case 1509: return {color: 'white', weight: 2, opacity: 1, fillColor: '#feff1c', fillOpacity: 0.7}; // Caluquembe
-                        case 1519: return {color: 'white', weight: 2, opacity: 1, fillColor: '#feff1c', fillOpacity: 0.7}; // Chicomba
-                        case 1525: return {color: 'white', weight: 2, opacity: 1, fillColor: '#9CCDFE', fillOpacity: 0.7}; // Gambos
-                        case 1517: return {color: 'white', weight: 2, opacity: 1, fillColor: '#9CCDFE', fillOpacity: 0.7}; // Matala
-                        case 1515: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7}; // Quipungo
-                        case 1501: return {color: 'white', weight: 2, opacity: 1, fillColor: '#feff1c', fillOpacity: 0.7}; // lUBANGO
-                        case 1505: return {color: 'white', weight: 2, opacity: 1, fillColor: '#feff1c', fillOpacity: 0.7}; // Chibia
+                    let retorno = {color: '', weight: 2, opacity: 1, fillColor: '', fillOpacity: 0.7};
+                    if (feature.properties.valor < 21) {
+                        retorno = {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7};
+                    } else if (feature.properties.valor < 41) {
+                        retorno = {color: 'white', weight: 2, opacity: 1, fillColor: '#A2D1FB', fillOpacity: 0.7};
+                    }else if (feature.properties.valor < 61) {
+                        retorno = {color: 'white', weight: 2, opacity: 1, fillColor: '#F693C7', fillOpacity: 0.7};
+                    }else if (feature.properties.valor < 81) {
+                        retorno = {color: 'white', weight: 2, opacity: 1, fillColor: '#DAA7FE', fillOpacity: 0.7};
+                    } else if (feature.properties.valor > 81) {
+                        retorno = {color: 'white', weight: 2, opacity: 1, fillColor: '#F6CD9D', fillOpacity: 0.7};
                     }
+                    return retorno;
+
+                    // switch (feature.properties.code) {
+                    //     case 1513: return {color: 'white', weight: 2, opacity: 1, fillColor: '#9CCDFE', fillOpacity: 0.7}; // Kuvango
+                    //     case 1523: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7}; // Chipindo
+                    //     case 1521: return {color: 'white', weight: 2, opacity: 1, fillColor: '#9CCDFE', fillOpacity: 0.7}; // Jamba
+                    //     case 1507: return {color: 'white', weight: 2, opacity: 1, fillColor: '#feff1c', fillOpacity: 0.7}; // Caconda
+                    //     case 1511: return {color: 'white', weight: 2, opacity: 1, fillColor: '#feff1c', fillOpacity: 0.7}; // Quilengues
+                    //     case 1509: return {color: 'white', weight: 2, opacity: 1, fillColor: '#feff1c', fillOpacity: 0.7}; // Caluquembe
+                    //     case 1519: return {color: 'white', weight: 2, opacity: 1, fillColor: '#feff1c', fillOpacity: 0.7}; // Chicomba
+                    //     case 1525: return {color: 'white', weight: 2, opacity: 1, fillColor: '#9CCDFE', fillOpacity: 0.7}; // Gambos
+                    //     case 1517: return {color: 'white', weight: 2, opacity: 1, fillColor: '#9CCDFE', fillOpacity: 0.7}; // Matala
+                    //     case 1515: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7}; // Quipungo
+                    //     case 1501: return {color: 'white', weight: 2, opacity: 1, fillColor: '#feff1c', fillOpacity: 0.7}; // lUBANGO
+                    //     case 1505: return {color: 'white', weight: 2, opacity: 1, fillColor: '#feff1c', fillOpacity: 0.7}; // Chibia
+                    // }
                 },
                 onEachFeature: function onEachFeature(feature, layer) {
                     layer.on({
@@ -178,17 +205,4 @@ export class HuliaComponent implements OnInit {
         });
 
     }
-
-    public style() {
-        const collor = '#5ce5fe';
-        return {
-            fillColor: collor,
-            weight: 2,
-            opacity: 1,
-            color: 'white',
-            dashArray: '3',
-            fillOpacity: 0.7
-        };
-    }
-
 }

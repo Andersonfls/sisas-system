@@ -1,11 +1,11 @@
 <jhi-alert></jhi-alert>
 <div>
     <div class="export-container">
-        <button type="button" (click)="exportTable('tbcomun')" class="btn btn-primary btn-sm">
+        <button type="button" (click)="exportTable('comuntb')" class="btn btn-primary btn-sm">
             <span class="fa fa-file-excel-o"></span>
             <span class="d-none d-md-inline">Excel</span>
         </button>
-        <button type="button" (click)="captureScreen('comunnc')" class="btn btn-primary btn-sm">
+        <button type="button" (click)="captureScreen('comuntb')" class="btn btn-primary btn-sm">
             <span class="fas fa-file-pdf"></span>
             <span class="d-none d-md-inline">PDF</span>
         </button>
@@ -14,7 +14,7 @@
         <h2 class="text-centro">
             <span>Beneficiários de Água por Fonte Subterrânea e Bomba de Energia (Nível Comunal)</span>
         </h2>
-        <div class="table-responsive" *ngIf="listaTabela">
+        <div class="table-responsive">
             <table id="comuntb" class="table table-striped">
                 <thead>
                 <tr style="background-color: #1f749c">

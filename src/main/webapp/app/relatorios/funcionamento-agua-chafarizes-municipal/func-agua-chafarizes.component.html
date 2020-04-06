@@ -1,17 +1,17 @@
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <div>
     <jhi-alert></jhi-alert>
+    <div class="export-container">
+        <button type="button" (click)="exportTable('munexcel')" class="btn btn-primary btn-sm">
+            <span class="fa fa-file-excel-o"> </span>
+            <span class="d-none d-md-inline">Excel</span>
+        </button>
+        <button type="button" (click)="captureScreen('munexcel')" class="btn btn-primary btn-sm">
+            <span class="fas fa-file-pdf"></span>
+            <span class="d-none d-md-inline">PDF</span>
+        </button>
+    </div>
     <div id="municppp">
-        <div class="export-container">
-            <button type="button" (click)="exportTable('munexcel')" class="btn btn-primary btn-sm">
-                <span class="fa fa-file-excel-o"> </span>
-                <span class="d-none d-md-inline">Excel</span>
-            </button>
-            <button type="button" (click)="captureScreen('municppp')" class="btn btn-primary btn-sm">
-                <span class="fas fa-file-pdf"></span>
-                <span class="d-none d-md-inline">PDF</span>
-            </button>
-        </div>
         <h2 class="text-centro" style="font-size: 1.8rem;">
             <span>Funcionamento de Sistemas de Água e Chafarizes (Nível Municipal)</span>
         </h2>

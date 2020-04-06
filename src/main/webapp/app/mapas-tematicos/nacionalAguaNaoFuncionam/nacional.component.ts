@@ -4,7 +4,9 @@ import {UserService} from '../../shared/user/user.service';
 import {Principal} from '../../shared/auth/principal.service';
 import {ActivatedRoute} from '@angular/router';
 import * as L from 'leaflet';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpResponse} from '@angular/common/http';
+import {MapasDados} from '../mapasDados.model';
+import {MapasService} from '../mapas.service';
 
 @Component({
     selector: 'jhi-map',
@@ -27,6 +29,7 @@ export class NacionalComponent implements OnInit {
 
     reverse: any;
     predicate: any;
+    dadosMapa: MapasDados[];
 
     map: L.Map;
     json;
@@ -47,7 +50,8 @@ export class NacionalComponent implements OnInit {
         private userService: UserService,
         private principal: Principal,
         private activatedRoute: ActivatedRoute,
-        private http: HttpClient
+        private http: HttpClient,
+        private mapasService: MapasService
     ) {
         this.routeData = this.activatedRoute.data.subscribe((data) => {
             this.page = data.pagingParams.page;
@@ -60,10 +64,23 @@ export class NacionalComponent implements OnInit {
     ngOnInit() {
         this.principal.identity().then((account) => {
             this.currentAccount = account;
+            this.buscaDados();
         });
     }
 
+    buscaDados() {
+        this.mapasService.buscaDadosPorcentagemSistemasAguaProvincial().subscribe(
+            (res: HttpResponse<MapasDados[]>) => {
+                this.dadosMapa = res.body;
+                console.log(this.dadosMapa);
+            });
+    }
+
     onMapReady(map: L.Map) {
+        setTimeout(() => {
+            map.invalidateSize(true  );
+        }, 1000 );
+
         let geojson;
 
         // LEGENDA
@@ -99,26 +116,7 @@ export class NacionalComponent implements OnInit {
             this._div.innerHTML = '<h4>Informações</h4>' +  (props ?   '<b>' + props.nome + '</b><br />' : '');
             this._div.innerHTML += props ? '<b>Codigo: ' + props.code + '</b><br />' : '';
             if (props) {
-                switch (props.code) {
-                    case 1: this._div.innerHTML += '<b>Valor: ' + 55 + '% </b><br />'; break; // Cabinda
-                    case 2: this._div.innerHTML += '<b>Valor: ' + 30 + '% </b><br />'; break; // Zaire
-                    case 3: this._div.innerHTML += '<b>Valor: ' + 93 + '% </b><br />'; break; // Uige
-                    case 4: this._div.innerHTML += '<b>Valor: ' + 3 + '% </b><br />'; break; // Luanda
-                    case 5: this._div.innerHTML += '<b>Valor: ' + 58 + '% </b><br />'; break; // Kuanza Norte
-                    case 6: this._div.innerHTML += '<b>Valor: ' + 63 + '% </b><br />'; break; // Kuanza Sul
-                    case 7: this._div.innerHTML += '<b>Valor: ' + 35 + '% </b><br />'; break; // Malanje
-                    case 8: this._div.innerHTML += '<b>Valor: ' + 71 + '% </b><br />'; break; // Lunda Norte
-                    case 9: this._div.innerHTML += '<b>Valor: ' + 45 + '% </b><br />'; break; // Benguela
-                    case 10: this._div.innerHTML += '<b>Valor: ' + 46 + '% </b><br />'; break; // Huambo
-                    case 11: this._div.innerHTML += '<b>Valor: ' + 49 + '% </b><br />'; break; // Bie
-                    case 12: this._div.innerHTML += '<b>Valor: ' + 68 + '% </b><br />'; break; // Moxico
-                    case 13: this._div.innerHTML += '<b>Valor: ' + 60 + '% </b><br />'; break; // Kuando Kubango
-                    case 14: this._div.innerHTML += '<b>Valor: ' + 41 + '% </b><br />'; break; // Namide
-                    case 15: this._div.innerHTML += '<b>Valor: ' + 20 + '% </b><br />'; break; // Hulia
-                    case 16: this._div.innerHTML += '<b>Valor: ' + 38 + '% </b><br />'; break; // Cunene
-                    case 17: this._div.innerHTML += '<b>Valor: ' + 79 + '% </b><br />'; break; // Luanda Sul
-                    case 18 : this._div.innerHTML += '<b>Valor: ' + 36 + '% </b><br />'; break; // Bengo
-                }
+                this._div.innerHTML += '<b>Valor: ' + props.valor + '% </b><br />';
             }
         };
 
@@ -147,35 +145,38 @@ export class NacionalComponent implements OnInit {
             if (!L.Browser.ie &&  !L.Browser.edge) {
                 layer.bringToFront();
             }
-
             info.update(layer.feature.properties);
         }
 
         // INICIALIZAZAO DO MAPA
         this.http.get('api/downloadFile/nacional.json').subscribe((json: any) => {
             console.log(json);
+            for (let i = 0; i < json.features.length; i++) {
+                if (this.dadosMapa) {
+                    this.dadosMapa.forEach((item) => {
+                        if (item.idProvincia === json.features[i].properties.code) {
+                            json.features[i].properties.valor = item.porcentagemNaoFuncionam.toFixed(2);
+                        }
+                    });
+                }
+                console.log(json.features[i]);
+            }
+
             geojson =  L.geoJSON(json, {
                 style: (feature) => {
-                    switch (feature.properties.code) {
-                        case 2: return {color: 'white', weight: 2, opacity: 1, fillColor: '#9CCDFE', fillOpacity: 0.7}; // Zaire
-                        case 3: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FCCC9E', fillOpacity: 0.7}; // Uige
-                        case 4: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7}; // Luanda
-                        case 18: return {color: 'white', weight: 2, opacity: 1, fillColor: '#9CCDFE', fillOpacity: 0.7}; // Bengo
-                        case 5: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7}; // Kuanza Norte
-                        case 7: return {color: 'white', weight: 2, opacity: 1, fillColor: '#9CCDFE', fillOpacity: 0.7}; // Malanje
-                        case 8: return {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7}; // Lunda Norte
-                        case 17: return {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7}; // Luanda Sul
-                        case 12: return {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7}; // Moxico
-                        case 11: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7}; // Bie
-                        case 10: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7}; // Huambo
-                        case 6: return {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7}; // Kuanza Sul
-                        case 9: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7}; // Benguela
-                        case 14: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7}; // Namide
-                        case 15: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7}; // Hulia
-                        case 16: return {color: 'white', weight: 2, opacity: 1, fillColor: '#9CCDFE', fillOpacity: 0.7}; // Cunene
-                        case 13: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7}; // Kuando Kubango
-                        case 1: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7}; // Cabinda
+                    let retorno = {color: '', weight: 2, opacity: 1, fillColor: '', fillOpacity: 0.7};
+                    if (feature.properties.valor < 21) {
+                        retorno = {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7};
+                    } else if (feature.properties.valor < 41) {
+                        retorno = {color: 'white', weight: 2, opacity: 1, fillColor: '#A2D1FB', fillOpacity: 0.7};
+                    }else if (feature.properties.valor < 61) {
+                        retorno = {color: 'white', weight: 2, opacity: 1, fillColor: '#F693C7', fillOpacity: 0.7};
+                    }else if (feature.properties.valor < 81) {
+                        retorno = {color: 'white', weight: 2, opacity: 1, fillColor: '#DAA7FE', fillOpacity: 0.7};
+                    } else if (feature.properties.valor > 81) {
+                        retorno = {color: 'white', weight: 2, opacity: 1, fillColor: '#F6CD9D', fillOpacity: 0.7};
                     }
+                    return retorno;
                 },
                 onEachFeature: function onEachFeature(feature, layer) {
                     layer.on({
@@ -187,17 +188,5 @@ export class NacionalComponent implements OnInit {
             }).addTo(map);
         });
 
-    }
-
-    public style() {
-        const collor = '#5ce5fe';
-        return {
-            fillColor: collor,
-            weight: 2,
-            opacity: 1,
-            color: 'white',
-            dashArray: '3',
-            fillOpacity: 0.7
-        };
     }
 }

@@ -4,8 +4,10 @@ import {UserService} from '../../shared/user/user.service';
 import {Principal} from '../../shared/auth/principal.service';
 import {ActivatedRoute} from '@angular/router';
 import * as L from 'leaflet';
-import {HttpClient, HttpErrorResponse, HttpResponse} from '@angular/common/http';
+import {HttpClient, HttpResponse} from '@angular/common/http';
 import {Municipio, MunicipioService} from '../../entities/municipio';
+import {MapasDados} from '../mapasDados.model';
+import {MapasService} from '../mapas.service';
 
 @Component({
     selector: 'jhi-map',
@@ -29,6 +31,7 @@ export class MunicipalComponent implements OnInit {
     reverse: any;
     predicate: any;
     municipios: Municipio[];
+    dadosMapa: MapasDados[];
 
     map: L.Map;
     json;
@@ -50,7 +53,8 @@ export class MunicipalComponent implements OnInit {
         private principal: Principal,
         private activatedRoute: ActivatedRoute,
         private http: HttpClient,
-        private municipioService: MunicipioService
+        private municipioService: MunicipioService,
+        private mapasService: MapasService
     ) {
         this.routeData = this.activatedRoute.data.subscribe((data) => {
             this.page = data.pagingParams.page;
@@ -63,6 +67,7 @@ export class MunicipalComponent implements OnInit {
     ngOnInit() {
         this.principal.identity().then((account) => {
             this.currentAccount = account;
+            this.buscaDados();
         });
 
         this.municipioService.query({
@@ -71,7 +76,18 @@ export class MunicipalComponent implements OnInit {
         );
     }
 
+    buscaDados() {
+        this.mapasService.buscaDadosPorcentagemCoberturaServicosAguaProvincial().subscribe(
+            (res: HttpResponse<MapasDados[]>) => {
+                this.dadosMapa = res.body;
+                console.log(this.dadosMapa);
+            });
+    }
+
     onMapReady(map: L.Map) {
+        setTimeout(() => {
+            map.invalidateSize(true  );
+        }, 1000 );
         let geojson;
 
         // LEGENDA
@@ -104,8 +120,11 @@ export class MunicipalComponent implements OnInit {
         };
 
         info.update = function(props) {
-            this._div.innerHTML = '<h4>Informações</h4>' +  (props ?   '<b>' + props.nome + '</b><br />'
-                : '');
+            this._div.innerHTML = '<h4>Informações</h4>' +  (props ?   '<b>' + props.nome + '</b><br />' : '');
+            this._div.innerHTML += props ? '<b>Codigo: ' + props.code + '</b><br />' : '';
+            if (props) {
+                this._div.innerHTML += '<b>Valor: ' + props.valor + '% </b><br />';
+            }
         };
 
         info.addTo(map);
@@ -140,15 +159,32 @@ export class MunicipalComponent implements OnInit {
         // INICIALIZAZAO DO MAPA
         this.http.get('api/downloadFile/municipal.json').subscribe((json: any) => {
             console.log(json);
+            for (let i = 0; i < json.features.length; i++) {
+                if (this.dadosMapa) {
+                    this.dadosMapa.forEach((item) => {
+                        if (item.idProvincia === json.features[i].properties.code) {
+                            json.features[i].properties.valor = item.porcentagemFuncionam.toFixed(2);
+                        }
+                    });
+                }
+                console.log(json.features[i]);
+            }
             geojson =  L.geoJSON(json, {
                 style: (feature) => {
-                    switch (feature.properties.code) {
-                        case 1: return {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7};
-                        case 2: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FCCC9E', fillOpacity: 0.7};
-                        case 3: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7};
-                        case 4: return {color: 'white', weight: 2, opacity: 1, fillColor: '#9CCDFE', fillOpacity: 0.7};
-                        case 5: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7};
+                    let retorno = {color: '', weight: 2, opacity: 1, fillColor: '', fillOpacity: 0.7};
+                    if (feature.properties.valor > 0 && feature.properties.valor < 42) {
+                        retorno = {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7};
+                    } else if (feature.properties.valor > 41 && feature.properties.valor < 83) {
+                        retorno = {color: 'white', weight: 2, opacity: 1, fillColor: '#9CCDFE', fillOpacity: 0.7};
+                    } else if (feature.properties.valor > 82 && feature.properties.valor < 124) {
+                        retorno = {color: 'white', weight: 2, opacity: 1, fillColor: '#FD9BCA', fillOpacity: 0.7};
+                    } else if (feature.properties.valor > 123 && feature.properties.valor < 165) {
+                        retorno = {color: 'white', weight: 2, opacity: 1, fillColor: '#BF8FF1', fillOpacity: 0.7};
+                    } else if (feature.properties.valor > 164 && feature.properties.valor < 206) {
+                        retorno = {color: 'white', weight: 2, opacity: 1, fillColor: '#FCCC9E', fillOpacity: 0.7};
                     }
+
+                    return retorno;
                 },
                 onEachFeature: function onEachFeature(feature, layer) {
                     layer.on({
@@ -161,17 +197,4 @@ export class MunicipalComponent implements OnInit {
         });
 
     }
-
-    public style() {
-        const collor = '#5ce5fe';
-        return {
-            fillColor: collor,
-            weight: 2,
-            opacity: 1,
-            color: 'white',
-            dashArray: '3',
-            fillOpacity: 0.7
-        };
-    }
-
 }

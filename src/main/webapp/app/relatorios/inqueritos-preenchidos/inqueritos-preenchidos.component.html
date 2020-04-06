@@ -15,11 +15,10 @@
                 <span class="d-none d-md-inline">PDF</span>
             </button>
         </div>
+        <h2 class="text-centro">
+            <span>Estatística de Inquéritos Preenchidos</span>
+        </h2>
         <div id="mod2" class="table-responsive">
-            <h2 class="text-centro">
-                <span>Estatística de Inquéritos Preenchidos</span>
-            </h2>
-
             <table *ngIf="listaTabela" id="tbnn" class="table table-striped">
                 <thead>
                 <tr style="background-color: #1f749c">
@@ -57,29 +56,30 @@
                 </tr>
                 </tfoot>
             </table>
-        </div>
-        <br>
-        <div class="card">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card card-dash">
-                        <div id="chartTotalInqueritos" style="height: 370px; width: 98%; margin-left: 3%"></div>
-                    </div>
-                </div>
-            </div>
 
-            <div>
-                <br>
+            <div class="card">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card card-dash">
-                            <div id="chartAgua" style="height: 370px; width: 98%; margin-left: 3%"></div>
+                            <div id="chartTotalInqueritos" style="height: 370px; width: 98%; margin-left: 3%"></div>
                         </div>
                     </div>
                 </div>
+                <div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card card-dash">
+                                <div id="chartAgua" style="height: 370px; width: 98%; margin-left: 3%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
             </div>
-            <br>
+
         </div>
+
     </div>
 
     <div class="modal-footer">

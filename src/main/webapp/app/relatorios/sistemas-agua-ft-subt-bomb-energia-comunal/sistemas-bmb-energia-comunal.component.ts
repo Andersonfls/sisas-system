@@ -73,12 +73,14 @@ export class BeneficiariosBombEnergiaComunalComponent implements OnInit {
         (html2canvas as any)(data).then((canvas) => {
             const imgWidth = 208;
             const pageHeight = 295;
-            const imgHeight = canvas.height * imgWidth / canvas.width;
-            const heightLeft = imgHeight;
+            let imgHeight = canvas.height * imgWidth / canvas.width;
+            if (imgHeight > pageHeight ) {
+                imgHeight = 287;
+            }
             const contentDataURL = canvas.toDataURL('image/png');
             const pdf = new jsPDF('p', 'mm', 'a4');
-            const position = 0;
-            pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
+            pdf.text('Sistemas de Água por Fonte Subterrânea e por Bomba de Energia (Nível Comunal)', 2, 10);
+            pdf.addImage(contentDataURL, 'PNG', 2, 12, imgWidth, imgHeight);
             pdf.save('relatorio-sisas.pdf');
         }).catch(function(error) {
             // Error Handling

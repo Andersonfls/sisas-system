@@ -43,7 +43,7 @@ public interface RelatorioRepository extends JpaRepository<Provincia, Long>, Jpa
         "               FROM     sisas.sistema_agua s       " +
         "               WHERE     s.ID_PROVINCIA = p.ID_PROVINCIA      " +
         "                AND     s.POSSUI_SISTEMA_AGUA = 1      " +
-        "        )))),0) PercentagemCobertura       " +
+        "        )))),2) PercentagemCobertura       " +
         "FROM sisas.sistema_agua s      " +
         "    INNER JOIN sisas.provincia p on s.ID_PROVINCIA = p.ID_PROVINCIA      " +
         "    INNER JOIN sisas.municipio m ON s.ID_MUNICIPIO  = m.ID_MUNICIPIO       " +
@@ -74,7 +74,7 @@ public interface RelatorioRepository extends JpaRepository<Provincia, Long>, Jpa
         "            WHERE    s.ID_PROVINCIA = p.ID_PROVINCIA   " +
         "              AND    s.ID_MUNICIPIO = m.ID_MUNICIPIO   " +
         "              AND    s.POSSUI_SISTEMA_AGUA = 1   " +
-        "       )))),0) PercentagemCobertura   " +
+        "       )))),2) PercentagemCobertura   " +
         "FROM sisas.sistema_agua s   " +
         "    INNER JOIN sisas.provincia p on s.ID_PROVINCIA = p.ID_PROVINCIA   " +
         "    INNER JOIN sisas.municipio m on p.ID_PROVINCIA = m.ID_PROVINCIA    " +
@@ -109,7 +109,7 @@ public interface RelatorioRepository extends JpaRepository<Provincia, Long>, Jpa
         "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
         "     AND s.ID_COMUNA = c.ID_COMUNA  " +
         "     AND s.POSSUI_SISTEMA_AGUA = 1  " +
-        "    )))),0) PercentagemCobertura  " +
+        "    )))),2) PercentagemCobertura  " +
         "FROM sisas.sistema_agua s  " +
         "    INNER JOIN sisas.provincia p ON s.ID_PROVINCIA = p.ID_PROVINCIA  " +
         "    INNER JOIN sisas.municipio m ON  p.ID_PROVINCIA = m.ID_PROVINCIA   " +

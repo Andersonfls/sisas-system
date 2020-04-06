@@ -76,9 +76,9 @@ export class SistemaAguaBombManualComunalComponent implements OnInit {
             const imgHeight = canvas.height * imgWidth / canvas.width;
             const heightLeft = imgHeight;
             const contentDataURL = canvas.toDataURL('image/png');
-            const pdf = new jsPDF('p', 'mm', 'a4');
-            const position = 0;
-            pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
+            const pdf = new jsPDF('l', 'mm', 'a4');
+            pdf.text('Sistema de Água por fonte Subterrânea e por Bomba Manual (Nível Comunal)', 45, 7);
+            pdf.addImage(contentDataURL, 'PNG', 40, 9, imgWidth, (imgHeight - 10));
             pdf.save('relatorio-sisas.pdf');
         }).catch(function(error) {
             // Error Handling

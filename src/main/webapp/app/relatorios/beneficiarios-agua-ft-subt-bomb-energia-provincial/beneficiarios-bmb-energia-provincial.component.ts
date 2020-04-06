@@ -76,9 +76,9 @@ export class BeneficiariosBombEnergiaProvincialComponent implements OnInit {
             const imgHeight = canvas.height * imgWidth / canvas.width;
             const heightLeft = imgHeight;
             const contentDataURL = canvas.toDataURL('image/png');
-            const pdf = new jsPDF('p', 'mm', 'a4');
-            const position = 0;
-            pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
+            const pdf = new jsPDF('l', 'mm', 'a4');
+            pdf.text('Beneficiários de Água por Fonte Subterrânea e Bomba de Energia (Nível Provincial)', 35, 7);
+            pdf.addImage(contentDataURL, 'PNG', 40, 13, imgWidth, imgHeight);
             pdf.save('relatorio-sisas.pdf');
         }).catch(function(error) {
             // Error Handling

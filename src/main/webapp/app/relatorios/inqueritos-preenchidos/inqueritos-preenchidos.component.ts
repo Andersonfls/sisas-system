@@ -62,24 +62,20 @@ export class InqueritosPreenchidosComponent implements OnInit {
         this.buscaDadosTabelaModelo();
     }
 
-    validaTipoRelatorio() {
-        if (this.tipoRelatorio === 'Modelo 2') {
-            this.buscaDadosTabelaModelo();
-        }
-    }
-
     public captureScreen(elementId) {
         const data = document.getElementById(elementId);
         (html2canvas as any)(data).then((canvas) => {
-            const imgWidth = 208;
+            const imgWidth = 207;
             const pageHeight = 295;
-            const imgHeight = canvas.height * imgWidth / canvas.width;
-            const heightLeft = imgHeight;
+            let imgHeight = canvas.height * imgWidth / canvas.width;
+            if (imgHeight > pageHeight) {
+                imgHeight = pageHeight - 2;
+            }
             const contentDataURL = canvas.toDataURL('image/png');
             const pdf = new jsPDF('p', 'mm', 'a4');
-            const position = 0;
-            pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
-            pdf.save('relatorio-sisas.pdf');
+            pdf.text('Estatística de Inquéritos Preenchidos', 55, 5);
+            pdf.addImage(contentDataURL, 'PNG', 2, 8, imgWidth, imgHeight);
+            pdf.save('inqueritos-preenchidos.pdf');
         }).catch(function(error) {
             // Error Handling
         });

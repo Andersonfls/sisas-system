@@ -5,17 +5,17 @@
             <span class="fa fa-file-excel-o"></span>
             <span class="d-none d-md-inline">Excel</span>
         </button>
-        <button type="button" (click)="captureScreen('comunnc')" class="btn btn-primary btn-sm">
+        <button type="button" (click)="captureScreen('comuntb')" class="btn btn-primary btn-sm">
             <span class="fas fa-file-pdf"></span>
             <span class="d-none d-md-inline">PDF</span>
         </button>
     </div>
-    <div id="comunnc">
+    <div>
         <h2 class="text-centro">
             <span>Sistemas de Água por Fonte Subterrânea e por Bomba de Energia (Nível Comunal)</span>
         </h2>
-        <div class="table-responsive" *ngIf="listaTabela">
-            <table id="comuntb" class="table table-striped">
+        <div id="comunnc" class="table-responsive">
+            <table id="comuntb" class="table table-striped" *ngIf="listaTabela">
                 <thead>
                 <tr style="background-color: #1f749c">
                     <th colspan="7"></th>

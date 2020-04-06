@@ -5,7 +5,8 @@
             "type": "Feature",
             "properties": {
                 "code": 1,
-                "nome": "Cabinda"
+                "nome": "Cabinda",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -131,7 +132,8 @@
             "type": "Feature",
             "properties": {
                 "code": 2,
-                "nome": "Cacongo"
+                "nome": "Cacongo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -285,7 +287,8 @@
             "type": "Feature",
             "properties": {
                 "code": 3,
-                "nome": "Buco Zau"
+                "nome": "Buco Zau",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -495,7 +498,8 @@
             "type": "Feature",
             "properties": {
                 "code": 4,
-                "nome": "Belize"
+                "nome": "Belize",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -733,7 +737,8 @@
             "type": "Feature",
             "properties": {
                 "code": 5,
-                "nome": "Soyo"
+                "nome": "Soyo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -879,7 +884,8 @@
             "type": "Feature",
             "properties": {
                 "code": 6,
-                "nome": "Nzeto"
+                "nome": "Nzeto",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -1089,7 +1095,8 @@
             "type": "Feature",
             "properties": {
                 "code": 7,
-                "nome": "Cuimba"
+                "nome": "Cuimba",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -1243,7 +1250,8 @@
             "type": "Feature",
             "properties": {
                 "code": 8,
-                "nome": "Mbanza Congo"
+                "nome": "Mbanza Congo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -1421,7 +1429,8 @@
             "type": "Feature",
             "properties": {
                 "code": 9,
-                "nome": "Tomboco"
+                "nome": "Tomboco",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -1627,7 +1636,8 @@
             "type": "Feature",
             "properties": {
                 "code": 10,
-                "nome": "Noqui"
+                "nome": "Noqui",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -1785,7 +1795,8 @@
             "type": "Feature",
             "properties": {
                 "code": 11,
-                "nome": "Viana"
+                "nome": "Viana",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -1971,7 +1982,8 @@
             "type": "Feature",
             "properties": {
                 "code": 12,
-                "nome": "Cacuaco"
+                "nome": "Cacuaco",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -2121,7 +2133,8 @@
             "type": "Feature",
             "properties": {
                 "code": 13,
-                "nome": "Quissama"
+                "nome": "Quissama",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -2407,7 +2420,8 @@
             "type": "Feature",
             "properties": {
                 "code": 14,
-                "nome": "Bula-Atumbo"
+                "nome": "Bula-Atumbo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -2493,7 +2507,8 @@
             "type": "Feature",
             "properties": {
                 "code": 15,
-                "nome": "Catete"
+                "nome": "Catete",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -2663,7 +2678,8 @@
             "type": "Feature",
             "properties": {
                 "code": 16,
-                "nome": "Pango Aluquemi"
+                "nome": "Pango Aluquemi",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -2865,7 +2881,8 @@
             "type": "Feature",
             "properties": {
                 "code": 17,
-                "nome": "Caxito"
+                "nome": "Caxito",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -3071,7 +3088,8 @@
             "type": "Feature",
             "properties": {
                 "code": 18,
-                "nome": "Ambriz"
+                "nome": "Ambriz",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -3201,7 +3219,8 @@
             "type": "Feature",
             "properties": {
                 "code": 19,
-                "nome": "Nambuangogo"
+                "nome": "Nambuangogo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -3419,7 +3438,8 @@
             "type": "Feature",
             "properties": {
                 "code": 20,
-                "nome": "Dembos Quibaxe"
+                "nome": "Dembos Quibaxe",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -3525,7 +3545,8 @@
             "type": "Feature",
             "properties": {
                 "code": 21,
-                "nome": "Quimbele"
+                "nome": "Quimbele",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -3687,7 +3708,8 @@
             "type": "Feature",
             "properties": {
                 "code": 22,
-                "nome": "Maquela do Zombo"
+                "nome": "Maquela do Zombo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -3921,7 +3943,8 @@
             "type": "Feature",
             "properties": {
                 "code": 23,
-                "nome": "Santa Cruz"
+                "nome": "Santa Cruz",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -4223,7 +4246,8 @@
             "type": "Feature",
             "properties": {
                 "code": 24,
-                "nome": "Kangola"
+                "nome": "Kangola",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -4409,7 +4433,8 @@
             "type": "Feature",
             "properties": {
                 "code": 25,
-                "nome": "Nova Esperanca"
+                "nome": "Nova Esperanca",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -4551,7 +4576,8 @@
             "type": "Feature",
             "properties": {
                 "code": 26,
-                "nome": "Sanza Pombo"
+                "nome": "Sanza Pombo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -4705,7 +4731,8 @@
             "type": "Feature",
             "properties": {
                 "code": 27,
-                "nome": "Negage"
+                "nome": "Negage",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -4835,7 +4862,8 @@
             "type": "Feature",
             "properties": {
                 "code": 28,
-                "nome": "Puri"
+                "nome": "Puri",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -4917,7 +4945,8 @@
             "type": "Feature",
             "properties": {
                 "code": 29,
-                "nome": "Damba"
+                "nome": "Damba",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -5083,7 +5112,8 @@
             "type": "Feature",
             "properties": {
                 "code": 30,
-                "nome": "Quitexe"
+                "nome": "Quitexe",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -5241,7 +5271,8 @@
             "type": "Feature",
             "properties": {
                 "code": 31,
-                "nome": "Uige"
+                "nome": "Uige",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -5327,7 +5358,8 @@
             "type": "Feature",
             "properties": {
                 "code": 32,
-                "nome": "Bungo"
+                "nome": "Bungo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -5505,7 +5537,8 @@
             "type": "Feature",
             "properties": {
                 "code": 33,
-                "nome": "Kaipemba"
+                "nome": "Kaipemba",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -5683,7 +5716,8 @@
             "type": "Feature",
             "properties": {
                 "code": 34,
-                "nome": "Bembe"
+                "nome": "Bembe",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -5873,7 +5907,8 @@
             "type": "Feature",
             "properties": {
                 "code": 35,
-                "nome": "Mucaba"
+                "nome": "Mucaba",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -6031,7 +6066,8 @@
             "type": "Feature",
             "properties": {
                 "code": 36,
-                "nome": "Songo"
+                "nome": "Songo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -6313,7 +6349,8 @@
             "type": "Feature",
             "properties": {
                 "code": 37,
-                "nome": "Rivungo"
+                "nome": "Rivungo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -6519,7 +6556,8 @@
             "type": "Feature",
             "properties": {
                 "code": 38,
-                "nome": "Dirico"
+                "nome": "Dirico",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -6809,7 +6847,8 @@
             "type": "Feature",
             "properties": {
                 "code": 39,
-                "nome": "Calai"
+                "nome": "Calai",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -6963,7 +7002,8 @@
             "type": "Feature",
             "properties": {
                 "code": 40,
-                "nome": "Tombua"
+                "nome": "Tombua",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -7273,7 +7313,8 @@
             "type": "Feature",
             "properties": {
                 "code": 41,
-                "nome": "Cuangar"
+                "nome": "Cuangar",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -7471,7 +7512,8 @@
             "type": "Feature",
             "properties": {
                 "code": 42,
-                "nome": "Curoca"
+                "nome": "Curoca",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -7617,7 +7659,8 @@
             "type": "Feature",
             "properties": {
                 "code": 43,
-                "nome": "Ombadja"
+                "nome": "Ombadja",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -7783,7 +7826,8 @@
             "type": "Feature",
             "properties": {
                 "code": 44,
-                "nome": "Cuvelai"
+                "nome": "Cuvelai",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -7961,7 +8005,8 @@
             "type": "Feature",
             "properties": {
                 "code": 45,
-                "nome": "Namacunde"
+                "nome": "Namacunde",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -8131,7 +8176,8 @@
             "type": "Feature",
             "properties": {
                 "code": 46,
-                "nome": "Cuamhama"
+                "nome": "Cuamhama",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -8409,7 +8455,8 @@
             "type": "Feature",
             "properties": {
                 "code": 47,
-                "nome": "Cahama"
+                "nome": "Cahama",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -8599,7 +8646,8 @@
             "type": "Feature",
             "properties": {
                 "code": 48,
-                "nome": "Virei"
+                "nome": "Virei",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -8973,7 +9021,8 @@
             "type": "Feature",
             "properties": {
                 "code": 49,
-                "nome": "Camacuio"
+                "nome": "Camacuio",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -9183,7 +9232,8 @@
             "type": "Feature",
             "properties": {
                 "code": 50,
-                "nome": "Bibala"
+                "nome": "Bibala",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -9413,7 +9463,8 @@
             "type": "Feature",
             "properties": {
                 "code": 51,
-                "nome": "Namibe"
+                "nome": "Namibe",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -9895,7 +9946,8 @@
             "type": "Feature",
             "properties": {
                 "code": 52,
-                "nome": "Caia Farta"
+                "nome": "Caia Farta",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -10081,7 +10133,8 @@
             "type": "Feature",
             "properties": {
                 "code": 53,
-                "nome": "Lobito"
+                "nome": "Lobito",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -10299,7 +10352,8 @@
             "type": "Feature",
             "properties": {
                 "code": 54,
-                "nome": "Benguela"
+                "nome": "Benguela",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -10485,7 +10539,8 @@
             "type": "Feature",
             "properties": {
                 "code": 55,
-                "nome": "Porto Amboim"
+                "nome": "Porto Amboim",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -10627,7 +10682,8 @@
             "type": "Feature",
             "properties": {
                 "code": 56,
-                "nome": "Sumbe"
+                "nome": "Sumbe",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -10817,7 +10873,8 @@
             "type": "Feature",
             "properties": {
                 "nome": "Luau",
-                "code": 57
+                "code": 57,
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -10951,7 +11008,8 @@
             "type": "Feature",
             "properties": {
                 "code": 58,
-                "nome": "Luacano"
+                "nome": "Luacano",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -11149,7 +11207,8 @@
             "type": "Feature",
             "properties": {
                 "code": 59,
-                "nome": "Kameia"
+                "nome": "Kameia",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -11251,7 +11310,8 @@
             "type": "Feature",
             "properties": {
                 "code": 60,
-                "nome": "Alto Zambeze"
+                "nome": "Alto Zambeze",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -11649,7 +11709,8 @@
             "type": "Feature",
             "properties": {
                 "code": 61,
-                "nome": "Cambulo"
+                "nome": "Cambulo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -11807,7 +11868,8 @@
             "type": "Feature",
             "properties": {
                 "code": 62,
-                "nome": "Chitato"
+                "nome": "Chitato",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -12013,7 +12075,8 @@
             "type": "Feature",
             "properties": {
                 "code": 63,
-                "nome": "Culio"
+                "nome": "Culio",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -12171,7 +12234,8 @@
             "type": "Feature",
             "properties": {
                 "code": 64,
-                "nome": "Lucapa"
+                "nome": "Lucapa",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -12373,7 +12437,8 @@
             "type": "Feature",
             "properties": {
                 "code": 65,
-                "nome": "Cuango"
+                "nome": "Cuango",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -12575,7 +12640,8 @@
             "type": "Feature",
             "properties": {
                 "code": 66,
-                "nome": "Cuangula"
+                "nome": "Cuangula",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -12869,7 +12935,8 @@
             "type": "Feature",
             "properties": {
                 "code": 67,
-                "nome": "Xa-Muteba"
+                "nome": "Xa-Muteba",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -13251,7 +13318,8 @@
             "type": "Feature",
             "properties": {
                 "code": 68,
-                "nome": "Capenda-Camulemba"
+                "nome": "Capenda-Camulemba",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -13473,7 +13541,8 @@
             "type": "Feature",
             "properties": {
                 "code": 69,
-                "nome": "Lubalo"
+                "nome": "Lubalo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -13691,7 +13760,8 @@
             "type": "Feature",
             "properties": {
                 "code": 70,
-                "nome": "Cacolo"
+                "nome": "Cacolo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -14037,7 +14107,8 @@
             "type": "Feature",
             "properties": {
                 "code": 71,
-                "nome": "Dala"
+                "nome": "Dala",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -14375,7 +14446,8 @@
             "type": "Feature",
             "properties": {
                 "code": 72,
-                "nome": "Saurimo"
+                "nome": "Saurimo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -14925,7 +14997,8 @@
             "type": "Feature",
             "properties": {
                 "code": 73,
-                "nome": "Muconda"
+                "nome": "Muconda",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -15407,7 +15480,8 @@
             "type": "Feature",
             "properties": {
                 "code": 74,
-                "nome": "Lumbala-Nguimbo"
+                "nome": "Lumbala-Nguimbo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -15657,7 +15731,8 @@
             "type": "Feature",
             "properties": {
                 "code": 75,
-                "nome": "Luchazes"
+                "nome": "Luchazes",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -16099,7 +16174,8 @@
             "type": "Feature",
             "properties": {
                 "code": 76,
-                "nome": "Luena"
+                "nome": "Luena",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -16601,7 +16677,8 @@
             "type": "Feature",
             "properties": {
                 "code": 77,
-                "nome": "Cuito Canavale"
+                "nome": "Cuito Canavale",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -16899,7 +16976,8 @@
             "type": "Feature",
             "properties": {
                 "code": 78,
-                "nome": "Cuchi"
+                "nome": "Cuchi",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -17137,7 +17215,8 @@
             "type": "Feature",
             "properties": {
                 "code": 79,
-                "nome": "Longa"
+                "nome": "Longa",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -17339,7 +17418,8 @@
             "type": "Feature",
             "properties": {
                 "code": 80,
-                "nome": "Mavinga"
+                "nome": "Mavinga",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -17765,7 +17845,8 @@
             "type": "Feature",
             "properties": {
                 "code": 81,
-                "nome": "Massango"
+                "nome": "Massango",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -17963,7 +18044,8 @@
             "type": "Feature",
             "properties": {
                 "code": 82,
-                "nome": "Samba Caju"
+                "nome": "Samba Caju",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -18225,7 +18307,8 @@
             "type": "Feature",
             "properties": {
                 "code": 83,
-                "nome": "Cacuso"
+                "nome": "Cacuso",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -18459,7 +18542,8 @@
             "type": "Feature",
             "properties": {
                 "code": 84,
-                "nome": "Kunda-Dia-Baze"
+                "nome": "Kunda-Dia-Baze",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -18661,7 +18745,8 @@
             "type": "Feature",
             "properties": {
                 "code": 85,
-                "nome": "Marimba"
+                "nome": "Marimba",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -18911,7 +18996,8 @@
             "type": "Feature",
             "properties": {
                 "code": 86,
-                "nome": "Kiwaba-Ngozi"
+                "nome": "Kiwaba-Ngozi",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -19057,7 +19143,8 @@
             "type": "Feature",
             "properties": {
                 "code": 87,
-                "nome": "Kahombo"
+                "nome": "Kahombo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -19347,7 +19434,8 @@
             "type": "Feature",
             "properties": {
                 "code": 88,
-                "nome": "Cambambe"
+                "nome": "Cambambe",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -19461,7 +19549,8 @@
             "type": "Feature",
             "properties": {
                 "code": 89,
-                "nome": "Cambambe"
+                "nome": "Cambambe",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -19694,7 +19783,8 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 90
+                "code": 90,
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -19780,7 +19870,8 @@
             "type": "Feature",
             "properties": {
                 "code": 91,
-                "nome": "Ndalatando"
+                "nome": "Ndalatando",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -19966,7 +20057,8 @@
             "type": "Feature",
             "properties": {
                 "code": 92,
-                "nome": "Lucala"
+                "nome": "Lucala",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -20068,7 +20160,8 @@
             "type": "Feature",
             "properties": {
                 "code": 93,
-                "nome": "Cacuso"
+                "nome": "Cacuso",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -20254,7 +20347,8 @@
             "type": "Feature",
             "properties": {
                 "code": 94,
-                "nome": "Bolongongo"
+                "nome": "Bolongongo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -20320,7 +20414,8 @@
             "type": "Feature",
             "properties": {
                 "code": 95,
-                "nome": "Samba Caju"
+                "nome": "Samba Caju",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -20474,7 +20569,8 @@
             "type": "Feature",
             "properties": {
                 "code": 96,
-                "nome": "Conguembo"
+                "nome": "Conguembo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -20664,7 +20760,8 @@
             "type": "Feature",
             "properties": {
                 "code": 97,
-                "nome": "Quiculungo"
+                "nome": "Quiculungo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -20886,7 +20983,8 @@
             "type": "Feature",
             "properties": {
                 "code": 98,
-                "nome": "Kanga"
+                "nome": "Kanga",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -21068,7 +21166,8 @@
             "type": "Feature",
             "properties": {
                 "code": 99,
-                "nome": "Libolo"
+                "nome": "Libolo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -21242,7 +21341,8 @@
             "type": "Feature",
             "properties": {
                 "code": 100,
-                "nome": "Quilenda"
+                "nome": "Quilenda",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -21344,7 +21444,8 @@
             "type": "Feature",
             "properties": {
                 "code": 101,
-                "nome": "Mussende"
+                "nome": "Mussende",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -21570,7 +21671,8 @@
             "type": "Feature",
             "properties": {
                 "code": 102,
-                "nome": "Quibala"
+                "nome": "Quibala",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -21776,7 +21878,8 @@
             "type": "Feature",
             "properties": {
                 "code": 103,
-                "nome": "Cassongue"
+                "nome": "Cassongue",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -21962,7 +22065,8 @@
             "type": "Feature",
             "properties": {
                 "code": 104,
-                "nome": "Conda"
+                "nome": "Conda",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -22108,7 +22212,8 @@
             "type": "Feature",
             "properties": {
                 "code": 105,
-                "nome": "Amboim"
+                "nome": "Amboim",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -22274,7 +22379,8 @@
             "type": "Feature",
             "properties": {
                 "code": 106,
-                "nome": "Waku-Kungo"
+                "nome": "Waku-Kungo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -22460,7 +22566,8 @@
             "type": "Feature",
             "properties": {
                 "code": 107,
-                "nome": "Ebo"
+                "nome": "Ebo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -22602,7 +22709,8 @@
             "type": "Feature",
             "properties": {
                 "code": 108,
-                "nome": "Quela"
+                "nome": "Quela",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -22828,7 +22936,8 @@
             "type": "Feature",
             "properties": {
                 "code": 109,
-                "nome": "Quirima"
+                "nome": "Quirima",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -23010,7 +23119,8 @@
             "type": "Feature",
             "properties": {
                 "code": 110,
-                "nome": "Luquembo"
+                "nome": "Luquembo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -23312,7 +23422,8 @@
             "type": "Feature",
             "properties": {
                 "code": 111,
-                "nome": "Cambundi-Catembo"
+                "nome": "Cambundi-Catembo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -23530,7 +23641,8 @@
             "type": "Feature",
             "properties": {
                 "code": 112,
-                "nome": "Mucari"
+                "nome": "Mucari",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -23672,7 +23784,8 @@
             "type": "Feature",
             "properties": {
                 "code": 113,
-                "nome": "Malange"
+                "nome": "Malange",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -23782,7 +23895,8 @@
             "type": "Feature",
             "properties": {
                 "code": 114,
-                "nome": "Mucari"
+                "nome": "Mucari",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -23908,7 +24022,8 @@
             "type": "Feature",
             "properties": {
                 "code": 115,
-                "nome": "Kiwaba-Ngozi"
+                "nome": "Kiwaba-Ngozi",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -24130,7 +24245,8 @@
             "type": "Feature",
             "properties": {
                 "code": 116,
-                "nome": "Gambos"
+                "nome": "Gambos",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -24368,7 +24484,8 @@
             "type": "Feature",
             "properties": {
                 "code": 117,
-                "nome": "Humpata"
+                "nome": "Humpata",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -24482,7 +24599,8 @@
             "type": "Feature",
             "properties": {
                 "code": 118,
-                "nome": "Quilengues"
+                "nome": "Quilengues",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -24652,7 +24770,8 @@
             "type": "Feature",
             "properties": {
                 "code": 119,
-                "nome": "Lubango"
+                "nome": "Lubango",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -24870,7 +24989,8 @@
             "type": "Feature",
             "properties": {
                 "code": 120,
-                "nome": "Chibia"
+                "nome": "Chibia",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -25144,7 +25264,8 @@
             "type": "Feature",
             "properties": {
                 "code": 121,
-                "nome": "Caluquembe"
+                "nome": "Caluquembe",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -25314,7 +25435,8 @@
             "type": "Feature",
             "properties": {
                 "code": 122,
-                "nome": "Caconda"
+                "nome": "Caconda",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -25456,7 +25578,8 @@
             "type": "Feature",
             "properties": {
                 "code": 123,
-                "nome": "Chipindo"
+                "nome": "Chipindo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -25610,7 +25733,8 @@
             "type": "Feature",
             "properties": {
                 "code": 124,
-                "nome": "Kuvango"
+                "nome": "Kuvango",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -25868,7 +25992,8 @@
             "type": "Feature",
             "properties": {
                 "code": 125,
-                "nome": "Jamba"
+                "nome": "Jamba",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -26010,7 +26135,8 @@
             "type": "Feature",
             "properties": {
                 "code": 126,
-                "nome": "Quipungo"
+                "nome": "Quipungo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -26184,7 +26310,8 @@
             "type": "Feature",
             "properties": {
                 "code": 127,
-                "nome": "Matala"
+                "nome": "Matala",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -26350,7 +26477,8 @@
             "type": "Feature",
             "properties": {
                 "code": 128,
-                "nome": "Chicomba"
+                "nome": "Chicomba",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -26504,7 +26632,8 @@
             "type": "Feature",
             "properties": {
                 "code": 129,
-                "nome": "Balombo"
+                "nome": "Balombo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -26646,7 +26775,8 @@
             "type": "Feature",
             "properties": {
                 "code": 130,
-                "nome": "Bocoio"
+                "nome": "Bocoio",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -26832,7 +26962,8 @@
             "type": "Feature",
             "properties": {
                 "code": 131,
-                "nome": "Chongoroi"
+                "nome": "Chongoroi",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -26990,7 +27121,8 @@
             "type": "Feature",
             "properties": {
                 "code": 132,
-                "nome": "Ganda"
+                "nome": "Ganda",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -27204,7 +27336,8 @@
             "type": "Feature",
             "properties": {
                 "code": 133,
-                "nome": "Bocoio"
+                "nome": "Bocoio",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -27334,7 +27467,8 @@
             "type": "Feature",
             "properties": {
                 "code": 134,
-                "nome": "Caimbambo"
+                "nome": "Caimbambo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -27464,7 +27598,8 @@
             "type": "Feature",
             "properties": {
                 "code": 135,
-                "nome": "Cubal"
+                "nome": "Cubal",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -27610,7 +27745,8 @@
             "type": "Feature",
             "properties": {
                 "code": 136,
-                "nome": "Nharea"
+                "nome": "Nharea",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -27816,7 +27952,8 @@
             "type": "Feature",
             "properties": {
                 "code": 137,
-                "nome": "Andulo"
+                "nome": "Andulo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -28038,7 +28175,8 @@
             "type": "Feature",
             "properties": {
                 "code": 138,
-                "nome": "Mungo"
+                "nome": "Mungo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -28168,7 +28306,8 @@
             "type": "Feature",
             "properties": {
                 "code": 139,
-                "nome": "Bailundo"
+                "nome": "Bailundo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -28314,7 +28453,8 @@
             "type": "Feature",
             "properties": {
                 "code": 140,
-                "nome": "Cuemba"
+                "nome": "Cuemba",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -28575,7 +28715,8 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 141
+                "code": 141,
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -28773,7 +28914,8 @@
             "type": "Feature",
             "properties": {
                 "code": 142,
-                "nome": "Andulo"
+                "nome": "Andulo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -28975,7 +29117,8 @@
             "type": "Feature",
             "properties": {
                 "code": 143,
-                "nome": "Nharea"
+                "nome": "Nharea",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -29157,7 +29300,8 @@
             "type": "Feature",
             "properties": {
                 "code": 144,
-                "nome": "Cunhinga(Vouga)"
+                "nome": "Cunhinga(Vouga)",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -29287,7 +29431,8 @@
             "type": "Feature",
             "properties": {
                 "code": 145,
-                "nome": "Camacupa"
+                "nome": "Camacupa",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -29549,7 +29694,8 @@
             "type": "Feature",
             "properties": {
                 "code": 146,
-                "nome": "Chinguar"
+                "nome": "Chinguar",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -29667,7 +29813,8 @@
             "type": "Feature",
             "properties": {
                 "code": 147,
-                "nome": "Kuito"
+                "nome": "Kuito",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -29781,7 +29928,8 @@
             "type": "Feature",
             "properties": {
                 "code": 149,
-                "nome": "Catabola"
+                "nome": "Catabola",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -29883,7 +30031,8 @@
             "type": "Feature",
             "properties": {
                 "code": 150,
-                "nome": "Cunhinga(Vouga)"
+                "nome": "Cunhinga(Vouga)",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -30025,7 +30174,8 @@
             "type": "Feature",
             "properties": {
                 "code": 151,
-                "nome": "Londuimbali"
+                "nome": "Londuimbali",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -30127,7 +30277,8 @@
             "type": "Feature",
             "properties": {
                 "code": 152,
-                "nome": "Tchinjenje"
+                "nome": "Tchinjenje",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -30217,7 +30368,8 @@
             "type": "Feature",
             "properties": {
                 "code": 153,
-                "nome": "Ukuma"
+                "nome": "Ukuma",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -30371,7 +30523,8 @@
             "type": "Feature",
             "properties": {
                 "code": 154,
-                "nome": "Ukuma"
+                "nome": "Ukuma",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -30505,7 +30658,8 @@
             "type": "Feature",
             "properties": {
                 "code": 155,
-                "nome": "Ekuma"
+                "nome": "Ekuma",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -30675,7 +30829,8 @@
             "type": "Feature",
             "properties": {
                 "code": 156,
-                "nome": "Caala"
+                "nome": "Caala",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -30825,7 +30980,8 @@
             "type": "Feature",
             "properties": {
                 "code": 157,
-                "nome": "Tchikala-Tcholohanga"
+                "nome": "Tchikala-Tcholohanga",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -30907,7 +31063,8 @@
             "type": "Feature",
             "properties": {
                 "code": 158,
-                "nome": "Tchikala-Tcholohanga"
+                "nome": "Tchikala-Tcholohanga",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -30997,7 +31154,8 @@
             "type": "Feature",
             "properties": {
                 "code": 159,
-                "nome": "Kathihungo"
+                "nome": "Kathihungo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -31159,7 +31317,8 @@
             "type": "Feature",
             "properties": {
                 "code": 160,
-                "nome": "Kathihungo"
+                "nome": "Kathihungo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -31365,7 +31524,8 @@
             "type": "Feature",
             "properties": {
                 "code": 161,
-                "nome": "Huambo"
+                "nome": "Huambo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -31539,7 +31699,8 @@
             "type": "Feature",
             "properties": {
                 "code": 162,
-                "nome": "Bailundo"
+                "nome": "Bailundo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",
@@ -31689,7 +31850,8 @@
             "type": "Feature",
             "properties": {
                 "code": 163,
-                "nome": "Mungo"
+                "nome": "Mungo",
+                "valor": 0
             },
             "geometry": {
                 "type": "Polygon",

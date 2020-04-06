@@ -24,4 +24,30 @@ export class MapasService {
         return this.http.get<MapasDados[]>(this.resourceUrl + '/sistemas-agua-provincial', {params: options, observe: 'response'});
     }
 
+    buscaDadosPorcentagemCoberturaServicosAguaHuambo(req?: any): Observable<HttpResponse<MapasDados[]>> {
+        const options = createRequestOption(req);
+        return this.http.get<MapasDados[]>(this.resourceUrl + '/cobertura-servicos-agua-huambo-provincial', {params: options, observe: 'response'});
+    }
+    buscaDadosPorcentagemSistemasAguaHuambo(req?: any): Observable<HttpResponse<MapasDados[]>> {
+        const options = createRequestOption(req);
+        return this.http.get<MapasDados[]>(this.resourceUrl + '/sistemas-agua-huambo-provincial', {params: options, observe: 'response'});
+    }
+
+    buscaDadosPorcentagemCoberturaServicosAguaHuila(req?: any): Observable<HttpResponse<MapasDados[]>> {
+        const options = createRequestOption(req);
+        return this.http.get<MapasDados[]>(this.resourceUrl + '/cobertura-servicos-agua-huila-provincial', {params: options, observe: 'response'});
+    }
+    buscaDadosPorcentagemSistemasAguaHuila(req?: any): Observable<HttpResponse<MapasDados[]>> {
+        const options = createRequestOption(req);
+        return this.http.get<MapasDados[]>(this.resourceUrl + '/sistemas-agua-huila-provincial', {params: options, observe: 'response'});
+    }
+
+    buscaDadosPorcentagemCoberturaServicosAguaKuanza(req?: any): Observable<HttpResponse<MapasDados[]>> {
+        const options = createRequestOption(req);
+        return this.http.get<MapasDados[]>(this.resourceUrl + '/cobertura-servicos-agua-kuanza-provincial', {params: options, observe: 'response'});
+    }
+    buscaDadosPorcentagemSistemasAguaKuanza(req?: any): Observable<HttpResponse<MapasDados[]>> {
+        const options = createRequestOption(req);
+        return this.http.get<MapasDados[]>(this.resourceUrl + '/sistemas-agua-kuanza-provincial', {params: options, observe: 'response'});
+    }
 }

@@ -1,10 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {JhiAlertService, JhiParseLinks} from 'ng-jhipster';
 import {UserService} from '../../shared/user/user.service';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpResponse} from '@angular/common/http';
 import {Principal} from '../../shared/auth/principal.service';
 import {ActivatedRoute} from '@angular/router';
 import * as L from 'leaflet';
+import {MapasDados} from '../mapasDados.model';
+import {MapasService} from '../mapas.service';
 
 @Component({
     selector: 'jhi-map',
@@ -29,6 +31,8 @@ export class KuanzaNorteComponent implements OnInit {
     predicate: any;
     map: L.Map;
     json;
+    dadosMapa: MapasDados[];
+
     options = {
         layers: [
             L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -46,7 +50,8 @@ export class KuanzaNorteComponent implements OnInit {
         private userService: UserService,
         private principal: Principal,
         private activatedRoute: ActivatedRoute,
-        private http: HttpClient
+        private http: HttpClient,
+        private mapasService: MapasService
     ) {
         this.routeData = this.activatedRoute.data.subscribe((data) => {
             this.page = data.pagingParams.page;
@@ -59,10 +64,22 @@ export class KuanzaNorteComponent implements OnInit {
     ngOnInit() {
         this.principal.identity().then((account) => {
             this.currentAccount = account;
+            this.buscaDados();
         });
     }
 
+    buscaDados() {
+        this.mapasService.buscaDadosPorcentagemSistemasAguaKuanza().subscribe(
+            (res: HttpResponse<MapasDados[]>) => {
+                this.dadosMapa = res.body;
+                console.log(this.dadosMapa);
+            });
+    }
+
     onMapReady(map: L.Map) {
+        setTimeout(() => {
+            map.invalidateSize(true  );
+        }, 1000 );
         let geojson;
 
         // LEGENDA
@@ -96,18 +113,7 @@ export class KuanzaNorteComponent implements OnInit {
             this._div.innerHTML = '<h4>Informações</h4>' +  (props ?   '<b>' + props.nome + '</b><br />' : '');
             this._div.innerHTML += props ? '<b>Codigo: ' + props.code + '</b><br />' : '';
             if (props) {
-                switch (props.code) {
-                    case 509: this._div.innerHTML += '<b>Valor: ' + 22 + '% </b><br />'; break; // Cabinda
-                    case 513: this._div.innerHTML += '<b>Valor: ' + 17 + '% </b><br />'; break; // Zaire
-                    case 517: this._div.innerHTML += '<b>Valor: ' + 75 + '% </b><br />'; break; // Uige
-                    case 511: this._div.innerHTML += '<b>Valor: ' + 5 + '% </b><br />'; break; // Luanda
-                    case 507: this._div.innerHTML += '<b>Valor: ' + 33 + '% </b><br />'; break; // Kuanza Norte
-                    case 503: this._div.innerHTML += '<b>Valor: ' + 89 + '% </b><br />'; break; // Kuanza Sul
-                    case 501: this._div.innerHTML += '<b>Valor: ' + 71 + '% </b><br />'; break; // Malanje
-                    case 505: this._div.innerHTML += '<b>Valor: ' + 85 + '% </b><br />'; break; // Lunda Norte
-                    case 515: this._div.innerHTML += '<b>Valor: ' + 75 + '% </b><br />'; break; // Benguela
-                    case 519: this._div.innerHTML += '<b>Valor: ' + 92 + '% </b><br />'; break; // Huambo
-                }
+                this._div.innerHTML += '<b>Valor: ' + props.valor + '% </b><br />';
             }
         };
 
@@ -142,20 +148,43 @@ export class KuanzaNorteComponent implements OnInit {
 
             // INICIALIZAZAO DO MAPA
             this.http.get('api/downloadFile/kuanzaNorte.json').subscribe((json: any) => {
+                for (let i = 0; i < json.features.length; i++) {
+                    if (this.dadosMapa) {
+                        this.dadosMapa.forEach((item) => {
+                            if (item.idProvincia === json.features[i].properties.code) {
+                                json.features[i].properties.valor = item.porcentagemNaoFuncionam.toFixed(2);
+                            }
+                        });
+                    }
+                    console.log(json.features[i]);
+                }
                     geojson =  L.geoJSON(json, {
                         style: (feature) => {
-                            switch (feature.properties.code) {
-                                case 509: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FECB9C', fillOpacity: 0.7};
-                                case 513: return {color: 'white', weight: 2, opacity: 1, fillColor: '#96D1FF', fillOpacity: 0.7};
-                                case 517: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFDA1', fillOpacity: 0.7};
-                                case 511: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FCC9AE', fillOpacity: 0.7};
-                                case 507: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FFCA9C', fillOpacity: 0.7};
-                                case 503: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFDA1', fillOpacity: 0.7};
-                                case 501: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFDA1', fillOpacity: 0.7};
-                                case 505: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFDA1', fillOpacity: 0.7};
-                                case 515: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFDA1', fillOpacity: 0.7};
-                                case 519: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFDA1', fillOpacity: 0.7};
+                            let retorno = {color: '', weight: 2, opacity: 1, fillColor: '', fillOpacity: 0.7};
+                            if (feature.properties.valor < 21) {
+                                retorno = {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7};
+                            } else if (feature.properties.valor < 41) {
+                                retorno = {color: 'white', weight: 2, opacity: 1, fillColor: '#A2D1FB', fillOpacity: 0.7};
+                            }else if (feature.properties.valor < 61) {
+                                retorno = {color: 'white', weight: 2, opacity: 1, fillColor: '#F693C7', fillOpacity: 0.7};
+                            }else if (feature.properties.valor < 81) {
+                                retorno = {color: 'white', weight: 2, opacity: 1, fillColor: '#DAA7FE', fillOpacity: 0.7};
+                            } else if (feature.properties.valor > 81) {
+                                retorno = {color: 'white', weight: 2, opacity: 1, fillColor: '#F6CD9D', fillOpacity: 0.7};
                             }
+                            return retorno;
+                            // switch (feature.properties.code) {
+                            //     case 509: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FECB9C', fillOpacity: 0.7};
+                            //     case 513: return {color: 'white', weight: 2, opacity: 1, fillColor: '#96D1FF', fillOpacity: 0.7};
+                            //     case 517: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFDA1', fillOpacity: 0.7};
+                            //     case 511: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FCC9AE', fillOpacity: 0.7};
+                            //     case 507: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FFCA9C', fillOpacity: 0.7};
+                            //     case 503: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFDA1', fillOpacity: 0.7};
+                            //     case 501: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFDA1', fillOpacity: 0.7};
+                            //     case 505: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFDA1', fillOpacity: 0.7};
+                            //     case 515: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFDA1', fillOpacity: 0.7};
+                            //     case 519: return {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFDA1', fillOpacity: 0.7};
+                            // }
                         },
                         onEachFeature: function onEachFeature(feature, layer) {
                             layer.on({
@@ -167,17 +196,4 @@ export class KuanzaNorteComponent implements OnInit {
                     }).addTo(map);
             });
     }
-
-    public style() {
-        const collor = '#5ce5fe';
-        return {
-            fillColor: collor,
-            weight: 2,
-            opacity: 1,
-            color: 'white',
-            dashArray: '3',
-            fillOpacity: 0.7
-        };
-    }
-
 }
