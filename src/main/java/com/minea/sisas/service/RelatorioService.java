@@ -317,7 +317,7 @@ public class RelatorioService {
                     dto.setDieselSistemas(((BigInteger) i[5]).intValue());
                 }
                 if (Objects.nonNull(i[6])) {
-                    dto.setDieselPopulacao(((BigInteger) i[6]).intValue());
+                    dto.setDieselPopulacao(((BigDecimal) i[6]).intValue());
                 }
                 if (Objects.nonNull(i[7])) {
                     dto.setDieselPerc(((BigDecimal) i[7]).intValue());
@@ -326,7 +326,7 @@ public class RelatorioService {
                     dto.setSolarSistemas(((BigInteger) i[8]).intValue());
                 }
                 if (Objects.nonNull(i[9])) {
-                    dto.setSolarPopulacao(((BigInteger) i[9]).intValue());
+                    dto.setSolarPopulacao(((BigDecimal) i[9]).intValue());
                 }
                 if (Objects.nonNull(i[10])) {
                     dto.setSolarPerc(((BigDecimal) i[10]).intValue());
@@ -335,7 +335,7 @@ public class RelatorioService {
                     dto.setEolicaSistemas(((BigInteger) i[11]).intValue());
                 }
                 if (Objects.nonNull(i[12])) {
-                    dto.setEolicaPopulacao(((BigInteger) i[12]).intValue());
+                    dto.setEolicaPopulacao(((BigDecimal) i[12]).intValue());
                 }
                 if (Objects.nonNull(i[13])) {
                     dto.setEolicaPerc(((BigDecimal) i[13]).intValue());
@@ -344,7 +344,7 @@ public class RelatorioService {
                     dto.setElectricaSistemas(((BigInteger) i[14]).intValue());
                 }
                 if (Objects.nonNull(i[15])) {
-                    dto.setElectricaPopulacao(((BigInteger) i[15]).intValue());
+                    dto.setElectricaPopulacao(((BigDecimal) i[15]).intValue());
                 }
                 if (Objects.nonNull(i[16])) {
                     dto.setElectricaPerc(((BigDecimal) i[16]).intValue());
@@ -353,7 +353,7 @@ public class RelatorioService {
                     dto.setOutroSistemas(((BigInteger) i[17]).intValue());
                 }
                 if (Objects.nonNull(i[18])) {
-                    dto.setOutroPopulacao(((BigInteger) i[18]).intValue());
+                    dto.setOutroPopulacao(((BigDecimal) i[18]).intValue());
                 }
                 if (Objects.nonNull(i[19])) {
                     dto.setOutroPerc(((BigDecimal) i[19]).intValue());
@@ -666,10 +666,10 @@ public class RelatorioService {
                 dto.setNomeProvincia((String) i[0]);
                 dto.setNomeMunicipio((String) i[1]);
                 dto.setNomeComuna((String) i[2]);
-                dto.setNumeroSistemas(((BigInteger) i[3]).intValue());
+                dto.setNumeroSistemas(Integer.valueOf(((String) i[3])));
                 dto.setFuncionamAgua(((BigInteger) i[4]).intValue());
                 dto.setNaoFuncionamAgua(((BigInteger) i[5]).intValue());
-                dto.setFuncionamAguaPerc(((BigDecimal) i[6]).floatValue());
+                dto.setFuncionamAguaPerc(((Double) i[6]).floatValue());
                 dto.setNumeroChafarizes(((BigDecimal) i[7]).intValue());
                 dto.setFuncionamChafariz(((BigDecimal) i[8]).intValue());
                 dto.setNaoFuncionamChafariz(((BigDecimal) i[9]).intValue());
@@ -1206,26 +1206,27 @@ public class RelatorioService {
                 dto.setPocoMelhorado(((BigInteger)i[3]).intValue());
                 dto.setFuro(((BigInteger) i[4]).intValue());
                 dto.setNascente(((BigInteger) i[5]).intValue());
+                dto.setTotalSistemas(((BigInteger) i[6]).intValue());
 
-                dto.setDieselSistemas(((BigInteger) i[6]).intValue());
-                dto.setDieselSistemaFunciona(((BigInteger) i[7]).intValue());
-                dto.setDieselSistemaNaoFunciona(((BigInteger) i[8]).floatValue());
+                dto.setDieselSistemas(((BigInteger) i[7]).intValue());
+                dto.setDieselSistemaFunciona(((BigInteger) i[8]).intValue());
+                dto.setDieselSistemaNaoFunciona(((BigInteger) i[9]).floatValue());
 
-                dto.setSolarSistemas(((BigInteger) i[9]).intValue());
-                dto.setSolarSistemaFunciona(((BigInteger) i[10]).intValue());
-                dto.setSolarSistemaNaoFunciona(((BigInteger) i[11]).floatValue());
+                dto.setSolarSistemas(((BigInteger) i[10]).intValue());
+                dto.setSolarSistemaFunciona(((BigInteger) i[11]).intValue());
+                dto.setSolarSistemaNaoFunciona(((BigInteger) i[12]).floatValue());
 
-                dto.setEolicaSistemas(((BigInteger) i[12]).intValue());
-                dto.setEolicaSistemaFunciona(((BigInteger) i[13]).intValue());
-                dto.setEolicaSistemaNaoFunciona(((BigInteger) i[14]).floatValue());
+                dto.setEolicaSistemas(((BigInteger) i[13]).intValue());
+                dto.setEolicaSistemaFunciona(((BigInteger) i[14]).intValue());
+                dto.setEolicaSistemaNaoFunciona(((BigInteger) i[15]).floatValue());
 
-                dto.setElectricaSistemas(((BigInteger) i[15]).intValue());
-                dto.setElectricaSistemaFunciona(((BigInteger) i[16]).intValue());
-                dto.setElectricaSistemaNaoFunciona(((BigInteger) i[17]).floatValue());
+                dto.setElectricaSistemas(((BigInteger) i[16]).intValue());
+                dto.setElectricaSistemaFunciona(((BigInteger) i[17]).intValue());
+                dto.setElectricaSistemaNaoFunciona(((BigInteger) i[18]).floatValue());
 
-                dto.setOutroSistemas(((BigInteger) i[18]).intValue());
-                dto.setOutroSistemaFunciona(((BigInteger) i[19]).intValue());
-                dto.setOutroSistemaNaoFunciona(((BigInteger) i[20]).floatValue());
+                dto.setOutroSistemas(((BigInteger) i[19]).intValue());
+                dto.setOutroSistemaFunciona(((BigInteger) i[20]).intValue());
+                dto.setOutroSistemaNaoFunciona(((BigInteger) i[21]).floatValue());
 
                 retorno.add(dto);
             });

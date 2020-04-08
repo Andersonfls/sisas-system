@@ -97,6 +97,14 @@ export class SistemaAguaDialogComponent implements OnInit {
             }, (res: HttpErrorResponse) => this.onError(res.message));
     }
 
+    // Nº de habitantes com acesso ao serviço de água" não pode ser "maior >"  que  "População atual"
+    verificaNumeroHabitantes() {
+        if (this.sistemaAgua.qtdHabitantesAcessoServicoAgua > this.sistemaAgua.qtdPopulacaoActual) {
+            alert('Nº de habitantes com acesso ao serviço de água não pode ser maior  que  "População atual"!');
+            this.sistemaAgua.qtdHabitantesAcessoServicoAgua = null;
+        }
+    }
+
     // O número de casas ligadas não deverá  ser superior ao número de casas existentes na localidade
     verificaCasasLigadas() {
         if (this.sistemaAgua.qtdCasasAguaLigada > this.sistemaAgua.qtdCasasLocalidade) {

@@ -6,7 +6,6 @@ import {
     ContactoComponent, contactoPopupRoute, ContactoResolvePagingParams,
     contactoRoute,
 } from './';
-import {CKEditorModule} from 'ng2-ckeditor';
 import {FormsModule} from '@angular/forms';
 import {SobreDnaService} from '../sobre-dna';
 
@@ -19,7 +18,6 @@ const ENTITY_STATES = [
     imports: [
         SisasSharedModule,
         RouterModule.forChild(ENTITY_STATES),
-        CKEditorModule,
         FormsModule
     ],
     declarations: [

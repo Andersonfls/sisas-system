@@ -456,12 +456,11 @@
                         </div>
                         <div class="form-group col-sm-6">
                             <div class="form-group">
-                                <label class="form-control-label negrito"
-                                       jhiTranslate="sisasApp.sistemaAgua.qtdHabitantesAcessoServicoAgua"
+                                <label class="form-control-label negrito" jhiTranslate="sisasApp.sistemaAgua.qtdHabitantesAcessoServicoAgua"
                                        for="field_qtdHabitantesAcessoServicoAgua">Qtd Habitantes Acesso Servico Agua</label>
                                 <input type="number" class="form-control" name="qtdHabitantesAcessoServicoAgua"
                                        id="field_qtdHabitantesAcessoServicoAgua" onkeydown="return event.keyCode !== 69"
-                                       [(ngModel)]="sistemaAgua.qtdHabitantesAcessoServicoAgua"
+                                       [(ngModel)]="sistemaAgua.qtdHabitantesAcessoServicoAgua" (change)="verificaNumeroHabitantes()"
                                        placeholder="Quantidade de habitantes"/>
                             </div>
                         </div>
@@ -638,162 +637,165 @@
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="form-group col-sm-6">
-                            <div class="form-group">
-                                <label class="form-control-label negrito"
-                                       jhiTranslate="sisasApp.sistemaAgua.qtdDiametroCondutaAdutoraAguaBruta"
-                                       for="field_qtdDiametroCondutaAdutoraAguaBruta">Qtd Diametro Conduta Adutora Agua
-                                    Bruta</label>
-                                <input type="number" class="form-control" name="qtdDiametroCondutaAdutoraAguaBruta"
-                                       id="field_qtdDiametroCondutaAdutoraAguaBruta" onkeydown="return event.keyCode !== 69"
-                                       [(ngModel)]="sistemaAgua.qtdDiametroCondutaAdutoraAguaBruta"
-                                       placeholder="Numero do diâmetro"/>
+                    <div *ngIf="sistemaAgua.estadoFuncionamentoSistema==='Está em funcionamento (Bom)'">
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-control-label negrito"
+                                           jhiTranslate="sisasApp.sistemaAgua.qtdDiametroCondutaAdutoraAguaBruta"
+                                           for="field_qtdDiametroCondutaAdutoraAguaBruta">Qtd Diametro Conduta Adutora Agua
+                                        Bruta</label>
+                                    <input type="number" class="form-control" name="qtdDiametroCondutaAdutoraAguaBruta"
+                                           id="field_qtdDiametroCondutaAdutoraAguaBruta" onkeydown="return event.keyCode !== 69"
+                                           [(ngModel)]="sistemaAgua.qtdDiametroCondutaAdutoraAguaBruta"
+                                           placeholder="Numero do diâmetro"/>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-control-label negrito"
+                                           jhiTranslate="sisasApp.sistemaAgua.qtdComprimentoCondutaAdutoraAguaBruta"
+                                           for="field_qtdComprimentoCondutaAdutoraAguaBruta">Qtd Comprimento Conduta Adutora Agua
+                                        Bruta</label>
+                                    <input type="number" class="form-control" name="qtdComprimentoCondutaAdutoraAguaBruta"
+                                           id="field_qtdComprimentoCondutaAdutoraAguaBruta"
+                                           onkeydown="return event.keyCode !== 69"
+                                           [(ngModel)]="sistemaAgua.qtdComprimentoCondutaAdutoraAguaBruta"
+                                           placeholder="Comprimento da conduta adutora"/>
+                                </div>
                             </div>
                         </div>
-                        <div class="form-group col-sm-6">
-                            <div class="form-group">
-                                <label class="form-control-label negrito"
-                                       jhiTranslate="sisasApp.sistemaAgua.qtdComprimentoCondutaAdutoraAguaBruta"
-                                       for="field_qtdComprimentoCondutaAdutoraAguaBruta">Qtd Comprimento Conduta Adutora Agua
-                                    Bruta</label>
-                                <input type="number" class="form-control" name="qtdComprimentoCondutaAdutoraAguaBruta"
-                                       id="field_qtdComprimentoCondutaAdutoraAguaBruta"
-                                       onkeydown="return event.keyCode !== 69"
-                                       [(ngModel)]="sistemaAgua.qtdComprimentoCondutaAdutoraAguaBruta"
-                                       placeholder="Comprimento da conduta adutora"/>
+
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-control-label negrito"
+                                           jhiTranslate="sisasApp.sistemaAgua.qtdDiametroCondutaAdutoraAguaTratada"
+                                           for="field_qtdDiametroCondutaAdutoraAguaTratada">Qtd Diametro Conduta Adutora Agua
+                                        Tratada</label>
+                                    <input type="number" class="form-control" name="qtdDiametroCondutaAdutoraAguaTratada"
+                                           id="field_qtdDiametroCondutaAdutoraAguaTratada"
+                                           onkeydown="return event.keyCode !== 69"
+                                           [(ngModel)]="sistemaAgua.qtdDiametroCondutaAdutoraAguaTratada"
+                                           placeholder="Numero do diâmetro"/>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-control-label negrito"
+                                           jhiTranslate="sisasApp.sistemaAgua.qtdComprimentoCondutaAdutoraAguaTratada"
+                                           for="field_qtdComprimentoCondutaAdutoraAguaTratada">Qtd Comprimento Conduta Adutora Agua
+                                        Tratada</label>
+                                    <input type="number" class="form-control" name="qtdComprimentoCondutaAdutoraAguaTratada"
+                                           id="field_qtdComprimentoCondutaAdutoraAguaTratada"
+                                           onkeydown="return event.keyCode !== 69"
+                                           [(ngModel)]="sistemaAgua.qtdComprimentoCondutaAdutoraAguaTratada"
+                                           placeholder="Comprimento da conduta adutora"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-sm-4">
+                                <div class="form-group">
+                                    <label class="form-control-label negrito"
+                                           jhiTranslate="sisasApp.sistemaAgua.descMaterialUtilizadoCondutas"
+                                           for="field_descMaterialUtilizadoCondutas">Desc Material Utilizado Condutas</label>
+
+                                    <select class="form-control" id="field_descMaterialUtilizadoCondutas" name="descMaterialUtilizadoCondutas" [(ngModel)]="sistemaAgua.descMaterialUtilizadoCondutas">
+                                        <option [ngValue]="null" selected>Selecione o material...</option>
+                                        <option label="Fibro cimento">Fibro cimento</option>
+                                        <option label="Ferro galvanizado">Ferro galvanizado</option>
+                                        <option label="Ferro fundido">Ferro fundigdo</option>
+                                        <option label="Ferro dúctil">Ferro dúctil</option>
+                                        <option label="Polietileno">Polietileno</option>
+                                        <option label="PVC">PVC</option>
+                                        <option label="Outros">Outros</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <div class="form-group">
+                                    <label class="form-control-label negrito" jhiTranslate="sisasApp.sistemaAgua.qtdReservatoriosApoiados"
+                                           for="field_qtdReservatoriosApoiados">Qtd Reservatorios Apoiados</label>
+                                    <input type="number" class="form-control" name="qtdReservatoriosApoiados"
+                                           id="field_qtdReservatoriosApoiados"
+                                           onkeydown="return event.keyCode !== 69"
+                                           [(ngModel)]="sistemaAgua.qtdReservatoriosApoiados"
+                                           placeholder="Quantidade de Reservatorios"/>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <div class="form-group">
+                                    <label class="form-control-label negrito"
+                                           jhiTranslate="sisasApp.sistemaAgua.qtdCapacidadeReservatoriosApoiados"
+                                           for="field_qtdCapacidadeReservatoriosApoiados">Qtd Capacidade Reservatorios
+                                        Apoiados</label>
+                                    <input type="number" class="form-control" name="qtdCapacidadeReservatoriosApoiados"
+                                           id="field_qtdCapacidadeReservatoriosApoiados"
+                                           onkeydown="return event.keyCode !== 69"
+                                           [(ngModel)]="sistemaAgua.qtdCapacidadeReservatoriosApoiados"
+                                           placeholder="Numero da capacidade"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" *ngIf="sistemaAgua.descMaterialUtilizadoCondutas==='Outros'">
+                            <div class="form-group col-sm-8 subte" >
+                                <div class="form-group">
+                                    <label class="form-control-label negrito"
+                                           jhiTranslate="sisasApp.sistemaAgua.descMaterialUtilizadoCondutasObs"
+                                           for="field_descMaterialUtilizadoCondutas">Desc Material Utilizado Condutas Obs</label>
+
+                                    <input type="text" class="form-control" name="descMaterialUtilizadoCondutasObs"
+                                           id="field_descMaterialUtilizadoCondutasObs"
+                                           [(ngModel)]="sistemaAgua.descMaterialUtilizadoCondutasObs"
+                                           placeholder="descreva o material utilizado na conduta"/>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-sm-4">
+                                <div class="form-group">
+                                    <label class="form-control-label negrito" jhiTranslate="sisasApp.sistemaAgua.qtdReservatoriosElevados"
+                                           for="field_qtdReservatoriosElevados">Qtd Reservatorios Elevados</label>
+                                    <input type="number" class="form-control" name="qtdReservatoriosElevados"
+                                           id="field_qtdReservatoriosElevados"
+                                           onkeydown="return event.keyCode !== 69"
+                                           [(ngModel)]="sistemaAgua.qtdReservatoriosElevados"
+                                           placeholder="Quantidade de reservatorios"/>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <div class="form-group">
+                                    <label class="form-control-label negrito"
+                                           jhiTranslate="sisasApp.sistemaAgua.qtdCapacidadeReservatoriosElevados"
+                                           for="field_qtdCapacidadeReservatoriosElevados">Qtd Capacidade Reservatorios
+                                        Elevados</label>
+                                    <input type="number" class="form-control" name="qtdCapacidadeReservatoriosElevados"
+                                           id="field_qtdCapacidadeReservatoriosElevados"
+                                           onkeydown="return event.keyCode !== 69"
+                                           [(ngModel)]="sistemaAgua.qtdCapacidadeReservatoriosElevados"
+                                           placeholder="Capacidade dos reservatorios "/>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <div class="form-group">
+                                    <label class="form-control-label negrito"
+                                           jhiTranslate="sisasApp.sistemaAgua.alturaReservatoriosElevados"
+                                           for="field_alturaReservatoriosElevados">Altura Reservatorios Elevados</label>
+                                    <input type="number" class="form-control" name="alturaReservatoriosElevados"
+                                           id="field_alturaReservatoriosElevados"
+                                           onkeydown="return event.keyCode !== 69"
+                                           [(ngModel)]="sistemaAgua.alturaReservatoriosElevados" placeholder="Altura"/>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="form-group col-sm-6">
-                            <div class="form-group">
-                                <label class="form-control-label negrito"
-                                       jhiTranslate="sisasApp.sistemaAgua.qtdDiametroCondutaAdutoraAguaTratada"
-                                       for="field_qtdDiametroCondutaAdutoraAguaTratada">Qtd Diametro Conduta Adutora Agua
-                                    Tratada</label>
-                                <input type="number" class="form-control" name="qtdDiametroCondutaAdutoraAguaTratada"
-                                       id="field_qtdDiametroCondutaAdutoraAguaTratada"
-                                       onkeydown="return event.keyCode !== 69"
-                                       [(ngModel)]="sistemaAgua.qtdDiametroCondutaAdutoraAguaTratada"
-                                       placeholder="Numero do diâmetro"/>
-                            </div>
-                        </div>
-                        <div class="form-group col-sm-6">
-                            <div class="form-group">
-                                <label class="form-control-label negrito"
-                                       jhiTranslate="sisasApp.sistemaAgua.qtdComprimentoCondutaAdutoraAguaTratada"
-                                       for="field_qtdComprimentoCondutaAdutoraAguaTratada">Qtd Comprimento Conduta Adutora Agua
-                                    Tratada</label>
-                                <input type="number" class="form-control" name="qtdComprimentoCondutaAdutoraAguaTratada"
-                                       id="field_qtdComprimentoCondutaAdutoraAguaTratada"
-                                       onkeydown="return event.keyCode !== 69"
-                                       [(ngModel)]="sistemaAgua.qtdComprimentoCondutaAdutoraAguaTratada"
-                                       placeholder="Comprimento da conduta adutora"/>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="form-group col-sm-4">
-                            <div class="form-group">
-                                <label class="form-control-label negrito"
-                                       jhiTranslate="sisasApp.sistemaAgua.descMaterialUtilizadoCondutas"
-                                       for="field_descMaterialUtilizadoCondutas">Desc Material Utilizado Condutas</label>
-
-                                <select class="form-control" id="field_descMaterialUtilizadoCondutas" name="descMaterialUtilizadoCondutas" [(ngModel)]="sistemaAgua.descMaterialUtilizadoCondutas">
-                                    <option [ngValue]="null" selected>Selecione o material...</option>
-                                    <option label="Fibro cimento">Fibro cimento</option>
-                                    <option label="Ferro galvanizado">Ferro galvanizado</option>
-                                    <option label="Ferro fundido">Ferro fundigdo</option>
-                                    <option label="Ferro dúctil">Ferro dúctil</option>
-                                    <option label="Polietileno">Polietileno</option>
-                                    <option label="PVC">PVC</option>
-                                    <option label="Outros">Outros</option>
-                                </select>
-
-                            </div>
-                        </div>
-                        <div class="form-group col-sm-4">
-                            <div class="form-group">
-                                <label class="form-control-label negrito" jhiTranslate="sisasApp.sistemaAgua.qtdReservatoriosApoiados"
-                                       for="field_qtdReservatoriosApoiados">Qtd Reservatorios Apoiados</label>
-                                <input type="number" class="form-control" name="qtdReservatoriosApoiados"
-                                       id="field_qtdReservatoriosApoiados"
-                                       onkeydown="return event.keyCode !== 69"
-                                       [(ngModel)]="sistemaAgua.qtdReservatoriosApoiados"
-                                       placeholder="Quantidade de Reservatorios"/>
-                            </div>
-                        </div>
-                        <div class="form-group col-sm-4">
-                            <div class="form-group">
-                                <label class="form-control-label negrito"
-                                       jhiTranslate="sisasApp.sistemaAgua.qtdCapacidadeReservatoriosApoiados"
-                                       for="field_qtdCapacidadeReservatoriosApoiados">Qtd Capacidade Reservatorios
-                                    Apoiados</label>
-                                <input type="number" class="form-control" name="qtdCapacidadeReservatoriosApoiados"
-                                       id="field_qtdCapacidadeReservatoriosApoiados"
-                                       onkeydown="return event.keyCode !== 69"
-                                       [(ngModel)]="sistemaAgua.qtdCapacidadeReservatoriosApoiados"
-                                       placeholder="Numero da capacidade"/>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row" *ngIf="sistemaAgua.descMaterialUtilizadoCondutas==='Outros'">
-                        <div class="form-group col-sm-8 subte" >
-                            <div class="form-group">
-                                <label class="form-control-label negrito"
-                                       jhiTranslate="sisasApp.sistemaAgua.descMaterialUtilizadoCondutasObs"
-                                       for="field_descMaterialUtilizadoCondutas">Desc Material Utilizado Condutas Obs</label>
-
-                                <input type="text" class="form-control" name="descMaterialUtilizadoCondutasObs"
-                                       id="field_descMaterialUtilizadoCondutasObs"
-                                       [(ngModel)]="sistemaAgua.descMaterialUtilizadoCondutasObs"
-                                       placeholder="descreva o material utilizado na conduta"/>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="form-group col-sm-4">
-                            <div class="form-group">
-                                <label class="form-control-label negrito" jhiTranslate="sisasApp.sistemaAgua.qtdReservatoriosElevados"
-                                       for="field_qtdReservatoriosElevados">Qtd Reservatorios Elevados</label>
-                                <input type="number" class="form-control" name="qtdReservatoriosElevados"
-                                       id="field_qtdReservatoriosElevados"
-                                       onkeydown="return event.keyCode !== 69"
-                                       [(ngModel)]="sistemaAgua.qtdReservatoriosElevados"
-                                       placeholder="Quantidade de reservatorios"/>
-                            </div>
-                        </div>
-                        <div class="form-group col-sm-4">
-                            <div class="form-group">
-                                <label class="form-control-label negrito"
-                                       jhiTranslate="sisasApp.sistemaAgua.qtdCapacidadeReservatoriosElevados"
-                                       for="field_qtdCapacidadeReservatoriosElevados">Qtd Capacidade Reservatorios
-                                    Elevados</label>
-                                <input type="number" class="form-control" name="qtdCapacidadeReservatoriosElevados"
-                                       id="field_qtdCapacidadeReservatoriosElevados"
-                                       onkeydown="return event.keyCode !== 69"
-                                       [(ngModel)]="sistemaAgua.qtdCapacidadeReservatoriosElevados"
-                                       placeholder="Capacidade dos reservatorios "/>
-                            </div>
-                        </div>
-                        <div class="form-group col-sm-4">
-                            <div class="form-group">
-                                <label class="form-control-label negrito"
-                                       jhiTranslate="sisasApp.sistemaAgua.alturaReservatoriosElevados"
-                                       for="field_alturaReservatoriosElevados">Altura Reservatorios Elevados</label>
-                                <input type="number" class="form-control" name="alturaReservatoriosElevados"
-                                       id="field_alturaReservatoriosElevados"
-                                       onkeydown="return event.keyCode !== 69"
-                                       [(ngModel)]="sistemaAgua.alturaReservatoriosElevados" placeholder="Altura"/>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="card" style="margin-bottom: 1%">
