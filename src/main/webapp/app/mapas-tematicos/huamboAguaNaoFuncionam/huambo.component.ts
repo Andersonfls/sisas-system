@@ -157,7 +157,7 @@ export class HuamboComponent implements OnInit {
             for (let i = 0; i < json.features.length; i++) {
                 if (this.dadosMapa) {
                     this.dadosMapa.forEach((item) => {
-                        if (item.idProvincia === json.features[i].properties.code) {
+                        if (item.idMunicipio === json.features[i].properties.code) {
                             json.features[i].properties.valor = item.porcentagemNaoFuncionam.toFixed(2);
                         }
                     });

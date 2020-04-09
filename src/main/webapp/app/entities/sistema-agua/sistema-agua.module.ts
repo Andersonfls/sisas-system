@@ -15,6 +15,7 @@ import {
     sistemaAguaPopupRoute,
     SistemaAguaResolvePagingParams,
 } from './';
+import {ReactiveFormsModule} from '@angular/forms';
 
 const ENTITY_STATES = [
     ...sistemaAguaRoute,
@@ -24,7 +25,8 @@ const ENTITY_STATES = [
 @NgModule({
     imports: [
         SisasSharedModule,
-        RouterModule.forChild(ENTITY_STATES)
+        RouterModule.forChild(ENTITY_STATES),
+        ReactiveFormsModule
     ],
     declarations: [
         SistemaAguaComponent,

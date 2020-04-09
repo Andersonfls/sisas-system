@@ -22,6 +22,7 @@ public class MapasTematicosResource {
         this.mapasTematicosService = mapasTematicosService;
     }
 
+    //PROVINCIAL
     @GetMapping("mapas/cobertura-servicos-agua-provincial")
     public List<MapasDTO> getPorcentagemCoberturaServicosAguaProvincial() {
         return this.mapasTematicosService.montaListaDadosPorcentagemCoberturaServicosAguaProvincial();
@@ -63,5 +64,16 @@ public class MapasTematicosResource {
     @GetMapping("mapas/sistemas-agua-kuanza-provincial")
     public List<MapasDTO> getPorcentagemSistemasAguaKuanzaProvincial() {
         return this.mapasTematicosService.montaListaDadosPorcentagemSistemasAguaPorProvincia(5l);
+    }
+
+    //MUNICIPAL
+    @GetMapping("mapas/cobertura-servicos-agua-municipal")
+    public List<MapasDTO> getPorcentagemCoberturaServicosAguaMunicipal() {
+        return this.mapasTematicosService.montaListaDadosPorcentagemCoberturaServicosAguaMunicipal();
+    }
+
+    @GetMapping("mapas/sistemas-agua-municipal")
+    public List<MapasDTO> getPorcentagemSistemasAguaMunicipal() {
+        return this.mapasTematicosService.montaListaDadosPorcentagemSistemasAguaMunicipal();
     }
 }

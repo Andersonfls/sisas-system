@@ -10,6 +10,7 @@ import {
     sobreDnaPopupRoute,
     SobreDnaResolvePagingParams,
 } from './';
+import {CKEditorModule} from 'ng2-ckeditor';
 import {FormsModule} from '@angular/forms';
 
 const ENTITY_STATES = [
@@ -21,6 +22,7 @@ const ENTITY_STATES = [
     imports: [
         SisasSharedModule,
         RouterModule.forChild(ENTITY_STATES),
+        CKEditorModule,
         FormsModule
     ],
     declarations: [

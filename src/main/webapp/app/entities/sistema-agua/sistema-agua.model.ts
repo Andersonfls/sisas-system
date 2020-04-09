@@ -3,6 +3,7 @@ import {Comuna} from '../comuna';
 import {Situacao} from '../situacao';
 import {Provincia} from '../provincia';
 import {Municipio} from '../municipio';
+import {AvariaSistemaAgua} from './avaria-sistema-agua.model';
 
 export class SistemaAgua implements BaseEntity {
     constructor(
@@ -70,7 +71,8 @@ export class SistemaAgua implements BaseEntity {
         public nmEquipamentosComAvariaObs?: string,
         public nmModeloBombaManualUtilizadaObs?: string,
         public qtdChafarisesExistentes?: number,
-        public motivoAvariaSistema?: string
+        public motivoAvariaSistema?: string,
+        public avariaSistemaAguas?: AvariaSistemaAgua[]
 
     ) {
         this.id = id ? id : null;
@@ -133,5 +135,7 @@ export class SistemaAgua implements BaseEntity {
         this.esquema = esquema ? esquema : null;
         this.nmModeloBombaManualUtilizada = nmModeloBombaManualUtilizada ? nmModeloBombaManualUtilizada : null;
         this.nmTpBombaEnergia = nmTpBombaEnergia ? nmTpBombaEnergia : null;
+        this.motivoAvariaSistema = motivoAvariaSistema ? motivoAvariaSistema : null;
+        this.avariaSistemaAguas = avariaSistemaAguas ? avariaSistemaAguas : null;
     }
 }

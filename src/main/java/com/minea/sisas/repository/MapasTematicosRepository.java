@@ -148,5 +148,80 @@ public interface MapasTematicosRepository extends JpaRepository<Provincia, Long>
     List<Object[]> porcentagemSistemasAguaNacionalPorProvincia(@Param("provinciaId") Long provinciaId);
 
 
+    @Query(value = "SELECT  m.ID_MUNICIPIO, " +
+        "    m.NM_MUNICIPIO," +
+        "        c.NM_COMUNA," +
+        "        c.ID_COMUNA," +
+        "      ROUND((( ((SELECT ((COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)*100)/p.populacao)" +
+        " FROM sisas.sistema_agua s " +
+        " WHERE s.ID_PROVINCIA = p.ID_PROVINCIA" +
+        "  AND s.ID_MUNICIPIO = m.ID_MUNICIPIO" +
+        "  AND s.ID_COMUNA = c.ID_COMUNA" +
+        "  AND s.POSSUI_SISTEMA_AGUA = 1" +
+        "   )))),2) PercentagemCobertura" +
+        " FROM sisas.sistema_agua s" +
+        "    INNER JOIN sisas.provincia p ON s.ID_PROVINCIA = p.ID_PROVINCIA" +
+        "    INNER JOIN sisas.municipio m ON  p.ID_PROVINCIA = m.ID_PROVINCIA " +
+        "    INNER JOIN sisas.comuna c ON  s.ID_COMUNA = c.ID_COMUNA", nativeQuery = true)
+    List<Object[]> porcentagemCoberturaServicosAguaMunicipal();
+
+    @Query(value = "SELECT       p.NM_PROVINCIA,      " +
+        "             m.NM_MUNICIPIO, m.ID_MUNICIPIO,       " +
+        "             (      " +
+        "              SELECT   COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)     " +
+        "                 FROM   sisas.sistema_agua s      " +
+        "                 WHERE  s.ID_PROVINCIA = p.ID_PROVINCIA     " +
+        "                 AND    s.POSSUI_SISTEMA_AGUA = 1     " +
+        "              ) NrSistemas,  " +
+        "         " +
+        "               (      " +
+        "              SELECT   COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)     " +
+        "                 FROM   sisas.sistema_agua s      " +
+        "                 WHERE   s.ID_PROVINCIA = p.ID_PROVINCIA     " +
+        "                   AND   s.POSSUI_SISTEMA_AGUA = 1     " +
+        "                      AND   s.estado_funcionamento_sistema = 'Está em funcionamento (Bom)'     " +
+        "              ) NrSistemasFuncionam,      " +
+        "              (      " +
+        "              SELECT   COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)     " +
+        "                 FROM   sisas.sistema_agua s     " +
+        "                 WHERE   s.ID_PROVINCIA = p.ID_PROVINCIA     " +
+        "                   AND   s.POSSUI_SISTEMA_AGUA = 1     " +
+        "                      AND   s.estado_funcionamento_sistema =  'Não está em funcionamento'     " +
+        "              )  NrSistemasNaoFuncionam,  " +
+        "               " +
+        "             ROUND((( ((SELECT    COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)      " +
+        "                         FROM     sisas.sistema_agua s       " +
+        "                         WHERE    s.ID_PROVINCIA = p.ID_PROVINCIA      " +
+        "                         AND      s.ID_MUNICIPIO = m.ID_MUNICIPIO      " +
+        "                         AND      s.POSSUI_SISTEMA_AGUA = 1      " +
+        "                         AND      s.estado_funcionamento_sistema = 'Está em funcionamento (Bom)'      " +
+        "                ))  *100)/ (SELECT      COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)      " +
+        "                         FROM     sisas.sistema_agua s       " +
+        "                         WHERE    s.ID_PROVINCIA = p.ID_PROVINCIA      " +
+        "                         AND      s.ID_MUNICIPIO = m.ID_MUNICIPIO      " +
+        "                         AND      s.POSSUI_SISTEMA_AGUA = 1      " +
+        "                )),2) PercentagemQueFuncionam,    " +
+        "        " +
+        "                ROUND((( ((SELECT      COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)      " +
+        "                         FROM      sisas.sistema_agua s       " +
+        "                         WHERE    s.ID_PROVINCIA = p.ID_PROVINCIA      " +
+        "                         AND      s.ID_MUNICIPIO = m.ID_MUNICIPIO      " +
+        "                         AND      s.POSSUI_SISTEMA_AGUA = 1      " +
+        "                         AND      s.estado_funcionamento_sistema = 'Não está em funcionamento'      " +
+        "                ))  *100)/ (SELECT      COALESCE(COUNT(POSSUI_SISTEMA_AGUA),2)      " +
+        "                         FROM      sisas.sistema_agua s       " +
+        "                         WHERE      s.ID_PROVINCIA = p.ID_PROVINCIA      " +
+        "                     AND      s.ID_MUNICIPIO = m.ID_MUNICIPIO      " +
+        "                           AND      s.POSSUI_SISTEMA_AGUA = 1      " +
+        "                )),2) PercentagemQueNaoFuncionam " +
+        "                 " +
+        "        from sisas.sistema_agua s      " +
+        "            inner join sisas.provincia p on s.ID_PROVINCIA = p.ID_PROVINCIA      " +
+        "            inner join sisas.municipio m on s.ID_MUNICIPIO = m.ID_MUNICIPIO      " +
+        "            where  s.POSSUI_SISTEMA_AGUA = 1  " +
+        "        GROUP BY       " +
+        "              p.NM_PROVINCIA, p.ID_PROVINCIA,       " +
+        "              m.NM_MUNICIPIO, m.ID_MUNICIPIO", nativeQuery = true)
+    List<Object[]> porcentagemSistemasAguasMunicipal();
 
 }

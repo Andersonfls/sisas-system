@@ -77,7 +77,7 @@ export class MunicipalComponent implements OnInit {
     }
 
     buscaDados() {
-        this.mapasService.buscaDadosPorcentagemCoberturaServicosAguaProvincial().subscribe(
+        this.mapasService.buscaDadosPorcentagemSistemasAguaMunicipal().subscribe(
             (res: HttpResponse<MapasDados[]>) => {
                 this.dadosMapa = res.body;
                 console.log(this.dadosMapa);
@@ -162,7 +162,7 @@ export class MunicipalComponent implements OnInit {
             for (let i = 0; i < json.features.length; i++) {
                 if (this.dadosMapa) {
                     this.dadosMapa.forEach((item) => {
-                        if (item.idProvincia === json.features[i].properties.code) {
+                        if (item.idMunicipio === json.features[i].properties.code) {
                             json.features[i].properties.valor = item.porcentagemNaoFuncionam.toFixed(2);
                         }
                     });
@@ -172,7 +172,7 @@ export class MunicipalComponent implements OnInit {
             geojson =  L.geoJSON(json, {
                 style: (feature) => {
                     let retorno = {color: '', weight: 2, opacity: 1, fillColor: '', fillOpacity: 0.7};
-                    if (feature.properties.valor > 0 && feature.properties.valor < 42) {
+                    if (feature.properties.valor < 42) {
                         retorno = {color: 'white', weight: 2, opacity: 1, fillColor: '#FEFE9E', fillOpacity: 0.7};
                     } else if (feature.properties.valor > 41 && feature.properties.valor < 83) {
                         retorno = {color: 'white', weight: 2, opacity: 1, fillColor: '#9CCDFE', fillOpacity: 0.7};
@@ -183,7 +183,6 @@ export class MunicipalComponent implements OnInit {
                     } else if (feature.properties.valor > 164 && feature.properties.valor < 206) {
                         retorno = {color: 'white', weight: 2, opacity: 1, fillColor: '#FCCC9E', fillOpacity: 0.7};
                     }
-
                     return retorno;
                 },
                 onEachFeature: function onEachFeature(feature, layer) {

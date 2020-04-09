@@ -17,8 +17,8 @@ import java.util.List;
 @SuppressWarnings("unused")
 @Repository
 public interface MunicipioRepository extends JpaRepository<Municipio, Long>, JpaSpecificationExecutor<Municipio> {
-    @Query("select m from Municipio m where LOWER(m.nmMunicipio) like LOWER(concat(:nome,'%'))")
-    Page buscarPorNome(@Param("nome") String nome, Pageable pageable);
+    @Query(value = "select * from sisas.municipio m where  UPPER(m.NM_MUNICIPIO) LIKE CONCAT('%',UPPER(:nome),'%') ", nativeQuery = true)
+    List<Municipio> buscarPorNome(@Param("nome") String nome);
 
     @Query("select m from Municipio m where m.provincia.id in (?1) order by m.nmMunicipio")
     List<Municipio> findByProvinciaId(Long disciplinaId);

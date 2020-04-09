@@ -467,7 +467,7 @@
                         <div class="form-group col-sm-3">
                             <div class="form-group">
                                 <label class="form-control-label negrito" jhiTranslate="sisasApp.sistemaAgua.anoConstrucaoSistema"
-                                       for="field_anoConstrucaoSistema">Ano Construcao Sistema</label>
+                                       >Ano Construcao Sistema</label>
 
                                 <select class="form-control" id="field_anoConstrucaoSistema" name="anoConstrucaoSistema"
                                         [(ngModel)]="sistemaAgua.anoConstrucaoSistema">
@@ -475,7 +475,14 @@
                                     <option *ngFor="let opt of listaAnos" [value]="opt">{{opt}}</option>
 
                                 </select>
-
+                                <!--<ng-multiselect-dropdown-->
+                                    <!--name="city"-->
+                                    <!--[placeholder]="'Select City'"-->
+                                    <!--[data]="cities"-->
+                                    <!--formControlName="city"-->
+                                    <!--[settings]="dropdownSettings"-->
+                                    <!--(onSelect)="onItemSelect($event)">-->
+                                <!--</ng-multiselect-dropdown>-->
                             </div>
                         </div>
                     </div>
@@ -635,6 +642,47 @@
                                 </select>
                             </div>
                         </div>
+                    </div>
+
+                    <div style="margin-bottom: 1%" class="card border-success text-center" *ngIf="sistemaAgua.estadoFuncionamentoSistema==='Não está em funcionamento'">
+                        <div class="card-body text-success">
+                            <span class="card-text">Para adicionar mais de uma avaria, selecione as opções acima e clique no botão (+).</span>
+                            <button type="button" class="btn btn-primary jh-create-entity create-produto" (click)="adicionarAvaria()" style="float: right; margin-left: 1%;">
+                                <span class="fa fa-plus"> </span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div *ngIf="sistemaAgua.estadoFuncionamentoSistema==='Não está em funcionamento'">
+                        <table style="border: 2px solid #dfe7ef;" class="table table-striped" *ngIf="sistemaAgua.avariaSistemaAguas && sistemaAgua.avariaSistemaAguas.length > 0">
+                            <thead>
+                            <tr style="background-color: #1f749c">
+                                <th class="text-centro" colspan="5"><span>Lista de Causas e motivos para o Não funcionamento </span> </th>
+                            </tr>
+                            <tr style="background-color: #1f749c">
+                                <th class="borda-th"><span>Tipo Avaria</span></th>
+                                <th class="borda-th"><span>Causa</span> </th>
+                                <th class="borda-th"><span>Status Resolução</span> </th>
+                                <th class="borda-th"><span>Tempo Indisponível</span> </th>
+                                <th class="borda-th"><span></span></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let avaria of sistemaAgua.avariaSistemaAguas; let i = index">
+                                <td>{{avaria.nmTpAvariaSistema}}</td>
+                                <td>{{avaria.causaAvariaSistema}}</td>
+                                <td>{{avaria.statusResolucao}}</td>
+                                <td>{{avaria.tempoServicoDisponivel}}</td>
+                                <td class="text-right">
+                                    <div class="btn-group flex-btn-group-container">
+                                        <button type="button" class="btn btn-primary jh-create-entity create-produto" (click)="removerAvaria(i)" style="float: left; margin-left: 1%;">
+                                            <span class="fa fa-remove"> </span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
 
                     <div *ngIf="sistemaAgua.estadoFuncionamentoSistema==='Está em funcionamento (Bom)'">

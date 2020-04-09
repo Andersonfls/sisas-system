@@ -107,4 +107,34 @@ public class MapasTematicosService {
         }
         return retorno;
     }
+
+    // MUNICIPIO
+    public List<MapasDTO> montaListaDadosPorcentagemCoberturaServicosAguaMunicipal(){
+        List<MapasDTO> retorno = new ArrayList<>();
+        List<Object[]> list = this.mapasTematicosRepository.porcentagemCoberturaServicosAguaMunicipal();
+        if (Objects.nonNull(list)) {
+            for (Object[] i : list) {
+                MapasDTO dto = new MapasDTO();
+                dto.setIdMunicipio(((BigInteger) i[0]).longValue());
+                dto.setPorcentagemCobertura(((BigDecimal) i[4]).floatValue());
+                retorno.add(dto);
+            }
+        }
+        return retorno;
+    }
+
+    public List<MapasDTO> montaListaDadosPorcentagemSistemasAguaMunicipal(){
+        List<MapasDTO> retorno = new ArrayList<>();
+        List<Object[]> list = this.mapasTematicosRepository.porcentagemSistemasAguasMunicipal();
+        if (Objects.nonNull(list)) {
+            for (Object[] i : list) {
+                MapasDTO dto = new MapasDTO();
+                dto.setIdMunicipio(((BigInteger) i[2]).longValue());
+                dto.setPorcentagemFuncionam(((BigDecimal) i[6]).floatValue());
+                dto.setPorcentagemNaoFuncionam(((BigDecimal) i[7]).floatValue());
+                retorno.add(dto);
+            }
+        }
+        return retorno;
+    }
 }

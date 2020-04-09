@@ -4,7 +4,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 1,
+                "code": 101,
                 "nome": "Cabinda",
                 "valor": 0
             },
@@ -131,7 +131,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 2,
+                "code": 103,
                 "nome": "Cacongo",
                 "valor": 0
             },
@@ -286,7 +286,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 3,
+                "code": 105,
                 "nome": "Buco Zau",
                 "valor": 0
             },
@@ -497,7 +497,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 4,
+                "code": 107,
                 "nome": "Belize",
                 "valor": 0
             },
@@ -736,7 +736,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 5,
+                "code": 203,
                 "nome": "Soyo",
                 "valor": 0
             },
@@ -883,7 +883,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 6,
+                "code": 205,
                 "nome": "Nzeto",
                 "valor": 0
             },
@@ -1094,7 +1094,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 7,
+                "code": 211,
                 "nome": "Cuimba",
                 "valor": 0
             },
@@ -1249,7 +1249,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 8,
+                "code": 201,
                 "nome": "Mbanza Congo",
                 "valor": 0
             },
@@ -1428,7 +1428,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 9,
+                "code": 207,
                 "nome": "Tomboco",
                 "valor": 0
             },
@@ -1635,7 +1635,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 10,
+                "code": 209,
                 "nome": "Noqui",
                 "valor": 0
             },
@@ -1794,8 +1794,8 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 11,
-                "nome": "Viana",
+                "code": 401,
+                "nome": "Luanda",
                 "valor": 0
             },
             "geometry": {
@@ -1981,7 +1981,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 12,
+                "code": 407,
                 "nome": "Cacuaco",
                 "valor": 0
             },
@@ -2132,8 +2132,8 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 13,
-                "nome": "Quissama",
+                "code": 405,
+                "nome": "Quiçama",
                 "valor": 0
             },
             "geometry": {
@@ -2419,8 +2419,8 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 14,
-                "nome": "Bula-Atumbo",
+                "code": 1811,
+                "nome": "Bula-Atumba",
                 "valor": 0
             },
             "geometry": {
@@ -2506,7 +2506,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 15,
+                "code": 0,
                 "nome": "Catete",
                 "valor": 0
             },
@@ -2677,8 +2677,8 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 16,
-                "nome": "Pango Aluquemi",
+                "code": 1805,
+                "nome": "Pango - Aluquem",
                 "valor": 0
             },
             "geometry": {
@@ -2880,7 +2880,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 17,
+                "code": 0,
                 "nome": "Caxito",
                 "valor": 0
             },
@@ -3087,7 +3087,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 18,
+                "code": 1807,
                 "nome": "Ambriz",
                 "valor": 0
             },
@@ -3218,8 +3218,8 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 19,
-                "nome": "Nambuangogo",
+                "code": 1809,
+                "nome": "Nambuangongo",
                 "valor": 0
             },
             "geometry": {
@@ -3437,7 +3437,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 20,
+                "code": 1803,
                 "nome": "Dembos Quibaxe",
                 "valor": 0
             },
@@ -3544,7 +3544,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 21,
+                "code": 323,
                 "nome": "Quimbele",
                 "valor": 0
             },
@@ -3707,8 +3707,8 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 22,
-                "nome": "Maquela do Zombo",
+                "code": 313,
+                "nome": "Maquela do Zombo\t",
                 "valor": 0
             },
             "geometry": {
@@ -3942,7 +3942,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 23,
+                "code": 0,
                 "nome": "Santa Cruz",
                 "valor": 0
             },
@@ -4245,7 +4245,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 24,
+                "code": 0,
                 "nome": "Kangola",
                 "valor": 0
             },
@@ -4432,7 +4432,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 25,
+                "code": 0,
                 "nome": "Nova Esperanca",
                 "valor": 0
             },
@@ -4575,7 +4575,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 26,
+                "code": 319,
                 "nome": "Sanza Pombo",
                 "valor": 0
             },
@@ -4730,7 +4730,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 27,
+                "code": 309,
                 "nome": "Negage",
                 "valor": 0
             },
@@ -4861,7 +4861,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 28,
+                "code": 327,
                 "nome": "Puri",
                 "valor": 0
             },
@@ -4944,7 +4944,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 29,
+                "code": 315,
                 "nome": "Damba",
                 "valor": 0
             },
@@ -5111,8 +5111,8 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 30,
-                "nome": "Quitexe",
+                "code": 321,
+                "nome": "Dange-Quitexe",
                 "valor": 0
             },
             "geometry": {
@@ -5270,7 +5270,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 31,
+                "code": 301,
                 "nome": "Uige",
                 "valor": 0
             },
@@ -5357,7 +5357,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 32,
+                "code": 311,
                 "nome": "Bungo",
                 "valor": 0
             },
@@ -5536,7 +5536,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 33,
+                "code": 0,
                 "nome": "Kaipemba",
                 "valor": 0
             },
@@ -5715,7 +5715,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 34,
+                "code": 307,
                 "nome": "Bembe",
                 "valor": 0
             },
@@ -5906,7 +5906,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 35,
+                "code": 329,
                 "nome": "Mucaba",
                 "valor": 0
             },
@@ -6065,7 +6065,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 36,
+                "code": 305,
                 "nome": "Songo",
                 "valor": 0
             },
@@ -6348,7 +6348,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 37,
+                "code": 1307,
                 "nome": "Rivungo",
                 "valor": 0
             },
@@ -6555,7 +6555,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 38,
+                "code": 1313,
                 "nome": "Dirico",
                 "valor": 0
             },
@@ -6846,7 +6846,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 39,
+                "code": 1317,
                 "nome": "Calai",
                 "valor": 0
             },
@@ -7001,8 +7001,8 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 40,
-                "nome": "Tombua",
+                "code": 1403,
+                "nome": "Tômbwa",
                 "valor": 0
             },
             "geometry": {
@@ -7312,7 +7312,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 41,
+                "code": 1305,
                 "nome": "Cuangar",
                 "valor": 0
             },
@@ -7511,7 +7511,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 42,
+                "code": 1607,
                 "nome": "Curoca",
                 "valor": 0
             },
@@ -7658,7 +7658,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 43,
+                "code": 1603,
                 "nome": "Ombadja",
                 "valor": 0
             },
@@ -7825,7 +7825,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 44,
+                "code": 1605,
                 "nome": "Cuvelai",
                 "valor": 0
             },
@@ -8004,7 +8004,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 45,
+                "code": 1609,
                 "nome": "Namacunde",
                 "valor": 0
             },
@@ -8175,8 +8175,8 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 46,
-                "nome": "Cuamhama",
+                "code": 1601,
+                "nome": "Cuanhama",
                 "valor": 0
             },
             "geometry": {
@@ -8454,7 +8454,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 47,
+                "code": 1611,
                 "nome": "Cahama",
                 "valor": 0
             },
@@ -8645,7 +8645,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 48,
+                "code": 1405,
                 "nome": "Virei",
                 "valor": 0
             },
@@ -9020,7 +9020,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 49,
+                "code": 1409,
                 "nome": "Camacuio",
                 "valor": 0
             },
@@ -9231,7 +9231,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 50,
+                "code": 1407,
                 "nome": "Bibala",
                 "valor": 0
             },
@@ -9462,7 +9462,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 51,
+                "code": 0,
                 "nome": "Namibe",
                 "valor": 0
             },
@@ -9945,8 +9945,8 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 52,
-                "nome": "Caia Farta",
+                "code": 903,
+                "nome": "Baía Farta",
                 "valor": 0
             },
             "geometry": {
@@ -10132,7 +10132,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 53,
+                "code": 905,
                 "nome": "Lobito",
                 "valor": 0
             },
@@ -10351,7 +10351,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 54,
+                "code": 901,
                 "nome": "Benguela",
                 "valor": 0
             },
@@ -10538,7 +10538,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 55,
+                "code": 607,
                 "nome": "Porto Amboim",
                 "valor": 0
             },
@@ -10681,7 +10681,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 56,
+                "code": 601,
                 "nome": "Sumbe",
                 "valor": 0
             },
@@ -10873,7 +10873,7 @@
             "type": "Feature",
             "properties": {
                 "nome": "Luau",
-                "code": 57,
+                "code": 1217,
                 "valor": 0
             },
             "geometry": {
@@ -11007,8 +11007,8 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 58,
-                "nome": "Luacano",
+                "code": 503,
+                "nome": "Lucala",
                 "valor": 0
             },
             "geometry": {
@@ -11206,8 +11206,8 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 59,
-                "nome": "Kameia",
+                "code": 1209,
+                "nome": "Cameia",
                 "valor": 0
             },
             "geometry": {
@@ -11309,7 +11309,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 60,
+                "code": 1215,
                 "nome": "Alto Zambeze",
                 "valor": 0
             },
@@ -11708,7 +11708,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 61,
+                "code": 817,
                 "nome": "Cambulo",
                 "valor": 0
             },
@@ -11867,7 +11867,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 62,
+                "code": 801,
                 "nome": "Chitato",
                 "valor": 0
             },
@@ -12074,8 +12074,8 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 63,
-                "nome": "Culio",
+                "code": 803,
+                "nome": "Cuílo",
                 "valor": 0
             },
             "geometry": {
@@ -12233,7 +12233,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 64,
+                "code": 815,
                 "nome": "Lucapa",
                 "valor": 0
             },
@@ -12436,7 +12436,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 65,
+                "code": 813,
                 "nome": "Cuango",
                 "valor": 0
             },
@@ -12639,8 +12639,8 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 66,
-                "nome": "Cuangula",
+                "code": 1305,
+                "nome": "Cuangar",
                 "valor": 0
             },
             "geometry": {
@@ -12934,7 +12934,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 67,
+                "code": 819,
                 "nome": "Xa-Muteba",
                 "valor": 0
             },
@@ -13317,7 +13317,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 68,
+                "code": 811,
                 "nome": "Capenda-Camulemba",
                 "valor": 0
             },
@@ -13540,7 +13540,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 69,
+                "code": 809,
                 "nome": "Lubalo",
                 "valor": 0
             },
@@ -13759,7 +13759,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 70,
+                "code": 1707,
                 "nome": "Cacolo",
                 "valor": 0
             },
@@ -14106,7 +14106,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 71,
+                "code": 1705,
                 "nome": "Dala",
                 "valor": 0
             },
@@ -14445,7 +14445,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 72,
+                "code": 1701,
                 "nome": "Saurimo",
                 "valor": 0
             },
@@ -14996,7 +14996,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 73,
+                "code": 1703,
                 "nome": "Muconda",
                 "valor": 0
             },
@@ -15479,8 +15479,8 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 74,
-                "nome": "Lumbala-Nguimbo",
+                "code": 519,
+                "nome": "Ngonguembo",
                 "valor": 0
             },
             "geometry": {
@@ -15730,7 +15730,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 75,
+                "code": 1213,
                 "nome": "Luchazes",
                 "valor": 0
             },
@@ -16173,8 +16173,8 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 76,
-                "nome": "Luena",
+                "code": 401,
+                "nome": "Luanda",
                 "valor": 0
             },
             "geometry": {
@@ -16676,7 +16676,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 77,
+                "code": 1303,
                 "nome": "Cuito Canavale",
                 "valor": 0
             },
@@ -16975,7 +16975,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 78,
+                "code": 1311,
                 "nome": "Cuchi",
                 "valor": 0
             },
@@ -17214,8 +17214,8 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 79,
-                "nome": "Longa",
+                "code": 1015,
+                "nome": "Longonjo",
                 "valor": 0
             },
             "geometry": {
@@ -17417,7 +17417,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 80,
+                "code": 1309,
                 "nome": "Mavinga",
                 "valor": 0
             },
@@ -17844,7 +17844,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 81,
+                "code": 713,
                 "nome": "Massango",
                 "valor": 0
             },
@@ -18043,7 +18043,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 82,
+                "code": 517,
                 "nome": "Samba Caju",
                 "valor": 0
             },
@@ -18306,7 +18306,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 83,
+                "code": 703,
                 "nome": "Cacuso",
                 "valor": 0
             },
@@ -18541,8 +18541,8 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 84,
-                "nome": "Kunda-Dia-Baze",
+                "code": 719,
+                "nome": "Kunda dya Baze",
                 "valor": 0
             },
             "geometry": {
@@ -18744,7 +18744,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 85,
+                "code": 717,
                 "nome": "Marimba",
                 "valor": 0
             },
@@ -18995,8 +18995,8 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 86,
-                "nome": "Kiwaba-Ngozi",
+                "code": 727,
+                "nome": "Kiwaba Nzoji",
                 "valor": 0
             },
             "geometry": {
@@ -19142,8 +19142,8 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 87,
-                "nome": "Kahombo",
+                "code": 711,
+                "nome": "Cahombo",
                 "valor": 0
             },
             "geometry": {
@@ -19433,7 +19433,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 88,
+                "code": 507,
                 "nome": "Cambambe",
                 "valor": 0
             },
@@ -19548,7 +19548,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 89,
+                "code": 507,
                 "nome": "Cambambe",
                 "valor": 0
             },
@@ -19783,8 +19783,9 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 90,
-                "valor": 0
+                "code": 507,
+                "valor": 0,
+                "nome": "Cambambe"
             },
             "geometry": {
                 "type": "Polygon",
@@ -19869,7 +19870,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 91,
+                "code": 0,
                 "nome": "Ndalatando",
                 "valor": 0
             },
@@ -20056,7 +20057,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 92,
+                "code": 503,
                 "nome": "Lucala",
                 "valor": 0
             },
@@ -20159,7 +20160,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 93,
+                "code": 703,
                 "nome": "Cacuso",
                 "valor": 0
             },
@@ -20346,7 +20347,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 94,
+                "code": 513,
                 "nome": "Bolongongo",
                 "valor": 0
             },
@@ -20413,7 +20414,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 95,
+                "code": 517,
                 "nome": "Samba Caju",
                 "valor": 0
             },
@@ -20568,8 +20569,8 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 96,
-                "nome": "Conguembo",
+                "code": 519,
+                "nome": "Ngonguembo",
                 "valor": 0
             },
             "geometry": {
@@ -20759,7 +20760,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 97,
+                "code": 511,
                 "nome": "Quiculungo",
                 "valor": 0
             },
@@ -20982,8 +20983,8 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 98,
-                "nome": "Kanga",
+                "code": 515,
+                "nome": "Banga",
                 "valor": 0
             },
             "geometry": {
@@ -21165,7 +21166,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 99,
+                "code": 609,
                 "nome": "Libolo",
                 "valor": 0
             },
@@ -21340,7 +21341,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 100,
+                "code": 605,
                 "nome": "Quilenda",
                 "valor": 0
             },
@@ -21443,7 +21444,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 101,
+                "code": 613,
                 "nome": "Mussende",
                 "valor": 0
             },
@@ -21670,7 +21671,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 102,
+                "code": 611,
                 "nome": "Quibala",
                 "valor": 0
             },
@@ -21877,7 +21878,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 103,
+                "code": 619,
                 "nome": "Cassongue",
                 "valor": 0
             },
@@ -22064,7 +22065,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 104,
+                "code": 617,
                 "nome": "Conda",
                 "valor": 0
             },
@@ -22211,7 +22212,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 105,
+                "code": 603,
                 "nome": "Amboim",
                 "valor": 0
             },
@@ -22378,7 +22379,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 106,
+                "code": 0,
                 "nome": "Waku-Kungo",
                 "valor": 0
             },
@@ -22565,7 +22566,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 107,
+                "code": 623,
                 "nome": "Ebo",
                 "valor": 0
             },
@@ -22708,7 +22709,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 108,
+                "code": 709,
                 "nome": "Quela",
                 "valor": 0
             },
@@ -22935,7 +22936,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 109,
+                "code": 721,
                 "nome": "Quirima",
                 "valor": 0
             },
@@ -23118,7 +23119,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 110,
+                "code": 715,
                 "nome": "Luquembo",
                 "valor": 0
             },
@@ -23421,7 +23422,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 111,
+                "code": 707,
                 "nome": "Cambundi-Catembo",
                 "valor": 0
             },
@@ -23640,7 +23641,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 112,
+                "code": 723,
                 "nome": "Mucari",
                 "valor": 0
             },
@@ -23783,7 +23784,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 113,
+                "code": 701,
                 "nome": "Malange",
                 "valor": 0
             },
@@ -23894,7 +23895,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 114,
+                "code": 723,
                 "nome": "Mucari",
                 "valor": 0
             },
@@ -24021,8 +24022,8 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 115,
-                "nome": "Kiwaba-Ngozi",
+                "code": 727,
+                "nome": "Kiwaba Nzoji",
                 "valor": 0
             },
             "geometry": {
@@ -24244,7 +24245,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 116,
+                "code": 1525,
                 "nome": "Gambos",
                 "valor": 0
             },
@@ -24483,7 +24484,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 117,
+                "code": 1527,
                 "nome": "Humpata",
                 "valor": 0
             },
@@ -24598,7 +24599,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 118,
+                "code": 1511,
                 "nome": "Quilengues",
                 "valor": 0
             },
@@ -24769,7 +24770,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 119,
+                "code": 1501,
                 "nome": "Lubango",
                 "valor": 0
             },
@@ -24988,7 +24989,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 120,
+                "code": 1505,
                 "nome": "Chibia",
                 "valor": 0
             },
@@ -25263,7 +25264,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 121,
+                "code": 1509,
                 "nome": "Caluquembe",
                 "valor": 0
             },
@@ -25434,7 +25435,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 122,
+                "code": 1507,
                 "nome": "Caconda",
                 "valor": 0
             },
@@ -25577,7 +25578,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 123,
+                "code": 1523,
                 "nome": "Chipindo",
                 "valor": 0
             },
@@ -25732,7 +25733,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 124,
+                "code": 1513,
                 "nome": "Kuvango",
                 "valor": 0
             },
@@ -25991,7 +25992,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 125,
+                "code": 1521,
                 "nome": "Jamba",
                 "valor": 0
             },
@@ -26134,7 +26135,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 126,
+                "code": 1515,
                 "nome": "Quipungo",
                 "valor": 0
             },
@@ -26309,7 +26310,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 127,
+                "code": 1517,
                 "nome": "Matala",
                 "valor": 0
             },
@@ -26476,7 +26477,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 128,
+                "code": 1519,
                 "nome": "Chicomba",
                 "valor": 0
             },
@@ -26631,7 +26632,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 129,
+                "code": 911,
                 "nome": "Balombo",
                 "valor": 0
             },
@@ -26774,7 +26775,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 130,
+                "code": 913,
                 "nome": "Bocoio",
                 "valor": 0
             },
@@ -26961,7 +26962,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 131,
+                "code": 917,
                 "nome": "Chongoroi",
                 "valor": 0
             },
@@ -27120,7 +27121,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 132,
+                "code": 909,
                 "nome": "Ganda",
                 "valor": 0
             },
@@ -27335,7 +27336,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 133,
+                "code": 913,
                 "nome": "Bocoio",
                 "valor": 0
             },
@@ -27466,7 +27467,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 134,
+                "code": 915,
                 "nome": "Caimbambo",
                 "valor": 0
             },
@@ -27597,7 +27598,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 135,
+                "code": 907,
                 "nome": "Cubal",
                 "valor": 0
             },
@@ -27744,8 +27745,8 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 136,
-                "nome": "Nharea",
+                "code": 1109,
+                "nome": "Nharêa",
                 "valor": 0
             },
             "geometry": {
@@ -27951,7 +27952,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 137,
+                "code": 1107,
                 "nome": "Andulo",
                 "valor": 0
             },
@@ -28174,7 +28175,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 138,
+                "code": 1017,
                 "nome": "Mungo",
                 "valor": 0
             },
@@ -28305,7 +28306,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 139,
+                "code": 1007,
                 "nome": "Bailundo",
                 "valor": 0
             },
@@ -28452,7 +28453,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 140,
+                "code": 1113,
                 "nome": "Cuemba",
                 "valor": 0
             },
@@ -28715,8 +28716,9 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 141,
-                "valor": 0
+                "code": 1107,
+                "valor": 0,
+                "nome": "Andulo"
             },
             "geometry": {
                 "type": "Polygon",
@@ -28913,7 +28915,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 142,
+                "code": 1107,
                 "nome": "Andulo",
                 "valor": 0
             },
@@ -29116,8 +29118,8 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 143,
-                "nome": "Nharea",
+                "code": 1109,
+                "nome": "Nharêa",
                 "valor": 0
             },
             "geometry": {
@@ -29299,7 +29301,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 144,
+                "code": 1103,
                 "nome": "Cunhinga(Vouga)",
                 "valor": 0
             },
@@ -29430,7 +29432,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 145,
+                "code": 1111,
                 "nome": "Camacupa",
                 "valor": 0
             },
@@ -29693,7 +29695,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 146,
+                "code": 1105,
                 "nome": "Chinguar",
                 "valor": 0
             },
@@ -29812,8 +29814,8 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 147,
-                "nome": "Kuito",
+                "code": 1101,
+                "nome": "Cuito",
                 "valor": 0
             },
             "geometry": {
@@ -29927,7 +29929,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 149,
+                "code": 1117,
                 "nome": "Catabola",
                 "valor": 0
             },
@@ -30030,7 +30032,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 150,
+                "code": 1103,
                 "nome": "Cunhinga(Vouga)",
                 "valor": 0
             },
@@ -30173,7 +30175,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 151,
+                "code": 1019,
                 "nome": "Londuimbali",
                 "valor": 0
             },
@@ -30276,8 +30278,8 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 152,
-                "nome": "Tchinjenje",
+                "code": 1021,
+                "nome": "Chinjenje",
                 "valor": 0
             },
             "geometry": {
@@ -30367,8 +30369,8 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 153,
-                "nome": "Ukuma",
+                "code": 1013,
+                "nome": "Ucuma",
                 "valor": 0
             },
             "geometry": {
@@ -30522,8 +30524,8 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 154,
-                "nome": "Ukuma",
+                "code": 1013,
+                "nome": "Ucuma",
                 "valor": 0
             },
             "geometry": {
@@ -30657,8 +30659,8 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 155,
-                "nome": "Ekuma",
+                "code": 1013,
+                "nome": "Ucuma",
                 "valor": 0
             },
             "geometry": {
@@ -30828,7 +30830,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 156,
+                "code": 1009,
                 "nome": "Caala",
                 "valor": 0
             },
@@ -30979,8 +30981,8 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 157,
-                "nome": "Tchikala-Tcholohanga",
+                "code": 1003,
+                "nome": "Chicala-Choloanga",
                 "valor": 0
             },
             "geometry": {
@@ -31062,8 +31064,8 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 158,
-                "nome": "Tchikala-Tcholohanga",
+                "code": 1003,
+                "nome": "Chicala-Choloanga",
                 "valor": 0
             },
             "geometry": {
@@ -31153,7 +31155,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 159,
+                "code": 0,
                 "nome": "Kathihungo",
                 "valor": 0
             },
@@ -31316,7 +31318,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 160,
+                "code": 0,
                 "nome": "Kathihungo",
                 "valor": 0
             },
@@ -31523,7 +31525,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 161,
+                "code": 1001,
                 "nome": "Huambo",
                 "valor": 0
             },
@@ -31698,7 +31700,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 162,
+                "code": 903,
                 "nome": "Bailundo",
                 "valor": 0
             },
@@ -31849,7 +31851,7 @@
         {
             "type": "Feature",
             "properties": {
-                "code": 163,
+                "code": 1017,
                 "nome": "Mungo",
                 "valor": 0
             },

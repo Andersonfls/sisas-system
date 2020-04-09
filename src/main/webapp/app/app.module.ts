@@ -33,8 +33,8 @@ import {SisasRelatoriosModule} from './Relatorios/relatorios.module';
 import {SisasMapasTematicosModule} from './mapas-tematicos/mapas.module';
 import {NgxCurrencyModule} from 'ngx-currency';
 import {LeafletModule} from '@asymmetrik/ngx-leaflet';
-import {CKEditorModule} from 'ng2-ckeditor';
 import {FormsModule} from '@angular/forms';
+import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
 
 @NgModule({
     imports: [
@@ -51,8 +51,8 @@ import {FormsModule} from '@angular/forms';
         SisasMapasTematicosModule,
         NgbModule.forRoot(),
         LeafletModule.forRoot(),
-        CKEditorModule,
         FormsModule,
+        NgMultiSelectDropDownModule.forRoot()
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [

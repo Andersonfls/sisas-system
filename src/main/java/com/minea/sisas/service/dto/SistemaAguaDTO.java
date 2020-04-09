@@ -1,15 +1,13 @@
 package com.minea.sisas.service.dto;
 
 
-import com.minea.sisas.domain.Comuna;
-import com.minea.sisas.domain.Municipio;
-import com.minea.sisas.domain.Provincia;
-import com.minea.sisas.domain.Situacao;
+import com.minea.sisas.domain.*;
 
 import java.time.LocalDate;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -168,8 +166,17 @@ public class SistemaAguaDTO implements Serializable {
     private String nmEquipamentosComAvariaObs;
     private String nmModeloBombaManualUtilizadaObs;
     private String motivoAvariaSistema;
-
     private Boolean status;
+
+    private List<AvariaSistemaAgua> avariaSistemaAguas;
+
+    public List<AvariaSistemaAgua> getAvariaSistemaAguas() {
+        return avariaSistemaAguas;
+    }
+
+    public void setAvariaSistemaAguas(List<AvariaSistemaAgua> avariaSistemaAguas) {
+        this.avariaSistemaAguas = avariaSistemaAguas;
+    }
 
     public String getMotivoAvariaSistema() {
         return motivoAvariaSistema;

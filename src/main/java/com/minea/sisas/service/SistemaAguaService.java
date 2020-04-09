@@ -1,7 +1,9 @@
 package com.minea.sisas.service;
 
+import com.minea.sisas.domain.AvariaSistemaAgua;
 import com.minea.sisas.domain.SistemaAgua;
 import com.minea.sisas.domain.enumeration.TipoAcao;
+import com.minea.sisas.repository.AvariaSistemaAguaRepository;
 import com.minea.sisas.repository.SistemaAguaRepository;
 import com.minea.sisas.repository.UserRepository;
 import com.minea.sisas.security.SecurityUtils;
@@ -22,6 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.security.Principal;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -48,12 +51,17 @@ public class SistemaAguaService {
     @Autowired
     private UserService userService;
 
-    public SistemaAguaService(SistemaAguaRepository sistemaAguaRepository, SistemaAguaMapper sistemaAguaMapper, SistemaAguaLogService sistemaAguaLogService, UserRepository userRepository, UserService userService) {
+    @Autowired
+    private AvariaSistemaAguaRepository avariaSistemaAguaRepository;
+
+    public SistemaAguaService(SistemaAguaRepository sistemaAguaRepository, SistemaAguaMapper sistemaAguaMapper, SistemaAguaLogService sistemaAguaLogService,
+                              UserRepository userRepository, UserService userService, AvariaSistemaAguaRepository avariaSistemaAguaRepository) {
         this.sistemaAguaRepository = sistemaAguaRepository;
         this.sistemaAguaMapper = sistemaAguaMapper;
         this.sistemaAguaLogService = sistemaAguaLogService;
         this.userRepository = userRepository;
         this.userService = userService;
+        this.avariaSistemaAguaRepository = avariaSistemaAguaRepository;
     }
 
     /**
@@ -70,12 +78,35 @@ public class SistemaAguaService {
         sistemaAgua.setDtUltimaAlteracao(LocalDate.now());
         sistemaAgua.setStatus(true);
         sistemaAgua = sistemaAguaRepository.save(sistemaAgua);
+        saveAvariasSistema(sistemaAguaDTO.getAvariaSistemaAguas(), sistemaAgua.getId());
+
         if (Objects.nonNull(sistemaAguaDTO.getId())) {
             logSave(TipoAcao.ATUALIZACAO, sistemaAgua);
         } else {
             logSave(TipoAcao.INCLUSAO, sistemaAgua);
         }
-        return sistemaAguaMapper.toDto(sistemaAgua);
+        SistemaAguaDTO response = sistemaAguaMapper.toDto(sistemaAgua);
+        response.setAvariaSistemaAguas(this.avariaSistemaAguaRepository.findAllBySistemAguaId(response.getId()));
+        return response;
+    }
+
+    private void saveAvariasSistema(List<AvariaSistemaAgua> avarias,  Long idSistemaAgua) {
+        List<AvariaSistemaAgua> avariasAntigas = this.avariaSistemaAguaRepository.findAllBySistemAguaId(idSistemaAgua);
+
+        //ALL THE PREVIOUS AVARIAS DELETED
+        if (Objects.nonNull(avariasAntigas)) {
+            avariasAntigas.stream().forEach( av -> {
+                this.avariaSistemaAguaRepository.delete(av.getId());
+            });
+        }
+
+        //INSERTING THE NEW ONES
+        if (Objects.nonNull(avarias)) {
+            avarias.stream().forEach(item ->{
+                item.setIdSistemaAgua(idSistemaAgua);
+                this.avariaSistemaAguaRepository.save(item);
+            });
+        }
     }
 
     private void logSave(TipoAcao acao, SistemaAgua agua) {
@@ -140,7 +171,10 @@ public class SistemaAguaService {
     public SistemaAguaDTO findOne(Long id) {
         log.debug("Request to get SistemaAgua : {}", id);
         SistemaAgua sistemaAgua = sistemaAguaRepository.findOne(id);
-        return sistemaAguaMapper.toDto(sistemaAgua);
+
+        SistemaAguaDTO response = sistemaAguaMapper.toDto(sistemaAgua);
+        response.setAvariaSistemaAguas(this.avariaSistemaAguaRepository.findAllBySistemAguaId(response.getId()));
+        return response;
     }
 
     /**

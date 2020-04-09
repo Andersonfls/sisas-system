@@ -50,4 +50,13 @@ export class MapasService {
         const options = createRequestOption(req);
         return this.http.get<MapasDados[]>(this.resourceUrl + '/sistemas-agua-kuanza-provincial', {params: options, observe: 'response'});
     }
+
+    buscaDadosPorcentagemCoberturaServicosAguaMunicipal(req?: any): Observable<HttpResponse<MapasDados[]>> {
+        const options = createRequestOption(req);
+        return this.http.get<MapasDados[]>(this.resourceUrl + '/cobertura-servicos-agua-municipal', {params: options, observe: 'response'});
+    }
+    buscaDadosPorcentagemSistemasAguaMunicipal(req?: any): Observable<HttpResponse<MapasDados[]>> {
+        const options = createRequestOption(req);
+        return this.http.get<MapasDados[]>(this.resourceUrl + '/sistemas-agua-municipal', {params: options, observe: 'response'});
+    }
 }

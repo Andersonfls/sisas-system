@@ -12,6 +12,9 @@ import {Situacao, SituacaoService} from '../situacao';
 import {Comuna, ComunaService} from '../comuna';
 import {Provincia, ProvinciaService} from '../provincia';
 import {Municipio, MunicipioService} from '../municipio';
+import {IDropdownSettings} from 'ng-multiselect-dropdown';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {AvariaSistemaAgua} from './avaria-sistema-agua.model';
 
 @Component({
     selector: 'jhi-sistema-agua-dialog',
@@ -37,6 +40,13 @@ export class SistemaAguaDialogComponent implements OnInit {
     listaAnos: number[];
     isConcluido: boolean;
 
+    cities: Array<any> = [];
+    selectedItems: Array<any> = [];
+    dropdownSettings: any = {};
+    ShowFilter = false;
+    limitSelection = false;
+    myForm: FormGroup;
+
     constructor(
         private jhiAlertService: JhiAlertService,
         private sistemaAguaService: SistemaAguaService,
@@ -46,11 +56,34 @@ export class SistemaAguaDialogComponent implements OnInit {
         private provinciaService: ProvinciaService,
         private eventManager: JhiEventManager,
         private route: ActivatedRoute,
-        private router: Router
+        private router: Router,
+        private fb: FormBuilder
     ) {
     }
 
     ngOnInit() {
+        this.cities = [
+            { item_id: 1, item_text: 'New Delhi' },
+            { item_id: 2, item_text: 'Mumbai' },
+            { item_id: 3, item_text: 'Bangalore' },
+            { item_id: 4, item_text: 'Pune' },
+            { item_id: 5, item_text: 'Chennai' },
+            { item_id: 6, item_text: 'Navsari' }
+        ];
+        this.selectedItems = [{ item_id: 4, item_text: 'Pune' }, { item_id: 6, item_text: 'Navsari' }];
+        this.dropdownSettings = {
+            singleSelection: false,
+            idField: 'item_id',
+            textField: 'item_text',
+            selectAllText: 'Select All',
+            unSelectAllText: 'UnSelect All',
+            itemsShowLimit: 3,
+            allowSearchFilter: this.ShowFilter
+        };
+        this.myForm = this.fb.group({
+            city: new FormControl('Drew', Validators.required)
+        });
+
         this.isSaving = false;
         this.isConcluido = false;
         this.sistemaAgua = new SistemaAgua();
@@ -73,6 +106,44 @@ export class SistemaAguaDialogComponent implements OnInit {
 
         const now = new Date();
         this.sistemaAgua.dtLancamento = {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()};
+    }
+
+    onItemSelect(item: any) {
+        console.log('onItemSelect', item);
+    }
+    onSelectAll(items: any) {
+        console.log('onSelectAll', items);
+    }
+    toogleShowFilter() {
+        this.ShowFilter = !this.ShowFilter;
+        this.dropdownSettings = Object.assign({}, this.dropdownSettings, { allowSearchFilter: this.ShowFilter });
+    }
+
+    handleLimitSelection() {
+        if (this.limitSelection) {
+            this.dropdownSettings = Object.assign({}, this.dropdownSettings, { limitSelection: 2 });
+        } else {
+            this.dropdownSettings = Object.assign({}, this.dropdownSettings, { limitSelection: null });
+        }
+    }
+
+    adicionarAvaria() {
+        const av = new AvariaSistemaAgua();
+        av.causaAvariaSistema = this.sistemaAgua.causaAvariaSistema;
+        av.nmTpAvariaSistema = this.sistemaAgua.nmTpAvariaSistema;
+        av.statusResolucao = this.sistemaAgua.statusResolucao;
+        av.tempoServicoDisponivel = this.sistemaAgua.tempoServicoDisponivel;
+
+        if (!this.sistemaAgua.avariaSistemaAguas) {
+            this.sistemaAgua.avariaSistemaAguas = new Array<any>();
+        }
+        this.sistemaAgua.avariaSistemaAguas.push(av);
+    }
+
+    removerAvaria(index) {
+        if (confirm('Confirma a Excusão da avaria?')) {
+            this.sistemaAgua.avariaSistemaAguas.splice(index, 1);
+        }
     }
 
     concluiQuestionario() {

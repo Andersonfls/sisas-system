@@ -24,6 +24,7 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -108,10 +109,10 @@ public class MunicipioResource {
     }
 
     @GetMapping("/municipios/nomeFiltro")
-    public ResponseEntity<List<MunicipioDTO>> getByNome(@RequestParam(value = "nome") String nome, Pageable pageable) {
-        Page<MunicipioDTO> page = municipioRepository.buscarPorNome(nome, pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/sistema-aguas");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    public ResponseEntity<List<Municipio>> getByNome(@RequestParam(value = "nome") String nome, Pageable pageable) {
+        List<Municipio> page = municipioRepository.buscarPorNome(nome);
+     //   HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(null, "/api/sistema-aguas");
+        return new ResponseEntity<>(page, null, HttpStatus.OK);
     }
 
     /**
