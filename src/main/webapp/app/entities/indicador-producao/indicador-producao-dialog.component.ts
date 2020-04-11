@@ -61,7 +61,7 @@ export class IndicadorProducaoDialogComponent implements OnInit {
                 this.situacaos = res.body;
             }, (res: HttpErrorResponse) => this.onError(res.message));
 
-        this.provinciaService.query().subscribe(
+        this.provinciaService.queryPorNivelUsuario().subscribe(
             (res: HttpResponse<Provincia[]>) => {
                 this.provincias = res.body;
             }, (res: HttpErrorResponse) => this.onError(res.message));
