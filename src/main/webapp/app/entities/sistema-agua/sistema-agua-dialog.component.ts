@@ -12,8 +12,6 @@ import {Situacao, SituacaoService} from '../situacao';
 import {Comuna, ComunaService} from '../comuna';
 import {Provincia, ProvinciaService} from '../provincia';
 import {Municipio, MunicipioService} from '../municipio';
-import {IDropdownSettings} from 'ng-multiselect-dropdown';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {AvariaSistemaAgua} from './avaria-sistema-agua.model';
 
 @Component({
@@ -39,13 +37,28 @@ export class SistemaAguaDialogComponent implements OnInit {
     routeSub: any;
     listaAnos: number[];
     isConcluido: boolean;
-
-    cities: Array<any> = [];
-    selectedItems: Array<any> = [];
-    dropdownSettings: any = {};
     ShowFilter = false;
-    limitSelection = false;
-    myForm: FormGroup;
+
+    dropdownSettings: any = {};
+    tratamentoPadraoUtilizadoLista: Array<any> = [];
+    tratamentoPadraoUtilizado: Array<any> = [];
+    isTratamentoPadraoOutros: boolean;
+
+    tratamentoBasicoUtilizadoLista: Array<any> = [];
+    tratamentoBasicoUtilizado: Array<any> = [];
+    isTratamentoBasicoOutros: boolean;
+
+    motivosAusenciaTratamentoLista: Array<any> = [];
+    motivosAusenciaTratamento: Array<any> = [];
+    isMotivosAusenciaTratamentoOutros: boolean;
+
+    equipamentosComAvariaLista: Array<any> = [];
+    equipamentosComAvaria: Array<any> = [];
+    isEquipamentosComAvariaOutros: boolean;
+
+    materialUtilizadoLista: Array<any> = [];
+    materialUtilizado: Array<any> = [];
+    isMaterialUtilizadoOutros: boolean;
 
     constructor(
         private jhiAlertService: JhiAlertService,
@@ -56,33 +69,20 @@ export class SistemaAguaDialogComponent implements OnInit {
         private provinciaService: ProvinciaService,
         private eventManager: JhiEventManager,
         private route: ActivatedRoute,
-        private router: Router,
-        private fb: FormBuilder
+        private router: Router
     ) {
     }
 
     ngOnInit() {
-        this.cities = [
-            { item_id: 1, item_text: 'New Delhi' },
-            { item_id: 2, item_text: 'Mumbai' },
-            { item_id: 3, item_text: 'Bangalore' },
-            { item_id: 4, item_text: 'Pune' },
-            { item_id: 5, item_text: 'Chennai' },
-            { item_id: 6, item_text: 'Navsari' }
-        ];
-        this.selectedItems = [{ item_id: 4, item_text: 'Pune' }, { item_id: 6, item_text: 'Navsari' }];
         this.dropdownSettings = {
             singleSelection: false,
-            idField: 'item_id',
+            idField: 'item_text',
             textField: 'item_text',
-            selectAllText: 'Select All',
-            unSelectAllText: 'UnSelect All',
+            selectAllText: 'Marcar Todos',
+            unSelectAllText: 'Desmarcar Todos',
             itemsShowLimit: 3,
             allowSearchFilter: this.ShowFilter
         };
-        this.myForm = this.fb.group({
-            city: new FormControl('Drew', Validators.required)
-        });
 
         this.isSaving = false;
         this.isConcluido = false;
@@ -103,28 +103,60 @@ export class SistemaAguaDialogComponent implements OnInit {
             }, (res: HttpErrorResponse) => this.onError(res.message));
 
         this.montaListaAnos();
+        this.carregarListasSelectsMultiplos();
 
         const now = new Date();
         this.sistemaAgua.dtLancamento = {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()};
     }
 
+    carregarListasSelectsMultiplos() {
+        this.tratamentoPadraoUtilizadoLista = [
+            { item_text: 'Pré-tratamento' },
+            { item_text: 'Coagulação, floculação, decantação, filtração' },
+            { item_text: 'Desinfestação' },
+            { item_text: 'Outros' }
+        ];
+
+        this.tratamentoBasicoUtilizadoLista = [
+            { item_text: 'Cloro gasoso' },
+            { item_text: 'Cloro líquido' },
+            { item_text: 'Cloro em pó' },
+            { item_text: 'Outros' }
+        ];
+
+        this.motivosAusenciaTratamentoLista = [
+            { item_text: 'Falta de instalações' },
+            { item_text: 'Falta de equipamento' },
+            { item_text: 'Falta de reagentes Químicos' },
+            { item_text: 'Falta de conhecimento' },
+            { item_text: 'Outros' }
+        ];
+
+        this.equipamentosComAvariaLista = [
+            { item_text: 'Equipamento de dosagem' },
+            { item_text: 'Electroagitadores' },
+            { item_text: 'Compressores' },
+            { item_text: 'Outros' }
+        ];
+
+        this.materialUtilizadoLista = [
+            { item_text: 'Fibro cimento' },
+            { item_text: 'Ferro galvanizado' },
+            { item_text: 'Ferro fundido' },
+            { item_text: 'Ferro dúctil' },
+            { item_text: 'Polietileno' },
+            { item_text: 'PVC' },
+            { item_text: 'Outros' }
+        ];
+    }
+    // VERIFICO SE A OPCAO OUTROS FOI SELECIONADA, CASO SIM, ATUALIZO TODOS OS COMBOS
     onItemSelect(item: any) {
-        console.log('onItemSelect', item);
-    }
-    onSelectAll(items: any) {
-        console.log('onSelectAll', items);
-    }
-    toogleShowFilter() {
-        this.ShowFilter = !this.ShowFilter;
-        this.dropdownSettings = Object.assign({}, this.dropdownSettings, { allowSearchFilter: this.ShowFilter });
+        console.log(item);
+        this.verificaOpcaoOutrosSelecionada();
     }
 
-    handleLimitSelection() {
-        if (this.limitSelection) {
-            this.dropdownSettings = Object.assign({}, this.dropdownSettings, { limitSelection: 2 });
-        } else {
-            this.dropdownSettings = Object.assign({}, this.dropdownSettings, { limitSelection: null });
-        }
+    onSelectAll(items: any) {
+        console.log('onSelectAll', items);
     }
 
     adicionarAvaria() {
@@ -150,7 +182,7 @@ export class SistemaAguaDialogComponent implements OnInit {
         this.isConcluido = true;
     }
     montaListaInicio() {
-        this.provinciaService.query().subscribe(
+        this.provinciaService.queryPorNivelUsuario().subscribe(
             (res: HttpResponse<Provincia[]>) => {
                 this.provincias = res.body;
             },
@@ -255,15 +287,15 @@ export class SistemaAguaDialogComponent implements OnInit {
                 }
 
                 this.montaListaInicio();
-                console.log(this.sistemaAgua.provincia);
                 if (this.sistemaAgua.provincia) {
                     this.onChangeMunicipios();
                 }
-                console.log(this.sistemaAgua.municipio);
                 if (this.sistemaAgua.municipio) {
                     this.onChangeComunas();
                 }
                 console.log(this.sistemaAgua);
+                this.converteSelectsMultiplosStringEmArray();
+                this.verificaOpcaoOutrosSelecionada();
             });
     }
 
@@ -284,6 +316,7 @@ export class SistemaAguaDialogComponent implements OnInit {
     save() {
         this.isSaving = true;
         console.log(this.sistemaAgua);
+        this.converteSelectsMultiplosArrayEmString(); // CONVERTE ARRAYS EM STRING
         if (this.isEstadoFuncionamentoPreenchido()) {
             if (this.sistemaAgua.id !== undefined) {
                 this.subscribeToSaveResponse(
@@ -295,6 +328,67 @@ export class SistemaAguaDialogComponent implements OnInit {
         } else {
             alert('Preencha o Estado de funcionamento do Sistema.');
         }
+    }
+
+    converteSelectsMultiplosArrayEmString() {
+        if (this.sistemaAgua.possuiSistemaAgua) {
+
+            this.sistemaAgua.nmTpTratamentoPadraoUtilizado = this.converteArrayEmString(this.tratamentoPadraoUtilizado);
+            this.sistemaAgua.nmTpTratamentoBasicoUtilizado = this.converteArrayEmString(this.tratamentoBasicoUtilizado);
+            this.sistemaAgua.existeMotivoAusenciaTratamento = this.converteArrayEmString(this.motivosAusenciaTratamento);
+            this.sistemaAgua.nmEquipamentosComAvaria = this.converteArrayEmString(this.equipamentosComAvaria);
+            this.sistemaAgua.descMaterialUtilizadoCondutas = this.converteArrayEmString(this.materialUtilizado);
+        }
+    }
+
+    converteArrayEmString(array: Array<any>) {
+        let emString = '';
+        for (let i = 0; i < array.length ; i++) {
+            if (i > 0) {
+                emString += ';';
+            }
+            emString += array[i].item_text;
+        }
+        return emString;
+    }
+
+    isOpcaoOutrosSelecionada(array: Array<any>) {
+        for (let i = 0; i < array.length ; i++) {
+            if (array[i].item_text === 'Outros') {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    verificaOpcaoOutrosSelecionada() {
+        this.isTratamentoPadraoOutros = this.isOpcaoOutrosSelecionada(this.tratamentoPadraoUtilizado);
+        this.isTratamentoBasicoOutros = this.isOpcaoOutrosSelecionada(this.tratamentoBasicoUtilizado);
+        this.isMotivosAusenciaTratamentoOutros = this.isOpcaoOutrosSelecionada(this.motivosAusenciaTratamento);
+        this.isEquipamentosComAvariaOutros = this.isOpcaoOutrosSelecionada(this.equipamentosComAvaria);
+        this.isMaterialUtilizadoOutros = this.isOpcaoOutrosSelecionada(this.materialUtilizado);
+    }
+
+    converteSelectsMultiplosStringEmArray() {
+        // TRATAMENTO PADRAO
+        this.tratamentoPadraoUtilizado = this.converteStringEmArray(this.sistemaAgua.nmTpTratamentoPadraoUtilizado);
+        // TRATAMENTO BASICO
+        this.tratamentoBasicoUtilizado = this.converteStringEmArray(this.sistemaAgua.nmTpTratamentoBasicoUtilizado);
+        // MOTIVOS AUSENCIA TRATAMENTO
+        this.motivosAusenciaTratamento = this.converteStringEmArray(this.sistemaAgua.existeMotivoAusenciaTratamento);
+        // EQUIPAMENTOS COM AVARIA
+        this.equipamentosComAvaria = this.converteStringEmArray(this.sistemaAgua.nmEquipamentosComAvaria);
+        // MATERIAL UTILIZADO CONDUTA
+        this.materialUtilizado = this.converteStringEmArray(this.sistemaAgua.descMaterialUtilizadoCondutas);
+    }
+
+    converteStringEmArray(emString: string) {
+        const array: string[] = emString.split(';');
+        const response: Array<any> = new Array<any>();
+        for (let i = 0; i < array.length ; i++) {
+            response.push({ item_text: array[i] });
+        }
+        return response;
     }
 
     isEstadoFuncionamentoPreenchido() {

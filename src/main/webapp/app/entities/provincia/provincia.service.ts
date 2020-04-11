@@ -37,6 +37,12 @@ export class ProvinciaService {
             .map((res: HttpResponse<Provincia[]>) => this.convertArrayResponse(res));
     }
 
+    queryPorNivelUsuario(req?: any): Observable<HttpResponse<Provincia[]>> {
+        const options = createRequestOption(req);
+        return this.http.get<Provincia[]>(this.resourceUrl + '/nivel-usuario', {params: options, observe: 'response'})
+            .map((res: HttpResponse<Provincia[]>) => this.convertArrayResponse(res));
+    }
+
     buscaProvinciaDoUsuario(req?: any): Observable<HttpResponse<Provincia[]>> {
         const options = createRequestOption(req);
         return this.http.get<Provincia[]>(this.resourceUrl + '/provincia-usuario', {params: options, observe: 'response'});

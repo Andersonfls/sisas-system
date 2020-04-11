@@ -27,7 +27,7 @@ import {
     ErrorComponent,
     SidebarComponent
 } from './layouts';
-import {NgbDateParserFormatter, NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbDateParserFormatter, NgbDropdownModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgbDateCustomParserFormatter} from './entities/programas-projectos/NgbDateCustomParserFormatter';
 import {SisasRelatoriosModule} from './Relatorios/relatorios.module';
 import {SisasMapasTematicosModule} from './mapas-tematicos/mapas.module';
@@ -52,7 +52,9 @@ import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
         NgbModule.forRoot(),
         LeafletModule.forRoot(),
         FormsModule,
-        NgMultiSelectDropDownModule.forRoot()
+        NgMultiSelectDropDownModule.forRoot(),
+        NgMultiSelectDropDownModule,
+        NgbDropdownModule
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [

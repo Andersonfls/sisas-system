@@ -16,6 +16,8 @@ import {
     SistemaAguaResolvePagingParams,
 } from './';
 import {ReactiveFormsModule} from '@angular/forms';
+import {NgbDropdownModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
 
 const ENTITY_STATES = [
     ...sistemaAguaRoute,
@@ -26,7 +28,9 @@ const ENTITY_STATES = [
     imports: [
         SisasSharedModule,
         RouterModule.forChild(ENTITY_STATES),
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        NgbDropdownModule,
+        NgMultiSelectDropDownModule
     ],
     declarations: [
         SistemaAguaComponent,

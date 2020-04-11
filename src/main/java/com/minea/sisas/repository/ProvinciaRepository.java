@@ -1,6 +1,7 @@
 package com.minea.sisas.repository;
 
 import com.minea.sisas.domain.Provincia;
+import com.minea.sisas.service.dto.ProvinciaDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
@@ -19,6 +20,8 @@ import java.util.List;
 public interface ProvinciaRepository extends JpaRepository<Provincia, Long>, JpaSpecificationExecutor<Provincia> {
     @Query("select p from Provincia p where LOWER(p.nmProvincia) like LOWER(concat(:nome,'%'))")
     Page buscarPorNome(@Param("nome") String nome, Pageable pageable);
+
+    Page<Provincia> findAllByIdEquals(Long id, Pageable pageable);
 
     @Query(value = "SELECT v.NM_PROVINCIA as Provincia, " +
         " (SELECT count(m.ID_MUNICIPIO) from sisas.municipio m where m.ID_PROVINCIA  = v.ID_PROVINCIA  group  by  v.NM_PROVINCIA) as NumeroMunicipios, " +
