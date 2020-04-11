@@ -54,15 +54,13 @@ export class FuncAguaChafarizesComponent implements OnInit {
     public captureScreen(elementId) {
         const data = document.getElementById(elementId);
         (html2canvas as any)(data).then((canvas) => {
-            const imgWidth = 208;
-            const pageHeight = 295;
+            const imgWidth = 255;
             const imgHeight = canvas.height * imgWidth / canvas.width;
-            const heightLeft = imgHeight;
             const contentDataURL = canvas.toDataURL('image/png');
-            const pdf = new jsPDF('p', 'mm', 'a4');
-            const position = 0;
-            pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
-            pdf.save('relatorio-sisas.pdf');
+            const pdf = new jsPDF('l', 'mm', 'a4');
+            pdf.text('Funcionamento de Sistemas de Água e Chafarizes (Nível Comunal)', 50, 7);
+            pdf.addImage(contentDataURL, 'PNG', 22, 13, imgWidth, imgHeight + 10);
+            pdf.save('funcionamento-aguas-chafarizes.pdf');
         }).catch(function(error) {
             // Error Handling
         });

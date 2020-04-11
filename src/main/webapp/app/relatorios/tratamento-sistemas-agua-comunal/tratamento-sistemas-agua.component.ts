@@ -49,14 +49,11 @@ export class TratamentoSistemasAguaComponent implements OnInit {
     public captureScreen(elementId) {
         const data = document.getElementById(elementId);
         (html2canvas as any)(data).then((canvas) => {
-            const imgWidth = 208;
-            const pageHeight = 295;
+            const imgWidth = 206;
             const imgHeight = canvas.height * imgWidth / canvas.width;
-            const heightLeft = imgHeight;
             const contentDataURL = canvas.toDataURL('image/png');
             const pdf = new jsPDF('p', 'mm', 'a4');
-            const position = 0;
-            pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
+            pdf.addImage(contentDataURL, 'PNG', 2, 0, imgWidth, imgHeight);
             pdf.save('tratamentoSistemasAguas.pdf');
         }).catch(function(error) {
             // Error Handling

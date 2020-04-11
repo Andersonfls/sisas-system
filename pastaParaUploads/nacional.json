@@ -3216,7 +3216,7 @@
         {
             "type": "Feature",
             "properties": {
-                "nome": "Kuanza Norte",
+                "nome": "Cuanza Norte",
                 "code": 5,
                 "valor": 0
             },
@@ -5777,7 +5777,7 @@
         {
             "type": "Feature",
             "properties": {
-                "nome": "Kuanza Sul",
+                "nome": "Cuanza Sul",
                 "code": 6,
                 "valor": 0
             },

@@ -249,7 +249,7 @@ public interface RelatorioRepository extends JpaRepository<Provincia, Long>, Jpa
         "     inner join sisas.provincia p on s.ID_PROVINCIA = p.ID_PROVINCIA      " +
         "     where s.POSSUI_SISTEMA_AGUA = 1 AND s.ID_PROVINCIA = :provinciaId     " +
         "GROUP BY       " +
-        "       p.NM_PROVINCIA", nativeQuery = true)
+        "       p.NM_PROVINCIA, p.ID_PROVINCIA, p.populacao", nativeQuery = true)
     List<Object[]> beneficiariosAguaBmbEnergiaProvincialQuery(@Param("provinciaId") Long provinciaId);
 
     //BENEFICIARIOS BOMBA ENERGIA - COMUNAL
@@ -1159,9 +1159,9 @@ public interface RelatorioRepository extends JpaRepository<Provincia, Long>, Jpa
         "     inner join sisas.comuna c on s.ID_COMUNA = c.ID_COMUNA        " +
         "     where  s.POSSUI_SISTEMA_AGUA = 1 AND s.ID_PROVINCIA = :provinciaId       " +
         "GROUP BY         " +
-        "       p.NM_PROVINCIA,        " +
-        "       m.NM_MUNICIPIO,        " +
-        "       c.NM_COMUNA", nativeQuery = true)
+        "       p.NM_PROVINCIA, p.ID_PROVINCIA,        " +
+        "       m.NM_MUNICIPIO, m.ID_MUNICIPIO,        " +
+        "       c.NM_COMUNA, C.ID_COMUNA", nativeQuery = true)
     List<Object[]> funcionamentoAguaChafarizesComunal(@Param("provinciaId") Long provinciaId);
 
     // DASHBOARD

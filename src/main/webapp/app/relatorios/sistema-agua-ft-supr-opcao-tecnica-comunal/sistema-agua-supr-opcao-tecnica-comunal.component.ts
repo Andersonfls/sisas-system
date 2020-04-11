@@ -60,7 +60,7 @@ export class SistemaAguaSupeOpcaoTecnicaComunalComponent implements OnInit {
     public captureScreen(elementId) {
         const data = document.getElementById(elementId);
         (html2canvas as any)(data).then((canvas) => {
-            const imgWidth = 208;
+            const imgWidth = 207;
             const pageHeight = 295;
             const imgHeight = canvas.height * imgWidth / canvas.width;
             const heightLeft = imgHeight;

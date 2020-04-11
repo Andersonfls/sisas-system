@@ -494,9 +494,9 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "     inner join sisas.comuna c on s.ID_COMUNA = c.ID_COMUNA        " +
         "     where  s.POSSUI_SISTEMA_AGUA = 1        " +
         "GROUP BY         " +
-        "       p.NM_PROVINCIA,        " +
-        "       m.NM_MUNICIPIO,        " +
-        "       c.NM_COMUNA", nativeQuery = true)
+        "       p.NM_PROVINCIA, p.ID_PROVINCIA,        " +
+        "       m.NM_MUNICIPIO, m.ID_MUNICIPIO,        " +
+        "       c.NM_COMUNA, C.ID_COMUNA", nativeQuery = true)
     List<Object[]> funcionamentoAguaChafarizesComunal();
 
     // DASHBOARD
@@ -1660,7 +1660,7 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "     inner join sisas.provincia p on s.ID_PROVINCIA = p.ID_PROVINCIA      " +
         "     where s.POSSUI_SISTEMA_AGUA = 1      " +
         "GROUP BY       " +
-        "       p.NM_PROVINCIA", nativeQuery = true)
+        "       p.NM_PROVINCIA, p.ID_PROVINCIA, p.populacao", nativeQuery = true)
     List<Object[]> beneficiariosAguaBmbEnergiaProvincialQuery();
 
     //BENEFICIARIOS BOMBA ENERGIA - COMUNAL
