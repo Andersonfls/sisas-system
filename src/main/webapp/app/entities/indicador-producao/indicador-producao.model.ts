@@ -94,7 +94,8 @@ export class IndicadorProducao implements BaseEntity {
         public sistemaAgua?: SistemaAgua,
         public comuna?: Comuna,
         public provincia?: Provincia,
-        public municipio?: Municipio
+        public municipio?: Municipio,
+        public totalAcoesFormacaoPlanejadas?: number
     ) {
         this.id = id ? id : null;
         this.situacao = situacao ? situacao : null;

@@ -946,10 +946,11 @@
                             <label class="form-control-label"
                                    jhiTranslate="sisasApp.indicadorProducao.vlrTotalFacturado"
                                    for="field_vlrTotalFacturado">Vlr Total Facturado</label>
-                            <input type="number" class="form-control" name="vlrTotalFacturado"
+                            <input type="text" class="form-control" name="vlrTotalFacturado"
                                    id="field_vlrTotalFacturado"
                                    [(ngModel)]="indicadorProducao.vlrTotalFacturado" required
-                                   placeholder="Valor total" min="0"/>
+                                   currencyMask [options]="{ prefix: 'Kz ', thousands: '.', decimal: ',', allowNegative: false }"
+                                   placeholder="Valor total" />
                             <div
                                 [hidden]="!(editForm.controls.vlrTotalFacturado?.dirty && editForm.controls.vlrTotalFacturado?.invalid)">
                                 <small class="form-text text-danger"
@@ -969,10 +970,11 @@
                                    jhiTranslate="sisasApp.indicadorProducao.vlrFacturasCanceladasNotasCreditos"
                                    for="field_vlrFacturasCanceladasNotasCreditos">Vlr Facturas Canceladas Notas
                                 Creditos</label>
-                            <input type="number" class="form-control" name="vlrFacturasCanceladasNotasCreditos"
+                            <input type="text" class="form-control" name="vlrFacturasCanceladasNotasCreditos"
                                    id="field_vlrFacturasCanceladasNotasCreditos"
                                    [(ngModel)]="indicadorProducao.vlrFacturasCanceladasNotasCreditos" required
-                                   placeholder="Valor total" min="0"/>
+                                   currencyMask [options]="{ prefix: 'Kz ', thousands: '.', decimal: ',', allowNegative: false }"
+                                   placeholder="Valor total" />
                             <div
                                 [hidden]="!(editForm.controls.vlrFacturasCanceladasNotasCreditos?.dirty && editForm.controls.vlrFacturasCanceladasNotasCreditos?.invalid)">
                                 <small class="form-text text-danger"
@@ -990,8 +992,9 @@
                         <div class="form-group">
                             <label class="form-control-label" jhiTranslate="sisasApp.indicadorProducao.vlrRealFacturado"
                                    for="field_vlrRealFacturado">Vlr Real Facturado</label>
-                            <input type="number" class="form-control" name="vlrRealFacturado"
+                            <input type="text" class="form-control" name="vlrRealFacturado"
                                    id="field_vlrRealFacturado" min="0"
+                                   currencyMask [options]="{ prefix: 'Kz ', thousands: '.', decimal: ',', allowNegative: false }"
                                    [(ngModel)]="indicadorProducao.vlrRealFacturado" required placeholder="Valor total"/>
                             <div
                                 [hidden]="!(editForm.controls.vlrRealFacturado?.dirty && editForm.controls.vlrRealFacturado?.invalid)">
@@ -1010,8 +1013,9 @@
                         <div class="form-group">
                             <label class="form-control-label" jhiTranslate="sisasApp.indicadorProducao.vlrTotalCobrado"
                                    for="field_vlrTotalCobrado">Vlr Total Cobrado</label>
-                            <input type="number" class="form-control" name="vlrTotalCobrado" id="field_vlrTotalCobrado"
-                                   [(ngModel)]="indicadorProducao.vlrTotalCobrado" required placeholder="Valor total" min="0"/>
+                            <input type="text" class="form-control" name="vlrTotalCobrado" id="field_vlrTotalCobrado"
+                                   currencyMask [options]="{ prefix: 'Kz ', thousands: '.', decimal: ',', allowNegative: false }"
+                                   [(ngModel)]="indicadorProducao.vlrTotalCobrado" required placeholder="Valor total" />
                             <div
                                 [hidden]="!(editForm.controls.vlrTotalCobrado?.dirty && editForm.controls.vlrTotalCobrado?.invalid)">
                                 <small class="form-text text-danger"
@@ -1094,8 +1098,9 @@
                         <div class="form-group">
                             <label class="form-control-label" jhiTranslate="sisasApp.indicadorProducao.vlrCustoPessoal"
                                    for="field_vlrCustoPessoal">Vlr Custo Pessoal</label>
-                            <input type="number" class="form-control" name="vlrCustoPessoal" id="field_vlrCustoPessoal"
+                            <input type="text" class="form-control" name="vlrCustoPessoal" id="field_vlrCustoPessoal"
                                    [(ngModel)]="indicadorProducao.vlrCustoPessoal" required
+                                   currencyMask [options]="{ prefix: 'Kz ', thousands: '.', decimal: ',', allowNegative: false }"
                                    placeholder="Valor do custo pessoal" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.vlrCustoPessoal?.dirty && editForm.controls.vlrCustoPessoal?.invalid)">
@@ -1114,8 +1119,9 @@
                         <div class="form-group">
                             <label class="form-control-label" jhiTranslate="sisasApp.indicadorProducao.vlrCustoFse"
                                    for="field_vlrCustoFse">Vlr Custo Fse</label>
-                            <input type="number" class="form-control" name="vlrCustoFse" id="field_vlrCustoFse"
-                                   [(ngModel)]="indicadorProducao.vlrCustoFse" required placeholder="Valor do custo" min="0"/>
+                            <input type="text" class="form-control" name="vlrCustoFse" id="field_vlrCustoFse"
+                                   currencyMask [options]="{ prefix: 'Kz ', thousands: '.', decimal: ',', allowNegative: false }"
+                                   [(ngModel)]="indicadorProducao.vlrCustoFse" required placeholder="Valor do custo"/>
                             <div
                                 [hidden]="!(editForm.controls.vlrCustoFse?.dirty && editForm.controls.vlrCustoFse?.invalid)">
                                 <small class="form-text text-danger"
@@ -1133,9 +1139,10 @@
                         <div class="form-group">
                             <label class="form-control-label" jhiTranslate="sisasApp.indicadorProducao.vlrCustoEnergia"
                                    for="field_vlrCustoEnergia">Vlr Custo Energia</label>
-                            <input type="number" class="form-control" name="vlrCustoEnergia" id="field_vlrCustoEnergia"
+                            <input type="text" class="form-control" name="vlrCustoEnergia" id="field_vlrCustoEnergia"
+                                   currencyMask [options]="{ prefix: 'Kz ', thousands: '.', decimal: ',', allowNegative: false }"
                                    [(ngModel)]="indicadorProducao.vlrCustoEnergia" required
-                                   placeholder="Valor do custo" min="0"/>
+                                   placeholder="Valor do custo" />
                             <div
                                 [hidden]="!(editForm.controls.vlrCustoEnergia?.dirty && editForm.controls.vlrCustoEnergia?.invalid)">
                                 <small class="form-text text-danger"
@@ -1154,10 +1161,11 @@
                             <label class="form-control-label"
                                    jhiTranslate="sisasApp.indicadorProducao.vlrCustoManutencao"
                                    for="field_vlrCustoManutencao">Vlr Custo Manutencao</label>
-                            <input type="number" class="form-control" name="vlrCustoManutencao"
+                            <input type="text" class="form-control" name="vlrCustoManutencao"
                                    id="field_vlrCustoManutencao"
+                                   currencyMask [options]="{ prefix: 'Kz ', thousands: '.', decimal: ',', allowNegative: false }"
                                    [(ngModel)]="indicadorProducao.vlrCustoManutencao" required
-                                   placeholder="Valor do custo" min="0"/>
+                                   placeholder="Valor do custo"/>
                             <div
                                 [hidden]="!(editForm.controls.vlrCustoManutencao?.dirty && editForm.controls.vlrCustoManutencao?.invalid)">
                                 <small class="form-text text-danger"
@@ -1178,10 +1186,11 @@
                             <label class="form-control-label"
                                    jhiTranslate="sisasApp.indicadorProducao.vlrCustoReagentes"
                                    for="field_vlrCustoReagentes">Vlr Custo Reagentes</label>
-                            <input type="number" class="form-control" name="vlrCustoReagentes"
+                            <input type="text" class="form-control" name="vlrCustoReagentes"
                                    id="field_vlrCustoReagentes"
+                                   currencyMask [options]="{ prefix: 'Kz ', thousands: '.', decimal: ',', allowNegative: false }"
                                    [(ngModel)]="indicadorProducao.vlrCustoReagentes" required
-                                   placeholder="Valor do custo" min="0"/>
+                                   placeholder="Valor do custo" />
                             <div
                                 [hidden]="!(editForm.controls.vlrCustoReagentes?.dirty && editForm.controls.vlrCustoReagentes?.invalid)">
                                 <small class="form-text text-danger"
@@ -1200,10 +1209,11 @@
                             <label class="form-control-label"
                                    jhiTranslate="sisasApp.indicadorProducao.vlrCustoDestinoFinalLamas"
                                    for="field_vlrCustoDestinoFinalLamas">Vlr Custo Destino Final Lamas</label>
-                            <input type="number" class="form-control" name="vlrCustoDestinoFinalLamas"
+                            <input type="text" class="form-control" name="vlrCustoDestinoFinalLamas"
                                    id="field_vlrCustoDestinoFinalLamas"
+                                   currencyMask [options]="{ prefix: 'Kz ', thousands: '.', decimal: ',', allowNegative: false }"
                                    [(ngModel)]="indicadorProducao.vlrCustoDestinoFinalLamas" required
-                                   placeholder="Valor do custo" min="0"/>
+                                   placeholder="Valor do custo" />
                             <div
                                 [hidden]="!(editForm.controls.vlrCustoDestinoFinalLamas?.dirty && editForm.controls.vlrCustoDestinoFinalLamas?.invalid)">
                                 <small class="form-text text-danger"
@@ -1222,8 +1232,9 @@
                             <label class="form-control-label"
                                    jhiTranslate="sisasApp.indicadorProducao.vlrCustoOperacionaisOpex"
                                    for="field_vlrCustoOperacionaisOpex">Vlr Custo Operacionais Opex</label>
-                            <input type="number" class="form-control" name="vlrCustoOperacionaisOpex"
+                            <input type="text" class="form-control" name="vlrCustoOperacionaisOpex"
                                    id="field_vlrCustoOperacionaisOpex"
+                                   currencyMask [options]="{ prefix: 'Kz ', thousands: '.', decimal: ',', allowNegative: false }"
                                    [(ngModel)]="indicadorProducao.vlrCustoOperacionaisOpex" required
                                    placeholder="Valor do custo" min="0"/>
                             <div
@@ -1245,8 +1256,9 @@
                                    jhiTranslate="sisasApp.indicadorProducao.vlrCustoAmortizaAnualInvestOpCapex"
                                    for="field_vlrCustoAmortizaAnualInvestOpCapex">Vlr Custo Amortiza Anual Invest Op
                                 Capex</label>
-                            <input type="number" class="form-control" name="vlrCustoAmortizaAnualInvestOpCapex"
+                            <input type="text" class="form-control" name="vlrCustoAmortizaAnualInvestOpCapex"
                                    id="field_vlrCustoAmortizaAnualInvestOpCapex"
+                                   currencyMask [options]="{ prefix: 'Kz ', thousands: '.', decimal: ',', allowNegative: false }"
                                    [(ngModel)]="indicadorProducao.vlrCustoAmortizaAnualInvestOpCapex" required
                                    placeholder="Valor do custo" min="0"/>
                             <div
@@ -1267,8 +1279,9 @@
                             <label class="form-control-label"
                                    jhiTranslate="sisasApp.indicadorProducao.vlrCustoTotaisCapexOpex"
                                    for="field_vlrCustoTotaisCapexOpex">Vlr Custo Totais Capex Opex</label>
-                            <input type="number" class="form-control" name="vlrCustoTotaisCapexOpex"
+                            <input type="text" class="form-control" name="vlrCustoTotaisCapexOpex"
                                    id="field_vlrCustoTotaisCapexOpex"
+                                   currencyMask [options]="{ prefix: 'Kz ', thousands: '.', decimal: ',', allowNegative: false }"
                                    [(ngModel)]="indicadorProducao.vlrCustoTotaisCapexOpex" required
                                    placeholder="Valor do custo" disabled min="0"/>
                             <div
@@ -1529,6 +1542,29 @@
                                 </small>
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <label class="form-control-label"
+                                   for="field_totalAcoesFormacaoPlanejadas">Total de Acçôes de Formacao Planejadas (Nº)</label>
+                            <input type="number" class="form-control" name="totalAcoesFormacaoPlanejadas"
+                                   id="field_totalAcoesFormacaoPlanejadas"
+                                   [(ngModel)]="indicadorProducao.totalAcoesFormacaoPlanejadas" required
+                                   placeholder="Total Acçôes Planejadas" min="0"/>
+                            <div
+                                [hidden]="!(editForm.controls.totalAcoesFormacaoPlanejadas?.dirty && editForm.controls.totalAcoesFormacaoPlanejadas?.invalid)">
+                                <small class="form-text text-danger"
+                                       [hidden]="!editForm.controls.totalAcoesFormacaoPlanejadas?.errors?.required"
+                                       jhiTranslate="entity.validation.required">
+                                    This field is required.
+                                </small>
+                                <small class="form-text text-danger"
+                                       [hidden]="!editForm.controls.totalAcoesFormacaoPlanejadas?.errors?.number"
+                                       jhiTranslate="entity.validation.number">
+                                    This field should be a number.
+                                </small>
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <label class="form-control-label"
                                    jhiTranslate="sisasApp.indicadorProducao.qtdAcoesFormacaoMoRealizadas"
@@ -1631,7 +1667,7 @@
                             <input type="number" class="form-control" name="qtdAcoesFormacaoRealizadas"
                                    id="field_qtdAcoesFormacaoRealizadas"
                                    [(ngModel)]="indicadorProducao.qtdAcoesFormacaoRealizadas" required
-                                   placeholder="Quantidade de ações" min="0" disabled/>
+                                   placeholder="Quantidade de ações" min="0" />
                             <div
                                 [hidden]="!(editForm.controls.qtdAcoesFormacaoRealizadas?.dirty && editForm.controls.qtdAcoesFormacaoRealizadas?.invalid)">
                                 <small class="form-text text-danger"
@@ -1719,7 +1755,7 @@
                             <input type="number" class="form-control" name="qtdManuaisPrevistos"
                                    id="field_qtdManuaisPrevistos"
                                    [(ngModel)]="indicadorProducao.qtdManuaisPrevistos" required
-                                   placeholder="Quantidade de manuais" min="0" disabled/>
+                                   placeholder="Quantidade de manuais" min="0" />
                             <div
                                 [hidden]="!(editForm.controls.qtdManuaisPrevistos?.dirty && editForm.controls.qtdManuaisPrevistos?.invalid)">
                                 <small class="form-text text-danger"

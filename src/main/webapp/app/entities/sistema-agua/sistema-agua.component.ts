@@ -17,7 +17,7 @@ import {Municipio, MunicipioService} from '../municipio';
 })
 export class SistemaAguaComponent implements OnInit, OnDestroy {
 
-currentAccount: any;
+    currentAccount: any;
     nome: string;
     sistemaAguas: SistemaAgua[];
     error: any;
@@ -73,18 +73,18 @@ currentAccount: any;
         this.sistemaAgua.provincia = null;
         this.sistemaAgua.municipio = null;
 
-        this.comunaService.query()
-            .subscribe((res: HttpResponse<Comuna[]>) => {
-                this.comunas = res.body;
-            }, (res: HttpErrorResponse) => this.onError(res.message));
+        // this.comunaService.query()
+        //     .subscribe((res: HttpResponse<Comuna[]>) => {
+        //         this.comunas = res.body;
+        //     }, (res: HttpErrorResponse) => this.onError(res.message));
 
-        this.municipioService.query().subscribe(
-            (res: HttpResponse<Municipio[]>) => {
-                this.municipios = res.body;
-            },
-            (res: HttpErrorResponse) => this.onError(res.message));
-
-        this.provinciaService.query().subscribe(
+        // this.municipioService.query().subscribe(
+        //     (res: HttpResponse<Municipio[]>) => {
+        //         this.municipios = res.body;
+        //     },
+        //     (res: HttpErrorResponse) => this.onError(res.message));
+        //
+        this.provinciaService.queryPorNivelUsuario().subscribe(
             (res: HttpResponse<Provincia[]>) => {
                 this.provincias = res.body;
             },
@@ -251,5 +251,27 @@ currentAccount: any;
     }
     private onError(error) {
         this.jhiAlertService.error(error.message, null, null);
+    }
+
+    onChangeMunicipios() {
+        this.municipios = null;
+        this.comunas = null;
+
+        this.municipioService.queryMunicipioByProvinciaId({
+            provinciaId: this.sistemaAgua.provincia.id
+        }).subscribe((res) => {
+            this.municipios = res.body;
+        });
+    }
+
+    onChangeComunas() {
+        this.comunas = null;
+
+        this.comunaService.queryComunaByMunicipioId({
+            municipioId: this.sistemaAgua.municipio.id
+        })
+            .subscribe((res) => {
+                this.comunas = res.body;
+            });
     }
 }

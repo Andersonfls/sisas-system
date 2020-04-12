@@ -8,18 +8,13 @@
                 <span class="d-none d-md-inline" jhiTranslate="sidebar.item1">Dashboard</span>
             </a>
 
-            <!--<a href="#menu7x"  class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false" *jhiHasAnyAuthority="['ROLE_ADMIN']">-->
-                <!--<i class="fas fa-globe-africa" style="size: 10px !important;"></i>-->
-                <!--<span class="d-none d-md-inline">Mapas Temáticos</span>-->
-            <!--</a>-->
-
             <a href="#menu3x"  class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false">
                 <i class="fa fa-archive" ngbTooltip="Inventário de Inquérito" title="Inventário de Inquérito"></i>
                 <span class="d-none d-md-inline" jhiTranslate="sidebar.item3.title">Módulo de Inventário/Inquéritos</span>
             </a>
 
             <div class="collapse" id="menu3x" data-parent="#sidebar" routerLinkActive="false">
-                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="" routerLinkActive="active">
+                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="" routerLinkActive="active" *jhiHasAnyAuthority="['ROLE_ADMIN']">
                     <i class="fa fa-hashtag" style="size: 10px !important;"> </i>
                     <span class="d-md-inline" jhiTranslate="sidebar.item3.subItem5">Dashboard</span>
                 </a>
@@ -34,17 +29,10 @@
                 </a>
 
                 <div class="collapse" id="menu-rela" data-parent="#sidebar" routerLinkActive="false">
-                    <!--A SER FEITO PELO ANDRE-->
-                    <!--<a href="#" class="list-group-item" data-parent="#menu7x" routerLink="benef-agua-subterranea-tp-bomba" routerLinkActive="active">-->
-                        <!--<i class="fas fa-burn" style="size: 10px !important;"> </i>-->
-                        <!--<span class="d-md-inline">Ft. Subterrânea e Bomba Energia</span>-->
-                    <!--</a>-->
-
                     <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="inqueritos-preenchidos" routerLinkActive="active">
                         <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                         <span class="d-md-inline" jhiTranslate="sidebar.item6.subItem1"></span>
                     </a>
-
 
                     <a href="#cobert-ser-agua" style="background-color: #2d596f; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#cobert-ser-agua" data-toggle="collapse" aria-expanded="false">
                         <i class="fas fa-burn" style="size: 10px !important;"> </i>
@@ -133,14 +121,6 @@
                     </a>
 
                     <div class="collapse" id="bmb-energia" data-parent="#menu-rela" routerLinkActive="false">
-                        <!--<a href="#" class="list-group-item" data-parent="#menu7x" routerLink="benef-ft-subte-mecanica" routerLinkActive="active">-->
-                            <!--<i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>-->
-                            <!--<span class="d-md-inline">Provincial</span>-->
-                        <!--</a>-->
-                        <!--<a href="#" class="list-group-item" data-parent="#menu7x" routerLink="func-agua-municipal" routerLinkActive="active">-->
-                            <!--<i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>-->
-                            <!--<span class="d-md-inline">Municipal</span>-->
-                        </a>
                         <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="sist-agua-ft-subt-bmb-energia-comunal" routerLinkActive="active">
                             <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                             <span class="d-md-inline">Comunal</span>
@@ -153,14 +133,6 @@
                     </a>
 
                     <div class="collapse" id="bmb-manual" data-parent="#menu-rela" routerLinkActive="false">
-<!--                        <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="benef-ft-subte-mecanica" routerLinkActive="active">
-                            <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
-                            <span class="d-md-inline">Provincial</span>
-                        </a>
-                        <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="func-agua-municipal" routerLinkActive="active">
-                            <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
-                            <span class="d-md-inline">Municipal</span>
-                        </a>-->
                         <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="sistema-agua-ft-subte-manual-comunal" routerLinkActive="active">
                             <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                             <span class="d-md-inline">Comunal</span>
@@ -173,14 +145,6 @@
                     </a>
 
                     <div class="collapse" id="bmb-gravidade" data-parent="#menu-rela" routerLinkActive="false">
-                        <!--                        <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="benef-ft-subte-mecanica" routerLinkActive="active">
-                                                    <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
-                                                    <span class="d-md-inline">Provincial</span>
-                                                </a>
-                                                <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="func-agua-municipal" routerLinkActive="active">
-                                                    <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
-                                                    <span class="d-md-inline">Municipal</span>
-                                                </a>-->
                         <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="sistema-agua-ft-subte-gravidade-comunal" routerLinkActive="active">
                             <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                             <span class="d-md-inline">Comunal</span>
@@ -193,14 +157,6 @@
                     </a>
 
                     <div class="collapse" id="bmb-opcao-tecnica" data-parent="#menu-rela" routerLinkActive="false">
-                        <!--                        <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="benef-ft-subte-mecanica" routerLinkActive="active">
-                                                    <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
-                                                    <span class="d-md-inline">Provincial</span>
-                                                </a>
-                                                <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="func-agua-municipal" routerLinkActive="active">
-                                                    <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
-                                                    <span class="d-md-inline">Municipal</span>
-                                                </a>-->
                         <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="sistema-agua-ft-super-opcao-tecnica-comunal" routerLinkActive="active">
                             <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                             <span class="d-md-inline">Comunal</span>
@@ -217,12 +173,6 @@
                             <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                             <span class="d-md-inline">Provincial</span>
                         </a>
-
-<!--                        <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="func-agua-municipal" routerLinkActive="active">
-                            <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
-                            <span class="d-md-inline">Municipal</span>
-                        </a>-->
-
                         <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="benef-ft-subte-energia-comunal" routerLinkActive="active">
                             <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                             <span class="d-md-inline">Comunal</span>
@@ -235,10 +185,6 @@
                     </a>
 
                     <div class="collapse" id="subt-bmb-mecanica" data-parent="#menu-rela" routerLinkActive="false">
-                        <!--<a href="#" class="list-group-item" data-parent="#menu7x" routerLink="ben-ft-super-opt-tecnica-provincial" routerLinkActive="active">-->
-                        <!--<i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>-->
-                        <!--<span class="d-md-inline">Provincial</span>-->
-                        <!--</a>-->
                         <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="ben-ft-super-bmb-mecanica-municipal" routerLinkActive="active">
                             <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                             <span class="d-md-inline">Municipal</span>
@@ -255,15 +201,10 @@
                     </a>
 
                     <div class="collapse" id="subt-tp-bmb" data-parent="#menu-rela" routerLinkActive="false">
-                        <!--<a href="#" class="list-group-item" data-parent="#menu7x" routerLink="benef-ft-subte-mecanica" routerLinkActive="active">-->
-                            <!--<i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>-->
-                            <!--<span class="d-md-inline">Provincial</span>-->
-                        <!--</a>-->
                         <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="ben-agua-ft-subt-tp-bmb-municipal" routerLinkActive="active">
-                        <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
-                        <span class="d-md-inline">Municipal</span>
+                            <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
+                            <span class="d-md-inline">Municipal</span>
                         </a>
-
                         <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="ben-agua-ft-subt-tp-bmb-comunal" routerLinkActive="active">
                             <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                             <span class="d-md-inline">Comunal</span>
@@ -285,11 +226,6 @@
                             <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                             <span class="d-md-inline">Municipal</span>
                         </a>
-
-                        <!--<a href="#" class="list-group-item" data-parent="#menu7x" routerLink="ben-agua-ft-subt-tp-bmb-comunal" routerLinkActive="active">-->
-                            <!--<i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>-->
-                            <!--<span class="d-md-inline">Comunal</span>-->
-                        <!--</a>-->
                     </div>
 
                     <a href="#subt-opt-tecnica" style="background-color: #2d596f; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#subt-opt-tecnica" data-toggle="collapse" aria-expanded="false">
@@ -311,8 +247,6 @@
                             <span class="d-md-inline">Comunal</span>
                         </a>
                     </div>
-
-
                 </div>
 
                 <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="sistema-arquivo" routerLinkActive="active">
@@ -320,7 +254,7 @@
                     <span class="d-md-inline" jhiTranslate="sidebar.item3.subItem9">Inserir Por Arquivo</span>
                 </a>
 
-                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="" routerLinkActive="active">
+                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="" routerLinkActive="active" *jhiHasAnyAuthority="['ROLE_ADMIN']">
                     <i class="fa fa-hashtag" style="size: 10px !important;"> </i>
                     <span class="d-md-inline" jhiTranslate="sidebar.item3.subItem7">Tabelas e Gráficos</span>
                 </a>
@@ -332,7 +266,7 @@
 
                 <div class="collapse" id="menu7x" data-parent="#sidebar" routerLinkActive="false">
                     <a href="#nacionali" style="background-color: #2d596f; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#menu7x" data-toggle="collapse" aria-expanded="false"
-                       *jhiHasAnyAuthority="['ROLE_ADMIN', 'ADMIN_PROVINCIAL']" >
+                       *jhiHasAnyAuthority="['ROLE_ADMIN']" >
                         <i class="fas fa-burn" style="size: 10px !important;"> </i>
                         <span class="d-md-inline">Provincial</span>
                     </a>
@@ -366,7 +300,8 @@
                         <!--</a>-->
                     </div>
 
-                    <a href="#municipali" style="background-color: #2d596f; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#menu7x" data-toggle="collapse" aria-expanded="false">
+                    <a href="#municipali" style="background-color: #2d596f; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#menu7x" data-toggle="collapse"
+                       aria-expanded="false" *jhiHasAnyAuthority="['ROLE_ADMIN']" >
                         <i class="fas fa-burn" style="size: 10px !important"> </i>
                         <span class="d-md-inline">Municipal</span>
                     </a>
@@ -399,7 +334,7 @@
                     </div>
 
                     <a href="#huamboi" style="background-color: #2d596f; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#menu7x" data-toggle="collapse" aria-expanded="false"
-                       *jhiHasAnyAuthority="['ROLE_ADMIN', 'ADMIN_PROVINCIAL']">
+                       *ngIf="isMapaHuamboVisivel">
                         <i class="fas fa-vector-square" style="size: 10px !important;"> </i>
                         <span class="d-md-inline">Huambo</span>
                     </a>
@@ -432,7 +367,7 @@
                     </div>
 
                     <a href="#huliai" style="background-color: #2d596f; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#menu7x" data-toggle="collapse" aria-expanded="false"
-                       *jhiHasAnyAuthority="['ROLE_ADMIN','ADMIN_PROVINCIAL']">
+                       *ngIf="isMapaHuilaVisivel">
                         <i class="fas fa-vector-square" style="size: 10px !important"> </i>
                         <span class="d-md-inline">Huíla</span>
                     </a>
@@ -465,7 +400,7 @@
                     </div>
 
                     <a href="#kuanzai" style="background-color: #2d596f; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#menu7x" data-toggle="collapse" aria-expanded="false"
-                       *jhiHasAnyAuthority="['ROLE_ADMIN', 'ADMIN_PROVINCIAL']">
+                       *ngIf="isMapaCuanzaVisivel">
                         <i class="fas fa-vector-square" style="size: 10px !important"> </i>
                         <span class="d-md-inline">Cuanza Norte</span>
                     </a>
@@ -499,20 +434,10 @@
                 </div>
 
 
-                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="sistema-agua-log" routerLinkActive="active" *jhiHasAnyAuthority="['ROLE_ADMIN' ,'ADMIN_PROVINCIAL']">
+                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="sistema-agua-log" routerLinkActive="active" *jhiHasAnyAuthority="['ROLE_ADMIN']">
                     <i class="fa fa-address-card-o" style="size: 10px !important;"> </i>
                     <span class="d-md-inline" jhiTranslate="sidebar.item3.subItem2">Log Sistema de Águas</span>
                 </a>
-
-                <!--<a href="#" class="list-group-item" data-parent="#menu1x" routerLink="indicador-producao" routerLinkActive="active">-->
-                    <!--<i class="fa fa-compress" style="size: 10px !important;"> </i>-->
-                    <!--<span class="d-md-inline" jhiTranslate="sidebar.item3.subItem3">Indicador de Produção</span>-->
-                <!--</a>-->
-
-                <!--<a href="#" class="list-group-item" data-parent="#menu1x" routerLink="indicador-producao-log" routerLinkActive="active" *jhiHasAnyAuthority="['ROLE_ADMIN']">-->
-                    <!--<i class="fa fa-address-card-o" style="size: 10px !important;"> </i>-->
-                    <!--<span class="d-md-inline" jhiTranslate="sidebar.item3.subItem4">Log Indicador de Produção</span>-->
-                <!--</a>-->
             </div>
 
             <a href="#menu8x"  class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false">
@@ -521,7 +446,7 @@
             </a>
 
             <div class="collapse" id="menu8x" data-parent="#sidebar" routerLinkActive="false">
-                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="" routerLinkActive="active">
+                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="" routerLinkActive="active" *jhiHasAnyAuthority="['ROLE_ADMIN']">
                     <i class="fa fa-hashtag" style="size: 10px !important;"> </i>
                     <span class="d-md-inline" jhiTranslate="sidebar.item8.subItem1">Dashboard</span>
                 </a>
@@ -530,7 +455,7 @@
                     <span class="d-md-inline" jhiTranslate="sidebar.item8.subItem2">Gerir Indicadores de Produção</span>
                 </a>
 
-                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="indicador-producao-provincia" routerLinkActive="active" *jhiHasAnyAuthority="['ROLE_ADMIN', 'ADMIN_PROVINCIAL']">
+                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="indicador-producao-provincia" routerLinkActive="active" *jhiHasAnyAuthority="['ROLE_ADMIN']">
                     <i class="fa fa-hashtag" style="size: 10px !important;"> </i>
                     <span class="d-md-inline" jhiTranslate="sidebar.item8.subItem3">Relatórios</span>
                 </a>
@@ -540,7 +465,7 @@
                     <span class="d-md-inline" jhiTranslate="sidebar.item8.subItem5">Inserir Por Arquivo</span>
                 </a>
 
-                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="" routerLinkActive="active">
+                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="" routerLinkActive="active" *jhiHasAnyAuthority="['ROLE_ADMIN']">
                     <i class="fa fa-address-card-o" style="size: 10px !important;"> </i>
                     <span class="d-md-inline" jhiTranslate="sidebar.item8.subItem4">Log Indicadores de Produção</span>
                 </a>

@@ -52,7 +52,7 @@ public class ProgramasProjectos implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "id_especialidade")
-    private Especialidades especialidades;
+    private Especialidades especialidade;
 
     @ManyToOne
     @JoinColumn(name = "id_comuna")
@@ -180,17 +180,17 @@ public class ProgramasProjectos implements Serializable {
         this.tipoFinanciamento = tipoFinanciamento;
     }
 
-    public Especialidades getEspecialidades() {
-        return especialidades;
+    public Especialidades getEspecialidade() {
+        return especialidade;
     }
 
-    public ProgramasProjectos idEspecialidades(Especialidades especialidades) {
-        this.especialidades = especialidades;
+    public ProgramasProjectos idEspecialidade(Especialidades especialidade) {
+        this.especialidade = especialidade;
         return this;
     }
 
-    public void setEspecialidades(Especialidades especialidades) {
-        this.especialidades = especialidades;
+    public void setEspecialidade(Especialidades especialidade) {
+        this.especialidade = especialidade;
     }
 
     public Comuna getComuna() {
@@ -310,7 +310,7 @@ public class ProgramasProjectos implements Serializable {
             ", nmDescricaoProjeto='" + getNmDescricaoProjeto() + "'" +
             ", idSaaAssociado=" + getIdSaaAssociado() +
             ", tipoFinanciamento='" + getTipoFinanciamento() + "'" +
-            ", especialidades='" + getEspecialidades() + "'" +
+            ", especialidades='" + getEspecialidade() + "'" +
             "}";
     }
 }

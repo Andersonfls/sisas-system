@@ -125,7 +125,7 @@
                     <select class="form-control" id="field_idEspecialidades" name="especialidades"
                             [(ngModel)]="programasProjectos.especialidade">
                         <option *ngIf="!editForm.value.especialidades" [ngValue]="null" selected>Selecione o Especialidades..</option>
-                        <option [ngValue]="especialidadesOption.id === programasProjectos.especialidade?.id ? programasProjectos.especialidades : especialidadesOption"
+                        <option [ngValue]="especialidadesOption.id === programasProjectos.especialidade?.id ? programasProjectos.especialidade : especialidadesOption"
                                 *ngFor="let especialidadesOption of especialidadess">{{especialidadesOption.nmEspecialidade}}</option>
                     </select>
                 </div>
@@ -583,8 +583,8 @@
                     <div class="row">
                         <div class="form-group col-sm-6">
                             <div class="form-group">
-                                <label class="form-control-label" jhiTranslate="sisasApp.contrato.tipoEmpreitada" for="field_tipoEmpreitada">Tipo Empreitada</label>
-                                <select class="form-control" id="field_tipoEmpreitada" name="tipoEmpreitada" [(ngModel)]="contrato.tipoEmpreitada"  required>
+                                <label class="form-control-label" jhiTranslate="sisasApp.contrato.tipoEmpreitada" for="field_tipoEmpreitadaaa">Tipo Empreitada</label>
+                                <select class="form-control" id="field_tipoEmpreitadaaa" name="tipoEmpreitada" [(ngModel)]="contrato.tipoEmpreitada"  required>
                                     <option value="Abastecimento de água">Abastecimento de água </option>
                                     <option value="Saneamento de águas residuais">Saneamento de águas residuais</option>
                                 </select>

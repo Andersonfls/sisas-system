@@ -106,12 +106,6 @@ public class ProgramasProjectosResource {
      */
     @GetMapping("/programas-projectos")
     @Timed
-//    public ResponseEntity<List<ProgramasProjectos>> getAllProgramasProjectos(ProgramasProjectosCriteria criteria, Pageable pageable) {
-//        log.debug("REST request to get ProgramasProjectos by criteria: {}", criteria);
-//        Page<ProgramasProjectos> page = programasProjectosQueryService.findByCriteria(criteria, pageable);
-//        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/programas-projectos");
-//        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
-//    }
     public ResponseEntity<List<ProgramasProjectosDTO>> getAllProgramasProjectos(Pageable pageable) {
         log.debug("REST request to get ProgramasProjectos by criteria: {}");
         Page<ProgramasProjectosDTO> page = programasProjectosService.findAllStatusTrue(pageable);

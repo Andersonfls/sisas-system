@@ -36,7 +36,7 @@ public class ProgramasProjectosDTO implements Serializable {
     @Size(max = 150)
     private String tipoFinanciamento;
 
-    private Especialidades especialidades;
+    private Especialidades especialidade;
 
     @NotNull
     private Comuna comuna;
@@ -117,12 +117,12 @@ public class ProgramasProjectosDTO implements Serializable {
         this.usuario = usuario;
     }
 
-    public Especialidades getEspecialidades() {
-        return especialidades;
+    public Especialidades getEspecialidade() {
+        return especialidade;
     }
 
-    public void setEspecialidades(Especialidades especialidades) {
-        this.especialidades = especialidades;
+    public void setEspecialidades(Especialidades especialidade) {
+        this.especialidade = especialidade;
     }
 
     public Comuna getComuna() {
@@ -185,7 +185,7 @@ public class ProgramasProjectosDTO implements Serializable {
             ", nmDescricaoProjeto='" + getNmDescricaoProjeto() + "'" +
             ", idSaaAssociado=" + getIdSaaAssociado() +
             ", tipoFinanciamento='" + getTipoFinanciamento() + "'" +
-            ", especialidades='" + getEspecialidades() + "'" +
+            ", especialidades='" + getEspecialidade() + "'" +
             "}";
     }
 }

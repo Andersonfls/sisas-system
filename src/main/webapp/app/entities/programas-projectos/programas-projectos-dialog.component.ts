@@ -40,7 +40,6 @@ export class ProgramasProjectosDialogComponent implements OnInit {
     comunas: Comuna[];
     comuna: Comuna;
     especialidadess: Especialidades[];
-    dtUltimaAlteracaoDp: any;
     controleSessoes: string;
     private subscription: Subscription;
     situacaos: Situacao[];
@@ -96,6 +95,8 @@ export class ProgramasProjectosDialogComponent implements OnInit {
         this.subscription = this.route.params.subscribe((params) => {
             if ( params['id'] ) {
                 this.load(params['id']);
+            } else {
+                this.montaListaInicio();
             }
         });
         this.situacaoService.query()
@@ -108,23 +109,6 @@ export class ProgramasProjectosDialogComponent implements OnInit {
         this.empreitada = new Empreitada();
         this.execucao = new Execucao();
         this.loadAllSisstemasAgua();
-
-        this.comunaService.query()
-            .subscribe((res: HttpResponse<Comuna[]>) => {
-                this.comunas = res.body;
-            }, (res: HttpErrorResponse) => this.onError(res.message));
-
-        this.municipioService.query().subscribe(
-            (res: HttpResponse<Municipio[]>) => {
-                this.municipios = res.body;
-            },
-            (res: HttpErrorResponse) => this.onError(res.message));
-
-        this.provinciaService.query().subscribe(
-            (res: HttpResponse<Provincia[]>) => {
-                this.provincias = res.body;
-            },
-            (res: HttpErrorResponse) => this.onError(res.message));
 
         this.especialidadesService.query().subscribe(
             (res: HttpResponse<Especialidades[]>) => {
@@ -166,7 +150,34 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                 this.loadContrato(this.programasProjectos.id);
                 this.loadEmpreitada(this.programasProjectos.id);
                 this.loadExecucao(this.programasProjectos.id);
+
+                this.montaListaInicio();
+                if (this.programasProjectos.provincia) {
+                    this.onChangeMunicipios();
+                }
+                if (this.programasProjectos.municipio) {
+                    this.onChangeComunas();
+                }
             });
+    }
+
+    montaListaInicio() {
+        this.provinciaService.queryPorNivelUsuario().subscribe(
+            (res: HttpResponse<Provincia[]>) => {
+                this.provincias = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message));
+
+        this.municipioService.query().subscribe(
+            (res: HttpResponse<Municipio[]>) => {
+                this.municipios = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message));
+
+        this.comunaService.query().subscribe(
+            (res: HttpResponse<Comuna[]>) => {
+                this.comunas = res.body;
+            }, (res: HttpErrorResponse) => this.onError(res.message));
     }
 
     validaData() {
@@ -553,6 +564,8 @@ export class ProgramasProjectosDialogComponent implements OnInit {
 
     save() {
         this.isSaving = true;
+        console.log('ANTES DE ENVIAR AO BANCO ');
+        console.log(this.programasProjectos);
         if (this.programasProjectos.id !== undefined) {
             this.subscribeToSaveResponse(
                 this.programasProjectosService.update(this.programasProjectos));
@@ -563,6 +576,8 @@ export class ProgramasProjectosDialogComponent implements OnInit {
     }
 
     validaConcepcao() {
+        console.log('VALIDANDO ANTES');
+        console.log(this.programasProjectos);
         if (this.programasProjectos.id === undefined || this.programasProjectos.id === null) {
             this.programasProjectosService.create(this.programasProjectos).subscribe( (resp) => {
                 this.programasProjectos = resp.body;
@@ -824,6 +839,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
     previousState() {
         window.history.back();
     }
+
 }
 
 @Component({

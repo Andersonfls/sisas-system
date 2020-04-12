@@ -5,7 +5,6 @@ import { HttpResponse } from '@angular/common/http';
 import { User } from '../../shared/user/user.model';
 import { Principal } from '../../shared/auth/principal.service';
 import * as CanvasJS from '../../../content/js/canvasjs.min.js';
-import {SectorAguaSaneamentoDados} from '../../relatorios/cobertura-sector-agua-saneamento/SectorAguaSaneamentoDados.model';
 import {Provincia} from '../provincia/provincia.model';
 import {DashboardService} from './dashboard.service';
 import {DadosDashboardModel} from './dadosDashboard.model';
@@ -47,7 +46,7 @@ export class DashboardComponent implements OnInit {
         this.principal.identity().then((userIdentity) => {
             this.user = userIdentity;
             this.buscaDadosTabela();
-            this.iniciarChartProvincial();
+            // this.iniciarChartProvincial();
         });
     }
 
@@ -55,8 +54,6 @@ export class DashboardComponent implements OnInit {
         this.relatorioService.buscaDadosDashboard().subscribe(
             (res: HttpResponse<DashboardModel[]>) => {
                 this.listaTabela = res.body;
-                console.log(this.listaTabela);
-
                 this.listaCobertura = Array<any>();
                 this.listaSaneamento = Array<any>();
 
@@ -115,46 +112,6 @@ export class DashboardComponent implements OnInit {
                     xValueFormatString: 'string',
                     yValueFormatString: '#%',
                     dataPoints: this.listaCobertura
-                }]
-        });
-        this.chart.render();
-    }
-
-    iniciarChartAguaSaneamento() {
-        this.chart = new CanvasJS.Chart('chartAguaSaneamento', {
-            animationEnabled: true,
-            theme: 'light2',
-            title: {
-                text: 'Cobertura de Serviços de Água e Saneamento (Nível nacional)'
-            },
-            axisX: {
-                valueFormatString: 'string'
-            },
-            axisY: {
-                suffix: '%'
-            },
-            toolTip: {
-                shared: true
-            },
-            legend: {
-                cursor: 'pointer'
-            },
-            data: [
-                {
-                    type: 'column',
-                    name: 'Água',
-                    showInLegend: true,
-                    xValueFormatString: 'string',
-                    yValueFormatString: '#%',
-                    dataPoints: this.listaCobertura
-                },
-                {
-                    type: 'column',
-                    name: 'Saneamento',
-                    showInLegend: true,
-                    xValueFormatString: 'string',
-                    yValueFormatString: '#%',
-                    dataPoints: this.listaSaneamento
                 }]
         });
         this.chart.render();

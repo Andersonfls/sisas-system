@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="input-group" style="max-width: 97%; margin-bottom: 1%">
-                    <select class="form-control" id="field_idProvincia" name="provincia" [(ngModel)]="sistemaAgua.provincia">
+                    <select class="form-control" id="field_idProvincia" name="provincia" [(ngModel)]="sistemaAgua.provincia" (ngModelChange)="onChangeMunicipios()">
                         <option [ngValue]="null" selected>Selecione a Província..</option>
                         <option [ngValue]="provinciaOption.id === sistemaAgua.provincia?.id ? sistemaAgua.provincia : provinciaOption"
                                 *ngFor="let provinciaOption of provincias">{{provinciaOption.nmProvincia}}</option>
@@ -33,7 +33,7 @@
                     <span class="input-group-btn">
                             <button class="btn btn-search" type="button" (click)="buscaPorProvincia()" ><i class="fa fa-search fa-fw"></i></button>
                     </span>
-                    <select class="form-control" id="field_idMunicipio" name="municipio" [(ngModel)]="sistemaAgua.municipio">
+                    <select class="form-control" id="field_idMunicipio" name="municipio" [(ngModel)]="sistemaAgua.municipio" (ngModelChange)="onChangeComunas()">
                         <option [ngValue]="null" selected>Selecione o Município..</option>
                         <option [ngValue]="municipioOption.id === sistemaAgua.municipio?.id ? sistemaAgua.municipio : municipioOption"
                                 *ngFor="let municipioOption of municipios">{{municipioOption.nmMunicipio}}</option>

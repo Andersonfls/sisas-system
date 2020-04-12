@@ -163,7 +163,8 @@ export class IndicadorProducaoDialogComponent implements OnInit {
     somaCampos() {
         this.indicadorProducao.vlrCustoTotaisCapexOpex = this.indicadorProducao.vlrCustoOperacionaisOpex + this.indicadorProducao.vlrCustoAmortizaAnualInvestOpCapex; // 55
         this.indicadorProducao.vlrCustoTotaisCapexOpex = this.indicadorProducao.vlrCustoTotaisCapexOpex ? this.indicadorProducao.vlrCustoTotaisCapexOpex : 0;
-       // this.indicadorProducao.// 67
+        this.indicadorProducao.totalAcoesFormacaoPlanejadas += this.indicadorProducao.qtdAcoesFormacaoMmsPlaneadas + this.indicadorProducao.qtdAcoesFormacaoMoPlaneadas
+        + this.indicadorProducao.qtdAcoesFormacaoCmpPlaneadas + this.indicadorProducao.qtdAcoesFormacaoSoftwareFornecidosPlanejadas; // 67
         this.indicadorProducao.qtdAcoesFormacaoRealizadas = this.indicadorProducao.qtdAcoesFormacaoMoRealizadas
             + this.indicadorProducao.qtdAcoesFormacaoMmsRealizadas + this.indicadorProducao.qtdAcoesFormacaoCmpRealizadas
             + this.indicadorProducao.qtdAcoesFormacaoSoftwareFornecidosRealizadas; // 72

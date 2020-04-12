@@ -2,6 +2,7 @@ import {BaseEntity, User} from './../../shared';
 import {Comuna} from '../comuna';
 import {Provincia} from '../provincia';
 import {Municipio} from '../municipio';
+import {Especialidades} from '../especialidades';
 
 export class ProgramasProjectos implements BaseEntity {
     constructor(
@@ -13,7 +14,7 @@ export class ProgramasProjectos implements BaseEntity {
         public nmDescricaoProjeto?: string,
         public idSaaAssociado?: number,
         public tipoFinanciamento?: string,
-        public especialidade?: string,
+        public especialidade?: Especialidades,
         public comuna?: Comuna,
         public provincia?: Provincia,
         public municipio?: Municipio,
@@ -30,5 +31,6 @@ export class ProgramasProjectos implements BaseEntity {
         this.nmLocalidade = nmLocalidade ? nmLocalidade : null;
         this.idSaaAssociado = idSaaAssociado ? idSaaAssociado : null;
         this.finalidadeProjeto = this.finalidadeProjeto ? finalidadeProjeto : null;
+        this.especialidade = this.especialidade ? especialidade : null;
     }
 }

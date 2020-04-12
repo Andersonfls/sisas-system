@@ -16,6 +16,7 @@ import {
     IndicadorProducaoResolvePagingParams,
 } from './';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgxCurrencyModule} from 'ngx-currency';
 
 const ENTITY_STATES = [
     ...indicadorProducaoRoute,
@@ -25,6 +26,7 @@ const ENTITY_STATES = [
 @NgModule({
     imports: [
         SisasSharedModule,
+        NgxCurrencyModule,
         RouterModule.forChild(ENTITY_STATES),
         NgbModule.forRoot()
     ],
