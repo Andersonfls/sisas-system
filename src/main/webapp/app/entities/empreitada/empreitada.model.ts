@@ -1,4 +1,5 @@
 import { BaseEntity } from './../../shared';
+import {ProgramasProjectos} from '../programas-projectos';
 
 export class Empreitada implements BaseEntity {
     constructor(
@@ -22,7 +23,7 @@ export class Empreitada implements BaseEntity {
         public numCaixasVisitas?: number,
         public numEstacoesElevatorias?: number,
         public numLatrinas?: number,
-        public idProgramasProjectosId?: number,
+        public idProgramasProjectosId?: ProgramasProjectos,
         public idSistemaAguaId?: number,
         public idContratoId?: number,
     ) {

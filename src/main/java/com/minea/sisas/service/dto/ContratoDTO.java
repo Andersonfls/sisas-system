@@ -62,6 +62,61 @@ public class ContratoDTO implements Serializable {
 
     private Long idSistemaAguaId;
 
+    private String tipoConcurso;
+    private LocalDate dtVistoTribunalContas;
+    private LocalDate dtPagamentoEmolumentos;
+    private LocalDate dtPrazoGarantiaAditamento;
+    private LocalDate dtPrazosVinculativos;
+    private BigDecimal prazoGarantiaAdiantamento;
+
+    public BigDecimal getPrazoGarantiaAdiantamento() {
+        return prazoGarantiaAdiantamento;
+    }
+
+    public void setPrazoGarantiaAdiantamento(BigDecimal prazoGarantiaAdiantamento) {
+        this.prazoGarantiaAdiantamento = prazoGarantiaAdiantamento;
+    }
+
+    public String getTipoConcurso() {
+        return tipoConcurso;
+    }
+
+    public void setTipoConcurso(String tipoConcurso) {
+        this.tipoConcurso = tipoConcurso;
+    }
+
+    public LocalDate getDtVistoTribunalContas() {
+        return dtVistoTribunalContas;
+    }
+
+    public void setDtVistoTribunalContas(LocalDate dtVistoTribunalContas) {
+        this.dtVistoTribunalContas = dtVistoTribunalContas;
+    }
+
+    public LocalDate getDtPagamentoEmolumentos() {
+        return dtPagamentoEmolumentos;
+    }
+
+    public void setDtPagamentoEmolumentos(LocalDate dtPagamentoEmolumentos) {
+        this.dtPagamentoEmolumentos = dtPagamentoEmolumentos;
+    }
+
+    public LocalDate getDtPrazoGarantiaAditamento() {
+        return dtPrazoGarantiaAditamento;
+    }
+
+    public void setDtPrazoGarantiaAditamento(LocalDate dtPrazoGarantiaAditamento) {
+        this.dtPrazoGarantiaAditamento = dtPrazoGarantiaAditamento;
+    }
+
+    public LocalDate getDtPrazosVinculativos() {
+        return dtPrazosVinculativos;
+    }
+
+    public void setDtPrazosVinculativos(LocalDate dtPrazosVinculativos) {
+        this.dtPrazosVinculativos = dtPrazosVinculativos;
+    }
+
     public Long getId() {
         return id;
     }

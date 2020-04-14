@@ -25,8 +25,15 @@ export class Contrato implements BaseEntity {
         public idSistemaAguaId?: number,
         public empreitadas?: BaseEntity[],
         public execucaos?: BaseEntity[],
+        public tipoConcurso?: string,
+        public dtVistoTribunalContas?: any,
+        public dtPagamentoEmolumentos?: any,
+        public dtPrazoGarantiaAditamento?: any,
+        public dtPrazosVinculativos?: any,
+        public prazoGarantiaAdiantamento?: number,
     ) {
         this.id = id ? id : null;
         this.programasProjectos = programasProjectos ? programasProjectos : null;
+        this.tipoEmpreitada = tipoEmpreitada ? tipoEmpreitada : null;
     }
 }

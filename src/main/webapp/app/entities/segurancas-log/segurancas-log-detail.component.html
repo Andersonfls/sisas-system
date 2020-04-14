@@ -1,13 +1,9 @@
 
 <div *ngIf="segurancasLog">
-    <h2><span jhiTranslate="sisasApp.segurancasLog.detail.title">Relatorios Log</span> {{relatoriosLog.id}}</h2>
+    <h2><span jhiTranslate="sisasApp.segurancasLog.detail.title">Relatorios Log</span> {{segurancasLog.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="sisasApp.segurancasLog.idRelatoriosLog">Id Relatorios Log</span></dt>
-        <dd>
-            <span>{{segurancasLog.idSegurancasLog}}</span>
-        </dd>
         <dt><span jhiTranslate="sisasApp.segurancasLog.acao">Acao</span></dt>
         <dd>
             <span>{{segurancasLog.acao}}</span>

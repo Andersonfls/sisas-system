@@ -13,6 +13,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Objects;
+
 
 /**
  * Service Implementation for managing Empreitada.
@@ -75,6 +77,9 @@ public class EmpreitadaService {
     public EmpreitadaDTO findOneByProgramasProjectos(Long id) {
         log.debug("Request to get Empreitada : {}", id);
         Empreitada empreitada = empreitadaRepository.findByIdProgramasProjectosId(id);
+        if (Objects.isNull(empreitada)) {
+            empreitada = new Empreitada();
+        }
         return empreitadaMapper.toDto(empreitada);
     }
 

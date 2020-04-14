@@ -41,11 +41,8 @@ public class ConcursoResource {
 
     private final ProgramasProjectosService programasProjectosService;
 
-    //private final ConcursoQueryService concursoQueryService;
-
     public ConcursoResource(ConcursoService concursoService, ProgramasProjectosService programasProjectosService) {
         this.concursoService = concursoService;
-       // this.concursoQueryService = concursoQueryService;
         this.programasProjectosService = programasProjectosService;
     }
 

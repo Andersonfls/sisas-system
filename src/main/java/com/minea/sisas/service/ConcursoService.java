@@ -11,6 +11,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.util.Objects;
+
 
 /**
  * Service Implementation for managing Concurso.
@@ -39,6 +42,7 @@ public class ConcursoService {
     public ConcursoDTO save(ConcursoDTO concursoDTO) {
         log.debug("Request to save Concurso : {}", concursoDTO);
         Concurso concurso = concursoMapper.toEntity(concursoDTO);
+        concurso.setDtUltimaAlteracao(LocalDate.now());
         concurso = concursoRepository.save(concurso);
         return concursoMapper.toDto(concurso);
     }
@@ -73,6 +77,9 @@ public class ConcursoService {
     public ConcursoDTO findOneByProgramasProjectos(Long id) {
         log.debug("Request to get Concurso : {}", id);
         Concurso concurso = concursoRepository.findByProgramasProjectosId(id);
+        if (Objects.isNull(concurso)) {
+            concurso = new Concurso();
+        }
         return concursoMapper.toDto(concurso);
     }
 

@@ -32,7 +32,7 @@ export const segurancasLogRoute: Routes = [
         },
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'sisasApp.relatoriosLog.home.title'
+            pageTitle: 'sisasApp.segurancasLog.home.title'
         },
         canActivate: [UserRouteAccessService]
     }, {
@@ -40,7 +40,7 @@ export const segurancasLogRoute: Routes = [
         component: SegurancasLogDetailComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'sisasApp.relatoriosLog.home.title'
+            pageTitle: 'sisasApp.segurancasLog.home.title'
         },
         canActivate: [UserRouteAccessService]
     }

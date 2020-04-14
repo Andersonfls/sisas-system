@@ -18,17 +18,17 @@
                 "title": "Contrato"
             },
             "idContrato": "Id Contrato",
-            "tipoEmpreitada": "Tipo empreitada",
+            "tipoEmpreitada": "Tipo empreitada Obras",
             "dtLancamento": "Data de Lançamento",
-            "nmEmpresaAdjudicitaria": "Nome empresa adjudicitária",
+            "nmEmpresaAdjudicitaria": "Nome da Empresa Contratada",
             "valorContrato": "Valor contrato",
             "dtAssinatura": "Data assinatura",
-            "dtFinalizacaoProcessoHomologAprov": "Data finalização processo homolog. aprov.",
+            "dtFinalizacaoProcessoHomologAprov": "Data finalização do Processo de homologação",
             "tipoMoeda": "Tipo moeda",
-            "valorAdiantamento": "Valor adiantamento",
-            "dtAdiantamento": "Data adiantamento",
-            "dtInicio": "Data início",
-            "prazoExecucao": "Prazo execução",
+            "valorAdiantamento": "Valor adiantamento (down payment)",
+            "dtAdiantamento": "Data de Pagamento do adiantamento",
+            "dtInicio": "Data início (Contagem do prazo)",
+            "prazoExecucao": "Prazo execução(meses)",
             "dtRecepcaoProvisoria": "Data recepção provisória",
             "dtRecepcaoDefinitiva": "Data recepção definitiva",
             "dtRecepcaoComicionamento": "Data recepção comicionamento",
@@ -37,7 +37,13 @@
             "idProgramasProjectos": "Programas e Projectos",
             "idSistemaAgua": "Sistema de Agua",
             "empreitada": "Empreitadsa",
-            "execucao": "Execução"
+            "execucao": "Execução",
+            "tipoConcurso": "Tipo Concurso",
+            "dtVistoTribunal": "Data do Visto do Tribunal de Contas",
+            "dtPagmEmol": "Data do Pagamento dos Emolumentos",
+            "dtPrazoGarantAdi": "Data do Prazo de Garantia do Adiantamento",
+            "dtPrazoVinculativos": "Data dos Prazos de vinculativos(Design, Construção, O&M)",
+            "prazoAdiantamento": "Prazo da Garantia do Adiantamento"
         }
     }
 }

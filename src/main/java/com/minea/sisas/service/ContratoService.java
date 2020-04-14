@@ -11,6 +11,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Objects;
+
 
 /**
  * Service Implementation for managing Contrato.
@@ -73,6 +75,9 @@ public class ContratoService {
     public ContratoDTO findOneByProgramasProjectos(Long id) {
         log.debug("Request to get Contrato : {}", id);
         Contrato contrato = contratoRepository.findByProgramasProjectosId(id);
+        if (Objects.isNull(contrato)) {
+            contrato = new Contrato();
+        }
         return contratoMapper.toDto(contrato);
     }
 

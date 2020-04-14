@@ -11,6 +11,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.Objects;
+
 
 /**
  * Service Implementation for managing Concepcao.
@@ -39,6 +43,7 @@ public class ConcepcaoService {
     public ConcepcaoDTO save(ConcepcaoDTO concepcaoDTO) {
         log.debug("Request to save Concepcao : {}", concepcaoDTO);
         Concepcao concepcao = concepcaoMapper.toEntity(concepcaoDTO);
+        concepcao.dtUltimaAlteracao(LocalDate.now());
         concepcao = concepcaoRepository.save(concepcao);
         return concepcaoMapper.toDto(concepcao);
     }
@@ -73,6 +78,9 @@ public class ConcepcaoService {
     public ConcepcaoDTO findOneByProgramaProjectoId(Long id) {
         log.debug("Request to get Concepcao : {}", id);
         Concepcao concepcao = concepcaoRepository.findByProgramasProjectosId(id);
+        if (Objects.isNull(concepcao)) {
+            concepcao = new Concepcao();
+        }
         return concepcaoMapper.toDto(concepcao);
     }
 

@@ -100,6 +100,27 @@ public class Contrato implements Serializable {
     @JsonIgnore
     private Set<Execucao> execucaos = new HashSet<>();
 
+    //NOVOS
+    @NotNull
+    @Size(max = 150)
+    @Column(name = "tipo_concurso", length = 150, nullable = false)
+    private String tipoConcurso;
+
+    @Column(name = "dt_visto_tribunal_contas")
+    private LocalDate dtVistoTribunalContas;
+
+    @Column(name = "dt_pagamento_emolumentos")
+    private LocalDate dtPagamentoEmolumentos;
+
+    @Column(name = "dt_prazo_garantia_adit")
+    private LocalDate dtPrazoGarantiaAditamento;
+
+    @Column(name = "dt_prazos_vinculativos")
+    private LocalDate dtPrazosVinculativos;
+
+    @Column(name = "prazo_garantia_adiant", precision=10, scale=2)
+    private BigDecimal prazoGarantiaAdiantamento;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -391,6 +412,54 @@ public class Contrato implements Serializable {
 
     public void setExecucaos(Set<Execucao> execucaos) {
         this.execucaos = execucaos;
+    }
+
+    public String getTipoConcurso() {
+        return tipoConcurso;
+    }
+
+    public void setTipoConcurso(String tipoConcurso) {
+        this.tipoConcurso = tipoConcurso;
+    }
+
+    public LocalDate getDtVistoTribunalContas() {
+        return dtVistoTribunalContas;
+    }
+
+    public void setDtVistoTribunalContas(LocalDate dtVistoTribunalContas) {
+        this.dtVistoTribunalContas = dtVistoTribunalContas;
+    }
+
+    public LocalDate getDtPagamentoEmolumentos() {
+        return dtPagamentoEmolumentos;
+    }
+
+    public void setDtPagamentoEmolumentos(LocalDate dtPagamentoEmolumentos) {
+        this.dtPagamentoEmolumentos = dtPagamentoEmolumentos;
+    }
+
+    public LocalDate getDtPrazoGarantiaAditamento() {
+        return dtPrazoGarantiaAditamento;
+    }
+
+    public void setDtPrazoGarantiaAditamento(LocalDate dtPrazoGarantiaAditamento) {
+        this.dtPrazoGarantiaAditamento = dtPrazoGarantiaAditamento;
+    }
+
+    public LocalDate getDtPrazosVinculativos() {
+        return dtPrazosVinculativos;
+    }
+
+    public void setDtPrazosVinculativos(LocalDate dtPrazosVinculativos) {
+        this.dtPrazosVinculativos = dtPrazosVinculativos;
+    }
+
+    public BigDecimal getPrazoGarantiaAdiantamento() {
+        return prazoGarantiaAdiantamento;
+    }
+
+    public void setPrazoGarantiaAdiantamento(BigDecimal prazoGarantiaAdiantamento) {
+        this.prazoGarantiaAdiantamento = prazoGarantiaAdiantamento;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

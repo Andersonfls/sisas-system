@@ -11,6 +11,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Objects;
+
 
 /**
  * Service Implementation for managing Adjudicacao.
@@ -73,6 +75,9 @@ public class AdjudicacaoService {
     public AdjudicacaoDTO findOneByProgramasProjectos(Long id) {
         log.debug("Request to get Adjudicacao : {}", id);
         Adjudicacao adjudicacao = adjudicacaoRepository.findByProgramasProjectosId(id);
+        if (Objects.isNull(adjudicacao)) {
+            adjudicacao = new Adjudicacao();
+        }
         return adjudicacaoMapper.toDto(adjudicacao);
     }
 

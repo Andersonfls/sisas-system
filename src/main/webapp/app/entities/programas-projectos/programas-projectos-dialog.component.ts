@@ -30,9 +30,8 @@ import {EspecialidadesService} from '../especialidades/especialidades.service';
 
 export class ProgramasProjectosDialogComponent implements OnInit {
 
-    programasProjectos: ProgramasProjectos;
     isSaving: boolean;
-
+    programasProjectos: ProgramasProjectos;
     provincias: Provincia[];
     provincia: Provincia;
     municipios: Municipio[];
@@ -48,23 +47,18 @@ export class ProgramasProjectosDialogComponent implements OnInit {
     concepcao: Concepcao;
     sistemaaguas: SistemaAgua[];
     @ViewChild('closeModal') private closeModal: ElementRef;
-
     // Concurso
     concurso: Concurso;
     @ViewChild('closeModalConcurso') private closeModalConcurso: ElementRef;
-
     // Adjacao
     adjudicacao: Adjudicacao;
     @ViewChild('closeModalAdj') private closeModalAdj: ElementRef;
-
     // CONTRATO
     contrato: Contrato;
     @ViewChild('closeModalContrato') private closeModalContrato: ElementRef;
-
     // EMPREITADA
     empreitada: Empreitada;
     @ViewChild('closeModalEmpreitada') private closeModalEmpreitada: ElementRef;
-
     // EXECUCAO
     execucao: Execucao;
     @ViewChild('closeModalExecucao') private closeModalExecucao: ElementRef;
@@ -99,9 +93,6 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                 this.montaListaInicio();
             }
         });
-        this.situacaoService.query()
-            .subscribe((res: HttpResponse<Situacao[]>) => { this.situacaos = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
-
         this.concepcao = new Concepcao();
         this.concurso = new Concurso();
         this.adjudicacao = new Adjudicacao();
@@ -110,9 +101,9 @@ export class ProgramasProjectosDialogComponent implements OnInit {
         this.execucao = new Execucao();
         this.loadAllSisstemasAgua();
 
-        this.especialidadesService.query().subscribe(
-            (res: HttpResponse<Especialidades[]>) => {
-                this.especialidadess = res.body;
+        this.situacaoService.query().subscribe( (res: HttpResponse<Situacao[]>) => { this.situacaos = res.body; },
+            (res: HttpErrorResponse) => this.onError(res.message));
+        this.especialidadesService.query().subscribe( (res: HttpResponse<Especialidades[]>) => { this.especialidadess = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message));
     }
@@ -127,23 +118,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
     load(id) {
         this.programasProjectosService.find(id)
             .subscribe((programasProjectosResponse: HttpResponse<ProgramasProjectos>) => {
-                const programasProjectos: ProgramasProjectos = programasProjectosResponse.body;
-                if (programasProjectos.dtLancamento) {
-                    programasProjectos.dtLancamento = {
-                        year: programasProjectos.dtLancamento.getFullYear(),
-                        month: programasProjectos.dtLancamento.getMonth() + 1,
-                        day: programasProjectos.dtLancamento.getDate()
-                    };
-                }
-                if (programasProjectos.dtUltimaAlteracao) {
-                    programasProjectos.dtUltimaAlteracao = {
-                        year: programasProjectos.dtUltimaAlteracao.getFullYear(),
-                        month: programasProjectos.dtUltimaAlteracao.getMonth() + 1,
-                        day: programasProjectos.dtUltimaAlteracao.getDate()
-                    };
-                }
-                this.programasProjectos = programasProjectos;
-                console.log(this.programasProjectos);
+                this.programasProjectos = this.converteDatasProgramasProjectos(programasProjectosResponse.body);
                 this.loadConcepcao(this.programasProjectos.id);
                 this.loadConcurso(this.programasProjectos.id);
                 this.loadAdjudicacao(this.programasProjectos.id);
@@ -159,121 +134,6 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                     this.onChangeComunas();
                 }
             });
-    }
-
-    montaListaInicio() {
-        this.provinciaService.queryPorNivelUsuario().subscribe(
-            (res: HttpResponse<Provincia[]>) => {
-                this.provincias = res.body;
-            },
-            (res: HttpErrorResponse) => this.onError(res.message));
-
-        this.municipioService.query().subscribe(
-            (res: HttpResponse<Municipio[]>) => {
-                this.municipios = res.body;
-            },
-            (res: HttpErrorResponse) => this.onError(res.message));
-
-        this.comunaService.query().subscribe(
-            (res: HttpResponse<Comuna[]>) => {
-                this.comunas = res.body;
-            }, (res: HttpErrorResponse) => this.onError(res.message));
-    }
-
-    validaData() {
-       const aprovacao: Date = new Date(this.concepcao.dtAprovacaoCon.year, this.concepcao.dtAprovacaoCon.month - 1, this.concepcao.dtAprovacaoCon.day);
-       const elaboracao = new Date(this.concepcao.dtElaboracaoCon.year, this.concepcao.dtElaboracaoCon.month - 1, this.concepcao.dtElaboracaoCon.day );
-
-        console.log(aprovacao);
-        console.log(elaboracao);
-        if (aprovacao > elaboracao ) {
-            alert('A data de aprovação não pode ser maior que a data de elaboração');
-            this.concepcao.dtAprovacaoCon = null;
-        }
-    }
-
-    validaDataAberturaProposta() {
-        const entrega: Date = new Date(this.concurso.dtEntregaProposta.year, this.concurso.dtEntregaProposta.month - 1, this.concurso.dtEntregaProposta.day);
-        const abertura = new Date(this.concurso.dtAberturaProposta.year, this.concurso.dtAberturaProposta.month - 1, this.concurso.dtAberturaProposta.day );
-
-        if (abertura > entrega ) {
-            alert('A data de abertura não pode ser maior que a data de entrega');
-            this.concurso.dtAberturaProposta = null;
-        }
-    }
-
-    validaDataConclusaoAvaliacao() {
-        const entrega: Date = new Date(this.concurso.dtEntregaProposta.year, this.concurso.dtEntregaProposta.month - 1, this.concurso.dtEntregaProposta.day);
-        const conclusao = new Date(this.concurso.dtConclusaoAvaliacaoRelPrel.year, this.concurso.dtConclusaoAvaliacaoRelPrel.month - 1, this.concurso.dtConclusaoAvaliacaoRelPrel.day );
-
-        if (conclusao > entrega ) {
-            alert('A data de conclusão não pode ser maior que a data de entrega');
-            this.concurso.dtConclusaoAvaliacaoRelPrel = null;
-        }
-    }
-
-    validaDataNegociacao() {
-        const entrega: Date = new Date(this.concurso.dtEntregaProposta.year, this.concurso.dtEntregaProposta.month - 1, this.concurso.dtEntregaProposta.day);
-        const negociacao = new Date(this.concurso.dtNegociacao.year, this.concurso.dtNegociacao.month - 1, this.concurso.dtNegociacao.day );
-
-        if (negociacao > entrega ) {
-            alert('A data de negociação não pode ser maior que a data de entrega');
-            this.concurso.dtNegociacao = null;
-        }
-    }
-
-    validaDataAprovacaoFinal() {
-        const entrega: Date = new Date(this.concurso.dtEntregaProposta.year, this.concurso.dtEntregaProposta.month - 1, this.concurso.dtEntregaProposta.day);
-        const aprovacaoFinal = new Date(this.concurso.dtAprovRelAvalFinal.year, this.concurso.dtAprovRelAvalFinal.month - 1, this.concurso.dtAprovRelAvalFinal.day );
-
-        if (aprovacaoFinal > entrega ) {
-            alert('A data de aprovacão rel. aval. final não pode ser maior que a data de entrega');
-            this.concurso.dtAprovRelAvalFinal = null;
-        }
-    }
-
-    validaDataAdjudicacao(data: any, tipo) {
-        const dataLancamento: Date = new Date(this.adjudicacao.dtLancamento.year, this.concurso.dtLancamento.month - 1, this.concurso.dtLancamento.day);
-        const dt = new Date(data.year, data.month - 1, data.day );
-
-        if (dt > dataLancamento ) {
-            alert('A data informada não pode ser maior que a data de lançamento');
-            if (tipo === 'submissao') {
-                this.adjudicacao.dtSubmissaoMinutContrato = null;
-            } else if (tipo === 'prestacao') {
-                this.adjudicacao.dtPrestacaoGarantBoaExec = null;
-            } else if (tipo === 'comunicacao') {
-                this.adjudicacao.dtComunicaoAdjudicacao = null;
-            }
-        }
-    }
-
-    validaDataContrato(data: any, tipo) {
-        const dataAssinatura: Date = new Date(this.contrato.dtAssinatura.year, this.contrato.dtAssinatura.month - 1, this.contrato.dtAssinatura.day);
-        const dt = new Date(data.year, data.month - 1, data.day );
-
-        if (dt > dataAssinatura ) {
-            alert('A data informada não pode ser maior que a data de assinatura!');
-
-            if (tipo === 'inicio') {
-                this.contrato.dtInicio = null;
-            } else if (tipo === 'recepcao') {
-                this.contrato.dtRecepcaoProvisoria = null;
-            } else if (tipo === 'finalizacao') {
-                this.contrato.dtFinalizacaoProcessoHomologAprov = null;
-            } else if (tipo === 'adiantamento') {
-                this.contrato.dtAdiantamento = null;
-            } else if (tipo === 'definitiva') {
-                this.contrato.dtRecepcaoDefinitiva = null;
-            } else if (tipo === 'comissionamento') {
-                this.contrato.dtRecepcaoComicionamento = null;
-            }
-        }
-    }
-
-    setarAssociado(valor) {
-        console.log(valor);
-        this.programasProjectos.associadoInquerito = valor;
     }
 
     loadConcepcao(id) {
@@ -309,6 +169,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                     };
                 }
                 this.concepcao = concepcao;
+                this.concurso.tipoConcurso = this.concepcao.tipoConcurso;
             });
     }
 
@@ -366,6 +227,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                     };
                 }
                 this.concurso = concurso;
+                this.concurso.tipoConcurso = this.concepcao.tipoConcurso;
             });
     }
 
@@ -373,6 +235,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
         this.adjService.findByProgramasProjectos(id)
             .subscribe((adjResponse: HttpResponse<Adjudicacao>) => {
                 const adjudicacao: Adjudicacao = adjResponse.body;
+                console.log('ADJ', adjudicacao);
                 if (adjudicacao.dtLancamento) {
                     adjudicacao.dtLancamento = {
                         year: adjudicacao.dtLancamento.getFullYear(),
@@ -466,12 +329,44 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                         day: contrato.dtRecepcaoProvisoria.getDate()
                     };
                 }
+                if (contrato.dtVistoTribunalContas) {
+                    contrato.dtVistoTribunalContas = {
+                        year: contrato.dtVistoTribunalContas.getFullYear(),
+                        month: contrato.dtVistoTribunalContas.getMonth() + 1,
+                        day: contrato.dtVistoTribunalContas.getDate()
+                    };
+                }
+
+                if (contrato.dtPagamentoEmolumentos) {
+                    contrato.dtPagamentoEmolumentos = {
+                        year: contrato.dtPagamentoEmolumentos.getFullYear(),
+                        month: contrato.dtPagamentoEmolumentos.getMonth() + 1,
+                        day: contrato.dtPagamentoEmolumentos.getDate()
+                    };
+                }
+
+                if (contrato.dtPrazoGarantiaAditamento) {
+                    contrato.dtPrazoGarantiaAditamento = {
+                        year: contrato.dtPrazoGarantiaAditamento.getFullYear(),
+                        month: contrato.dtPrazoGarantiaAditamento.getMonth() + 1,
+                        day: contrato.dtPrazoGarantiaAditamento.getDate()
+                    };
+                }
+
+                if (contrato.dtPrazosVinculativos) {
+                    contrato.dtPrazosVinculativos = {
+                        year: contrato.dtPrazosVinculativos.getFullYear(),
+                        month: contrato.dtPrazosVinculativos.getMonth() + 1,
+                        day: contrato.dtPrazosVinculativos.getDate()
+                    };
+                }
 
                 this.contrato = contrato;
+                this.contrato.tipoConcurso = this.concurso.tipoConcurso;
+                this.preencheCampos();
             });
     }
 
-    // EXECUCAO
     loadExecucao(id) {
         this.execucaoService.findByProgramasProjectos(id)
             .subscribe((execucaoResponse: HttpResponse<Execucao>) => {
@@ -505,44 +400,9 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                     };
                 }
                 this.execucao = execucao;
+                this.execucao.tipoEmpreitada = this.contrato.tipoEmpreitada;
             });
     }
-
-    // EMPREITADA
-    /*validaEmpreitada() {
-        if (this.programasProjectos.id === undefined || this.programasProjectos.id === null) {
-            this.programasProjectosService.create(this.programasProjectos).subscribe( (resp) => {
-                this.programasProjectos = resp.body;
-                console.log(resp);
-                this.empreitada.programasProjectos = new ProgramasProjectos();
-                this.empreitada.programasProjectos.id = this.programasProjectos.id;
-                this.salvarEmpreitada();
-            });
-        } else {
-            this.empreitada.programasProjectos = new ProgramasProjectos();
-            this.empreitada.programasProjectos.id = this.programasProjectos.id;
-            this.salvarEmpreitada();
-        }
-    }
-
-    salvarEmpreitada() {
-
-        if (this.empreitada.id !== undefined && this.empreitada.id !== null) {
-            this.empreitadaService.update(this.empreitada).subscribe( (event) => {
-                alert('Empreitada foi atualizado com sucesso');
-                console.log(event);
-                this.hideModalConcepcao();
-                this.empreitada = event.body;
-            });
-        } else {
-            this.empreitadaService.create(this.empreitada).subscribe( (event) => {
-                alert('Empreitada foi criado com sucesso');
-                console.log(event);
-                this.hideModalConcepcao();
-                this.empreitada = event.body;
-            });
-        }
-    }*/
 
     loadEmpreitada(id) {
         this.empreitadaService.findByProgramasProjectos(id)
@@ -556,54 +416,159 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                     };
                 }
                 this.empreitada = empreitada;
+                this.empreitada.tipoEmpreitada = this.contrato.tipoEmpreitada;
             });
     }
 
-    clear() {
+    converteDatasProgramasProjectos(data: ProgramasProjectos) {
+        const programasProjectos: ProgramasProjectos = data;
+        if (programasProjectos.dtLancamento) {
+            programasProjectos.dtLancamento = {
+                year: programasProjectos.dtLancamento.getFullYear(),
+                month: programasProjectos.dtLancamento.getMonth() + 1,
+                day: programasProjectos.dtLancamento.getDate()
+            };
+        }
+        if (programasProjectos.dtUltimaAlteracao) {
+            programasProjectos.dtUltimaAlteracao = {
+                year: programasProjectos.dtUltimaAlteracao.getFullYear(),
+                month: programasProjectos.dtUltimaAlteracao.getMonth() + 1,
+                day: programasProjectos.dtUltimaAlteracao.getDate()
+            };
+        }
+        return programasProjectos;
     }
 
-    save() {
-        this.isSaving = true;
-        console.log('ANTES DE ENVIAR AO BANCO ');
-        console.log(this.programasProjectos);
-        if (this.programasProjectos.id !== undefined) {
-            this.subscribeToSaveResponse(
-                this.programasProjectosService.update(this.programasProjectos));
-        } else {
-            this.subscribeToSaveResponse(
-                this.programasProjectosService.create(this.programasProjectos));
+    preencheCampos() {
+        if (this.contrato.id) {
+            this.empreitada.tipoEmpreitada = this.contrato.tipoEmpreitada;
+        }
+    }
+
+    montaListaInicio() {
+        this.provinciaService.queryPorNivelUsuario().subscribe(
+            (res: HttpResponse<Provincia[]>) => {
+                this.provincias = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message));
+
+        this.municipioService.query().subscribe(
+            (res: HttpResponse<Municipio[]>) => {
+                this.municipios = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message));
+
+        this.comunaService.query().subscribe(
+            (res: HttpResponse<Comuna[]>) => {
+                this.comunas = res.body;
+            }, (res: HttpErrorResponse) => this.onError(res.message));
+    }
+
+    validaData() {
+        const aprovacao: Date = new Date(this.concepcao.dtAprovacaoCon.year, this.concepcao.dtAprovacaoCon.month - 1, this.concepcao.dtAprovacaoCon.day);
+        const elaboracao = new Date(this.concepcao.dtElaboracaoCon.year, this.concepcao.dtElaboracaoCon.month - 1, this.concepcao.dtElaboracaoCon.day );
+        if (aprovacao > elaboracao ) {
+            alert('A data de aprovação não pode ser maior que a data de elaboração');
+            this.concepcao.dtAprovacaoCon = null;
+        }
+    }
+
+    validaDataAberturaProposta() {
+        const entrega: Date = new Date(this.concurso.dtEntregaProposta.year, this.concurso.dtEntregaProposta.month - 1, this.concurso.dtEntregaProposta.day);
+        const abertura = new Date(this.concurso.dtAberturaProposta.year, this.concurso.dtAberturaProposta.month - 1, this.concurso.dtAberturaProposta.day );
+        if (abertura > entrega ) {
+            alert('A data de abertura não pode ser maior que a data de entrega');
+            this.concurso.dtAberturaProposta = null;
+        }
+    }
+
+    validaDataConclusaoAvaliacao() {
+        const entrega: Date = new Date(this.concurso.dtEntregaProposta.year, this.concurso.dtEntregaProposta.month - 1, this.concurso.dtEntregaProposta.day);
+        const conclusao = new Date(this.concurso.dtConclusaoAvaliacaoRelPrel.year, this.concurso.dtConclusaoAvaliacaoRelPrel.month - 1, this.concurso.dtConclusaoAvaliacaoRelPrel.day );
+        if (conclusao > entrega ) {
+            alert('A data de conclusão não pode ser maior que a data de entrega');
+            this.concurso.dtConclusaoAvaliacaoRelPrel = null;
+        }
+    }
+
+    validaDataNegociacao() {
+        const entrega: Date = new Date(this.concurso.dtEntregaProposta.year, this.concurso.dtEntregaProposta.month - 1, this.concurso.dtEntregaProposta.day);
+        const negociacao = new Date(this.concurso.dtNegociacao.year, this.concurso.dtNegociacao.month - 1, this.concurso.dtNegociacao.day );
+        if (negociacao > entrega ) {
+            alert('A data de negociação não pode ser maior que a data de entrega');
+            this.concurso.dtNegociacao = null;
+        }
+    }
+
+    validaDataAprovacaoFinal() {
+        const entrega: Date = new Date(this.concurso.dtEntregaProposta.year, this.concurso.dtEntregaProposta.month - 1, this.concurso.dtEntregaProposta.day);
+        const aprovacaoFinal = new Date(this.concurso.dtAprovRelAvalFinal.year, this.concurso.dtAprovRelAvalFinal.month - 1, this.concurso.dtAprovRelAvalFinal.day );
+        if (aprovacaoFinal > entrega ) {
+            alert('A data de aprovacão rel. aval. final não pode ser maior que a data de entrega');
+            this.concurso.dtAprovRelAvalFinal = null;
+        }
+    }
+
+    validaDataAdjudicacao(data: any, tipo) {
+        const dataLancamento: Date = new Date(this.adjudicacao.dtLancamento.year, this.concurso.dtLancamento.month - 1, this.concurso.dtLancamento.day);
+        const dt = new Date(data.year, data.month - 1, data.day );
+        if (dt > dataLancamento ) {
+            alert('A data informada não pode ser maior que a data de lançamento');
+            if (tipo === 'submissao') {
+                this.adjudicacao.dtSubmissaoMinutContrato = null;
+            } else if (tipo === 'prestacao') {
+                this.adjudicacao.dtPrestacaoGarantBoaExec = null;
+            } else if (tipo === 'comunicacao') {
+                this.adjudicacao.dtComunicaoAdjudicacao = null;
+            }
+        }
+    }
+
+    validaDataContrato(data: any, tipo) {
+        const dataAssinatura: Date = new Date(this.contrato.dtAssinatura.year, this.contrato.dtAssinatura.month - 1, this.contrato.dtAssinatura.day);
+        const dt = new Date(data.year, data.month - 1, data.day );
+        if (dt > dataAssinatura ) {
+            alert('A data informada não pode ser maior que a data de assinatura!');
+            if (tipo === 'inicio') {
+                this.contrato.dtInicio = null;
+            } else if (tipo === 'recepcao') {
+                this.contrato.dtRecepcaoProvisoria = null;
+            } else if (tipo === 'finalizacao') {
+                this.contrato.dtFinalizacaoProcessoHomologAprov = null;
+            } else if (tipo === 'adiantamento') {
+                this.contrato.dtAdiantamento = null;
+            } else if (tipo === 'definitiva') {
+                this.contrato.dtRecepcaoDefinitiva = null;
+            } else if (tipo === 'comissionamento') {
+                this.contrato.dtRecepcaoComicionamento = null;
+            }
         }
     }
 
     validaConcepcao() {
-        console.log('VALIDANDO ANTES');
-        console.log(this.programasProjectos);
         if (this.programasProjectos.id === undefined || this.programasProjectos.id === null) {
             this.programasProjectosService.create(this.programasProjectos).subscribe( (resp) => {
-                this.programasProjectos = resp.body;
+                this.programasProjectos = this.converteDatasProgramasProjectos(resp.body);
                 console.log(resp);
                 this.concepcao.programasProjectos = new ProgramasProjectos();
                 this.concepcao.programasProjectos.id = this.programasProjectos.id;
                 this.salvarConcepcao();
-                this.loadConcepcao(this.concepcao.id); // ADICIONADO TEMPORARIAMENTE
             });
         } else {
             this.concepcao.programasProjectos = new ProgramasProjectos();
             this.concepcao.programasProjectos.id = this.programasProjectos.id;
             this.salvarConcepcao();
-            this.loadConcepcao(this.concepcao.id); // ADICIONADO TEMPORARIAMENTE
         }
     }
 
     salvarConcepcao() {
-
         if (this.concepcao.id !== undefined && this.concepcao.id !== null) {
                 this.concepcaoService.update(this.concepcao).subscribe( (event) => {
                     alert('Concepção foi atualizado com sucesso');
                     console.log(event);
                     this.hideModalConcepcao();
                     this.concepcao = event.body;
-                    this.concurso.tipoConcurso = this.concepcao.tipoConcurso;
+                    this.loadConcepcao(this.concepcao.id);
                 });
         } else {
             this.concepcaoService.create(this.concepcao).subscribe( (event) => {
@@ -611,21 +576,16 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                 console.log(event);
                 this.hideModalConcepcao();
                 this.concepcao = event.body;
-                this.concurso.tipoConcurso = this.concepcao.tipoConcurso;
+                this.loadConcepcao(this.concepcao.id);
             });
         }
-    }
-
-    public hideModalConcepcao() {
-        this.closeModal.nativeElement.click();
     }
 
     // CONCURSO
     validaConcurso() {
         if (this.programasProjectos.id === undefined || this.programasProjectos.id === null) {
             this.programasProjectosService.create(this.programasProjectos).subscribe( (resp) => {
-                this.programasProjectos = resp.body;
-                console.log(resp);
+                this.programasProjectos = this.converteDatasProgramasProjectos(resp.body);
                 this.concurso.programasProjectos = new ProgramasProjectos();
                 this.concurso.programasProjectos.id = this.programasProjectos.id;
                 this.salvarConcurso();
@@ -641,33 +601,25 @@ export class ProgramasProjectosDialogComponent implements OnInit {
         if (this.concurso.id !== undefined && this.concurso.id !== null) {
             this.concursoService.update(this.concurso).subscribe( (event) => {
                 alert('Concurso foi atualizado com sucesso');
-                console.log(event);
                 this.hideModalConcurso();
                 this.concurso = event.body;
-                this.loadConcurso(this.concurso.id); // ADICIONADO TEMPORARIAMENTE
                 this.adjudicacao.tipoConcurso = this.concepcao.tipoConcurso;
             });
         } else {
             this.concursoService.create(this.concurso).subscribe( (event) => {
                 alert('Concurso foi criado com sucesso');
-                console.log(event);
                 this.hideModalConcurso();
                 this.concurso = event.body;
-                this.loadConcurso(this.concurso.id); // ADICIONADO TEMPORARIAMENTE
                 this.adjudicacao.tipoConcurso = this.concepcao.tipoConcurso;
             });
         }
-    }
-
-    public hideModalConcurso() {
-        this.closeModalConcurso.nativeElement.click();
     }
 
     // ADJUDICACAO
     validaAdjudicacao() {
         if (this.programasProjectos.id === undefined || this.programasProjectos.id === null) {
             this.programasProjectosService.create(this.programasProjectos).subscribe( (resp) => {
-                this.programasProjectos = resp.body;
+                this.programasProjectos = this.converteDatasProgramasProjectos(resp.body);
                 console.log(resp);
                 this.adjudicacao.programasProjectos = new ProgramasProjectos();
                 this.adjudicacao.programasProjectos.id = this.programasProjectos.id;
@@ -687,7 +639,6 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                 console.log(event);
                 this.hideModalAdj();
                 this.adjudicacao = event.body;
-                this.loadAdjudicacao(this.adjudicacao.id); // ADICIONADO TEMPORARIAMENTE
             });
         } else {
             this.adjService.create(this.adjudicacao).subscribe( (event) => {
@@ -695,20 +646,15 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                 console.log(event);
                 this.hideModalAdj();
                 this.adjudicacao = event.body;
-                this.loadAdjudicacao(this.adjudicacao.id); // ADICIONADO TEMPORARIAMENTE
             });
         }
-    }
-
-    public hideModalAdj() {
-        this.closeModalAdj.nativeElement.click();
     }
 
     // CONTRATO
     validaContrato() {
         if (this.programasProjectos.id === undefined || this.programasProjectos.id === null) {
             this.programasProjectosService.create(this.programasProjectos).subscribe( (resp) => {
-                this.programasProjectos = resp.body;
+                this.programasProjectos = this.converteDatasProgramasProjectos(resp.body);
                 console.log(resp);
                 this.contrato.programasProjectos = new ProgramasProjectos();
                 this.contrato.programasProjectos.id = this.programasProjectos.id;
@@ -728,7 +674,6 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                 console.log(event);
                 this.hideModalContrato();
                 this.contrato = event.body;
-                this.loadContrato(this.contrato.id); // ADICIONADO TEMPORARIAMENTE
             });
         } else {
             this.contratoService.create(this.contrato).subscribe( (event) => {
@@ -736,40 +681,42 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                 console.log(event);
                 this.hideModalContrato();
                 this.contrato = event.body;
-                this.loadContrato(this.contrato.id); // ADICIONADO TEMPORARIAMENTE
             });
         }
     }
 
-    onChangeMunicipios() {
-        this.municipios = null;
-        this.comunas = null;
-
-        this.municipioService.queryMunicipioByProvinciaId({
-            provinciaId: this.programasProjectos.provincia.id
-        })
-            .subscribe((res) => {
-                this.municipios = res.body;
+    // EMPREITADA
+    validaEmpreitada() {
+        if (this.programasProjectos.id === undefined || this.programasProjectos.id === null) {
+            this.programasProjectosService.create(this.programasProjectos).subscribe( (resp) => {
+                this.programasProjectos = this.converteDatasProgramasProjectos(resp.body);
+                this.empreitada.idProgramasProjectosId = new ProgramasProjectos();
+                this.empreitada.idProgramasProjectosId.id = this.programasProjectos.id;
+                this.empreitada.idContratoId = this.contrato.id;
+                this.salvarEmpreitada();
             });
+        } else {
+            this.empreitada.idProgramasProjectosId = new ProgramasProjectos();
+            this.empreitada.idProgramasProjectosId.id = this.programasProjectos.id;
+            this.empreitada.idContratoId = this.contrato.id;
+            this.salvarEmpreitada();
+        }
     }
 
-    onChangeComunas() {
-        this.comunas = null;
-
-        this.comunaService.queryComunaByMunicipioId({
-            municipioId: this.programasProjectos.municipio.id
-        })
-            .subscribe((res) => {
-                this.comunas = res.body;
+    salvarEmpreitada() {
+        if (this.empreitada.id !== undefined && this.empreitada.id !== null) {
+            this.empreitadaService.update(this.empreitada).subscribe( (event) => {
+                alert('EMPREITADA foi atualizada com sucesso!');
+                this.hideModalEmpreitada();
+                this.execucao = event.body;
             });
-    }
-
-    public hideModalContrato() {
-        this.closeModalContrato.nativeElement.click();
-    }
-
-    habilitarTela(valor) {
-        this.controleSessoes = valor;
+        } else {
+            this.empreitadaService.create(this.empreitada).subscribe( (event) => {
+                alert('EMPREITADA foi criada com sucesso!');
+                this.hideModalEmpreitada();
+                this.execucao = event.body;
+            });
+        }
     }
 
     // EXECUCAO
@@ -777,21 +724,22 @@ export class ProgramasProjectosDialogComponent implements OnInit {
         this.execucao.tipoEmpreitada = this.empreitada.tipoEmpreitada;
         if (this.programasProjectos.id === undefined || this.programasProjectos.id === null) {
             this.programasProjectosService.create(this.programasProjectos).subscribe( (resp) => {
-                this.programasProjectos = resp.body;
+                this.programasProjectos = this.converteDatasProgramasProjectos(resp.body);
                 console.log(resp);
                 this.execucao.idProgramasProjectosId = new ProgramasProjectos();
+                this.execucao.idContratoId = this.contrato.id;
                 this.execucao.idProgramasProjectosId.id = this.programasProjectos.id;
                 this.salvarExecucao();
             });
         } else {
             this.execucao.idProgramasProjectosId = new ProgramasProjectos();
             this.execucao.idProgramasProjectosId.id = this.programasProjectos.id;
+            this.execucao.idContratoId = this.contrato.id;
             this.salvarExecucao();
         }
     }
 
     salvarExecucao() {
-        console.log(this.execucao);
         if (this.execucao.id !== undefined && this.execucao.id !== null) {
             this.execucaoService.update(this.execucao).subscribe( (event) => {
                 alert('Execução foi atualizada com sucesso!');
@@ -809,8 +757,65 @@ export class ProgramasProjectosDialogComponent implements OnInit {
         }
     }
 
+    // SALVA PROGRAMAS E PROJECTOS
+    save() {
+        this.isSaving = true;
+        console.log(this.programasProjectos);
+        if (this.programasProjectos.id !== undefined) {
+            this.subscribeToSaveResponse(
+                this.programasProjectosService.update(this.programasProjectos));
+        } else {
+            this.subscribeToSaveResponse(
+                this.programasProjectosService.create(this.programasProjectos));
+        }
+    }
+
+    onChangeMunicipios() {
+        this.municipios = null;
+        this.comunas = null;
+
+        this.municipioService.queryMunicipioByProvinciaId({
+            provinciaId: this.programasProjectos.provincia.id
+        }).subscribe((res) => {
+            this.municipios = res.body;
+        });
+    }
+
+    onChangeComunas() {
+        this.comunas = null;
+
+        this.comunaService.queryComunaByMunicipioId({
+            municipioId: this.programasProjectos.municipio.id
+        }).subscribe((res) => {
+            this.comunas = res.body;
+        });
+    }
+
+    public habilitarTela(valor) {
+        this.controleSessoes = valor;
+    }
+
+    public hideModalConcurso() {
+        this.closeModalConcurso.nativeElement.click();
+    }
+
+    public hideModalAdj() {
+        this.closeModalAdj.nativeElement.click();
+    }
+
     public hideModalExecucao() {
         this.closeModalExecucao.nativeElement.click();
+    }
+
+    public hideModalEmpreitada() {
+        this.closeModalEmpreitada.nativeElement.click();
+    }
+    public hideModalContrato() {
+        this.closeModalContrato.nativeElement.click();
+    }
+
+    public hideModalConcepcao() {
+        this.closeModal.nativeElement.click();
     }
 
     private subscribeToSaveResponse(result: Observable<HttpResponse<ProgramasProjectos>>) {
@@ -830,10 +835,6 @@ export class ProgramasProjectosDialogComponent implements OnInit {
 
     private onError(error: any) {
         this.jhiAlertService.error(error.message, null, null);
-    }
-
-    trackComunaById(index: number, item: Comuna) {
-        return item.id;
     }
 
     previousState() {

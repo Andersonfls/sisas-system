@@ -84,6 +84,14 @@ export class ContratoService {
             .convertLocalDateFromServer(contrato.dtRecepcaoDefinitiva);
         copy.dtRecepcaoComicionamento = this.dateUtils
             .convertLocalDateFromServer(contrato.dtRecepcaoComicionamento);
+        copy.dtVistoTribunalContas = this.dateUtils
+            .convertLocalDateFromServer(contrato.dtVistoTribunalContas);
+        copy.dtPagamentoEmolumentos = this.dateUtils
+            .convertLocalDateFromServer(contrato.dtPagamentoEmolumentos);
+        copy.dtPrazoGarantiaAditamento = this.dateUtils
+            .convertLocalDateFromServer(contrato.dtPrazoGarantiaAditamento);
+        copy.dtPrazosVinculativos = this.dateUtils
+            .convertLocalDateFromServer(contrato.dtPrazosVinculativos);
         return copy;
     }
 
@@ -108,6 +116,15 @@ export class ContratoService {
             .convertLocalDateToServer(contrato.dtRecepcaoDefinitiva);
         copy.dtRecepcaoComicionamento = this.dateUtils
             .convertLocalDateToServer(contrato.dtRecepcaoComicionamento);
+        copy.dtVistoTribunalContas = this.dateUtils
+            .convertLocalDateToServer(contrato.dtVistoTribunalContas);
+        copy.dtPagamentoEmolumentos = this.dateUtils
+            .convertLocalDateToServer(contrato.dtPagamentoEmolumentos);
+        copy.dtPrazoGarantiaAditamento = this.dateUtils
+            .convertLocalDateToServer(contrato.dtPrazoGarantiaAditamento);
+        copy.dtPrazosVinculativos = this.dateUtils
+            .convertLocalDateToServer(contrato.dtPrazosVinculativos);
+
         return copy;
     }
 }

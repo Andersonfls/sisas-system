@@ -13,6 +13,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Objects;
+
 
 /**
  * Service Implementation for managing Execucao.
@@ -75,6 +77,9 @@ public class ExecucaoService {
     public ExecucaoDTO findOneByProgramasProjectos(Long id) {
         log.debug("Request to get Execucao : {}", id);
         Execucao empreitada = execucaoRepository.findByIdProgramasProjectosId(id);
+        if (Objects.isNull(empreitada)) {
+            empreitada = new Execucao();
+        }
         return execucaoMapper.toDto(empreitada);
     }
 

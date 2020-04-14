@@ -112,7 +112,7 @@ public class ExecucaoResource {
      */
     @GetMapping("/execucaos/programas-projectos/{id}")
     @Timed
-    public ResponseEntity<ExecucaoDTO> getConcursoByProgramasProjectos(@PathVariable Long id) {
+    public ResponseEntity<ExecucaoDTO> getExecucaoByProgramasProjectos(@PathVariable Long id) {
         log.debug("REST request to get Execucao : {}", id);
         ExecucaoDTO execucaoDTO = execucaoService.findOneByProgramasProjectos(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(execucaoDTO));
