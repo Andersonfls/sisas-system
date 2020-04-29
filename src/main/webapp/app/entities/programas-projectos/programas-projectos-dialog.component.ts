@@ -38,14 +38,15 @@ export class ProgramasProjectosDialogComponent implements OnInit {
     municipio: Municipio;
     comunas: Comuna[];
     comuna: Comuna;
-    especialidadess: Especialidades[];
-    controleSessoes: string;
-    private subscription: Subscription;
     situacaos: Situacao[];
+    sistemaaguas: SistemaAgua[];
+    especialidadess: Especialidades[];
+    private subscription: Subscription;
+    moeda: string;
+    controleSessoes: string;
 
     // Concepcao
     concepcao: Concepcao;
-    sistemaaguas: SistemaAgua[];
     @ViewChild('closeModal') private closeModal: ElementRef;
     // Concurso
     concurso: Concurso;
@@ -85,6 +86,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
+        this.moeda = 'Kz';
         this.programasProjectos = new ProgramasProjectos();
         this.subscription = this.route.params.subscribe((params) => {
             if ( params['id'] ) {
@@ -136,7 +138,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
             });
     }
 
-    loadConcepcao(id) {
+    async loadConcepcao(id) {
         this.concepcaoService.findByProgramasProjectos(id)
             .subscribe((concepcaoResponse: HttpResponse<Concepcao>) => {
                 const concepcao: Concepcao = concepcaoResponse.body;
@@ -169,11 +171,10 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                     };
                 }
                 this.concepcao = concepcao;
-                this.concurso.tipoConcurso = this.concepcao.tipoConcurso;
             });
     }
 
-    loadConcurso(id) {
+    async loadConcurso(id) {
         this.concursoService.findByProgramasProjectos(id)
             .subscribe((concursoResponse: HttpResponse<Concurso>) => {
                 const concurso: Concurso = concursoResponse.body;
@@ -228,14 +229,14 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                 }
                 this.concurso = concurso;
                 this.concurso.tipoConcurso = this.concepcao.tipoConcurso;
+                this.validaTipoMoeda();
             });
     }
 
-    loadAdjudicacao(id) {
+    async loadAdjudicacao(id) {
         this.adjService.findByProgramasProjectos(id)
             .subscribe((adjResponse: HttpResponse<Adjudicacao>) => {
                 const adjudicacao: Adjudicacao = adjResponse.body;
-                console.log('ADJ', adjudicacao);
                 if (adjudicacao.dtLancamento) {
                     adjudicacao.dtLancamento = {
                         year: adjudicacao.dtLancamento.getFullYear(),
@@ -266,12 +267,14 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                 }
 
                 this.adjudicacao = adjudicacao;
+                this.adjudicacao.tipoConcurso = this.concepcao.tipoConcurso;
             });
     }
 
-    loadContrato(id) {
+    async loadContrato(id) {
         this.contratoService.findByProgramasProjectos(id)
             .subscribe((contratoResponse: HttpResponse<Contrato>) => {
+                console.log(contratoResponse);
                 const contrato: Contrato = contratoResponse.body;
                 if (contrato.dtLancamento) {
                     contrato.dtLancamento = {
@@ -362,12 +365,11 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                 }
 
                 this.contrato = contrato;
-                this.contrato.tipoConcurso = this.concurso.tipoConcurso;
-                this.preencheCampos();
+                this.contrato.tipoConcurso = this.concepcao.tipoConcurso;
             });
     }
 
-    loadExecucao(id) {
+    async loadExecucao(id) {
         this.execucaoService.findByProgramasProjectos(id)
             .subscribe((execucaoResponse: HttpResponse<Execucao>) => {
                 const execucao: Execucao = execucaoResponse.body;
@@ -404,7 +406,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
             });
     }
 
-    loadEmpreitada(id) {
+    async loadEmpreitada(id) {
         this.empreitadaService.findByProgramasProjectos(id)
             .subscribe((empreitadaResponse: HttpResponse<Empreitada>) => {
                 const empreitada: Empreitada = empreitadaResponse.body;
@@ -437,12 +439,6 @@ export class ProgramasProjectosDialogComponent implements OnInit {
             };
         }
         return programasProjectos;
-    }
-
-    preencheCampos() {
-        if (this.contrato.id) {
-            this.empreitada.tipoEmpreitada = this.contrato.tipoEmpreitada;
-        }
     }
 
     montaListaInicio() {
@@ -545,6 +541,16 @@ export class ProgramasProjectosDialogComponent implements OnInit {
         }
     }
 
+    validaTipoMoeda() {
+        if (this.contrato.tipoMoeda === 'EUR') {
+            this.moeda = '€ ';
+        } else if (this.contrato.tipoMoeda === 'USD') {
+            this.moeda = '$ ';
+        } else {
+            this.moeda = 'Kz ';
+        }
+    }
+
     validaConcepcao() {
         if (this.programasProjectos.id === undefined || this.programasProjectos.id === null) {
             this.programasProjectosService.create(this.programasProjectos).subscribe( (resp) => {
@@ -568,7 +574,6 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                     console.log(event);
                     this.hideModalConcepcao();
                     this.concepcao = event.body;
-                    this.loadConcepcao(this.concepcao.id);
                 });
         } else {
             this.concepcaoService.create(this.concepcao).subscribe( (event) => {
@@ -576,25 +581,15 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                 console.log(event);
                 this.hideModalConcepcao();
                 this.concepcao = event.body;
-                this.loadConcepcao(this.concepcao.id);
             });
         }
     }
 
     // CONCURSO
     validaConcurso() {
-        if (this.programasProjectos.id === undefined || this.programasProjectos.id === null) {
-            this.programasProjectosService.create(this.programasProjectos).subscribe( (resp) => {
-                this.programasProjectos = this.converteDatasProgramasProjectos(resp.body);
-                this.concurso.programasProjectos = new ProgramasProjectos();
-                this.concurso.programasProjectos.id = this.programasProjectos.id;
-                this.salvarConcurso();
-            });
-        } else {
-            this.concurso.programasProjectos = new ProgramasProjectos();
-            this.concurso.programasProjectos.id = this.programasProjectos.id;
-            this.salvarConcurso();
-        }
+        this.concurso.programasProjectos = new ProgramasProjectos();
+        this.concurso.programasProjectos.id = this.programasProjectos.id;
+        this.salvarConcurso();
     }
 
     salvarConcurso() {
@@ -617,19 +612,9 @@ export class ProgramasProjectosDialogComponent implements OnInit {
 
     // ADJUDICACAO
     validaAdjudicacao() {
-        if (this.programasProjectos.id === undefined || this.programasProjectos.id === null) {
-            this.programasProjectosService.create(this.programasProjectos).subscribe( (resp) => {
-                this.programasProjectos = this.converteDatasProgramasProjectos(resp.body);
-                console.log(resp);
-                this.adjudicacao.programasProjectos = new ProgramasProjectos();
-                this.adjudicacao.programasProjectos.id = this.programasProjectos.id;
-                this.salvarAdjudicacao();
-            });
-        } else {
-            this.adjudicacao.programasProjectos = new ProgramasProjectos();
-            this.adjudicacao.programasProjectos.id = this.programasProjectos.id;
-            this.salvarAdjudicacao();
-        }
+        this.adjudicacao.programasProjectos = new ProgramasProjectos();
+        this.adjudicacao.programasProjectos.id = this.programasProjectos.id;
+        this.salvarAdjudicacao();
     }
 
     salvarAdjudicacao() {
@@ -652,19 +637,9 @@ export class ProgramasProjectosDialogComponent implements OnInit {
 
     // CONTRATO
     validaContrato() {
-        if (this.programasProjectos.id === undefined || this.programasProjectos.id === null) {
-            this.programasProjectosService.create(this.programasProjectos).subscribe( (resp) => {
-                this.programasProjectos = this.converteDatasProgramasProjectos(resp.body);
-                console.log(resp);
-                this.contrato.programasProjectos = new ProgramasProjectos();
-                this.contrato.programasProjectos.id = this.programasProjectos.id;
-                this.salvarContrato();
-            });
-        } else {
-            this.contrato.programasProjectos = new ProgramasProjectos();
-            this.contrato.programasProjectos.id = this.programasProjectos.id;
-            this.salvarContrato();
-        }
+        this.contrato.programasProjectos = new ProgramasProjectos();
+        this.contrato.programasProjectos.id = this.programasProjectos.id;
+        this.salvarContrato();
     }
 
     salvarContrato() {
@@ -687,20 +662,10 @@ export class ProgramasProjectosDialogComponent implements OnInit {
 
     // EMPREITADA
     validaEmpreitada() {
-        if (this.programasProjectos.id === undefined || this.programasProjectos.id === null) {
-            this.programasProjectosService.create(this.programasProjectos).subscribe( (resp) => {
-                this.programasProjectos = this.converteDatasProgramasProjectos(resp.body);
-                this.empreitada.idProgramasProjectosId = new ProgramasProjectos();
-                this.empreitada.idProgramasProjectosId.id = this.programasProjectos.id;
-                this.empreitada.idContratoId = this.contrato.id;
-                this.salvarEmpreitada();
-            });
-        } else {
-            this.empreitada.idProgramasProjectosId = new ProgramasProjectos();
-            this.empreitada.idProgramasProjectosId.id = this.programasProjectos.id;
-            this.empreitada.idContratoId = this.contrato.id;
-            this.salvarEmpreitada();
-        }
+        this.empreitada.idProgramasProjectosId = new ProgramasProjectos();
+        this.empreitada.idProgramasProjectosId.id = this.programasProjectos.id;
+        this.empreitada.idContratoId = this.contrato.id;
+        this.salvarEmpreitada();
     }
 
     salvarEmpreitada() {
@@ -708,35 +673,23 @@ export class ProgramasProjectosDialogComponent implements OnInit {
             this.empreitadaService.update(this.empreitada).subscribe( (event) => {
                 alert('EMPREITADA foi atualizada com sucesso!');
                 this.hideModalEmpreitada();
-                this.execucao = event.body;
+                this.empreitada = event.body;
             });
         } else {
             this.empreitadaService.create(this.empreitada).subscribe( (event) => {
                 alert('EMPREITADA foi criada com sucesso!');
                 this.hideModalEmpreitada();
-                this.execucao = event.body;
+                this.empreitada = event.body;
             });
         }
     }
 
     // EXECUCAO
     validaExecucao() {
-        this.execucao.tipoEmpreitada = this.empreitada.tipoEmpreitada;
-        if (this.programasProjectos.id === undefined || this.programasProjectos.id === null) {
-            this.programasProjectosService.create(this.programasProjectos).subscribe( (resp) => {
-                this.programasProjectos = this.converteDatasProgramasProjectos(resp.body);
-                console.log(resp);
-                this.execucao.idProgramasProjectosId = new ProgramasProjectos();
-                this.execucao.idContratoId = this.contrato.id;
-                this.execucao.idProgramasProjectosId.id = this.programasProjectos.id;
-                this.salvarExecucao();
-            });
-        } else {
-            this.execucao.idProgramasProjectosId = new ProgramasProjectos();
-            this.execucao.idProgramasProjectosId.id = this.programasProjectos.id;
-            this.execucao.idContratoId = this.contrato.id;
-            this.salvarExecucao();
-        }
+        this.execucao.idProgramasProjectosId = new ProgramasProjectos();
+        this.execucao.idProgramasProjectosId.id = this.programasProjectos.id;
+        this.execucao.idContratoId = this.contrato.id;
+        this.salvarExecucao();
     }
 
     salvarExecucao() {
@@ -770,7 +723,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
         }
     }
 
-    onChangeMunicipios() {
+    async onChangeMunicipios() {
         this.municipios = null;
         this.comunas = null;
 
@@ -781,7 +734,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
         });
     }
 
-    onChangeComunas() {
+    async onChangeComunas() {
         this.comunas = null;
 
         this.comunaService.queryComunaByMunicipioId({
@@ -791,8 +744,26 @@ export class ProgramasProjectosDialogComponent implements OnInit {
         });
     }
 
-    public habilitarTela(valor) {
+    public async habilitarTela(valor) {
         this.controleSessoes = valor;
+        if (valor === 'Concepcao') {
+            await this.loadConcepcao(this.programasProjectos.id);
+        } else if (valor === 'Concurso') {
+            await this.loadConcurso(this.programasProjectos.id);
+            this.concurso.tipoConcurso = this.concepcao.tipoConcurso;
+        } else if (valor === 'Adjudicacao') {
+            await this.loadAdjudicacao(this.programasProjectos.id);
+            this.adjudicacao.tipoConcurso = this.concepcao.tipoConcurso;
+        } else if (valor === 'Contrato') {
+            await this.loadContrato(this.programasProjectos.id);
+            this.contrato.tipoConcurso = this.concepcao.tipoConcurso;
+        } else  if (valor === 'Empreitada') {
+            await this.loadEmpreitada(this.programasProjectos.id);
+            this.empreitada.tipoEmpreitada = this.contrato.tipoEmpreitada;
+        }  else if (valor === 'Execucao') {
+            await this.loadExecucao(this.programasProjectos.id);
+            this.execucao.tipoEmpreitada = this.contrato.tipoEmpreitada;
+        }
     }
 
     public hideModalConcurso() {

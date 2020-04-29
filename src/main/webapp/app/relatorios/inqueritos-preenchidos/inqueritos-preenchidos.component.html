@@ -1,32 +1,29 @@
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <div id="pdfTable">
 
-    <jhi-alert></jhi-alert>
-    <br/>
-
     <div id="model2">
         <div class="export-container">
-            <button type="button" (click)="exportTable('tbnn')" class="btn btn-primary btn-sm">
-                <span class="fa fa-file-excel-o"></span>
-                <span class="d-none d-md-inline">Excel</span>
-            </button>
-            <button type="button" (click)="captureScreen('mod2')" class="btn btn-primary btn-sm">
-                <span class="fas fa-file-pdf"></span>
-                <span class="d-none d-md-inline">PDF</span>
-            </button>
+            <h2 class="text-centro">
+                <span>Estatística de Inquéritos Preenchidos</span>
+                <button type="button" (click)="exportTable('tbnn')" class="btn btn-primary btn-sm excel">
+                    <span class="fa fa-file-excel-o"></span>
+                    <span class="d-none d-md-inline">Excel</span>
+                </button>
+                <button type="button" (click)="captureScreen('mod2')" class="btn btn-primary btn-sm bt-pdf">
+                    <span class="fas fa-file-pdf"></span>
+                    <span class="d-none d-md-inline">PDF</span>
+                </button>
+            </h2>
         </div>
-        <h2 class="text-centro">
-            <span>Estatística de Inquéritos Preenchidos</span>
-        </h2>
         <div id="mod2" class="table-responsive">
             <table *ngIf="listaTabela" id="tbnn" class="table table-striped">
                 <thead>
-                <tr style="background-color: #1f749c">
+                <tr class="fundo-hd-table">
                     <th colspan="3" class="borda-th"></th>
                     <th colspan="2" class="borda-th text-centro"><span>Sector</span></th>
                     <th class="borda-th"></th>
                 </tr>
-                <tr style="background-color: #1f749c">
+                <tr class="fundo-hd-table">
                     <th class="borda-th text-centro"><span>Província</span></th>
                     <th class="borda-th text-centro"><span>N° de Municípios</span></th>
                     <th class="borda-th text-centro"><span>N° de Comunas</span></th>
@@ -46,7 +43,7 @@
                 </tr>
                 </tbody>
                 <tfoot>
-                <tr style="background-color: #1f749c">
+                <tr class="fundo-hd-table">
                     <td style="text-align: center;"> <span style="font-weight: bold">Total: </span></td>
                     <td style="text-align: center;"> <span style="font-weight: bold">{{totalMunicipios}} </span></td>
                     <td style="text-align: center;"> <span style="font-weight: bold">{{totalComuna}} </span></td>

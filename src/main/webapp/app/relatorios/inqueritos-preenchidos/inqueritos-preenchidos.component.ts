@@ -65,16 +65,16 @@ export class InqueritosPreenchidosComponent implements OnInit {
     public captureScreen(elementId) {
         const data = document.getElementById(elementId);
         (html2canvas as any)(data).then((canvas) => {
-            const imgWidth = 207;
+            const imgWidth = 204;
             const pageHeight = 295;
             let imgHeight = canvas.height * imgWidth / canvas.width;
             if (imgHeight > pageHeight) {
-                imgHeight = pageHeight - 2;
+                imgHeight = pageHeight - 4;
             }
             const contentDataURL = canvas.toDataURL('image/png');
             const pdf = new jsPDF('p', 'mm', 'a4');
             pdf.text('Estatística de Inquéritos Preenchidos', 55, 5);
-            pdf.addImage(contentDataURL, 'PNG', 2, 8, imgWidth, imgHeight);
+            pdf.addImage(contentDataURL, 'PNG', 3, 8, imgWidth, imgHeight);
             pdf.save('inqueritos-preenchidos.pdf');
         }).catch(function(error) {
             // Error Handling

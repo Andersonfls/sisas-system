@@ -34,7 +34,7 @@
                             <label class="form-control-label negrito"
                                    for="field_idProvincia">Provincia</label>
                             <select class="form-control" id="field_idProvincia" name="provincia" [(ngModel)]="indicadorProducao.provincia">
-                                <option *ngIf="!editForm.value.provincia" [ngValue]="null" selected>Selecione a Província..</option>
+                                <option *ngIf="!indicadorProducao.provincia" [ngValue]="null" selected>Selecione a Província..</option>
                                 <option [ngValue]="provinciaOption.id === indicadorProducao.provincia?.id ? indicadorProducao.provincia : provinciaOption"
                                         *ngFor="let provinciaOption of provincias">{{provinciaOption.nmProvincia}}</option>
                             </select>
@@ -1260,7 +1260,7 @@
                                    id="field_vlrCustoAmortizaAnualInvestOpCapex"
                                    currencyMask [options]="{ prefix: 'Kz ', thousands: '.', decimal: ',', allowNegative: false }"
                                    [(ngModel)]="indicadorProducao.vlrCustoAmortizaAnualInvestOpCapex" required
-                                   placeholder="Valor do custo" min="0"/>
+                                   placeholder="Valor do custo" min="0" (ngModelChange)="somaVariavel55()"/>
                             <div
                                 [hidden]="!(editForm.controls.vlrCustoAmortizaAnualInvestOpCapex?.dirty && editForm.controls.vlrCustoAmortizaAnualInvestOpCapex?.invalid)">
                                 <small class="form-text text-danger"
@@ -1527,7 +1527,7 @@
                                    name="qtdAcoesFormacaoSoftwareFornecidosPlanejadas"
                                    id="field_qtdAcoesFormacaoSoftwareFornecidosPlanejadas"
                                    [(ngModel)]="indicadorProducao.qtdAcoesFormacaoSoftwareFornecidosPlanejadas" required
-                                   placeholder="Quantidade de ações" min="0"/>
+                                   placeholder="Quantidade de ações" min="0" (ngModelChange)="somaVariavel67()"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdAcoesFormacaoSoftwareFornecidosPlanejadas?.dirty && editForm.controls.qtdAcoesFormacaoSoftwareFornecidosPlanejadas?.invalid)">
                                 <small class="form-text text-danger"
@@ -1641,7 +1641,7 @@
                                    name="qtdAcoesFormacaoSoftwareFornecidosRealizadas"
                                    id="field_qtdAcoesFormacaoSoftwareFornecidosRealizadas"
                                    [(ngModel)]="indicadorProducao.qtdAcoesFormacaoSoftwareFornecidosRealizadas" required
-                                   placeholder="Quantidade de ações" min="0"/>
+                                   placeholder="Quantidade de ações" min="0" (ngModelChange)="somaVariavel72()"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdAcoesFormacaoSoftwareFornecidosRealizadas?.dirty && editForm.controls.qtdAcoesFormacaoSoftwareFornecidosRealizadas?.invalid)">
                                 <small class="form-text text-danger"
@@ -1733,7 +1733,7 @@
                             <input type="number" class="form-control" name="qtdManuaisCmpPrevistos"
                                    id="field_qtdManuaisCmpPrevistos"
                                    [(ngModel)]="indicadorProducao.qtdManuaisCmpPrevistos" required
-                                   placeholder="Quantidade de manuais" min="0"/>
+                                   placeholder="Quantidade de manuais" min="0" (ngModelChange)="somaVariavel76()"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdManuaisCmpPrevistos?.dirty && editForm.controls.qtdManuaisCmpPrevistos?.invalid)">
                                 <small class="form-text text-danger"
@@ -1821,7 +1821,7 @@
                             <input type="number" class="form-control" name="qtdManuaisCmpRealizadas"
                                    id="field_qtdManuaisCmpRealizadas"
                                    [(ngModel)]="indicadorProducao.qtdManuaisCmpRealizadas" required
-                                   placeholder="Quantidade de manuais" min="0" readonly/>
+                                   placeholder="Quantidade de manuais" min="0" readonly (ngModelChange)="somaVariavel80()"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdManuaisCmpRealizadas?.dirty && editForm.controls.qtdManuaisCmpRealizadas?.invalid)">
                                 <small class="form-text text-danger"

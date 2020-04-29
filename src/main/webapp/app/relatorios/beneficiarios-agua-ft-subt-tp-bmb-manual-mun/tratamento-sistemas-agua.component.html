@@ -1,28 +1,26 @@
 <div>
     <div class="export-container">
-        <button type="button" (click)="exportTable('table')" class="btn btn-primary btn-sm">
-            <span class="fa fa-file-excel-o"></span>
-            <span class="d-none d-md-inline">Excel</span>
-        </button>
-        <button type="button" (click)="captureScreen('table')" class="btn btn-primary btn-sm">
-            <span class="fas fa-file-pdf"></span>
-            <span class="d-none d-md-inline">PDF</span>
-        </button>
-    </div>
-    <div id="content">
         <h2 style="text-align: center; font-size: 1.4rem;">
             <span>Beneficiários de Água por Fonte Subterrânea e por Tipo de Bomba Manual (Nível Municipal)</span>
+            <button type="button" (click)="exportTable('table')" class="btn btn-primary btn-sm excel">
+                <span class="fa fa-file-excel-o"></span>
+                <span class="d-none d-md-inline">Excel</span>
+            </button>
+            <button type="button" (click)="captureScreen('table')" class="btn btn-primary btn-sm bt-pdf">
+                <span class="fas fa-file-pdf"></span>
+                <span class="d-none d-md-inline">PDF</span>
+            </button>
         </h2>
-        <jhi-alert></jhi-alert>
-
+    </div>
+    <div id="content">
         <div class="table-responsive" *ngIf="listaTabela">
             <table id="table" class="table table-striped">
                 <thead>
-                <tr style="background-color: #1f749c; text-align: center;">
+                <tr class="fundo-hd-table" style=" text-align: center;">
                     <th class="borda-th" colspan="6"></th>
                     <th class="borda-th" colspan="10"><span>N° de Sistemas por Tipo de Bomba Manual</span></th>
                 </tr>
-                <tr style="background-color: #1f749c">
+                <tr class="fundo-hd-table">
                     <th class="borda-th"><span>Provincia</span></th>
                     <th class="borda-th"><span>Municipio</span></th>
                     <th class="borda-th"><span>População</span></th>
@@ -62,7 +60,7 @@
                 </tr>
                 </tbody>
                 <tfoot>
-                <tr style="background-color: #1f749c">
+                <tr class="fundo-hd-table">
                     <td colspan="2"> <span style="font-weight: bold">Total: </span></td>
                     <td style="text-align: center;"> <span style="font-weight: bold">{{totalPopulacao}} </span></td>
                     <td style="text-align: center;"> <span style="font-weight: bold">{{totalPocoMelhorado}} </span></td>

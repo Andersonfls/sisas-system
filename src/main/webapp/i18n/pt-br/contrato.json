@@ -25,7 +25,7 @@
             "dtAssinatura": "Data assinatura",
             "dtFinalizacaoProcessoHomologAprov": "Data finalização do Processo de homologação",
             "tipoMoeda": "Tipo moeda",
-            "valorAdiantamento": "Valor adiantamento (down payment)",
+            "valorAdiantamento": "Valor adiantamento",
             "dtAdiantamento": "Data de Pagamento do adiantamento",
             "dtInicio": "Data início (Contagem do prazo)",
             "prazoExecucao": "Prazo execução(meses)",

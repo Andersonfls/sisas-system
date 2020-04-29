@@ -1,16 +1,18 @@
 /*----- Componant: Top Navigation Bar ----- */
 .app-header {
-    position: fixed;
-    left: 0;
+    position: absolute;
+    left: 23.1%;
     right: 0;
     top: 0;
-    width: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    background-color: #1C6588;
+    background-color: #173f66;
     z-index: 1030;
     padding-right: 15px;
+
+    width: 76.5%;
+    border-radius: 10px;
 }
 
 @media (min-width: 768px) {
@@ -44,7 +46,7 @@
         -ms-flex: 0 0 auto;
         flex: 0 0 auto;
         display: block;
-        width: 255px;
+        width: 242px;
         background-color: #1c6587;
     }
 }
@@ -52,35 +54,6 @@
 .app-header__logo:focus, .app-header__logo:hover {
     text-decoration: none;
     color: #fff;
-}
-
-.app-sidebar__toggle {
-    padding: 0 15px;
-    font-family: fontAwesome;
-    color: #fff;
-    line-height: 2.4;
-    -webkit-transition: background-color 0.3s ease;
-    -o-transition: background-color 0.3s ease;
-    transition: background-color 0.3s ease;
-}
-
-@media (max-width: 767px) {
-    .app-sidebar__toggle {
-        -webkit-box-ordinal-group: 0;
-        -ms-flex-order: -1;
-        order: -1;
-    }
-}
-
-.app-sidebar__toggle:before {
-    content: "\f0c9";
-    font-size: 21px;
-}
-
-.app-sidebar__toggle:focus, .app-sidebar__toggle:hover {
-    color: #fff;
-    background-color: rgba(226, 184, 0, 0.97);
-    text-decoration: none;
 }
 
 .app-nav {
@@ -91,14 +64,6 @@
     -webkit-box-pack: end;
     -ms-flex-pack: end;
     justify-content: flex-end;
-}
-
-@media (min-width: 768px) {
-    .app-nav {
-        -webkit-box-flex: 1;
-        -ms-flex: 1 0 auto;
-        flex: 1 0 auto;
-    }
 }
 
 .app-nav__item {
@@ -712,17 +677,9 @@
     color: #eeebe5 !important;
     font-family: initial;
     font-size: 1.1em;
-}
 
-.img-navbar-logo {
-    height: 55px;
-    width: 55px;
-    float: left;
-}
-
-.texto-navbar-logo {
-    color: #eeebe5 !important;
-    font-size: 0.4em;
-    font-style: initial;
-    margin-left: 7%;
+    top: 50%;
+    left: 10%;
+    transform: translate(-4%, -99%);
+    position: absolute;
 }

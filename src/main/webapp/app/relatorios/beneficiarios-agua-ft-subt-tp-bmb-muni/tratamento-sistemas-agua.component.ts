@@ -50,14 +50,26 @@ export class TratamentoSistemasAguaComponent implements OnInit {
     public captureScreen(elementId) {
         const data = document.getElementById(elementId);
         (html2canvas as any)(data).then((canvas) => {
-            const imgWidth = 207;
+            const imgWidth = 204;
             const pageHeight = 295;
             const imgHeight = canvas.height * imgWidth / canvas.width;
-            const heightLeft = imgHeight;
+            let heightLeft = imgHeight;
             const contentDataURL = canvas.toDataURL('image/png');
             const pdf = new jsPDF('p', 'mm', 'a4');
+            let position = 13;
+
             pdf.text('Beneficiários de Água por Fonte Subterrânea e por Tipo de Bomba (Municipal)', 2, 7);
-            pdf.addImage(contentDataURL, 'PNG', 2, 13, imgWidth, imgHeight);
+            pdf.addImage(contentDataURL, 'PNG', 3, position, imgWidth, (imgHeight - 4 ));
+            heightLeft -= pageHeight;
+
+            while (heightLeft >= 0) {
+                position = heightLeft - imgHeight;
+                pdf.addPage();
+                pdf.text('', 2, 5);
+                pdf.addImage(contentDataURL, 'PNG', 3, (position + 14), imgWidth, (imgHeight - 4));
+                heightLeft -= pageHeight;
+            }
+
             pdf.save('beneficiariosTpBomba.pdf');
         }).catch(function(error) {
             // Error Handling

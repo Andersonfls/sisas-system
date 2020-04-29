@@ -161,21 +161,41 @@ export class IndicadorProducaoDialogComponent implements OnInit {
     // AZUL = Recebe a soma dos campos(Não precisa digitar):
     // V55, V67, V72, V76, V80
     somaCampos() {
+       this.somaVariavel55();
+       this.somaVariavel67();
+       this.somaVariavel72();
+       this.somaVariavel76();
+       this.somaVariavel80();
+    }
+
+    somaVariavel55() {
+        this.indicadorProducao.vlrCustoTotaisCapexOpex = 0;
         this.indicadorProducao.vlrCustoTotaisCapexOpex = this.indicadorProducao.vlrCustoOperacionaisOpex + this.indicadorProducao.vlrCustoAmortizaAnualInvestOpCapex; // 55
-        this.indicadorProducao.vlrCustoTotaisCapexOpex = this.indicadorProducao.vlrCustoTotaisCapexOpex ? this.indicadorProducao.vlrCustoTotaisCapexOpex : 0;
-        this.indicadorProducao.totalAcoesFormacaoPlanejadas += this.indicadorProducao.qtdAcoesFormacaoMmsPlaneadas + this.indicadorProducao.qtdAcoesFormacaoMoPlaneadas
-        + this.indicadorProducao.qtdAcoesFormacaoCmpPlaneadas + this.indicadorProducao.qtdAcoesFormacaoSoftwareFornecidosPlanejadas; // 67
+    }
+
+    somaVariavel67() {
+        this.indicadorProducao.totalAcoesFormacaoPlanejadas = 0;
+        this.indicadorProducao.totalAcoesFormacaoPlanejadas = this.indicadorProducao.qtdAcoesFormacaoMmsPlaneadas + this.indicadorProducao.qtdAcoesFormacaoMoPlaneadas
+            + this.indicadorProducao.qtdAcoesFormacaoCmpPlaneadas + this.indicadorProducao.qtdAcoesFormacaoSoftwareFornecidosPlanejadas; // 67
+    }
+
+    somaVariavel72() {
+        this.indicadorProducao.qtdAcoesFormacaoRealizadas =  0;
         this.indicadorProducao.qtdAcoesFormacaoRealizadas = this.indicadorProducao.qtdAcoesFormacaoMoRealizadas
             + this.indicadorProducao.qtdAcoesFormacaoMmsRealizadas + this.indicadorProducao.qtdAcoesFormacaoCmpRealizadas
             + this.indicadorProducao.qtdAcoesFormacaoSoftwareFornecidosRealizadas; // 72
-        this.indicadorProducao.qtdAcoesFormacaoRealizadas = this.indicadorProducao.qtdAcoesFormacaoRealizadas ? this.indicadorProducao.qtdAcoesFormacaoRealizadas : 0;
+    }
+
+    somaVariavel76() {
+        this.indicadorProducao.qtdManuaisPrevistos =  0;
         this.indicadorProducao.qtdManuaisPrevistos = this.indicadorProducao.qtdManuaisMoPrevistos
             + this.indicadorProducao.qtdManuaisMmsPrevistos + this.indicadorProducao.qtdManuaisCmpPrevistos; // 76
-        this.indicadorProducao.qtdManuaisPrevistos = this.indicadorProducao.qtdManuaisPrevistos ? this.indicadorProducao.qtdManuaisPrevistos : 0;
+    }
 
+    somaVariavel80() {
+        this.indicadorProducao.qtdManuaisRealizados =  0;
         this.indicadorProducao.qtdManuaisRealizados = this.indicadorProducao.qtdAcoesManuaisMoRealizadas
             + this.indicadorProducao.qtdManuaisMmsRealizadas + this.indicadorProducao.qtdManuaisCmpRealizadas; // 80
-        this.indicadorProducao.qtdManuaisRealizados = this.indicadorProducao.qtdManuaisRealizados ? this.indicadorProducao.qtdManuaisRealizados : 0;
     }
 
     previousState() {

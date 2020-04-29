@@ -2,13 +2,15 @@
     overflow: hidden;
     z-index: 3;
     width: 290px;
-    margin-right: 18px;
+    margin-right: 1px;
 }
 
 #sidebar .list-group {
     min-width: 245px;
-    background-color: #1C6588;
-    min-height: 270vh;
+    background-color: #183F66;
+    min-height: 210vh;
+    border-radius: 10px;
+    margin-top: 20%;
 }
 
 #sidebar i {
@@ -19,7 +21,7 @@
 #sidebar .list-group-item {
     font-weight: 600;
     border-radius: 0;
-    background-color: #1C6588;
+    background-color: #183F66;
     color: #efece6;
     border-left: 0;
     border-right: 0;
@@ -30,7 +32,7 @@
 
 /* highlight active menu */
 #sidebar .list-group-item:not(.collapsed) {
-    background-color: #2d596f;
+    background-color: #082e53;
 }
 
 /* closed state */
@@ -44,7 +46,7 @@
 
 /* open state */
 #sidebar .list-group .list-group-item[aria-expanded="true"] {
-    background-color: #527d92;
+    background-color: #a3b1c0;
 }
 
 #sidebar .list-group .list-group-item[aria-expanded="true"]::after {
@@ -144,7 +146,7 @@
 }
 
 .collapse.background{
-    background-color: #3b2613 ;
+    background-color: #163f66;
 }
 
 .sidebar-collapse{
@@ -178,3 +180,5 @@
     overflow-scrolling: auto;
     background: lightgray;
 }
+
+

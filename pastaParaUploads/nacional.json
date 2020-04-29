@@ -4166,7 +4166,7 @@
         {
             "type": "Feature",
             "properties": {
-                "nome": "Luanda Norte",
+                "nome": "Lunda Norte",
                 "code": 8,
                 "valor": 0
             },
@@ -4505,7 +4505,7 @@
         {
             "type": "Feature",
             "properties": {
-                "nome": "Luanda Sul",
+                "nome": "Lunda Sul",
                 "code": 17,
                 "valor": 0
             },
@@ -5203,7 +5203,7 @@
         {
             "type": "Feature",
             "properties": {
-                "nome": "Bie",
+                "nome": "Bié",
                 "code": 11,
                 "valor": 0
             },
@@ -6463,7 +6463,7 @@
         {
             "type": "Feature",
             "properties": {
-                "nome": "Namide",
+                "nome": "Namibe ",
                 "code": 14,
                 "valor": 0
             },
@@ -6818,7 +6818,7 @@
         {
             "type": "Feature",
             "properties": {
-                "nome": "Hulia",
+                "nome": "Huila ",
                 "code": 15,
                 "valor": 0
             },
@@ -7484,7 +7484,7 @@
         {
             "type": "Feature",
             "properties": {
-                "nome": "Kuando Kubango",
+                "nome": "Cuando Cubango ",
                 "code": 13,
                 "valor": 0
             },

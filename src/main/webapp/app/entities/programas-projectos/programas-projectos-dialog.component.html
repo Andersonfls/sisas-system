@@ -230,7 +230,7 @@
                 </button>
 
                 <button class="btn btn-secondary" (click)="habilitarTela('Contrato')" data-toggle="modal"
-                        data-target=".bd-contrato-xl" style="margin-left: 1%" [disabled]="!adjudicacao.id">
+                        data-target=".bd-contrato-xl" style="margin-left: 1%" [disabled]="!concurso.id">
                     <span>Contrato</span>
                 </button>
 
@@ -295,14 +295,11 @@
                             </small>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" *ngIf="concepcao.dtUltimaAlteracao">
                         <label class="form-control-label" jhiTranslate="sisasApp.concepcao.dtUltimaAlteracao" for="field_dtUltimaAlteracao">Dt Ultima Alteracao</label>
                         <div class="input-group">
                             <input id="field_dtUltimaAlteracao" type="text" class="form-control" name="dtUltimaAlteracao" ngbDatepicker  #cdtUltimaAlteracaoDp="ngbDatepicker" [(ngModel)]="concepcao.dtUltimaAlteracao"
                                    placeholder="Data da última alteração" readonly/>
-                            <span class="input-group-append">
-                             <button type="button" class="btn btn-secondary"><i class="fa fa-calendar"></i></button>
-                             </span>
                         </div>
                     </div>
                     <div class="form-group">
@@ -380,14 +377,11 @@
                             </small>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" *ngIf="concurso.dtUltimaAlteracao">
                         <label class="form-control-label" jhiTranslate="sisasApp.concurso.dtUltimaAlteracao" for="field_ccdtUltimaAlteracao">Dt Ultima Alteracao</label>
                         <div class="input-group">
                             <input id="field_ccdtUltimaAlteracao" type="text" class="form-control" name="ccdtUltimaAlteracao" ngbDatepicker  #condtUltimaAlteracaoDp="ngbDatepicker" [(ngModel)]="concurso.dtUltimaAlteracao"
                                    placeholder="Data última alteração" readonly/>
-                            <span class="input-group-append">
-                                <button type="button" class="btn btn-secondary"><i class="fa fa-calendar"></i></button>
-                            </span>
                         </div>
                     </div>
                     <div class="form-group">
@@ -614,7 +608,7 @@
                         <div class="form-group col-sm-6">
                             <div class="form-group">
                                 <label class="form-control-label" jhiTranslate="sisasApp.contrato.tipoMoeda" for="field_tipoMoeda">Tipo Moeda</label>
-                                <select class="form-control" id="field_tipoMoeda" name="tipoMoeda" [(ngModel)]="contrato.tipoMoeda"  required>
+                                <select class="form-control" id="field_tipoMoeda" name="tipoMoeda" [(ngModel)]="contrato.tipoMoeda" (change)="validaTipoMoeda()" required>
                                     <option *ngIf="!contrato.tipoMoeda" value="null">Selecione o Tipo Moeda...</option>
                                     <option value="EUR">EUR</option>
                                     <option value="USD">USD</option>
@@ -636,12 +630,8 @@
                         <div class="form-group col-sm-6">
                             <div class="form-group">
                                 <label class="form-control-label" jhiTranslate="sisasApp.contrato.valorContrato" for="field_valorContrato">Valor Contrato</label>
-                                <input *ngIf="contrato.tipoMoeda==='EUR'" type="text" class="form-control" name="valorContrato" id="field_valorContratoEUR"
-                                       currencyMask [options]="{ prefix: '€ ', thousands: '.', decimal: ',', allowNegative: false }" [(ngModel)]="contrato.valorContrato" required placeholder="Valor de contrato"/>
-                                <input *ngIf="contrato.tipoMoeda==='USD'" type="text" class="form-control" name="valorContrato" id="field_valorContratoUSD"
-                                       currencyMask [options]="{ prefix: '$ ', thousands: '.', decimal: ',', allowNegative: false }" [(ngModel)]="contrato.valorContrato" required placeholder="Valor de contrato"/>
-                                <input *ngIf="contrato.tipoMoeda!=='EUR' && contrato.tipoMoeda!=='USD'"type="text" class="form-control" name="valorContratoKz" id="field_valorContrato"
-                                       currencyMask [options]="{ prefix: 'Kz ', thousands: '.', decimal: ',', allowNegative: false }" [(ngModel)]="contrato.valorContrato" required placeholder="Valor de contrato"/>
+                                <input type="text" class="form-control" name="valorContratoKz" id="field_valorContrato"
+                                       currencyMask [options]="{ prefix: moeda, thousands: '.', decimal: ',', allowNegative: false }" [(ngModel)]="contrato.valorContrato" required placeholder="Valor de contrato"/>
                                 <div [hidden]="!(editForm.controls.valorContrato?.dirty && editForm.controls.valorContrato?.invalid)">
                                     <small class="form-text text-danger"
                                            [hidden]="!editForm.controls.valorContrato?.errors?.required" jhiTranslate="entity.validation.required">
@@ -714,13 +704,8 @@
                         <div class="form-group col-sm-6">
                             <div class="form-group">
                                 <label class="form-control-label" jhiTranslate="sisasApp.contrato.valorAdiantamento" for="field_valorAdiantamento">Valor Adiantamento</label>
-                                <input *ngIf="contrato.tipoMoeda==='EUR'" type="text" class="form-control" name="valorAdiantemento" id="field_valorAdiantamento"
-                                       currencyMask [options]="{ prefix: '€ ', thousands: '.', decimal: ',', allowNegative: false }" [(ngModel)]="contrato.valorAdiantamento" required placeholder="Valor adiantamento"/>
-                                <input *ngIf="contrato.tipoMoeda==='USD'" type="text" class="form-control" name="valorAdiantemento" id="field_valorAdiantamento"
-                                       currencyMask [options]="{ prefix: '$ ', thousands: '.', decimal: ',', allowNegative: false }" [(ngModel)]="contrato.valorAdiantamento" required placeholder="Valor adiantamento"/>
-                                <input *ngIf="contrato.tipoMoeda!=='EUR' && contrato.tipoMoeda!=='USD'"type="text" class="form-control" name="valorAdiantemento" id="field_valorAdiantamento"
-                                       currencyMask [options]="{ prefix: 'Kz ', thousands: '.', decimal: ',', allowNegative: false }" [(ngModel)]="contrato.valorAdiantamento" required placeholder="Valor adiantamento"/>
-
+                                <input type="text" class="form-control" name="valorAdiantemento" id="field_valorAdiantamento"
+                                       currencyMask [options]="{ prefix: moeda, thousands: '.', decimal: ',', allowNegative: false }" [(ngModel)]="contrato.valorAdiantamento" required placeholder="Valor adiantamento"/>
                                 <div [hidden]="!(editForm.controls.valorAdiantamento?.dirty && editForm.controls.valorAdiantamento?.invalid)">
                                     <small class="form-text text-danger"
                                            [hidden]="!editForm.controls.valorAdiantamento?.errors?.required" jhiTranslate="entity.validation.required">
@@ -1247,8 +1232,8 @@
                     </div>
                     <div class="form-group">
                         <label class="form-control-label" jhiTranslate="sisasApp.execucao.valorFacturadoPeriodo" for="field_valorFacturadoPeriodo">Valor Facturado Periodo</label>
-                        <input type="number" class="form-control" name="valorFacturadoPeriodo" id="field_valorFacturadoPeriodo"
-                               [(ngModel)]="execucao.valorFacturadoPeriodo" required placeholder="Valor Facturado no Período"/>
+                        <input type="text" class="form-control" name="valorFacturadoPeriodo" id="field_valorFacturadoPeriodo"
+                               currencyMask [options]="{ prefix: moeda, thousands: '.', decimal: ',', allowNegative: false }" [(ngModel)]="execucao.valorFacturadoPeriodo" required placeholder="Valor Facturado no Período"/>
                         <div [hidden]="!(editForm.controls.valorFacturadoPeriodo?.dirty && editForm.controls.valorFacturadoPeriodo?.invalid)">
                             <small class="form-text text-danger"
                                    [hidden]="!editForm.controls.valorFacturadoPeriodo?.errors?.required" jhiTranslate="entity.validation.required">
@@ -1309,8 +1294,8 @@
                     </div>
                     <div class="form-group">
                         <label class="form-control-label" jhiTranslate="sisasApp.execucao.valorPagoPeriodo" for="field_valorPagoPeriodo">Valor Pago Periodo</label>
-                        <input type="number" class="form-control" name="valorPagoPeriodo" id="field_valorPagoPeriodo"
-                               [(ngModel)]="execucao.valorPagoPeriodo" required placeholder="Valor Pago Periodo"/>
+                        <input type="text" class="form-control" name="valorPagoPeriodo" id="field_valorPagoPeriodo"
+                               currencyMask [options]="{ prefix: moeda, thousands: '.', decimal: ',', allowNegative: false }" [(ngModel)]="execucao.valorPagoPeriodo" required placeholder="Valor Pago Periodo"/>
                         <div [hidden]="!(editForm.controls.valorPagoPeriodo?.dirty && editForm.controls.valorPagoPeriodo?.invalid)">
                             <small class="form-text text-danger"
                                    [hidden]="!editForm.controls.valorPagoPeriodo?.errors?.required" jhiTranslate="entity.validation.required">

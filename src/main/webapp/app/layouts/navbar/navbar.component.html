@@ -1,46 +1,47 @@
-<header class="app-header">
-    <a class="app-header__logo" style="line-height: 30px !important;">
-        <img  class="img-responsive img-navbar-logo"  src="../../../content/images/logo_curto.png">
-        <div class="row" style="height: 55px;">
-            <a class="texto-navbar-logo" style=" max-height: 12px">República de Angola</a>
-            <a class="texto-navbar-logo" >Ministério da Energia e Águas</a>
-            <!--<a class="texto-navbar-logo" style=" max-height: 19px">Departamento Nacional de Águas</a>-->
-        </div>
-    </a>
-    <!-- Sidebar toggle button-->
-    <a class="app-sidebar__toggle" href="javascript:void(0);" data-target="#sidebar" data-toggle="collapse" aria-label="Hide Sidebar"></a>
+<header>
+    <!--<div>-->
+        <!--<a class="d-inline-block nvb-logo" style="width: 100%">-->
+            <!--<div style="max-width: 95%;" >-->
+                <!--<img  class="img-responsive img-navbar-logo" src="../../../content/images/logo-texto.png">-->
+            <!--</div>-->
+            <!--<a class="app-sidebar__toggle" href="javascript:void(0);" data-target="#sidebar" data-toggle="collapse" aria-label="Hide Sidebar"></a>-->
+        <!--</a>-->
+    <!--</div>-->
 
-    <a class="frase-navbar"> SISAS - SISTEMA DE INFORMAÇÃO SECTORIAL DE ÁGUAS E SANEAMENTO</a>
+    <div class="app-header">
+        <a class="frase-navbar"> SISAS - SISTEMA DE INFORMAÇÃO SECTORIAL DE ÁGUAS E SANEAMENTO</a>
 
-    <!-- Navbar Right Menu-->
-    <ul class="app-nav">
-        <!-- User Menu-->
-        <div ngbDropdown>
-            <a class="app-nav__item" id="dropdownBasic1" ngbDropdownToggle aria-label="Open Profile Menu" style="color: white;">
-                <i class="fa fa-user fa-lg"></i>
-            </a>
-
-            <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="margin-left: -5.85em; background-color: #2d596f;">
-                <a *ngIf="user" class="dropdown-item text-centro" style="color: #98b0d4">
-                    {{user.nome}}
+        <!-- Navbar Right Menu-->
+        <ul class="app-nav">
+            <!-- User Menu-->
+            <div ngbDropdown>
+                <a class="app-nav__item" id="dropdownBasic1" ngbDropdownToggle aria-label="Open Profile Menu" style="color: white;">
+                    <i class="fa fa-user fa-lg"></i>
                 </a>
 
-                <a class="dropdown-item" routerLink="settings" routerLinkActive="active" style="color: #f2f4f7">
-                    <i class="fa fa-cog fa-lg"></i> Configurações
-                </a>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="margin-left: -5.85em; background-color: #082e53 !important;">
+                    <a *ngIf="user" class="dropdown-item text-centro" style="color: #f2f4f7">
+                        {{user.nome}}
+                    </a>
 
-                <a href="http://www.dna.minea.gov.ao:8080/api/downloadFile/1.pdf" target='_blank' *ngIf="manual" class="dropdown-item" routerLinkActive="active" style="color: #f2f4f7">
-                    <i class="fa fa-book fa-lg"></i> Manual do Usuário
-                </a>
+                    <a class="dropdown-item" routerLink="settings" routerLinkActive="active" style="color: #f2f4f7">
+                        <i class="fa fa-cog fa-lg"></i> Configurações
+                    </a>
 
-                <a class="dropdown-item" routerLink="password" routerLinkActive="active" style="color: #f2f4f7">
-                    <i class="fa fa-user fa-lg"></i> Alterar senha
-                </a>
+                    <a href="http://www.dna.minea.gov.ao:8080/api/downloadFile/1.pdf" target='_blank' *ngIf="manual" class="dropdown-item" routerLinkActive="active" style="color: #f2f4f7">
+                        <i class="fa fa-book fa-lg"></i> Manual do Usuário
+                    </a>
 
-                <a class="dropdown-item" (click)="logout()" style="color: #f2f4f7">
-                    <i class="fa fa-sign-out fa-lg"></i> Sair
-                </a>
+                    <a class="dropdown-item" routerLink="password" routerLinkActive="active" style="color: #f2f4f7">
+                        <i class="fa fa-user fa-lg"></i> Alterar senha
+                    </a>
+
+                    <a class="dropdown-item" (click)="logout()" style="color: #f2f4f7">
+                        <i class="fa fa-sign-out fa-lg"></i> Sair
+                    </a>
+                </div>
             </div>
-        </div>
-    </ul>
+        </ul>
+    </div>
+
 </header>

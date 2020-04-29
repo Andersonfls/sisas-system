@@ -50,16 +50,26 @@ export class CoberturaSectorAguaProvincialComponent implements OnInit {
     public captureScreen(elementId) {
         const data = document.getElementById(elementId);
         (html2canvas as any)(data).then((canvas) => {
-            const imgWidth = 208;
+            const imgWidth = 204;
             const pageHeight = 295;
             const imgHeight = canvas.height * imgWidth / canvas.width;
-            const heightLeft = imgHeight;
+            let heightLeft = imgHeight;
             const contentDataURL = canvas.toDataURL('image/png');
             const pdf = new jsPDF('p', 'mm', 'a4');
-            const position = 0;
+            let position = 12;
+
             pdf.text('Cobertura no Sector de Água (Nível Comunal)', 45, 10);
-            // pdf.autoTable({html:'#tbprovin'});  // as simple as that!
-            pdf.addImage(contentDataURL, 'PNG', 2, 12, imgWidth, imgHeight);
+            pdf.addImage(contentDataURL, 'PNG', 3, position, imgWidth, (imgHeight - 13));
+            heightLeft -= pageHeight;
+
+            while (heightLeft >= 0) {
+                position = heightLeft - imgHeight;
+                pdf.addPage();
+                pdf.text('', 2, 5);
+                pdf.addImage(contentDataURL, 'PNG', 3, (position + 13), imgWidth, (imgHeight - 10));
+                heightLeft -= pageHeight;
+            }
+
             pdf.save('relatorio-sector-aguas.pdf');
         }).catch(function(error) {
             // Error Handling

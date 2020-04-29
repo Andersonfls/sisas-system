@@ -3,23 +3,23 @@
 
     <div>
         <div class="export-container">
-            <button type="button" (click)="exportTable('tbprovin')" class="btn btn-primary btn-sm">
-                <span class="fa fa-file-excel-o"></span>
-                <span class="d-none d-md-inline">Excel</span>
-            </button>
-            <button type="button" (click)="captureScreen('provinc')" class="btn btn-primary btn-sm">
-                <span class="fas fa-file-pdf"></span>
-                <span class="d-none d-md-inline">PDF</span>
-            </button>
-        </div>
-        <div>
             <h2 class="text-centro">
                 <span>Cobertura no Sector de Água (Nível Provincial)</span>
+                <button type="button" (click)="exportTable('tbprovin')" class="btn btn-primary btn-sm excel">
+                    <span class="fa fa-file-excel-o"></span>
+                    <span class="d-none d-md-inline">Excel</span>
+                </button>
+                <button type="button" (click)="captureScreen('provinc')" class="btn btn-primary btn-sm bt-pdf">
+                    <span class="fas fa-file-pdf"></span>
+                    <span class="d-none d-md-inline">PDF</span>
+                </button>
             </h2>
+        </div>
+        <div>
         <div id="provinc" class="table-responsive">
             <table id="tbprovin" class="table table-striped" *ngIf="listaTabela">
                 <thead>
-                <tr class="borda-th" style="background-color: #1f749c">
+                <tr class="fundo-hd-table borda-th">
                     <th class="borda-th"><span>Provincias</span></th>
                     <th class="borda-th"><span>N° de Municípios</span></th>
                     <th class="borda-th"><span>N° de Comunas</span></th>
@@ -41,7 +41,7 @@
                 </tr>
                 </tbody>
                 <tfoot>
-                <tr class="borda-th" style="background-color: #1f749c">
+                <tr class="fundo-hd-table borda-th">
                     <td class="text-centro"> <span style="font-weight: bold">Total: </span></td>
                     <td class="text-centro"> <span style="font-weight: bold">{{totalMunicipios}} </span></td>
                     <td class="text-centro"> <span style="font-weight: bold">{{totalComuna}} </span></td>

@@ -564,7 +564,7 @@
                 </div>
             </div>
             <div class="card" style="margin-bottom: 1%" *ngIf="sistemaAgua.nmTipoBomba !== 'Bombagem manual'">
-                <div class="card-header text-center">
+                <div class="card-header text-center" *ngIf="sistemaAgua.estadoFuncionamentoSistema">
                     <label *ngIf="sistemaAgua.estadoFuncionamentoSistema!=='Está em funcionamento (Bom)'" class="form-control-label negrito">Avaria no sistema</label>
                 </div>
                 <div class="card-body">
@@ -868,18 +868,6 @@
                                 <label class="form-control-label negrito"
                                        jhiTranslate="sisasApp.sistemaAgua.nmTpTratamentoPadraoUtilizado"
                                        for="field_nmTpTratamentoPadraoUtilizado">Nm Tp Tratamento Padrao Utilizado</label>
-
-                                <!--<select class="form-control" id="field_nmTpTratamentoPadraoUtilizado" name="nmTpTratamentoPadraoUtilizado"-->
-                                        <!--[(ngModel)]="sistemaAgua.nmTpTratamentoPadraoUtilizado" (ngModelChange)="concluiQuestionario()">-->
-                                    <!--<option *ngIf="!editForm.value.nmTpTratamentoPadraoUtilizado" [ngValue]="null" selected>Selecione o Tratemnto Padrao...</option>-->
-                                    <!--<option label="Pré-tratamento">Pré-tratamento</option>-->
-                                    <!--<option label="Coagulação, floculação, decantação, filtração">Coagulação, floculação,-->
-                                        <!--decantação, filtração-->
-                                    <!--</option>-->
-                                    <!--<option label="Desinfestação">Desinfestação</option>-->
-                                    <!--<option label="Outros">Outros</option>-->
-                                <!--</select>-->
-
                                 <ng-multiselect-dropdown id="field_nmTpTratamentoPadraoUtilizado" (onSelect)="onItemSelect($event)" (onDeSelect)="onItemSelect($event)"
                                     name="nmTpTratamentoPadraoUtilizado" [(ngModel)]="tratamentoPadraoUtilizado"
                                     [placeholder]="'Tratamento Padrão Utilizado'"
@@ -887,6 +875,20 @@
                                     [settings]="dropdownSettings">
                                 </ng-multiselect-dropdown>
 
+                            </div>
+                        </div>
+
+                        <div class="form-group col-sm-6" *ngIf="sistemaAgua.nmTpTratamentoAgua!=='Tratamento básico-cloro' && sistemaAgua.nmTpTratamentoAgua=='Não realiza'">
+                            <div class="form-group">
+                                <label class="form-control-label negrito"
+                                       jhiTranslate="sisasApp.sistemaAgua.existeAvariaSistemaTratamento"
+                                       for="field_existeAvariaSistemaTratamento">Existe Avaria Sistema Tratamento</label>
+                                <select class="form-control" id="field_existeAvariaSistemaTratamento"  name="existeAvariaSistemaTratamento"
+                                        [(ngModel)]="sistemaAgua.existeAvariaSistemaTratamento" >
+                                    <option [ngValue]="null" selected>Selecione se existe avaria no sistema...</option>
+                                    <option label="Não, existem outros motivos">Não, existem outros motivos</option>
+                                    <option label="Sim, sistema avariado">Sim, sistema avariado</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -913,34 +915,12 @@
                                 <label class="form-control-label negrito"
                                        jhiTranslate="sisasApp.sistemaAgua.nmTpTratamentoBasicoUtilizado"
                                        for="field_nmTpTratamentoBasicoUtilizado">Nm Tp Tratamento Basico Utilizado</label>
-                                <!--<select class="form-control" id="field_nmTpTratamentoBasicoUtilizado" name="nmTpTratamentoBasicoUtilizado"-->
-                                        <!--(ngModelChange)="concluiQuestionario()" [(ngModel)]="sistemaAgua.nmTpTratamentoBasicoUtilizado" >-->
-                                    <!--<option *ngIf="!editForm.value.nmTpTratamentoBasicoUtilizado" [ngValue]="null" selected>Selecione o tratamento básico...</option>-->
-                                    <!--<option label="Cloro gasoso">Cloro gasoso</option>-->
-                                    <!--<option label="Cloro líquido">Cloro líquido</option>-->
-                                    <!--<option label="Cloro em pó">Cloro em pó</option>-->
-                                    <!--<option label="Outros">Outros</option>-->
-                                <!--</select>-->
-
                                 <ng-multiselect-dropdown id="field_nmTpTratamentoBasicoUtilizado" (onSelect)="onItemSelect($event)" (onDeSelect)="onItemSelect($event)"
                                                          name="nmTpTratamentoBasicoUtilizado" [(ngModel)]="tratamentoBasicoUtilizado"
                                                          [placeholder]="'Tratamento Básico Utilizado'"
                                                          [data]="tratamentoBasicoUtilizadoLista"
                                                          [settings]="dropdownSettings">
                                 </ng-multiselect-dropdown>
-                            </div>
-                        </div>
-                        <div class="form-group col-sm-6" *ngIf="sistemaAgua.nmTpTratamentoAgua!=='Tratamento básico-cloro'">
-                            <div class="form-group">
-                                <label class="form-control-label negrito"
-                                       jhiTranslate="sisasApp.sistemaAgua.existeAvariaSistemaTratamento"
-                                       for="field_existeAvariaSistemaTratamento">Existe Avaria Sistema Tratamento</label>
-                                <select class="form-control" id="field_existeAvariaSistemaTratamento"  name="existeAvariaSistemaTratamento"
-                                        [(ngModel)]="sistemaAgua.existeAvariaSistemaTratamento" >
-                                    <option [ngValue]="null" selected>Selecione se existe avaria no sistema...</option>
-                                    <option label="Não, existem outros motivos">Não, existem outros motivos</option>
-                                    <option label="Sim, sistema avariado">Sim, sistema avariado</option>
-                                </select>
                             </div>
                         </div>
                     </div>
@@ -962,7 +942,7 @@
                     </div>
 
                     <div class="row" *ngIf="sistemaAgua.nmTpTratamentoAgua!=='Tratamento padrão' && sistemaAgua.nmTpTratamentoAgua!=='Tratamento básico-cloro'">
-                        <div class="form-group col-sm-6">
+                        <div class="form-group col-sm-6" *ngIf="sistemaAgua.existeAvariaSistemaTratamento=='Não, existem outros motivos'">
                             <div class="form-group">
                                 <label class="form-control-label negrito"
                                        jhiTranslate="sisasApp.sistemaAgua.existeMotivoAusenciaTratamento"
@@ -986,7 +966,7 @@
 
                             </div>
                         </div>
-                        <div class="form-group col-sm-6">
+                        <div class="form-group col-sm-6" *ngIf="sistemaAgua.existeAvariaSistemaTratamento=='Sim, sistema avariado'">
                             <div class="form-group">
                                 <label class="form-control-label negrito" jhiTranslate="sisasApp.sistemaAgua.nmEquipamentosComAvaria"
                                        for="field_nmEquipamentosComAvaria">Nm Equipamentos Com Avaria</label>

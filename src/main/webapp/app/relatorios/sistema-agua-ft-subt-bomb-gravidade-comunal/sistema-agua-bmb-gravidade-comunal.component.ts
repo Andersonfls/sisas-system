@@ -59,13 +59,27 @@ export class SistemaAguaBombGravidadeComunalComponent implements OnInit {
     public captureScreen(elementId) {
         const data = document.getElementById(elementId);
         (html2canvas as any)(data).then((canvas) => {
-            const imgWidth = 207;
+            const imgWidth = 204;
+            const pageHeight = 295;
             const imgHeight = canvas.height * imgWidth / canvas.width;
+            let heightLeft = imgHeight;
             const contentDataURL = canvas.toDataURL('image/png');
             const pdf = new jsPDF('p', 'mm', 'a4');
+            let position = 9;
+
             pdf.text('Sistema de Água por fonte Subterrânea e por Bomba Gravidade/Outros(Comunal)', 2, 7);
-            pdf.addImage(contentDataURL, 'PNG', 1, 9, imgWidth, (imgHeight - 10));
-            pdf.save('relatorio-sisas.pdf');
+            pdf.addImage(contentDataURL, 'PNG', 3, position, imgWidth, (imgHeight - 4));
+            heightLeft -= pageHeight;
+
+            while (heightLeft >= 0) {
+                position = heightLeft - imgHeight;
+                pdf.addPage();
+                pdf.text('', 2, 5);
+                pdf.addImage(contentDataURL, 'PNG', 3, (position + 12), imgWidth, (imgHeight - 8));
+                heightLeft -= pageHeight;
+            }
+
+            pdf.save('relatorio-sisas-bmb.pdf');
         }).catch(function(error) {
             // Error Handling
         });

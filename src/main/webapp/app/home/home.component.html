@@ -1,82 +1,4 @@
 <div [ngSwitch]="isAuthenticated()">
-
-
-    <!--<div class="row" style="padding-top: 20px;">-->
-        <!--<div class="col-md-3"></div>-->
-
-        <!--<div style="margin-left: 11%; background-color: #628394 !important" class="card col-md-3" *ngSwitchCase="false">-->
-            <!--<div class="text-center" id="imagem" *ngSwitchCase="false">-->
-                <!--<img class="img-responsive " src="../../content/images/logo_minea.png" style="margin-top: 10px;">-->
-            <!--</div>-->
-            <!--<div class="row" >-->
-                <!--<div class="col-md-12" align="center">-->
-                    <!--<p style="color: #e1e7ea; font-size: 13px; margin-left: 25%">-->
-                        <!--<b>-->
-                            <!--Departamento Nacional de Águas-->
-                        <!--</b>-->
-                    <!--</p>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="row" >-->
-                <!--<div class="col-md-12" align="center">-->
-                    <!--<p style="color: #e1e7ea; font-size: 15px; font-weight: bold;">-->
-                        <!--<b>-->
-                            <!--SISAS - Sistema de Informação do Sector de Águas e Saneamento-->
-                        <!--</b>-->
-                    <!--</p>-->
-                <!--</div>-->
-            <!--</div>-->
-
-            <!--<div>-->
-                <!--<div class="col-md-12">-->
-                    <!--<div class="alert alert-danger" *ngIf="authenticationError" jhiTranslate="login.messages.error.authentication">-->
-                        <!--<strong>Failed to sign in!</strong> Please check your credentials and try again.-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="row">-->
-                    <!--<div class="col-md-12">-->
-                        <!--<form class="form" role="form" (ngSubmit)="login()">-->
-                            <!--<div class="form-group">-->
-                                <!--<label for="username" jhiTranslate="global.form.username" style="color: #e1e7ea; font-weight: bold">Login</label>-->
-                                <!--<input type="text" class="form-control" name="username" id="username"-->
-                                       <!--placeholder="{{'global.form.username.placeholder' | translate}}"-->
-                                       <!--[(ngModel)]="username">-->
-                            <!--</div>-->
-
-                            <!--<div class="form-group">-->
-                                <!--<label for="password" jhiTranslate="login.form.password" style="color: #e1e7ea; font-weight: bold">Password</label>-->
-                                <!--<input type="password" class="form-control" name="password" id="password"-->
-                                       <!--placeholder="{{'login.form.password.placeholder' | translate}}"-->
-                                       <!--[(ngModel)]="password">-->
-                            <!--</div>-->
-
-
-                            <!--<button type="submit" class="btn btn-primary" style="background-color: #185aa2" jhiTranslate="login.form.button">-->
-                                <!--Sign in-->
-                            <!--</button>-->
-
-                            <!--<label class="form-check-label" for="rememberMe" style="background-color: #628394; color: #e1e7ea; padding-left: 30px;">-->
-                                <!--<input class="form-check-input" type="checkbox" name="rememberMe" id="rememberMe" [(ngModel)]="rememberMe" checked>-->
-                                <!--<span jhiTranslate="login.form.rememberme">Remember me</span>-->
-                            <!--</label>-->
-                        <!--</form>-->
-
-                        <!--<p></p>-->
-
-                        <!--<div class="esqueceu-senha">-->
-                            <!--<a class="alert-link" (click)="requestResetPassword()" jhiTranslate="login.password.forgot">Did you forget your password?</a>-->
-                        <!--</div>-->
-
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-
-            <!--<br/>-->
-        <!--</div>-->
-
-        <!--<div class="col-md-3"></div>-->
-    <!--</div>-->
-
     <div class="container" *ngSwitchCase="false">
         <div class="row">
             <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
@@ -116,14 +38,13 @@
                             </div>
 
                             <hr class="my-4">
-                            <button type="button" (click)="login()" class="btn btn-lg btn-primary btn-block text-uppercase" >Acessar</button>
+                            <button type="button" (click)="login()" style="background-color: #7b858e" class="btn btn-lg btn-primary btn-block text-uppercase" >Acessar</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
 
 

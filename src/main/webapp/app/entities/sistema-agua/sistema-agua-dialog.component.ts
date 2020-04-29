@@ -160,16 +160,30 @@ export class SistemaAguaDialogComponent implements OnInit {
     }
 
     adicionarAvaria() {
-        const av = new AvariaSistemaAgua();
-        av.causaAvariaSistema = this.sistemaAgua.causaAvariaSistema;
-        av.nmTpAvariaSistema = this.sistemaAgua.nmTpAvariaSistema;
-        av.statusResolucao = this.sistemaAgua.statusResolucao;
-        av.tempoServicoDisponivel = this.sistemaAgua.tempoServicoDisponivel;
+        if (!this.sistemaAgua.causaAvariaSistema) {
+            alert('Selecione a causa da avaria!!');
+            return;
+        } else if (!this.sistemaAgua.nmTpAvariaSistema) {
+            alert('Selecione o Tipo da avaria no equipamento!!');
+            return;
+        } else if (!this.sistemaAgua.statusResolucao) {
+            alert('Selecione o progresso da resolução da avaria!!');
+            return;
+        } else if (!this.sistemaAgua.tempoServicoDisponivel) {
+            alert('Selecione o tempo que o serviço está indisponível!!');
+            return;
+        } else {
+            const av = new AvariaSistemaAgua();
+            av.causaAvariaSistema = this.sistemaAgua.causaAvariaSistema;
+            av.nmTpAvariaSistema = this.sistemaAgua.nmTpAvariaSistema;
+            av.statusResolucao = this.sistemaAgua.statusResolucao;
+            av.tempoServicoDisponivel = this.sistemaAgua.tempoServicoDisponivel;
 
-        if (!this.sistemaAgua.avariaSistemaAguas) {
-            this.sistemaAgua.avariaSistemaAguas = new Array<any>();
+            if (!this.sistemaAgua.avariaSistemaAguas) {
+                this.sistemaAgua.avariaSistemaAguas = new Array<any>();
+            }
+            this.sistemaAgua.avariaSistemaAguas.push(av);
         }
-        this.sistemaAgua.avariaSistemaAguas.push(av);
     }
 
     removerAvaria(index) {
@@ -383,10 +397,12 @@ export class SistemaAguaDialogComponent implements OnInit {
     }
 
     converteStringEmArray(emString: string) {
-        const array: string[] = emString.split(';');
         const response: Array<any> = new Array<any>();
-        for (let i = 0; i < array.length ; i++) {
-            response.push({ item_text: array[i] });
+        if (emString) {
+            const array: string[] = emString.split(';');
+            for (let i = 0; i < array.length ; i++) {
+                response.push({ item_text: array[i] });
+            }
         }
         return response;
     }

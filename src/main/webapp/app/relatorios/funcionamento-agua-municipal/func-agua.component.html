@@ -3,27 +3,27 @@
     <jhi-alert></jhi-alert>
     <div id="conteinerPron">
         <div class="export-container">
-            <button type="button" (click)="exportTable('tableprovin')" class="btn btn-primary btn-sm">
-                <span class="fa fa-file-excel-o"></span>
-                <span class="d-none d-md-inline">Excel</span>
-            </button>
-            <button type="button" (click)="captureScreen('tes')" class="btn btn-primary btn-sm">
-                <span class="fas fa-file-pdf"></span>
-                <span class="d-none d-md-inline">PDF</span>
-            </button>
-        </div>
-        <div id="tes">
             <h2 class="text-centro">
                 <span>Funcionamento de Sistemas de Água (Nível Municipal)</span>
+                <button type="button" (click)="exportTable('tableprovin')" class="btn btn-primary btn-sm excel">
+                    <span class="fa fa-file-excel-o"></span>
+                    <span class="d-none d-md-inline">Excel</span>
+                </button>
+                <button type="button" (click)="captureScreen('tes')" class="btn btn-primary btn-sm bt-pdf">
+                    <span class="fas fa-file-pdf"></span>
+                    <span class="d-none d-md-inline">PDF</span>
+                </button>
             </h2>
+        </div>
+        <div id="tes">
             <div class="table-responsive" *ngIf="listaTabela">
                 <table id="tableprovin" class="table table-striped">
                     <thead>
-                    <tr style="background-color: #1f749c; text-align: center;">
+                    <tr class="fundo-hd-table" style="text-align: center;">
                         <th class="borda-th" colspan="4"></th>
                         <th class="borda-th" colspan="4"><span style="margin-left: 10%">Funcionamento Sistemas Água</span></th>
                     </tr>
-                    <tr style="background-color: #1f749c">
+                    <tr class="fundo-hd-table">
                         <th class="borda-th"><span>Província</span></th>
                         <th class="borda-th"><span>Município</span></th>
                         <th class="borda-th"><span>Populacão Benef.Água</span></th>
@@ -47,7 +47,7 @@
                     </tr>
                     </tbody>
                     <tfoot>
-                    <tr style="background-color: #1f749c">
+                    <tr class="fundo-hd-table">
                         <td colspan="2"> <span style="font-weight: bold">Total Municipal: </span></td>
                         <td style="text-align: center;"> <span style="font-weight: bold">{{totalBeneficiarios | number }} </span></td>
                         <td style="text-align: center;"> <span style="font-weight: bold">{{totalnumeroSistemas | number }} </span></td>

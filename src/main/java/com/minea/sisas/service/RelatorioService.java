@@ -78,9 +78,11 @@ public class RelatorioService {
     }
 
     private boolean isAdminGeral(User user){
-        for (Authority permissao: user.getAuthorities() ) {
-            if (permissao.getName().equals("ROLE_ADMIN")) {
-                return true;
+        if (Objects.nonNull(user) && Objects.nonNull(user.getAuthorities())) {
+            for (Authority permissao: user.getAuthorities() ) {
+                if (permissao.getName().equals("ROLE_ADMIN")) {
+                    return true;
+                }
             }
         }
         return false;

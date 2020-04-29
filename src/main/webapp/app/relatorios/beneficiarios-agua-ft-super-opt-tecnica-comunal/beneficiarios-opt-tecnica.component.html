@@ -1,31 +1,29 @@
 <div>
-    <jhi-alert></jhi-alert>
-
     <div>
         <div class="export-container">
-            <button type="button" (click)="exportTable('tbcomu')" class="btn btn-primary btn-sm">
-                <span class="fa fa-file-excel-o"></span>
-                <span class="d-none d-md-inline">Excel</span>
-            </button>
-            <button type="button" (click)="captureScreen('tbcomu')" class="btn btn-primary btn-sm">
-                <span class="fas fa-file-pdf"></span>
-                <span class="d-none d-md-inline">PDF</span>
-            </button>
-        </div>
-        <div id="comunal">
             <h2 class="text-centro" style="margin-left: 2%; font-size: 1.4rem;">
                 <span>Beneficiários de Água por Fonte Superficial e por Opcão Técnica (Nível Comunal)</span>
+                <button type="button" (click)="exportTable('tbcomu')" class="btn btn-primary btn-sm excel">
+                    <span class="fa fa-file-excel-o"></span>
+                    <span class="d-none d-md-inline">Excel</span>
+                </button>
+                <button type="button" (click)="captureScreen('tbcomu')" class="btn btn-primary btn-sm bt-pdf">
+                    <span class="fas fa-file-pdf"></span>
+                    <span class="d-none d-md-inline">PDF</span>
+                </button>
             </h2>
+        </div>
+        <div id="comunal">
         <div class="table-responsive" *ngIf="listaTabela">
             <table id="tbcomu" class="table table-striped">
                 <thead>
-                <tr  class="borda-th" style="background-color: #1f749c">
+                <tr  class="fundo-hd-table borda-th">
                     <th class="borda-th" colspan="5"></th>
                     <th class="borda-th" colspan="3"><span style="margin-left: 30%">Electrica</span></th>
                     <th class="borda-th" colspan="3"><span style="margin-left: 30%">Diesel</span></th>
                     <th class="borda-th"colspan="3"><span style="margin-left: 30%">Gravidade</span></th>
                 </tr>
-                <tr class="borda-th" style="background-color: #1f749c">
+                <tr class="fundo-hd-table borda-th"">
                     <th class="borda-th"><span>Província</span></th>
                     <th class="borda-th"><span>Municipios</span></th>
                     <th class="borda-th"><span>Comuna</span></th>
@@ -61,7 +59,7 @@
                 </tr>
                 </tbody>
                 <tfoot>
-                <tr class="borda-th" style="background-color: #1f749c">
+                <tr class="fundo-hd-table borda-th">
                     <td colspan="4"> <span style="font-weight: bold">Total Comunal: </span></td>
                     <td class="text-centro"> <span style="font-weight: bold">{{totalPopulacao | number }}</span></td>
                     <td class="text-centro"> <span style="font-weight: bold">{{totalElectraSistemas | number }}</span></td>

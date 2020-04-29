@@ -68,7 +68,6 @@ public class SistemaAgua implements Serializable {
     @Column(name = "nm_fonte_agua", length = 150)
     private String nmFonteAgua;
 
-
     @Size(max = 60)
     @Column(name = "latitude", length = 60)
     private String latitude;
@@ -99,7 +98,6 @@ public class SistemaAgua implements Serializable {
     @Column(name = "qtd_chafarises_funcionando")
     private Long qtdChafarisesFuncionando;
 
-    //novo
     @Column(name = "qtd_chafarises_existentes")
     private Integer qtdChafarisesExistentes;
 
@@ -143,11 +141,10 @@ public class SistemaAgua implements Serializable {
     @Column(name = "qtd_comprimento_conduta_adutora_agua_tratada", precision=10, scale=2)
     private BigDecimal qtdComprimentoCondutaAdutoraAguaTratada;
 
-    @Size(max = 150)
-    @Column(name = "desc_material_utilizado_condutas", length = 150)
+    @Size(max = 200)
+    @Column(name = "desc_material_utilizado_condutas", length = 200)
     private String descMaterialUtilizadoCondutas;
 
-    //novo
     @Size(max = 150)
     @Column(name = "desc_material_utilizado_condutas_obs", length = 150)
     private String descMaterialUtilizadoCondutasObs;
@@ -171,38 +168,34 @@ public class SistemaAgua implements Serializable {
     @Column(name = "nm_tp_tratamento_agua", length = 50)
     private String nmTpTratamentoAgua;
 
-    @Size(max = 50)
-    @Column(name = "nm_tp_tratamento_padrao_utilizado", length = 50)
+    @Size(max = 200)
+    @Column(name = "nm_tp_tratamento_padrao_utilizado", length = 200)
     private String nmTpTratamentoPadraoUtilizado;
 
-    //novo
     @Size(max = 50)
     @Column(name = "nm_tp_tratamento_padrao_utilizado_obs", length = 50)
     private String nmTpTratamentoPadraoUtilizadoObs;
 
-    //novo
     @Size(max = 50)
     @Column(name = "estado_funcionamento_sistema", length = 70)
     private String estadoFuncionamentoSistema;
 
-    @Size(max = 50)
-    @Column(name = "nm_tp_tratamento_basico_utilizado", length = 50)
+    @Size(max = 200)
+    @Column(name = "nm_tp_tratamento_basico_utilizado", length = 200)
     private String nmTpTratamentoBasicoUtilizado;
 
-    //novo
     @Size(max = 50)
     @Column(name = "nm_tp_tratamento_basico_utilizado_obs", length = 50)
     private String nmTpTratamentoBasicoUtilizadoObs;
 
-    @Size(max = 50)
-    @Column(name = "existe_avaria_sistema_tratamento", length = 50)
+    @Size(max = 200)
+    @Column(name = "existe_avaria_sistema_tratamento", length = 200)
     private String existeAvariaSistemaTratamento;
 
-    @Size(max = 50)
-    @Column(name = "existe_motivo_ausencia_tratamento", length = 50)
+    @Size(max = 200)
+    @Column(name = "existe_motivo_ausencia_tratamento", length = 200)
     private String existeMotivoAusenciaTratamento;
 
-    //novo
     @Size(max = 50)
     @Column(name = "existe_motivo_ausencia_tratamento_obs", length = 50)
     private String existeMotivoAusenciaTratamentoObs;
@@ -211,7 +204,6 @@ public class SistemaAgua implements Serializable {
     @Column(name = "nm_equipamentos_com_avaria", length = 50)
     private String nmEquipamentosComAvaria;
 
-    //NOVO
     @Size(max = 50)
     @Column(name = "nm_equipamentos_com_avaria_obs", length = 50)
     private String nmEquipamentosComAvariaObs;
@@ -236,7 +228,6 @@ public class SistemaAgua implements Serializable {
     @Column(name = "nm_modelo_bomba_manual_utilizada", length = 50)
     private String nmModeloBombaManualUtilizada;
 
-    //novo
     @Size(max = 50)
     @Column(name = "nm_modelo_bomba_manual_utilizada_obs", length = 50)
     private String nmModeloBombaManualUtilizadaObs;

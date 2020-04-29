@@ -7,7 +7,7 @@
 </aside>
 
 <br/><br/>
-<div class="container-fluid">
+<div class="container-fluid" style="padding-right: 1px !important;">
     <div class="card jh-card" *jhiHasAnyAuthority="['ROLE_USER','USUARIO_PROVINCIAL', 'ROLE_ADMIN', 'ADMIN_PROVINCIAL']">
         <router-outlet></router-outlet>
         <router-outlet name="popup"></router-outlet>
@@ -16,7 +16,7 @@
     <router-outlet></router-outlet>
     <router-outlet name="popup"></router-outlet>
 
-    <div class="jhi-card-espaco">.</div>
+    <!--<div class="jhi-card-espaco">.</div>-->
     <!--<jhi-footer></jhi-footer>-->
 </div>
 

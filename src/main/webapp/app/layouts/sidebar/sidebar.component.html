@@ -1,8 +1,26 @@
-<div class="print">
-    <div class="col-md-3 float-left col-1 pl-0 pr-0 collapse width show" id="sidebar" *jhiHasAnyAuthority="['ROLE_USER', 'ROLE_ADMIN', 'ADMIN_PROVINCIAL','USUARIO_PROVINCIAL']">
-        <div class="list-group border-0 card text-center text-md-left">
+<div>
+    <div class="col-md-3 float-left col-1 pl-0 pr-0 collapse width show" style="position: fixed; width: 22.7%" *jhiHasAnyAuthority="['ROLE_USER', 'ROLE_ADMIN', 'ADMIN_PROVINCIAL','USUARIO_PROVINCIAL']">
+        <a class="d-inline-block nvb-logo" style="width: 100%" href="javascript:void(0);" data-target="#sidebar" data-toggle="collapse">
+            <div style="max-width: 95%; line-height: 1.4 !important;" >
+                <img  class="img-responsive img-navbar-logo"  src="../../../content/images/logo_curto.png">
+                <span class="texto-navbar-logo" style=" max-height: 12px">República de Angola</span>
+                <span class="texto-navbar-logo" >Ministério da Energia e Águas</span>
+            </div>
+            <a class="app-sidebar__toggle" style="color: #163f66;" href="javascript:void(0);" data-target="#sidebar" data-toggle="collapse" aria-label="Hide Sidebar"></a>
+        </a>
+    </div>
 
-            <br/><br/>
+    <div class="col-md-3 float-left col-1 pl-0 pr-0 collapse width show" id="sidebar" *jhiHasAnyAuthority="['ROLE_USER', 'ROLE_ADMIN', 'ADMIN_PROVINCIAL','USUARIO_PROVINCIAL']">
+        <!--<a class="d-inline-block nvb-logo" style="width: 100%">-->
+            <!--<div style="max-width: 95%; line-height: 1.4 !important;" >-->
+                <!--<img  class="img-responsive img-navbar-logo"  src="../../../content/images/logo_curto.png">-->
+                <!--<span class="texto-navbar-logo" style=" max-height: 12px">República de Angola</span>-->
+                <!--<span class="texto-navbar-logo" >Ministério da Energia e Águas</span>-->
+            <!--</div>-->
+            <a class="app-sidebar__toggle" href="javascript:void(0);" data-target="#sidebar" data-toggle="collapse" aria-label="Hide Sidebar"></a>
+        <!--</a>-->
+
+        <div class="list-group border-0 card text-center text-md-left">
             <a style="margin-top: 10px;"  href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar" routerLink="dashboard" routerLinkActive="active">
                 <i class="fa fa-bar-chart" style="size: 10px !important;"> </i>
                 <span class="d-none d-md-inline" jhiTranslate="sidebar.item1">Dashboard</span>
@@ -23,18 +41,18 @@
                     <span class="d-md-inline" jhiTranslate="sidebar.item3.subItem1">Sistema de Águas</span>
                 </a>
 
-                <a href="#menu-rela" style="background-color: #2d596f; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#menu-rela" data-toggle="collapse" aria-expanded="false" *jhiHasAnyAuthority="['ROLE_ADMIN']">
+                <a href="#menu-rela" style="background-color: #082e53; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#menu-rela" data-toggle="collapse" aria-expanded="false" *jhiHasAnyAuthority="['ROLE_ADMIN']">
                     <i class="fas fa-clipboard-list" style="size: 10px !important;"> </i>
                     <span class="d-md-inline" jhiTranslate="sidebar.item3.subItem6">Relatórios</span>
                 </a>
 
                 <div class="collapse" id="menu-rela" data-parent="#sidebar" routerLinkActive="false">
-                    <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="inqueritos-preenchidos" routerLinkActive="active">
+                    <a href="#" style="background-color: #163f66;" class="list-group-item" data-parent="#menu7x" routerLink="inqueritos-preenchidos" routerLinkActive="active">
                         <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                         <span class="d-md-inline" jhiTranslate="sidebar.item6.subItem1"></span>
                     </a>
 
-                    <a href="#cobert-ser-agua" style="background-color: #2d596f; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#cobert-ser-agua" data-toggle="collapse" aria-expanded="false">
+                    <a href="#cobert-ser-agua" style="background-color: #163f66; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#cobert-ser-agua" data-toggle="collapse" aria-expanded="false">
                         <i class="fas fa-burn" style="size: 10px !important;"> </i>
                         <span class="d-md-inline" jhiTranslate="sidebar.item6.subItem7"></span>
                     </a>
@@ -54,7 +72,7 @@
                         </a>
                     </div>
 
-                    <a href="#func-agua-chaf" style="background-color: #2d596f; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#func-agua-chaf" data-toggle="collapse" aria-expanded="false">
+                    <a href="#func-agua-chaf" style="background-color: #163f66; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#func-agua-chaf" data-toggle="collapse" aria-expanded="false">
                         <i class="fas fa-burn" style="size: 10px !important;"> </i>
                         <span class="d-md-inline" jhiTranslate="sidebar.item6.subItem10"></span>
                     </a>
@@ -74,7 +92,7 @@
                         </a>
                     </div>
 
-                    <a href="#trat-sis-agua" style="background-color: #2d596f; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#trat-sis-agua" data-toggle="collapse" aria-expanded="false">
+                    <a href="#trat-sis-agua" style="background-color: #163f66; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#trat-sis-agua" data-toggle="collapse" aria-expanded="false">
                         <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                         <span class="d-md-inline" jhiTranslate="sidebar.item6.subItem16"></span>
                     </a>
@@ -95,7 +113,7 @@
                     </div>
 
 
-                    <a href="#func-sis-agua" style="background-color: #2d596f; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#func-sis-agua" data-toggle="collapse" aria-expanded="false">
+                    <a href="#func-sis-agua" style="background-color: #163f66; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#func-sis-agua" data-toggle="collapse" aria-expanded="false">
                         <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                         <span class="d-md-inline" jhiTranslate="sidebar.item6.subItem9"></span>
                     </a>
@@ -115,7 +133,7 @@
                         </a>
                     </div>
 
-                    <a href="#bmb-energia" style="background-color: #2d596f; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#bmb-energia" data-toggle="collapse" aria-expanded="false">
+                    <a href="#bmb-energia" style="background-color: #163f66; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#bmb-energia" data-toggle="collapse" aria-expanded="false">
                         <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                         <span class="d-md-inline" jhiTranslate="sidebar.item6.subItem3"></span>
                     </a>
@@ -127,7 +145,7 @@
                         </a>
                     </div>
 
-                    <a href="#bmb-manual" style="background-color: #2d596f; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#bmb-manual" data-toggle="collapse" aria-expanded="false">
+                    <a href="#bmb-manual" style="background-color: #163f66; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#bmb-manual" data-toggle="collapse" aria-expanded="false">
                         <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                         <span class="d-md-inline" jhiTranslate="sidebar.item6.subItem2"></span>
                     </a>
@@ -139,7 +157,7 @@
                         </a>
                     </div>
 
-                    <a href="#bmb-gravidade" style="background-color: #2d596f; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#bmb-gravidade" data-toggle="collapse" aria-expanded="false">
+                    <a href="#bmb-gravidade" style="background-color: #163f66; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#bmb-gravidade" data-toggle="collapse" aria-expanded="false">
                         <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                         <span class="d-md-inline" jhiTranslate="sidebar.item6.subItem4"></span>
                     </a>
@@ -151,7 +169,7 @@
                         </a>
                     </div>
 
-                    <a href="#bmb-opcao-tecnica" style="background-color: #2d596f; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#bmb-opcao-tecnica" data-toggle="collapse" aria-expanded="false">
+                    <a href="#bmb-opcao-tecnica" style="background-color: #163f66; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#bmb-opcao-tecnica" data-toggle="collapse" aria-expanded="false">
                         <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                         <span class="d-md-inline" jhiTranslate="sidebar.item6.subItem5"></span>
                     </a>
@@ -163,7 +181,7 @@
                         </a>
                     </div>
 
-                    <a href="#bmb-energia2" style="background-color: #2d596f; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#bmb-energia2" data-toggle="collapse" aria-expanded="false">
+                    <a href="#bmb-energia2" style="background-color: #163f66; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#bmb-energia2" data-toggle="collapse" aria-expanded="false">
                         <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                         <span class="d-md-inline" jhiTranslate="sidebar.item6.subItem12"></span>
                     </a>
@@ -179,7 +197,7 @@
                         </a>
                     </div>
 
-                    <a href="#subt-bmb-mecanica" style="background-color: #2d596f; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#subt-bmb-mecanica" data-toggle="collapse" aria-expanded="false">
+                    <a href="#subt-bmb-mecanica" style="background-color: #163f66; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#subt-bmb-mecanica" data-toggle="collapse" aria-expanded="false">
                         <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                         <span class="d-md-inline" jhiTranslate="sidebar.item6.subItem17"></span>
                     </a>
@@ -195,7 +213,7 @@
                         </a>
                     </div>
 
-                    <a href="#subt-tp-bmb" style="background-color: #2d596f; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#subt-tp-bmb" data-toggle="collapse" aria-expanded="false">
+                    <a href="#subt-tp-bmb" style="background-color: #163f66; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#subt-tp-bmb" data-toggle="collapse" aria-expanded="false">
                         <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                         <span class="d-md-inline" jhiTranslate="sidebar.item6.subItem15"></span>
                     </a>
@@ -211,7 +229,7 @@
                         </a>
                     </div>
 
-                    <a href="#subt-tp-bmb-man" style="background-color: #2d596f; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#subt-tp-bmb-man" data-toggle="collapse" aria-expanded="false">
+                    <a href="#subt-tp-bmb-man" style="background-color: #163f66; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#subt-tp-bmb-man" data-toggle="collapse" aria-expanded="false">
                         <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                         <span class="d-md-inline" jhiTranslate="sidebar.item6.subItem14"></span>
                     </a>
@@ -228,7 +246,7 @@
                         </a>
                     </div>
 
-                    <a href="#subt-opt-tecnica" style="background-color: #2d596f; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#subt-opt-tecnica" data-toggle="collapse" aria-expanded="false">
+                    <a href="#subt-opt-tecnica" style="background-color: #163f66; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#subt-opt-tecnica" data-toggle="collapse" aria-expanded="false">
                         <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                         <span class="d-md-inline" jhiTranslate="sidebar.item6.subItem11"></span>
                     </a>
@@ -259,13 +277,13 @@
                     <span class="d-md-inline" jhiTranslate="sidebar.item3.subItem7">Tabelas e Gráficos</span>
                 </a>
 
-                <a href="#menu7x" style="background-color: #2d596f; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#menu7x" data-toggle="collapse" aria-expanded="false">
+                <a href="#menu7x" style="background-color: #082e53; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#menu7x" data-toggle="collapse" aria-expanded="false">
                     <i class="fas fa-burn" style="size: 10px !important;"> </i>
                     <span class="d-md-inline" jhiTranslate="sidebar.item3.subItem8">Mapas</span>
                 </a>
 
                 <div class="collapse" id="menu7x" data-parent="#sidebar" routerLinkActive="false">
-                    <a href="#nacionali" style="background-color: #2d596f; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#menu7x" data-toggle="collapse" aria-expanded="false"
+                    <a href="#nacionali" style="background-color: #163f66; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#menu7x" data-toggle="collapse" aria-expanded="false"
                        *jhiHasAnyAuthority="['ROLE_ADMIN']" >
                         <i class="fas fa-burn" style="size: 10px !important;"> </i>
                         <span class="d-md-inline">Provincial</span>
@@ -300,7 +318,7 @@
                         <!--</a>-->
                     </div>
 
-                    <a href="#municipali" style="background-color: #2d596f; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#menu7x" data-toggle="collapse"
+                    <a href="#municipali" style="background-color: #163f66; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#menu7x" data-toggle="collapse"
                        aria-expanded="false" *jhiHasAnyAuthority="['ROLE_ADMIN']" >
                         <i class="fas fa-burn" style="size: 10px !important"> </i>
                         <span class="d-md-inline">Municipal</span>
@@ -333,7 +351,7 @@
                         <!--</a>-->
                     </div>
 
-                    <a href="#huamboi" style="background-color: #2d596f; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#menu7x" data-toggle="collapse" aria-expanded="false"
+                    <a href="#huamboi" style="background-color: #163f66; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#menu7x" data-toggle="collapse" aria-expanded="false"
                        *ngIf="isMapaHuamboVisivel">
                         <i class="fas fa-vector-square" style="size: 10px !important;"> </i>
                         <span class="d-md-inline">Huambo</span>
@@ -366,7 +384,7 @@
                         <!--</a>-->
                     </div>
 
-                    <a href="#huliai" style="background-color: #2d596f; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#menu7x" data-toggle="collapse" aria-expanded="false"
+                    <a href="#huliai" style="background-color: #163f66; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#menu7x" data-toggle="collapse" aria-expanded="false"
                        *ngIf="isMapaHuilaVisivel">
                         <i class="fas fa-vector-square" style="size: 10px !important"> </i>
                         <span class="d-md-inline">Huíla</span>
@@ -399,7 +417,7 @@
                         <!--</a>-->
                     </div>
 
-                    <a href="#kuanzai" style="background-color: #2d596f; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#menu7x" data-toggle="collapse" aria-expanded="false"
+                    <a href="#kuanzai" style="background-color: #163f66; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#menu7x" data-toggle="collapse" aria-expanded="false"
                        *ngIf="isMapaCuanzaVisivel">
                         <i class="fas fa-vector-square" style="size: 10px !important"> </i>
                         <span class="d-md-inline">Cuanza Norte</span>

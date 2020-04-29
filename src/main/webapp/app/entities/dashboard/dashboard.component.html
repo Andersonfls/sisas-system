@@ -8,16 +8,16 @@
     <div class="table-responsive" *ngIf="listaTabela">
         <table class="table table-striped">
             <thead>
-            <tr style="text-align: center; background-color: #1f749c" >
+            <tr class="fundo-hd-table" style="text-align: center;" >
                 <th class="borda-th" colspan="6"><span>Nº Sistamas de Água</span></th>
             </tr>
-            <tr style="background-color: #1f749c">
+            <tr class="fundo-hd-table">
                 <th class="borda-th" ></th>
                 <th class="borda-th"></th>
-                <th class="borda-th" colspan="2"><span style="margin-left: 30%">A Funcionar</span></th>
-                <th class="borda-th" colspan="2"><span style="margin-left: 30%">A Não Funcionar</span></th>
+                <th class="borda-th" colspan="2"><span>A Funcionar</span></th>
+                <th class="borda-th" colspan="2"><span>A Não Funcionar</span></th>
             </tr>
-            <tr class="borda-th">
+            <tr class="fundo-hd-table borda-th">
                 <th class="borda-th"><span>Províncias</span></th>
                 <th class="borda-th"><span>Unidades</span></th>
                 <th class="borda-th"><span>Unidades</span></th>
@@ -37,7 +37,7 @@
             </tr>
             </tbody>
             <tfoot>
-            <tr class="borda-th" style="background-color: #1f749c; border-top: 2px solid #dee2e6; border-bottom: 2px solid #dee2e6">
+            <tr class="borda-th fundo-hd-table" style=" border-top: 2px solid #dee2e6; border-bottom: 2px solid #dee2e6">
                 <td> <span style="font-weight: bold">Total: </span></td>
                 <td> <span style="font-weight: bold">{{totalSistemas}} </span></td>
                 <td> <span style="font-weight: bold">{{totalFuncionam}} </span></td>

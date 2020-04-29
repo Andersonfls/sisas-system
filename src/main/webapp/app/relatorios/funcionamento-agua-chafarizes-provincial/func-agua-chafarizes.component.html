@@ -3,28 +3,28 @@
     <jhi-alert></jhi-alert>
     <div id="comun">
         <div class="export-container">
-            <button type="button" (click)="exportTable('tabcomu')" class="btn btn-primary btn-sm">
-                <span class="fa fa-file-excel-o"></span>
-                <span class="d-none d-md-inline">Excel</span>
-            </button>
-            <button type="button" (click)="captureScreen('comun')" class="btn btn-primary btn-sm">
-                <span class="fas fa-file-pdf"></span>
-                <span class="d-none d-md-inline">PDF</span>
-            </button>
-        </div>
-        <div class="table-responsive" >
             <h2 class="text-centro" style="font-size: 1.8em">
                 <span>Funcionamento de Sistemas de Água e Chafarizes (Nível Provincial)</span>
+                <button type="button" (click)="exportTable('tabcomu')" class="btn btn-primary btn-sm excel">
+                    <span class="fa fa-file-excel-o"></span>
+                    <span class="d-none d-md-inline">Excel</span>
+                </button>
+                <button type="button" (click)="captureScreen('comun')" class="btn btn-primary btn-sm bt-pdf">
+                    <span class="fas fa-file-pdf"></span>
+                    <span class="d-none d-md-inline">PDF</span>
+                </button>
             </h2>
+        </div>
+        <div class="table-responsive" >
             <table id="tabcomu" class="table table-striped" *ngIf="listaTabela">
                 <thead>
-                <tr style="background-color: #1f749c">
+                <tr class="fundo-hd-table">
                     <th class="borda-th text-centro" colspan="2"></th>
                     <th class="borda-th text-centro" colspan="4"><span style="margin-left: 30%;">Funcionamento Sistemas Água</span></th>
                     <th class="borda-th text-centro"></th>
                     <th class="borda-th text-centro" colspan="3"><span style="margin-left: 10%;">Funcionamento Chafarizes</span></th>
                 </tr>
-                <tr style="background-color: #1f749c">
+                <tr class="fundo-hd-table">
                     <th class="borda-th"><span>Província</span></th>
                     <th class="borda-th"><span>N° de Sistemas</span></th>
                     <th class="borda-th"><span>N° Funcionam</span></th>
@@ -52,7 +52,7 @@
                 </tr>
                 </tbody>
                 <tfoot>
-                <tr style="background-color: #1f749c">
+                <tr class="fundo-hd-table">
                     <td class="text-centro"> <span style="font-weight: bold">Total: </span></td>
                     <td class="text-centro"> <span style="font-weight: bold">{{totalnumeroSistemas | number }} </span></td>
                     <td class="text-centro"> <span style="font-weight: bold">{{totalfuncionamAgua | number }} </span></td>

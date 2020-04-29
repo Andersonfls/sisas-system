@@ -52,9 +52,7 @@ export class BeneficiariosOptTecnicaComponent implements OnInit {
         const data = document.getElementById(elementId);
         (html2canvas as any)(data).then((canvas) => {
             const imgWidth = 208;
-            const pageHeight = 295;
             const imgHeight = canvas.height * imgWidth / canvas.width;
-            const heightLeft = imgHeight;
             const contentDataURL = canvas.toDataURL('image/png');
             const pdf = new jsPDF('p', 'mm', 'a4');
             pdf.text('Beneficiários de Água por Fonte Superficial e por Opcão Técnica (Nível Municipal)', 2, 7);
