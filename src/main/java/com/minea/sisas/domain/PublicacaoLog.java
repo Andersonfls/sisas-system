@@ -9,8 +9,8 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 /**
- * A PublicacaoLog.
- */
+ * @Author Anderson Soares - @git/Andersonfls
+ **/
 @Entity
 @Table(name = "publicacao_log")
 public class PublicacaoLog implements Serializable {

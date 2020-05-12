@@ -7,8 +7,8 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 /**
- * A Banner.
- */
+ * @Author Anderson Soares - @git/Andersonfls
+ **/
 @Entity
 @Table(name = "banner")
 public class Banner implements Serializable {

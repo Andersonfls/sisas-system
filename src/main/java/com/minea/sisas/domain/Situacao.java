@@ -7,8 +7,8 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * A Situacao.
- */
+ * @Author Anderson Soares - @git/Andersonfls
+ **/
 @Entity
 @Table(name = "situacao")
 public class Situacao implements Serializable {

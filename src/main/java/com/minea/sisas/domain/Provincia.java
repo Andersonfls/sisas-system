@@ -11,8 +11,8 @@ import java.util.Set;
 import java.util.Objects;
 
 /**
- * A Provincia.
- */
+ * @Author Anderson Soares - @git/Andersonfls
+ **/
 @Entity
 @Table(name = "provincia")
 public class Provincia implements Serializable {

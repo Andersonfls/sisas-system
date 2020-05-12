@@ -19,8 +19,8 @@ import java.util.Set;
 import java.time.Instant;
 
 /**
- * A user.
- */
+ * @Author Anderson Soares - @git/Andersonfls
+ **/
 @Entity
 @Table(name = "jhi_user")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)

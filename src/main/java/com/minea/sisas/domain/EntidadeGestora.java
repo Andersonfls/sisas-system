@@ -10,8 +10,9 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 /**
- * A EntidadeGestora.
- */
+ * @Author Anderson Soares - @git/Andersonfls
+ **/
+
 @Entity
 @Table(name = "entidade_gestora")
 public class EntidadeGestora implements Serializable {

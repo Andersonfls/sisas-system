@@ -10,8 +10,8 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 /**
- * A SistemaAgua.
- */
+ * @Author Anderson Soares - @git/Andersonfls
+ **/
 @Entity
 @Table(name = "sistema_agua")
 public class SistemaAgua implements Serializable {

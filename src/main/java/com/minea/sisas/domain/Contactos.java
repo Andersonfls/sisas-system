@@ -12,8 +12,9 @@ import java.util.Set;
 import java.util.Objects;
 
 /**
- * A Contactos.
- */
+ * @Author Anderson Soares - @git/Andersonfls
+ **/
+
 @Entity
 @Table(name = "contactos")
 public class Contactos implements Serializable {

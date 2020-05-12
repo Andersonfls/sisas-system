@@ -9,8 +9,8 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 /**
- * A Concepcao.
- */
+ * @Author Anderson Soares - @git/Andersonfls
+ **/
 @Entity
 @Table(name = "concepcao")
 public class Concepcao implements Serializable {

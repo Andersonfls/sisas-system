@@ -11,8 +11,8 @@ import java.util.Set;
 import java.util.Objects;
 
 /**
- * A Projectos.
- */
+ * @Author Anderson Soares - @git/Andersonfls
+ **/
 @Entity
 @Table(name = "projectos")
 public class Projectos implements Serializable {

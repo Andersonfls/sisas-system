@@ -10,8 +10,8 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 /**
- * A Empreitada.
- */
+ * @Author Anderson Soares - @git/Andersonfls
+ **/
 @Entity
 @Table(name = "empreitada")
 public class Empreitada implements Serializable {

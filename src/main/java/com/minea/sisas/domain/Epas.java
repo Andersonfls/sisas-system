@@ -8,8 +8,9 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * A Epas.
- */
+ * @Author Anderson Soares - @git/Andersonfls
+ **/
+
 @Entity
 @Table(name = "epas")
 public class Epas implements Serializable {
