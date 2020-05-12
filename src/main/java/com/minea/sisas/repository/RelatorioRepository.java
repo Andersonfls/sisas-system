@@ -20,38 +20,40 @@ import java.util.List;
 public interface RelatorioRepository extends JpaRepository<Provincia, Long>, JpaSpecificationExecutor<Provincia> {
 
     //COBERTURA SERVICOS DE AGUA (Nível Provincial)
-    @Query(value = "SELECT p.NM_PROVINCIA,     " +
-        "( SELECT  COUNT(m.id_municipio) FROM sisas.municipio m     " +
-        "  WHERE m.ID_PROVINCIA = p.ID_PROVINCIA       " +
-        ") NumeroMunicipios,     " +
-        "( SELECT COUNT(c.ID_comuna)  FROM sisas.comuna c      " +
-        "  WHERE m.id_municipio = c.id_municipio     " +
-        ") NumeroComunas,     " +
-        " (        SELECT      COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)      " +
-        "                  FROM      sisas.sistema_agua s      " +
-        "                  WHERE      s.ID_PROVINCIA = p.ID_PROVINCIA     " +
-        "                     AND      s.POSSUI_SISTEMA_AGUA = 1     " +
-        "              AND      s.estado_funcionamento_sistema = 'Está em funcionamento (Bom)'     " +
-        "            ) NrSistemasFuncionam,     " +
-        "      p.populacao,     " +
-        "       ( SELECT       COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)     " +
-        "                  FROM   sisas.sistema_agua s      " +
-        "                  WHERE  s.ID_PROVINCIA = p.ID_PROVINCIA     " +
-        "                 AND      s.POSSUI_SISTEMA_AGUA = 1                    " +
-        "         ) NrBeneficiariosSistemaAgua,        " +
-        "      ROUND((( ((SELECT      ((COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)*100)/p.populacao)     " +
-        "                  FROM      sisas.sistema_agua s      " +
-        "                  WHERE      s.ID_PROVINCIA = p.ID_PROVINCIA     " +
-        "                   AND      s.POSSUI_SISTEMA_AGUA = 1     " +
-        "         )))),2) PercentagemCobertura      " +
-        " FROM sisas.sistema_agua s     " +
-        "    INNER JOIN sisas.provincia p on  s.ID_PROVINCIA = p.ID_PROVINCIA     " +
-        "    INNER JOIN sisas.municipio m ON  s.ID_MUNICIPIO  = m.ID_MUNICIPIO      " +
-        "    WHERE s.POSSUI_SISTEMA_AGUA = 1  AND s.ID_PROVINCIA = :provinciaId   " +
-        "   GROUP BY      " +
-        "       p.NM_PROVINCIA ,p.ID_PROVINCIA, m.ID_MUNICIPIO      " +
-        "   ORDER BY     " +
-        "       p.NM_PROVINCIA ASC ", nativeQuery = true)
+    @Query(value = "SELECT p.NM_PROVINCIA, " +
+        "( SELECT  COUNT(m.id_municipio) FROM sisas.municipio m " +
+        "  WHERE m.ID_PROVINCIA = p.ID_PROVINCIA   " +
+        ") NumeroMunicipios, " +
+        "( SELECT COUNT(c.ID_comuna)  FROM sisas.comuna c  " +
+        "  WHERE m.id_municipio = c.id_municipio " +
+        ") NumeroComunas, " +
+        "(    SELECT  COALESCE(COUNT(POSSUI_SISTEMA_AGUA),0)  " +
+        "      FROM  sisas.sistema_agua s  " +
+        "      WHERE  s.ID_PROVINCIA = p.ID_PROVINCIA " +
+        "         AND  s.POSSUI_SISTEMA_AGUA = 1 " +
+        "              AND  s.estado_funcionamento_sistema = 'Está em funcionamento (Bom)' " +
+        ") NrSistemasFuncionam, " +
+        " p.populacao,       " +
+        "( SELECT COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0) " +
+        "    FROM   sisas.sistema_agua s  " +
+        "    WHERE  s.ID_PROVINCIA = p.ID_PROVINCIA " +
+        "       AND  s.POSSUI_SISTEMA_AGUA = 1        " +
+        " ) NrBeneficiariosSistemaAgua,    " +
+        " ROUND((( ((SELECT  ((COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)*100)/p.populacao) " +
+        "      FROM  sisas.sistema_agua s  " +
+        "      WHERE  s.ID_PROVINCIA = p.ID_PROVINCIA " +
+        "       AND  s.POSSUI_SISTEMA_AGUA = 1 " +
+        " )))),2) PercentagemCobertura  " +
+        "FROM sisas.sistema_agua s " +
+        "    INNER JOIN sisas.provincia p on  " +
+        "    s.ID_PROVINCIA = p.ID_PROVINCIA " +
+        "    INNER JOIN sisas.municipio m ON  " +
+        "    s.ID_MUNICIPIO  = m.ID_MUNICIPIO  " +
+        "    WHERE s.POSSUI_SISTEMA_AGUA = 1 AND s.ID_PROVINCIA = :provinciaId " +
+        "   GROUP BY  " +
+        "       p.ID_PROVINCIA  " +
+        "   ORDER BY " +
+        "       p.NM_PROVINCIA", nativeQuery = true)
     List<Object[]> coberturaServicosAguaProvincial(@Param("provinciaId") Long provinciaId);
 
     //COBERTURA SERVICOS DE AGUA (Nível Municipal)
@@ -960,11 +962,11 @@ public interface RelatorioRepository extends JpaRepository<Provincia, Long>, Jpa
         "         WHERE   s.ID_PROVINCIA = p.ID_PROVINCIA    " +
         "           AND   s.POSSUI_SISTEMA_AGUA = 1    " +
         "      )  QtddeChafarizesQueNaoFuncionam,       " +
-        "       ROUND((( ((SELECT   format(SUM(qtd_chafarises_existentes),2)-format(SUM(QTD_CHAFARISES_FUNCIONANDO),2)    " +
+        "       ROUND((( ((SELECT   COALESCE(SUM(qtd_chafarises_existentes),2)-COALESCE(SUM(QTD_CHAFARISES_FUNCIONANDO),2)    " +
         "         FROM   sisas.sistema_agua s     " +
         "         WHERE   s.ID_PROVINCIA = p.ID_PROVINCIA    " +
         "             AND   s.POSSUI_SISTEMA_AGUA = 1    " +
-        "      ))  *100)/ (SELECT   format(sum(qtd_chafarises_existentes),2)    " +
+        "      ))  *100)/ (SELECT   COALESCE(sum(qtd_chafarises_existentes),2)    " +
         "         FROM   sisas.sistema_agua s     " +
         "         WHERE   s.ID_PROVINCIA = p.ID_PROVINCIA    " +
         "              AND   s.POSSUI_SISTEMA_AGUA = 1    " +
@@ -1595,6 +1597,7 @@ public interface RelatorioRepository extends JpaRepository<Provincia, Long>, Jpa
         "              AND   s.Esquema = 'Poço/cacimba melhorada'            " +
         "       ) NrPocvoMelhorado,             " +
         "       ( SELECT COALESCE(COUNT(Esquema),0)            " +
+        "                                 FROM sisas.sistema_agua s "+
         "                                 WHERE s.ID_PROVINCIA = p.ID_PROVINCIA            " +
         "                                   AND s.ID_MUNICIPIO = m.ID_MUNICIPIO            " +
         "                                   AND s.NM_TP_FONTE = 'Subterrânea'            " +
@@ -1792,131 +1795,123 @@ public interface RelatorioRepository extends JpaRepository<Provincia, Long>, Jpa
         " ORDER BY p.NM_PROVINCIA ASC ", nativeQuery = true)
     List<Object[]> buscaDadosBenefAguaFonteSubterraneaTipoBombaManualProvincial(@Param("provinciaId") Long provinciaId);
 
-    @Query(value = "SELECT            p.NM_PROVINCIA,          " +
-        "               m.NM_MUNICIPIO,          " +
-        "        m.populacao,          " +
-        "          (           " +
-        "                      SELECT           COUNT(Esquema)          " +
-        "                                 FROM           sisas.sistema_agua s           " +
-        "                                 WHERE           s.ID_PROVINCIA = p.ID_PROVINCIA          " +
-        "              AND           s.ID_MUNICIPIO = m.ID_MUNICIPIO          " +
-        "              AND           s.NM_TP_FONTE= 'Subterrânea'          " +
-        "              AND           s.Esquema = 'Poço/cacimba melhorada'          " +
-        "              ) NrPocoMelhorado,           " +
-        "          (           " +
-        "                                 SELECT           COUNT(Esquema) as Furo           " +
-        "                                 FROM           sisas.sistema_agua s           " +
-        "                                 WHERE           s.ID_PROVINCIA = p.ID_PROVINCIA          " +
-        "                                   AND           s.ID_MUNICIPIO = m.ID_MUNICIPIO          " +
-        "                                   AND           s.NM_TP_FONTE = 'Subterrânea'          " +
-        "                                   AND           s.ESQUEMA = 'Furo'           " +
-        "                      ) Furo,          " +
-        "      (           " +
-        "                                 SELECT           COUNT(Esquema)          " +
-        "                                 FROM           sisas.sistema_agua s           " +
-        "                                 WHERE           s.ID_PROVINCIA = p.ID_PROVINCIA          " +
-        "                                   AND           s.ID_MUNICIPIO = m.ID_MUNICIPIO          " +
-        "                                   AND           s.NM_TP_FONTE  = 'Subterrânea'          " +
-        "                                   AND           s.ESQUEMA = 'Nascente'          " +
-        "                      ) Nascente,          " +
-        "         (           " +
-        "                                 SELECT           COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA)          " +
-        "                                 FROM           sisas.sistema_agua s           " +
-        "                                 WHERE           s.ID_PROVINCIA = p.ID_PROVINCIA          " +
-        "                                   AND           s.ID_MUNICIPIO = m.ID_MUNICIPIO          " +
-        "                                   AND           s.NM_TIPO_BOMBA  = 'Bombagem manual'          " +
-        "              AND           s.NM_TP_FONTE  = 'Subterrânea'          " +
-        "              AND   s.NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Afridev'          " +
-        "                      ) Afridev,          " +
-        "         (           " +
-        "                         SELECT            COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)          " +
-        "                                 FROM   sisas.sistema_agua s           " +
-        "                                 WHERE  s.ID_PROVINCIA = p.ID_PROVINCIA          " +
-        "                    AND    s.ID_MUNICIPIO = m.ID_MUNICIPIO          " +
-        "                                   AND              s.NM_TIPO_BOMBA  = 'Bombagem manual'          " +
-        "            AND           s.NM_TP_FONTE  = 'Subterrânea'          " +
-        "            AND    s.NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Afridev'          " +
-        "              ) QtPessoasAcessoAfridev,          " +
-        "      (           " +
-        "                                 SELECT           COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA)          " +
-        "                                 FROM           sisas.sistema_agua s           " +
-        "                                 WHERE           s.ID_PROVINCIA = p.ID_PROVINCIA          " +
-        "                                   AND           s.ID_MUNICIPIO = m.ID_MUNICIPIO          " +
-        "                                   AND           s.NM_TIPO_BOMBA  = 'Bombagem manual'          " +
-        "              AND           s.NM_TP_FONTE  = 'Subterrânea'          " +
-        "              AND   s.NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Vergnet'          " +
-        "                      ) Vergnet,          " +
-        "         (           " +
-        "                         SELECT            COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)          " +
-        "                                 FROM   sisas.sistema_agua s           " +
-        "                                 WHERE  s.ID_PROVINCIA = p.ID_PROVINCIA          " +
-        "                    AND s.ID_MUNICIPIO = m.ID_MUNICIPIO          " +
-        "                                   AND           s.NM_TIPO_BOMBA  = 'Bombagem manual'          " +
-        "            AND           s.NM_TP_FONTE  = 'Subterrânea'          " +
-        "            AND NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Vergnet'          " +
-        "              ) QtPessoasAcessoVergnet,          " +
-        "      (           " +
-        "                                 SELECT           COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA)          " +
-        "                                 FROM           sisas.sistema_agua s           " +
-        "                                 WHERE           s.ID_PROVINCIA = p.ID_PROVINCIA          " +
-        "                                   AND           s.ID_MUNICIPIO = m.ID_MUNICIPIO          " +
-        "                                   AND           s.NM_TIPO_BOMBA  = 'Bombagem manual'          " +
-        "              AND           s.NM_TP_FONTE  = 'Subterrânea'          " +
-        "              AND   s.NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Volanta'          " +
-        "                      ) Volanta,          " +
-        "         (           " +
-        "                         SELECT            COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)          " +
-        "                                 FROM   sisas.sistema_agua s           " +
-        "                                 WHERE  s.ID_PROVINCIA = p.ID_PROVINCIA          " +
-        "                    AND    s.ID_MUNICIPIO = m.ID_MUNICIPIO          " +
-        "                                   AND              s.NM_TIPO_BOMBA  = 'Bombagem manual'          " +
-        "            AND              s.NM_TP_FONTE  = 'Subterrânea'          " +
-        "            AND    s.NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Volanta'          " +
-        "              ) QtPessoasAcessoVolanta,          " +
-        "      (           " +
-        "                                 SELECT           COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA)          " +
-        "                                 FROM           sisas.sistema_agua s           " +
-        "                                 WHERE           s.ID_PROVINCIA = p.ID_PROVINCIA          " +
-        "                                   AND           s.ID_MUNICIPIO = m.ID_MUNICIPIO          " +
-        "                                   AND           s.NM_TIPO_BOMBA  = 'Bombagem manual'          " +
-        "              AND           s.NM_TP_FONTE  = 'Subterrânea'          " +
-        "              AND   s.NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'India Mark II'          " +
-        "                      ) IndiaMarkII,          " +
-        "         (           " +
-        "                         SELECT            COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)          " +
-        "                                 FROM   sisas.sistema_agua s           " +
-        "                                 WHERE  s.ID_PROVINCIA = p.ID_PROVINCIA          " +
-        "                    AND s.ID_MUNICIPIO = m.ID_MUNICIPIO          " +
-        "                                   AND           s.NM_TIPO_BOMBA  = 'Bombagem manual'          " +
-        "            AND           s.NM_TP_FONTE  = 'Subterrânea'          " +
-        "            AND NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'India Mark II'          " +
-        "              ) QtPessoasAcessoIndiaMarkII,          " +
-        "      (           " +
-        "                                 SELECT           COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA)          " +
-        "                                 FROM           sisas.sistema_agua s           " +
-        "                                 WHERE           s.ID_PROVINCIA = p.ID_PROVINCIA          " +
-        "                                   AND           s.ID_MUNICIPIO = m.ID_MUNICIPIO          " +
-        "                                   AND           s.NM_TIPO_BOMBA  = 'Bombagem manual'          " +
-        "              AND           s.NM_TP_FONTE  = 'Subterrânea'          " +
-        "              AND   s.NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Outros'          " +
-        "                      ) Outros,          " +
-        "         (           " +
-        "                         SELECT            COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)          " +
-        "                                 FROM   sisas.sistema_agua s           " +
-        "                                 WHERE  s.ID_PROVINCIA = p.ID_PROVINCIA          " +
-        "                    AND s.ID_MUNICIPIO = m.ID_MUNICIPIO          " +
-        "                                   AND           s.NM_TIPO_BOMBA  = 'Bombagem manual'          " +
-        "             AND           s.NM_TP_FONTE  = 'Subterrânea'          " +
-        "            AND NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Outros'          " +
-        "              ) QtPessoasAcessoOutros          " +
-        "from sisas.sistema_agua s          " +
-        "     inner join sisas.provincia p on s.ID_PROVINCIA = p.ID_PROVINCIA          " +
-        "     inner join sisas.municipio m on s.ID_MUNICIPIO = m.ID_MUNICIPIO           " +
-        "     where  s.POSSUI_SISTEMA_AGUA = 1  AND s.ID_PROVINCIA = :provinciaId       " +
-        "GROUP BY           " +
-        "       p.NM_PROVINCIA, p.ID_PROVINCIA,          " +
-        "       m.ID_MUNICIPIO, m.NM_MUNICIPIO"+
-        " ORDER BY m.NM_MUNICIPIO ASC", nativeQuery = true)
+    @Query(value = "SELECT      p.NM_PROVINCIA,      " +
+        "         m.NM_MUNICIPIO,      " +
+        "        m.populacao,      " +
+        "       (       " +
+        "          SELECT     COALESCE(COUNT(Esquema),0)      " +
+        "               FROM     sisas.sistema_agua s       " +
+        "               WHERE     s.ID_PROVINCIA = p.ID_PROVINCIA      " +
+        "              AND     s.ID_MUNICIPIO = m.ID_MUNICIPIO      " +
+        "              AND     s.NM_TP_FONTE= 'Subterrânea'      " +
+        "              AND     s.Esquema = 'Poço/cacimba melhorada'      " +
+        "        ) NrPocvoMelhorado,       " +
+        "      (       " +
+        "               SELECT     COALESCE(COUNT(Esquema),0)      " +
+        "               FROM     sisas.sistema_agua s       " +
+        "               WHERE     s.ID_PROVINCIA = p.ID_PROVINCIA      " +
+        "                 AND     s.ID_MUNICIPIO = m.ID_MUNICIPIO      " +
+        "                 AND     s.NM_TP_FONTE = 'Subterrânea'      " +
+        "                 AND     s.ESQUEMA = 'Furo'       " +
+        "          ) Furo,      " +
+        "      (       " +
+        "               SELECT     COALESCE(COUNT(Esquema),0)      " +
+        "               FROM     sisas.sistema_agua s       " +
+        "               WHERE     s.ID_PROVINCIA = p.ID_PROVINCIA      " +
+        "                 AND     s.ID_MUNICIPIO = m.ID_MUNICIPIO      " +
+        "                 AND     s.NM_TP_FONTE  = 'Subterrânea'      " +
+        "                 AND     s.ESQUEMA = 'Nascente'      " +
+        "          ) Nascente,      " +
+        "         (       " +
+        "               SELECT     COALESCE(COUNT(NM_TIPO_BOMBA),0)      " +
+        "               FROM     sisas.sistema_agua s       " +
+        "               WHERE     s.ID_PROVINCIA = p.ID_PROVINCIA      " +
+        "                 AND     s.ID_MUNICIPIO = m.ID_MUNICIPIO      " +
+        "                 AND     s.NM_TIPO_BOMBA  = 'Bombagem manual'      " +
+        "              AND NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Afridev'      " +
+        "          ) Afridev,      " +
+        "         (       " +
+        "             SELECT      COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)      " +
+        "               FROM   sisas.sistema_agua s       " +
+        "               WHERE  s.ID_PROVINCIA = p.ID_PROVINCIA      " +
+        "              AND s.ID_MUNICIPIO = m.ID_MUNICIPIO      " +
+        "                 AND     s.NM_TIPO_BOMBA  = 'Bombagem manual'      " +
+        "            AND NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Afridev'      " +
+        "        ) QtPessoasAcessoAfridev,      " +
+        "      (       " +
+        "               SELECT     COALESCE(COUNT(NM_TIPO_BOMBA),0)      " +
+        "               FROM     sisas.sistema_agua s       " +
+        "               WHERE     s.ID_PROVINCIA = p.ID_PROVINCIA      " +
+        "                 AND     s.ID_MUNICIPIO = m.ID_MUNICIPIO      " +
+        "                 AND     s.NM_TIPO_BOMBA  = 'Bombagem manual'      " +
+        "              AND NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Vergnet'      " +
+        "          ) Vergnet,      " +
+        "         (       " +
+        "             SELECT      COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)      " +
+        "               FROM   sisas.sistema_agua s       " +
+        "               WHERE  s.ID_PROVINCIA = p.ID_PROVINCIA      " +
+        "              AND s.ID_MUNICIPIO = m.ID_MUNICIPIO      " +
+        "                 AND     s.NM_TIPO_BOMBA  = 'Bombagem manual'      " +
+        "            AND NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Vergnet'      " +
+        "        ) QtPessoasAcessoVergnet,      " +
+        "      (       " +
+        "               SELECT     COALESCE(COUNT(NM_TIPO_BOMBA),0)      " +
+        "               FROM     sisas.sistema_agua s       " +
+        "               WHERE     s.ID_PROVINCIA = p.ID_PROVINCIA      " +
+        "                 AND     s.ID_MUNICIPIO = m.ID_MUNICIPIO      " +
+        "                 AND     s.NM_TIPO_BOMBA  = 'Bombagem manual'      " +
+        "              AND NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Volanta'      " +
+        "          ) Volanta,      " +
+        "         (       " +
+        "             SELECT      COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)      " +
+        "               FROM   sisas.sistema_agua s       " +
+        "               WHERE  s.ID_PROVINCIA = p.ID_PROVINCIA      " +
+        "              AND s.ID_MUNICIPIO = m.ID_MUNICIPIO      " +
+        "                 AND     s.NM_TIPO_BOMBA  = 'Bombagem manual'      " +
+        "            AND NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Volanta'      " +
+        "        ) QtPessoasAcessoVolanta,      " +
+        "      (       " +
+        "               SELECT     COALESCE(COUNT(NM_TIPO_BOMBA),0)      " +
+        "               FROM     sisas.sistema_agua s       " +
+        "               WHERE     s.ID_PROVINCIA = p.ID_PROVINCIA      " +
+        "                 AND     s.ID_MUNICIPIO = m.ID_MUNICIPIO      " +
+        "                 AND     s.NM_TIPO_BOMBA  = 'Bombagem manual'      " +
+        "              AND NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'India Mark II'      " +
+        "          ) IndiaMarkII,      " +
+        "         (       " +
+        "             SELECT      COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)      " +
+        "               FROM   sisas.sistema_agua s       " +
+        "               WHERE  s.ID_PROVINCIA = p.ID_PROVINCIA      " +
+        "              AND s.ID_MUNICIPIO = m.ID_MUNICIPIO      " +
+        "                 AND     s.NM_TIPO_BOMBA  = 'Bombagem manual'      " +
+        "            AND NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'India Mark II'      " +
+        "        ) QtPessoasAcessoIndiaMarkII,      " +
+        "      (       " +
+        "               SELECT     COALESCE(COUNT(NM_TIPO_BOMBA),0)      " +
+        "               FROM     sisas.sistema_agua s       " +
+        "               WHERE     s.ID_PROVINCIA = p.ID_PROVINCIA      " +
+        "                 AND     s.ID_MUNICIPIO = m.ID_MUNICIPIO      " +
+        "                 AND     s.NM_TIPO_BOMBA  = 'Bombagem manual'      " +
+        "              AND NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Outros'      " +
+        "          ) Outros,      " +
+        "        (       " +
+        "             SELECT      COALESCE(sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA),0)      " +
+        "               FROM   sisas.sistema_agua s       " +
+        "               WHERE  s.ID_PROVINCIA = p.ID_PROVINCIA      " +
+        "              AND s.ID_MUNICIPIO = m.ID_MUNICIPIO      " +
+        "                 AND     s.NM_TIPO_BOMBA  = 'Bombagem manual'      " +
+        "            AND NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Outros'      " +
+        "        ) QtPessoasAcessoOutros      " +
+        "FROM sisas.sistema_agua s      " +
+        "     inner join sisas.provincia p on s.ID_PROVINCIA = p.ID_PROVINCIA      " +
+        "     inner join sisas.municipio m on p.ID_PROVINCIA = m.ID_PROVINCIA       " +
+        "     where  s.POSSUI_SISTEMA_AGUA = 1   AND s.ID_PROVINCIA = :provinciaId    " +
+        "GROUP BY       " +
+        "       p.NM_PROVINCIA,      " +
+        "       m.NM_MUNICIPIO      " +
+        "ORDER BY       " +
+        "       p.NM_PROVINCIA,      " +
+        "       m.NM_MUNICIPIO", nativeQuery = true)
     List<Object[]> buscaDadosBenefAguaFonteSubterraneaTipoBombaManualMunicipal(@Param("provinciaId") Long provinciaId);
 
     //BENEFICIARIOS DE AGUA POR FONTE SUPERFICIAL E POR OPCAO TECNICA
@@ -2787,4 +2782,34 @@ public interface RelatorioRepository extends JpaRepository<Provincia, Long>, Jpa
         " ORDER BY m.NM_MUNICIPIO ASC", nativeQuery = true)
     List<Object[]> buscaDadosSistAguafFtSubtBmbEnergiaMunicipal(@Param("provinciaId") Long provinciaId);
 
+    @Query(value = "Select   count(POSSUI_SISTEMA_AGUA) Qtd_Sistemas_Agua_Existentes,        " +
+        "         sum(QTD_CASAS_AGUA_LIGADA) TotalQTD_casas_ligadas,        " +
+        "         sum(QTD_HABITANTES_ACESSO_SERVICO_AGUA) Total_pessoas_Acesso_Agua,        " +
+        "         extract(month from DT_LANCAMENTO) mes,        " +
+        "         extract(year from DT_LANCAMENTO) ano       " +
+        "  from sisas.sistema_agua       " +
+        "  where POSSUI_SISTEMA_AGUA = 1        " +
+        "  AND ID_PROVINCIA = :provinciaId        " +
+        "  group by       " +
+        "       extract(month from DT_LANCAMENTO),        " +
+        "       extract(year from DT_LANCAMENTO)       " +
+        "  order by       " +
+        "             extract(month from DT_LANCAMENTO)", nativeQuery = true)
+    List<Object[]> buscaDadosDashboardSistAgua(@Param("provinciaId") Long provinciaId);
+
+    @Query(value = "Select count(id_indicador_producao) Totalindicadores,           " +
+        "       sum(QTD_POPULACAO_COBERTA_INFRAESTRUTURA) Total_pessoas_Acesso_Agua,           " +
+        "       sum(QTD_VOLUME_AGUA_CAPTADA) Total_Agua_Captada,          " +
+        "       sum(QTD_VOLUME_AGUA_TRATADA) Total_Agua_Tratada,          " +
+        "       sum(QTD_VOLUME_AGUA_DISTRIBUIDA) Total_Volume_Agua_Distriubuida,          " +
+        "       extract(month from DT_LANCAMENTO) mes,           " +
+        "       extract(year from DT_LANCAMENTO) ano          " +
+        "  from sisas.indicador_producao          " +
+        "  where ID_PROVINCIA = :provinciaId                    " +
+        "  group by          " +
+        "       extract(month from DT_LANCAMENTO),           " +
+        "       extract(year from DT_LANCAMENTO)          " +
+        "  order by          " +
+        "              extract(month from DT_LANCAMENTO)", nativeQuery = true)
+    List<Object[]> buscaDadosDashboardIndicadores(@Param("provinciaId") Long provinciaId);
 }

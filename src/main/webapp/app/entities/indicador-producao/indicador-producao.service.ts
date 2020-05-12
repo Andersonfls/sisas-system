@@ -7,6 +7,7 @@ import {JhiDateUtils} from 'ng-jhipster';
 
 import {IndicadorProducao} from './indicador-producao.model';
 import {createRequestOption} from '../../shared';
+import {SistemaAgua} from '../sistema-agua';
 
 export type EntityResponseType = HttpResponse<IndicadorProducao>;
 
@@ -63,6 +64,29 @@ export class IndicadorProducaoService {
     findLast(): Observable<EntityResponseType> {
         return this.http.get<IndicadorProducao>(`${this.resourceUrl}/last`, { observe: 'response'})
             .map((res: EntityResponseType) => this.convertResponse(res));
+    }
+
+    // barra de pesquisa
+    queryAno(req: any): Observable<HttpResponse<IndicadorProducao[]>> {
+        const params: HttpParams = createRequestOption(req);
+
+        const requestURL = this.resourceUrl + '/anoFiltro';
+
+        return this.http.get<IndicadorProducao[]>(requestURL, {
+            params,
+            observe: 'response'
+        });
+    }
+
+    queryProvincia(req: any): Observable<HttpResponse<SistemaAgua[]>> {
+        const params: HttpParams = createRequestOption(req);
+
+        const requestURL = this.resourceUrl + '/provinciaFiltro';
+
+        return this.http.get<SistemaAgua[]>(requestURL, {
+            params,
+            observe: 'response'
+        });
     }
 
     private convertResponse(res: EntityResponseType): EntityResponseType {

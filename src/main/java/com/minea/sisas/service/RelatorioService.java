@@ -616,7 +616,7 @@ public class RelatorioService {
                 dto.setNumeroChafarizes(((BigDecimal) i[5]).intValue());
                 dto.setFuncionamChafariz(((BigDecimal) i[6]).intValue());
                 dto.setNaoFuncionamChafariz(((BigDecimal) i[7]).intValue());
-                dto.setNaoFuncionamChafarizPerc(((Double) i[8]).floatValue());
+                dto.setNaoFuncionamChafarizPerc(((BigDecimal) i[8]).floatValue());
                 retorno.add(dto);
             });
         }
@@ -919,15 +919,16 @@ public class RelatorioService {
                 dto.setNascente(0);
                 dto.setNomeProvincia((String) i[0]);
                 dto.setNomeMunicipio((String) i[1]);
-                dto.setNumeroPocoMelhorado(((BigInteger) i[2]).intValue());
-                dto.setFuro(((BigInteger) i[3]).intValue());
-                if (Objects.nonNull(i[4])) {
-                    dto.setNascente(((BigInteger) i[4]).intValue());
+                dto.setPopulacao(((BigInteger) i[2]).intValue());
+                dto.setNumeroPocoMelhorado(((BigInteger) i[3]).intValue());
+                dto.setFuro(((BigInteger) i[4]).intValue());
+                if (Objects.nonNull(i[5])) {
+                    dto.setNascente(((BigInteger) i[5]).intValue());
                 }
                 dto.setTotalBombaGravidade(((BigInteger) i[5]).intValue());
                 dto.setPopulacaoBeneficiadaGravidade(((BigInteger) i[6]).intValue());
-                dto.setTotalTipoBombaOutros(((BigDecimal) i[7]).intValue());
-                dto.setQtdPopulacaoOutros(((BigInteger) i[8]).intValue());
+                dto.setTotalTipoBombaOutros(((BigDecimal) i[14]).intValue());
+                dto.setQtdPopulacaoOutros(((BigInteger) i[15]).intValue());
                 retorno.add(dto);
             });
         }
@@ -1229,6 +1230,58 @@ public class RelatorioService {
                 dto.setOutroSistemas(((BigInteger) i[19]).intValue());
                 dto.setOutroSistemaFunciona(((BigInteger) i[20]).intValue());
                 dto.setOutroSistemaNaoFunciona(((BigInteger) i[21]).floatValue());
+
+                retorno.add(dto);
+            });
+        }
+        return retorno;
+    }
+
+    //DASHBOARD
+    public List<DadosDashboardDTO> dashboardSistemas() {
+        User user = buscaUsuarioLogado();
+        List<Object[]> list;
+        List<DadosDashboardDTO> retorno = new ArrayList<>();
+        if (isAdminGeral(user)) {
+            list = this.relatorioAdminRepository.buscaDadosDashboardSistAgua();
+        } else {
+            list = this.relatorioRepository.buscaDadosDashboardSistAgua(user.getProvincia().getId());
+        }
+        if (Objects.nonNull(list)) {
+            list.stream().forEach(i -> {
+                DadosDashboardDTO dto = new DadosDashboardDTO();
+                dto.setSistemaAguaExistentes(((BigInteger) i[0]).intValue());
+                dto.setTotalCasasLigadas(((BigDecimal) i[1]).intValue());
+                dto.setTotalPessoasAceesoAgua(((BigDecimal) i[2]).intValue());
+                dto.setMes(((Integer)i[3]));
+                dto.setAno(((Integer) i[4]));
+
+                retorno.add(dto);
+            });
+        }
+        return retorno;
+    }
+
+    public List<DadosDashboardDTO> dashboardIndicadores() {
+        User user = buscaUsuarioLogado();
+        List<Object[]> list;
+        List<DadosDashboardDTO> retorno = new ArrayList<>();
+        if (isAdminGeral(user)) {
+            list = this.relatorioAdminRepository.buscaDadosDashboardIndicadores();
+        } else {
+            list = this.relatorioRepository.buscaDadosDashboardIndicadores(user.getProvincia().getId());
+        }
+        if (Objects.nonNull(list)) {
+            list.stream().forEach(i -> {
+                DadosDashboardDTO dto = new DadosDashboardDTO();
+                dto.setTotalIndicadores(((BigInteger) i[0]).intValue());
+                dto.setTotalPessoasAceesoAgua(((BigDecimal) i[1]).intValue());
+                dto.setTotalAguaCaptada(((BigDecimal) i[2]).intValue());
+                dto.setTotalAguaTratada(((BigDecimal) i[3]).intValue());
+                dto.setTotalVolumeAguaDistribuida(((BigDecimal) i[4]).intValue());
+
+                dto.setMes(((Integer)i[5]));
+                dto.setAno(((Integer) i[6]));
 
                 retorno.add(dto);
             });

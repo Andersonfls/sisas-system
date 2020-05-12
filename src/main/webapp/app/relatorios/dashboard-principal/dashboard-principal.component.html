@@ -1,0 +1,189 @@
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<div id="pdfTable">
+    <div id="model2">
+        <div class="export-container" style="margin-top: 0%">
+            <h2 class="text-centro">
+                <span>Dashboard </span>
+            </h2>
+        </div>
+
+        <div class="row" style="margin-bottom: 2%">
+            <div class="col-xl-3 col-md-6 mb-r">
+                <div class="card card-cascade cascading-admin-card">
+                    <div class="admin-up">
+                        <i class="fa fa-archive primary-color"></i>
+                        <div class="data">
+                            <p>INDICADORES</p>
+                            <h4>
+                                <strong>{{totalInqueritos | number}}</strong>
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="card-body" style="padding-top: 1rem;">
+                        <div class="progress">
+                            <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar bg-primary" role="progressbar" style="width: 25%">
+
+                            </div>
+                        </div>
+                        <p class="card-text">Total Indicadores</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-r">
+                <div class="card card-cascade cascading-admin-card">
+                    <div class="admin-up">
+                        <i class="fa fa-line-chart warning-color"></i>
+                        <div class="data">
+                            <p>SISTEMAS</p>
+                            <h4>
+                                <strong>{{totalSistemas | number}}</strong>
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="card-body" style="padding-top: 1rem;">
+                        <div class="progress">
+                            <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" class="progress-bar bg-primary"
+                                 role="progressbar" style="width: 50%">
+                            </div>
+                        </div>
+                        <p class="card-text">Total Sistemas</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-r">
+                <div class="card card-cascade cascading-admin-card">
+                    <div class="admin-up">
+                        <i class="fa fa-home light-blue lighten-1"></i>
+                        <div class="data">
+                            <p>CASAS</p>
+                            <h4>
+                                <strong>{{totalCasasLigadas | number}}</strong>
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="card-body" style="padding-top: 1rem;">
+                        <div class="progress">
+                            <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="75" class="progress-bar bg-primary"
+                                 role="progressbar" style="width: 75%">
+                            </div>
+                        </div>
+                        <p class="card-text">Total Casas Ligadas </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-r">
+                <div class="card card-cascade cascading-admin-card">
+                    <div class="admin-up">
+                        <i class="fa fa-address-book red accent-2"></i>
+                        <div class="data">
+                            <p>ÁGUA</p>
+                            <h4>
+                                <strong>{{totalAcessoAgua | number}}</strong>
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="card-body" style="padding-top: 1rem;">
+                        <div class="progress">
+                            <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="100" class="progress-bar bg-primary"
+                                 role="progressbar" style="width: 100%">
+                            </div>
+                        </div>
+                        <p class="card-text">Total Pessoas com Acesso a Água</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="mod2" class="table-responsive">
+            <!--<div class="row" style="margin-bottom: 2%">-->
+                <!--<table *ngIf="listaIndicadores" id="tbnn" class="table table-striped" style="width: 47%; margin-right: 2%">-->
+                    <!--<thead>-->
+                    <!--<tr class="fundo-hd-table">-->
+                        <!--<th colspan="4" class="borda-th text-centro"><span>Inquérito / Inventário</span></th>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundo-hd-table">-->
+                        <!--<th class="borda-th text-centro"><span>Total Agua Captada</span></th>-->
+                        <!--<th class="borda-th text-centro"><span>Total Agua Tratada</span></th>-->
+                        <!--<th class="borda-th text-centro"><span>Volume Água Distribuida</span></th>-->
+                        <!--<th class="borda-th text-centro"><span>Mês</span></th>-->
+                    <!--</tr>-->
+                    <!--</thead>-->
+                    <!--<tbody>-->
+                    <!--<tr class="borda-th" *ngFor="let ind of listaIndicadores">-->
+                        <!--<td class="text-centro">{{ind.totalAguaCaptada}}</td>-->
+                        <!--<td class="text-centro">{{ind.totalAguaTratada}}</td>-->
+                        <!--<td class="text-centro">{{ind.totalVolumeAguaDistribuida}}</td>-->
+                        <!--<td class="text-centro">{{ind.mes}}</td>-->
+                    <!--</tr>-->
+                    <!--</tbody>-->
+                <!--</table>-->
+
+                <!--<table *ngIf="listaSistemas" class="table table-striped" style="width: 47%; float: right">-->
+                    <!--<thead>-->
+                    <!--<tr class="fundo-hd-table">-->
+                        <!--<th colspan="4" class="borda-th text-centro"><span>Sistemas de Águas</span></th>-->
+                    <!--</tr>-->
+                    <!--<tr class="fundo-hd-table">-->
+                        <!--<th class="borda-th text-centro"><span>Mês</span></th>-->
+                        <!--<th class="borda-th text-centro"><span>Sistemas Existentes</span></th>-->
+                        <!--<th class="borda-th text-centro"><span>Casas Ligadas</span></th>-->
+                        <!--<th class="borda-th text-centro"><span>Acesso a Água</span></th>-->
+                    <!--</tr>-->
+                    <!--</thead>-->
+                    <!--<tbody>-->
+                    <!--<tr class="borda-th" *ngFor="let ind of listaSistemas">-->
+                        <!--<td class="text-centro">{{ind.mes}}</td>-->
+                        <!--<td class="text-centro">{{ind.sistemaAguaExistentes}}</td>-->
+                        <!--<td class="text-centro">{{ind.totalCasasLigadas}}</td>-->
+                        <!--<td class="text-centro">{{ind.totalPessoasAceesoAgua}}</td>-->
+                    <!--</tr>-->
+                    <!--</tbody>-->
+                <!--</table>-->
+            <!--</div>-->
+
+
+            <div style="margin-bottom: 2%">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card card-dash">
+                            <div id="chartPieSistemas" style="height: 375px; width: 95%;"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-dash">
+                            <div id="chartPieCasas" style="height: 375px; width: 95%; margin-left:2%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card card-dash">
+                            <div id="chartPieAcesso" style="height: 375px; width: 95%; margin-left:2%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card card-dash">
+                                <div id="chartAgua" style="height: 370px; width: 98%; margin-left: 3%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" [routerLink]="['/../../dashboard-principal']"  >
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+    </div>
+</div>

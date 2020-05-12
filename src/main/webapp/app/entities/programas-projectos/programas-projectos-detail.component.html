@@ -32,13 +32,6 @@
         <dd>
             <span>{{programasProjectos.tipoFinanciamento}}</span>
         </dd>
-        <dt><span jhiTranslate="sisasApp.programasProjectos.especialidades">Especialidades</span></dt>
-        <dd>
-            <div *ngIf="programasProjectos.especialidades.nmEspecialidade">
-                <a [routerLink]="['/especialidades', programasProjectos.especialidades.id]">{{programasProjectos.especialidades.nmEspecialidade}}</a>
-            </div>
-        </dd>
-
         <dt><span jhiTranslate="sisasApp.programasProjectos.idProvincia">Provincia</span></dt>
         <dd>
             <div *ngIf="programasProjectos.provincia.nmProvincia">

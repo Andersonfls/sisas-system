@@ -18,8 +18,17 @@ public class BeneAguaFtSubterraneaTpBomba implements Serializable {
     private Integer populacaoBeneficiadaGravidade;
     private Integer totalTipoBombaOutros;
     private Integer qtdPopulacaoOutros;
+    private Integer populacao;
 
     public BeneAguaFtSubterraneaTpBomba() {
+    }
+
+    public Integer getPopulacao() {
+        return populacao;
+    }
+
+    public void setPopulacao(Integer populacao) {
+        this.populacao = populacao;
     }
 
     public String getNomeProvincia() {

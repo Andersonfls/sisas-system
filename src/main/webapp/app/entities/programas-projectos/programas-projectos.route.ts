@@ -57,7 +57,7 @@ export const programasProjectosRoute: Routes = [
             'pagingParams': ProgramasProjectosResolvePagingParams
         },
         data: {
-            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL', 'PROG_PROJECTOS'],
             pageTitle: 'sisasApp.programasProjectos.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -65,7 +65,7 @@ export const programasProjectosRoute: Routes = [
         path: 'programas-projectos/:id',
         component: ProgramasProjectosDetailComponent,
         data: {
-            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL', 'PROG_PROJECTOS'],
             pageTitle: 'sisasApp.programasProjectos.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -73,7 +73,7 @@ export const programasProjectosRoute: Routes = [
         path: 'programas-projectos-edit/:id',
         component: ProgramasProjectosDialogComponent,
         data: {
-            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL', 'PROG_PROJECTOS'],
             pageTitle: 'sisasApp.programasProjectos.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -81,7 +81,7 @@ export const programasProjectosRoute: Routes = [
         path: 'programas-projectos-new',
         component: ProgramasProjectosDialogComponent,
         data: {
-            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL', 'PROG_PROJECTOS'],
             pageTitle: 'sisasApp.programasProjectos.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -93,7 +93,7 @@ export const programasProjectosPopupRoute: Routes = [
         path: 'programas-projectos-new',
         component: ProgramasProjectosPopupComponent,
         data: {
-            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL', 'PROG_PROJECTOS'],
             pageTitle: 'sisasApp.programasProjectos.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -103,7 +103,7 @@ export const programasProjectosPopupRoute: Routes = [
         path: 'programas-projectos/:id/edit',
         component: ProgramasProjectosPopupComponent,
         data: {
-            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL', 'PROG_PROJECTOS'],
             pageTitle: 'sisasApp.programasProjectos.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -113,7 +113,7 @@ export const programasProjectosPopupRoute: Routes = [
         path: 'programas-projectos/:id/delete',
         component: ProgramasProjectosDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL', 'PROG_PROJECTOS'],
             pageTitle: 'sisasApp.programasProjectos.home.title'
         },
         canActivate: [UserRouteAccessService],

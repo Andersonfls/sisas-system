@@ -2,71 +2,116 @@
     <h2>
         <span style="margin-left: 5%" jhiTranslate="sisasApp.indicadorProducao.home.title">Indicador Producaos</span>
         <button class="btn btn-primary float-left redondo"
-                [routerLink]="['../dashboard']">
+                [routerLink]="['../dashboard-principal']">
             <span class="fa fa-chevron-left"></span>
+        </button>
+        <button class="btn btn-primary jh-create-entity create-produto" (click)="mostrarFiltros()" style="float: left; margin-left: 1%;">
+            <span class="fa fa-plus"> </span>
+            <span>{{esconderFiltros ? 'Adicionar' : 'Retirar' }} filtros</span>
         </button>
         <button class="btn btn-primary float-right jh-create-entity redondo" [routerLink]="['../indicador-producao-new' ]" >
             <span class="fa fa-plus"></span>
         </button>
     </h2>
-    <br/>
-    <jhi-alert></jhi-alert>
-    <input type="text" class="form-control pesquisa" name="filtro" [(ngModel)]="nome" (ngModelChange)="onChangeNome()"
-           placeholder="Buscar..." style="font-style:italic"/>
-    <div class="row">
-    </div>
-    <br/>
-    <div class="table-responsive" *ngIf="indicadorProducaos">
-        <table class="table table-striped">
-            <thead>
-            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="dtLancamento"><span jhiTranslate="sisasApp.indicadorProducao.dtLancamento">Dt Lancamento</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="provincia"><span jhiTranslate="sisasApp.indicadorProducao.provincia">Província</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="dtUltimaAlteracao"><span jhiTranslate="sisasApp.indicadorProducao.dtUltimaAlteracao">Dt Ultima Alteracao</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="idSituacaoId"><span jhiTranslate="sisasApp.indicadorProducao.idSituacao">Id Situacao</span> <span class="fa fa-sort"></span></th>
-            <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let indicadorProducao of indicadorProducaos ;trackBy: trackId">
-                <td>{{indicadorProducao.dtLancamento | date:'MM/yy'}}</td>
-                <td>
-                    <div *ngIf="indicadorProducao.provincia">
-                        <a [routerLink]="['../provincia', indicadorProducao.provincia  ]" >{{indicadorProducao.provincia.nmProvincia}}</a>
-                    </div>
-                </td>
-                <td>{{indicadorProducao.dtUltimaAlteracao | date:'dd/MM/yy'}}</td>
-                <td>
-                    <div *ngIf="indicadorProducao.situacao">
-                        <a [routerLink]="['../situacao', indicadorProducao.situacao]" >{{indicadorProducao.situacao.nmSituacao}}</a>
-                    </div>
-                </td>
-                <td class="text-right">
-                    <div class="btn-group flex-btn-group-container">
-                        <button type="submit"
-                                [routerLink]="['../indicador-producao', indicadorProducao.id ]"
-                                class="btn btn-info btn-sm">
-                            <span class="fa fa-eye"></span>
-                        </button>
-                        <button type="submit"
-                                [routerLink]="['../indicador-producao-edit', indicadorProducao.id ]"
-                                class="btn btn-primary btn-sm">
-                            <span class="fa fa-pencil"></span>
-                        </button>
+    <div class="card-body" [hidden]="esconderFiltros">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <!--<div class="input-group" style="max-width: 97%; margin-bottom: 1%">-->
+                    <!--<input type="text" class="form-control" name="filtro" [(ngModel)]="nome" placeholder="Digite o Nome do Sistema, Situação, ou Usuário..." style="font-style:italic"/>-->
+                    <!--<span class="input-group-btn">-->
+                            <!--<button class="btn btn-search" type="button" (click)="onChangeNome()" ><i class="fa fa-search fa-fw"></i></button>-->
+                    <!--</span>-->
+                <!--</div>-->
 
-                        <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'indicador-producao/'+ indicadorProducao.id + '/delete'} }]"
-                                replaceUrl="true"
-                                queryParamsHandling="merge"
-                                class="btn btn-danger btn-sm">
-                            <span class="fa fa-remove"></span>
-                        </button>
-                    </div>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+                <div class="input-group" style="max-width: 97%; margin-bottom: 1%">
+                    <select class="form-control" id="field_idProvincia" name="provincia" [(ngModel)]="indicador.provincia" (ngModelChange)="onChangeMunicipios()">
+                        <option [ngValue]="null" selected>Selecione a Província..</option>
+                        <option [ngValue]="provinciaOption.id === indicador.provincia?.id ? indicador.provincia : provinciaOption"
+                                *ngFor="let provinciaOption of provincias">{{provinciaOption.nmProvincia}}</option>
+                    </select>
+                    <span class="input-group-btn">
+                            <button class="btn btn-search" type="button" (click)="buscaPorProvincia()" ><i class="fa fa-search fa-fw"></i></button>
+                    </span>
+                    <select class="form-control" id="field_idMunicipio" name="municipio" [(ngModel)]="anoFiltro">
+                        <option [ngValue]="null" selected>Selecione o Ano..</option>
+                        <option [ngValue]="ano === anoFiltro ? anoFiltro : ano"
+                                *ngFor="let ano of listaAnos">{{ano}}</option>
+                    </select>
+                    <span class="input-group-btn">
+                            <button class="btn btn-search" type="button" (click)="buscaPorAno()" ><i class="fa fa-search fa-fw"></i></button>
+                    </span>
+                </div>
+            </div>
+        </form>
     </div>
+    <jhi-alert></jhi-alert>
+    <div class="export-container" *ngIf="indicadorProducaos">
+        <h2 class="text-centro">
+            <button type="button" (click)="exportTable('tbmuni')" class="btn btn-primary btn-sm excel">
+                <span class="fa fa-file-excel-o"></span>
+                <span class="d-none d-md-inline">Excel</span>
+            </button>
+            <button type="button" (click)="captureScreen('tbmuni')" class="btn btn-primary btn-sm bt-pdf">
+                <span class="fas fa-file-pdf"></span>
+                <span class="d-none d-md-inline">PDF</span>
+            </button>
+        </h2>
+    </div>
+    <br/>
+    <div class="card" style="margin-top: 2%">
+        <div class="table-responsive" *ngIf="indicadorProducaos">
+            <table id="tbmuni" class="table table-striped">
+                <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+                    <th jhiSortBy="dtLancamento"><span jhiTranslate="sisasApp.indicadorProducao.dtLancamento">Dt Lancamento</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="provincia"><span jhiTranslate="sisasApp.indicadorProducao.provincia">Província</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="dtUltimaAlteracao"><span jhiTranslate="sisasApp.indicadorProducao.dtUltimaAlteracao">Dt Ultima Alteracao</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="idSituacaoId"><span jhiTranslate="sisasApp.indicadorProducao.idSituacao">Id Situacao</span> <span class="fa fa-sort"></span></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let indicadorProducao of indicadorProducaos ;trackBy: trackId">
+                    <td>{{indicadorProducao.dtLancamento | date:'MM/yy'}}</td>
+                    <td>
+                        <div *ngIf="indicadorProducao.provincia">
+                            <a [routerLink]="['../provincia', indicadorProducao.provincia  ]" >{{indicadorProducao.provincia.nmProvincia}}</a>
+                        </div>
+                    </td>
+                    <td>{{indicadorProducao.dtUltimaAlteracao | date:'dd/MM/yy'}}</td>
+                    <td>
+                        <div *ngIf="indicadorProducao.situacao">
+                            <a [routerLink]="['../situacao', indicadorProducao.situacao]" >{{indicadorProducao.situacao.nmSituacao}}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    [routerLink]="['../indicador-producao', indicadorProducao.id ]"
+                                    class="btn btn-info btn-sm">
+                                <span class="fa fa-eye"></span>
+                            </button>
+                            <button type="submit"
+                                    [routerLink]="['../indicador-producao-edit', indicadorProducao.id ]"
+                                    class="btn btn-primary btn-sm">
+                                <span class="fa fa-pencil"></span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/', { outlets: { popup: 'indicador-producao/'+ indicadorProducao.id + '/delete'} }]"
+                                    replaceUrl="true"
+                                    queryParamsHandling="merge"
+                                    class="btn btn-danger btn-sm">
+                                <span class="fa fa-remove"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
     <div *ngIf="indicadorProducaos && indicadorProducaos.length">
         <div class="row justify-content-center">
             <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>

@@ -1,5 +1,5 @@
 <div>
-    <div class="col-md-3 float-left col-1 pl-0 pr-0 collapse width show" style="position: fixed; width: 22.7%" *jhiHasAnyAuthority="['ROLE_USER', 'ROLE_ADMIN', 'ADMIN_PROVINCIAL','USUARIO_PROVINCIAL']">
+    <div class="col-md-3 float-left col-1 pl-0 pr-0 collapse width show menu-topo-esquerdo" *jhiHasAnyAuthority="['ROLE_USER', 'ROLE_ADMIN', 'ADMIN_PROVINCIAL','USUARIO_PROVINCIAL', 'PROG_PROJECTOS']">
         <a class="d-inline-block nvb-logo" style="width: 100%" href="javascript:void(0);" data-target="#sidebar" data-toggle="collapse">
             <div style="max-width: 95%; line-height: 1.4 !important;" >
                 <img  class="img-responsive img-navbar-logo"  src="../../../content/images/logo_curto.png">
@@ -10,7 +10,7 @@
         </a>
     </div>
 
-    <div class="col-md-3 float-left col-1 pl-0 pr-0 collapse width show" id="sidebar" *jhiHasAnyAuthority="['ROLE_USER', 'ROLE_ADMIN', 'ADMIN_PROVINCIAL','USUARIO_PROVINCIAL']">
+    <div class="col-md-3 float-left col-1 pl-0 pr-0 collapse width show" id="sidebar" *jhiHasAnyAuthority="['ROLE_USER', 'ROLE_ADMIN', 'ADMIN_PROVINCIAL','USUARIO_PROVINCIAL', 'PROG_PROJECTOS']">
         <!--<a class="d-inline-block nvb-logo" style="width: 100%">-->
             <!--<div style="max-width: 95%; line-height: 1.4 !important;" >-->
                 <!--<img  class="img-responsive img-navbar-logo"  src="../../../content/images/logo_curto.png">-->
@@ -21,19 +21,19 @@
         <!--</a>-->
 
         <div class="list-group border-0 card text-center text-md-left">
-            <a style="margin-top: 10px;"  href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar" routerLink="dashboard" routerLinkActive="active">
+            <a style="margin-top: 10px;"  href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar" routerLink="dashboard-principal" routerLinkActive="active" *jhiHasAnyAuthority="['ROLE_ADMIN', 'ADMIN_PROVINCIAL']">
                 <i class="fa fa-bar-chart" style="size: 10px !important;"> </i>
                 <span class="d-none d-md-inline" jhiTranslate="sidebar.item1">Dashboard</span>
             </a>
 
-            <a href="#menu3x"  class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false">
+            <a href="#menu3x"  class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false" *jhiHasAnyAuthority="['ROLE_ADMIN', 'ADMIN_PROVINCIAL','USUARIO_PROVINCIAL']">
                 <i class="fa fa-archive" ngbTooltip="Inventário de Inquérito" title="Inventário de Inquérito"></i>
                 <span class="d-none d-md-inline" jhiTranslate="sidebar.item3.title">Módulo de Inventário/Inquéritos</span>
             </a>
 
             <div class="collapse" id="menu3x" data-parent="#sidebar" routerLinkActive="false">
-                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="" routerLinkActive="active" *jhiHasAnyAuthority="['ROLE_ADMIN']">
-                    <i class="fa fa-hashtag" style="size: 10px !important;"> </i>
+                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="dashboard" routerLinkActive="active" *jhiHasAnyAuthority="['ROLE_ADMIN']">
+                    <i class="fa fa-bar-chart" style="size: 10px !important;"> </i>
                     <span class="d-md-inline" jhiTranslate="sidebar.item3.subItem5">Dashboard</span>
                 </a>
                 <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="sistema-agua" routerLinkActive="active">
@@ -47,6 +47,11 @@
                 </a>
 
                 <div class="collapse" id="menu-rela" data-parent="#sidebar" routerLinkActive="false">
+                    <a href="#" style="background-color: #163f66;" class="list-group-item" data-parent="#menu7x" routerLink="dashboard" routerLinkActive="active">
+                        <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
+                        <span class="d-md-inline" jhiTranslate="sidebar.item6.subItem18"></span>
+                    </a>
+
                     <a href="#" style="background-color: #163f66;" class="list-group-item" data-parent="#menu7x" routerLink="inqueritos-preenchidos" routerLinkActive="active">
                         <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                         <span class="d-md-inline" jhiTranslate="sidebar.item6.subItem1"></span>
@@ -58,15 +63,15 @@
                     </a>
 
                     <div class="collapse" id="cobert-ser-agua" data-parent="#menu-rela" routerLinkActive="false">
-                        <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="sector-agua-provincial" routerLinkActive="active">
+                        <a (click)="setStateAsActive('sector-agua-provincial')" [class.ativo]="activeState === 'sector-agua-provincial'" href="#" class="list-group-item" data-parent="#menu7x" routerLink="sector-agua-provincial" routerLinkActive="active">
                             <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                             <span class="d-md-inline">Provincial</span>
                         </a>
-                        <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="sector-agua-municipal" routerLinkActive="active">
+                        <a (click)="setStateAsActive('sector-agua-municipal')" [class.ativo]="activeState === 'sector-agua-municipal'" href="#" class="list-group-item" data-parent="#menu7x" routerLink="sector-agua-municipal" routerLinkActive="active">
                             <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                             <span class="d-md-inline">Municipal</span>
                         </a>
-                        <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="sector-agua-comunal" routerLinkActive="active">
+                        <a (click)="setStateAsActive('sector-agua-comunal')" [class.ativo]="activeState === 'sector-agua-comunal'" href="#" class="list-group-item" data-parent="#menu7x" routerLink="sector-agua-comunal" routerLinkActive="active">
                             <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                             <span class="d-md-inline">Comunal</span>
                         </a>
@@ -78,15 +83,15 @@
                     </a>
 
                     <div class="collapse" id="func-agua-chaf" data-parent="#menu-rela" routerLinkActive="false">
-                        <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="func-agua-chafariz-provincial" routerLinkActive="active">
+                        <a (click)="setStateAsActive('func-agua-chafariz-provincial')" [class.ativo]="activeState === 'func-agua-chafariz-provincial'" href="#" class="list-group-item" data-parent="#menu7x" routerLink="func-agua-chafariz-provincial" routerLinkActive="active">
                             <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                             <span class="d-md-inline">Provincial</span>
                         </a>
-                        <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="func-agua-chafariz-municipal" routerLinkActive="active">
+                        <a (click)="setStateAsActive('func-agua-chafariz-municipal')" [class.ativo]="activeState === 'func-agua-chafariz-municipal'" href="#" class="list-group-item" data-parent="#menu7x" routerLink="func-agua-chafariz-municipal" routerLinkActive="active">
                             <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                             <span class="d-md-inline">Municipal</span>
                         </a>
-                        <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="func-agua-chafariz-comunal" routerLinkActive="active">
+                        <a  (click)="setStateAsActive('func-agua-chafariz-comunal')" [class.ativo]="activeState === 'func-agua-chafariz-comunal'"href="#" class="list-group-item" data-parent="#menu7x" routerLink="func-agua-chafariz-comunal" routerLinkActive="active">
                             <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                             <span class="d-md-inline">Comunal</span>
                         </a>
@@ -98,15 +103,15 @@
                     </a>
 
                     <div class="collapse" id="trat-sis-agua" data-parent="#menu-rela" routerLinkActive="false">
-                        <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="trat-sist-agua-provincial" routerLinkActive="active">
+                        <a (click)="setStateAsActive('trat-sist-agua-provincial')" [class.ativo]="activeState === 'trat-sist-agua-provincial'" href="#" class="list-group-item" data-parent="#menu7x" routerLink="trat-sist-agua-provincial" routerLinkActive="active">
                             <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                             <span class="d-md-inline">Provincial</span>
                         </a>
-                        <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="trat-sist-agua-municipal" routerLinkActive="active">
+                        <a (click)="setStateAsActive('trat-sist-agua-municipal')" [class.ativo]="activeState === 'trat-sist-agua-municipal'" href="#" class="list-group-item" data-parent="#menu7x" routerLink="trat-sist-agua-municipal" routerLinkActive="active">
                             <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                             <span class="d-md-inline">Municipal</span>
                         </a>
-                        <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="trat-sist-agua-comunal" routerLinkActive="active">
+                        <a (click)="setStateAsActive('trat-sist-agua-comunal')" [class.ativo]="activeState === 'trat-sist-agua-comunal'" href="#" class="list-group-item" data-parent="#menu7x" routerLink="trat-sist-agua-comunal" routerLinkActive="active">
                             <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                             <span class="d-md-inline">Comunal</span>
                         </a>
@@ -119,15 +124,15 @@
                     </a>
 
                     <div class="collapse" id="func-sis-agua" data-parent="#menu-rela" routerLinkActive="false">
-                        <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="func-agua-provincial" routerLinkActive="active">
+                        <a (click)="setStateAsActive('func-agua-provincial')" [class.ativo]="activeState === 'func-agua-provincial'" href="#" class="list-group-item" data-parent="#menu7x" routerLink="func-agua-provincial" routerLinkActive="active">
                             <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                             <span class="d-md-inline">Provincial</span>
                         </a>
-                        <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="func-agua-municipal" routerLinkActive="active">
+                        <a (click)="setStateAsActive('func-agua-municipal')" [class.ativo]="activeState === 'func-agua-municipal'" href="#" class="list-group-item" data-parent="#menu7x" routerLink="func-agua-municipal" routerLinkActive="active">
                             <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                             <span class="d-md-inline">Municipal</span>
                         </a>
-                        <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="func-agua-comunal" routerLinkActive="active">
+                        <a (click)="setStateAsActive('func-agua-comunal')" [class.ativo]="activeState === 'func-agua-comunal'" href="#" class="list-group-item" data-parent="#menu7x" routerLink="func-agua-comunal" routerLinkActive="active">
                             <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                             <span class="d-md-inline">Comunal</span>
                         </a>
@@ -139,7 +144,7 @@
                     </a>
 
                     <div class="collapse" id="bmb-energia" data-parent="#menu-rela" routerLinkActive="false">
-                        <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="sist-agua-ft-subt-bmb-energia-comunal" routerLinkActive="active">
+                        <a (click)="setStateAsActive('sist-agua-ft-subt-bmb-energia-comunal')" [class.ativo]="activeState === 'sist-agua-ft-subt-bmb-energia-comunal'" href="#" class="list-group-item" data-parent="#menu7x" routerLink="sist-agua-ft-subt-bmb-energia-comunal" routerLinkActive="active">
                             <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                             <span class="d-md-inline">Comunal</span>
                         </a>
@@ -151,7 +156,7 @@
                     </a>
 
                     <div class="collapse" id="bmb-manual" data-parent="#menu-rela" routerLinkActive="false">
-                        <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="sistema-agua-ft-subte-manual-comunal" routerLinkActive="active">
+                        <a (click)="setStateAsActive('sistema-agua-ft-subte-manual-comunal')" [class.ativo]="activeState === 'sistema-agua-ft-subte-manual-comunal'" href="#" class="list-group-item" data-parent="#menu7x" routerLink="sistema-agua-ft-subte-manual-comunal" routerLinkActive="active">
                             <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                             <span class="d-md-inline">Comunal</span>
                         </a>
@@ -163,7 +168,7 @@
                     </a>
 
                     <div class="collapse" id="bmb-gravidade" data-parent="#menu-rela" routerLinkActive="false">
-                        <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="sistema-agua-ft-subte-gravidade-comunal" routerLinkActive="active">
+                        <a (click)="setStateAsActive('sistema-agua-ft-subte-gravidade-comunal')" [class.ativo]="activeState === 'sistema-agua-ft-subte-gravidade-comunal'" href="#" class="list-group-item" data-parent="#menu7x" routerLink="sistema-agua-ft-subte-gravidade-comunal" routerLinkActive="active">
                             <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                             <span class="d-md-inline">Comunal</span>
                         </a>
@@ -175,7 +180,7 @@
                     </a>
 
                     <div class="collapse" id="bmb-opcao-tecnica" data-parent="#menu-rela" routerLinkActive="false">
-                        <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="sistema-agua-ft-super-opcao-tecnica-comunal" routerLinkActive="active">
+                        <a (click)="setStateAsActive('sistema-agua-ft-super-opcao-tecnica-comunal')" [class.ativo]="activeState === 'sistema-agua-ft-super-opcao-tecnica-comunal'" href="#" class="list-group-item" data-parent="#menu7x" routerLink="sistema-agua-ft-super-opcao-tecnica-comunal" routerLinkActive="active">
                             <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                             <span class="d-md-inline">Comunal</span>
                         </a>
@@ -187,11 +192,11 @@
                     </a>
 
                     <div class="collapse" id="bmb-energia2" data-parent="#menu-rela" routerLinkActive="false">
-                        <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="benef-ft-subte-energia-provincial" routerLinkActive="active">
+                        <a (click)="setStateAsActive('benef-ft-subte-energia-provincial')" [class.ativo]="activeState === 'benef-ft-subte-energia-provincial'" href="#" class="list-group-item" data-parent="#menu7x" routerLink="benef-ft-subte-energia-provincial" routerLinkActive="active">
                             <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                             <span class="d-md-inline">Provincial</span>
                         </a>
-                        <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="benef-ft-subte-energia-comunal" routerLinkActive="active">
+                        <a (click)="setStateAsActive('benef-ft-subte-energia-comunal')" [class.ativo]="activeState === 'benef-ft-subte-energia-comunal'" href="#" class="list-group-item" data-parent="#menu7x" routerLink="benef-ft-subte-energia-comunal" routerLinkActive="active">
                             <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                             <span class="d-md-inline">Comunal</span>
                         </a>
@@ -203,11 +208,11 @@
                     </a>
 
                     <div class="collapse" id="subt-bmb-mecanica" data-parent="#menu-rela" routerLinkActive="false">
-                        <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="ben-ft-super-bmb-mecanica-municipal" routerLinkActive="active">
+                        <a (click)="setStateAsActive('ben-ft-super-bmb-mecanica-municipal')" [class.ativo]="activeState === 'ben-ft-super-bmb-mecanica-municipal'" href="#" class="list-group-item" data-parent="#menu7x" routerLink="ben-ft-super-bmb-mecanica-municipal" routerLinkActive="active">
                             <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                             <span class="d-md-inline">Municipal</span>
                         </a>
-                        <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="ben-ft-super-bmb-mecanica-comunal" routerLinkActive="active">
+                        <a (click)="setStateAsActive('ben-ft-super-bmb-mecanica-comunal')" [class.ativo]="activeState === 'ben-ft-super-bmb-mecanica-comunal'" href="#" class="list-group-item" data-parent="#menu7x" routerLink="ben-ft-super-bmb-mecanica-comunal" routerLinkActive="active">
                             <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                             <span class="d-md-inline">Comunal</span>
                         </a>
@@ -219,11 +224,11 @@
                     </a>
 
                     <div class="collapse" id="subt-tp-bmb" data-parent="#menu-rela" routerLinkActive="false">
-                        <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="ben-agua-ft-subt-tp-bmb-municipal" routerLinkActive="active">
+                        <a (click)="setStateAsActive('ben-agua-ft-subt-tp-bmb-man-municipal')" [class.ativo]="activeState === 'ben-agua-ft-subt-tp-bmb-man-municipal'" href="#" class="list-group-item" data-parent="#menu7x" routerLink="ben-agua-ft-subt-tp-bmb-man-municipal" routerLinkActive="active">
                             <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                             <span class="d-md-inline">Municipal</span>
                         </a>
-                        <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="ben-agua-ft-subt-tp-bmb-comunal" routerLinkActive="active">
+                        <a (click)="setStateAsActive('ben-agua-ft-subt-tp-bmb-comunal')" [class.ativo]="activeState === 'ben-agua-ft-subt-tp-bmb-comunal'" href="#" class="list-group-item" data-parent="#menu7x" routerLink="ben-agua-ft-subt-tp-bmb-comunal" routerLinkActive="active">
                             <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                             <span class="d-md-inline">Comunal</span>
                         </a>
@@ -235,15 +240,15 @@
                     </a>
 
                     <div class="collapse" id="subt-tp-bmb-man" data-parent="#menu-rela" routerLinkActive="false">
-                        <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="ben-agua-ft-subt-tp-bmb-man-provincial" routerLinkActive="active">
+                        <a (click)="setStateAsActive('ben-agua-ft-subt-tp-bmb-man-provincial')" [class.ativo]="activeState === 'ben-agua-ft-subt-tp-bmb-man-provincial'" href="#" class="list-group-item" data-parent="#menu7x" routerLink="ben-agua-ft-subt-tp-bmb-man-provincial" routerLinkActive="active">
                             <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                             <span class="d-md-inline">Provincial</span>
                         </a>
 
-                        <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="ben-agua-ft-subt-tp-bmb-man-municipal" routerLinkActive="active">
-                            <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
-                            <span class="d-md-inline">Municipal</span>
-                        </a>
+                        <!--<a href="#" class="list-group-item" data-parent="#menu7x" routerLink="ben-agua-ft-subt-tp-bmb-man-municipal" routerLinkActive="active">-->
+                            <!--<i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>-->
+                            <!--<span class="d-md-inline">Municipal</span>-->
+                        <!--</a>-->
                     </div>
 
                     <a href="#subt-opt-tecnica" style="background-color: #163f66; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#subt-opt-tecnica" data-toggle="collapse" aria-expanded="false">
@@ -252,19 +257,24 @@
                     </a>
 
                     <div class="collapse" id="subt-opt-tecnica" data-parent="#menu-rela" routerLinkActive="false">
-                        <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="ben-ft-super-opt-tecnica-provincial" routerLinkActive="active">
+                        <a (click)="setStateAsActive('ben-ft-super-opt-tecnica-provincial')" [class.ativo]="activeState === 'ben-ft-super-opt-tecnica-provincial'" href="#" class="list-group-item" data-parent="#menu7x" routerLink="ben-ft-super-opt-tecnica-provincial" routerLinkActive="active">
                             <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                             <span class="d-md-inline">Provincial</span>
                         </a>
-                        <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="ben-ft-super-opt-tecnica-municipal" routerLinkActive="active">
+                        <a (click)="setStateAsActive('ben-ft-super-opt-tecnica-municipal')" [class.ativo]="activeState === 'ben-ft-super-opt-tecnica-municipal'" href="#" class="list-group-item" data-parent="#menu7x" routerLink="ben-ft-super-opt-tecnica-municipal" routerLinkActive="active">
                             <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                             <span class="d-md-inline">Municipal</span>
                         </a>
-                        <a href="#" class="list-group-item" data-parent="#menu7x" routerLink="ben-ft-super-opt-tecnica-comunal" routerLinkActive="active">
+                        <a (click)="setStateAsActive('ben-ft-super-opt-tecnica-comunal')" [class.ativo]="activeState === 'ben-ft-super-opt-tecnica-comunal'" href="#" class="list-group-item" data-parent="#menu7x" routerLink="ben-ft-super-opt-tecnica-comunal" routerLinkActive="active">
                             <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                             <span class="d-md-inline">Comunal</span>
                         </a>
                     </div>
+
+                    <a href="#" style="background-color: #163f66;" class="list-group-item" data-parent="#menu7x" routerLink="sistema-agua-export" routerLinkActive="active">
+                        <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
+                        <span class="d-md-inline">Filtrar Sistemas de Água</span>
+                    </a>
                 </div>
 
                 <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="sistema-arquivo" routerLinkActive="active">
@@ -272,10 +282,10 @@
                     <span class="d-md-inline" jhiTranslate="sidebar.item3.subItem9">Inserir Por Arquivo</span>
                 </a>
 
-                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="" routerLinkActive="active" *jhiHasAnyAuthority="['ROLE_ADMIN']">
-                    <i class="fa fa-hashtag" style="size: 10px !important;"> </i>
-                    <span class="d-md-inline" jhiTranslate="sidebar.item3.subItem7">Tabelas e Gráficos</span>
-                </a>
+                <!--<a href="#" class="list-group-item" data-parent="#menu1x" routerLink="" routerLinkActive="active" *jhiHasAnyAuthority="['ROLE_ADMIN']">-->
+                    <!--<i class="fa fa-hashtag" style="size: 10px !important;"> </i>-->
+                    <!--<span class="d-md-inline" jhiTranslate="sidebar.item3.subItem7">Tabelas e Gráficos</span>-->
+                <!--</a>-->
 
                 <a href="#menu7x" style="background-color: #082e53; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#menu7x" data-toggle="collapse" aria-expanded="false">
                     <i class="fas fa-burn" style="size: 10px !important;"> </i>
@@ -458,7 +468,7 @@
                 </a>
             </div>
 
-            <a href="#menu8x"  class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false">
+            <a href="#menu8x"  class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false" *jhiHasAnyAuthority="['ROLE_ADMIN', 'ADMIN_PROVINCIAL','USUARIO_PROVINCIAL']">
                 <i class="fa fa-compress" ngbTooltip="Inventário de Inquérito" title="Inventário de Inquérito"></i>
                 <span class="d-none d-md-inline" jhiTranslate="sidebar.item8.title">Módulo de Indicadores de producao</span>
             </a>
@@ -473,10 +483,17 @@
                     <span class="d-md-inline" jhiTranslate="sidebar.item8.subItem2">Gerir Indicadores de Produção</span>
                 </a>
 
-                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="indicador-producao-provincia" routerLinkActive="active" *jhiHasAnyAuthority="['ROLE_ADMIN']">
-                    <i class="fa fa-hashtag" style="size: 10px !important;"> </i>
-                    <span class="d-md-inline" jhiTranslate="sidebar.item8.subItem3">Relatórios</span>
+                <a href="#menu-rela-ind" style="background-color: #082e53; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#menu-rela-ind" data-toggle="collapse" aria-expanded="false" *jhiHasAnyAuthority="['ROLE_ADMIN']">
+                    <i class="fas fa-clipboard-list" style="size: 10px !important;"> </i>
+                    <span class="d-md-inline" jhiTranslate="sidebar.item3.subItem6">Relatórios</span>
                 </a>
+
+                <div class="collapse" id="menu-rela-ind" data-parent="#sidebar" routerLinkActive="false">
+                    <a href="#" style="background-color: #163f66;" class="list-group-item" data-parent="#menu8x" routerLink="indicador-producao-export" routerLinkActive="active">
+                        <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
+                        <span class="d-md-inline">Filtrar Indicadores</span>
+                    </a>
+                </div>
 
                 <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="indicador-arquivo" routerLinkActive="active">
                     <i class="fa fa-file" style="size: 10px !important;"> </i>
@@ -489,9 +506,38 @@
                 </a>
             </div>
 
+            <a href="#menu4x"  class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false" *jhiHasAnyAuthority="['ROLE_USER','ROLE_ADMIN', 'PROG_PROJECTOS']">
+                <i class="fas fa-stream" ngbTooltip="Programas-Projectos" title="Programas-Projectos"></i>
+                <span class="d-none d-md-inline" jhiTranslate="sidebar.item4.title">Programas e Projectos</span>
+            </a>
+
+            <div class="collapse" id="menu4x" data-parent="#sidebar">
+                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="programas-projectos" routerLinkActive="active">
+                    <i class="fas fa-project-diagram" style="size: 10px !important;"> </i>
+                    <span class="d-md-inline" jhiTranslate="sidebar.item4.subItem1">Programas e Projectos</span>
+                </a>
+
+                <a href="#menu-rela-prog" style="background-color: #082e53; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#menu-rela-prog" data-toggle="collapse" aria-expanded="false" *jhiHasAnyAuthority="['ROLE_ADMIN']">
+                    <i class="fas fa-clipboard-list" style="size: 10px !important;"> </i>
+                    <span class="d-md-inline" jhiTranslate="sidebar.item3.subItem6">Relatórios</span>
+                </a>
+
+                <div class="collapse" id="menu-rela-prog" data-parent="#sidebar" routerLinkActive="false">
+                    <a href="#" style="background-color: #163f66;" class="list-group-item" data-parent="#menu4x" routerLink="programas-projectos-export" routerLinkActive="active">
+                        <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
+                        <span class="d-md-inline">Filtrar Programas e Projectos</span>
+                    </a>
+                </div>
+
+                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="programas-projectos-log" routerLinkActive="active" *jhiHasAnyAuthority="['ROLE_ADMIN']">
+                    <i class="fa fa-address-card-o" style="size: 10px !important;"> </i>
+                    <span class="d-md-inline" jhiTranslate="sidebar.item4.subItem2">Log Programas e Projectos</span>
+                </a>
+            </div>
+
             <a href="#menu5x"  class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false" *jhiHasAnyAuthority="['ROLE_ADMIN']">
                 <i class="fab fa-leanpub" ngbTooltip="Publicações" title="Publicações"></i>
-                <span class="d-none d-md-inline" jhiTranslate="sidebar.item5.title">Publicações</span>
+                <span class="d-none d-md-inline" jhiTranslate="sidebar.item5.title">Gestao do portal</span>
             </a>
 
             <div class="collapse" id="menu5x" data-parent="#sidebar" routerLinkActive="false">
@@ -518,23 +564,6 @@
                 <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="contactos" routerLinkActive="active">
                     <i class="fa fa-bars" style="size: 10px !important;"> </i>
                     <span class="d-md-inline" jhiTranslate="sidebar.item5.subItem7">Contactos</span>
-                </a>
-            </div>
-
-            <a href="#menu4x"  class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false" *jhiHasAnyAuthority="['ROLE_ADMIN']">
-                <i class="fas fa-stream" ngbTooltip="Programas-Projectos" title="Programas-Projectos"></i>
-                <span class="d-none d-md-inline" jhiTranslate="sidebar.item4.title">Programas e Projectos</span>
-            </a>
-
-            <div class="collapse" id="menu4x" data-parent="#sidebar">
-                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="programas-projectos" routerLinkActive="active">
-                    <i class="fas fa-project-diagram" style="size: 10px !important;"> </i>
-                    <span class="d-md-inline" jhiTranslate="sidebar.item4.subItem1">Programas e Projectos</span>
-                </a>
-
-                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="programas-projectos-log" routerLinkActive="active">
-                    <i class="fa fa-address-card-o" style="size: 10px !important;"> </i>
-                    <span class="d-md-inline" jhiTranslate="sidebar.item4.subItem2">Log Programas e Projectos</span>
                 </a>
             </div>
 

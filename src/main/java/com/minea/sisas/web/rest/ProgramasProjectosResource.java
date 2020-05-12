@@ -2,6 +2,7 @@ package com.minea.sisas.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.minea.sisas.domain.ProgramasProjectos;
+import com.minea.sisas.domain.SistemaAgua;
 import com.minea.sisas.repository.ProgramasProjectosRepository;
 import com.minea.sisas.service.ProgramasProjectosService;
 import com.minea.sisas.service.dto.ComunaDTO;
@@ -26,6 +27,8 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import java.text.ParseException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -135,6 +138,30 @@ public class ProgramasProjectosResource {
         log.debug("REST request to get ProgramasProjectos : {}", id);
         ProgramasProjectos programasProjectos = programasProjectosService.findOne(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(programasProjectos));
+    }
+
+    @GetMapping("/programas-projectos/municipioFiltro")
+    public ResponseEntity<List<ProgramasProjectos>> getByMunicipio(@RequestParam(value = "nome") String nome) {
+        List<ProgramasProjectos> page = programasProjectosRepository.findAllByMunicipioNmMunicipioEquals(nome);
+        return new ResponseEntity<>(page, null, HttpStatus.OK);
+    }
+
+    @GetMapping("/programas-projectos/provinciaFiltro")
+    public ResponseEntity<List<ProgramasProjectos>> getByProvincia(@RequestParam(value = "nome") String nome) {
+        List<ProgramasProjectos> page = programasProjectosRepository.findAllByProvinciaNmProvinciaEquals(nome);
+        return new ResponseEntity<>(page, null, HttpStatus.OK);
+    }
+
+    @GetMapping("/programas-projectos/comunaFiltro")
+    public ResponseEntity<List<ProgramasProjectos>> getByComuna(@RequestParam(value = "nome") String nome) {
+        List<ProgramasProjectos> page = programasProjectosRepository.findAllByComunaNmComunaEquals(nome);
+        return new ResponseEntity<>(page, null, HttpStatus.OK);
+    }
+
+    @GetMapping("/programas-projectos/periodoFiltro")
+    public ResponseEntity<List<ProgramasProjectos>> getByPeriodo(@RequestParam(value = "dtInicial") String dtInicial, @RequestParam(value = "dtFinal") String dtFinal) throws ParseException {
+        List<ProgramasProjectos> page = programasProjectosRepository.getAllBetweenDates(LocalDate.parse(dtInicial), LocalDate.parse(dtFinal));
+        return new ResponseEntity<>(page, null, HttpStatus.OK);
     }
 
     /**

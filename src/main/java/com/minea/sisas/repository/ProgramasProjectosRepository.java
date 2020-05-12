@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import org.springframework.data.jpa.repository.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -29,4 +30,18 @@ public interface ProgramasProjectosRepository extends JpaRepository<ProgramasPro
 
     @Query("select p from ProgramasProjectos p where p.status =1 and p.provincia.id = :provinciaId")
     Page<ProgramasProjectos> findAllByStatusIsTrueAndProvinciaId(@Param("provinciaId") Long provinciaId, Pageable pageable);
+
+
+    //PROVINCIA
+    List<ProgramasProjectos> findAllByProvinciaNmProvinciaEquals(String nmProvincia);
+
+    //MUNICIPIO
+    List<ProgramasProjectos> findAllByMunicipioNmMunicipioEquals(String nmMunicipio);
+
+    //COMUNA
+    List<ProgramasProjectos> findAllByComunaNmComunaEquals(String nmComuna);
+
+    //PERIODO
+    @Query(value = "from ProgramasProjectos t where t.dtLancamento BETWEEN :startDate AND :endDate")
+    public List<ProgramasProjectos> getAllBetweenDates(@Param("startDate") LocalDate startDate, @Param("endDate")LocalDate endDate);
 }

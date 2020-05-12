@@ -19,14 +19,14 @@
                     <i class="fa fa-user fa-lg"></i>
                 </a>
 
-                <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="margin-left: -5.85em; background-color: #082e53 !important;">
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="margin-left: -8.5em; background-color: #082e53 !important;">
                     <a *ngIf="user" class="dropdown-item text-centro" style="color: #f2f4f7">
                         {{user.nome}}
                     </a>
 
-                    <a class="dropdown-item" routerLink="settings" routerLinkActive="active" style="color: #f2f4f7">
-                        <i class="fa fa-cog fa-lg"></i> Configurações
-                    </a>
+                    <!--<a class="dropdown-item" routerLink="settings" routerLinkActive="active" style="color: #f2f4f7">-->
+                        <!--<i class="fa fa-cog fa-lg"></i> Configurações-->
+                    <!--</a>-->
 
                     <a href="http://www.dna.minea.gov.ao:8080/api/downloadFile/1.pdf" target='_blank' *ngIf="manual" class="dropdown-item" routerLinkActive="active" style="color: #f2f4f7">
                         <i class="fa fa-book fa-lg"></i> Manual do Usuário

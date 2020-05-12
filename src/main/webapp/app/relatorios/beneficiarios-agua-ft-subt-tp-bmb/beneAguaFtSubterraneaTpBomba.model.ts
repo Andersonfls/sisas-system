@@ -10,7 +10,8 @@ export class BeneAguaFtSubterraneaTpBomba {
         public totalBombaGravidade?: number,
         public populacaoBeneficiadaGravidade?: number,
         public totalTipoBombaOutros?: number,
-        public qtdPopulacaoOutros?: number
+        public qtdPopulacaoOutros?: number,
+        public populacao?: number
     ) {
     }
 }

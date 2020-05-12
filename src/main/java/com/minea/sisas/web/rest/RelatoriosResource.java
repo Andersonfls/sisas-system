@@ -164,7 +164,6 @@ public class RelatoriosResource {
         return this.relatorioService.montaListaInqueritoAguas();
     }
 
-    //NOVOS RELATORIOS PARA VERSAO FINAL
     // COBERTURA SECTOR DE AGUAS (Nivel Provincial)
     @GetMapping("/relatorios/cobertura-sector-agua-provincial")
     public List<CoberturaSectorAguaDTO> getDadosCoberturaSectorAguaProvincial() {
@@ -317,5 +316,16 @@ public class RelatoriosResource {
     @GetMapping("/relatorios/sistemas-ft-subt-bomba-energia-comunal")
     public List<SistemasAguaFtSubtBmbEnergiaDTO> getDadosSistAguaFtSubtBmbEnergiaComunal() {
         return this.relatorioService.sistemasAguaFtSubtBmbEnergiaComunal();
+    }
+
+    // DASHBOARD
+    @GetMapping("/relatorios/sistemas-agua")
+    public List<DadosDashboardDTO> getDadosSistemasAguas() {
+        return this.relatorioService.dashboardSistemas();
+    }
+
+    @GetMapping("/relatorios/indicadores-producao")
+    public List<DadosDashboardDTO> getDadosIndicadoresProducao() {
+        return this.relatorioService.dashboardIndicadores();
     }
 }

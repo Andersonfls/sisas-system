@@ -8,6 +8,9 @@ import org.springframework.stereotype.Repository;
 
 import org.springframework.data.jpa.repository.*;
 
+import java.time.LocalDate;
+import java.util.List;
+
 
 /**
  * Spring Data JPA repository for the IndicadorProducao entity.
@@ -24,6 +27,13 @@ public interface IndicadorProducaoRepository extends JpaRepository<IndicadorProd
     IndicadorProducao findByIdAndStatusIsTrue(Long id);
 
     Page<IndicadorProducao> findAllByStatusIsTrue(Pageable pageable);
+
+    //PROVINCIA
+    List<IndicadorProducao> findAllByProvinciaNmProvinciaEquals(String nmProvincia);
+
+    //PERIODO
+    @Query("select i from IndicadorProducao i where year(i.dtLancamento) = ?1")
+    List<IndicadorProducao> getAllByYear(Integer ano);
 
     @Query("select i from IndicadorProducao i where i.status =1 and i.provincia.id = :provinciaId")
     Page<IndicadorProducao> findAllByStatusIsTrueAndProvinciaId(@Param("provinciaId") Long provinciaId, Pageable pageable);

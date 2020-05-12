@@ -23,19 +23,21 @@
                 <tr class="fundo-hd-table">
                     <th class="borda-th"><span>Provincia</span></th>
                     <th class="borda-th"><span>Município</span></th>
+                    <th class="borda-th"><span>População</span></th>
                     <th class="borda-th"><span>Poco Melhorado</span></th>
                     <th class="borda-th"><span>Furo</span></th>
                     <th class="borda-th"><span>Nascente</span></th>
                     <th class="borda-th"><span>Gravidade</span></th>
-                    <th class="borda-th"><span>População</span></th>
-                    <th class="borda-th"><span>Outro</span></th>
-                    <th class="borda-th"><span>População</span></th>
+                    <th class="borda-th"><span>População Ben.</span></th>
+                    <th class="borda-th"><span>Outros Tot</span></th>
+                    <th class="borda-th"><span>População Tot</span></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr class="borda-th" *ngFor="let provincia of listaTabela ;trackBy: trackId">
                     <td class="borda-th">{{provincia.nomeProvincia}}</td>
                     <td class="borda-th">{{provincia.nomeMunicipio}}</td>
+                    <td class="borda-th">{{provincia.populacao}}</td>
                     <td class="borda-th">{{provincia.numeroPocoMelhorado}}</td>
                     <td class="borda-th">{{provincia.furo }}</td>
                     <td class="borda-th">{{provincia.nascente }}</td>

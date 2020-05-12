@@ -64,11 +64,17 @@ spring:
 security:
     basic:
         enabled: false
+    oauth2:
+        client:
+            access-token-validity-seconds: 60
+            refresh-token-validity-seconds: 60
 
 server:
     session:
         cookie:
             http-only: true
+            max-age: 60
+        timeout: 60
 
 info:
     project:

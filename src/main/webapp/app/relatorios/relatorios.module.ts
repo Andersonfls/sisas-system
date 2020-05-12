@@ -30,6 +30,10 @@ import {SisasSistBmbEnergiaComunalModule} from './sistemas-agua-ft-subt-bomb-ene
 import {SisasSistemaAguaBmbGravidadeComunalModule} from './sistema-agua-ft-subt-bomb-gravidade-comunal/sistema-agua-bmb-gravidade-comunal.module';
 import {SisasBeneficiariosTpBombaMecComunalModule} from './beneficiarios-agua-ft-subt-bmb-mecanica-comunal/beneficiarios-bmb-mecanica.module';
 import {SisasSistemaAguaSprOpcaoTecnicaComunalModule} from './sistema-agua-ft-supr-opcao-tecnica-comunal/sistema-agua-supr-opcao-tecnica-comunal.module';
+import {SisasDashboardPrincipalModule} from './dashboard-principal/dashboard-principal.module';
+import {SisasIndicadorProducaoExportModule} from './indicador-producao-completo/indicador-producao.module';
+import {SisasProgramasProjectosExportModule} from './programas-projectos-completo/programas-projectos.module';
+import {SisasSistemaAguaExportModule} from './sistema-agua-completo/sistema-agua.module';
 
 @NgModule({
     imports: [
@@ -62,7 +66,11 @@ import {SisasSistemaAguaSprOpcaoTecnicaComunalModule} from './sistema-agua-ft-su
         SisasBeneficiariosTpBombaMecComunalModule,
         SisasBenefAguaTpBombaManualMunModule,
         SisasBeneficiariosTpBombaMecMuniModule,
-        SisasSistBmbEnergiaComunalModule
+        SisasSistBmbEnergiaComunalModule,
+        SisasDashboardPrincipalModule,
+        SisasIndicadorProducaoExportModule,
+        SisasProgramasProjectosExportModule,
+        SisasSistemaAguaExportModule
     ],
     declarations: [],
     entryComponents: [],

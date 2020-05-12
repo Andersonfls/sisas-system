@@ -181,4 +181,32 @@
     background: lightgray;
 }
 
+.ativo {
+    background-color: #a3b1c0 !important;
+}
 
+.menu-topo-esquerdo {
+    position: fixed;
+    width: 22.7%
+}
+
+@media (min-width:1400px) {
+    .menu-topo-esquerdo {
+        position: fixed;
+        width: 20.3%
+    }
+}
+
+@media (min-width:1600px) {
+    .menu-topo-esquerdo {
+        position: fixed;
+        width: 18.2%
+    }
+}
+
+@media (min-width:1700px) {
+    .menu-topo-esquerdo {
+        position: fixed;
+        width: 17%
+    }
+}

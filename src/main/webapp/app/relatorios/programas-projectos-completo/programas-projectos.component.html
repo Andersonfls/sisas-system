@@ -1,0 +1,110 @@
+<div>
+    <h2 class="text-centro">
+        <span style="margin-left: 5%" jhiTranslate="sisasApp.programasProjectos.home.title">Programas Projectos</span>
+        <button class="btn btn-primary float-left redondo"
+                [routerLink]="['../dashboard-principal']">
+            <span class="fa fa-chevron-left"></span>
+        </button>
+    </h2>
+    <div class="card-body" [hidden]="esconderFiltros" style="padding-bottom: 0rem">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <div class="input-group" style="max-width: 97%; margin-bottom: 1%">
+                    <input type="text" class="form-control" name="filtro" [(ngModel)]="nome" placeholder="Digite o Nome do Projecto..." style="font-style:italic"/>
+                    <span class="input-group-btn">
+                            <button class="btn btn-search" type="button" (click)="onChangeNome()" ><i class="fa fa-search fa-fw"></i></button>
+                    </span>
+                </div>
+
+                <div class="input-group" style="max-width: 97%; margin-bottom: 1%">
+                    <select class="form-control" id="field_idProvincia" name="provincia" [(ngModel)]="programasProjecto.provincia" (ngModelChange)="onChangeMunicipios()">
+                        <option [ngValue]="null" selected>Selecione a Província..</option>
+                        <option [ngValue]="provinciaOption.id === programasProjecto.provincia?.id ? programasProjecto.provincia : provinciaOption"
+                                *ngFor="let provinciaOption of provincias">{{provinciaOption.nmProvincia}}</option>
+                    </select>
+                    <span class="input-group-btn">
+                            <button class="btn btn-search" type="button" (click)="buscaPorProvincia()" ><i class="fa fa-search fa-fw"></i></button>
+                    </span>
+                    <select class="form-control" id="field_idMunicipio" name="municipio" [(ngModel)]="programasProjecto.municipio" (ngModelChange)="onChangeComunas()">
+                        <option [ngValue]="null" selected>Selecione o Município..</option>
+                        <option [ngValue]="municipioOption.id === programasProjecto.municipio?.id ? programasProjecto.municipio : municipioOption"
+                                *ngFor="let municipioOption of municipios">{{municipioOption.nmMunicipio}}</option>
+                    </select>
+                    <span class="input-group-btn">
+                            <button class="btn btn-search" type="button" (click)="buscaPorMunicipio()" ><i class="fa fa-search fa-fw"></i></button>
+                    </span>
+
+                    <select class="form-control" id="field_idComuna" name="comuna" [(ngModel)]="programasProjecto.comuna">
+                        <option [ngValue]="null" selected>Selecione a Comuna...</option>
+                        <option [ngValue]="comunaOption.id === programasProjecto.comuna?.id ? programasProjecto.comuna :comunaOption "
+                                *ngFor="let comunaOption of comunas">{{comunaOption.nmComuna}}</option>
+                    </select>
+                    <span class="input-group-btn">
+                            <button class="btn btn-search" type="button" (click)="buscaPorComuna()" ><i class="fa fa-search fa-fw"></i></button>
+                    </span>
+                </div>
+
+                <div class="input-group" style="max-width: 97%; margin-bottom: 1%">
+                    <label class="form-control-label" style="margin-right: 1%">Período:</label>
+                    <input type="date" class="form-control" name="filtro" [(ngModel)]="dataInicialBusca" (ngModelChange)="onChangeNome()"
+                           placeholder="Periodo Inicial dd/mm/yyyy" style="margin-right: 5%;"/>
+                    <input type="date" class="form-control" name="filtro" [(ngModel)]="dataFinalBusca" (ngModelChange)="onChangeNome()"
+                           placeholder="Periodo Final dd/mm/yyyy" />
+                    <span class="input-group-btn">
+                            <button class="btn btn-search" type="button" (click)="buscaPorPeriodo()" ><i class="fa fa-search fa-fw"></i></button>
+                    </span>
+                </div>
+            </div>
+        </form>
+    </div>
+    <jhi-alert></jhi-alert>
+    <div class="export-container" *ngIf="programasProjectos">
+        <h2 class="text-centro">
+            <button type="button" (click)="exportTable('tbmuni')" class="btn btn-primary btn-sm excel">
+                <span class="fa fa-file-excel-o"></span>
+                <span class="d-none d-md-inline">Excel</span>
+            </button>
+            <button type="button" (click)="captureScreen('tbmuni')" class="btn btn-primary btn-sm bt-pdf">
+                <span class="fas fa-file-pdf"></span>
+                <span class="d-none d-md-inline">PDF</span>
+            </button>
+        </h2>
+    </div>
+    <br/>
+    <div class="card" style="margin-top: 2%">
+        <div class="table-responsive" *ngIf="programasProjectos">
+            <table id="tbmuni" class="table table-striped">
+                <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+                    <th><span jhiTranslate="sisasApp.programasProjectos.nmDesignacaoProjeto">Nm Designacao Projeto</span></th>
+                    <th><span jhiTranslate="sisasApp.programasProjectos.nmDescricaoProjeto">Nm Descricao Projeto</span></th>
+                    <th><span jhiTranslate="sisasApp.programasProjectos.dtLancamento">Dt Lancamento</span></th>
+                    <th><span jhiTranslate="sisasApp.programasProjectos.associado-inqu"></span>Associado a Inquerito</th>
+                    <th><span jhiTranslate="sisasApp.programasProjectos.finalidadeProjeto"></span>Finalidade </th>
+                    <th><span jhiTranslate="sisasApp.programasProjectos.idSaaAssociado">Id Saa Associado</span></th>
+                    <th><span jhiTranslate="sisasApp.programasProjectos.tipoFinanciamento"></span>Financiamento </th>
+                    <th><span jhiTranslate="sisasApp.programasProjectos.especialidades"></span>Especialidades </th>
+                    <th><span jhiTranslate="sisasApp.programasProjectos.idProvincia">Id Provincia</span></th>
+                    <th><span jhiTranslate="sisasApp.programasProjectos.idMunicipio"></span>Municipio </th>
+                    <th><span jhiTranslate="sisasApp.programasProjectos.idComuna"></span>Comuna </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let programasProjectos of programasProjectos">
+                    <td>{{programasProjectos.nmDesignacaoProjeto}}</td>
+                    <td>{{programasProjectos.nmDescricaoProjeto}}</td>
+                    <td>{{programasProjectos.dtLancamento | date:'shortDate'}}</td>
+                    <td>{{programasProjectos.associadoInquerito}}</td>
+                    <td>{{programasProjectos.finalidadeProjeto}}</td>
+                    <td>{{programasProjectos.idSaaAssociado}}</td>
+                    <td>{{programasProjectos.tipoFinanciamento}}</td>
+                    <td>{{programasProjectos.especialidade}}</td>
+                    <td> {{programasProjectos.provincia?.nmProvincia}} </td>
+                    <td> {{programasProjectos.municipio?.nmMunicipio}} </td>
+                    <td> {{programasProjectos.comuna?.nmComuna}} </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

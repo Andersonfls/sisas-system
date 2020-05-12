@@ -3,6 +3,7 @@ package com.minea.sisas.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.minea.sisas.domain.IndicadorProducao;
 import com.minea.sisas.domain.ProgramasProjectos;
+import com.minea.sisas.domain.SistemaAgua;
 import com.minea.sisas.repository.IndicadorProducaoRepository;
 import com.minea.sisas.service.IndicadorProducaoService;
 import com.minea.sisas.web.rest.errors.BadRequestAlertException;
@@ -143,6 +144,18 @@ public class IndicadorProducaoResource {
         log.debug("REST request to get Last IndicadorProducao");
         IndicadorProducaoDTO indicadorProducaoDTO = indicadorProducaoService.findLast();
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(indicadorProducaoDTO));
+    }
+
+    @GetMapping("/indicador-producaos/provinciaFiltro")
+    public ResponseEntity<List<IndicadorProducao>> getByProvincia(@RequestParam(value = "nome") String nome) {
+        List<IndicadorProducao> page = indicadorProducaoRepository.findAllByProvinciaNmProvinciaEquals(nome);
+        return new ResponseEntity<>(page, null, HttpStatus.OK);
+    }
+
+    @GetMapping("/indicador-producaos/anoFiltro")
+    public ResponseEntity<List<IndicadorProducao>> getByAno(@RequestParam(value = "ano") Integer ano) {
+        List<IndicadorProducao> page = indicadorProducaoRepository.getAllByYear(ano);
+        return new ResponseEntity<>(page, null, HttpStatus.OK);
     }
 
     /**

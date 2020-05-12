@@ -21,6 +21,7 @@ import {BeneficiariosBmbMecanica} from './beneficiarios-agua-ft-subt-bmb-mecanic
 import {SistemasFtSubtBmbEnergia} from './sistemas-agua-ft-subt-bomb-energia-comunal/sistemas-bmb-energia-comunal.model';
 import {SistemaAguaBmbGravidadeComunal} from './sistema-agua-ft-subt-bomb-gravidade-comunal/sistema-agua-bmb-gravidade-comunal.model';
 import {SistemaAguaSprOpcaoTecnicaComunal} from './sistema-agua-ft-supr-opcao-tecnica-comunal/sistema-agua-supr-opcao-tecnica-comunal.model';
+import {DashboardPrincipalDados} from './dashboard-principal/DashboardPrincipalDados.model';
 
 export type EntityResponseType = HttpResponse<Provincia>;
 
@@ -191,6 +192,17 @@ export class RelatoriosService {
     buscaDadosSistemasFtSubtBmbEnergiaComunal(req?: any): Observable<HttpResponse<SistemasFtSubtBmbEnergia[]>> {
         const options = createRequestOption(req);
         return this.http.get<SistemasFtSubtBmbEnergia[]>(this.resourceUrl + '/sistemas-ft-subt-bomba-energia-comunal', {params: options, observe: 'response'});
+    }
+
+    // NOVO DASHBOARD
+    buscaDadosSistemas(req?: any): Observable<HttpResponse<DashboardPrincipalDados[]>> {
+        const options = createRequestOption(req);
+        return this.http.get<DashboardPrincipalDados[]>(this.resourceUrl + '/sistemas-agua', {params: options, observe: 'response'});
+    }
+
+    buscaDadosInqueritos(req?: any): Observable<HttpResponse<DashboardPrincipalDados[]>> {
+        const options = createRequestOption(req);
+        return this.http.get<DashboardPrincipalDados[]>(this.resourceUrl + '/indicadores-producao', {params: options, observe: 'response'});
     }
 
 }

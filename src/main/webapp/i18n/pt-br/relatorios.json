@@ -14,7 +14,8 @@
             "indicador-producao-provincia":"Indicador de Produção",
             "sist-agua-fonte-subterranea-energia":"Sistemas de Água por Fonte Subterranea e Bomba Energia",
             "sist-agua-fonte-subterranea-gravidade":"Sistemas de Água por Fonte Subterranea e Bomba Gravidade/Outros",
-            "sistema-agua-super-opcao-tecnica-comunal": "Sistemas de Água por Fonte Superficial e Opcao Técnica"
+            "sistema-agua-super-opcao-tecnica-comunal": "Sistemas de Água por Fonte Superficial e Opcao Técnica",
+            "dashboard-novo": "Dashboard"
         },
         "home": {
             "obras": "Obras",

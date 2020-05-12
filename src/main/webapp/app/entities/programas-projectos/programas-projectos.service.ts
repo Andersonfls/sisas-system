@@ -7,6 +7,7 @@ import {JhiDateUtils} from 'ng-jhipster';
 
 import {ProgramasProjectos} from './programas-projectos.model';
 import {createRequestOption} from '../../shared';
+import {SistemaAgua} from '../sistema-agua';
 
 export type EntityResponseType = HttpResponse<ProgramasProjectos>;
 
@@ -40,10 +41,15 @@ export class ProgramasProjectosService {
             .map((res: HttpResponse<ProgramasProjectos[]>) => this.convertArrayResponse(res));
     }
 
+    delete(id: number): Observable<HttpResponse<any>> {
+        return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response'});
+    }
+
+    // menu ce busca
     queryUserNome(req: any): Observable<HttpResponse<ProgramasProjectos[]>> {
         const params: HttpParams = createRequestOption(req);
 
-        const requestURL = SERVER_API_URL + 'api/programas-projectos/nomeFiltro';
+        const requestURL = this.resourceUrl + '/nomeFiltro';
 
         return this.http.get<ProgramasProjectos[]>(requestURL, {
             params,
@@ -51,8 +57,48 @@ export class ProgramasProjectosService {
         });
     }
 
-    delete(id: number): Observable<HttpResponse<any>> {
-        return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response'});
+    queryMunicipio(req: any): Observable<HttpResponse<ProgramasProjectos[]>> {
+        const params: HttpParams = createRequestOption(req);
+
+        const requestURL = this.resourceUrl + '/municipioFiltro';
+
+        return this.http.get<ProgramasProjectos[]>(requestURL, {
+            params,
+            observe: 'response'
+        });
+    }
+
+    queryProvincia(req: any): Observable<HttpResponse<ProgramasProjectos[]>> {
+        const params: HttpParams = createRequestOption(req);
+
+        const requestURL = this.resourceUrl + '/provinciaFiltro';
+
+        return this.http.get<ProgramasProjectos[]>(requestURL, {
+            params,
+            observe: 'response'
+        });
+    }
+
+    queryComuna(req: any): Observable<HttpResponse<ProgramasProjectos[]>> {
+        const params: HttpParams = createRequestOption(req);
+
+        const requestURL = this.resourceUrl + '/comunaFiltro';
+
+        return this.http.get<ProgramasProjectos[]>(requestURL, {
+            params,
+            observe: 'response'
+        });
+    }
+
+    queryPeríodo(req: any): Observable<HttpResponse<ProgramasProjectos[]>> {
+        const params: HttpParams = createRequestOption(req);
+
+        const requestURL = this.resourceUrl + '/periodoFiltro';
+
+        return this.http.get<ProgramasProjectos[]>(requestURL, {
+            params,
+            observe: 'response'
+        });
     }
 
     private convertResponse(res: EntityResponseType): EntityResponseType {

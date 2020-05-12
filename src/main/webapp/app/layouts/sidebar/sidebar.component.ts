@@ -25,6 +25,7 @@ export class SidebarComponent implements OnInit {
     isMapaHuilaVisivel: boolean;
     isMapaCuanzaVisivel: boolean;
     account: Account;
+    activeState;
 
     constructor(
         private loginService: LoginService,
@@ -62,6 +63,11 @@ export class SidebarComponent implements OnInit {
             this.account = account;
         });
         this.registerAuthenticationSuccess();
+        this.activeState = '';
+    }
+
+    setStateAsActive(state) {
+        this.activeState = state;
     }
 
     registerAuthenticationSuccess() {
@@ -77,7 +83,6 @@ export class SidebarComponent implements OnInit {
 
     definirVisibilidadeMapas() {
         this.user.authorities.forEach((p) => {
-            console.log('DEU CERTO');
            if (p === 'ROLE_ADMIN') {
                this.isMapaHuamboVisivel = true;
                this.isMapaHuilaVisivel = true;

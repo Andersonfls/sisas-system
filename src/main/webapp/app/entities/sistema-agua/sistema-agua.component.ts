@@ -10,6 +10,9 @@ import { ITEMS_PER_PAGE, Principal } from '../../shared';
 import {Comuna, ComunaService} from '../comuna';
 import {Provincia, ProvinciaService} from '../provincia';
 import {Municipio, MunicipioService} from '../municipio';
+import * as html2canvas from 'html2canvas';
+import {TableUtil} from '../../shared/util/tableUtil';
+import * as jsPDF from 'jspdf';
 
 @Component({
     selector: 'jhi-sistema-agua',
@@ -73,17 +76,6 @@ export class SistemaAguaComponent implements OnInit, OnDestroy {
         this.sistemaAgua.provincia = null;
         this.sistemaAgua.municipio = null;
 
-        // this.comunaService.query()
-        //     .subscribe((res: HttpResponse<Comuna[]>) => {
-        //         this.comunas = res.body;
-        //     }, (res: HttpErrorResponse) => this.onError(res.message));
-
-        // this.municipioService.query().subscribe(
-        //     (res: HttpResponse<Municipio[]>) => {
-        //         this.municipios = res.body;
-        //     },
-        //     (res: HttpErrorResponse) => this.onError(res.message));
-        //
         this.provinciaService.queryPorNivelUsuario().subscribe(
             (res: HttpResponse<Provincia[]>) => {
                 this.provincias = res.body;
@@ -99,6 +91,25 @@ export class SistemaAguaComponent implements OnInit, OnDestroy {
             (res: HttpResponse<SistemaAgua[]>) => this.onSuccess(res.body, res.headers),
             (res: HttpErrorResponse) => this.onError(res.message)
         );
+    }
+
+    public captureScreen(elementId) {
+        const data = document.getElementById(elementId);
+        (html2canvas as any)(data).then((canvas) => {
+            const imgWidth = 205;
+            const imgHeight = canvas.height * imgWidth / canvas.width;
+            const contentDataURL = canvas.toDataURL('image/png');
+            const pdf = new jsPDF('p', 'mm', 'a4');
+            pdf.text('Relatório Sistema de Águas', 55, 7);
+            pdf.addImage(contentDataURL, 'PNG', 3, 13, imgWidth, imgHeight);
+            pdf.save('relatorio-sistemas.pdf');
+        }).catch(function(error) {
+            // Error Handling
+        });
+    }
+
+    exportTable(tabeId) {
+        TableUtil.exportToExcel(tabeId);
     }
 
     loadPage(page: number) {

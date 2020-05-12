@@ -29,7 +29,7 @@ export const inqueritosPreenchidosRoute: Routes = [
         },
         data: {
             authorities: ['ROLE_USER', 'ROLE_ADMIN', 'ADMIN_PROVINCIAL'],
-            pageTitle: 'relatorios.title.inqueritos-preenchidos'
+            pageTitle: 'relatorios.title.dashboard-novo'
         },
         canActivate: [UserRouteAccessService]
     }

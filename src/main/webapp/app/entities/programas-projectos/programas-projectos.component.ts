@@ -7,6 +7,13 @@ import {JhiEventManager, JhiParseLinks, JhiAlertService} from 'ng-jhipster';
 import {ProgramasProjectos} from './programas-projectos.model';
 import {ProgramasProjectosService} from './programas-projectos.service';
 import {ITEMS_PER_PAGE, Principal} from '../../shared';
+import {SistemaAgua} from '../sistema-agua';
+import {Provincia, ProvinciaService} from '../provincia';
+import {Municipio, MunicipioService} from '../municipio';
+import {Comuna, ComunaService} from '../comuna';
+import * as html2canvas from 'html2canvas';
+import {TableUtil} from '../../shared/util/tableUtil';
+import * as jsPDF from 'jspdf';
 
 @Component({
     selector: 'jhi-programas-projectos',
@@ -29,6 +36,13 @@ export class ProgramasProjectosComponent implements OnInit, OnDestroy {
     predicate: any;
     previousPage: any;
     reverse: any;
+    esconderFiltros: boolean;
+    programasProjecto: ProgramasProjectos;
+    dataInicialBusca: Date;
+    dataFinalBusca: Date;
+    comunas: Comuna[];
+    provincias: Provincia[];
+    municipios: Municipio[];
 
     constructor(
         private programasProjectosService: ProgramasProjectosService,
@@ -37,7 +51,10 @@ export class ProgramasProjectosComponent implements OnInit, OnDestroy {
         private principal: Principal,
         private activatedRoute: ActivatedRoute,
         private router: Router,
-        private eventManager: JhiEventManager
+        private eventManager: JhiEventManager,
+        private comunaService: ComunaService,
+        private municipioService: MunicipioService,
+        private provinciaService: ProvinciaService
     ) {
         this.itemsPerPage = ITEMS_PER_PAGE;
         this.routeData = this.activatedRoute.data.subscribe((data) => {
@@ -104,12 +121,121 @@ export class ProgramasProjectosComponent implements OnInit, OnDestroy {
         this.loadAll();
     }
 
+    mostrarFiltros() {
+        this.esconderFiltros = !this.esconderFiltros;
+
+        if (this.esconderFiltros) {
+            this.loadAll();
+        }
+    }
+
+    public captureScreen(elementId) {
+        const data = document.getElementById(elementId);
+        (html2canvas as any)(data).then((canvas) => {
+            const imgWidth = 205;
+            const imgHeight = canvas.height * imgWidth / canvas.width;
+            const contentDataURL = canvas.toDataURL('image/png');
+            const pdf = new jsPDF('p', 'mm', 'a4');
+            pdf.text('Relatório Programas e Projectos', 55, 7);
+            pdf.addImage(contentDataURL, 'PNG', 3, 13, imgWidth, imgHeight);
+            pdf.save('relatorio-projectos.pdf');
+        }).catch(function(error) {
+            // Error Handling
+        });
+    }
+
+    exportTable(tabeId) {
+        TableUtil.exportToExcel(tabeId);
+    }
+
     ngOnInit() {
         this.loadAll();
         this.principal.identity().then((account) => {
             this.currentAccount = account;
         });
         this.registerChangeInProgramasProjectos();
+        this.esconderFiltros = true;
+        this.programasProjecto = new SistemaAgua();
+        this.programasProjecto.comuna = null;
+        this.programasProjecto.provincia = null;
+        this.programasProjecto.municipio = null;
+
+        this.provinciaService.queryPorNivelUsuario().subscribe(
+            (res: HttpResponse<Provincia[]>) => {
+                this.provincias = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message));
+    }
+
+    buscaPorMunicipio() {
+        if (this.programasProjecto.municipio === null) {
+            alert('Selecione um município');
+        } else {
+            this.programasProjectosService.queryMunicipio({
+                page: this.page - 1,
+                size: this.itemsPerPage,
+                nome: this.programasProjecto.municipio.nmMunicipio
+            }).subscribe((res) => {
+                this.programasProjectos = res.body;
+                this.links = this.parseLinks.parse(res.headers.get('link'));
+                this.totalItems = +res.headers.get('X-Total-Count');
+                this.queryCount = this.totalItems;
+            });
+        }
+    }
+
+    buscaPorProvincia() {
+        if (this.programasProjecto.provincia === null) {
+            alert('Selecione uma Província');
+        } else {
+            this.programasProjectosService.queryProvincia({
+                page: this.page - 1,
+                size: this.itemsPerPage,
+                nome: this.programasProjecto.provincia.nmProvincia
+            }).subscribe((res) => {
+                this.programasProjectos = res.body;
+                this.links = this.parseLinks.parse(res.headers.get('link'));
+                this.totalItems = +res.headers.get('X-Total-Count');
+                this.queryCount = this.totalItems;
+            });
+        }
+    }
+
+    buscaPorComuna() {
+        if (this.programasProjecto.comuna === null) {
+            alert('Selecione uma Comuna');
+        } else {
+            this.programasProjectosService.queryComuna({
+                page: this.page - 1,
+                size: this.itemsPerPage,
+                nome: this.programasProjecto.comuna.nmComuna
+            }).subscribe((res) => {
+                this.programasProjectos = res.body;
+                this.links = this.parseLinks.parse(res.headers.get('link'));
+                this.totalItems = +res.headers.get('X-Total-Count');
+                this.queryCount = this.totalItems;
+            });
+        }
+    }
+
+    buscaPorPeriodo() {
+        console.log(this.dataInicialBusca);
+        console.log(this.dataFinalBusca);
+        if (this.dataInicialBusca === null || this.dataFinalBusca === null) {
+            alert('Digite o Período (Data Inicial e Data Final)');
+        } else {
+            this.programasProjectosService.queryPeríodo({
+                page: this.page - 1,
+                size: this.itemsPerPage,
+                dtInicial: this.dataInicialBusca,
+                dtFinal: this.dataFinalBusca
+            }).subscribe((res) => {
+                this.programasProjectos = res.body;
+                this.links = this.parseLinks.parse(res.headers.get('link'));
+                this.totalItems = +res.headers.get('X-Total-Count');
+                this.queryCount = this.totalItems;
+            });
+        }
     }
 
     ngOnDestroy() {
@@ -142,5 +268,25 @@ export class ProgramasProjectosComponent implements OnInit, OnDestroy {
 
     private onError(error) {
         this.jhiAlertService.error(error.message, null, null);
+    }
+
+    onChangeMunicipios() {
+        this.municipios = null;
+        this.comunas = null;
+
+        this.municipioService.queryMunicipioByProvinciaId({
+            provinciaId: this.programasProjecto.provincia.id
+        }).subscribe((res) => {
+            this.municipios = res.body;
+        });
+    }
+
+    onChangeComunas() {
+        this.comunas = null;
+        this.comunaService.queryComunaByMunicipioId({
+            municipioId: this.programasProjecto.municipio.id
+        }).subscribe((res) => {
+                this.comunas = res.body;
+            });
     }
 }
