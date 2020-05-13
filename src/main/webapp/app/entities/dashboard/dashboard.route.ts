@@ -22,7 +22,7 @@ export class DashboardResolvePagingParams implements Resolve<any> {
 
 export const dashboardRoute: Routes = [
     {
-        path: 'dashboard',
+        path: 'dashboard-estatistica',
         component: DashboardComponent,
         resolve: {
             'pagingParams': DashboardResolvePagingParams

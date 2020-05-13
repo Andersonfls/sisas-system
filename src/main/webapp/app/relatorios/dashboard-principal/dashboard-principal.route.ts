@@ -22,7 +22,7 @@ export class InqueritosPreenchidosResolvePagingParams implements Resolve<any> {
 
 export const dashboardPrincipalRoute: Routes = [
     {
-        path: 'dashboard-principal',
+        path: 'dashboard',
         component: DashboardPrincipalComponent,
         resolve: {
             'pagingParams': InqueritosPreenchidosResolvePagingParams

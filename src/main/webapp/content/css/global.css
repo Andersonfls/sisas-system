@@ -61,6 +61,28 @@ Generic styles
     min-height: 209vh;
 }
 
+@media (min-width:1300px) {
+    .jh-card {
+        padding: 1.5%;
+        margin-top: 20px;
+        border: none;
+        background-color: #ffffff;
+        border-radius: 10px;
+        min-height: 209vh;
+    }
+}
+
+@media (min-width:1900px) {
+    .jh-card {
+        padding: 1.5%;
+        margin-top: 20px;
+        border: none;
+        background-color: #ffffff;
+        border-radius: 10px;
+        min-height: 209vh;
+    }
+}
+
 .error {
     color: white;
     background-color: red;
