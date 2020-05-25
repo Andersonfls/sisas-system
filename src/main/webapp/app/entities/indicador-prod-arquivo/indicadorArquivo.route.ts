@@ -8,7 +8,7 @@ export const indicadorArquivoRoute: Routes = [
         path: 'indicador-arquivo',
         component: IndicadorArquivoComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ADMIN_PROVINCIAL'],
             pageTitle: 'sisasApp.pdf.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -20,7 +20,7 @@ export const cadPdfPopupRoute: Routes = [
         path: 'ind-arquivo',
         component: IndicadorArquivoComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ADMIN_PROVINCIAL'],
             pageTitle: 'sisasApp.pdf.home.title'
         },
         canActivate: [UserRouteAccessService],

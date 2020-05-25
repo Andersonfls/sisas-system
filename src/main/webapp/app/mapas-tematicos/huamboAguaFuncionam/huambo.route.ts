@@ -28,7 +28,7 @@ export const huamboRoute: Routes = [
             'pagingParams': MapResolvePagingParams
         },
         data: {
-            authorities: ['ROLE_USER', 'ROLE_ADMIN'],
+            authorities: ['ROLE_USER', 'ROLE_ADMIN', 'ADMIN_PROVINCIAL'],
             pageTitle: 'map.title.huambo'
         },
         canActivate: [UserRouteAccessService]

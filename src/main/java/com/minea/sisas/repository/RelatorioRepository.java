@@ -656,7 +656,7 @@ public interface RelatorioRepository extends JpaRepository<Provincia, Long>, Jpa
         "     inner join sisas.provincia p on s.ID_PROVINCIA = p.ID_PROVINCIA  " +
         "     inner join sisas.municipio m on p.ID_PROVINCIA = m.ID_PROVINCIA   " +
         "     inner join sisas.comuna c on c.ID_MUNICIPIO = m.ID_MUNICIPIO   " +
-        "      where s.NM_TP_FONTE= 'Subterrânea'  " +
+        "      where s.NM_TP_FONTE= 'Subterrânea' AND s.ID_PROVINCIA = :provinciaId " +
         "         AND   s.NM_TIPO_BOMBA =  'Bombagem manual'  " +
         "         AND   s.POSSUI_SISTEMA_AGUA = 1  " +
         "GROUP BY   " +
@@ -667,7 +667,7 @@ public interface RelatorioRepository extends JpaRepository<Provincia, Long>, Jpa
         "       p.NM_PROVINCIA,  " +
         "       m.ID_MUNICIPIO,   " +
         "       c.ID_COMUNA, p.ID_PROVINCIA  ", nativeQuery = true)
-    List<Object[]> sistemaAguaBmbManualComunalQuery();
+    List<Object[]> sistemaAguaBmbManualComunalQuery(@Param("provinciaId") Long provinciaId);
 
     //SISTEMA AGUA BOMBA GRAVIDADE - COMUNAL
     @Query(value = "SELECT      p.NM_PROVINCIA,    " +
@@ -1581,7 +1581,7 @@ public interface RelatorioRepository extends JpaRepository<Provincia, Long>, Jpa
         "     INNER JOIN sisas.comuna c on  s.ID_COMUNA = c.ID_COMUNA             " +
         "     where  s.POSSUI_SISTEMA_AGUA = 1  AND s.ID_PROVINCIA = :provinciaId           " +
         "GROUP BY              " +
-        "       p.NM_PROVINCIA, p.ID_PROVINCIA     " +
+        "       p.NM_PROVINCIA, p.ID_PROVINCIA,     " +
         "       m.ID_MUNICIPIO, m.NM_MUNICIPIO, C.ID_COMUNA, c.NM_COMUNA"+
         " ORDER BY c.NM_COMUNA ASC", nativeQuery = true)
     List<Object[]> buscaDadosBenefAguaFonteSubterraneaTipoBombaComunal(@Param("provinciaId") Long provinciaId);
@@ -2812,4 +2812,18 @@ public interface RelatorioRepository extends JpaRepository<Provincia, Long>, Jpa
         "  order by          " +
         "              extract(month from DT_LANCAMENTO)", nativeQuery = true)
     List<Object[]> buscaDadosDashboardIndicadores(@Param("provinciaId") Long provinciaId);
+
+
+    @Query(value = "SELECT v.NM_PROVINCIA as Provincia, " +
+        "         (" +
+        "         SELECT count(m.ID_MUNICIPIO) from sisas.municipio m " +
+        "               where m.ID_PROVINCIA  = v.ID_PROVINCIA  group  by  v.NM_PROVINCIA) as NumeroMunicipios, " +
+        "         (SELECT DISTINCT count(c.ID_COMUNA ) from sisas.comuna c inner join sisas.municipio mm on mm.ID_MUNICIPIO = c.ID_MUNICIPIO  where mm.ID_PROVINCIA = v.ID_PROVINCIA  group  by  v.NM_PROVINCIA) as NumeroComunas, " +
+        "                    ( SELECT count( a1.POSSUI_SISTEMA_AGUA ) from sisas.sistema_agua a1 where a1.ID_PROVINCIA = v.ID_PROVINCIA and POSSUI_SISTEMA_AGUA = 1 ) as AguasSIM, " +
+        "         ( SELECT count( a2.POSSUI_SISTEMA_AGUA ) from sisas.sistema_agua a2 where a2.ID_PROVINCIA = v.ID_PROVINCIA and POSSUI_SISTEMA_AGUA = 0 ) as AguasNAO, " +
+        "         (SELECT count( a1.POSSUI_SISTEMA_AGUA ) from sisas.sistema_agua a1 where a1.ID_PROVINCIA = v.ID_PROVINCIA and POSSUI_SISTEMA_AGUA = 0 )+(SELECT count( a1.POSSUI_SISTEMA_AGUA ) from sisas.sistema_agua a1 where a1.ID_PROVINCIA = v.ID_PROVINCIA and POSSUI_SISTEMA_AGUA = 1 ) as TotalSector " +
+        "         FROM sisas.provincia v " +
+        "  where ID_PROVINCIA = :provinciaId                    " +
+        "         ORDER BY v.NM_PROVINCIA ", nativeQuery = true)
+    List<Object[]> buscaDadosEstatisticaInqueritosPreenchidos(@Param("provinciaId") Long provinciaId);
 }

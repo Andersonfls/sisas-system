@@ -28,7 +28,7 @@ export const kuanzaNorteRoute: Routes = [
             'pagingParams': KuanzaNorteResolvePagingParams
         },
         data: {
-            authorities: ['ROLE_USER', 'ROLE_ADMIN'],
+            authorities: ['ROLE_USER', 'ROLE_ADMIN', 'ADMIN_PROVINCIAL'],
             pageTitle: 'map.title.kuanza'
         },
         canActivate: [UserRouteAccessService]

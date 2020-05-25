@@ -142,17 +142,16 @@ export class CoberturaSectorAguaProvincialComponent implements OnInit {
             data: [
                 {
                     type: 'column',
-                    name: 'Cobertura',
+                    name: 'Cobertura (%)',
                     showInLegend: true,
-                    xValueFormatString: 'string',
-                    yValueFormatString: '#%',
+                    yValueFormatString: '#',
                     dataPoints: this.listaCobertura
                 },
                 {
                     type: 'line',
-                    name: 'Média',
+                    name: 'Média (%)',
                     showInLegend: true,
-                    yValueFormatString: '#%',
+                    yValueFormatString: '#',
                     dataPoints: this.listaMedia
                 }]
         });

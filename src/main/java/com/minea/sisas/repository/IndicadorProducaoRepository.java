@@ -35,6 +35,10 @@ public interface IndicadorProducaoRepository extends JpaRepository<IndicadorProd
     @Query("select i from IndicadorProducao i where year(i.dtLancamento) = ?1")
     List<IndicadorProducao> getAllByYear(Integer ano);
 
+    //ANO e Provincia
+    @Query("select i from IndicadorProducao i where year(i.dtLancamento) = ?1 and i.provincia.id = ?2")
+    List<IndicadorProducao> getAllByYearAndProvincia(Integer ano, Long idProvincia);
+
     @Query("select i from IndicadorProducao i where i.status =1 and i.provincia.id = :provinciaId")
     Page<IndicadorProducao> findAllByStatusIsTrueAndProvinciaId(@Param("provinciaId") Long provinciaId, Pageable pageable);
 }

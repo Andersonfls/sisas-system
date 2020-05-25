@@ -88,8 +88,7 @@ export class FuncAguaComponent implements OnInit {
                     this.totalnumeroSistemas += i.numeroSistemas;
                     this.totalfuncionamAgua += i.funcionamAgua;
                     this.totalnaoFuncionamAgua += i.naoFuncionamAgua;
-                    this.totalfuncionamAguaPerc = 76;
-                    this.totalnaoFuncionamAguaPerc = 24;
+                    this.totalBeneficiarios += i.beneficiariosAgua;
 
                     let item: DadosRelatorio = new DadosRelatorio();
                     item.label = i.nomeProvincia;
@@ -141,18 +140,16 @@ export class FuncAguaComponent implements OnInit {
             data: [
                 {
                     type: 'column',
-                    name: 'Funcionam',
+                    name: 'Funcionam (%)',
                     showInLegend: true,
-                    xValueFormatString: 'string',
-                    yValueFormatString: '#%',
+                    xValueFormatString: '#',
                     dataPoints: this.listaFuncionam
                 },
                 {
                     type: 'column',
-                    name: 'Nao Funcionam',
+                    name: 'Nao Funcionam (%)',
                     showInLegend: true,
-                    xValueFormatString: 'string',
-                    yValueFormatString: '#%',
+                    xValueFormatString: '#',
                     dataPoints: this.listaNaoFuncionam
                 },
                 {

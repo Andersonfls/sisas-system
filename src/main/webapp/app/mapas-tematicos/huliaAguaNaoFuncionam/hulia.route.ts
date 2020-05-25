@@ -28,7 +28,7 @@ export const huliaRoute: Routes = [
             'pagingParams': HuliaResolvePagingParams
         },
         data: {
-            authorities: ['ROLE_USER', 'ROLE_ADMIN'],
+            authorities: ['ROLE_USER', 'ROLE_ADMIN', 'ADMIN_PROVINCIAL'],
             pageTitle: 'map.title.hulia'
         },
         canActivate: [UserRouteAccessService]

@@ -8,7 +8,7 @@ import { StateStorageService} from '../shared/auth/state-storage.service';
 @NgModule({
     imports: [
         SisasSharedModule,
-        RouterModule.forChild([ HOME_ROUTE ])
+        RouterModule.forChild([ HOME_ROUTE ]),
     ],
     declarations: [
         HomeComponent,

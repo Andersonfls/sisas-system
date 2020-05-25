@@ -24,6 +24,7 @@ export class SidebarComponent implements OnInit {
     isMapaHuamboVisivel: boolean;
     isMapaHuilaVisivel: boolean;
     isMapaCuanzaVisivel: boolean;
+    isAdmin: boolean;
     account: Account;
     activeState;
 
@@ -45,6 +46,7 @@ export class SidebarComponent implements OnInit {
         this.isMapaHuamboVisivel = false;
         this.isMapaHuilaVisivel = false;
         this.isMapaCuanzaVisivel = false;
+        this.isAdmin = false;
         this.languageHelper.getAll().then((languages) => {
             this.languages = languages;
         });
@@ -63,6 +65,7 @@ export class SidebarComponent implements OnInit {
             this.account = account;
         });
         this.registerAuthenticationSuccess();
+        this.registerInLogOutSuccess();
         this.activeState = '';
     }
 
@@ -82,28 +85,27 @@ export class SidebarComponent implements OnInit {
     }
 
     definirVisibilidadeMapas() {
-        this.user.authorities.forEach((p) => {
-           if (p === 'ROLE_ADMIN') {
-               this.isMapaHuamboVisivel = true;
-               this.isMapaHuilaVisivel = true;
-               this.isMapaCuanzaVisivel = true;
-           }
-        });
-
+        this.removerPermissoesMapas();
         if (this.user.provincia.id === 15) {
-            console.log('DEU CERTO HUILA');
+            console.log('USUARIO DA PROVINCIA DE HUILA');
             this.isMapaHuilaVisivel = true;
         }
 
         if (this.user.provincia.id === 10) {
-            console.log('DEU CERTO HUAMBO');
+            console.log('USUARIO DA PROVINCIA DE HUAMBO');
             this.isMapaHuamboVisivel = true;
         }
 
         if (this.user.provincia.id === 5) {
-            console.log('DEU CERTO CUANZA');
+            console.log('USUARIO DA PROVINCIA DE CUANZA');
             this.isMapaCuanzaVisivel = true;
         }
+
+        this.user.authorities.forEach((p) => {
+            if (p === 'ROLE_ADMIN') {
+                this.isAdmin = true;
+            }
+        });
     }
     collapseNavbar() {
         this.isSidebarCollapsed = true;
@@ -115,6 +117,20 @@ export class SidebarComponent implements OnInit {
 
     login() {
         this.modalRef = this.loginModalService.open();
+    }
+
+    registerInLogOutSuccess() {
+        this.eventManager.subscribe('logOutSuccess', (message) => {
+            console.log('IDENTIFICOU LOG DE LOGOUT');
+           this.removerPermissoesMapas();
+        });
+    }
+
+    removerPermissoesMapas() {
+        this.isMapaHuamboVisivel = false;
+        this.isMapaHuilaVisivel = false;
+        this.isMapaCuanzaVisivel = false;
+        this.isAdmin = false;
     }
 
     logout() {

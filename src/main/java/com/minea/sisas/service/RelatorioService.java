@@ -195,8 +195,15 @@ public class RelatorioService {
     }
 
     public List<InqueritosPreenchidosDadosDTO> montaListaInqueritoAguas(){
+        User user = buscaUsuarioLogado();
         List<InqueritosPreenchidosDadosDTO> retorno = new ArrayList<>();
-        List<Object[]> list = this.provinciaRepository.buscaDadosEstatisticaInqueritosPreenchidos();
+        List<Object[]> list;
+        if (isAdminGeral(user)) {
+            list = this.relatorioAdminRepository.buscaDadosEstatisticaInqueritosPreenchidos();
+        } else {
+            list = this.relatorioRepository.buscaDadosEstatisticaInqueritosPreenchidos(user.getProvincia().getId());
+        }
+
         if (Objects.nonNull(list)) {
             list.stream().forEach(i -> {
                 InqueritosPreenchidosDadosDTO dto = new InqueritosPreenchidosDadosDTO();
@@ -451,8 +458,15 @@ public class RelatorioService {
 
     //SISTEMA AGUA BOMBA MANUAL - Comunal
     public List<SistemaAguaBmbManualDTO> sistemaAguaBmbManualComunal() {
+        User userDTO = buscaUsuarioLogado();
+        List<Object[]> list;
         List<SistemaAguaBmbManualDTO> retorno = new ArrayList<>();
-        List<Object[]> list = this.relatorioRepository.sistemaAguaBmbManualComunalQuery();
+        if (isAdminGeral(userDTO)) {
+            list = this.relatorioAdminRepository.sistemaAguaBmbManualComunalQuery();
+        } else {
+            list = this.relatorioRepository.sistemaAguaBmbManualComunalQuery(userDTO.getProvincia().getId());
+        }
+
         if (Objects.nonNull(list)) {
             list.stream().forEach(i -> {
                 SistemaAguaBmbManualDTO dto = new SistemaAguaBmbManualDTO();
@@ -616,7 +630,11 @@ public class RelatorioService {
                 dto.setNumeroChafarizes(((BigDecimal) i[5]).intValue());
                 dto.setFuncionamChafariz(((BigDecimal) i[6]).intValue());
                 dto.setNaoFuncionamChafariz(((BigDecimal) i[7]).intValue());
-                dto.setNaoFuncionamChafarizPerc(((BigDecimal) i[8]).floatValue());
+
+                dto.setNaoFuncionamChafarizPerc(0f);
+                if (Objects.nonNull(i[8])) {
+                    dto.setNaoFuncionamChafarizPerc(((BigDecimal) i[8]).floatValue());
+                }
                 retorno.add(dto);
             });
         }

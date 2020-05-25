@@ -158,6 +158,12 @@ public class IndicadorProducaoResource {
         return new ResponseEntity<>(page, null, HttpStatus.OK);
     }
 
+    @GetMapping("/indicador-producaos/anoProvinciaFiltro")
+    public ResponseEntity<List<IndicadorProducao>> getByAnoAndProvincia(@RequestParam(value = "ano") Integer ano, @RequestParam(value = "idProvincia") Long idProvincia) {
+        List<IndicadorProducao> page =  indicadorProducaoRepository.getAllByYearAndProvincia(ano, idProvincia);
+        return new ResponseEntity<>(page, null, HttpStatus.OK);
+    }
+
     /**
      * DELETE  /indicador-producaos/:id : delete the "id" indicadorProducao.
      *

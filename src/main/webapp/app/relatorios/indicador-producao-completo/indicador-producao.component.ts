@@ -133,10 +133,29 @@ export class IndicadorProducaoComponent implements OnInit {
         this.esconderFiltros = !this.esconderFiltros;
     }
 
-    buscaPorAno() {
+    buscaPorAnoeProvincia() {
         if (this.anoFiltro === null) {
             alert('Selecione o Ano');
         } else {
+            if (this.indicador.provincia === null) {
+                this.buscaPorAno();
+            } else {
+                this.indicadorProducaoService.queryAnoeProvincia({
+                    page: this.page - 1,
+                    size: this.itemsPerPage,
+                    ano: this.anoFiltro,
+                    idProvincia: this.indicador.provincia.id
+                }).subscribe((res) => {
+                    this.indicadorProducaos = res.body;
+                    this.links = this.parseLinks.parse(res.headers.get('link'));
+                    this.totalItems = +res.headers.get('X-Total-Count');
+                    this.queryCount = this.totalItems;
+                });
+            }
+        }
+    }
+
+    buscaPorAno() {
             this.indicadorProducaoService.queryAno({
                 page: this.page - 1,
                 size: this.itemsPerPage,
@@ -147,7 +166,6 @@ export class IndicadorProducaoComponent implements OnInit {
                 this.totalItems = +res.headers.get('X-Total-Count');
                 this.queryCount = this.totalItems;
             });
-        }
     }
 
     buscaPorProvincia() {

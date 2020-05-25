@@ -61,28 +61,28 @@
                     <tr *ngFor="let provincia of listaTabela" class="borda-th">
                         <td class="borda-th">{{provincia.nomeProvincia}}</td>
                         <td class="borda-th">{{provincia.populacao | number}}</td>
-                        <td class="borda-th">{{provincia.pocoMelhorado}}</td>
-                        <td class="borda-th">{{provincia.furo}}</td>
+                        <td class="borda-th">{{provincia.pocoMelhorado | number }}</td>
+                        <td class="borda-th">{{provincia.furo | number }}</td>
                         <td class="borda-th">{{provincia.nascente}}</td>
 
-                        <td class="borda-th">{{provincia.dieselSistemas}}</td>
-                        <td class="borda-th">{{provincia.dieselPopulacao}}</td>
+                        <td class="borda-th">{{provincia.dieselSistemas | number }}</td>
+                        <td class="borda-th">{{provincia.dieselPopulacao | number }}</td>
                         <td class="borda-th">{{provincia.dieselPerc}}%</td>
 
-                        <td class="borda-th">{{provincia.solarSistemas}}</td>
-                        <td class="borda-th">{{provincia.solarPopulacao}}</td>
+                        <td class="borda-th">{{provincia.solarSistemas | number }}</td>
+                        <td class="borda-th">{{provincia.solarPopulacao | number }}</td>
                         <td class="borda-th">{{provincia.solarPerc}}%</td>
 
-                        <td class="borda-th">{{provincia.eolicaSistemas}}</td>
-                        <td class="borda-th">{{provincia.eolicaPopulacao}}</td>
+                        <td class="borda-th">{{provincia.eolicaSistemas | number }}</td>
+                        <td class="borda-th">{{provincia.eolicaPopulacao | number }}</td>
                         <td class="borda-th">{{provincia.eolicaPerc}}%</td>
 
-                        <td class="borda-th">{{provincia.electricaSistemas}}</td>
-                        <td class="borda-th">{{provincia.electricaPopulacao}}</td>
+                        <td class="borda-th">{{provincia.electricaSistemas | number }}</td>
+                        <td class="borda-th">{{provincia.electricaPopulacao | number }}</td>
                         <td class="borda-th">{{provincia.electricaPerc}}%</td>
 
-                        <td class="borda-th">{{provincia.outroSistemas}}</td>
-                        <td class="borda-th">{{provincia.outroPopulacao}}</td>
+                        <td class="borda-th">{{provincia.outroSistemas | number }}</td>
+                        <td class="borda-th">{{provincia.outroPopulacao | number }}</td>
                         <td class="borda-th">{{provincia.outroPerc}}%</td>
                     </tr>
                     </tbody>

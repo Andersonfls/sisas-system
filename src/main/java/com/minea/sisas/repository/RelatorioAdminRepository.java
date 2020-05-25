@@ -2732,4 +2732,235 @@ public interface RelatorioAdminRepository extends JpaRepository<Provincia, Long>
         "  order by          " +
         "              extract(month from DT_LANCAMENTO)", nativeQuery = true)
     List<Object[]> buscaDadosDashboardIndicadores();
+
+
+    // ESTATISTICA DE INQUERITOS PREENCHIDOS
+    @Query(value = "SELECT v.NM_PROVINCIA as Provincia, " +
+        "         (" +
+        "         SELECT count(m.ID_MUNICIPIO) from sisas.municipio m " +
+        "               where m.ID_PROVINCIA  = v.ID_PROVINCIA  group  by  v.NM_PROVINCIA) as NumeroMunicipios, " +
+        "         (SELECT DISTINCT count(c.ID_COMUNA ) from sisas.comuna c inner join sisas.municipio mm on mm.ID_MUNICIPIO = c.ID_MUNICIPIO  where mm.ID_PROVINCIA = v.ID_PROVINCIA  group  by  v.NM_PROVINCIA) as NumeroComunas, " +
+        "                    ( SELECT count( a1.POSSUI_SISTEMA_AGUA ) from sisas.sistema_agua a1 where a1.ID_PROVINCIA = v.ID_PROVINCIA and POSSUI_SISTEMA_AGUA = 1 ) as AguasSIM, " +
+        "         ( SELECT count( a2.POSSUI_SISTEMA_AGUA ) from sisas.sistema_agua a2 where a2.ID_PROVINCIA = v.ID_PROVINCIA and POSSUI_SISTEMA_AGUA = 0 ) as AguasNAO, " +
+        "         (SELECT count( a1.POSSUI_SISTEMA_AGUA ) from sisas.sistema_agua a1 where a1.ID_PROVINCIA = v.ID_PROVINCIA and POSSUI_SISTEMA_AGUA = 0 )+(SELECT count( a1.POSSUI_SISTEMA_AGUA ) from sisas.sistema_agua a1 where a1.ID_PROVINCIA = v.ID_PROVINCIA and POSSUI_SISTEMA_AGUA = 1 ) as TotalSector " +
+        "         FROM sisas.provincia v " +
+        "         ORDER BY v.NM_PROVINCIA ", nativeQuery = true)
+    List<Object[]> buscaDadosEstatisticaInqueritosPreenchidos();
+
+    //SISTEMA AGUA BOMBA MANUAL - COMUNAL
+    @Query(value = "SELECT  p.NM_PROVINCIA,  " +
+        "     m.NM_MUNICIPIO,  " +
+        "     c.NM_COMUNA,  " +
+        "   (   " +
+        "  SELECT COUNT(Esquema)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "              AND s.Esquema = 'Poço/cacimba melhorada'  " +
+        "    ) PocoMelhorado,  " +
+        "      (   " +
+        "  SELECT COUNT(Esquema)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "              AND   s.NM_TIPO_BOMBA =  'Bombagem manual'  " +
+        "              AND s.Esquema = 'Furo'  " +
+        "    ) Furo,  " +
+        " (   " +
+        "  SELECT COUNT(Esquema)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "                AND   s.NM_TIPO_BOMBA =  'Bombagem manual'  " +
+        "              AND s.Esquema = 'Nascente'  " +
+        "    ) Nascente,  " +
+        " (   " +
+        "  SELECT COUNT(POSSUI_SISTEMA_AGUA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "              AND   s.NM_TP_FONTE = 'Subterrânea'  " +
+        "              AND   s.NM_TIPO_BOMBA =  'Bombagem manual'  " +
+        "              AND s.NM_MODELO_BOMBA_MANUAL_UTILIZADA in ('Afridev','Vergnet','Volanta','India Mark II','Outros')  " +
+        "    ) TotalSistemas,  " +
+        "      (  " +
+        "  SELECT COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "              AND   s.NM_TP_FONTE = 'Subterrânea'  " +
+        "              AND   s.NM_TIPO_BOMBA =  'Bombagem manual'  " +
+        "              AND s.NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Afridev'  " +
+        "    ) NrSistemasAfridev,  " +
+        "      (  " +
+        "  SELECT COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "               AND   s.NM_TP_FONTE = 'Subterrânea'  " +
+        "               AND   s.NM_TIPO_BOMBA =  'Bombagem manual'  " +
+        "              AND s.estado_funcionamento_sistema = 'Está em funcionamento (Bom)'  " +
+        "              AND s.NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Afridev'  " +
+        "    ) NrSistemasAfridevFincionam,  " +
+        "   (  " +
+        "  SELECT COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "               AND   s.NM_TP_FONTE = 'Subterrânea'  " +
+        "               AND   s.NM_TIPO_BOMBA =  'Bombagem manual'  " +
+        "              AND s.estado_funcionamento_sistema = 'Não está em funcionamento'  " +
+        "              AND s.NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Afridev'  " +
+        "    ) NrSistemasAfridevNaoFuncionam,  " +
+        "      (  " +
+        "  SELECT COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "               AND   s.NM_TP_FONTE = 'Subterrânea'  " +
+        "               AND   s.NM_TIPO_BOMBA =  'Bombagem manual'  " +
+        "              AND s.NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Vergnet'  " +
+        "    ) NrSistemasVergnet,  " +
+        "      (  " +
+        "  SELECT COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "               AND   s.NM_TP_FONTE = 'Subterrânea'  " +
+        "               AND   s.NM_TIPO_BOMBA =  'Bombagem manual'  " +
+        "              AND s.estado_funcionamento_sistema = 'Está em funcionamento (Bom)'  " +
+        "              AND s.NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Vergnet'  " +
+        "    ) NrSistemasVergnetFuncionam,  " +
+        "      (  " +
+        "  SELECT COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "               AND   s.NM_TP_FONTE = 'Subterrânea'  " +
+        "               AND   s.NM_TIPO_BOMBA =  'Bombagem manual'  " +
+        "              AND s.estado_funcionamento_sistema = 'Não está em funcionamento'  " +
+        "              AND s.NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Vergnet'  " +
+        "    ) NrSistemasVergnetNaoFuncionam,  " +
+        "      (  " +
+        "  SELECT COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "               AND   s.NM_TP_FONTE = 'Subterrânea'  " +
+        "               AND   s.NM_TIPO_BOMBA =  'Bombagem manual'  " +
+        "              AND s.NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Volanta'  " +
+        "    ) NrSistemasVolanta,  " +
+        "      (  " +
+        "  SELECT COALESCE(COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA),0)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "               AND   s.NM_TP_FONTE = 'Subterrânea'  " +
+        "               AND   s.NM_TIPO_BOMBA =  'Bombagem manual'  " +
+        "              AND s.estado_funcionamento_sistema = 'Está em funcionamento (Bom)'  " +
+        "              AND s.NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Volanta'  " +
+        "    ) NrSistemasVolantaFuncionam,  " +
+        "     (  " +
+        "  SELECT COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "               AND   s.NM_TP_FONTE = 'Subterrânea'  " +
+        "               AND   s.NM_TIPO_BOMBA =  'Bombagem manual'  " +
+        "              AND s.estado_funcionamento_sistema = 'Não está em funcionamento'  " +
+        "              AND s.NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Volanta'  " +
+        "    ) NrSistemasVolantaNaoFuncionam,  " +
+        "      (  " +
+        "  SELECT COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "               AND   s.NM_TP_FONTE = 'Subterrânea'  " +
+        "               AND   s.NM_TIPO_BOMBA =  'Bombagem manual'  " +
+        "              AND s.NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'India Mark II'  " +
+        "    ) NrSistemasIndiaMarkII,  " +
+        "      (  " +
+        "  SELECT COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "              AND   s.NM_TP_FONTE = 'Subterrânea'  " +
+        "              AND   s.NM_TIPO_BOMBA =  'Bombagem manual'  " +
+        "              AND s.estado_funcionamento_sistema = 'Está em funcionamento (Bom)'  " +
+        "              AND s.NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'India Mark II'  " +
+        "    ) NrSistemasIndiaMarkIIFuncionam,  " +
+        "     (  " +
+        "  SELECT COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "               AND   s.NM_TP_FONTE = 'Subterrânea'  " +
+        "               AND   s.NM_TIPO_BOMBA =  'Bombagem manual'  " +
+        "              AND s.estado_funcionamento_sistema = 'Não está em funcionamento'  " +
+        "              AND s.NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'India Mark II'  " +
+        "    )  NrSistemassIndiaMarkIINaoFuncionam,  " +
+        " (  " +
+        "  SELECT COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "               AND   s.NM_TP_FONTE = 'Subterrânea'  " +
+        "               AND   s.NM_TIPO_BOMBA =  'Bombagem manual'  " +
+        "              AND s.NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Outros'  " +
+        "    ) NrSistemasOutros,  " +
+        "      (  " +
+        "  SELECT COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "               AND   s.NM_TP_FONTE = 'Subterrânea'  " +
+        "               AND   s.NM_TIPO_BOMBA =  'Bombagem manual'  " +
+        "              AND s.estado_funcionamento_sistema = 'Está em funcionamento (Bom)'  " +
+        "              AND s.NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Outros'  " +
+        "    ) NrSistemassOutrosFuncionam,  " +
+        "       (  " +
+        "  SELECT COUNT(NM_MODELO_BOMBA_MANUAL_UTILIZADA)  " +
+        "   FROM sisas.sistema_agua s   " +
+        "   WHERE s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     AND s.ID_MUNICIPIO = m.ID_MUNICIPIO  " +
+        "     AND s.ID_COMUNA = c.ID_COMUNA  " +
+        "               AND   s.NM_TP_FONTE = 'Subterrânea'  " +
+        "               AND   s.NM_TIPO_BOMBA =  'Bombagem manual'  " +
+        "              AND s.estado_funcionamento_sistema = 'Não está em funcionamento'  " +
+        "              AND s.NM_MODELO_BOMBA_MANUAL_UTILIZADA = 'Outros'  " +
+        "    )  NrSistemassOutrosNaoFuncionam  " +
+        "from sisas.sistema_agua s  " +
+        "     inner join sisas.provincia p on s.ID_PROVINCIA = p.ID_PROVINCIA  " +
+        "     inner join sisas.municipio m on p.ID_PROVINCIA = m.ID_PROVINCIA   " +
+        "     inner join sisas.comuna c on c.ID_MUNICIPIO = m.ID_MUNICIPIO   " +
+        "      where s.NM_TP_FONTE= 'Subterrânea'  " +
+        "         AND   s.NM_TIPO_BOMBA =  'Bombagem manual'  " +
+        "         AND   s.POSSUI_SISTEMA_AGUA = 1  " +
+        "GROUP BY   " +
+        "       p.NM_PROVINCIA, p.ID_PROVINCIA,  " +
+        "       m.ID_MUNICIPIO,   " +
+        "       c.ID_COMUNA   " +
+        "order BY   " +
+        "       p.NM_PROVINCIA,  " +
+        "       m.ID_MUNICIPIO,   " +
+        "       c.ID_COMUNA, p.ID_PROVINCIA  ", nativeQuery = true)
+    List<Object[]> sistemaAguaBmbManualComunalQuery();
 }

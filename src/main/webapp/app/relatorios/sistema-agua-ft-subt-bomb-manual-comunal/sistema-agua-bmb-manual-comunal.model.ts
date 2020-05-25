@@ -16,9 +16,9 @@ export class SistemaAguaBmbManualComunal {
         public vergnetSistemaFunciona?: number,
         public vergnetSistemaNaoFunciona?: number,
 
-        public volantaTotalSistema?: number,
-        public volantaSistemaFunciona?: number,
-        public volantaSistemaNaoFunciona?: number,
+        public volantTotalSistema?: number,
+        public volantSistemaFunciona?: number,
+        public volantSistemaNaoFunciona?: number,
 
         public indiaTotalSistema?: number,
         public indiaSistemaFunciona?: number,

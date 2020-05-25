@@ -151,7 +151,7 @@ export class ProgramasProjectosComponent implements OnInit, OnDestroy {
         this.programasProjecto.provincia = null;
         this.programasProjecto.municipio = null;
 
-        this.provinciaService.queryPorNivelUsuario().subscribe(
+        this.provinciaService.query().subscribe(
             (res: HttpResponse<Provincia[]>) => {
                 this.provincias = res.body;
             },

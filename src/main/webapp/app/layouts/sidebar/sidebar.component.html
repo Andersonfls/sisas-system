@@ -21,7 +21,7 @@
         <!--</a>-->
 
         <div class="list-group border-0 card text-center text-md-left">
-            <a style=" margin-top: 5px; border-top-color: #183F66;"  href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar" routerLink="dashboard        " routerLinkActive="active" *jhiHasAnyAuthority="['ROLE_ADMIN', 'ADMIN_PROVINCIAL']">
+            <a style=" margin-top: 5px; border-top-color: #183F66;"  href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar" routerLink="dashboard" routerLinkActive="active" *jhiHasAnyAuthority="['ROLE_ADMIN', 'ADMIN_PROVINCIAL']">
                 <i class="fa fa-bar-chart" style="size: 10px !important;"> </i>
                 <span class="d-none d-md-inline" jhiTranslate="sidebar.item1">Dashboard</span>
             </a>
@@ -36,23 +36,23 @@
                     <i class="fa fa-bar-chart" style="size: 10px !important;"> </i>
                     <span class="d-md-inline" jhiTranslate="sidebar.item3.subItem5">Dashboard</span>
                 </a>
-                <a href="#" class="list-group-item" data-parent="#menu1x" routerLink="sistema-agua" routerLinkActive="active">
+                <a (click)="setStateAsActive('sistema-agua')" [class.ativo]="activeState === 'sistema-agua'" href="#" class="list-group-item" data-parent="#menu1x" routerLink="sistema-agua" routerLinkActive="active">
                     <i class="fa fa-tint" style="size: 10px !important;"> </i>
                     <span class="d-md-inline" jhiTranslate="sidebar.item3.subItem1">Sistema de Águas</span>
                 </a>
 
-                <a href="#menu-rela" style="background-color: #082e53; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#menu-rela" data-toggle="collapse" aria-expanded="false" *jhiHasAnyAuthority="['ROLE_ADMIN']">
+                <a href="#menu-rela" style="background-color: #082e53; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#menu-rela" data-toggle="collapse" aria-expanded="false" *jhiHasAnyAuthority="['ROLE_ADMIN', 'ADMIN_PROVINCIAL']">
                     <i class="fas fa-clipboard-list" style="size: 10px !important;"> </i>
                     <span class="d-md-inline" jhiTranslate="sidebar.item3.subItem6">Relatórios</span>
                 </a>
 
                 <div class="collapse" id="menu-rela" data-parent="#sidebar" routerLinkActive="false">
-                    <a href="#" style="background-color: #163f66;" class="list-group-item" data-parent="#menu7x" routerLink="dashboard-estatistica" routerLinkActive="active">
+                    <a (click)="setStateAsActive('dashboard-estatistica')" [class.ativo]="activeState === 'dashboard-estatistica'" href="#" style="background-color: #163f66;" class="list-group-item" data-parent="#menu7x" routerLink="dashboard-estatistica" routerLinkActive="active">
                         <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                         <span class="d-md-inline" jhiTranslate="sidebar.item6.subItem18"></span>
                     </a>
 
-                    <a href="#" style="background-color: #163f66;" class="list-group-item" data-parent="#menu7x" routerLink="inqueritos-preenchidos" routerLinkActive="active">
+                    <a (click)="setStateAsActive('inqueritos-preenchidos')" [class.ativo]="activeState === 'inqueritos-preenchidos'" href="#" style="background-color: #163f66;" class="list-group-item" data-parent="#menu7x" routerLink="inqueritos-preenchidos" routerLinkActive="active">
                         <i class="fa fa-dot-circle-o" style="size: 10px !important;"> </i>
                         <span class="d-md-inline" jhiTranslate="sidebar.item6.subItem1"></span>
                     </a>
@@ -362,7 +362,7 @@
                     </div>
 
                     <a href="#huamboi" style="background-color: #163f66; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#menu7x" data-toggle="collapse" aria-expanded="false"
-                       *ngIf="isMapaHuamboVisivel">
+                       *ngIf="isMapaHuamboVisivel || isAdmin">
                         <i class="fas fa-vector-square" style="size: 10px !important;"> </i>
                         <span class="d-md-inline">Huambo</span>
                     </a>
@@ -395,7 +395,7 @@
                     </div>
 
                     <a href="#huliai" style="background-color: #163f66; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#menu7x" data-toggle="collapse" aria-expanded="false"
-                       *ngIf="isMapaHuilaVisivel">
+                       *ngIf="isMapaHuilaVisivel || isAdmin">
                         <i class="fas fa-vector-square" style="size: 10px !important"> </i>
                         <span class="d-md-inline">Huíla</span>
                     </a>
@@ -428,7 +428,7 @@
                     </div>
 
                     <a href="#kuanzai" style="background-color: #163f66; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#menu7x" data-toggle="collapse" aria-expanded="false"
-                       *ngIf="isMapaCuanzaVisivel">
+                       *ngIf="isMapaCuanzaVisivel || isAdmin">
                         <i class="fas fa-vector-square" style="size: 10px !important"> </i>
                         <span class="d-md-inline">Cuanza Norte</span>
                     </a>
@@ -483,7 +483,7 @@
                     <span class="d-md-inline" jhiTranslate="sidebar.item8.subItem2">Gerir Indicadores de Produção</span>
                 </a>
 
-                <a href="#menu-rela-ind" style="background-color: #082e53; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#menu-rela-ind" data-toggle="collapse" aria-expanded="false" *jhiHasAnyAuthority="['ROLE_ADMIN']">
+                <a href="#menu-rela-ind" style="background-color: #082e53; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#menu-rela-ind" data-toggle="collapse" aria-expanded="false" *jhiHasAnyAuthority="['ROLE_ADMIN', 'ADMIN_PROVINCIAL']">
                     <i class="fas fa-clipboard-list" style="size: 10px !important;"> </i>
                     <span class="d-md-inline" jhiTranslate="sidebar.item3.subItem6">Relatórios</span>
                 </a>
@@ -506,7 +506,7 @@
                 </a>
             </div>
 
-            <a href="#menu4x"  class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false" *jhiHasAnyAuthority="['ROLE_USER','ROLE_ADMIN', 'PROG_PROJECTOS']">
+            <a href="#menu4x"  class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false" *jhiHasAnyAuthority="['ROLE_ADMIN', 'PROG_PROJECTOS']">
                 <i class="fas fa-stream" ngbTooltip="Programas-Projectos" title="Programas-Projectos"></i>
                 <span class="d-none d-md-inline" jhiTranslate="sidebar.item4.title">Programas e Projectos</span>
             </a>
@@ -517,7 +517,7 @@
                     <span class="d-md-inline" jhiTranslate="sidebar.item4.subItem1">Programas e Projectos</span>
                 </a>
 
-                <a href="#menu-rela-prog" style="background-color: #082e53; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#menu-rela-prog" data-toggle="collapse" aria-expanded="false" *jhiHasAnyAuthority="['ROLE_ADMIN']">
+                <a href="#menu-rela-prog" style="background-color: #082e53; min-width: 100%" class="list-group-item d-inline-block collapsed" data-parent="#menu-rela-prog" data-toggle="collapse" aria-expanded="false" *jhiHasAnyAuthority="['ROLE_ADMIN', 'PROG_PROJECTOS']">
                     <i class="fas fa-clipboard-list" style="size: 10px !important;"> </i>
                     <span class="d-md-inline" jhiTranslate="sidebar.item3.subItem6">Relatórios</span>
                 </a>

@@ -78,8 +78,7 @@ export class FuncAguaComponent implements OnInit {
                     this.totalnumeroSistemas += i.numeroSistemas;
                     this.totalfuncionamAgua += i.funcionamAgua;
                     this.totalnaoFuncionamAgua += i.naoFuncionamAgua;
-                    this.totalfuncionamAguaPerc = 76;
-                    this.totalnaoFuncionamAguaPerc = 24;
+                    this.totalBeneficiarios += i.beneficiariosAgua;
                 });
             });
     }

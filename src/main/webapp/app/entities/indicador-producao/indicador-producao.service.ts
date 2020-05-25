@@ -89,6 +89,17 @@ export class IndicadorProducaoService {
         });
     }
 
+    queryAnoeProvincia(req: any): Observable<HttpResponse<IndicadorProducao[]>> {
+        const params: HttpParams = createRequestOption(req);
+
+        const requestURL = this.resourceUrl + '/anoProvinciaFiltro';
+
+        return this.http.get<IndicadorProducao[]>(requestURL, {
+            params,
+            observe: 'response'
+        });
+    }
+
     private convertResponse(res: EntityResponseType): EntityResponseType {
         const body: IndicadorProducao = this.convertItemFromServer(res.body);
         return res.clone({body});

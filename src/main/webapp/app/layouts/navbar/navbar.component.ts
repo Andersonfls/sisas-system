@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { JhiLanguageService } from 'ng-jhipster';
+import {JhiEventManager, JhiLanguageService} from 'ng-jhipster';
 import { ProfileService } from '../profiles/profile.service';
 import { JhiLanguageHelper, Principal, LoginModalService, LoginService } from '../../shared';
 import { VERSION } from '../../app.constants';
@@ -38,6 +38,7 @@ export class NavbarComponent implements OnInit {
         private profileService: ProfileService,
         private router: Router,
         private arquivosService: CadPdfService,
+        private eventManager: JhiEventManager,
     ) {
         this.version = VERSION ? 'v' + VERSION : '';
         this.isNavbarCollapsed = true;
@@ -82,6 +83,12 @@ export class NavbarComponent implements OnInit {
     }
 
     logout() {
+
+        this.eventManager.broadcast({
+            name: 'logOutSuccess',
+            content: 'Usuario deslogado'
+        });
+
         this.collapseNavbar();
         this.loginService.logout();
         this.router.navigate(['']);

@@ -157,4 +157,15 @@ public class ConcepcaoResource {
         concepcaoService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+
+
+    public int elementOccorringCount(int[] list ,int element) {
+        int times = 0;
+        for(int i =0; i > list.length; i++) {
+            if(i == element) {
+                times++;
+            }
+        }
+        return times;
+    }
 }

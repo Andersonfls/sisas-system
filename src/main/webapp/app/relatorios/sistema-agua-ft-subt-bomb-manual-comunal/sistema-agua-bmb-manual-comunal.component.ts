@@ -100,18 +100,23 @@ export class SistemaAguaBombManualComunalComponent implements OnInit {
                     this.totalFuro += i.furo;
                     this.totalNascente += i.nascente;
                     this.totalSistemaTotal += i.totalSistemas;
+
                     this.totalAfridevTotalSistema += i.afridevTotalSistema;
                     this.totalAfridevSistemaFunciona += i.afridevSistemaFunciona;
                     this.totalAfridevSistemaNaoFunciona += i.afridevSistemaNaoFunciona;
+
                     this.totalVergnetTotalSistema += i.vergnetTotalSistema;
                     this.totalVergnetSistemaFunciona += i.vergnetSistemaFunciona;
                     this.totalVergnetSistemaNaoFunciona += i.vergnetSistemaNaoFunciona;
-                    this.totalVolantaTotalSistema += i.volantaTotalSistema;
-                    this.totalVolantaSistemaFunciona += i.volantaSistemaFunciona;
-                    this.totalVolantaSistemaNaoFunciona += i.volantaSistemaNaoFunciona;
+
+                    this.totalVolantaTotalSistema += i.volantTotalSistema;
+                    this.totalVolantaSistemaFunciona += i.volantSistemaFunciona;
+                    this.totalVolantaSistemaNaoFunciona += i.volantSistemaNaoFunciona;
+
                     this.totalIndiaTotalSistema += i.indiaTotalSistema;
                     this.totalIndiaSistemaFunciona += i.indiaSistemaFunciona;
                     this.totalIndiaSistemaNaoFunciona += i.indiaSistemaNaoFunciona;
+
                     this.totalOutroTotalSistema += i.outroTotalSistema;
                     this.totalOutroSistemaFunciona += i.outroSistemaFunciona;
                     this.totalOutroSistemaNaoFunciona += i.outroSistemaNaoFunciona;

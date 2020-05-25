@@ -2,7 +2,7 @@
     <h2 class="text-centro">
         <span jhiTranslate="sisasApp.sistemaAgua.home.title">Sistema Aguas</span>
         <button class="btn btn-primary float-left redondo"
-                [routerLink]="['../dashboard        ']">
+                [routerLink]="['../dashboard']">
             <span class="fa fa-chevron-left"></span>
         </button>
         <!--<button class="btn btn-primary jh-create-entity create-produto" (click)="mostrarFiltros()" style="float: left; margin-left: 1%;">-->
@@ -98,6 +98,7 @@
                     <th jhiSortBy="nmFonteAguaUtilizada"><span jhiTranslate="sisasApp.sistemaAgua.nmFonteAguaUtilizada">Nm Fonte Agua Utilizada</span> <span class="fa fa-sort"></span></th>
                     <th jhiSortBy="nmTipoBomba"><span jhiTranslate="sisasApp.sistemaAgua.nmTipoBomba">Nm Tipo Bomba</span> <span class="fa fa-sort"></span></th>
                     <th jhiSortBy="qtdCasasAguaLigada"><span jhiTranslate="sisasApp.sistemaAgua.qtdCasasAguaLigada">Qtd Casas Agua Ligada</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="qtdChafarisesExistentes"><span jhiTranslate="sisasApp.sistemaAgua.qtdChafarisesExistentes">Qtd Chafarises Existentes</span> <span class="fa fa-sort"></span></th>
                     <th jhiSortBy="qtdChafarisesFuncionando"><span jhiTranslate="sisasApp.sistemaAgua.qtdChafarisesFuncionando">Qtd Chafarises Funcionando</span> <span class="fa fa-sort"></span></th>
                     <th jhiSortBy="qtdContadoresLigados"><span jhiTranslate="sisasApp.sistemaAgua.qtdContadoresLigados">Qtd Contadores Ligados</span> <span class="fa fa-sort"></span></th>
                     <th jhiSortBy="qtdBebedouros"><span jhiTranslate="sisasApp.sistemaAgua.qtdBebedouros">Qtd Bebedouros</span> <span class="fa fa-sort"></span></th>
@@ -156,6 +157,7 @@
                     <td>{{sistemaAgua.nmFonteAguaUtilizada}}</td>
                     <td>{{sistemaAgua.nmTipoBomba}}</td>
                     <td>{{sistemaAgua.qtdCasasAguaLigada}}</td>
+                    <td>{{sistemaAgua.qtdChafarisesExistentes}}</td>
                     <td>{{sistemaAgua.qtdChafarisesFuncionando}}</td>
                     <td>{{sistemaAgua.qtdContadoresLigados}}</td>
                     <td>{{sistemaAgua.qtdBebedouros}}</td>

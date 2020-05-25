@@ -2,7 +2,7 @@
     <h2 class="text-centro">
         <span jhiTranslate="sisasApp.indicadorProducao.home.title">Indicador Producaos</span>
         <button class="btn btn-primary float-left redondo"
-                [routerLink]="['../dashboard        ']">
+                [routerLink]="['../dashboard']">
             <span class="fa fa-chevron-left"></span>
         </button>
         <!--<button class="btn btn-primary jh-create-entity create-produto" (click)="mostrarFiltros()" style="float: left; margin-left: 1%;">-->
@@ -15,20 +15,20 @@
             <div class="form-group">
                 <div class="input-group" style="max-width: 97%; margin-bottom: 1%">
                     <select class="form-control" id="field_idProvincia" name="provincia" [(ngModel)]="indicador.provincia" (ngModelChange)="onChangeMunicipios()">
-                        <option [ngValue]="null" selected>Selecione a Província..</option>
+                        <option [ngValue]="null" selected>Todas as Provincias</option>
                         <option [ngValue]="provinciaOption.id === indicador.provincia?.id ? indicador.provincia : provinciaOption"
                                 *ngFor="let provinciaOption of provincias">{{provinciaOption.nmProvincia}}</option>
                     </select>
-                    <span class="input-group-btn">
-                            <button class="btn btn-search" type="button" (click)="buscaPorProvincia()" ><i class="fa fa-search fa-fw"></i></button>
-                    </span>
-                    <select class="form-control" id="field_idMunicipio" name="municipio" [(ngModel)]="anoFiltro">
+                    <!--<span class="input-group-btn">-->
+                            <!--<button class="btn btn-search" type="button" (click)="buscaPorProvincia()" ><i class="fa fa-search fa-fw"></i></button>-->
+                    <!--</span>-->
+                    <select style="margin-left: 1%" class="form-control" id="field_idMunicipio" name="municipio" [(ngModel)]="anoFiltro">
                         <option [ngValue]="null" selected>Selecione o Ano..</option>
                         <option [ngValue]="ano === anoFiltro ? anoFiltro : ano"
                                 *ngFor="let ano of listaAnos">{{ano}}</option>
                     </select>
                     <span class="input-group-btn">
-                            <button class="btn btn-search" type="button" (click)="buscaPorAno()" ><i class="fa fa-search fa-fw"></i></button>
+                            <button class="btn btn-search" type="button" (click)="buscaPorAnoeProvincia()" ><i class="fa fa-search fa-fw"></i></button>
                     </span>
                 </div>
             </div>
@@ -142,7 +142,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let indicadorProducao of indicadorProducaos ;trackBy: trackId">
+                <tr *ngFor="let indicadorProducao of indicadorProducaos">
                     <td>{{indicadorProducao.id}}</td>
                     <td>{{indicadorProducao.dtLancamento | date:'shortDate'}}</td>
                     <td>{{indicadorProducao.dtUltimaAlteracao | date:'shortDate'}}</td>

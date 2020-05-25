@@ -65,7 +65,7 @@
                     <td class="borda-th text-centro">{{provincia.pocoMelhorado}}</td>
                     <td class="borda-th text-centro">{{provincia.furo}}</td>
                     <td class="borda-th text-centro">{{provincia.nascente}}</td>
-                    <td class="borda-th text-centro">{{provincia.totalSistemas | number}}</td>
+                    <td class="borda-th text-centro">{{provincia.pocoMelhorado + provincia.furo + provincia.nascente | number}}</td>
 
                     <td class="borda-th text-centro">{{provincia.dieselSistemas}}</td>
                     <td class="borda-th text-centro">{{provincia.dieselSistemaFunciona}}</td>
@@ -94,7 +94,7 @@
                     <td class="text-centro"> <span style="font-weight: bold">{{totalPocoMelhorado | number }}</span></td>
                     <td class="text-centro"> <span style="font-weight: bold">{{totalFuro | number}}</span></td>
                     <td class="text-centro"> <span style="font-weight: bold">{{totalNascente | number}}</span></td>
-                    <td class="text-centro"> <span style="font-weight: bold">{{totalsistemas | number }}</span></td>
+                    <td class="text-centro"> <span style="font-weight: bold">{{totalPocoMelhorado + totalFuro + totalNascente | number }}</span></td>
 
                     <td class="text-centro"> <span style="font-weight: bold">{{totalDieselSistemas | number }} </span></td>
                     <td class="text-centro"> <span style="font-weight: bold">{{totalDieselFunciona | number}} </span></td>
@@ -124,7 +124,7 @@
     <br>
 
     <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" [routerLink]="['/../../dashboard        ']"  >
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" [routerLink]="['/../../dashboard']"  >
             <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
         </button>
     </div>

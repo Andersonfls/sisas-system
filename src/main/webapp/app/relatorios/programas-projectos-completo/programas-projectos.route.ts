@@ -50,7 +50,7 @@ export const programasProjectosRoute: Routes = [
             'pagingParams': ProgramasProjectosResolvePagingParams
         },
         data: {
-            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL'],
+            authorities: ['ROLE_USER', 'USUARIO_PROVINCIAL', 'PROG_PROJECTOS'],
             pageTitle: 'sisasApp.programasProjectos.home.title'
         },
         canActivate: [UserRouteAccessService]
