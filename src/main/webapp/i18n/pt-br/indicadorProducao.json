@@ -87,7 +87,7 @@
             "qtdAcoesFormacaoMoPlaneadas": "Acções Formação MO Planeadas (Nº)",
             "qtdAcoesFormacaoMmsPlaneadas": "Acções Formação MMS Planeadas (Nº)",
             "qtdAcoesFormacaoCmpPlaneadas": "Acções Formação CMP Planeadas (Nº)",
-            "qtdAcoesFormacaoSoftwareFornecidosPlanejadas": "Acções Formação Software Fornecidos Planejadas (Nº)",
+            "qtdAcoesFormacaoSoftwareFornecidosPlanejadas": "Acções Formação Software Fornecidos Planeadas (Nº)",
             "qtdAcoesFormacaoMoRealizadas": "Acções Formação MO Realizadas (Nº)",
             "qtdAcoesFormacaoMmsRealizadas": "Acções Formação MMS Realizadas (Nº)",
             "qtdAcoesFormacaoCmpRealizadas": "Acções Formação CMP Realizadas (Nº)",
@@ -105,7 +105,8 @@
             "provincia": "Província",
             "comuna": "Comuna",
             "qtdReservatorios": "Reservatórios (Nº)",
-            "arquivo": "Arquivo"
+            "arquivo": "Arquivo",
+            "qtdTotalManuaisRealizados": "Total de Manuais Realizados"
         }, "indicadorProducaoDTO" : {
             "idIndicadorProducao": "Id Indicador Produção",
             "idUsuario": "Id Usuário",
@@ -194,7 +195,8 @@
             "idSistemaAgua": "Sistema de Água",
             "comuna": "Comuna",
             "provincia": "Província",
-            "qtdReservatorios": "Reservatórios (Nº)"
+            "qtdReservatorios": "Reservatórios (Nº)",
+            "qtdTotalManuaisRealizados": "Total de Manuais Realizados"
         }
     }
 }

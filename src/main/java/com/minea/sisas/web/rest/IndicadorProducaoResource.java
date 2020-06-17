@@ -138,11 +138,11 @@ public class IndicadorProducaoResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(indicadorProducaoDTO));
     }
 
-    @GetMapping("/indicador-producaos/last")
+    @GetMapping("/indicador-producaos/last/{id}")
     @Timed
-    public ResponseEntity<IndicadorProducaoDTO> getLastIndicadorProducao() {
+    public ResponseEntity<IndicadorProducaoDTO> getLastIndicadorProducao(@PathVariable Long id) {
         log.debug("REST request to get Last IndicadorProducao");
-        IndicadorProducaoDTO indicadorProducaoDTO = indicadorProducaoService.findLast();
+        IndicadorProducaoDTO indicadorProducaoDTO = indicadorProducaoService.findLast(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(indicadorProducaoDTO));
     }
 

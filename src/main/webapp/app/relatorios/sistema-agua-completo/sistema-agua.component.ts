@@ -156,7 +156,12 @@ export class SistemaAguaComponent implements OnInit, OnDestroy {
 
     buscaPorProvincia() {
         if (this.sistemaAgua.provincia === null) {
-            alert('Selecione uma Província');
+            this.sistemaAguaService.query().subscribe((res) => {
+                this.sistemaAguas = res.body;
+                this.links = this.parseLinks.parse(res.headers.get('link'));
+                this.totalItems = +res.headers.get('X-Total-Count');
+                this.queryCount = this.totalItems;
+            });
         } else {
             this.sistemaAguaService.queryProvincia({
                 page: this.page - 1,

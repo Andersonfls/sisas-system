@@ -8,13 +8,13 @@ import org.mapstruct.Mapping;
 /**
  * Mapper for the entity IndicadorProducaoLog and its DTO IndicadorProducaoLogDTO.
  */
-@Mapper(componentModel = "spring", uses = {IndicadorProducaoMapper.class})
+@Mapper(componentModel = "spring", uses = {})
 public interface IndicadorProducaoLogMapper extends EntityMapper<IndicadorProducaoLogDTO, IndicadorProducaoLog> {
 
-    @Mapping(source = "idIndicadorProducao", target = "idIndicadorProducaoId")
+//    @Mapping(source = "idIndicadorProducao", target = "idIndicadorProducaoId")
     IndicadorProducaoLogDTO toDto(IndicadorProducaoLog indicadorProducaoLog);
 
-    @Mapping(source = "idIndicadorProducaoId", target = "idIndicadorProducao")
+//    @Mapping(source = "idIndicadorProducaoId", target = "idIndicadorProducao")
     IndicadorProducaoLog toEntity(IndicadorProducaoLogDTO indicadorProducaoLogDTO);
 
     default IndicadorProducaoLog fromId(Long id) {

@@ -40,6 +40,10 @@ export class HomeComponent implements OnInit {
             this.account = account;
         });
         this.registerAuthenticationSuccess();
+
+        if (this.isAuthenticated()) {
+            this.router.navigate(['dashboard']);
+        }
     }
 
     registerAuthenticationSuccess() {

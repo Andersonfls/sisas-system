@@ -49,6 +49,7 @@ export class IndicadorProducaoDialogComponent implements OnInit {
                 this.load(params['id']);
             } else {
                 this.indicadorProducao = new IndicadorProducao();
+                // this.findLastIndicador();
             }
         });
 
@@ -65,8 +66,6 @@ export class IndicadorProducaoDialogComponent implements OnInit {
             (res: HttpResponse<Provincia[]>) => {
                 this.provincias = res.body;
             }, (res: HttpErrorResponse) => this.onError(res.message));
-
-         this.findLastIndicador();
 
     }
 
@@ -89,7 +88,8 @@ export class IndicadorProducaoDialogComponent implements OnInit {
                     };
                 }
                 this.indicadorProducao = indicadorProducao;
-                console.log(this.indicadorProducao);
+                // this.findLastIndicador();
+                this.somaCampos();
             });
     }
 
@@ -134,28 +134,39 @@ export class IndicadorProducaoDialogComponent implements OnInit {
     // VERDE = Recebe o resultado do último mês(Mês Anterior):
     // V1, V2, V22 AO V25,V32,V33, V56 AO V62, V73, V74, V77 AO 79
     findLastIndicador() {
-        this.indicadorProducaoService.findLast().subscribe(
-            (res: HttpResponse<IndicadorProducao>) => {
-                const indicadorMesAnterior = res.body;
-                if (indicadorMesAnterior) {
-                    this.indicadorProducao.qtdCaptacoes = indicadorMesAnterior.qtdCaptacoes ? indicadorMesAnterior.qtdCaptacoes : 0;  // 56
-                    this.indicadorProducao.qtdEtas = indicadorMesAnterior.qtdEtas ? indicadorMesAnterior.qtdEtas : 0; // 57
-                    this.indicadorProducao.qtdReservatorios = indicadorMesAnterior.qtdReservatorios ? indicadorMesAnterior.qtdReservatorios : 0; // 58
-                    this.indicadorProducao.qtdEstacoesElevatorias = indicadorMesAnterior.qtdEstacoesElevatorias ? indicadorMesAnterior.qtdEstacoesElevatorias : 0; // 59
-                    this.indicadorProducao.qtdComprimentoAdutoras = indicadorMesAnterior.qtdComprimentoAdutoras ? indicadorMesAnterior.qtdComprimentoAdutoras : 0; // 60
-                    this.indicadorProducao.qtdComprimentoRedes = indicadorMesAnterior.qtdComprimentoRedes ? indicadorMesAnterior.qtdComprimentoRedes : 0; // 61
-                    this.indicadorProducao.qtdComprimentoRamais = indicadorMesAnterior.qtdComprimentoRamais ? indicadorMesAnterior.qtdComprimentoRamais : 0; // 62
-                    this.indicadorProducao.qtdManuaisMoPrevistos = indicadorMesAnterior.qtdManuaisMoPrevistos ? indicadorMesAnterior.qtdManuaisMoPrevistos : 0; // 73
-                    this.indicadorProducao.qtdManuaisMmsPrevistos = indicadorMesAnterior.qtdManuaisMmsPrevistos ? indicadorMesAnterior.qtdManuaisMmsPrevistos : 0;  // 74
-                    this.indicadorProducao.qtdAcoesManuaisMoRealizadas = indicadorMesAnterior.qtdAcoesManuaisMoRealizadas ? indicadorMesAnterior.qtdAcoesManuaisMoRealizadas : 0; // 77
-                    this.indicadorProducao.qtdManuaisMmsRealizadas = indicadorMesAnterior.qtdManuaisMmsRealizadas ? indicadorMesAnterior.qtdManuaisMmsRealizadas : 0;  // 78
-                    this.indicadorProducao.qtdManuaisCmpRealizadas = indicadorMesAnterior.qtdManuaisCmpRealizadas ? indicadorMesAnterior.qtdManuaisCmpRealizadas : 0; // 79
-                }
-                this.somaCampos();
-            },
-            (error1) => {
-                (this.onError(error1));
-            });
+        if (!this.indicadorProducao.id && this.indicadorProducao.provincia) {
+            this.indicadorProducaoService.findLast(this.indicadorProducao.provincia.id).subscribe(
+                (res: HttpResponse<IndicadorProducao>) => {
+                    const indicadorMesAnterior = res.body;
+                    if (indicadorMesAnterior) {
+                        this.indicadorProducao.qtdPopulacaoCobertaInfraestrutura = indicadorMesAnterior.qtdPopulacaoCobertaInfraestrutura;
+                        this.indicadorProducao.qtdFontanariosChafarisesOperacionais = indicadorMesAnterior.qtdFontanariosChafarisesOperacionais;
+                        this.indicadorProducao.qtdFuncionarios = indicadorMesAnterior.qtdFuncionarios;
+                        this.indicadorProducao.qtdFuncionariosEfectivos = indicadorMesAnterior.qtdFuncionariosEfectivos;
+                        this.indicadorProducao.qtdFuncionariosContratados = indicadorMesAnterior.qtdFuncionariosContratados;
+                        this.indicadorProducao.qtdFuncionariosOutrasEntidades = indicadorMesAnterior.qtdFuncionariosOutrasEntidades;
+                        this.indicadorProducao.qtdLigacoesActivas = indicadorMesAnterior.qtdLigacoesActivas;
+                        this.indicadorProducao.qtdLigacoesDomesticasActivas = indicadorMesAnterior.qtdLigacoesDomesticasActivas;
+                        this.indicadorProducao.qtdCaptacoes = indicadorMesAnterior.qtdCaptacoes;
+                        this.indicadorProducao.qtdEtas = indicadorMesAnterior.qtdEtas;
+                        this.indicadorProducao.qtdReservatorios = indicadorMesAnterior.qtdReservatorios;
+                        this.indicadorProducao.qtdEstacoesElevatorias = indicadorMesAnterior.qtdEstacoesElevatorias;
+                        this.indicadorProducao.qtdComprimentoAdutoras = indicadorMesAnterior.qtdComprimentoAdutoras;
+                        this.indicadorProducao.qtdComprimentoRedes = indicadorMesAnterior.qtdComprimentoRedes;
+                        this.indicadorProducao.qtdManuaisMoPrevistos = indicadorMesAnterior.qtdManuaisMoPrevistos;
+                        this.indicadorProducao.qtdManuaisMmsPrevistos = indicadorMesAnterior.qtdManuaisMmsPrevistos;
+                        this.indicadorProducao.qtdAcoesManuaisMoRealizadas = indicadorMesAnterior.qtdAcoesManuaisMoRealizadas;
+                        this.indicadorProducao.qtdManuaisMmsRealizadas = indicadorMesAnterior.qtdManuaisMmsRealizadas;
+                        this.indicadorProducao.qtdManuaisCmpRealizadas = indicadorMesAnterior.qtdManuaisCmpRealizadas;
+
+                        console.log('Indicador mes anterior', indicadorMesAnterior);
+                    }
+                    this.somaCampos();
+                },
+                (error1) => {
+                    (this.onError(error1));
+                });
+        }
     }
 
     // AZUL = Recebe a soma dos campos(Não precisa digitar):

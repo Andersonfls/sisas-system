@@ -87,9 +87,9 @@ public class IndicadorProducaoLogQueryService extends QueryService<IndicadorProd
             if (criteria.getDtLog() != null) {
                 specification = specification.and(buildRangeSpecification(criteria.getDtLog(), IndicadorProducaoLog_.dtLog));
             }
-            if (criteria.getIdIndicadorProducaoId() != null) {
-                specification = specification.and(buildReferringEntitySpecification(criteria.getIdIndicadorProducaoId(), IndicadorProducaoLog_.idIndicadorProducao, IndicadorProducao_.id));
-            }
+//            if (criteria.getIdIndicadorProducaoId() != null) {
+//                specification = specification.and(buildReferringEntitySpecification(criteria.getIdIndicadorProducaoId(), IndicadorProducaoLog_.idIndicadorProducao, IndicadorProducao_.id));
+//            }
         }
         return specification;
     }

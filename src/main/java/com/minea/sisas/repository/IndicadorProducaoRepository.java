@@ -41,4 +41,11 @@ public interface IndicadorProducaoRepository extends JpaRepository<IndicadorProd
 
     @Query("select i from IndicadorProducao i where i.status =1 and i.provincia.id = :provinciaId")
     Page<IndicadorProducao> findAllByStatusIsTrueAndProvinciaId(@Param("provinciaId") Long provinciaId, Pageable pageable);
+
+    // ULTIMO INDICADOR DO MES
+    @Query("select i from IndicadorProducao i where i.id = (select max(j.id) from IndicadorProducao j where month(j.dtLancamento) = ?1) ")
+    IndicadorProducao getLastByMonth(Integer mes);
+
+    @Query("select i from IndicadorProducao i where i.id = (select max(j.id) from IndicadorProducao j where month(j.dtLancamento) = ?1 and j.provincia.id = ?2)  ")
+    IndicadorProducao getLastByMonthAndProvincia(Integer mes, Long provinciaId);
 }

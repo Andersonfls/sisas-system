@@ -34,8 +34,8 @@
                 <td>{{indicadorProducaoLog.log}}</td>
                 <td>{{indicadorProducaoLog.dtLog | date:'dd/MM/yy'}}</td>
                 <td>
-                    <div *ngIf="indicadorProducaoLog.idIndicadorProducaoId">
-                        <a [routerLink]="['../indicador-producao', indicadorProducaoLog.idIndicadorProducaoId.id  ]" >{{indicadorProducaoLog.idIndicadorProducaoId.id}}</a>
+                    <div *ngIf="indicadorProducaoLog.idIndicadorProducao">
+                        <a [routerLink]="['../indicador-producao', indicadorProducaoLog.idIndicadorProducao  ]" >{{indicadorProducaoLog.idIndicadorProducao}}</a>
                     </div>
                 </td>
                 <td class="text-right">

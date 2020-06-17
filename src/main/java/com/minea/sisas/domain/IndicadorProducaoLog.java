@@ -40,9 +40,8 @@ public class IndicadorProducaoLog implements Serializable {
     @Column(name = "dt_log", nullable = false)
     private LocalDate dtLog;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "id_indicador_producao")
-    private IndicadorProducao idIndicadorProducao;
+    @Column(name = "ID_INDICADOR_PRODUCAO")
+    private Long idIndicadorProducao;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -105,19 +104,14 @@ public class IndicadorProducaoLog implements Serializable {
         this.dtLog = dtLog;
     }
 
-    public IndicadorProducao getIdIndicadorProducao() {
+    public Long getIdIndicadorProducao() {
         return idIndicadorProducao;
     }
 
-    public IndicadorProducaoLog idIndicadorProducao(IndicadorProducao indicadorProducao) {
-        this.idIndicadorProducao = indicadorProducao;
-        return this;
+    public void setIdIndicadorProducao(Long idIndicadorProducao) {
+        this.idIndicadorProducao = idIndicadorProducao;
     }
-
-    public void setIdIndicadorProducao(IndicadorProducao indicadorProducao) {
-        this.idIndicadorProducao = indicadorProducao;
-    }
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+// jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
     public boolean equals(Object o) {

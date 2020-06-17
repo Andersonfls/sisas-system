@@ -18,7 +18,7 @@
 
                 <div class="input-group" style="max-width: 97%; margin-bottom: 1%">
                     <select class="form-control" id="field_idProvincia" name="provincia" [(ngModel)]="programasProjecto.provincia" (ngModelChange)="onChangeMunicipios()">
-                        <option [ngValue]="null" selected>Selecione a Província..</option>
+                        <option [ngValue]="null" selected>Todas as Províncias..</option>
                         <option [ngValue]="provinciaOption.id === programasProjecto.provincia?.id ? programasProjecto.provincia : provinciaOption"
                                 *ngFor="let provinciaOption of provincias">{{provinciaOption.nmProvincia}}</option>
                     </select>
@@ -64,10 +64,10 @@
                 <span class="fa fa-file-excel-o"></span>
                 <span class="d-none d-md-inline">Excel</span>
             </button>
-            <button type="button" (click)="captureScreen('tbmuni')" class="btn btn-primary btn-sm bt-pdf">
-                <span class="fas fa-file-pdf"></span>
-                <span class="d-none d-md-inline">PDF</span>
-            </button>
+            <!--<button type="button" (click)="captureScreen('tbmuni')" class="btn btn-primary btn-sm bt-pdf">-->
+                <!--<span class="fas fa-file-pdf"></span>-->
+                <!--<span class="d-none d-md-inline">PDF</span>-->
+            <!--</button>-->
         </h2>
     </div>
     <br/>
@@ -76,32 +76,180 @@
             <table id="tbmuni" class="table table-striped">
                 <thead>
                 <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-                    <th><span jhiTranslate="sisasApp.programasProjectos.nmDesignacaoProjeto">Nm Designacao Projeto</span></th>
-                    <th><span jhiTranslate="sisasApp.programasProjectos.nmDescricaoProjeto">Nm Descricao Projeto</span></th>
-                    <th><span jhiTranslate="sisasApp.programasProjectos.dtLancamento">Dt Lancamento</span></th>
-                    <th><span jhiTranslate="sisasApp.programasProjectos.associado-inqu"></span>Associado a Inquerito</th>
-                    <th><span jhiTranslate="sisasApp.programasProjectos.finalidadeProjeto"></span>Finalidade </th>
-                    <th><span jhiTranslate="sisasApp.programasProjectos.idSaaAssociado">Id Saa Associado</span></th>
-                    <th><span jhiTranslate="sisasApp.programasProjectos.tipoFinanciamento"></span>Financiamento </th>
-                    <th><span jhiTranslate="sisasApp.programasProjectos.especialidades"></span>Especialidades </th>
-                    <th><span jhiTranslate="sisasApp.programasProjectos.idProvincia">Id Provincia</span></th>
-                    <th><span jhiTranslate="sisasApp.programasProjectos.idMunicipio"></span>Municipio </th>
-                    <th><span jhiTranslate="sisasApp.programasProjectos.idComuna"></span>Comuna </th>
+                    <th><span jhiTranslate="sisasApp.programasProjectos.nmDesignacaoProjeto"></span></th>
+                    <th><span jhiTranslate="sisasApp.programasProjectos.nmDescricaoProjeto"></span></th>
+                    <th><span jhiTranslate="sisasApp.programasProjectos.dtLancamento"></span></th>
+                    <th><span jhiTranslate="sisasApp.programasProjectos.associado-inqu"></span></th>
+                    <th><span jhiTranslate="sisasApp.programasProjectos.finalidadeProjeto"></span> </th>
+                    <th><span jhiTranslate="sisasApp.programasProjectos.idSaaAssociado"></span></th>
+                    <th><span jhiTranslate="sisasApp.programasProjectos.tipoFinanciamento"></span> </th>
+                    <th><span jhiTranslate="sisasApp.programasProjectos.especialidades"></span></th>
+                    <th><span jhiTranslate="sisasApp.programasProjectos.idProvincia"></span></th>
+                    <th><span jhiTranslate="sisasApp.programasProjectos.idMunicipio"></span> </th>
+                    <th><span jhiTranslate="sisasApp.programasProjectos.idComuna"></span> </th>
+
+                    <th><span>Concepcao</span> </th>
+                    <th jhiSortBy="tipoConcurso"><span jhiTranslate="sisasApp.concepcao.tipoConcurso">Tipo Concurso</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="dtLancamento"><span jhiTranslate="sisasApp.concepcao.dtLancamento">Dt Lancamento</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="dtUltimaAlteracao"><span jhiTranslate="sisasApp.concepcao.dtUltimaAlteracao">Dt Ultima Alteracao</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="dtElaboracaoCon"><span jhiTranslate="sisasApp.concepcao.dtElaboracaoCon">Dt Elaboracao Con</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="dtAprovacaoCon"><span jhiTranslate="sisasApp.concepcao.dtAprovacaoCon">Dt Aprovacao Con</span> <span class="fa fa-sort"></span></th>
+
+                    <th><span>Concurso</span> </th>
+                    <th jhiSortBy="tipoConcurso"><span jhiTranslate="sisasApp.concurso.tipoConcurso">Tipo Concurso</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="dtLancamento"><span jhiTranslate="sisasApp.concurso.dtLancamento">Dt Lancamento</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="dtUltimaAlteracao"><span jhiTranslate="sisasApp.concurso.dtUltimaAlteracao">Dt Ultima Alteracao</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="dtEntregaProposta"><span jhiTranslate="sisasApp.concurso.dtEntregaProposta">Dt Entrega Proposta</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="dtAberturaProposta"><span jhiTranslate="sisasApp.concurso.dtAberturaProposta">Dt Abertura Proposta</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="dtConclusaoAvaliacaoRelPrel"><span jhiTranslate="sisasApp.concurso.dtConclusaoAvaliacaoRelPrel">Dt Conclusao Avaliacao Rel Prel</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="dtNegociacao"><span jhiTranslate="sisasApp.concurso.dtNegociacao">Dt Negociacao</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="dtAprovRelAvalFinal"><span jhiTranslate="sisasApp.concurso.dtAprovRelAvalFinal">Dt Aprov Rel Aval Final</span> <span class="fa fa-sort"></span></th>
+
+                    <th><span>Adjudicacao</span> </th>
+                    <th jhiSortBy="tipoConcurso"><span jhiTranslate="sisasApp.adjudicacao.tipoConcurso">Tipo Concurso</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="dtLancamento"><span jhiTranslate="sisasApp.adjudicacao.dtLancamento">Dt Lancamento</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="dtComunicaoAdjudicacao"><span jhiTranslate="sisasApp.adjudicacao.dtComunicaoAdjudicacao">Dt Comunicao Adjudicacao</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="dtPrestacaoGarantBoaExec"><span jhiTranslate="sisasApp.adjudicacao.dtPrestacaoGarantBoaExec">Dt Prestacao Garant Boa Exec</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="dtSubmissaoMinutContrato"><span jhiTranslate="sisasApp.adjudicacao.dtSubmissaoMinutContrato">Dt Submissao Minut Contrato</span> <span class="fa fa-sort"></span></th>
+
+                    <th><span>Contrato</span> </th>
+                    <th jhiSortBy="nmEmpresaAdjudicitaria"><span jhiTranslate="sisasApp.contrato.nmEmpresaAdjudicitaria">Nm Empresa Adjudicitaria</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="tipoEmpreitada"><span jhiTranslate="sisasApp.contrato.tipoEmpreitada">Tipo Empreitada</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="tipoMoeda"><span jhiTranslate="sisasApp.contrato.tipoMoeda">Tipo Moeda</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="valorContrato"><span jhiTranslate="sisasApp.contrato.valorContrato">Valor Contrato</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="dtAssinatura"><span jhiTranslate="sisasApp.contrato.dtAssinatura">Dt Assinatura</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="dtFinalizacaoProcessoHomologAprov"><span jhiTranslate="sisasApp.contrato.dtFinalizacaoProcessoHomologAprov">Dt Finalizacao Processo Homolog Aprov</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="dtVistoTribunal"><span jhiTranslate="sisasApp.contrato.dtVistoTribunal">dtVistoTribunal</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="dtPagmEmol"><span jhiTranslate="sisasApp.contrato.dtPagmEmol">dtPagmEmol</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="valorAdiantamento"><span jhiTranslate="sisasApp.contrato.valorAdiantamento">Valor Adiantamento</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="dtAdiantamento"><span jhiTranslate="sisasApp.contrato.dtAdiantamento">dtAdiantamento</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="dtPrazoGarantAdi"><span jhiTranslate="sisasApp.contrato.dtPrazoGarantAdi">dtPrazoGarantAdi</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="prazoAdiantamento"><span jhiTranslate="sisasApp.contrato.prazoAdiantamento">prazoAdiantamento</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="dtInicio"><span jhiTranslate="sisasApp.contrato.dtInicio">Dt Inicio</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="prazoExecucao"><span jhiTranslate="sisasApp.contrato.prazoExecucao">Prazo Execucao</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="dtPrazoVinculativos"><span jhiTranslate="sisasApp.contrato.dtPrazoVinculativos">dtPrazoVinculativos</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="dtLancamento"><span jhiTranslate="sisasApp.contrato.dtLancamento">Dt Lancamento</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="dtRecepcaoProvisoria"><span jhiTranslate="sisasApp.contrato.dtRecepcaoProvisoria">Dt Recepcao Provisoria</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="dtRecepcaoDefinitiva"><span jhiTranslate="sisasApp.contrato.dtRecepcaoDefinitiva">Dt Recepcao Definitiva</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="nmResposavelProjeto"><span jhiTranslate="sisasApp.contrato.nmResposavelProjeto">Nm Resposavel Projeto</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="nmResposavelAntProjeto"><span jhiTranslate="sisasApp.contrato.nmResposavelAntProjeto">Nm Resposavel Ant Projeto</span> <span class="fa fa-sort"></span></th>
+
+                    <th><span>Empreitada</span> </th>
+                    <th jhiSortBy="tipoEmpreitada"><span jhiTranslate="sisasApp.empreitada.tipoEmpreitada">Tipo Empreitada</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="dtLancamento"><span jhiTranslate="sisasApp.empreitada.dtLancamento">Dt Lancamento</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="numCapacidadeCaptacao"><span jhiTranslate="sisasApp.empreitada.numCapacidadeCaptacao">Num Capacidade Captacao</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="numCapacidadeCaptacaoEta"><span jhiTranslate="sisasApp.empreitada.numCapacidadeCaptacaoEta">Num Capacidade Captacao Eta</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="numExtensaoCondAdutMat"><span jhiTranslate="sisasApp.empreitada.numExtensaoCondAdutMat">Num Extensao Cond Adut Mat</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="numCaprmazenamento"><span jhiTranslate="sisasApp.empreitada.numCaprmazenamento">Num Caprmazenamento</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="numExtensaoRedeMat"><span jhiTranslate="sisasApp.empreitada.numExtensaoRedeMat">Num Extensao Rede Mat</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="numLigacoesDomiciliares"><span jhiTranslate="sisasApp.empreitada.numLigacoesDomiciliares">Num Ligacoes Domiciliares</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="numLigacoesTorneiraQuintal"><span jhiTranslate="sisasApp.empreitada.numLigacoesTorneiraQuintal">Num Ligacoes Torneira Quintal</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="numChafarisNovos"><span jhiTranslate="sisasApp.empreitada.numChafarisNovos">Num Chafaris Novos</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="numChafarisReabilitar"><span jhiTranslate="sisasApp.empreitada.numChafarisReabilitar">Num Chafaris Reabilitar</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="numCapacidadeTratamentoEta"><span jhiTranslate="sisasApp.empreitada.numCapacidadeTratamentoEta">Num Capacidade Tratamento Eta</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="numExtensaoRedeMaterial"><span jhiTranslate="sisasApp.empreitada.numExtensaoRedeMaterial">Num Extensao Rede Material</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="numExtensaoCondutasElelMat"><span jhiTranslate="sisasApp.empreitada.numExtensaoCondutasElelMat">Num Extensao Condutas Elel Mat</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="numLigacoes"><span jhiTranslate="sisasApp.empreitada.numLigacoes">Num Ligacoes</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="numCaixasVisitas"><span jhiTranslate="sisasApp.empreitada.numCaixasVisitas">Num Caixas Visitas</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="numEstacoesElevatorias"><span jhiTranslate="sisasApp.empreitada.numEstacoesElevatorias">Num Estacoes Elevatorias</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="numLatrinas"><span jhiTranslate="sisasApp.empreitada.numLatrinas">Num Latrinas</span> <span class="fa fa-sort"></span></th>
+
+                    <th><span>Execucao</span> </th>
+                    <th jhiSortBy="tipoEmpreitada"><span jhiTranslate="sisasApp.execucao.tipoEmpreitada">Tipo Empreitada</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="dtLancamento"><span jhiTranslate="sisasApp.execucao.dtLancamento">Dt Lancamento</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="dtPeridoReferencia"><span jhiTranslate="sisasApp.execucao.dtPeridoReferencia">Dt Perido Referencia</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="dtFimReferencia"><span jhiTranslate="sisasApp.execucao.dtFimReferencia">Dt Fim Referencia</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="valorFacturadoPeriodo"><span jhiTranslate="sisasApp.execucao.valorFacturadoPeriodo">Valor Facturado Periodo</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="dtFactura"><span jhiTranslate="sisasApp.execucao.dtFactura">Dt Factura</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="numFactura"><span jhiTranslate="sisasApp.execucao.numFactura">Num Factura</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="txCambio"><span jhiTranslate="sisasApp.execucao.txCambio">Tx Cambio</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="constrangimento"><span jhiTranslate="sisasApp.execucao.constrangimento">Constrangimento</span> <span class="fa fa-sort"></span></th>
+                    <th jhiSortBy="valorPagoPeriodo"><span jhiTranslate="sisasApp.execucao.valorPagoPeriodo">Valor Pago Periodo</span> <span class="fa fa-sort"></span></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let programasProjectos of programasProjectos">
-                    <td>{{programasProjectos.nmDesignacaoProjeto}}</td>
-                    <td>{{programasProjectos.nmDescricaoProjeto}}</td>
-                    <td>{{programasProjectos.dtLancamento | date:'shortDate'}}</td>
-                    <td>{{programasProjectos.associadoInquerito}}</td>
-                    <td>{{programasProjectos.finalidadeProjeto}}</td>
-                    <td>{{programasProjectos.idSaaAssociado}}</td>
-                    <td>{{programasProjectos.tipoFinanciamento}}</td>
-                    <td>{{programasProjectos.especialidade}}</td>
-                    <td> {{programasProjectos.provincia?.nmProvincia}} </td>
-                    <td> {{programasProjectos.municipio?.nmMunicipio}} </td>
-                    <td> {{programasProjectos.comuna?.nmComuna}} </td>
+                <tr *ngFor="let programasProjecto of programasProjectos">
+                    <td>{{programasProjecto.nmDesignacaoProjeto}}</td>
+                    <td>{{programasProjecto.nmDescricaoProjeto}}</td>
+                    <td>{{programasProjecto.dtLancamento | date:'shortDate'}}</td>
+                    <td>{{programasProjecto.associadoInquerito}}</td>
+                    <td>{{programasProjecto.finalidadeProjeto}}</td>
+                    <td>{{programasProjecto.idSaaAssociado}}</td>
+                    <td>{{programasProjecto.tipoFinanciamento}}</td>
+                    <td>{{programasProjecto.especialidade}}</td>
+                    <td> {{programasProjecto.provincia?.nmProvincia}} </td>
+                    <td> {{programasProjecto.municipio?.nmMunicipio}} </td>
+                    <td> {{programasProjecto.comuna?.nmComuna}} </td>
+                    <th><span></span> </th>
+                    <td>{{programasProjecto.concepcao.tipoConcurso}}</td>
+                    <td>{{programasProjecto.concepcao.dtLancamento | date:'shortDate'}}</td>
+                    <td>{{programasProjecto.concepcao.dtUltimaAlteracao | date:'shortDate'}}</td>
+                    <td>{{programasProjecto.concepcao.dtElaboracaoCon | date:'shortDate'}}</td>
+                    <td>{{programasProjecto.concepcao.dtAprovacaoCon | date:'shortDate'}}</td>
+                    <th><span></span> </th>
+                    <td>{{programasProjecto.concurso.tipoConcurso}}</td>
+                    <td>{{programasProjecto.concurso.dtLancamento | date:'shortDate'}}</td>
+                    <td>{{programasProjecto.concurso.dtUltimaAlteracao | date:'shortDate'}}</td>
+                    <td>{{programasProjecto.concurso.dtEntregaProposta | date:'shortDate'}}</td>
+                    <td>{{programasProjecto.concurso.dtAberturaProposta | date:'shortDate'}}</td>
+                    <td>{{programasProjecto.concurso.dtConclusaoAvaliacaoRelPrel | date:'shortDate'}}</td>
+                    <td>{{programasProjecto.concurso.dtNegociacao | date:'shortDate'}}</td>
+                    <td>{{programasProjecto.concurso.dtAprovRelAvalFinal | date:'shortDate'}}</td>
+                    <th><span></span> </th>
+                    <td>{{programasProjecto.adjudicacao.tipoConcurso}}</td>
+                    <td>{{programasProjecto.adjudicacao.dtLancamento | date:'shortDate'}}</td>
+                    <td>{{programasProjecto.adjudicacao.dtComunicaoAdjudicacao | date:'shortDate'}}</td>
+                    <td>{{programasProjecto.adjudicacao.dtPrestacaoGarantBoaExec | date:'shortDate'}}</td>
+                    <td>{{programasProjecto.adjudicacao.dtSubmissaoMinutContrato | date:'shortDate'}}</td>
+                    <th><span></span> </th>
+                    <td>{{programasProjecto.contrato.nmEmpresaAdjudicitaria}}</td>
+                    <td>{{programasProjecto.contrato.tipoEmpreitada}}</td>
+                    <td>{{programasProjecto.contrato.tipoMoeda}}</td>
+                    <td>{{programasProjecto.contrato.valorContrato}}</td>
+                    <td>{{programasProjecto.contrato.dtAssinatura | date:'shortDate'}}</td>
+                    <td>{{programasProjecto.contrato.dtFinalizacaoProcessoHomologAprov | date:'shortDate'}}</td>
+                    <td>{{programasProjecto.contrato.dtVistoTribunalContas | date:'shortDate'}}</td>
+                    <td>{{programasProjecto.contrato.dtPagamentoEmolumentos | date:'shortDate'}}</td>
+                    <td>{{programasProjecto.contrato.valorAdiantamento}}</td>
+                    <td>{{programasProjecto.contrato.dtAdiantamento | date:'shortDate'}}</td>
+                    <td>{{programasProjecto.contrato.dtPrazoGarantiaAditamento | date:'shortDate'}}</td>
+                    <td>{{programasProjecto.contrato.prazoGarantiaAdiantamento | date:'shortDate'}}</td>
+                    <td>{{programasProjecto.contrato.dtInicio | date:'shortDate'}}</td>
+                    <td>{{programasProjecto.contrato.prazoExecucao}}</td>
+                    <td>{{programasProjecto.contrato.dtPrazosVinculativos | date:'shortDate'}}</td>
+                    <td>{{programasProjecto.contrato.dtLancamento | date:'shortDate'}}</td>
+                    <td>{{programasProjecto.contrato.dtRecepcaoProvisoria | date:'shortDate'}}</td>
+                    <td>{{programasProjecto.contrato.dtRecepcaoDefinitiva | date:'shortDate'}}</td>
+                    <th><span></span> </th>
+                    <td>{{programasProjecto.empreitada.tipoEmpreitada}}</td>
+                    <td>{{programasProjecto.empreitada.dtLancamento | date:'shortDate'}}</td>
+                    <td>{{programasProjecto.empreitada.numCapacidadeCaptacao}}</td>
+                    <td>{{programasProjecto.empreitada.numCapacidadeCaptacaoEta}}</td>
+                    <td>{{programasProjecto.empreitada.numExtensaoCondAdutMat}}</td>
+                    <td>{{programasProjecto.empreitada.numCaprmazenamento}}</td>
+                    <td>{{programasProjecto.empreitada.numExtensaoRedeMat}}</td>
+                    <td>{{programasProjecto.empreitada.numLigacoesDomiciliares}}</td>
+                    <td>{{programasProjecto.empreitada.numLigacoesTorneiraQuintal}}</td>
+                    <td>{{programasProjecto.empreitada.numChafarisNovos}}</td>
+                    <td>{{programasProjecto.empreitada.numChafarisReabilitar}}</td>
+                    <td>{{programasProjecto.empreitada.numCapacidadeTratamentoEta}}</td>
+                    <td>{{programasProjecto.empreitada.numExtensaoRedeMaterial}}</td>
+                    <td>{{programasProjecto.empreitada.numExtensaoCondutasElelMat}}</td>
+                    <td>{{programasProjecto.empreitada.numLigacoes}}</td>
+                    <td>{{programasProjecto.empreitada.numCaixasVisitas}}</td>
+                    <td>{{programasProjecto.empreitada.numEstacoesElevatorias}}</td>
+                    <td>{{programasProjecto.empreitada.numLatrinas}}</td>
+                    <th><span></span> </th>
+                    <td>{{programasProjecto.execucao.tipoEmpreitada}}</td>
+                    <td>{{programasProjecto.execucao.dtLancamento | date:'shortDate'}}</td>
+                    <td>{{programasProjecto.execucao.dtPeridoReferencia | date:'shortDate'}}</td>
+                    <td>{{programasProjecto.execucao.dtFimReferencia | date:'shortDate'}}</td>
+                    <td>{{programasProjecto.execucao.valorFacturadoPeriodo}}</td>
+                    <td>{{programasProjecto.execucao.dtFactura | date:'shortDate'}}</td>
+                    <td>{{programasProjecto.execucao.numFactura}}</td>
+                    <td>{{programasProjecto.execucao.txCambio}}</td>
+                    <td>{{programasProjecto.execucao.constrangimento}}</td>
+                    <td>{{programasProjecto.execucao.valorPagoPeriodo}}</td>
                 </tr>
                 </tbody>
             </table>

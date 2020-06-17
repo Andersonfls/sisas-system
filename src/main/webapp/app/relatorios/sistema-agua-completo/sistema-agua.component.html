@@ -22,7 +22,7 @@
 
                 <div class="input-group" style="max-width: 97%; margin-bottom: 1%">
                     <select class="form-control" id="field_idProvincia" name="provincia" [(ngModel)]="sistemaAgua.provincia" (ngModelChange)="onChangeMunicipios()">
-                        <option [ngValue]="null" selected>Selecione a Província..</option>
+                        <option [ngValue]="null" selected>Todas as Provincias</option>
                         <option [ngValue]="provinciaOption.id === sistemaAgua.provincia?.id ? sistemaAgua.provincia : provinciaOption"
                                 *ngFor="let provinciaOption of provincias">{{provinciaOption.nmProvincia}}</option>
                     </select>

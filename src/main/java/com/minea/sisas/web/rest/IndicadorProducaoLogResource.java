@@ -102,7 +102,7 @@ public class IndicadorProducaoLogResource {
     @Timed
     public ResponseEntity<List<IndicadorProducaoLogDTO>> getAllIndicadorProducaoLogs(IndicadorProducaoLogCriteria criteria, Pageable pageable) {
         log.debug("REST request to get IndicadorProducaoLogs by criteria: {}", criteria);
-        Page<IndicadorProducaoLogDTO> page = indicadorProducaoLogQueryService.findByCriteria(criteria, pageable);
+        Page<IndicadorProducaoLogDTO> page = indicadorProducaoLogService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/indicador-producao-logs");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

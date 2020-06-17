@@ -29,7 +29,7 @@ public class IndicadorProducaoLogDTO implements Serializable {
     @NotNull
     private LocalDate dtLog;
 
-    private IndicadorProducao idIndicadorProducaoId;
+    private Long idIndicadorProducao;
 
     public Long getId() {
         return id;
@@ -71,12 +71,12 @@ public class IndicadorProducaoLogDTO implements Serializable {
         this.dtLog = dtLog;
     }
 
-    public IndicadorProducao getIdIndicadorProducaoId() {
-        return idIndicadorProducaoId;
+    public Long getIdIndicadorProducao() {
+        return idIndicadorProducao;
     }
 
-    public void setIdIndicadorProducaoId(IndicadorProducao indicadorProducaoId) {
-        this.idIndicadorProducaoId = indicadorProducaoId;
+    public void setIdIndicadorProducao(Long idIndicadorProducao) {
+        this.idIndicadorProducao = idIndicadorProducao;
     }
 
     @Override

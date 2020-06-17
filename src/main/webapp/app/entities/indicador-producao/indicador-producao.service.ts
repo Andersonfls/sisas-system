@@ -61,8 +61,8 @@ export class IndicadorProducaoService {
         });
     }
 
-    findLast(): Observable<EntityResponseType> {
-        return this.http.get<IndicadorProducao>(`${this.resourceUrl}/last`, { observe: 'response'})
+    findLast(id: number): Observable<EntityResponseType> {
+        return this.http.get<IndicadorProducao>(`${this.resourceUrl}/last/${id}`, { observe: 'response'})
             .map((res: EntityResponseType) => this.convertResponse(res));
     }
 

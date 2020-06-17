@@ -1,7 +1,9 @@
 package com.minea.sisas.service;
 
+import com.minea.sisas.domain.Authority;
 import com.minea.sisas.domain.IndicadorProducao;
 import com.minea.sisas.domain.SistemaAgua;
+import com.minea.sisas.domain.User;
 import com.minea.sisas.domain.enumeration.TipoAcao;
 import com.minea.sisas.repository.IndicadorProducaoRepository;
 import com.minea.sisas.repository.UserRepository;
@@ -21,10 +23,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.time.Month;
+import java.util.*;
 
 
 /**
@@ -96,7 +96,7 @@ public class IndicadorProducaoService {
         IndicadorProducaoLogDTO dto = new IndicadorProducaoLogDTO();
         dto.setAcao(acao.getDescricao());
         dto.setDtLog(LocalDate.now());
-        dto.setIdIndicadorProducaoId(indicadorProducao);
+        dto.setIdIndicadorProducao(indicadorProducao.getId());
         if (Objects.nonNull(username)) {
             dto.setIdUsuario(this.userRepository.buscarUserIdByUsername(username));
         }
@@ -169,21 +169,22 @@ public class IndicadorProducaoService {
     }
 
     // REGRA DE NEGÓCIO(TEMPORÁRIO)
-    public IndicadorProducaoDTO findLast(){
+    public IndicadorProducaoDTO findLast(Long provinciaId){
         log.debug("Request to get last IndicadorProducao");
+
         IndicadorProducao indicadorProducao = null;
         IndicadorProducao indicadorProducao2 = new IndicadorProducao();
 
-        // TODAS OS INDICADORES
-        List<IndicadorProducao> indicadores= indicadorProducaoRepository.findAll();
+        Calendar c = Calendar.getInstance();
+        c.setTime(new Date());
+        c.add(Calendar.MONTH, -1);
+        int mes  = c.get(Calendar.MONTH);
 
-        if (Objects.nonNull(indicadores) && indicadores.size() > 0) {
-            indicadorProducao= indicadores.get(indicadores.size()-1); // ULTIMO INDICADOR de PRODUÇÃO REGISTRADO
-        }
-        //  LocalDateTime dataAtual= LocalDateTime.now(); IRIA SERVIR PARA BUSCAR E COMPARAR A DATA MAIS RECENTE
+        indicadorProducao = this.indicadorProducaoRepository.getLastByMonthAndProvincia(mes + 1, provinciaId);
 
         // INFORMAÇÕES QUE DEVEM VIM DO ULTIMO MÊS(Por enquanto ultimo registro)
         if (Objects.nonNull(indicadorProducao)) {
+
             int popCoberta= indicadorProducao.getQtdPopulacaoCobertaInfraestrutura().intValue();
             int numFontanariosChafarises=indicadorProducao.getQtdFontanariosChafarisesOperacionais().intValue();
             int totalFunc= indicadorProducao.getQtdFuncionarios().intValue();
@@ -201,6 +202,12 @@ public class IndicadorProducaoService {
             int ComprimentoDosRamais=indicadorProducao.getQtdComprimentoRamais().intValue();
             LocalDate data=indicadorProducao.getDtUltimaAlteracao();
 
+            Long manuaisMoPrevistros = indicadorProducao.getQtdManuaisMoPrevistos();
+            Long manuaisMmsPrevistros = indicadorProducao.getQtdManuaisMmsPrevistos();
+            Long accoesManuaisMoRealizados = indicadorProducao.getQtdAcoesManuaisMoRealizadas();
+            Long manuaisMmsRealizados = indicadorProducao.getQtdManuaisMmsRealizadas();
+            Long manuaisCmpRealizados = indicadorProducao.getQtdManuaisCmpRealizadas();
+
             indicadorProducao2.setQtdPopulacaoCobertaInfraestrutura(BigDecimal.valueOf(popCoberta));
             indicadorProducao2.setQtdFontanariosChafarisesOperacionais(BigDecimal.valueOf(numFontanariosChafarises));
             indicadorProducao2.setQtdFuncionarios(Long.valueOf(totalFunc));
@@ -217,6 +224,11 @@ public class IndicadorProducaoService {
             indicadorProducao2.setQtdComprimentoRedes(BigDecimal.valueOf(ComprimentoDasRedes));
             indicadorProducao2.setQtdComprimentoRedes(BigDecimal.valueOf(ComprimentoDosRamais));
             indicadorProducao2.setDtUltimaAlteracao(data);
+            indicadorProducao2.setQtdManuaisMoPrevistos(manuaisMoPrevistros);
+            indicadorProducao2.setQtdManuaisMmsPrevistos(manuaisMmsPrevistros);
+            indicadorProducao2.setQtdAcoesManuaisMoRealizadas(accoesManuaisMoRealizados);
+            indicadorProducao2.setQtdManuaisMmsRealizadas(manuaisMmsRealizados);
+            indicadorProducao2.setQtdManuaisCmpRealizadas(manuaisCmpRealizados);
             indicadorProducao2.setId(null);
         } else {
             indicadorProducao2.setQtdPopulacaoCobertaInfraestrutura(new BigDecimal(0));

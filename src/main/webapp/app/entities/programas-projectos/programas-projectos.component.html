@@ -67,13 +67,8 @@
     <jhi-alert></jhi-alert>
     <div class="export-container">
         <h2 class="text-centro">
-            <button type="button" (click)="exportTable('tbmuni')" class="btn btn-primary btn-sm excel">
-                <span class="fa fa-file-excel-o"></span>
-                <span class="d-none d-md-inline">Excel</span>
-            </button>
-            <button type="button" (click)="captureScreen('tbmuni')" class="btn btn-primary btn-sm bt-pdf">
-                <span class="fas fa-file-pdf"></span>
-                <span class="d-none d-md-inline">PDF</span>
+            <button style="background-color: rgb(39, 91, 142)" class="btn btn-primary btn-sm excel" [routerLink]="['../programas-projectos-export' ]">
+                <span class="d-none d-md-inline">Gerar Relatório</span>
             </button>
         </h2>
     </div>

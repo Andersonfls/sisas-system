@@ -87,7 +87,6 @@ export class IndicadorProducaoComponent implements OnInit, OnDestroy {
             pdf.addImage(contentDataURL, 'PNG', 3, 13, imgWidth, imgHeight);
             pdf.save('relatorio-indicadores.pdf');
         }).catch(function(error) {
-            // Error Handling
         });
     }
 

@@ -2,62 +2,450 @@
 <div *ngIf="programasProjectos">
     <h2><span jhiTranslate="sisasApp.programasProjectos.detail.title">Programas Projectos</span> {{programasProjectos.id}}</h2>
     <hr>
+    <div class="modal-body">
     <jhi-alert-error></jhi-alert-error>
-    <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="sisasApp.programasProjectos.nmDesignacaoProjeto">Nm Designacao Projeto</span></dt>
-        <dd>
-            <span>{{programasProjectos.nmDesignacaoProjeto}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.programasProjectos.nmDescricaoProjeto">Nm Descricao Projeto</span></dt>
-        <dd>
-            <span>{{programasProjectos.nmDescricaoProjeto}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.programasProjectos.dtLancamento">Dt Lancamento</span></dt>
-        <dd>
-            <span>{{programasProjectos.dtLancamento | date:'dd/MM/yy'}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.programasProjectos.dtUltimaAlteracao">Dt Ultima Alteracao</span></dt>
-        <dd>
-            <span>{{programasProjectos.dtUltimaAlteracao | date:'dd/MM/yy'}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.programasProjectos.idUsuario">Id Usuario</span></dt>
-        <dd>
-            <span>{{programasProjectos.usuario.nome}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.programasProjectos.idSaaAssociado">Id Saa Associado</span></dt>
-        <dd>
-            <span>{{programasProjectos.idSaaAssociado}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.programasProjectos.tipoFinanciamento">Tipo Financiamento</span></dt>
-        <dd>
-            <span>{{programasProjectos.tipoFinanciamento}}</span>
-        </dd>
-        <dt><span jhiTranslate="sisasApp.programasProjectos.idProvincia">Provincia</span></dt>
-        <dd>
-            <div *ngIf="programasProjectos.provincia.nmProvincia">
-                <a [routerLink]="['/provincia', programasProjectos.provincia.id]">{{programasProjectos.provincia.nmProvincia}}</a>
+        <nav class="d-flex justify-content-center" style="margin-bottom: 1%">
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active" id="nav-part1-tab" data-toggle="tab" href="#nav-part1" role="tab"
+                   aria-controls="nav-part1" aria-selected="true">Dados do Projecto</a>
+                <a class="nav-item nav-link" id="nav-part2-tab" data-toggle="tab" href="#nav-part2" role="tab"
+                   aria-controls="nav-part2" aria-selected="false">Concepção</a>
+                <a class="nav-item nav-link" id="nav-part3-tab" data-toggle="tab" href="#nav-part3" role="tab"
+                   aria-controls="nav-part3" aria-selected="false">Concurso</a>
+                <a class="nav-item nav-link" id="nav-part4-tab" data-toggle="tab" href="#nav-part4" role="tab"
+                   aria-controls="nav-part4" aria-selected="false">Adjudicação</a>
+                <a class="nav-item nav-link" id="nav-part5-tab" data-toggle="tab" href="#nav-part5" role="tab"
+                   aria-controls="nav-part5" aria-selected="false">Contrato</a>
+                <a class="nav-item nav-link" id="nav-part6-tab" data-toggle="tab" href="#nav-part6" role="tab"
+                   aria-controls="nav-part6" aria-selected="false">Empreitada</a>
+                <a class="nav-item nav-link" id="nav-part7-tab" data-toggle="tab" href="#nav-part7" role="tab"
+                   aria-controls="nav-part7" aria-selected="false">Execução</a>
             </div>
-        </dd>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-part1" role="tabpanel" aria-labelledby="nav-part1-tab">
+                <dl class="row-md jh-entity-details">
+                    <dt><span jhiTranslate="sisasApp.programasProjectos.nmDesignacaoProjeto">Nm Designacao Projeto</span></dt>
+                    <dd>
+                        <span>{{programasProjectos.nmDesignacaoProjeto}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="sisasApp.programasProjectos.nmDescricaoProjeto">Nm Descricao Projeto</span></dt>
+                    <dd>
+                        <span>{{programasProjectos.nmDescricaoProjeto}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="sisasApp.programasProjectos.dtLancamento">Dt Lancamento</span></dt>
+                    <dd>
+                        <span>{{programasProjectos.dtLancamento | date:'dd/MM/yy'}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="sisasApp.programasProjectos.dtUltimaAlteracao">Dt Ultima Alteracao</span></dt>
+                    <dd>
+                        <span>{{programasProjectos.dtUltimaAlteracao | date:'dd/MM/yy'}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="sisasApp.programasProjectos.idUsuario">Id Usuario</span></dt>
+                    <dd>
+                        <span>{{programasProjectos.usuario.nome}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="sisasApp.programasProjectos.idSaaAssociado">Id Saa Associado</span></dt>
+                    <dd>
+                        <span>{{programasProjectos.idSaaAssociado}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="sisasApp.programasProjectos.tipoFinanciamento">Tipo Financiamento</span></dt>
+                    <dd>
+                        <span>{{programasProjectos.tipoFinanciamento}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="sisasApp.programasProjectos.idProvincia">Provincia</span></dt>
+                    <dd>
+                        <div *ngIf="programasProjectos.provincia.nmProvincia">
+                            <a [routerLink]="['/provincia', programasProjectos.provincia.id]">{{programasProjectos.provincia.nmProvincia}}</a>
+                        </div>
+                    </dd>
 
-        <dt><span jhiTranslate="sisasApp.programasProjectos.idMunicipio">Municipio</span></dt>
-        <dd>
-            <div *ngIf="programasProjectos.municipio.nmMunicipio">
-                <a [routerLink]="['/municipio', programasProjectos.municipio.id]">{{programasProjectos.municipio.nmMunicipio}}</a>
+                    <dt><span jhiTranslate="sisasApp.programasProjectos.idMunicipio">Municipio</span></dt>
+                    <dd>
+                        <div *ngIf="programasProjectos.municipio.nmMunicipio">
+                            <a [routerLink]="['/municipio', programasProjectos.municipio.id]">{{programasProjectos.municipio.nmMunicipio}}</a>
+                        </div>
+                    </dd>
+
+                    <dt><span jhiTranslate="sisasApp.programasProjectos.idComuna">Comuna</span></dt>
+                    <dd>
+                        <div *ngIf="programasProjectos.comuna.nmComuna">
+                            <a [routerLink]="['/comuna', programasProjectos.comuna.id]">{{programasProjectos.comuna.nmComuna}}</a>
+                        </div>
+                    </dd>
+
+                    <dt><span jhiTranslate="sisasApp.programasProjectos.Localidade">Nm Localidade</span></dt>
+                    <dd>
+                        <span>{{programasProjectos.nmLocalidade}}</span>
+                    </dd>
+                </dl>
             </div>
-        </dd>
 
-        <dt><span jhiTranslate="sisasApp.programasProjectos.idComuna">Comuna</span></dt>
-        <dd>
-            <div *ngIf="programasProjectos.comuna.nmComuna">
-                <a [routerLink]="['/comuna', programasProjectos.comuna.id]">{{programasProjectos.comuna.nmComuna}}</a>
+            <!--CCONCEPCAO-->
+            <div class="tab-pane fade show active" id="nav-part2" role="tabpanel" aria-labelledby="nav-part2-tab">
+
+                <dt><span jhiTranslate="sisasApp.concepcao.tipoConcurso">Tipo Concurso</span></dt>
+                <dd>
+                    <span>{{concepcao.tipoConcurso}}</span>
+                </dd>
+
+                <!--<dt><span jhiTranslate="sisasApp.concepcao.dtLancamento">Dt Lancamento</span></dt>-->
+                <!--<dd>-->
+                    <!--<span>{{concepcao.dtLancamento | date:'shortDate'}}</span>-->
+                <!--</dd>-->
+
+                <dt><span jhiTranslate="sisasApp.concepcao.dtUltimaAlteracao">Dt Ultima Alteracao</span></dt>
+                <dd>
+                    <span>{{concepcao.dtUltimaAlteracao | date:'shortDate'}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.concepcao.dtElaboracaoCon">Dt Elaboracao Con</span></dt>
+                <dd>
+                    <span>{{concepcao.dtElaboracaoCon | date:'shortDate'}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.concepcao.dtAprovacaoCon">Dt Aprovacao Con</span></dt>
+                <dd>
+                    <span>{{concepcao.dtAprovacaoCon | date:'shortDate'}}</span>
+                </dd>
             </div>
-        </dd>
 
-        <dt><span jhiTranslate="sisasApp.programasProjectos.Localidade">Nm Localidade</span></dt>
-        <dd>
-            <span>{{programasProjectos.nmLocalidade}}</span>
-        </dd>
-    </dl>
+            <!--CONCURSO-->
+            <div class="tab-pane fade show active" id="nav-part3" role="tabpanel" aria-labelledby="nav-part3-tab">
+
+                <dt><span jhiTranslate="sisasApp.concurso.tipoConcurso">Tipo Concurso</span></dt>
+                <dd>
+                    <span>{{concurso.tipoConcurso | date:'shortDate'}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.concurso.dtLancamento">Dt Lancamento</span></dt>
+                <dd>
+                    <span>{{concurso.dtLancamento | date:'shortDate'}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.concurso.dtUltimaAlteracao">Dt Ultima Alteracao</span></dt>
+                <dd>
+                    <span>{{concurso.dtUltimaAlteracao | date:'shortDate'}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.concurso.dtEntregaProposta">Dt Entrega Proposta</span></dt>
+                <dd>
+                    <span>{{concurso.dtEntregaProposta | date:'shortDate'}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.concurso.dtAberturaProposta">Dt Abertura Proposta</span></dt>
+                <dd>
+                    <span>{{concurso.dtAberturaProposta | date:'shortDate'}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.concurso.dtConclusaoAvaliacaoRelPrel">Dt Conclusao Avaliacao Rel Prel</span></dt>
+                <dd>
+                    <span>{{concurso.dtConclusaoAvaliacaoRelPrel | date:'shortDate'}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.concurso.dtNegociacao">Dt Negociacao</span></dt>
+                <dd>
+                    <span>{{concurso.dtNegociacao | date:'shortDate'}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.concurso.dtAprovRelAvalFinal">Dt Aprov Rel Aval Final</span></dt>
+                <dd>
+                    <span>{{concurso.dtAprovRelAvalFinal | date:'shortDate'}}</span>
+                </dd>
+            </div>
+
+            <!--Adjudicacao-->
+            <div class="tab-pane fade show active" id="nav-part4" role="tabpanel" aria-labelledby="nav-part4-tab">
+
+                <dt><span jhiTranslate="sisasApp.adjudicacao.tipoConcurso">Tipo Concurso</span></dt>
+                <dd>
+                    <span>{{adjudicacao.tipoConcurso}}</span>
+                </dd>
+
+                <!--<dt><span jhiTranslate="sisasApp.adjudicacao.dtLancamento">Dt Lancamento</span></dt>-->
+                <!--<dd>-->
+                    <!--<span>{{adjudicacao.dtLancamento | date:'shortDate'}}</span>-->
+                <!--</dd>-->
+
+                <dt><span jhiTranslate="sisasApp.adjudicacao.dtComunicaoAdjudicacao">Dt Comunicao Adjudicacao</span></dt>
+                <dd>
+                    <span>{{adjudicacao.dtComunicaoAdjudicacao | date:'shortDate'}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.adjudicacao.dtPrestacaoGarantBoaExec">Dt Prestacao Garant Boa Exec</span></dt>
+                <dd>
+                    <span>{{adjudicacao.dtPrestacaoGarantBoaExec | date:'shortDate'}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.adjudicacao.dtSubmissaoMinutContrato">Dt Submissao Minut Contrato</span></dt>
+                <dd>
+                    <span>{{adjudicacao.dtSubmissaoMinutContrato | date:'shortDate'}}</span>
+                </dd>
+            </div>
+
+            <!--CONTRATO-->
+            <div class="tab-pane fade show active" id="nav-part5" role="tabpanel" aria-labelledby="nav-part5-tab">
+
+                <dt><span jhiTranslate="sisasApp.contrato.nmEmpresaAdjudicitaria">Nm Empresa Adjudicitaria</span></dt>
+                <dd>
+                    <span>{{contrato.nmEmpresaAdjudicitaria}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.contrato.tipoEmpreitada">Tipo Empreitada</span></dt>
+                <dd>
+                    <span>{{contrato.tipoEmpreitada}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.contrato.tipoConcurso">Tipo Concurso</span></dt>
+                <dd>
+                    <span>{{contrato.tipoConcurso}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.contrato.tipoMoeda">Tipo Moeda</span></dt>
+                <dd>
+                    <span>{{contrato.tipoMoeda}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.contrato.valorContrato">Valor Contrato</span></dt>
+                <dd>
+                    <span>{{contrato.valorContrato}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.contrato.dtAssinatura">Dt Assinatura</span></dt>
+                <dd>
+                    <span>{{contrato.dtAssinatura | date:'shortDate'}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.contrato.dtFinalizacaoProcessoHomologAprov">Dt Finalizacao Processo Homolog Aprov</span></dt>
+                <dd>
+                    <span>{{contrato.dtFinalizacaoProcessoHomologAprov | date:'shortDate'}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.contrato.dtVistoTribunal">t Visto Tribunal de contas</span></dt>
+                <dd>
+                    <span>{{contrato.dtVistoTribunalContas | date:'shortDate'}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.contrato.dtPagmEmol">Dt Emolumentos</span></dt>
+                <dd>
+                    <span>{{contrato.dtPagamentoEmolumentos | date:'shortDate'}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.contrato.valorAdiantamento">Valor Adiantamento</span></dt>
+                <dd>
+                    <span>{{contrato.valorAdiantamento}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.contrato.dtAdiantamento">Dt Adiantamento</span></dt>
+                <dd>
+                    <span>{{contrato.dtAdiantamento | date:'shortDate'}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.contrato.dtPrazoGarantAdi">Dt Prazo Garantia Adiantamento</span></dt>
+                <dd>
+                    <span>{{contrato.dtPrazoGarantiaAditamento | date:'shortDate'}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.contrato.prazoAdiantamento">Prazo Garantia Adiantamento</span></dt>
+                <dd>
+                    <span>{{contrato.prazoGarantiaAdiantamento}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.contrato.dtInicio">Dt Inicio</span></dt>
+                <dd>
+                    <span>{{contrato.dtInicio | date:'shortDate'}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.contrato.prazoExecucao">Prazo Execucao</span></dt>
+                <dd>
+                    <span>{{contrato.prazoExecucao}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.contrato.dtPrazoVinculativos">Data dos Prazos de vinculativos(Design, Construção, O&M)</span></dt>
+                <dd>
+                    <span>{{contrato.dtPrazosVinculativos | date:'shortDate'}}</span>
+                </dd>
+
+                <!--<dt><span jhiTranslate="sisasApp.contrato.dtLancamento">Dt Lancamento</span></dt>-->
+                <!--<dd>-->
+                    <!--<span>{{contrato.dtLancamento | date:'shortDate'}}</span>-->
+                <!--</dd>-->
+
+                <dt><span jhiTranslate="sisasApp.contrato.dtRecepcaoProvisoria">Dt Recepcao Provisoria</span></dt>
+                <dd>
+                    <span>{{contrato.dtRecepcaoProvisoria | date:'shortDate'}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.contrato.dtRecepcaoDefinitiva">Dt Recepcao Definitiva</span></dt>
+                <dd>
+                    <span>{{contrato.dtRecepcaoDefinitiva | date:'shortDate'}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.contrato.nmResposavelProjeto">Nm Resposavel Projeto</span></dt>
+                <dd>
+                    <span>{{contrato.nmResposavelProjeto}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.contrato.nmResposavelAntProjeto">Nm Resposavel Ant Projeto</span></dt>
+                <dd>
+                    <span>{{contrato.nmResposavelAntProjeto}}</span>
+                </dd>
+            </div>
+
+            <!--EMPREITADA-->
+            <div class="tab-pane fade show active" id="nav-part6" role="tabpanel" aria-labelledby="nav-part6-tab">
+
+                <dt><span jhiTranslate="sisasApp.empreitada.tipoEmpreitada">Tipo Empreitada</span></dt>
+                <dd>
+                    <span>{{empreitada.tipoEmpreitada}}</span>
+                </dd>
+
+                <!--<dt><span jhiTranslate="sisasApp.empreitada.dtLancamento">Dt Lancamento</span></dt>-->
+                <!--<dd>-->
+                    <!--<span>{{empreitada.dtLancamento | date:'shortDate'}}</span>-->
+                <!--</dd>-->
+
+                <dt><span jhiTranslate="sisasApp.empreitada.numCapacidadeCaptacao">Num Capacidade Captacao</span></dt>
+                <dd>
+                    <span>{{empreitada.numCapacidadeCaptacao}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.empreitada.numCapacidadeCaptacaoEta">Num Capacidade Captacao Eta</span></dt>
+                <dd>
+                    <span>{{empreitada.numCapacidadeCaptacaoEta}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.empreitada.numExtensaoCondAdutMat">Num Extensao Cond Adut Mat</span></dt>
+                <dd>
+                    <span>{{empreitada.numExtensaoCondAdutMat}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.empreitada.numCaprmazenamento">Num Caprmazenamento</span></dt>
+                <dd>
+                    <span>{{empreitada.numCaprmazenamento}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.empreitada.numExtensaoRedeMat">Num Extensao Rede Mat</span></dt>
+                <dd>
+                    <span>{{empreitada.numExtensaoRedeMat}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.empreitada.numLigacoesDomiciliares">Num Ligacoes Domiciliares</span></dt>
+                <dd>
+                    <span>{{empreitada.numLigacoesDomiciliares}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.empreitada.numLigacoesDomiciliares">Num Ligacoes Torneira Quintal</span></dt>
+                <dd>
+                    <span>{{empreitada.numLigacoesTorneiraQuintal}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.empreitada.numLigacoesDomiciliares">Num Chafaris Novos</span></dt>
+                <dd>
+                    <span>{{empreitada.numChafarisNovos}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.empreitada.numChafarisReabilitar">Num Chafaris Reabilitar</span></dt>
+                <dd>
+                    <span>{{empreitada.numChafarisReabilitar}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.empreitada.numCapacidadeTratamentoEta">Num Capacidade Tratamento Eta</span></dt>
+                <dd>
+                    <span>{{empreitada.numCapacidadeTratamentoEta}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.empreitada.numExtensaoRedeMaterial">Num Extensao Rede Material</span></dt>
+                <dd>
+                    <span>{{empreitada.numExtensaoRedeMaterial}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.empreitada.numExtensaoCondutasElelMat">Num Extensao Condutas Elel Mat</span></dt>
+                <dd>
+                    <span>{{empreitada.numExtensaoCondutasElelMat}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.empreitada.numLigacoes">Num Ligacoes</span></dt>
+                <dd>
+                    <span>{{empreitada.numLigacoes}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.empreitada.numCaixasVisitas">Num Caixas Visitas</span></dt>
+                <dd>
+                    <span>{{empreitada.numCaixasVisitas}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.empreitada.numEstacoesElevatorias">Num Estacoes Elevatorias</span></dt>
+                <dd>
+                    <span>{{empreitada.numEstacoesElevatorias}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.empreitada.numLatrinas">Num Latrinas</span></dt>
+                <dd>
+                    <span>{{empreitada.numLatrinas}}</span>
+                </dd>
+            </div>
+
+            <!--EXECUCAO-->
+            <div class="tab-pane fade show active" id="nav-part7" role="tabpanel" aria-labelledby="nav-part7-tab">
+
+                <dt><span jhiTranslate="sisasApp.execucao.tipoEmpreitada">Tipo Empreitada</span></dt>
+                <dd>
+                    <span>{{execucao.tipoEmpreitada}}</span>
+                </dd>
+
+                <!--<dt><span jhiTranslate="sisasApp.execucao.dtLancamento">Dt Lancamento</span></dt>-->
+                <!--<dd>-->
+                    <!--<span>{{execucao.dtLancamento | date:'shortDate'}}</span>-->
+                <!--</dd>-->
+
+                <dt><span jhiTranslate="sisasApp.execucao.dtPeridoReferencia">Dt Perido Referencia</span></dt>
+                <dd>
+                    <span>{{execucao.dtPeridoReferencia | date:'shortDate'}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.execucao.dtFimReferencia">Dt Fim Referencia</span></dt>
+                <dd>
+                    <span>{{execucao.dtFimReferencia | date:'shortDate'}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.execucao.valorFacturadoPeriodo">Valor Facturado Periodo</span></dt>
+                <dd>
+                    <span>{{execucao.valorFacturadoPeriodo}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.execucao.dtFactura">Dt Factura</span></dt>
+                <dd>
+                    <span>{{execucao.dtFactura | date:'shortDate'}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.execucao.numFactura">Num Factura</span></dt>
+                <dd>
+                    <span>{{execucao.numFactura}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.execucao.txCambio">Tx Cambio</span></dt>
+                <dd>
+                    <span>{{execucao.txCambio}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.execucao.constrangimento">Constrangimento</span></dt>
+                <dd>
+                    <span>{{execucao.constrangimento}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.execucao.valorPagoPeriodo">Valor Pago Periodo</span></dt>
+                <dd>
+                    <span>{{execucao.valorPagoPeriodo}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sisasApp.execucao.idSituacao">Id Situaca</span></dt>
+                <dd>
+                    <span>{{execucao.idSituacaoId}}</span>
+                </dd>
+            </div>
+        </div>
+    </div>
 
     <button type="submit"
             (click)="previousState()"

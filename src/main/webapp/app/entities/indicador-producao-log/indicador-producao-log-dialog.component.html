@@ -76,7 +76,7 @@
 
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="sisasApp.indicadorProducaoLog.idIndicadorProducao" for="field_idIndicadorProducao">Id Indicador Producao</label>
-            <select class="form-control" id="field_idIndicadorProducao" name="idIndicadorProducao" [(ngModel)]="indicadorProducaoLog.idIndicadorProducaoId"  required>
+            <select class="form-control" id="field_idIndicadorProducao" name="idIndicadorProducao" [(ngModel)]="indicadorProducaoLog.idIndicadorProducao"  required>
                 <option *ngIf="!editForm.value.idIndicadorProducao" [ngValue]="null" selected></option>
                 <option [ngValue]="indicadorProducaoOption.id" *ngFor="let indicadorProducaoOption of indicadorproducaos; trackBy: trackIndicadorProducaoById">{{indicadorProducaoOption.id}}</option>
             </select>

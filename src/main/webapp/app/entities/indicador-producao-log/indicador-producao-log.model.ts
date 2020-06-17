@@ -8,7 +8,7 @@ export class IndicadorProducaoLog implements BaseEntity {
         public idUsuario?: number,
         public log?: string,
         public dtLog?: any,
-        public idIndicadorProducaoId?: IndicadorProducao,
+        public idIndicadorProducao?: number,
     ) {
     }
 }

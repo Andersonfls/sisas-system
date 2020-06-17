@@ -22,6 +22,7 @@ import {Empreitada, EmpreitadaService} from '../empreitada';
 import {Situacao, SituacaoService} from '../situacao';
 import {Especialidades} from '../especialidades/especialidades.model';
 import {EspecialidadesService} from '../especialidades/especialidades.service';
+import {Fornecedor, FornecedorService} from '../fornecedor';
 
 @Component({
     selector: 'jhi-programas-projectos-dialog',
@@ -41,6 +42,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
     situacaos: Situacao[];
     sistemaaguas: SistemaAgua[];
     especialidadess: Especialidades[];
+    fornecedores: Fornecedor[];
     private subscription: Subscription;
     moeda: string;
     controleSessoes: string;
@@ -80,7 +82,8 @@ export class ProgramasProjectosDialogComponent implements OnInit {
         private sistemaAguaService: SistemaAguaService,
         private empreitadaService: EmpreitadaService,
         private execucaoService: ExecucaoService,
-        private situacaoService: SituacaoService
+        private situacaoService: SituacaoService,
+        private fornecedorService: FornecedorService,
     ) {
     }
 
@@ -106,6 +109,9 @@ export class ProgramasProjectosDialogComponent implements OnInit {
         this.situacaoService.query().subscribe( (res: HttpResponse<Situacao[]>) => { this.situacaos = res.body; },
             (res: HttpErrorResponse) => this.onError(res.message));
         this.especialidadesService.query().subscribe( (res: HttpResponse<Especialidades[]>) => { this.especialidadess = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message));
+        this.fornecedorService.query().subscribe( (res: HttpResponse<Fornecedor[]>) => { this.fornecedores = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message));
     }

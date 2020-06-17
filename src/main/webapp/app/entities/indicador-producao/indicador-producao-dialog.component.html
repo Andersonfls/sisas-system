@@ -12,7 +12,7 @@
 
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <nav class="d-flex justify-content-center">
+        <nav class="d-flex justify-content-center" style="margin-bottom: 1%">
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                 <a class="nav-item nav-link active" id="nav-part1-tab" data-toggle="tab" href="#nav-part1" role="tab"
                    aria-controls="nav-part1" aria-selected="true">Grupo 1</a>
@@ -33,7 +33,7 @@
                         <div class="form-group">
                             <label class="form-control-label negrito"
                                    for="field_idProvincia">Provincia</label>
-                            <select class="form-control" id="field_idProvincia" name="provincia" [(ngModel)]="indicadorProducao.provincia">
+                            <select class="form-control" id="field_idProvincia" name="provincia" [(ngModel)]="indicadorProducao.provincia" (ngModelChange)="findLastIndicador()">
                                 <option *ngIf="!indicadorProducao.provincia" [ngValue]="null" selected>Selecione a Província..</option>
                                 <option [ngValue]="provinciaOption.id === indicadorProducao.provincia?.id ? indicadorProducao.provincia : provinciaOption"
                                         *ngFor="let provinciaOption of provincias">{{provinciaOption.nmProvincia}}</option>
@@ -62,22 +62,22 @@
                                 </small>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="form-control-label"
-                                   jhiTranslate="sisasApp.indicadorProducao.dtUltimaAlteracao"
-                                   for="field_dtUltimaAlteracao">Dt Ultima Alteracao</label>
-                            <div class="input-group">
-                                <input id="field_dtUltimaAlteracao" type="text" class="form-control"
-                                       name="dtUltimaAlteracao"
-                                       ngbDatepicker #dtUltimaAlteracaoDp="ngbDatepicker"
-                                       [(ngModel)]="indicadorProducao.dtUltimaAlteracao" placeholder="Selecione a data"
-                                 readonly />
-                                <span class="input-group-append">
-                    <button type="button" class="btn btn-secondary"><i
-                        class="fa fa-calendar"></i></button>
-                </span>
-                            </div>
-                        </div>
+                        <!--<div class="form-group">-->
+                            <!--<label class="form-control-label"-->
+                                   <!--jhiTranslate="sisasApp.indicadorProducao.dtUltimaAlteracao"-->
+                                   <!--for="field_dtUltimaAlteracao">Dt Ultima Alteracao</label>-->
+                            <!--<div class="input-group">-->
+                                <!--<input id="field_dtUltimaAlteracao" type="text" class="form-control"-->
+                                       <!--name="dtUltimaAlteracao"-->
+                                       <!--ngbDatepicker #dtUltimaAlteracaoDp="ngbDatepicker"-->
+                                       <!--[(ngModel)]="indicadorProducao.dtUltimaAlteracao" placeholder="Selecione a data"-->
+                                 <!--readonly />-->
+                                <!--<span class="input-group-append">-->
+                    <!--<button type="button" class="btn btn-secondary"><i-->
+                        <!--class="fa fa-calendar"></i></button>-->
+                <!--</span>-->
+                            <!--</div>-->
+                        <!--</div>-->
                         <div class="form-group">
                             <label class="form-control-label"
                                    jhiTranslate="sisasApp.indicadorProducao.qtdPopulacaoCobertaInfraestrutura"
@@ -743,7 +743,7 @@
                                 Cortes</label>
                             <input type="number" class="form-control" name="qtdCortes" id="field_qtdCortes"
                                    [(ngModel)]="indicadorProducao.qtdCortes" required
-                                   placeholder="Quantidade de ligações" min="0"/>
+                                   placeholder="Número de cortes" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdCortes?.dirty && editForm.controls.qtdCortes?.invalid)">
                                 <small class="form-text text-danger"
@@ -785,7 +785,7 @@
                             <input type="number" class="form-control" name="qtdLigacoesActivas"
                                    id="field_qtdLigacoesActivas"
                                    [(ngModel)]="indicadorProducao.qtdLigacoesActivas" required
-                                   placeholder="Quantidade de ligações" min="0"/>
+                                   placeholder="Número de ligações activas" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdLigacoesActivas?.dirty && editForm.controls.qtdLigacoesActivas?.invalid)">
                                 <small class="form-text text-danger"
@@ -807,7 +807,7 @@
                             <input type="number" class="form-control" name="qtdLigacoesDomesticasActivas"
                                    id="field_qtdLigacoesDomesticasActivas"
                                    [(ngModel)]="indicadorProducao.qtdLigacoesDomesticasActivas" required
-                                   placeholder="Quantidade de ligações" min="0"/>
+                                   placeholder="Número de ligações domésticas activas" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdLigacoesDomesticasActivas?.dirty && editForm.controls.qtdLigacoesDomesticasActivas?.invalid)">
                                 <small class="form-text text-danger"
@@ -831,7 +831,7 @@
                             <input type="number" class="form-control" name="qtdLigacoesFacturadasBaseLeiturasReais"
                                    id="field_qtdLigacoesFacturadasBaseLeiturasReais"
                                    [(ngModel)]="indicadorProducao.qtdLigacoesFacturadasBaseLeiturasReais" required
-                                   placeholder="Quantidade de ligações" min="0"/>
+                                   placeholder="Número de ligações facturadas base reais" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdLigacoesFacturadasBaseLeiturasReais?.dirty && editForm.controls.qtdLigacoesFacturadasBaseLeiturasReais?.invalid)">
                                 <small class="form-text text-danger"
@@ -855,7 +855,7 @@
                             <input type="number" class="form-control" name="qtdLigacoesFacturadasBaseEstimativasAvenca"
                                    id="field_qtdLigacoesFacturadasBaseEstimativasAvenca"
                                    [(ngModel)]="indicadorProducao.qtdLigacoesFacturadasBaseEstimativasAvenca" required
-                                   placeholder="Quantidade de ligações" min="0"/>
+                                   placeholder="Número de ligações facturadas base estimativa" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdLigacoesFacturadasBaseEstimativasAvenca?.dirty && editForm.controls.qtdLigacoesFacturadasBaseEstimativasAvenca?.invalid)">
                                 <small class="form-text text-danger"
@@ -904,7 +904,7 @@
                             <input type="number" class="form-control" name="qtdVolumeTotalFacturadaLigacoesDomesticas"
                                    id="field_qtdVolumeTotalFacturadaLigacoesDomesticas"
                                    [(ngModel)]="indicadorProducao.qtdVolumeTotalFacturadaLigacoesDomesticas" required
-                                   placeholder="Quantidade do volume" min="0"/>
+                                   placeholder="Volume total facturado Ligações domésticas" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdVolumeTotalFacturadaLigacoesDomesticas?.dirty && editForm.controls.qtdVolumeTotalFacturadaLigacoesDomesticas?.invalid)">
                                 <small class="form-text text-danger"
@@ -927,7 +927,7 @@
                             <input type="number" class="form-control" name="qtdVolumeFacturadoBaseLeituraReais"
                                    id="field_qtdVolumeFacturadoBaseLeituraReais"
                                    [(ngModel)]="indicadorProducao.qtdVolumeFacturadoBaseLeituraReais" required
-                                   placeholder="Quantidade do volume" min="0"/>
+                                   placeholder="Volume facturado base leitura real" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdVolumeFacturadoBaseLeituraReais?.dirty && editForm.controls.qtdVolumeFacturadoBaseLeituraReais?.invalid)">
                                 <small class="form-text text-danger"
@@ -1034,7 +1034,7 @@
                             <label class="form-control-label" jhiTranslate="sisasApp.indicadorProducao.qtdReclamacoes"
                                    for="field_qtdReclamacoes">Qtd Reclamacoes</label>
                             <input type="number" class="form-control" name="qtdReclamacoes" id="field_qtdReclamacoes"
-                                   [(ngModel)]="indicadorProducao.qtdReclamacoes" required placeholder="Valor total" min="0"/>
+                                   [(ngModel)]="indicadorProducao.qtdReclamacoes" required placeholder="Total reclamações" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.qtdReclamacoes?.dirty && editForm.controls.qtdReclamacoes?.invalid)">
                                 <small class="form-text text-danger"
@@ -1549,7 +1549,7 @@
                             <input type="number" class="form-control" name="totalAcoesFormacaoPlanejadas"
                                    id="field_totalAcoesFormacaoPlanejadas"
                                    [(ngModel)]="indicadorProducao.totalAcoesFormacaoPlanejadas" required
-                                   placeholder="Total Acçôes Planejadas" min="0"/>
+                                   placeholder="Total Acçôes Planeadas" min="0"/>
                             <div
                                 [hidden]="!(editForm.controls.totalAcoesFormacaoPlanejadas?.dirty && editForm.controls.totalAcoesFormacaoPlanejadas?.invalid)">
                                 <small class="form-text text-danger"
@@ -1835,6 +1835,15 @@
                                     This field should be a number.
                                 </small>
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label"
+                                   jhiTranslate="sisasApp.indicadorProducao.qtdTotalManuaisRealizados"
+                                   for="field_qtdTotalManuaisRealizados">Qtd Total Manuais Realizadas</label>
+                            <input type="number" class="form-control" name="qtdTotalManuaisRealizados"
+                                   id="field_qtdTotalManuaisRealizados"
+                                   [(ngModel)]="indicadorProducao.qtdManuaisRealizados" required
+                                   placeholder="Total de manuais realizados" min="0" />
                         </div>
                     </div>
                 </div>
