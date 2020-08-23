@@ -120,8 +120,8 @@ export class ProgramasProjectosService {
      */
     private convertItemFromServer(programasProjectos: ProgramasProjectos): ProgramasProjectos {
         const copy: ProgramasProjectos = Object.assign({}, programasProjectos);
-        copy.dtLancamento = this.dateUtils
-            .convertLocalDateFromServer(programasProjectos.dtLancamento);
+        // copy.dtLancamento = this.dateUtils
+        //     .convertLocalDateFromServer(programasProjectos.dtLancamento);
         copy.dtUltimaAlteracao = this.dateUtils
             .convertLocalDateFromServer(programasProjectos.dtUltimaAlteracao);
         return copy;
@@ -132,8 +132,8 @@ export class ProgramasProjectosService {
      */
     private convert(programasProjectos: ProgramasProjectos): ProgramasProjectos {
         const copy: ProgramasProjectos = Object.assign({}, programasProjectos);
-        copy.dtLancamento = this.dateUtils
-            .convertLocalDateToServer(programasProjectos.dtLancamento);
+        // copy.dtLancamento = this.dateUtils
+        //     .convertLocalDateToServer(programasProjectos.dtLancamento);
         copy.dtUltimaAlteracao = this.dateUtils
             .convertLocalDateToServer(programasProjectos.dtUltimaAlteracao);
         return copy;

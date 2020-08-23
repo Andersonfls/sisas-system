@@ -22,4 +22,8 @@ public interface IndicadorProducaoLogRepository extends JpaRepository<IndicadorP
         "or LOWER(i.dtLog) like LOWER(CONCAT(:nome,'%'))"+
         "or LOWER(i.idIndicadorProducao) like LOWER(CONCAT(:nome,'%'))")
     Page buscarPorNome(@Param("nome") String nome, Pageable pageable);
+
+    @Modifying
+    @Query("delete from IndicadorProducaoLog s where s.idUsuario = ?1")
+    void deleteLogByUserId(Long idUsuario);
 }

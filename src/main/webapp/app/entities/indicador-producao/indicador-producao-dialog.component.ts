@@ -49,7 +49,8 @@ export class IndicadorProducaoDialogComponent implements OnInit {
                 this.load(params['id']);
             } else {
                 this.indicadorProducao = new IndicadorProducao();
-                // this.findLastIndicador();
+                 this.findLastIndicador();
+                this.verificaCamposObrigatorios();
             }
         });
 
@@ -88,7 +89,7 @@ export class IndicadorProducaoDialogComponent implements OnInit {
                     };
                 }
                 this.indicadorProducao = indicadorProducao;
-                // this.findLastIndicador();
+                this.findLastIndicador();
                 this.somaCampos();
             });
     }
@@ -162,6 +163,7 @@ export class IndicadorProducaoDialogComponent implements OnInit {
                         console.log('Indicador mes anterior', indicadorMesAnterior);
                     }
                     this.somaCampos();
+                    this.verificaCamposObrigatorios();
                 },
                 (error1) => {
                     (this.onError(error1));
@@ -169,6 +171,35 @@ export class IndicadorProducaoDialogComponent implements OnInit {
         }
     }
 
+    verificaCamposObrigatorios() {
+        if (!this.indicadorProducao.qtdComprimentoRedes || this.indicadorProducao.qtdComprimentoRedes < 0 ) {
+            this.indicadorProducao.qtdComprimentoRedes = 0;
+        }
+        if (!this.indicadorProducao.qtdManuaisMoPrevistos || this.indicadorProducao.qtdManuaisMoPrevistos < 0 ) {
+            this.indicadorProducao.qtdManuaisMoPrevistos = 0;
+        }
+
+        if (!this.indicadorProducao.qtdManuaisMmsPrevistos || this.indicadorProducao.qtdManuaisMmsPrevistos < 0 ) {
+            this.indicadorProducao.qtdManuaisMmsPrevistos = 0;
+        }
+        if (!this.indicadorProducao.qtdAcoesManuaisMoRealizadas || this.indicadorProducao.qtdAcoesManuaisMoRealizadas < 0 ) {
+            this.indicadorProducao.qtdAcoesManuaisMoRealizadas = 0;
+        }
+        if (!this.indicadorProducao.qtdManuaisMmsRealizadas || this.indicadorProducao.qtdManuaisMmsRealizadas < 0 ) {
+            this.indicadorProducao.qtdManuaisMmsRealizadas = 0;
+        }
+        if (!this.indicadorProducao.qtdManuaisCmpRealizadas || this.indicadorProducao.qtdManuaisCmpRealizadas < 0 ) {
+            this.indicadorProducao.qtdManuaisCmpRealizadas = 0;
+        }
+
+        if (!this.indicadorProducao.qtdComprimentoRamais || this.indicadorProducao.qtdComprimentoRamais < 0 ) {
+            this.indicadorProducao.qtdComprimentoRamais = 0;
+        }
+
+        if (!this.indicadorProducao.vlrCustoTotaisCapexOpex || this.indicadorProducao.vlrCustoTotaisCapexOpex < 0 ) {
+            this.indicadorProducao.vlrCustoTotaisCapexOpex = 0;
+        }
+    }
     // AZUL = Recebe a soma dos campos(Não precisa digitar):
     // V55, V67, V72, V76, V80
     somaCampos() {

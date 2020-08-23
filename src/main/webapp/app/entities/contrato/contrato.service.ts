@@ -68,8 +68,8 @@ export class ContratoService {
      */
     private convertItemFromServer(contrato: Contrato): Contrato {
         const copy: Contrato = Object.assign({}, contrato);
-        copy.dtLancamento = this.dateUtils
-            .convertLocalDateFromServer(contrato.dtLancamento);
+        // copy.dtLancamento = this.dateUtils
+        //     .convertLocalDateFromServer(contrato.dtLancamento);
         copy.dtAssinatura = this.dateUtils
             .convertLocalDateFromServer(contrato.dtAssinatura);
         copy.dtFinalizacaoProcessoHomologAprov = this.dateUtils
@@ -100,8 +100,8 @@ export class ContratoService {
      */
     private convert(contrato: Contrato): Contrato {
         const copy: Contrato = Object.assign({}, contrato);
-        copy.dtLancamento = this.dateUtils
-            .convertLocalDateToServer(contrato.dtLancamento);
+        // copy.dtLancamento = this.dateUtils
+        //     .convertLocalDateToServer(contrato.dtLancamento);
         copy.dtAssinatura = this.dateUtils
             .convertLocalDateToServer(contrato.dtAssinatura);
         copy.dtFinalizacaoProcessoHomologAprov = this.dateUtils

@@ -32,7 +32,6 @@ public class Contrato implements Serializable {
     @Column(name = "tipo_empreitada", length = 150, nullable = false)
     private String tipoEmpreitada;
 
-    @NotNull
     @Column(name = "dt_lancamento", nullable = false)
     private LocalDate dtLancamento;
 

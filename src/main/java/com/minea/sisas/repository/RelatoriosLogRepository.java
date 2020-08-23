@@ -13,4 +13,7 @@ import org.springframework.data.jpa.repository.*;
 @Repository
 public interface RelatoriosLogRepository extends JpaRepository<RelatoriosLog, Long>, JpaSpecificationExecutor<RelatoriosLog> {
 
+    @Modifying
+    @Query("delete from RelatoriosLog s where s.idUsuario = ?1")
+    void deleteLogByUserId(Long idUsuario);
 }

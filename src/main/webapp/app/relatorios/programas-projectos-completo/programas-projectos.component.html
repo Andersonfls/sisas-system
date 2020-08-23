@@ -88,7 +88,7 @@
                     <th><span jhiTranslate="sisasApp.programasProjectos.idMunicipio"></span> </th>
                     <th><span jhiTranslate="sisasApp.programasProjectos.idComuna"></span> </th>
 
-                    <th><span>Concepcao</span> </th>
+                    <th><span>Concepção</span> </th>
                     <th jhiSortBy="tipoConcurso"><span jhiTranslate="sisasApp.concepcao.tipoConcurso">Tipo Concurso</span> <span class="fa fa-sort"></span></th>
                     <th jhiSortBy="dtLancamento"><span jhiTranslate="sisasApp.concepcao.dtLancamento">Dt Lancamento</span> <span class="fa fa-sort"></span></th>
                     <th jhiSortBy="dtUltimaAlteracao"><span jhiTranslate="sisasApp.concepcao.dtUltimaAlteracao">Dt Ultima Alteracao</span> <span class="fa fa-sort"></span></th>
@@ -105,7 +105,7 @@
                     <th jhiSortBy="dtNegociacao"><span jhiTranslate="sisasApp.concurso.dtNegociacao">Dt Negociacao</span> <span class="fa fa-sort"></span></th>
                     <th jhiSortBy="dtAprovRelAvalFinal"><span jhiTranslate="sisasApp.concurso.dtAprovRelAvalFinal">Dt Aprov Rel Aval Final</span> <span class="fa fa-sort"></span></th>
 
-                    <th><span>Adjudicacao</span> </th>
+                    <th><span>Adjudicação</span> </th>
                     <th jhiSortBy="tipoConcurso"><span jhiTranslate="sisasApp.adjudicacao.tipoConcurso">Tipo Concurso</span> <span class="fa fa-sort"></span></th>
                     <th jhiSortBy="dtLancamento"><span jhiTranslate="sisasApp.adjudicacao.dtLancamento">Dt Lancamento</span> <span class="fa fa-sort"></span></th>
                     <th jhiSortBy="dtComunicaoAdjudicacao"><span jhiTranslate="sisasApp.adjudicacao.dtComunicaoAdjudicacao">Dt Comunicao Adjudicacao</span> <span class="fa fa-sort"></span></th>
@@ -154,7 +154,7 @@
                     <th jhiSortBy="numEstacoesElevatorias"><span jhiTranslate="sisasApp.empreitada.numEstacoesElevatorias">Num Estacoes Elevatorias</span> <span class="fa fa-sort"></span></th>
                     <th jhiSortBy="numLatrinas"><span jhiTranslate="sisasApp.empreitada.numLatrinas">Num Latrinas</span> <span class="fa fa-sort"></span></th>
 
-                    <th><span>Execucao</span> </th>
+                    <th><span>Execução</span> </th>
                     <th jhiSortBy="tipoEmpreitada"><span jhiTranslate="sisasApp.execucao.tipoEmpreitada">Tipo Empreitada</span> <span class="fa fa-sort"></span></th>
                     <th jhiSortBy="dtLancamento"><span jhiTranslate="sisasApp.execucao.dtLancamento">Dt Lancamento</span> <span class="fa fa-sort"></span></th>
                     <th jhiSortBy="dtPeridoReferencia"><span jhiTranslate="sisasApp.execucao.dtPeridoReferencia">Dt Perido Referencia</span> <span class="fa fa-sort"></span></th>
@@ -220,6 +220,8 @@
                     <td>{{programasProjecto.contrato.dtLancamento | date:'shortDate'}}</td>
                     <td>{{programasProjecto.contrato.dtRecepcaoProvisoria | date:'shortDate'}}</td>
                     <td>{{programasProjecto.contrato.dtRecepcaoDefinitiva | date:'shortDate'}}</td>
+                    <td>{{programasProjecto.contrato.nmResposavelProjeto}}</td>
+                    <td>{{programasProjecto.contrato.nmResposavelAntProjeto}}</td>
                     <th><span></span> </th>
                     <td>{{programasProjecto.empreitada.tipoEmpreitada}}</td>
                     <td>{{programasProjecto.empreitada.dtLancamento | date:'shortDate'}}</td>

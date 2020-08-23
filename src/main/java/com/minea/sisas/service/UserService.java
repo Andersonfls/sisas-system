@@ -4,9 +4,8 @@ import com.minea.sisas.domain.Authority;
 import com.minea.sisas.domain.SistemaAgua;
 import com.minea.sisas.domain.User;
 import com.minea.sisas.domain.enumeration.TipoAcao;
-import com.minea.sisas.repository.AuthorityRepository;
+import com.minea.sisas.repository.*;
 import com.minea.sisas.config.Constants;
-import com.minea.sisas.repository.UserRepository;
 import com.minea.sisas.security.AuthoritiesConstants;
 import com.minea.sisas.security.SecurityUtils;
 import com.minea.sisas.service.dto.SegurancaLogDTO;
@@ -51,13 +50,44 @@ public class UserService {
     @Autowired
     private final SegurancaLogService segurancaLogService;
 
+    @Autowired
+    private final PublicacaoLogRepository publicacaoLogRepository;
+
+    @Autowired
+    private final RelatoriosLogRepository relatoriosLogRepository;
+
+    @Autowired
+    private final ConfiguracoesLogRepository configuracoesLogRepository;
+
+    @Autowired
+    private final IndicadorProducaoLogRepository indicadorProducaoLogRepository;
+
+    @Autowired
+    private final ProgramasProjectosLogRepository programasProjectosLogRepository;
+
+    @Autowired
+    private final SegurancaLogRepository segurancaLogRepository;
+
+    @Autowired
+    private final SistemaAguaLogRepository sistemaAguaLogRepository;
+
     public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, AuthorityRepository authorityRepository,
-                       CacheManager cacheManager, SegurancaLogService segurancaLogService) {
+                       CacheManager cacheManager, SegurancaLogService segurancaLogService, SistemaAguaLogRepository sistemaAguaLogRepository,
+                       SegurancaLogRepository segurancaLogRepository, ProgramasProjectosLogRepository programasProjectosLogRepository,
+                       IndicadorProducaoLogRepository indicadorProducaoLogRepository, ConfiguracoesLogRepository configuracoesLogRepository,
+                       RelatoriosLogRepository relatoriosLogRepository, PublicacaoLogRepository publicacaoLogRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.authorityRepository = authorityRepository;
         this.cacheManager = cacheManager;
         this.segurancaLogService = segurancaLogService;
+        this.sistemaAguaLogRepository = sistemaAguaLogRepository;
+        this.segurancaLogRepository = segurancaLogRepository;
+        this.programasProjectosLogRepository = programasProjectosLogRepository;
+        this.indicadorProducaoLogRepository = indicadorProducaoLogRepository;
+        this.configuracoesLogRepository = configuracoesLogRepository;
+        this.relatoriosLogRepository = relatoriosLogRepository;
+        this.publicacaoLogRepository = publicacaoLogRepository;
     }
 
     public Optional<User> activateRegistration(String key) {
@@ -319,12 +349,26 @@ public class UserService {
 
     public void deleteUser(String login) {
         userRepository.findOneByLogin(login).ifPresent(user -> {
+            removeAllLogReferences(user);
+        });
+
+        userRepository.findOneByLogin(login).ifPresent(user -> {
             userRepository.delete(user);
-            logSave(TipoAcao.REMOCAO, user);
             cacheManager.getCache(UserRepository.USERS_BY_LOGIN_CACHE).evict(user.getLogin());
             cacheManager.getCache(UserRepository.USERS_BY_EMAIL_CACHE).evict(user.getEmail());
             log.debug("Deleted User: {}", user);
         });
+    }
+
+
+    private void removeAllLogReferences(User user){
+        this.sistemaAguaLogRepository.deleteLogByUserId(user.getId());
+        this.segurancaLogRepository.deleteLogByUserId(user.getId());
+        this.programasProjectosLogRepository.deleteLogByUserId(user.getId());
+        this.indicadorProducaoLogRepository.deleteLogByUserId(user.getId());
+        this.configuracoesLogRepository.deleteLogByUserId(user.getId());
+        this.relatoriosLogRepository.deleteLogByUserId(user.getId());
+        this.publicacaoLogRepository.deleteLogByUserId(user.getId());
     }
 
     public void changePassword(String password) {

@@ -20,7 +20,6 @@ public class ContratoDTO implements Serializable {
     @Size(max = 150)
     private String tipoEmpreitada;
 
-    @NotNull
     private LocalDate dtLancamento;
 
     @Size(max = 200)

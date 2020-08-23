@@ -44,11 +44,13 @@
                     <td class="borda-th text-centro">{{provincia.funcionamAgua | number}}</td>
                     <td class="borda-th text-centro">{{provincia.naoFuncionamAgua | number}}</td>
                     <td class="borda-th text-centro">{{provincia.funcionamAguaPerc | number:'1.2-2'}}%</td>
-                    <td class="borda-th text-centro">{{provincia.naoFuncionamAguaPerc | number:'1.2-2'}}%</td>
+                    <td *ngIf="provincia.naoFuncionamAguaPerc" class="borda-th text-centro">{{provincia.naoFuncionamAguaPerc | number:'1.2-2'}}%</td>
+                    <td *ngIf="!provincia.naoFuncionamAguaPerc" class="borda-th text-centro">0,00%</td>
                     <td class="borda-th text-centro">{{provincia.numeroChafarizes | number}}</td>
                     <td class="borda-th text-centro">{{provincia.funcionamChafariz | number}}</td>
                     <td class="borda-th text-centro">{{provincia.naoFuncionamChafariz}}</td>
-                    <td class="borda-th text-centro">{{provincia.naoFuncionamChafarizPerc | number:'1.2-2'}}%</td>
+                    <td *ngIf="provincia.naoFuncionamChafarizPerc" class="borda-th text-centro">{{provincia.naoFuncionamChafarizPerc | number:'1.2-2'}}%</td>
+                    <td *ngIf="!provincia.naoFuncionamChafarizPerc" class="borda-th text-centro">0,00%</td>
                 </tr>
                 </tbody>
                 <tfoot>

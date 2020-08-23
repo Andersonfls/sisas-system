@@ -312,7 +312,7 @@
                         <label class="form-control-label" jhiTranslate="sisasApp.concepcao.dtAprovacaoCon" for="field_dtAprovacaoCon">Dt Aprovacao Con</label>
                         <div class="input-group">
                             <input id="field_dtAprovacaoCon" type="text" class="form-control" name="dtAprovacaoCon" ngbDatepicker  #dtAprovacaoConDp="ngbDatepicker" [(ngModel)]="concepcao.dtAprovacaoCon"
-                                    placeholder="Data de Aprovação da Concepção" (ngModelChange)="validaData()" />
+                                    placeholder="Data de Aprovação da Concepção" (ngModelChange)="validaData2()" />
                             <span class="input-group-append">
                                 <button type="button" class="btn btn-secondary" (click)="dtAprovacaoConDp.toggle()"><i class="fa fa-calendar"></i></button>
                             </span>
@@ -360,7 +360,7 @@
                         <label class="form-control-label" jhiTranslate="sisasApp.concurso.dtLancamento" for="field_ccdtLancamento">Dt Lancamento</label>
                         <div class="input-group">
                             <input id="field_ccdtLancamento" type="text" class="form-control" name="ccdtLancamento" ngbDatepicker  #condtLancamentoDp="ngbDatepicker" [(ngModel)]="concurso.dtLancamento"
-                                   required placeholder="Data de Lancamento"/>
+                                   required placeholder="Data de Lancamento" (ngModelChange)="validaData3()"/>
                             <span class="input-group-append">
                                 <button type="button" class="btn btn-secondary" (click)="condtLancamentoDp.toggle()"><i class="fa fa-calendar"></i></button>
                             </span>
@@ -384,7 +384,7 @@
                         <label class="form-control-label" jhiTranslate="sisasApp.concurso.dtEntregaProposta" for="field_dtEntregaProposta">Dt Entrega Proposta</label>
                         <div class="input-group">
                             <input id="field_dtEntregaProposta" type="text" class="form-control" name="dtEntregaProposta" ngbDatepicker  #condtEntregaPropostaDp="ngbDatepicker" [(ngModel)]="concurso.dtEntregaProposta"
-                                   placeholder="Data entrega da proposta"/>
+                                   placeholder="Data entrega da proposta" (ngModelChange)="validaData4()"/>
                             <span class="input-group-append">
                                 <button type="button" class="btn btn-secondary" (click)="condtEntregaPropostaDp.toggle()"><i class="fa fa-calendar"></i></button>
                             </span>
@@ -394,7 +394,7 @@
                         <label class="form-control-label" jhiTranslate="sisasApp.concurso.dtAberturaProposta" for="field_dtAberturaProposta">Dt Abertura Proposta</label>
                         <div class="input-group">
                             <input id="field_dtAberturaProposta" type="text" class="form-control" name="dtAberturaProposta" ngbDatepicker  #condtAberturaPropostaDp="ngbDatepicker" [(ngModel)]="concurso.dtAberturaProposta"
-                                    placeholder="Data abertura da proposta" (ngModelChange)="validaDataAberturaProposta()"/>
+                                    placeholder="Data abertura da proposta" (ngModelChange)="validaData5()"/>
                             <span class="input-group-append">
                                 <button type="button" class="btn btn-secondary" (click)="condtAberturaPropostaDp.toggle()"><i class="fa fa-calendar"></i></button>
                             </span>
@@ -404,7 +404,7 @@
                         <label class="form-control-label" jhiTranslate="sisasApp.concurso.dtConclusaoAvaliacaoRelPrel" for="field_dtConclusaoAvaliacaoRelPrel">Dt Conclusao Avaliacao Rel Prel</label>
                         <div class="input-group">
                             <input id="field_dtConclusaoAvaliacaoRelPrel" type="text" class="form-control" name="dtConclusaoAvaliacaoRelPrel" ngbDatepicker  #condtConclusaoAvaliacaoRelPrelDp="ngbDatepicker" [(ngModel)]="concurso.dtConclusaoAvaliacaoRelPrel"
-                                    placeholder="Data conclusão avaliação" (ngModelChange)="validaDataConclusaoAvaliacao()"/>
+                                    placeholder="Data conclusão avaliação" (ngModelChange)="validaData6()"/>
                             <span class="input-group-append">
                                 <button type="button" class="btn btn-secondary" (click)="condtConclusaoAvaliacaoRelPrelDp.toggle()"><i class="fa fa-calendar"></i></button>
                             </span>
@@ -414,7 +414,7 @@
                         <label class="form-control-label" jhiTranslate="sisasApp.concurso.dtNegociacao" for="field_dtNegociacao">Dt Negociacao</label>
                         <div class="input-group">
                             <input id="field_dtNegociacao" type="text" class="form-control" name="dtNegociacao" ngbDatepicker  #condtNegociacaoDp="ngbDatepicker" [(ngModel)]="concurso.dtNegociacao"
-                                    placeholder="Data de negociação" (ngModelChange)="validaDataNegociacao()"/>
+                                    placeholder="Data de negociação" (ngModelChange)="validaData7()"/>
                             <span class="input-group-append">
                                 <button type="button" class="btn btn-secondary" (click)="condtNegociacaoDp.toggle()"><i class="fa fa-calendar"></i></button>
                             </span>
@@ -424,7 +424,7 @@
                         <label class="form-control-label" jhiTranslate="sisasApp.concurso.dtAprovRelAvalFinal" for="field_dtAprovRelAvalFinal">Dt Aprov Rel Aval Final</label>
                         <div class="input-group">
                             <input id="field_dtAprovRelAvalFinal" type="text" class="form-control" name="dtAprovRelAvalFinal" ngbDatepicker  #condtAprovRelAvalFinalDp="ngbDatepicker" [(ngModel)]="concurso.dtAprovRelAvalFinal"
-                                    placeholder="Data de aprovação do relatório Final" (ngModelChange)="validaDataAprovacaoFinal()"/>
+                                    placeholder="Data de aprovação do relatório Final" (ngModelChange)="validaData8()"/>
                             <span class="input-group-append">
                                 <button type="button" class="btn btn-secondary" (click)="condtAprovRelAvalFinalDp.toggle()"><i class="fa fa-calendar"></i></button>
                             </span>
@@ -499,7 +499,7 @@
                         <label class="form-control-label" jhiTranslate="sisasApp.adjudicacao.dtComunicaoAdjudicacao" for="field_dtComunicaoAdjudicacao">Dt Comunicao Adjudicacao</label>
                         <div class="input-group">
                             <input id="field_dtComunicaoAdjudicacao" type="text" class="form-control" name="dtComunicaoAdjudicacao" ngbDatepicker  #addtComunicaoAdjudicacaoDp="ngbDatepicker" [(ngModel)]="adjudicacao.dtComunicaoAdjudicacao"
-                                    placeholder="Data de comunicação Adjudiação" (ngModelChange)="validaDataAdjudicacao($event, 'comunicacao')"/>
+                                    placeholder="Data de comunicação Adjudiação" (ngModelChange)="validaData9()"/>
                             <span class="input-group-append" >
                         <button type="button" class="btn btn-secondary" (click)="addtComunicaoAdjudicacaoDp.toggle()"><i class="fa fa-calendar"></i></button>
                     </span>
@@ -509,7 +509,7 @@
                         <label class="form-control-label" jhiTranslate="sisasApp.adjudicacao.dtPrestacaoGarantBoaExec" for="field_dtPrestacaoGarantBoaExec">Dt Prestacao Garant Boa Exec</label>
                         <div class="input-group">
                             <input id="field_dtPrestacaoGarantBoaExec" type="text" class="form-control" name="dtPrestacaoGarantBoaExec" ngbDatepicker  #addtPrestacaoGarantBoaExecDp="ngbDatepicker" [(ngModel)]="adjudicacao.dtPrestacaoGarantBoaExec"
-                                    placeholder="Data prestação garantia boa execução" (ngModelChange)="validaDataAdjudicacao($event, 'prestacao')"/>
+                                    placeholder="Data prestação garantia boa execução" (ngModelChange)="validaData10()"/>
                             <span class="input-group-append">
                     <button type="button" class="btn btn-secondary" (click)="addtPrestacaoGarantBoaExecDp.toggle()"><i class="fa fa-calendar"></i></button>
                 </span>
@@ -519,7 +519,7 @@
                         <label class="form-control-label" jhiTranslate="sisasApp.adjudicacao.dtSubmissaoMinutContrato" for="field_dtSubmissaoMinutContrato">Dt Submissao Minut Contrato</label>
                         <div class="input-group">
                             <input id="field_dtSubmissaoMinutContrato" type="text" class="form-control" name="dtSubmissaoMinutContrato" ngbDatepicker  #addtSubmissaoMinutContratoDp="ngbDatepicker" [(ngModel)]="adjudicacao.dtSubmissaoMinutContrato"
-                                placeholder="Data submissção minuta contrato" (ngModelChange)="validaDataAdjudicacao($event, 'submissao')"/>
+                                placeholder="Data submissção minuta contrato" (ngModelChange)="validaData11()"/>
                             <span class="input-group-append">
                     <button type="button" class="btn btn-secondary" (click)="addtSubmissaoMinutContratoDp.toggle()"><i class="fa fa-calendar"></i></button>
                 </span>
@@ -646,7 +646,7 @@
                                 <label class="form-control-label" jhiTranslate="sisasApp.contrato.dtAssinatura" for="field_dtAssinatura">Dt Assinatura</label>
                                 <div class="input-group">
                                     <input id="field_dtAssinatura" type="text" class="form-control" name="dtAssinatura" ngbDatepicker  #ccdtAssinaturaDp="ngbDatepicker" [(ngModel)]="contrato.dtAssinatura"
-                                           placeholder="Data da assinatura"/>
+                                           placeholder="Data da assinatura" (ngModelChange)="validaData12()"/>
                                     <span class="input-group-append">
                                 <button type="button" class="btn btn-secondary" (click)="ccdtAssinaturaDp.toggle()"><i class="fa fa-calendar"></i></button>
                             </span>
@@ -658,7 +658,7 @@
                                 <label class="form-control-label" jhiTranslate="sisasApp.contrato.dtFinalizacaoProcessoHomologAprov" for="field_dtFinalizacaoProcessoHomologAprov">Dt Finalizacao Processo Homolog Aprov</label>
                                 <div class="input-group">
                                     <input id="field_dtFinalizacaoProcessoHomologAprov" type="text" class="form-control" name="dtFinalizacaoProcessoHomologAprov" ngbDatepicker  #ccdtFinalizacaoProcessoHomologAprovDp="ngbDatepicker" [(ngModel)]="contrato.dtFinalizacaoProcessoHomologAprov"
-                                           placeholder="Data de finalização processo homologação" (ngModelChange)="validaDataContrato($event, 'finalizacao')"/>
+                                           placeholder="Data de finalização processo homologação" (ngModelChange)="validaData13()"/>
                                     <span class="input-group-append">
                                 <button type="button" class="btn btn-secondary" (click)="ccdtFinalizacaoProcessoHomologAprovDp.toggle()"><i class="fa fa-calendar"></i></button>
                             </span>
@@ -673,7 +673,7 @@
                                 <label class="form-control-label" jhiTranslate="sisasApp.contrato.dtVistoTribunal" for="field_dtVistoTribunal">Dt Visto Tribunal de contas</label>
                                 <div class="input-group">
                                     <input id="field_dtVistoTribunal" type="text" class="form-control" name="dtVistoTribunalContas" ngbDatepicker  #ccdtVistoTribunalContas="ngbDatepicker" [(ngModel)]="contrato.dtVistoTribunalContas"
-                                           placeholder="Data do Visto Tribunal de Contas" />
+                                           placeholder="Data do Visto Tribunal de Contas" (ngModelChange)="validaData14()"/>
                                     <span class="input-group-append">
                                 <button type="button" class="btn btn-secondary" (click)="ccdtVistoTribunalContas.toggle()"><i class="fa fa-calendar"></i></button>
                             </span>
@@ -685,7 +685,7 @@
                                 <label class="form-control-label" jhiTranslate="sisasApp.contrato.dtPagmEmol" for="field_dtPagamentoEmolumentos">Dt Emolumentos</label>
                                 <div class="input-group">
                                     <input id="field_dtPagamentoEmolumentos" type="text" class="form-control" name="dtPagamentoEmolumentos" ngbDatepicker  #ccdtEmolumentos="ngbDatepicker" [(ngModel)]="contrato.dtPagamentoEmolumentos"
-                                           placeholder="Data do Pagamento dos Emolumentos" />
+                                           placeholder="Data do Pagamento dos Emolumentos" (ngModelChange)="validaData15()"/>
                                     <span class="input-group-append">
                                 <button type="button" class="btn btn-secondary" (click)="ccdtEmolumentos.toggle()"><i class="fa fa-calendar"></i></button>
                             </span>
@@ -717,7 +717,7 @@
                                 <label class="form-control-label" jhiTranslate="sisasApp.contrato.dtAdiantamento" for="field_dtAdiantamento">Dt Adiantamento</label>
                                 <div class="input-group">
                                     <input id="field_dtAdiantamento" type="text" class="form-control" name="dtAdiantamento" ngbDatepicker  #ccdtAdiantamentoDp="ngbDatepicker" [(ngModel)]="contrato.dtAdiantamento"
-                                           placeholder="Data de adiantamento" (ngModelChange)="validaDataContrato($event, 'adiantamento')"/>
+                                           placeholder="Data de adiantamento" (ngModelChange)="validaDataContrato($event, 'adiantamento'); validaData16()"/>
                                     <span class="input-group-append">
                                 <button type="button" class="btn btn-secondary" (click)="ccdtAdiantamentoDp.toggle()"><i class="fa fa-calendar"></i></button>
                             </span>
@@ -732,7 +732,7 @@
                                 <label class="form-control-label" jhiTranslate="sisasApp.contrato.dtPrazoGarantAdi" for="field_ccdtPrazoGarantiaAditamento">Dt Prazo Garantia Adiantamento</label>
                                 <div class="input-group">
                                     <input id="field_ccdtPrazoGarantiaAditamento" type="text" class="form-control" name="dtPrazoGarantiaAditamento" ngbDatepicker  #ccdtPrazoGarantiaAditamento="ngbDatepicker" [(ngModel)]="contrato.dtPrazoGarantiaAditamento"
-                                           placeholder="Data Prazo Garantia"/>
+                                           placeholder="Data Prazo Garantia" (ngModelChange)="validaData17()"/>
                                     <span class="input-group-append">
                                 <button type="button" class="btn btn-secondary" (click)="ccdtPrazoGarantiaAditamento.toggle()"><i class="fa fa-calendar"></i></button>
                             </span>
@@ -754,7 +754,7 @@
                                 <label class="form-control-label" jhiTranslate="sisasApp.contrato.dtInicio" for="field_dtInicio">Dt Inicio</label>
                                 <div class="input-group">
                                     <input id="field_dtInicio" type="text" class="form-control" name="dtInicio" ngbDatepicker  #ccdtInicioDp="ngbDatepicker" [(ngModel)]="contrato.dtInicio"
-                                           placeholder="Data de Início" (ngModelChange)="validaDataContrato($event, 'inicio')"/>
+                                           placeholder="Data de Início" (ngModelChange)="validaDataContrato($event, 'inicio'); validaData18()"/>
                                     <span class="input-group-append">
                                 <button type="button" class="btn btn-secondary" (click)="ccdtInicioDp.toggle()"><i class="fa fa-calendar"></i></button>
                             </span>
@@ -776,7 +776,7 @@
                                 <label class="form-control-label" jhiTranslate="sisasApp.contrato.dtPrazoVinculativos" for="field_dtPrazosVinculativos">Data dos Prazos de vinculativos(Design, Construção, O&M)</label>
                                 <div class="input-group">
                                     <input id="field_dtPrazosVinculativos" type="text" class="form-control" name="dtPrazosVinculativos" ngbDatepicker  #ccdtPrazosVinculativos="ngbDatepicker" [(ngModel)]="contrato.dtPrazosVinculativos"
-                                           placeholder="Data Prazos Vinculativos"/>
+                                           placeholder="Data Prazos Vinculativos" (ngModelChange)="validaData19()"/>
                                     <span class="input-group-append">
                                 <button type="button" class="btn btn-secondary" (click)="ccdtPrazosVinculativos.toggle()"><i class="fa fa-calendar"></i></button>
                             </span>
@@ -807,7 +807,7 @@
                                 <label class="form-control-label" jhiTranslate="sisasApp.contrato.dtRecepcaoProvisoria" for="field_dtRecepcaoProvisoria">Dt Recepcao Provisoria</label>
                                 <div class="input-group">
                                     <input id="field_dtRecepcaoProvisoria" type="text" class="form-control" name="dtRecepcaoProvisoria" ngbDatepicker  #ccdtRecepcaoProvisoriaDp="ngbDatepicker" [(ngModel)]="contrato.dtRecepcaoProvisoria"
-                                           placeholder="Data de recepção ptovisória" (ngModelChange)="validaDataContrato($event, 'recepcao')"/>
+                                           placeholder="Data de recepção ptovisória" (ngModelChange)="validaDataContrato($event, 'recepcao'); validaData20()"/>
                                     <span class="input-group-append">
                                 <button type="button" class="btn btn-secondary" (click)="ccdtRecepcaoProvisoriaDp.toggle()"><i class="fa fa-calendar"></i></button>
                             </span>
@@ -822,7 +822,7 @@
                                 <label class="form-control-label" jhiTranslate="sisasApp.contrato.dtRecepcaoDefinitiva" for="field_dtRecepcaoDefinitiva">Dt Recepcao Definitiva</label>
                                 <div class="input-group">
                                     <input id="field_dtRecepcaoDefinitiva" type="text" class="form-control" name="dtRecepcaoDefinitiva" ngbDatepicker  #ccdtRecepcaoDefinitivaDp="ngbDatepicker" [(ngModel)]="contrato.dtRecepcaoDefinitiva"
-                                           placeholder="Data recepção definitiva" (ngModelChange)="validaDataContrato($event, 'definitiva')"/>
+                                           placeholder="Data recepção definitiva" (ngModelChange)="validaDataContrato($event, 'definitiva'); validaData21()"/>
                                     <span class="input-group-append">
                                 <button type="button" class="btn btn-secondary" (click)="ccdtRecepcaoDefinitivaDp.toggle()"><i class="fa fa-calendar"></i></button>
                             </span>

@@ -22,7 +22,6 @@ public class EmpreitadaDTO implements Serializable {
     @Size(max = 150)
     private String tipoEmpreitada;
 
-    @NotNull
     private LocalDate dtLancamento;
 
     @NotNull

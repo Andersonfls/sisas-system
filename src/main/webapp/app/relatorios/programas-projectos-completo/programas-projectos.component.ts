@@ -48,6 +48,7 @@ export class ProgramasProjectosComponent implements OnInit, OnDestroy {
     comunas: Comuna[];
     provincias: Provincia[];
     municipios: Municipio[];
+    isLoaded: boolean;
 
     constructor(
         private programasProjectosService: ProgramasProjectosService,
@@ -59,14 +60,14 @@ export class ProgramasProjectosComponent implements OnInit, OnDestroy {
         private eventManager: JhiEventManager,
         private comunaService: ComunaService,
         private municipioService: MunicipioService,
-        private provinciaService: ProvinciaService,
-        private concepcaoService: ConcepcaoService,
-        private concursoService: ConcursoService,
-        private adjService: AdjudicacaoService,
-        private contratoService: ContratoService,
-        private sistemaAguaService: SistemaAguaService,
-        private empreitadaService: EmpreitadaService,
-        private execucaoService: ExecucaoService
+        private provinciaService: ProvinciaService
+        // private concepcaoService: ConcepcaoService,
+        // private concursoService: ConcursoService,
+        // private adjService: AdjudicacaoService,
+        // private contratoService: ContratoService,
+        // private sistemaAguaService: SistemaAguaService,
+        // private empreitadaService: EmpreitadaService,
+        // private execucaoService: ExecucaoService
     ) {
         this.itemsPerPage = ITEMS_PER_PAGE;
         this.routeData = this.activatedRoute.data.subscribe((data) => {
@@ -74,78 +75,11 @@ export class ProgramasProjectosComponent implements OnInit, OnDestroy {
             this.previousPage = data.pagingParams.page;
             this.reverse = data.pagingParams.ascending;
             this.predicate = data.pagingParams.predicate;
+            this.isLoaded = false;
         });
     }
 
     loadAll() {
-    }
-
-    async carregaTodosDadosTabelasAuxiliares() {
-        if (this.programasProjectos) {
-            this.programasProjectos.forEach((item) => {
-                this.loadConcepcao(item);
-                this.loadConcurso(item);
-                this.loadAdjudicacao(item);
-                this.loadContrato(item);
-                this.loadEmpreitada(item);
-                this.loadExecucao(item);
-            });
-        }
-
-    }
-
-    async loadConcepcao(item: ProgramasProjectos) {
-        item.concepcao = new Concepcao();
-        this.concepcaoService.findByProgramasProjectos(item.id)
-            .subscribe((concepcaoResponse: HttpResponse<Concepcao>) => {
-                const concepcao: Concepcao = concepcaoResponse.body;
-                item.concepcao = concepcao;
-            });
-    }
-
-    async loadConcurso(item: ProgramasProjectos) {
-        item.concurso = new Concurso();
-        this.concursoService.findByProgramasProjectos(item.id)
-            .subscribe((concursoResponse: HttpResponse<Concurso>) => {
-                const concurso: Concurso = concursoResponse.body;
-                item.concurso = concurso;
-            });
-    }
-
-    async loadAdjudicacao(item: ProgramasProjectos) {
-        item.adjudicacao = new Adjudicacao();
-        this.adjService.findByProgramasProjectos(item.id)
-            .subscribe((adjResponse: HttpResponse<Adjudicacao>) => {
-                const adjudicacao: Adjudicacao = adjResponse.body;
-                item.adjudicacao = adjudicacao;
-            });
-    }
-
-    async loadContrato(item: ProgramasProjectos) {
-        item.contrato = new Contrato();
-        this.contratoService.findByProgramasProjectos(item.id)
-            .subscribe((contratoResponse: HttpResponse<Contrato>) => {
-                const contrato: Contrato = contratoResponse.body;
-                item.contrato = contrato;
-            });
-    }
-
-    async loadExecucao(item: ProgramasProjectos) {
-        item.execucao = new Execucao();
-        this.execucaoService.findByProgramasProjectos(item.id)
-            .subscribe((execucaoResponse: HttpResponse<Execucao>) => {
-                const execucao: Execucao = execucaoResponse.body;
-                item.execucao = execucao;
-            });
-    }
-
-    async loadEmpreitada(item: ProgramasProjectos) {
-        item.empreitada = new Empreitada();
-        this.empreitadaService.findByProgramasProjectos(item.id)
-            .subscribe((empreitadaResponse: HttpResponse<Empreitada>) => {
-                const empreitada: Empreitada = empreitadaResponse.body;
-                item.empreitada = empreitada;
-            });
     }
 
     loadPage(page: number) {
@@ -165,24 +99,6 @@ export class ProgramasProjectosComponent implements OnInit, OnDestroy {
                 }
         });
         this.loadAll();
-    }
-
-    onChangeNome() {
-        if (this.nome === undefined) {
-            this.loadAll();
-        } else {
-            this.programasProjectosService.queryUserNome({
-                page: this.page - 1,
-                size: this.itemsPerPage,
-                nome: this.nome
-            }).subscribe((res) => {
-                this.programasProjectos = res.body;
-                this.links = this.parseLinks.parse(res.headers.get('link'));
-                this.totalItems = +res.headers.get('X-Total-Count');
-                this.queryCount = this.totalItems;
-                this.carregaTodosDadosTabelasAuxiliares();
-            });
-        }
     }
 
     clear() {
@@ -240,6 +156,20 @@ export class ProgramasProjectosComponent implements OnInit, OnDestroy {
             (res: HttpErrorResponse) => this.onError(res.message));
     }
 
+    onChangeNome() {
+        if (this.nome === undefined) {
+            this.loadAll();
+        } else {
+            this.programasProjectosService.queryUserNome({
+                page: this.page - 1,
+                size: this.itemsPerPage,
+                nome: this.nome
+            }).subscribe((res) => {
+                this.programasProjectos = res.body;
+            });
+        }
+    }
+
     buscaPorMunicipio() {
         if (this.programasProjecto.municipio === null) {
             alert('Selecione um município');
@@ -250,19 +180,14 @@ export class ProgramasProjectosComponent implements OnInit, OnDestroy {
                 nome: this.programasProjecto.municipio.nmMunicipio
             }).subscribe((res) => {
                 this.programasProjectos = res.body;
-                this.links = this.parseLinks.parse(res.headers.get('link'));
-                this.totalItems = +res.headers.get('X-Total-Count');
-                this.queryCount = this.totalItems;
-                this.carregaTodosDadosTabelasAuxiliares();
             });
         }
     }
 
-    async buscaPorProvincia() {
+    buscaPorProvincia() {
         if (this.programasProjecto.provincia === null) {
             this.programasProjectosService.query().subscribe((res) => {
                 this.programasProjectos = res.body;
-                this.carregaTodosDadosTabelasAuxiliares();
                 console.log(this.programasProjectos);
             });
         } else {
@@ -272,10 +197,6 @@ export class ProgramasProjectosComponent implements OnInit, OnDestroy {
                 nome: this.programasProjecto.provincia.nmProvincia
             }).subscribe((res) => {
                 this.programasProjectos = res.body;
-                this.links = this.parseLinks.parse(res.headers.get('link'));
-                this.totalItems = +res.headers.get('X-Total-Count');
-                this.queryCount = this.totalItems;
-                this.carregaTodosDadosTabelasAuxiliares();
                 console.log(this.programasProjectos);
             });
         }
@@ -291,10 +212,6 @@ export class ProgramasProjectosComponent implements OnInit, OnDestroy {
                 nome: this.programasProjecto.comuna.nmComuna
             }).subscribe((res) => {
                 this.programasProjectos = res.body;
-                this.links = this.parseLinks.parse(res.headers.get('link'));
-                this.totalItems = +res.headers.get('X-Total-Count');
-                this.queryCount = this.totalItems;
-                this.carregaTodosDadosTabelasAuxiliares();
             });
         }
     }
@@ -312,12 +229,28 @@ export class ProgramasProjectosComponent implements OnInit, OnDestroy {
                 dtFinal: this.dataFinalBusca
             }).subscribe((res) => {
                 this.programasProjectos = res.body;
-                this.links = this.parseLinks.parse(res.headers.get('link'));
-                this.totalItems = +res.headers.get('X-Total-Count');
-                this.queryCount = this.totalItems;
-                this.carregaTodosDadosTabelasAuxiliares();
             });
         }
+    }
+
+    onChangeMunicipios() {
+        this.municipios = null;
+        this.comunas = null;
+
+        this.municipioService.queryMunicipioByProvinciaId({
+            provinciaId: this.programasProjecto.provincia.id
+        }).subscribe((res) => {
+            this.municipios = res.body;
+        });
+    }
+
+    onChangeComunas() {
+        this.comunas = null;
+        this.comunaService.queryComunaByMunicipioId({
+            municipioId: this.programasProjecto.municipio.id
+        }).subscribe((res) => {
+            this.comunas = res.body;
+        });
     }
 
     ngOnDestroy() {
@@ -352,23 +285,71 @@ export class ProgramasProjectosComponent implements OnInit, OnDestroy {
         this.jhiAlertService.error(error.message, null, null);
     }
 
-    onChangeMunicipios() {
-        this.municipios = null;
-        this.comunas = null;
+    // async carregaTodosDadosTabelasAuxiliares() {
+    //     if (this.programasProjectos) {
+    //         this.programasProjectos.forEach((item) => {
+    //             this.loadConcepcao(item);
+    //             this.loadConcurso(item);
+    //             this.loadAdjudicacao(item);
+    //             this.loadContrato(item);
+    //             this.loadEmpreitada(item);
+    //             this.loadExecucao(item);
+    //         });
+    //     }
+    //
+    // }
 
-        this.municipioService.queryMunicipioByProvinciaId({
-            provinciaId: this.programasProjecto.provincia.id
-        }).subscribe((res) => {
-            this.municipios = res.body;
-        });
-    }
-
-    onChangeComunas() {
-        this.comunas = null;
-        this.comunaService.queryComunaByMunicipioId({
-            municipioId: this.programasProjecto.municipio.id
-        }).subscribe((res) => {
-                this.comunas = res.body;
-            });
-    }
+    // async loadConcepcao(item: ProgramasProjectos) {
+    //     item.concepcao = new Concepcao();
+    //     this.concepcaoService.findByProgramasProjectos(item.id)
+    //         .subscribe((concepcaoResponse: HttpResponse<Concepcao>) => {
+    //             const concepcao: Concepcao = concepcaoResponse.body;
+    //             item.concepcao = concepcao;
+    //         });
+    // }
+    //
+    // async loadConcurso(item: ProgramasProjectos) {
+    //     item.concurso = new Concurso();
+    //     this.concursoService.findByProgramasProjectos(item.id)
+    //         .subscribe((concursoResponse: HttpResponse<Concurso>) => {
+    //             const concurso: Concurso = concursoResponse.body;
+    //             item.concurso = concurso;
+    //         });
+    // }
+    //
+    // async loadAdjudicacao(item: ProgramasProjectos) {
+    //     item.adjudicacao = new Adjudicacao();
+    //     this.adjService.findByProgramasProjectos(item.id)
+    //         .subscribe((adjResponse: HttpResponse<Adjudicacao>) => {
+    //             const adjudicacao: Adjudicacao = adjResponse.body;
+    //             item.adjudicacao = adjudicacao;
+    //         });
+    // }
+    //
+    // async loadContrato(item: ProgramasProjectos) {
+    //     item.contrato = new Contrato();
+    //     this.contratoService.findByProgramasProjectos(item.id)
+    //         .subscribe((contratoResponse: HttpResponse<Contrato>) => {
+    //             const contrato: Contrato = contratoResponse.body;
+    //             item.contrato = contrato;
+    //         });
+    // }
+    //
+    // async loadExecucao(item: ProgramasProjectos) {
+    //     item.execucao = new Execucao();
+    //     this.execucaoService.findByProgramasProjectos(item.id)
+    //         .subscribe((execucaoResponse: HttpResponse<Execucao>) => {
+    //             const execucao: Execucao = execucaoResponse.body;
+    //             item.execucao = execucao;
+    //         });
+    // }
+    //
+    // async loadEmpreitada(item: ProgramasProjectos) {
+    //     item.empreitada = new Empreitada();
+    //     this.empreitadaService.findByProgramasProjectos(item.id)
+    //         .subscribe((empreitadaResponse: HttpResponse<Empreitada>) => {
+    //             const empreitada: Empreitada = empreitadaResponse.body;
+    //             item.empreitada = empreitada;
+    //         });
+    // }
 }

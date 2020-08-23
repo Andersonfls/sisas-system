@@ -21,7 +21,6 @@ public class ProgramasProjectos implements Serializable {
     @Column(name = "id_programas_projectos", nullable = false)
     private Long id;
 
-    @NotNull
     @Column(name = "dt_lancamento", nullable = false)
     private LocalDate dtLancamento;
 

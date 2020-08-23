@@ -104,7 +104,6 @@ public class ProgramasProjectosResource {
      * GET  /programas-projectos : get all the programasProjectos.
      *
      * @param pageable the pagination information
-     * @param criteria the criterias which the requested entities should match
      * @return the ResponseEntity with status 200 (OK) and the list of programasProjectos in body
      */
     @GetMapping("/programas-projectos")
@@ -120,10 +119,9 @@ public class ProgramasProjectosResource {
      *  Filtro de usuários atráves do atributo nome
      */
     @GetMapping("/programas-projectos/nomeFiltro")
-    public ResponseEntity<List<ProgramasProjectos>> getByNome(@RequestParam(value = "nome") String nome, Pageable pageable) {
-        Page<ProgramasProjectos> page = programasProjectosRepository.buscarPorNome(nome, pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/programas-projectos");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    public ResponseEntity<List<ProgramasProjectosDTO>> getByNome(@RequestParam(value = "nome") String nome, Pageable pageable) {
+        List<ProgramasProjectosDTO> page = this.programasProjectosService.getByNome(nome);
+        return new ResponseEntity<>(page, null, HttpStatus.OK);
     }
 
     /**
@@ -141,26 +139,27 @@ public class ProgramasProjectosResource {
     }
 
     @GetMapping("/programas-projectos/municipioFiltro")
-    public ResponseEntity<List<ProgramasProjectos>> getByMunicipio(@RequestParam(value = "nome") String nome) {
-        List<ProgramasProjectos> page = programasProjectosRepository.findAllByMunicipioNmMunicipioEquals(nome);
+    public ResponseEntity<List<ProgramasProjectosDTO>> getByMunicipio(@RequestParam(value = "nome") String nome) {
+        List<ProgramasProjectosDTO> page = this.programasProjectosService.getByMunicipio(nome);
+
         return new ResponseEntity<>(page, null, HttpStatus.OK);
     }
 
     @GetMapping("/programas-projectos/provinciaFiltro")
-    public ResponseEntity<List<ProgramasProjectos>> getByProvincia(@RequestParam(value = "nome") String nome) {
-        List<ProgramasProjectos> page = programasProjectosRepository.findAllByProvinciaNmProvinciaEquals(nome);
+    public ResponseEntity<List<ProgramasProjectosDTO>> getByProvincia(@RequestParam(value = "nome") String nome) {
+        List<ProgramasProjectosDTO> page = this.programasProjectosService.getByProvincia(nome);
         return new ResponseEntity<>(page, null, HttpStatus.OK);
     }
 
     @GetMapping("/programas-projectos/comunaFiltro")
-    public ResponseEntity<List<ProgramasProjectos>> getByComuna(@RequestParam(value = "nome") String nome) {
-        List<ProgramasProjectos> page = programasProjectosRepository.findAllByComunaNmComunaEquals(nome);
+    public ResponseEntity<List<ProgramasProjectosDTO>> getByComuna(@RequestParam(value = "nome") String nome) {
+        List<ProgramasProjectosDTO> page = this.programasProjectosService.getByComuna(nome);
         return new ResponseEntity<>(page, null, HttpStatus.OK);
     }
 
     @GetMapping("/programas-projectos/periodoFiltro")
-    public ResponseEntity<List<ProgramasProjectos>> getByPeriodo(@RequestParam(value = "dtInicial") String dtInicial, @RequestParam(value = "dtFinal") String dtFinal) throws ParseException {
-        List<ProgramasProjectos> page = programasProjectosRepository.getAllBetweenDates(LocalDate.parse(dtInicial), LocalDate.parse(dtFinal));
+    public ResponseEntity<List<ProgramasProjectosDTO>> getByPeriodo(@RequestParam(value = "dtInicial") String dtInicial, @RequestParam(value = "dtFinal") String dtFinal) throws ParseException {
+        List<ProgramasProjectosDTO> page = this.programasProjectosService.getByPeriodo(dtInicial, dtFinal);
         return new ResponseEntity<>(page, null, HttpStatus.OK);
     }
 

@@ -69,8 +69,8 @@ export class EmpreitadaService {
      */
     private convertItemFromServer(empreitada: Empreitada): Empreitada {
         const copy: Empreitada = Object.assign({}, empreitada);
-        copy.dtLancamento = this.dateUtils
-            .convertLocalDateFromServer(empreitada.dtLancamento);
+        // copy.dtLancamento = this.dateUtils
+        //     .convertLocalDateFromServer(empreitada.dtLancamento);
         return copy;
     }
 
@@ -79,8 +79,8 @@ export class EmpreitadaService {
      */
     private convert(empreitada: Empreitada): Empreitada {
         const copy: Empreitada = Object.assign({}, empreitada);
-        copy.dtLancamento = this.dateUtils
-            .convertLocalDateToServer(empreitada.dtLancamento);
+        // copy.dtLancamento = this.dateUtils
+        //     .convertLocalDateToServer(empreitada.dtLancamento);
         return copy;
     }
 }

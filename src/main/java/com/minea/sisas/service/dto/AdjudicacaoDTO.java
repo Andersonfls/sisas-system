@@ -19,7 +19,6 @@ public class AdjudicacaoDTO implements Serializable {
     @Size(max = 150)
     private String tipoConcurso;
 
-    @NotNull
     private LocalDate dtLancamento;
 
     private LocalDate dtComunicaoAdjudicacao;

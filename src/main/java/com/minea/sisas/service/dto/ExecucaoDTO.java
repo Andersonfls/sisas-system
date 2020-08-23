@@ -20,7 +20,6 @@ public class ExecucaoDTO implements Serializable {
     @Size(max = 150)
     private String tipoEmpreitada;
 
-    @NotNull
     private LocalDate dtLancamento;
 
     @NotNull

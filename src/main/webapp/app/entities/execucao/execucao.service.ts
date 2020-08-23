@@ -69,8 +69,8 @@ export class ExecucaoService {
      */
     private convertItemFromServer(execucao: Execucao): Execucao {
         const copy: Execucao = Object.assign({}, execucao);
-        copy.dtLancamento = this.dateUtils
-            .convertLocalDateFromServer(execucao.dtLancamento);
+        // copy.dtLancamento = this.dateUtils
+        //     .convertLocalDateFromServer(execucao.dtLancamento);
         copy.dtPeridoReferencia = this.dateUtils
             .convertLocalDateFromServer(execucao.dtPeridoReferencia);
         copy.dtFimReferencia = this.dateUtils
@@ -85,8 +85,8 @@ export class ExecucaoService {
      */
     private convert(execucao: Execucao): Execucao {
         const copy: Execucao = Object.assign({}, execucao);
-        copy.dtLancamento = this.dateUtils
-            .convertLocalDateToServer(execucao.dtLancamento);
+        // copy.dtLancamento = this.dateUtils
+        //     .convertLocalDateToServer(execucao.dtLancamento);
         copy.dtPeridoReferencia = this.dateUtils
             .convertLocalDateToServer(execucao.dtPeridoReferencia);
         copy.dtFimReferencia = this.dateUtils

@@ -22,4 +22,8 @@ public interface ProgramasProjectosLogRepository extends JpaRepository<Programas
         "or LOWER(p.log) like LOWER(CONCAT(:nome,'%'))"+
         "or LOWER(p.programasProjectos) like LOWER(CONCAT(:nome,'%'))")
     Page buscarPorNome(@Param("nome") String nome, Pageable pageable);
+
+    @Modifying
+    @Query("delete from ProgramasProjectosLog s where s.usuario.id = ?1")
+    void deleteLogByUserId(Long idUsuario);
 }

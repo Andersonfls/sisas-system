@@ -148,13 +148,13 @@ export class ProgramasProjectosDialogComponent implements OnInit {
         this.concepcaoService.findByProgramasProjectos(id)
             .subscribe((concepcaoResponse: HttpResponse<Concepcao>) => {
                 const concepcao: Concepcao = concepcaoResponse.body;
-                if (concepcao.dtLancamento) {
-                    concepcao.dtLancamento = {
-                        year: concepcao.dtLancamento.getFullYear(),
-                        month: concepcao.dtLancamento.getMonth() + 1,
-                        day: concepcao.dtLancamento.getDate()
-                    };
-                }
+                // if (concepcao.dtLancamento) {
+                //     concepcao.dtLancamento = {
+                //         year: concepcao.dtLancamento.getFullYear(),
+                //         month: concepcao.dtLancamento.getMonth() + 1,
+                //         day: concepcao.dtLancamento.getDate()
+                //     };
+                // }
                 if (concepcao.dtUltimaAlteracao) {
                     concepcao.dtUltimaAlteracao = {
                         year: concepcao.dtUltimaAlteracao.getFullYear(),
@@ -243,13 +243,13 @@ export class ProgramasProjectosDialogComponent implements OnInit {
         this.adjService.findByProgramasProjectos(id)
             .subscribe((adjResponse: HttpResponse<Adjudicacao>) => {
                 const adjudicacao: Adjudicacao = adjResponse.body;
-                if (adjudicacao.dtLancamento) {
-                    adjudicacao.dtLancamento = {
-                        year: adjudicacao.dtLancamento.getFullYear(),
-                        month: adjudicacao.dtLancamento.getMonth() + 1,
-                        day: adjudicacao.dtLancamento.getDate()
-                    };
-                }
+                // if (adjudicacao.dtLancamento) {
+                //     adjudicacao.dtLancamento = {
+                //         year: adjudicacao.dtLancamento.getFullYear(),
+                //         month: adjudicacao.dtLancamento.getMonth() + 1,
+                //         day: adjudicacao.dtLancamento.getDate()
+                //     };
+                // }
                 if (adjudicacao.dtComunicaoAdjudicacao) {
                     adjudicacao.dtComunicaoAdjudicacao = {
                         year: adjudicacao.dtComunicaoAdjudicacao.getFullYear(),
@@ -282,13 +282,13 @@ export class ProgramasProjectosDialogComponent implements OnInit {
             .subscribe((contratoResponse: HttpResponse<Contrato>) => {
                 console.log(contratoResponse);
                 const contrato: Contrato = contratoResponse.body;
-                if (contrato.dtLancamento) {
-                    contrato.dtLancamento = {
-                        year: contrato.dtLancamento.getFullYear(),
-                        month: contrato.dtLancamento.getMonth() + 1,
-                        day: contrato.dtLancamento.getDate()
-                    };
-                }
+                // if (contrato.dtLancamento) {
+                //     contrato.dtLancamento = {
+                //         year: contrato.dtLancamento.getFullYear(),
+                //         month: contrato.dtLancamento.getMonth() + 1,
+                //         day: contrato.dtLancamento.getDate()
+                //     };
+                // }
                 if (contrato.dtAdiantamento) {
                     contrato.dtAdiantamento = {
                         year: contrato.dtAdiantamento.getFullYear(),
@@ -379,13 +379,13 @@ export class ProgramasProjectosDialogComponent implements OnInit {
         this.execucaoService.findByProgramasProjectos(id)
             .subscribe((execucaoResponse: HttpResponse<Execucao>) => {
                 const execucao: Execucao = execucaoResponse.body;
-                if (execucao.dtLancamento) {
-                    execucao.dtLancamento = {
-                        year: execucao.dtLancamento.getFullYear(),
-                        month: execucao.dtLancamento.getMonth() + 1,
-                        day: execucao.dtLancamento.getDate()
-                    };
-                }
+                // if (execucao.dtLancamento) {
+                //     execucao.dtLancamento = {
+                //         year: execucao.dtLancamento.getFullYear(),
+                //         month: execucao.dtLancamento.getMonth() + 1,
+                //         day: execucao.dtLancamento.getDate()
+                //     };
+                // }
                 if (execucao.dtPeridoReferencia) {
                     execucao.dtPeridoReferencia = {
                         year: execucao.dtPeridoReferencia.getFullYear(),
@@ -416,13 +416,13 @@ export class ProgramasProjectosDialogComponent implements OnInit {
         this.empreitadaService.findByProgramasProjectos(id)
             .subscribe((empreitadaResponse: HttpResponse<Empreitada>) => {
                 const empreitada: Empreitada = empreitadaResponse.body;
-                if (empreitada.dtLancamento) {
-                    empreitada.dtLancamento = {
-                        year: empreitada.dtLancamento.getFullYear(),
-                        month: empreitada.dtLancamento.getMonth() + 1,
-                        day: empreitada.dtLancamento.getDate()
-                    };
-                }
+                // if (empreitada.dtLancamento) {
+                //     empreitada.dtLancamento = {
+                //         year: empreitada.dtLancamento.getFullYear(),
+                //         month: empreitada.dtLancamento.getMonth() + 1,
+                //         day: empreitada.dtLancamento.getDate()
+                //     };
+                // }
                 this.empreitada = empreitada;
                 this.empreitada.tipoEmpreitada = this.contrato.tipoEmpreitada;
             });
@@ -430,13 +430,13 @@ export class ProgramasProjectosDialogComponent implements OnInit {
 
     converteDatasProgramasProjectos(data: ProgramasProjectos) {
         const programasProjectos: ProgramasProjectos = data;
-        if (programasProjectos.dtLancamento) {
-            programasProjectos.dtLancamento = {
-                year: programasProjectos.dtLancamento.getFullYear(),
-                month: programasProjectos.dtLancamento.getMonth() + 1,
-                day: programasProjectos.dtLancamento.getDate()
-            };
-        }
+        // if (programasProjectos.dtLancamento) {
+        //     programasProjectos.dtLancamento = {
+        //         year: programasProjectos.dtLancamento.getFullYear(),
+        //         month: programasProjectos.dtLancamento.getMonth() + 1,
+        //         day: programasProjectos.dtLancamento.getDate()
+        //     };
+        // }
         if (programasProjectos.dtUltimaAlteracao) {
             programasProjectos.dtUltimaAlteracao = {
                 year: programasProjectos.dtUltimaAlteracao.getFullYear(),
@@ -559,6 +559,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
 
     validaConcepcao() {
         if (this.programasProjectos.id === undefined || this.programasProjectos.id === null) {
+            this.programasProjectos.dtLancamento = new Date();
             this.programasProjectosService.create(this.programasProjectos).subscribe( (resp) => {
                 this.programasProjectos = this.converteDatasProgramasProjectos(resp.body);
                 console.log(resp);
@@ -582,6 +583,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                     this.concepcao = event.body;
                 });
         } else {
+            this.concepcao.dtLancamento = new Date();
             this.concepcaoService.create(this.concepcao).subscribe( (event) => {
                 alert('Concepção foi criado com sucesso');
                 console.log(event);
@@ -632,6 +634,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                 this.adjudicacao = event.body;
             });
         } else {
+            this.adjudicacao.dtLancamento = new Date();
             this.adjService.create(this.adjudicacao).subscribe( (event) => {
                 alert('Adjudicacao foi criado com sucesso');
                 console.log(event);
@@ -657,6 +660,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                 this.contrato = event.body;
             });
         } else {
+            this.contrato.dtLancamento = new Date();
             this.contratoService.create(this.contrato).subscribe( (event) => {
                 alert('Contrato foi criado com sucesso');
                 console.log(event);
@@ -682,6 +686,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                 this.empreitada = event.body;
             });
         } else {
+            this.empreitada.dtLancamento = new Date();
             this.empreitadaService.create(this.empreitada).subscribe( (event) => {
                 alert('EMPREITADA foi criada com sucesso!');
                 this.hideModalEmpreitada();
@@ -707,6 +712,7 @@ export class ProgramasProjectosDialogComponent implements OnInit {
                 this.execucao = event.body;
             });
         } else {
+            this.execucao.dtLancamento = new Date();
             this.execucaoService.create(this.execucao).subscribe( (event) => {
                 alert('Execução foi criada com sucesso!');
                 console.log(event);
@@ -753,7 +759,9 @@ export class ProgramasProjectosDialogComponent implements OnInit {
     public async habilitarTela(valor) {
         this.controleSessoes = valor;
         if (valor === 'Concepcao') {
-            await this.loadConcepcao(this.programasProjectos.id);
+            if (this.programasProjectos.id) {
+                await this.loadConcepcao(this.programasProjectos.id);
+            }
         } else if (valor === 'Concurso') {
             await this.loadConcurso(this.programasProjectos.id);
             this.concurso.tipoConcurso = this.concepcao.tipoConcurso;
@@ -795,6 +803,163 @@ export class ProgramasProjectosDialogComponent implements OnInit {
         this.closeModal.nativeElement.click();
     }
 
+    // SOLICITADO EM 15/06/2020
+    // NAO PERMITIR QUE UMA DATA SEJA MAIOR QUE A OUTRA, DE ACORDO COM A SEQUENCIA DE PREENCHIMENTO
+    // Nenhuma destas datas deve ser superior a(s) data(s) anterior(es)
+    // 2ª Data de aprovação dos documentos de concurso;
+    validaData2() {
+        if (this.isData1MenorQueData2(this.concepcao.dtAprovacaoCon, this.concepcao.dtElaboracaoCon )) {
+            alert('A Data de Aprovação não pode ser menor que a data de Elaboração');
+            this.concepcao.dtAprovacaoCon = null;
+        }
+    }
+    // 3ª Data de lançamento do concurso;
+    validaData3() {
+        if (this.isData1MenorQueData2(this.concurso.dtLancamento, this.concepcao.dtAprovacaoCon)) {
+            alert('A Data de Lançamento não pode ser menor que a data de Aprovação da concepção');
+            this.concurso.dtLancamento = null;
+        }
+    }
+    // 4ª Data de entrega das propostas;
+    validaData4() {
+        if (this.isData1MenorQueData2(this.concurso.dtEntregaProposta, this.concurso.dtLancamento)) {
+            alert('A Data de Entrega da proposta não pode ser menor que a data de Lançamento');
+            this.concurso.dtEntregaProposta = null;
+        }
+    }
+    // 5ª Data de abertura das propostas;
+    validaData5() {
+        if (this.isData1MenorQueData2(this.concurso.dtAberturaProposta, this.concurso.dtEntregaProposta)) {
+            alert('A Data de Abertura não pode ser menor que a data de Entrega');
+            this.concurso.dtAberturaProposta = null;
+        }
+    }
+    // 6ª Data de conclusão da avaliação e relatório preliminar;
+    validaData6() {
+        if (this.isData1MenorQueData2(this.concurso.dtConclusaoAvaliacaoRelPrel, this.concurso.dtAberturaProposta)) {
+            alert('A Data de conclusão da avaliação e relatório preliminar não pode ser menor que a data de Abertura');
+            this.concurso.dtConclusaoAvaliacaoRelPrel = null;
+        }
+    }
+    // 7ª Data de negociação
+    validaData7() {
+        if (this.isData1MenorQueData2(this.concurso.dtNegociacao, this.concurso.dtConclusaoAvaliacaoRelPrel)) {
+            alert('A Data de negociação não pode ser menor que a Data de conclusão da avaliação');
+            this.concurso.dtNegociacao = null;
+        }
+    }
+    // 8ª Data de aprovação do relatório de avaliação final;
+    validaData8() {
+        if (this.isData1MenorQueData2(this.concurso.dtAprovRelAvalFinal, this.concurso.dtNegociacao)) {
+            alert('A Data de aprovação do relatório de avaliação final não pode ser menor que a data de Negociação');
+            this.concurso.dtAprovRelAvalFinal = null;
+        }
+    }
+    // 9ª Data de comunicação da adjudicação
+    validaData9() {
+        if (this.isData1MenorQueData2(this.adjudicacao.dtComunicaoAdjudicacao, this.concurso.dtAprovRelAvalFinal)) {
+            alert('A Data de comunicação da adjudicação não pode ser menor que a Data de aprovação do relatório de avaliação final');
+            this.adjudicacao.dtComunicaoAdjudicacao = null;
+        }
+    }
+
+    // 10ª Data de prestação da garantia de boa execução
+    validaData10() {
+        if (this.isData1MenorQueData2(this.adjudicacao.dtPrestacaoGarantBoaExec, this.adjudicacao.dtComunicaoAdjudicacao)) {
+            alert('A Data de prestação da garantia de boa execução não pode ser menor que a Data de comunicação da adjudicação');
+            this.adjudicacao.dtPrestacaoGarantBoaExec = null;
+        }
+    }
+    // 11ª Data de submissão da minuta de contracto
+    validaData11() {
+        if (this.isData1MenorQueData2(this.adjudicacao.dtSubmissaoMinutContrato, this.adjudicacao.dtPrestacaoGarantBoaExec)) {
+            alert('A Data de submissão da minuta de contracto não pode ser menor que a Data de prestação da garantia de boa execução');
+            this.adjudicacao.dtSubmissaoMinutContrato = null;
+        }
+    }
+
+    // 12ª Data de assinatura do contracto;
+    validaData12() {
+        if (this.isData1MenorQueData2(this.contrato.dtAssinatura, this.adjudicacao.dtSubmissaoMinutContrato)) {
+            alert('A Data de assinatura do contracto não pode ser menor que a Data de submissão da minuta de contracto');
+            this.contrato.dtAssinatura = null;
+        }
+    }
+
+    // 13ª Data de finalização do processo de homologação;
+    validaData13() {
+        if (this.isData1MenorQueData2(this.contrato.dtFinalizacaoProcessoHomologAprov, this.contrato.dtAssinatura)) {
+            alert('A Data de finalização do processo de homologação não pode ser menor que a Data de assinatura');
+            this.contrato.dtFinalizacaoProcessoHomologAprov = null;
+        }
+    }
+    // 14ª Data do visto do Tribunal de Contas;
+    validaData14() {
+        if (this.isData1MenorQueData2(this.contrato.dtVistoTribunalContas, this.contrato.dtFinalizacaoProcessoHomologAprov)) {
+            alert('A Data do visto do Tribunal de Contas não pode ser menor que a Data de finalização do processo de homologação');
+            this.contrato.dtVistoTribunalContas = null;
+        }
+    }
+    // 15ª Data de pagamento emolumentos;
+    validaData15() {
+        if (this.isData1MenorQueData2(this.contrato.dtPagamentoEmolumentos, this.contrato.dtVistoTribunalContas)) {
+            alert('A Data de pagamento emolumentos não pode ser menor que a Data do visto do Tribunal de Contas');
+            this.contrato.dtPagamentoEmolumentos = null;
+        }
+    }
+    // 16º Data de pagamento do adiantamento;
+    validaData16() {
+        if (this.isData1MenorQueData2(this.contrato.dtAdiantamento, this.contrato.dtPagamentoEmolumentos)) {
+            alert('A Data de pagamento do adiantamento não pode ser menor que a Data de pagamento emolumentos');
+            this.contrato.dtAdiantamento = null;
+        }
+    }
+    // 17ª Data do prazo de garantia do adiantamento;
+    validaData17() {
+        if (this.isData1MenorQueData2(this.contrato.dtPrazoGarantiaAditamento, this.contrato.dtAdiantamento)) {
+            alert('A Data do prazo de garantia do adiantamento não pode ser menor que a Data de pagamento do adiantamento');
+            this.contrato.dtPrazoGarantiaAditamento = null;
+        }
+    }
+    // 18ª Data de início;
+    validaData18() {
+        if (this.isData1MenorQueData2(this.contrato.dtInicio, this.contrato.dtPrazoGarantiaAditamento)) {
+            alert('A Data de Início não pode ser menor que a ata do prazo de garantia do adiantamento');
+            this.contrato.dtInicio = null;
+        }
+    }
+    // 19ª Data dos prazos vinculativos;
+    validaData19() {
+        if (this.isData1MenorQueData2(this.contrato.dtPrazosVinculativos, this.contrato.dtInicio)) {
+            alert('A Data dos prazos vinculativos não pode ser menor que a Data de início');
+            this.contrato.dtPrazosVinculativos = null;
+        }
+    }
+    // 20ª Data de recepção provisória;
+    validaData20() {
+        if (this.isData1MenorQueData2(this.contrato.dtRecepcaoProvisoria, this.contrato.dtPrazosVinculativos)) {
+            alert('A Data de recepção provisória não pode ser menor que a Data dos prazos vinculativos');
+            this.contrato.dtRecepcaoProvisoria = null;
+        }
+    }
+
+    // 21ª Data de recepção definitiva;
+    validaData21() {
+        if (this.isData1MenorQueData2(this.contrato.dtRecepcaoDefinitiva, this.contrato.dtRecepcaoProvisoria)) {
+            alert('A Data de recepção definitiva não pode ser menor que a Data de recepção provisória');
+            this.contrato.dtRecepcaoDefinitiva = null;
+        }
+    }
+
+    isData1MenorQueData2(data1: any, data2: any) {
+        const dt1: Date = new Date(data1.year, data1.month - 1, data1.day);
+        const dt2 = new Date(data2.year, data2.month - 1, data2.day );
+        if (dt1 < dt2) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     private subscribeToSaveResponse(result: Observable<HttpResponse<ProgramasProjectos>>) {
         result.subscribe((res: HttpResponse<ProgramasProjectos>) =>
             this.onSaveSuccess(res.body), (res: HttpErrorResponse) => this.onSaveError());

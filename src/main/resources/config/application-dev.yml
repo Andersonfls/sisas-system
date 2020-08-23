@@ -32,7 +32,7 @@ spring:
         serialization.indent_output: true
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:mysql://localhost:3306/sisas_control_acess?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&sessionVariables=&&sql-mode=''
+        url: jdbc:mysql://localhost:3306/sisas?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&sessionVariables=&&sql-mode=''
         username: root
         password: CP1227@.
         driver-class-name: com.mysql.jdbc.Driver

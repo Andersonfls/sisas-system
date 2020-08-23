@@ -1,6 +1,7 @@
 package com.minea.sisas.repository;
 
 import com.minea.sisas.domain.ProgramasProjectos;
+import com.minea.sisas.service.dto.ProgramasProjectosDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
@@ -24,13 +25,12 @@ public interface ProgramasProjectosRepository extends JpaRepository<ProgramasPro
         "or LOWER(p.idSaaAssociado) like LOWER(CONCAT(:nome,'%'))"+
         "or LOWER(p.tipoFinanciamento) like LOWER(CONCAT(:nome,'%'))"+
         "or LOWER(p.comuna) like LOWER(CONCAT(:nome,'%'))")
-    Page buscarPorNome(@Param("nome") String nome, Pageable pageable);
+    List<ProgramasProjectos> buscarPorNome(@Param("nome") String nome);
 
     Page<ProgramasProjectos> findAllByStatusIsTrue(Pageable pageable);
 
     @Query("select p from ProgramasProjectos p where p.status =1 and p.provincia.id = :provinciaId")
     Page<ProgramasProjectos> findAllByStatusIsTrueAndProvinciaId(@Param("provinciaId") Long provinciaId, Pageable pageable);
-
 
     //PROVINCIA
     List<ProgramasProjectos> findAllByProvinciaNmProvinciaEquals(String nmProvincia);

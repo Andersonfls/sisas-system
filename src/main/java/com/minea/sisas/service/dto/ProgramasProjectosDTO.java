@@ -53,6 +53,13 @@ public class ProgramasProjectosDTO implements Serializable {
     @Size(max = 150)
     private String finalidadeProjeto;
 
+    private ConcepcaoDTO concepcao;
+    private ConcursoDTO concurso;
+    private AdjudicacaoDTO adjudicacao;
+    private ContratoDTO contrato;
+    private EmpreitadaDTO empreitada;
+    private ExecucaoDTO execucao;
+
     public Long getId() {
         return id;
     }
@@ -152,6 +159,58 @@ public class ProgramasProjectosDTO implements Serializable {
     public String getFinalidadeProjeto() { return finalidadeProjeto; }
 
     public void setFinalidadeProjeto(String finalidadeProjeto) { this.finalidadeProjeto = finalidadeProjeto; }
+
+    public void setEspecialidade(Especialidades especialidade) {
+        this.especialidade = especialidade;
+    }
+
+    public ConcepcaoDTO getConcepcao() {
+        return concepcao;
+    }
+
+    public void setConcepcao(ConcepcaoDTO concepcao) {
+        this.concepcao = concepcao;
+    }
+
+    public ConcursoDTO getConcurso() {
+        return concurso;
+    }
+
+    public void setConcurso(ConcursoDTO concurso) {
+        this.concurso = concurso;
+    }
+
+    public AdjudicacaoDTO getAdjudicacao() {
+        return adjudicacao;
+    }
+
+    public void setAdjudicacao(AdjudicacaoDTO adjudicacao) {
+        this.adjudicacao = adjudicacao;
+    }
+
+    public ContratoDTO getContrato() {
+        return contrato;
+    }
+
+    public void setContrato(ContratoDTO contrato) {
+        this.contrato = contrato;
+    }
+
+    public EmpreitadaDTO getEmpreitada() {
+        return empreitada;
+    }
+
+    public void setEmpreitada(EmpreitadaDTO empreitada) {
+        this.empreitada = empreitada;
+    }
+
+    public ExecucaoDTO getExecucao() {
+        return execucao;
+    }
+
+    public void setExecucao(ExecucaoDTO execucao) {
+        this.execucao = execucao;
+    }
 
     @Override
     public boolean equals(Object o) {

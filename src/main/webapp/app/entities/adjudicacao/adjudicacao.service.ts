@@ -68,8 +68,8 @@ export class AdjudicacaoService {
      */
     private convertItemFromServer(adjudicacao: Adjudicacao): Adjudicacao {
         const copy: Adjudicacao = Object.assign({}, adjudicacao);
-        copy.dtLancamento = this.dateUtils
-            .convertLocalDateFromServer(adjudicacao.dtLancamento);
+        // copy.dtLancamento = this.dateUtils
+        //     .convertLocalDateFromServer(adjudicacao.dtLancamento);
         copy.dtComunicaoAdjudicacao = this.dateUtils
             .convertLocalDateFromServer(adjudicacao.dtComunicaoAdjudicacao);
         copy.dtPrestacaoGarantBoaExec = this.dateUtils
@@ -84,8 +84,8 @@ export class AdjudicacaoService {
      */
     private convert(adjudicacao: Adjudicacao): Adjudicacao {
         const copy: Adjudicacao = Object.assign({}, adjudicacao);
-        copy.dtLancamento = this.dateUtils
-            .convertLocalDateToServer(adjudicacao.dtLancamento);
+        // copy.dtLancamento = this.dateUtils
+        //     .convertLocalDateToServer(adjudicacao.dtLancamento);
         copy.dtComunicaoAdjudicacao = this.dateUtils
             .convertLocalDateToServer(adjudicacao.dtComunicaoAdjudicacao);
         copy.dtPrestacaoGarantBoaExec = this.dateUtils

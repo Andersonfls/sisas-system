@@ -27,7 +27,6 @@ public class Concepcao implements Serializable {
     @Column(name = "tipo_concurso", length = 150, nullable = false)
     private String tipoConcurso;
 
-    @NotNull
     @Column(name = "dt_lancamento", nullable = false)
     private LocalDate dtLancamento;
 

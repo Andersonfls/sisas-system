@@ -1,6 +1,6 @@
 package com.minea.sisas.service;
 
-import com.minea.sisas.domain.ProgramasProjectos;
+import com.minea.sisas.domain.*;
 import com.minea.sisas.domain.enumeration.TipoAcao;
 import com.minea.sisas.repository.ProgramasProjectosRepository;
 import com.minea.sisas.repository.UserRepository;
@@ -14,12 +14,19 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -45,6 +52,24 @@ public class ProgramasProjectosService {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private ConcepcaoService concepcaoService;
+
+    @Autowired
+    private ConcursoService concursoService;
+
+    @Autowired
+    private AdjudicacaoService adjudicacaoService;
+
+    @Autowired
+    private ContratoService contratoService;
+
+    @Autowired
+    private EmpreitadaService empreitadaService;
+
+    @Autowired
+    private ExecucaoService execucaoService;
 
     public ProgramasProjectosService(ProgramasProjectosRepository programasProjectosRepository, ProgramasProjectosMapper programasProjectosMapper,
                                      ProgramasProjectosLogService programasProjectosLogService,  UserService userService) {
@@ -126,6 +151,7 @@ public class ProgramasProjectosService {
                     .map(programasProjectosMapper::toDto);
             }
         }
+
         return retorno;
     }
 
@@ -159,5 +185,62 @@ public class ProgramasProjectosService {
         log.debug("Request to delete ProgramasProjectos : {}", id);
         logSave(TipoAcao.REMOCAO, programasProjectosRepository.findOne(id));
         programasProjectosRepository.delete(id);
+    }
+
+    public List<ProgramasProjectosDTO> getByPeriodo(String dtInicial, String dtFinal) {
+        List<ProgramasProjectos> page = programasProjectosRepository.getAllBetweenDates(LocalDate.parse(dtInicial), LocalDate.parse(dtFinal));
+        return buscarTabelasAuxiliares(page);
+    }
+
+    public List<ProgramasProjectosDTO> getByNome(String nome) {
+        List<ProgramasProjectos> page = programasProjectosRepository.buscarPorNome(nome);
+        return buscarTabelasAuxiliares(page);
+    }
+
+    public List<ProgramasProjectosDTO> getByMunicipio(String nome) {
+        List<ProgramasProjectos> page = programasProjectosRepository.findAllByMunicipioNmMunicipioEquals(nome);
+        return buscarTabelasAuxiliares(page);
+    }
+
+    public List<ProgramasProjectosDTO> getByProvincia(String nome) {
+        List<ProgramasProjectos> page = programasProjectosRepository.findAllByProvinciaNmProvinciaEquals(nome);
+        return buscarTabelasAuxiliares(page);
+    }
+
+    public List<ProgramasProjectosDTO> getByComuna(String nome) {
+        List<ProgramasProjectos> page = programasProjectosRepository.findAllByComunaNmComunaEquals(nome);
+        return buscarTabelasAuxiliares(page);
+    }
+
+    private List<ProgramasProjectosDTO> buscarTabelasAuxiliares(List<ProgramasProjectos> lista) {
+
+        List<ProgramasProjectosDTO> listaDto = new ArrayList<>();
+
+        lista.stream().forEach(i -> {
+            ProgramasProjectosDTO dto = new ProgramasProjectosDTO();
+            dto.setId(i.getId());
+            dto.setDtLancamento(i.getDtLancamento());
+            dto.setDtUltimaAlteracao(i.getDtUltimaAlteracao());
+            dto.setUsuario(i.getUsuario());
+            dto.setNmDesignacaoProjeto(i.getNmDesignacaoProjeto());
+            dto.setNmDescricaoProjeto(i.getNmDescricaoProjeto());
+            dto.setIdSaaAssociado(i.getIdSaaAssociado());
+            dto.setTipoFinanciamento(i.getTipoFinanciamento());
+            dto.setEspecialidade(i.getEspecialidade());
+            dto.setComuna(i.getComuna());
+            dto.setProvincia(i.getProvincia());
+            dto.setComuna(i.getComuna());
+            dto.setNmLocalidade(i.getNmLocalidade());
+            dto.setFinalidadeProjeto(i.getFinalidadeProjeto());
+            dto.setConcepcao(this.concepcaoService.findOneByProgramaProjectoId(i.getId()));
+            dto.setConcurso(this.concursoService.findOneByProgramasProjectos(i.getId()));
+            dto.setAdjudicacao(this.adjudicacaoService.findOneByProgramasProjectos(i.getId()));
+            dto.setContrato(this.contratoService.findOneByProgramasProjectos(i.getId()));
+            dto.setEmpreitada(this.empreitadaService.findOneByProgramasProjectos(i.getId()));
+            dto.setExecucao(this.execucaoService.findOneByProgramasProjectos(i.getId()));
+            listaDto.add(dto);
+        });
+
+        return listaDto;
     }
 }

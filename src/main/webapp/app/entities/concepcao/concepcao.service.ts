@@ -68,8 +68,8 @@ export class ConcepcaoService {
      */
     private convertItemFromServer(concepcao: Concepcao): Concepcao {
         const copy: Concepcao = Object.assign({}, concepcao);
-        copy.dtLancamento = this.dateUtils
-            .convertLocalDateFromServer(concepcao.dtLancamento);
+        // copy.dtLancamento = this.dateUtils
+        //     .convertLocalDateFromServer(concepcao.dtLancamento);
         copy.dtUltimaAlteracao = this.dateUtils
             .convertLocalDateFromServer(concepcao.dtUltimaAlteracao);
         copy.dtElaboracaoCon = this.dateUtils
@@ -84,8 +84,8 @@ export class ConcepcaoService {
      */
     private convert(concepcao: Concepcao): Concepcao {
         const copy: Concepcao = Object.assign({}, concepcao);
-        copy.dtLancamento = this.dateUtils
-            .convertLocalDateToServer(concepcao.dtLancamento);
+        // copy.dtLancamento = this.dateUtils
+        //     .convertLocalDateToServer(concepcao.dtLancamento);
         copy.dtUltimaAlteracao = this.dateUtils
             .convertLocalDateToServer(concepcao.dtUltimaAlteracao);
         copy.dtElaboracaoCon = this.dateUtils

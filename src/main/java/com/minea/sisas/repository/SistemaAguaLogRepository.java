@@ -22,4 +22,9 @@ public interface SistemaAguaLogRepository extends JpaRepository<SistemaAguaLog, 
         "or LOWER(s.idSistemaAgua) like LOWER(CONCAT(:nome,'%'))"+
         "or LOWER(s.idUsuario) like LOWER(CONCAT(:nome,'%'))")
     Page buscarPorNome(@Param("nome") String nome, Pageable pageable);
+
+    @Modifying
+    @Query("delete from SistemaAguaLog s where s.idUsuario = ?1")
+    void deleteLogByUserId(Long idUsuario);
+
 }
